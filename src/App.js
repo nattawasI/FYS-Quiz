@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './style/App.scss'
 import Layout1 from './layouts/Layout1'
-import Start from './scenes/Start'
+import Start from './pages/Start'
 
 const App = () => {
   return (
