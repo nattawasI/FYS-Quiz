@@ -1,13 +1,13 @@
 // import logo from './logo.svg';
 import './style/App.scss'
 import Layout1 from './layouts/Layout1'
-import Start from './pages/Start'
+import Scene1 from './pages/Scene1'
 
 const App = () => {
   return (
     <div className="App">
       <Layout1>
-        <Start />
+        <Scene1 />
       </Layout1>
     </div>
   );

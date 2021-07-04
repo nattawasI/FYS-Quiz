@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ButtonBack from '../components/ButtonBack'
-import ButtonMute from '../components/ButtonMute'
+import ButtonSound from '../components/ButtonSound'
 
 const Layout1 = (props) => {
   return (
@@ -10,7 +10,7 @@ const Layout1 = (props) => {
         <ButtonBack />
       </div>
       <div className="layout1__button layout1__button--sound">
-        <ButtonMute />
+        <ButtonSound />
       </div>
       <div>{props.children}</div>
     </div>

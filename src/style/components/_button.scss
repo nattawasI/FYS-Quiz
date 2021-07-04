@@ -34,7 +34,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 16px;
   transition: transform 0.3s;
+
+  @include md-up {
+    height: 40px;
+  }
 
   &:hover {
     @include md-up {
