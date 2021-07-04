@@ -9,7 +9,8 @@
     margin-right: 10px;
 
     @include md-up {
-      width: 40px;
+      // width: 40px;
+      width: 2.083vw;
     }
   }
 
@@ -38,7 +39,8 @@
   transition: transform 0.3s;
 
   @include md-up {
-    height: 40px;
+    // height: 40px;
+    height: 2.083vw;
   }
 
   &:hover {
@@ -51,7 +53,8 @@
     width: 20px;
 
     @include md-up {
-      width: 55px;
+      // width: 55px;
+      width: 2.865vw;
     }
   }
 }

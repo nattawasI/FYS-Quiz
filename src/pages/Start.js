@@ -1,9 +1,13 @@
 import React from 'react'
+import {Link} from "react-router-dom";
 
 const Start = () => {
   return (
     <div className="start">
-      Start
+      <div>
+        <div>Start</div>
+        <Link to="/scene1">ไปต่อ</Link>
+      </div>
     </div>
   )
 }
