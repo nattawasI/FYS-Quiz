@@ -4,7 +4,7 @@ import {
   Route,
 } from "react-router-dom";
 import './style/App.scss'
-import Frame from './layouts/Frame'
+import Layout from './layouts/Layout'
 import Start from './pages/Start'
 import Scene1 from './pages/Scene1'
 
@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Frame>
+      <Layout>
         <Switch>
           <Route exact path="/">
             <Start />
@@ -22,7 +22,7 @@ const App = () => {
             <Scene1 />
           </Route>
         </Switch>
-      </Frame>
+      </Layout>
     </div>
   );
 }

@@ -1,6 +1,6 @@
-.frame {
+.layout {
   height: 100vh;
-  // background-color: #fff;
+  overflow: hidden;
 
   &__button {
     position: fixed;
@@ -26,5 +26,9 @@
     @include md-up {
       right: 3.125vw;
     }
+  }
+
+  &__main {
+    height: 100vh;
   }
 }
