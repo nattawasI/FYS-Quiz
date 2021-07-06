@@ -1,14 +1,17 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import Content from '../layouts/Content'
+import ButtonSound from '../components/ButtonSound'
 
 const Start = () => {
   return (
-    <div className="start">
-      <div>
-        <div>Start</div>
-        <Link to="/scene1">ไปต่อ</Link>
-      </div>
-    </div>
+    <>
+      <ButtonSound />
+      <Content>
+        <div className="scene-panel start">
+          Start Page
+        </div>
+      </Content>
+    </>
   )
 }
 

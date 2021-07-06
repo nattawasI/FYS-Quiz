@@ -1,11 +1,19 @@
 import React from 'react'
+import Content from '../layouts/Content'
+import ButtonBack from '../components/ButtonBack'
+import ButtonSound from '../components/ButtonSound'
 
-const Scence1 = () => {
+const Scene1 = () => {
   return (
-    <div className="scene1">
-      Scene1
-    </div>
+    <>
+      <ButtonBack />
+      <ButtonSound />
+      <Content>
+        <div className="scene-panel scene1">
+        </div>
+      </Content>
+    </>
   )
 }
 
-export default Scence1
+export default Scene1
