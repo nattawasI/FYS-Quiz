@@ -1,0 +1,15 @@
+.callpolice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-call {
+  > img {
+    width: 34.133vw;
+
+    @include md-up {
+      width: 20.990vw;
+    }
+  }
+}
