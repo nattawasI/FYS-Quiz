@@ -1,0 +1,11 @@
+.sm-show {
+  @include md-up {
+    display: none;
+  }
+}
+
+.md-show {
+  @include md-down {
+    display: none;
+  }
+}

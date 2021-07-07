@@ -1,21 +1,19 @@
-.scene7 {
+.scene6 {
   display: flex;
   justify-content: center;
   background-color: $blue;
-  background-image: url('../../image/scene/scene7/bg_scene7_sm.svg');
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100% auto;
 
   @include md-up {
     align-items: center;
-    background-image: url('../../image/scene/scene7/bg_scene7_md.svg');
   }
 
   &__content {
     @include md-down {
       position: relative;
-      top: 14.173vh;
+      top: 8.4%;
     }
   }
 }

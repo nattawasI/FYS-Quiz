@@ -1,12 +1,12 @@
 import React from 'react'
 import './style/App.scss'
-import Scene7 from './pages/Scene7'
+import FriendDead from './pages/FriendDead'
 
 
 const App = () => {
   return (
     <div className="App">
-      <Scene7 />
+      <FriendDead />
     </div>
   );
 }
