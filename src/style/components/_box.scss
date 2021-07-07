@@ -4,10 +4,10 @@
   align-items: center;
 
   &__button {
-    margin-top: 10px;
+    margin-top: 20px;
 
     @include md-up {
-      margin-top: 3.958vw;
+      margin-top: 2vw;
     }
   }
 }

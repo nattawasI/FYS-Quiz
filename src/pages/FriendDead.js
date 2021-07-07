@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 // import {motion} from 'framer-motion'
+import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layouts/Content'
 import ButtonBack from '../components/ButtonBack'
 import ButtonSound from '../components/ButtonSound'
@@ -10,13 +11,27 @@ import BgDeadWomenMd from '../image/scene/scene6/bg_deadwomen_md.svg'
 import BgDeadWomenSm from '../image/scene/scene6/bg_deadwomen_sm.svg'
 
 const FriendDead = () => {
-  const [bg, setBg] = useState({})
+  const isWindowSmall = UseWindowSmall()
+  const [bgImage, setBgImage] = useState({})
+
+  useEffect(() => {
+    if (isWindowSmall) {
+      setBgImage({
+        backgroundImage: `url(${BgDeadManSm})`
+      })
+    } else {
+      setBgImage({
+        backgroundImage: `url(${BgDeadManMd})`
+      })
+    }
+  }, [isWindowSmall])
+
   return (
     <>
       <ButtonBack />
       <ButtonSound />
       <Content>
-        <div className="scene-panel scene6">
+        <div className="scene-panel scene6" style={bgImage}>
           <div className="scene6__content box-story">
             <p className="box-story__text text-story">ทันทีที่ตำรวจมาถึง<br className="sm-show" />ก็สำรวจที่เกิดเหตุทันที<br />แล้วขอเชิญคุณไปสอบสวน</p>
             <div className="box-story__button">
