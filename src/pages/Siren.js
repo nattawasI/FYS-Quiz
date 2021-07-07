@@ -6,14 +6,14 @@ import ButtonSound from '../components/ButtonSound'
 import ButtonNext from '../components/ButtonNext'
 
 
-const Scene7 = () => {
+const Siren = () => {
   return (
     <>
       <ButtonBack />
       <ButtonSound />
       <Content>
-        <div className="scene-panel scene7">
-          <div className="scene7__content box-story">
+        <div className="scene-panel siren">
+          <div className="siren__content box-story">
             <p className="box-story__text text-story">ตอนนี้ คุณตกเป็นผู้ต้องสงสัย<br />ในคดีการตายของเพื่อนสนิท</p>
             <div className="box-story__button">
               <ButtonNext />
@@ -25,4 +25,4 @@ const Scene7 = () => {
   )
 }
 
-export default Scene7
+export default Siren
