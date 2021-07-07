@@ -1,0 +1,13 @@
+.box-story {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__button {
+    margin-top: 10px;
+
+    @include md-up {
+      margin-top: 3.958vw;
+    }
+  }
+}
