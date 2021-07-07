@@ -2,14 +2,14 @@
   display: flex;
   justify-content: center;
   background-color: $blue;
-  background-image: url('../../image/scene/scene7/bg_scene7_sm.svg');
+  background-image: url('../../image/pages/siren/bg_siren_sm.svg');
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100% auto;
 
   @include md-up {
     align-items: center;
-    background-image: url('../../image/scene/scene7/bg_scene7_md.svg');
+    background-image: url('../../image/pages/siren/bg_siren_md.svg');
   }
 
   &__content {

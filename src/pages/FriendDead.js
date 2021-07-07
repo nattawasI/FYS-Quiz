@@ -5,10 +5,10 @@ import Content from '../layouts/Content'
 import ButtonBack from '../components/ButtonBack'
 import ButtonSound from '../components/ButtonSound'
 import ButtonNext from '../components/ButtonNext'
-import BgDeadManMd from '../image/scene/scene6/bg_deadman_md.svg'
-import BgDeadManSm from '../image/scene/scene6/bg_deadman_sm.svg'
-import BgDeadWomenMd from '../image/scene/scene6/bg_deadwomen_md.svg'
-import BgDeadWomenSm from '../image/scene/scene6/bg_deadwomen_sm.svg'
+import BgDeadManMd from '../image/pages/frienddead/bg_deadman_md.svg'
+import BgDeadManSm from '../image/pages/frienddead/bg_deadman_sm.svg'
+// import BgDeadWomenMd from '../image/pages/frienddead/bg_deadwomen_md.svg'
+// import BgDeadWomenSm from '../image/pages/frienddead/bg_deadwomen_sm.svg'
 
 const FriendDead = () => {
   const isWindowSmall = UseWindowSmall()

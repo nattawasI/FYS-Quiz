@@ -14,7 +14,6 @@ const UseSetFrame = () => {
         const frameStyle = {}
         frameStyle.width = '100%'
         setLayoutWidth(frameStyle)
-
         // const frameWidth = Math.floor((windowHeight*9)/16)
         // const frameLeft = (windowWidth - frameWidth)/2
         // frameStyle.width = `${frameWidth}px`
