@@ -12,10 +12,15 @@ const UseSetFrame = () => {
 
       if (isWindowSmall) { // Smartphone' frame
         const frameStyle = {}
-        const frameWidth = Math.floor((windowHeight*9)/16)
-        const frameLeft = (windowWidth - frameWidth)/2
-        frameStyle.width = `${frameWidth}px`
-        frameStyle.transform = `translateX(${frameLeft}px)`
+
+        if (windowWidth < windowHeight) {
+          // const frameWidth = Math.floor((windowHeight*9)/16)
+          // const frameLeft = (windowWidth - frameWidth)/2
+          // frameStyle.width = `${frameWidth}px`
+          // frameStyle.transform = `translateX(${frameLeft}px)`
+        } else {
+          frameStyle.width = '100%'
+        }
         setLayoutWidth(frameStyle)
       } else { // Desktop' frame
         const frameStyle = {}

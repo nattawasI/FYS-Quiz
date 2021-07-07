@@ -4,12 +4,13 @@
   align-items: center;
   background-color: #155AA7;
   background-image: url('../../image/background/bg_scene7_sp.svg');
-  background-position: center top;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: 100% auto;
 
   @include md-up {
     background-image: url('../../image/background/bg_scene7_md.svg');
+    background-position: center;
   }
 
   &__content {

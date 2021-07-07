@@ -8,7 +8,7 @@ const Start = () => {
       <ButtonSound />
       <Content>
         <div className="scene-panel start">
-          Start Page
+          Start Coding at here...
         </div>
       </Content>
     </>

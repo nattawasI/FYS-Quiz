@@ -10,6 +10,7 @@ const Scene1 = () => {
       <ButtonSound />
       <Content>
         <div className="scene-panel scene1">
+          Start Coding at here...
         </div>
       </Content>
     </>
