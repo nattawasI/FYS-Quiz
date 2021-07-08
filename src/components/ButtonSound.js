@@ -6,15 +6,20 @@ import IconSoundBlack from '../image/icon/icon_sound_black.svg'
 import IconMute from '../image/icon/icon_mute.svg'
 import IconMuteBlack from '../image/icon/icon_mute_black.svg'
 
-const ButtonSound = ({color}) => {
+const ButtonSound = ({color, onClick}) => {
   const [mute, setMute] = useState(false)
 
   const handleClick = () => {
     setMute(!mute)
+    onClick()
   }
 
   return (
-    <motion.button type="button" className="button-mute" whileHover={{ scale: 1.1}} onClick={handleClick}>
+    <motion.button
+      type="button"
+      className="button-mute"
+      whileHover={{ scale: 1.1}}
+      onClick={handleClick}>
       {
         mute
         ? <img src={color === "black" ? IconMuteBlack: IconMute} alt="" />
@@ -25,11 +30,13 @@ const ButtonSound = ({color}) => {
 }
 
 ButtonSound.propTypes = {
-  color: PropTypes.string
+  color: PropTypes.string,
+  onClick: PropTypes.func
 }
 
 ButtonSound.defaultProps = {
-  color: 'white' // set color="black" if you want to change to black theme
+  color: 'white', // set color="black" if you want to change to black theme
+  onClick: () => {}
 }
 
 export default ButtonSound

@@ -3,12 +3,9 @@ import React from 'react'
 import Content from '../layouts/Content'
 import ButtonBack from '../components/ButtonBack'
 import ButtonSound from '../components/ButtonSound'
-import ButtonNext from '../components/ButtonNext'
 import IconCall from '../image/pages/callpolice/icon_call.svg'
 
 const CallPolice = () => {
-
-
   return (
     <>
       <ButtonBack />

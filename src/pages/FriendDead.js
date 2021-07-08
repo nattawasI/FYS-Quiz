@@ -7,8 +7,6 @@ import ButtonSound from '../components/ButtonSound'
 import ButtonNext from '../components/ButtonNext'
 import BgDeadManMd from '../image/pages/frienddead/bg_deadman_md.svg'
 import BgDeadManSm from '../image/pages/frienddead/bg_deadman_sm.svg'
-// import BgDeadWomenMd from '../image/pages/frienddead/bg_deadwomen_md.svg'
-// import BgDeadWomenSm from '../image/pages/frienddead/bg_deadwomen_sm.svg'
 
 const FriendDead = () => {
   const isWindowSmall = UseWindowSmall()
@@ -31,8 +29,8 @@ const FriendDead = () => {
       <ButtonBack />
       <ButtonSound />
       <Content>
-        <div className="scene-panel scene6" style={bgImage}>
-          <div className="scene6__content box-story">
+        <div className="scene-panel frienddead" style={bgImage}>
+          <div className="frienddead__content box-story">
             <p className="box-story__text text-story">ทันทีที่ตำรวจมาถึง<br className="sm-show" />ก็สำรวจที่เกิดเหตุทันที<br />แล้วขอเชิญคุณไปสอบสวน</p>
             <div className="box-story__button">
               <ButtonNext />
