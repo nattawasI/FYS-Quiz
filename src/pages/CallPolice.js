@@ -1,5 +1,5 @@
 import React from 'react'
-// import {motion} from 'framer-motion'
+import {motion} from 'framer-motion'
 import Content from '../layouts/Content'
 import ButtonBack from '../components/ButtonBack'
 import ButtonSound from '../components/ButtonSound'
@@ -11,16 +11,32 @@ const CallPolice = () => {
       <ButtonBack />
       <ButtonSound />
       <Content>
-        <div className="scene-panel callpolice">
+        <motion.div className="scene-panel callpolice"
+          initial={{opacity: 0}}
+          animate={{opacity: 1}}
+          transition={{duration: 1}}
+        >
           <div className="callpolice__content box-story">
-            <p className="box-story__text text-story">คุณตกใจมาก โวยวายเสียงดัง!<br />แล้วรีบหยิบมือถือ โทรแจ้งตำรวจทันที</p>
-            <div className="box-story__button">
+            <motion.p
+              className="box-story__text text-story"
+              initial={{y: 20, opacity: 0}}
+              animate={{y: 0, opacity: 1}}
+              transition={{duration: 1}}
+            >
+              คุณตกใจมาก โวยวายเสียงดัง!<br />แล้วรีบหยิบมือถือ โทรแจ้งตำรวจทันที
+            </motion.p>
+            <motion.div
+              className="box-story__button"
+              initial={{y: 20, opacity: 0}}
+              animate={{y: 0, opacity: 1}}
+              transition={{delay: 1, duration: 1}}
+            >
               <button type="button" className="button-call">
                 <img src={IconCall} alt="Call Button" />
               </button>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </Content>
     </>
   )
