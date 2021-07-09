@@ -35,7 +35,7 @@ const textVariants = {
     transition: {
       ease: "easeOut",
       delay: 0.5,
-      duration: 0.5
+      duration: 1
     }
   }
 }
@@ -49,7 +49,7 @@ const buttonVariants = {
     transition: {
       ease: "easeOut",
       delay: 1.5,
-      duration: 0.5
+      duration: 1
     }
   }
 }
