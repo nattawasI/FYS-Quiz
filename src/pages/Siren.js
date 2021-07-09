@@ -1,14 +1,58 @@
 import React, {useEffect, useState} from 'react'
-// import {motion} from 'framer-motion'
+import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layouts/Content'
-import ButtonBack from '../components/ButtonBack'
 import ButtonSound from '../components/ButtonSound'
 import ButtonNext from '../components/ButtonNext'
 import BgSirenMd from '../image/pages/siren/bg_siren_md.svg'
 import BgSirenMdOn from '../image/pages/siren/bg_siren_md_on.svg'
 import BgSirenSm from '../image/pages/siren/bg_siren_sm.svg'
 import BgSirenSmOn from '../image/pages/siren/bg_siren_sm_on.svg'
+
+// Motion Variants
+const bgVariants = {
+  hidden: {
+    opacity: 0
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: "easeOut",
+      delay: 0.5,
+      duration: 1
+    }
+  }
+}
+
+const textVariants = {
+  hidden: {
+    opacity: 0,
+    y: 50
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeOut",
+      delay: 0.5,
+      duration: 0.5
+    }
+  }
+}
+
+const buttonVariants = {
+  hidden: {
+    opacity: 0
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: "easeOut",
+      delay: 2,
+      duration: 0.5
+    }
+  }
+}
 
 const Siren = () => {
   const isWindowSmall = UseWindowSmall()
@@ -18,9 +62,9 @@ const Siren = () => {
     const backgrounds = isWindowSmall
     ? { bg1: BgSirenSm, bg2: BgSirenSmOn }
     : { bg1: BgSirenMd, bg2: BgSirenMdOn }
-
     let currentBG = 'bg1'
-    const interval = setInterval(() => {
+
+    const changeBG = () => {
       if (currentBG === 'bg1') {
         setBgStyle({
           backgroundImage: `url(${backgrounds.bg1})`
@@ -32,22 +76,39 @@ const Siren = () => {
         })
         currentBG = 'bg1'
       }
-    }, 500)
+    }
+
+    let interval = setInterval(changeBG, 500)
 
     return () => clearInterval(interval)
   }, [isWindowSmall])
 
   return (
     <>
-      <ButtonBack />
       <ButtonSound />
       <Content>
-        <div className="scene-panel siren" style={bgStyle}>
+        <div className="scene-panel siren">
+          <motion.div className="siren__background" style={bgStyle}
+            variants={bgVariants}
+            initial="hidden"
+            animate="show"
+          ></motion.div>
           <div className="siren__content box-story">
-            <p className="box-story__text text-story">ตอนนี้ คุณตกเป็นผู้ต้องสงสัย<br />ในคดีการตายของเพื่อนสนิท</p>
-            <div className="box-story__button">
-              <ButtonNext />
-            </div>
+            <motion.p className="box-story__text text-story"
+            variants={textVariants}
+            initial="hidden"
+            animate="show"
+            >ตอนนี้ คุณตกเป็นผู้ต้องสงสัย<br />ในคดีการตายของเพื่อนสนิท</motion.p>
+            {
+              !isWindowSmall
+              && <motion.div className="box-story__button"
+                  variants={buttonVariants}
+                  initial="hidden"
+                  animate="show"
+                >
+                  <ButtonNext />
+                </motion.div>
+            }
           </div>
         </div>
       </Content>
