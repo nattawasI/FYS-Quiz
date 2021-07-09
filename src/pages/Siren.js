@@ -48,7 +48,7 @@ const buttonVariants = {
     opacity: 1,
     transition: {
       ease: "easeOut",
-      delay: 2,
+      delay: 1.5,
       duration: 0.5
     }
   }

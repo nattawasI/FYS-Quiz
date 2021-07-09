@@ -2,20 +2,36 @@
   display: flex;
   justify-content: center;
   background-color: $blue;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: auto;
 
-  @include md-down {
-    background-position: center bottom -40px;
+  &__body {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-end;
+
+    @include md-up {
+      height: 60%;
+    }
+  }
+
+  &__body-img {
+    @include md-down {
+      width: 100%;
+    }
+
+    @include md-up {
+      height: 100%;
+    }
   }
 
   &__content {
     position: relative;
-    top: 8.4%;
+    top: 20%;
 
     @include md-up {
-      top: 9.6%;
+      top: 9.2%;
     }
   }
 }
