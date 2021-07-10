@@ -22,14 +22,14 @@ const textVariants = {
 const buttonVariants = {
   hidden: {
     opacity: 0,
-    y: 70,
+    y: 90,
   },
   show: {
     opacity: 1,
     y: 0,
     transition: {
       ease: "easeInOut",
-      delay: 0.5,
+      delay: 0.6,
       duration: 1.5
     }
   }
@@ -57,10 +57,10 @@ const CallPolice = () => {
               animate="show"
             >
               <button type="button" className="button-call">
-                <span className="button-call__wave-out" alt="Call Button"></span>
-                <span className="button-call__wave-in"></span>
-                <span className="button-call__button"></span>
-                <span className="button-call__touch"></span>
+                <span className="button-call__btn button-call__btn--wave-out" alt="Call Button"></span>
+                <span className="button-call__btn button-call__btn--wave-in"></span>
+                <span className="button-call__btn button-call__btn--body"></span>
+                <span className="button-call__btn button-call__btn--touch"></span>
               </button>
             </motion.div>
           </div>
