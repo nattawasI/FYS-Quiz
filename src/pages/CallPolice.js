@@ -1,42 +1,70 @@
 import React from 'react'
 import {motion} from 'framer-motion'
 import Content from '../layouts/Content'
-import ButtonBack from '../components/ButtonBack'
 import ButtonSound from '../components/ButtonSound'
-import IconCall from '../image/pages/callpolice/icon_call.svg'
+
+const textVariants = {
+  hidden: {
+    opacity: 0,
+    y: 70
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeInOut",
+      delay: 0.5,
+      duration: 1.5
+    }
+  }
+}
+
+const buttonVariants = {
+  hidden: {
+    opacity: 0,
+    y: 70,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeInOut",
+      delay: 0.5,
+      duration: 1.5
+    }
+  }
+}
 
 const CallPolice = () => {
   return (
     <>
-      <ButtonBack />
       <ButtonSound />
       <Content>
-        <motion.div className="scene-panel callpolice"
-          initial={{opacity: 0}}
-          animate={{opacity: 1}}
-          transition={{duration: 1}}
+        <div className="scene-panel callpolice"
         >
           <div className="callpolice__content box-story">
             <motion.p
               className="box-story__text text-story"
-              initial={{y: 20, opacity: 0}}
-              animate={{y: 0, opacity: 1}}
-              transition={{duration: 1}}
+              variants={textVariants}
+              initial="hidden"
+              animate="show"
             >
               คุณตกใจมาก โวยวายเสียงดัง!<br />แล้วรีบหยิบมือถือ โทรแจ้งตำรวจทันที
             </motion.p>
-            <motion.div
-              className="box-story__button"
-              initial={{y: 20, opacity: 0}}
-              animate={{y: 0, opacity: 1}}
-              transition={{delay: 1, duration: 1}}
+            <motion.div className="box-story__button"
+              variants={buttonVariants}
+              initial="hidden"
+              animate="show"
             >
               <button type="button" className="button-call">
-                <img src={IconCall} alt="Call Button" />
+                <span className="button-call__wave-out" alt="Call Button"></span>
+                <span className="button-call__wave-in"></span>
+                <span className="button-call__button"></span>
+                <span className="button-call__touch"></span>
               </button>
             </motion.div>
           </div>
-        </motion.div>
+        </div>
       </Content>
     </>
   )

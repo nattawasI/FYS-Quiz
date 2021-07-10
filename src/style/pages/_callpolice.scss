@@ -5,11 +5,25 @@
 }
 
 .button-call {
-  > img {
-    width: 34.133vw;
+  width: 34.133vw;
 
-    @include md-up {
-      width: 20.990vw;
-    }
+  @include md-up {
+    width: 20.990vw;
+  }
+
+  &__button {
+
+  }
+
+  &__wave-in {
+
+  }
+
+  &__wave-out {
+    
+  }
+
+  &__touch {
+    
   }
 }

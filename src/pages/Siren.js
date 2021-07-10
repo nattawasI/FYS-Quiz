@@ -17,7 +17,7 @@ const bgVariants = {
   show: {
     opacity: 1,
     transition: {
-      ease: "easeOut",
+      ease: "easeInOut",
       delay: 0.5,
       duration: 1
     }
@@ -33,7 +33,7 @@ const textVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      ease: "easeOut",
+      ease: "easeInOut",
       delay: 0.5,
       duration: 1
     }
@@ -47,7 +47,7 @@ const buttonVariants = {
   show: {
     opacity: 1,
     transition: {
-      ease: "easeOut",
+      ease: "easeInOut",
       delay: 1.5,
       duration: 1
     }
