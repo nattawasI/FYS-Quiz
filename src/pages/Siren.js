@@ -4,10 +4,10 @@ import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layouts/Content'
 import ButtonSound from '../components/ButtonSound'
 import ButtonNext from '../components/ButtonNext'
-import BgSirenMd from '../image/pages/siren/bg_siren_md.svg'
-import BgSirenMdOn from '../image/pages/siren/bg_siren_md_on.svg'
-import BgSirenSm from '../image/pages/siren/bg_siren_sm.svg'
-import BgSirenSmOn from '../image/pages/siren/bg_siren_sm_on.svg'
+// import BgSirenMd from '../image/pages/siren/bg_siren_md.svg'
+// import BgSirenMdOn from '../image/pages/siren/bg_siren_md_on.svg'
+// import BgSirenSm from '../image/pages/siren/bg_siren_sm.svg'
+// import BgSirenSmOn from '../image/pages/siren/bg_siren_sm_on.svg'
 
 // Motion Variants
 const bgVariants = {
@@ -19,7 +19,7 @@ const bgVariants = {
     transition: {
       ease: "easeInOut",
       delay: 0.5,
-      duration: 1
+      duration: 2
     }
   }
 }
@@ -56,39 +56,40 @@ const buttonVariants = {
 
 const Siren = () => {
   const isWindowSmall = UseWindowSmall()
-  const [bgStyle, setBgStyle] = useState({})
+  // const [bgStyle, setBgStyle] = useState({})
 
-  useEffect(() => {
-    const backgrounds = isWindowSmall
-    ? { bg1: BgSirenSm, bg2: BgSirenSmOn }
-    : { bg1: BgSirenMd, bg2: BgSirenMdOn }
-    let currentBG = 'bg1'
+  // useEffect(() => {
+  //   const backgrounds = isWindowSmall
+  //   ? { bg1: BgSirenSm, bg2: BgSirenSmOn }
+  //   : { bg1: BgSirenMd, bg2: BgSirenMdOn }
+  //   let currentBG = 'bg1'
 
-    const changeBG = () => {
-      if (currentBG === 'bg1') {
-        setBgStyle({
-          backgroundImage: `url(${backgrounds.bg1})`
-        })
-        currentBG = 'bg2'
-      } else {
-        setBgStyle({
-          backgroundImage: `url(${backgrounds.bg2})`
-        })
-        currentBG = 'bg1'
-      }
-    }
+  //   const changeBG = () => {
+  //     if (currentBG === 'bg1') {
+  //       setBgStyle({
+  //         backgroundImage: `url(${backgrounds.bg1})`
+  //       })
+  //       currentBG = 'bg2'
+  //     } else {
+  //       setBgStyle({
+  //         backgroundImage: `url(${backgrounds.bg2})`
+  //       })
+  //       currentBG = 'bg1'
+  //     }
+  //   }
 
-    let interval = setInterval(changeBG, 500)
+  //   let interval = setInterval(changeBG, 500)
 
-    return () => clearInterval(interval)
-  }, [isWindowSmall])
+  //   return () => clearInterval(interval)
+  // }, [isWindowSmall])
 
   return (
     <>
       <ButtonSound />
       <Content>
         <div className="scene-panel siren">
-          <motion.div className="siren__background" style={bgStyle}
+          <motion.div className="siren__background"
+            // style={bgStyle}
             variants={bgVariants}
             initial="hidden"
             animate="show"
