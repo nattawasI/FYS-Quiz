@@ -20,7 +20,7 @@ const textVariant = {
       ease: "easeInOut",
       delay: 0.5,
       duration: 1
-    }
+    },
   },
   exit: {
     y: -100,
@@ -75,13 +75,32 @@ const CallPolice = ({nameFriend}) => {
     }, 300)
   }
 
+  const skipScene = () => {
+    if (isWindowSmall) {
+      if (showScene1) {
+        setShowScene1(false)
+
+        setTimeout(() => {
+          setShowScene2(true)
+        }, 300)
+      } else if (showScene2) {
+        setShowScene1(false)
+        setShowScene2(false)
+
+        setTimeout(() => {
+          setShowScene3(true)
+        }, 300)
+      }
+    }
+  }
+
   return (
     <>
       <ButtonSound />
       <Content>
-        <div className="scene-panel call-police">
+        <div className="scene-panel call-police" onClick={skipScene}>
           <div className="box-story">
-            <AnimatePresence exitBeforeEnter>
+            <AnimatePresence>
               {
                 showScene1
                 && <motion.p className="box-story__text text-story"
