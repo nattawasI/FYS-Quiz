@@ -40,9 +40,9 @@ const CallPolice = () => {
     <>
       <ButtonSound />
       <Content>
-        <div className="scene-panel callpolice"
+        <div className="scene-panel call-police"
         >
-          <div className="callpolice__content box-story">
+          <div className="call-police__content box-story">
             <motion.p
               className="box-story__text text-story"
               variants={textVariants}
