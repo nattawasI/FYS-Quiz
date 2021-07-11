@@ -4,8 +4,8 @@ import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layouts/Content'
 import ButtonSound from '../components/ButtonSound'
 import ButtonNext from '../components/ButtonNext'
-import BgDeadManMd from '../image/pages/frienddead/bg_deadman_md.svg'
-import BgDeadManSm from '../image/pages/frienddead/bg_deadman_sm.svg'
+import BgDeadManMd from '../image/pages/police-came/bg_deadman_md.svg'
+import BgDeadManSm from '../image/pages/police-came/bg_deadman_sm.svg'
 
 // Motion Variants
 const bodyVariants = {
@@ -52,22 +52,22 @@ const buttonVariants = {
   }
 }
 
-const FriendDead = () => {
+const PoliceCame = () => {
   const isWindowSmall = UseWindowSmall()
 
   return (
     <>
       <ButtonSound />
       <Content>
-        <div className="scene-panel frienddead">
-          <motion.div className="frienddead__body"
+        <div className="scene-panel police-came">
+          <motion.div className="police-came__body"
             variants={bodyVariants}
             initial="hidden"
             animate="show"
           >
-            <img src={isWindowSmall ? BgDeadManSm : BgDeadManMd} className="frienddead__body-img" alt="ศพเพื่อนนอนตาย" />
+            <img src={isWindowSmall ? BgDeadManSm : BgDeadManMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
           </motion.div>
-          <div className="frienddead__content box-story">
+          <div className="police-came__content box-story">
             <motion.p className="box-story__text text-story"
               variants={textVariants}
               initial="hidden"
@@ -90,4 +90,4 @@ const FriendDead = () => {
   )
 }
 
-export default FriendDead
+export default PoliceCame
