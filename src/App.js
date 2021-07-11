@@ -1,6 +1,7 @@
 import React from 'react'
 import './style/App.scss'
-import CallPolice from './pages/CallPolice'
+import FriendDead from './pages/FriendDead'
+// import CallPolice from './pages/CallPolice'
 // import PoliceCame from './pages/PoliceCame'
 // import Siren from './pages/Siren'
 
@@ -8,7 +9,8 @@ import CallPolice from './pages/CallPolice'
 const App = () => {
   return (
     <div className="App">
-      <CallPolice />
+      <FriendDead nameFriend="ปิยะบุตร" />
+      {/* <CallPolice /> */}
       {/* <PoliceCame /> */}
       {/* <Siren /> */}
     </div>

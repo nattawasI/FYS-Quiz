@@ -3,7 +3,7 @@ import {motion} from 'framer-motion'
 import Content from '../layouts/Content'
 import ButtonSound from '../components/ButtonSound'
 
-const textVariants = {
+const textVariant = {
   hidden: {
     opacity: 0,
     y: 70
@@ -19,7 +19,7 @@ const textVariants = {
   }
 }
 
-const buttonVariants = {
+const buttonVariant = {
   hidden: {
     opacity: 0,
     y: 90,
@@ -45,14 +45,14 @@ const CallPolice = () => {
           <div className="call-police__content box-story">
             <motion.p
               className="box-story__text text-story"
-              variants={textVariants}
+              variants={textVariant}
               initial="hidden"
               animate="show"
             >
               คุณตกใจมาก โวยวายเสียงดัง!<br />แล้วรีบหยิบมือถือ โทรแจ้งตำรวจทันที
             </motion.p>
             <motion.div className="box-story__button"
-              variants={buttonVariants}
+              variants={buttonVariant}
               initial="hidden"
               animate="show"
             >
