@@ -35,11 +35,11 @@
     }
   }
 
-  &--black {
+  &--dark {
     color: $black;
   }
 
-  &--black::before {
+  &--dark::before {
     background-image: url('../../image/icon/icon_back_black.svg');
   }
 }
@@ -99,5 +99,13 @@
       height: 2.083vw;
       margin-left: 1.563vw;
     }
+  }
+
+  &--dark {
+    color: $black;
+  }
+
+  &--dark::after {
+    background-image: url('../../image/icon/icon_next_black.svg');
   }
 }

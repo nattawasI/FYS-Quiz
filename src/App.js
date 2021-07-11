@@ -4,6 +4,7 @@ import {
   Route,
 } from "react-router-dom"
 import './style/App.scss'
+import Preface from './pages/Preface'
 import CallPolice from './pages/CallPolice'
 import PoliceCame from './pages/PoliceCame'
 import Siren from './pages/Siren'
@@ -13,6 +14,9 @@ const App = () => {
   return (
     <div className="App">
       <Switch>
+        <Route path="/preface">
+          <Preface />
+        </Route>
         <Route path="/call-police">
           <CallPolice nameFriend="ปิยะบุตร" />
         </Route>

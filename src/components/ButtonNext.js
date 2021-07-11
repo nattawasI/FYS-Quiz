@@ -1,25 +1,42 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {motion} from 'framer-motion'
+import {Link} from "react-router-dom"
 
-const ButtonNext = ({onClick}) => {
+const ButtonNext = ({path, onClick, dark}) => {
+  const classStyle = () => {
+    return dark ? 'button-next button-next--dark' : 'button-next'
+  }
+
   const handleClick = () => {
     onClick()
   }
 
   return (
-    <motion.button type="button" className="button-next" whileHover={{ scale: 1.1}} onClick={handleClick}>
-      ไปต่อ
-    </motion.button>
+    <>
+      {
+        path
+        ? <Link className={classStyle()} to={path}>
+            ไปต่อ
+          </Link>
+        : <motion.button type="button" className={classStyle()} whileHover={{ scale: 1.1}} onClick={handleClick}>
+            ไปต่อ
+          </motion.button>
+      }
+    </>
   )
 }
 
 ButtonNext.propTypes = {
-  onClick: PropTypes.func
+  path: PropTypes.string,
+  onClick: PropTypes.func,
+  dark: PropTypes.bool
 }
 
 ButtonNext.defaultProps = {
-  onClick: () => {}
+  path: '',
+  onClick: () => {},
+  dark: false
 }
 
 export default ButtonNext

@@ -2,28 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {motion} from 'framer-motion'
 
-const ButtonBack = ({color}) => {
-  const classButton = () => {
-    if (color === 'white') {
-      return 'button-back'
-    } else if (color === 'black'){
-      return 'button-back button-back--black'
-    }
+const ButtonBack = ({dark}) => {
+  const classStyle = () => {
+    return dark ? 'button-back button-back--dark' : 'button-dark'
   }
 
   return (
-    <motion.button type="button" className={classButton()} whileHover={{ scale: 1.1}}>
+    <motion.button type="button" className={classStyle()} whileHover={{ scale: 1.1}}>
       ย้อนกลับ
     </motion.button>
   )
 }
 
 ButtonBack.propTypes = {
-  color: PropTypes.string
+  dark: PropTypes.bool
 }
 
 ButtonBack.defaultProps = {
-  color: 'white' // set color="black" if you want to change to black theme
+  dark: false
 }
 
 export default ButtonBack
