@@ -8,56 +8,60 @@ import ButtonSound from '../components/ButtonSound'
 import ButtonNext from '../components/ButtonNext'
 import { v4 as uuidv4 } from 'uuid'
 
-const textVariant = {
-  hidden: {
-    opacity: 0,
-    y: 70
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ease: "easeInOut",
-      delay: 0.5,
-      duration: 1
-    },
-  },
-  exit: {
-    y: -100,
-    opacity: 0,
-    transition: {
-      type: 'tween',
-    }
-  }
-}
-
-const buttonVariant = {
-  hidden: {
-    opacity: 0
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      type: 'tween',
-      ease: "easeInOut",
-      delay: 1.5,
-      duration: 0.5
-    }
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      type: 'tween',
-      delay: 0
-    }
-  }
-}
-
 const CallPolice = ({nameFriend}) => {
+  // motion Variant
+  const textVariant = {
+    hidden: {
+      opacity: 0,
+      y: 70
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: "easeInOut",
+        delay: 0.5,
+        duration: 1
+      },
+    },
+    exit: {
+      y: -100,
+      opacity: 0,
+      transition: {
+        type: 'tween',
+      }
+    }
+  }
+
+  const buttonVariant = {
+    hidden: {
+      opacity: 0
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        type: 'tween',
+        ease: "easeInOut",
+        delay: 1.5,
+        duration: 0.5
+      }
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        type: 'tween',
+        delay: 0
+      }
+    }
+  }
+
   const isWindowSmall = UseWindowSmall()
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
+
+  const [endScene1, setEndScene1] = useState(false)
+  const [endScene2, setEndScene2] = useState(false)
 
   const changeToScene2 = () => {
     setShowScene1(false)
@@ -77,20 +81,20 @@ const CallPolice = ({nameFriend}) => {
 
   const skipScene = () => {
     if (isWindowSmall) {
-      if (showScene1) {
-        setShowScene1(false)
+    //   if (endScene1) {
+    //     setShowScene1(false)
 
-        setTimeout(() => {
-          setShowScene2(true)
-        }, 300)
-      } else if (showScene2) {
-        setShowScene1(false)
-        setShowScene2(false)
+    //     setTimeout(() => {
+    //       setShowScene2(true)
+    //     }, 300)
+    //   } else if (endScene2) {
+    //     setShowScene1(false)
+    //     setShowScene2(false)
 
-        setTimeout(() => {
-          setShowScene3(true)
-        }, 300)
-      }
+    //     setTimeout(() => {
+    //       setShowScene3(true)
+    //     }, 300)
+    //   }
     }
   }
 
@@ -109,6 +113,7 @@ const CallPolice = ({nameFriend}) => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
+                  // onAnimationComplete={ () => setEndScene1(true) }
                 >แต่กลับพบว่า<br />{nameFriend} ตัวเย็นเฉียบ<br />หน้าซีด และไม่หายใจ</motion.p>
               }
               {
@@ -131,6 +136,7 @@ const CallPolice = ({nameFriend}) => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
+                  // onAnimationComplete={ () => setEndScene2(true) }
                 >{nameFriend}<br />"เสียชีวิต"</motion.p>
               }
               {

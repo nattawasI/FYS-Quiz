@@ -5,25 +5,25 @@ import Content from '../layouts/Content'
 import ButtonNext from '../components/ButtonNext'
 import IconTouchNext from '../image/icon/icon_touch_next.svg'
 
-// Motion Variants
-const sceneVariant = {
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      ease: "easeInOut",
-      duration: 1
-    }
-  },
-  exit: {
-    type: 'tween',
-    opacity: 0
-  }
-}
-
 const Preface = () => {
+  // Motion Variants
+  const sceneVariant = {
+    hidden: {
+      opacity: 0,
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        ease: "easeInOut",
+        duration: 1
+      }
+    },
+    exit: {
+      type: 'tween',
+      opacity: 0
+    }
+  }
+
   const isWindowSmall = UseWindowSmall()
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
