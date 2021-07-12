@@ -7,52 +7,52 @@ import ButtonNext from '../components/ButtonNext'
 import BgDeadManMd from '../image/pages/police-came/bg_deadman_md.svg'
 import BgDeadManSm from '../image/pages/police-came/bg_deadman_sm.svg'
 
-// Motion Variants
-const bodyVariants = {
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      ease: "easeInOut",
-      delay: 0.5,
-      duration: 1
-    }
-  }
-}
-
-const textVariants = {
-  hidden: {
-    opacity: 0,
-    y: 50
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ease: "easeInOut",
-      delay: 0.5,
-      duration: 1
-    }
-  }
-}
-
-const buttonVariants = {
-  hidden: {
-    opacity: 0
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      ease: "easeInOut",
-      delay: 1.5,
-      duration: 0.5
-    }
-  }
-}
-
 const PoliceCame = () => {
+  // Motion Variants
+  const bodyVariant = {
+    hidden: {
+      opacity: 0,
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        ease: "easeInOut",
+        delay: 0.5,
+        duration: 1
+      }
+    }
+  }
+
+  const textVariant = {
+    hidden: {
+      opacity: 0,
+      y: 50
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: "easeInOut",
+        delay: 0.5,
+        duration: 1
+      }
+    }
+  }
+
+  const buttonVariant = {
+    hidden: {
+      opacity: 0
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        ease: "easeInOut",
+        delay: 1.5,
+        duration: 0.5
+      }
+    }
+  }
+
   const isWindowSmall = UseWindowSmall()
 
   return (
@@ -61,7 +61,7 @@ const PoliceCame = () => {
       <Content>
         <div className="scene-panel police-came">
           <motion.div className="police-came__body"
-            variants={bodyVariants}
+            variants={bodyVariant}
             initial="hidden"
             animate="show"
           >
@@ -69,14 +69,14 @@ const PoliceCame = () => {
           </motion.div>
           <div className="police-came__content box-story">
             <motion.p className="box-story__text text-story"
-              variants={textVariants}
+              variants={textVariant}
               initial="hidden"
               animate="show"
             >เมื่อตำรวจมาถึง ก็สำรวจที่เกิดเหตุทันที<br />แล้วขอเชิญคุณไปสอบสวน</motion.p>
             {
               !isWindowSmall
               && <motion.div className="box-story__button"
-                  variants={buttonVariants}
+                  variants={buttonVariant}
                   initial="hidden"
                   animate="show"
                 >

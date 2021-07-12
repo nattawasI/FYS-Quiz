@@ -9,52 +9,52 @@ import ButtonNext from '../components/ButtonNext'
 // import BgSirenSm from '../image/pages/siren/bg_siren_sm.svg'
 // import BgSirenSmOn from '../image/pages/siren/bg_siren_sm_on.svg'
 
-// Motion Variants
-const bgVariants = {
-  hidden: {
-    opacity: 0
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      ease: "easeInOut",
-      delay: 0.5,
-      duration: 2
-    }
-  }
-}
-
-const textVariants = {
-  hidden: {
-    opacity: 0,
-    y: 50
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ease: "easeInOut",
-      delay: 0.5,
-      duration: 1
-    }
-  }
-}
-
-const buttonVariants = {
-  hidden: {
-    opacity: 0
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      ease: "easeInOut",
-      delay: 1.5,
-      duration: 1
-    }
-  }
-}
-
 const Siren = () => {
+  // Motion Variants
+  const bgVariant = {
+    hidden: {
+      opacity: 0
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        ease: "easeInOut",
+        delay: 0.5,
+        duration: 2
+      }
+    }
+  }
+
+  const textVariant = {
+    hidden: {
+      opacity: 0,
+      y: 50
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: "easeInOut",
+        delay: 0.5,
+        duration: 1
+      }
+    }
+  }
+
+  const buttonVariant = {
+    hidden: {
+      opacity: 0
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        ease: "easeInOut",
+        delay: 1.5,
+        duration: 1
+      }
+    }
+  }
+
   const isWindowSmall = UseWindowSmall()
   // const [bgStyle, setBgStyle] = useState({})
 
@@ -90,20 +90,20 @@ const Siren = () => {
         <div className="scene-panel siren">
           <motion.div className="siren__background"
             // style={bgStyle}
-            variants={bgVariants}
+            variants={bgVariant}
             initial="hidden"
             animate="show"
           ></motion.div>
           <div className="siren__content box-story">
             <motion.p className="box-story__text text-story"
-            variants={textVariants}
+            variants={textVariant}
             initial="hidden"
             animate="show"
             >ตอนนี้ คุณตกเป็นผู้ต้องสงสัย<br />ในคดีการตายของเพื่อนสนิท</motion.p>
             {
               !isWindowSmall
               && <motion.div className="box-story__button"
-                  variants={buttonVariants}
+                  variants={buttonVariant}
                   initial="hidden"
                   animate="show"
                 >
