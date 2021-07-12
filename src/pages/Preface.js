@@ -20,7 +20,6 @@ const sceneVariant = {
   exit: {
     opacity: 0,
     transition: {
-      type: 'tween',
       ease: 'easeInOut',
       duration: 1
     }
