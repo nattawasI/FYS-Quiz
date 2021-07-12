@@ -27,6 +27,35 @@ const sceneVariant = {
   }
 }
 
+const textVariant = {
+  hidden: {
+    y: 70,
+    opacity: 0,
+  },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1
+    }
+  }
+}
+
+const buttonVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1,
+      delay: 1
+    }
+  }
+}
+
 const Preface = () => {
   const isWindowSmall = UseWindowSmall()
   const [showScene1, setShowScene1] = useState(true)
@@ -48,19 +77,29 @@ const Preface = () => {
                   className="preface__scene"
                   key="scene1"
                   variants={sceneVariant}
-                  initial="hidden"
-                  animate="show"
                   exit='exit'
                 >
-                  <p className="box-story__text preface__text">*เนื้อหาในเว็บนี้เป็นผลงาน<br />การออกแบบการสื่อสารผ่านการเล่าเรื่องราว<br />ให้ผู้เล่นมีส่วนร่วมด้วย<br />ไม่ใช่แบบสอบถามทางจิตวิทยาแต่อย่างใด<br />ในคดีการตายของเพื่อนสนิท</p>
+                  <motion.p className="box-story__text preface__text"
+                    variants={textVariant}
+                    initial="hidden"
+                    animate="show"
+                  >*เนื้อหาในเว็บนี้เป็นผลงาน<br />การออกแบบการสื่อสารผ่านการเล่าเรื่องราว<br />ให้ผู้เล่นมีส่วนร่วมด้วย<br />ไม่ใช่แบบสอบถามทางจิตวิทยาแต่อย่างใด<br />ในคดีการตายของเพื่อนสนิท</motion.p>
                   {
                     isWindowSmall
-                    ? <div className="box-story__button">
+                    ? <motion.div className="box-story__button"
+                        variants={buttonVariant}
+                        initial="hidden"
+                        animate="show"
+                      >
                         <ButtonNext dark onClick={changeToScene2} />
-                      </div>
-                    : <div className="box-story__button">
+                      </motion.div>
+                    : <motion.div className="box-story__button"
+                        variants={buttonVariant}
+                        initial="hidden"
+                        animate="show"
+                      >
                         <ButtonNext dark path="/call-police" />
-                      </div>
+                      </motion.div>
                   }
                 </motion.div>
             }

@@ -6,6 +6,7 @@ import {
 } from "react-router-dom"
 import {AnimatePresence} from 'framer-motion'
 import './style/App.scss'
+import Start from './pages/Start'
 import Preface from './pages/Preface'
 import CallPolice from './pages/CallPolice'
 import PoliceCame from './pages/PoliceCame'
@@ -17,9 +18,12 @@ const App = () => {
 
   return (
     <div className="App">
-      <AnimatePresence exitBeforeEnter>
-        <Switch>
-          <Route path="/preface" location={location} key={location.key}>
+      <AnimatePresence>
+        <Switch location={location} key={location.key}>
+          <Route exact path="/">
+            <Start />
+          </Route>
+          <Route path="/preface">
             <Preface />
           </Route>
           <Route path="/call-police">
