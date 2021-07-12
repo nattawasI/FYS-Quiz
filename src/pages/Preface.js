@@ -6,6 +6,10 @@ import ButtonNext from '../components/ButtonNext'
 import IconTouchNext from '../image/icon/icon_touch_next.svg'
 
 const Preface = () => {
+  const isWindowSmall = UseWindowSmall()
+  const [showScene1, setShowScene1] = useState(true)
+  const [showScene2, setShowScene2] = useState(false)
+
   // Motion Variants
   const sceneVariant = {
     hidden: {
@@ -14,26 +18,23 @@ const Preface = () => {
     show: {
       opacity: 1,
       transition: {
-        ease: "easeInOut",
+        ease: 'easeInOut',
         duration: 1
       }
     },
     exit: {
-      type: 'tween',
-      opacity: 0
+      opacity: 0,
+      transition: {
+        type: 'tween',
+        ease: 'easeInOut',
+        duration: 1
+      }
     }
   }
 
-  const isWindowSmall = UseWindowSmall()
-  const [showScene1, setShowScene1] = useState(true)
-  const [showScene2, setShowScene2] = useState(false)
-
   const changeToScene2 = () => {
     setShowScene1(false)
-
-    setTimeout(() => {
-      setShowScene2(true)
-    }, 300);
+    setShowScene2(true)
   }
 
   return (
@@ -45,6 +46,7 @@ const Preface = () => {
               {
                 showScene1
                 && <motion.div
+                    className="preface__scene"
                     key="scene1"
                     variants={sceneVariant}
                     initial="hidden"
@@ -65,14 +67,14 @@ const Preface = () => {
               }
               {
                 showScene2
-                && <motion.div className="preface__icon-touch"
-                    key="scene2"
-                    variants={sceneVariant}
-                    initial="hidden"
-                    animate="show"
-                    exit="exit"
-                  >
-                    <img src={IconTouchNext} alt="แตะหน้าจอเพื่อไปต่อ" />
+                &&  <motion.div className="preface__scene"
+                      key="scene2"
+                      variants={sceneVariant}
+                      initial="hidden"
+                      animate="show"
+                      exit="exit"
+                    >
+                      <img className="preface__icon-touch" src={IconTouchNext} alt="แตะหน้าจอเพื่อไปต่อ" />
                   </motion.div>
               }
             </AnimatePresence>
