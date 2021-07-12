@@ -3,6 +3,18 @@
   justify-content: center;
   align-items: center;
 
+  &__scene {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
   &__text {
     font-size: 1.8rem;
     color: $black;
@@ -13,17 +25,6 @@
   }
 
   &__icon-touch {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    img {
-      width: 135px;
-    }
+    width: 135px;
   }
 }
