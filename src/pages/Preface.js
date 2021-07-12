@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layouts/Content'
@@ -59,16 +60,25 @@ const Preface = () => {
   const isWindowSmall = UseWindowSmall()
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
+  const history = useHistory()
 
   const changeToScene2 = () => {
     setShowScene1(false)
     setShowScene2(true)
   }
 
+  console.log(history);
+
+  const linkToNextPage = () => {
+    if (isWindowSmall && showScene2) {
+      history.push('/call-police')
+    }
+  }
+
   return (
     <>
       <Content bgColor="white">
-        <div className="scene-panel preface">
+        <div className="scene-panel preface" onClick={linkToNextPage}>
           <div className="preface__content box-story">
             {
               showScene1

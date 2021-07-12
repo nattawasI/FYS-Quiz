@@ -47,7 +47,8 @@ const ribbonVariant = {
 }
 
 const Start = () => {
-  const isSmallWindow = UseWindowSmall()
+  const isWindowSmall = UseWindowSmall()
+
   return (
     <motion.div
       variants={containerVariant}
@@ -61,14 +62,14 @@ const Start = () => {
         initial="hidden"
         animate="show"
       >
-        <img src={isSmallWindow ? ImgRibbonLeftSm: ImgRibbonLeftMd} alt="Crime scene do not enter" />
+        <img src={isWindowSmall ? ImgRibbonLeftSm: ImgRibbonLeftMd} alt="Crime scene do not enter" />
       </motion.div>
       <motion.div className="start-ribbon-right"
         variants={ribbonVariant}
         initial="hidden"
         animate="show"
       >
-        <img src={isSmallWindow ? ImgRibbonRightSm: ImgRibbonRightMd} alt="Crime scene do not enter" />
+        <img src={isWindowSmall ? ImgRibbonRightSm: ImgRibbonRightMd} alt="Crime scene do not enter" />
       </motion.div>
       <Content>
         <div className="scene-panel start-content">
@@ -81,7 +82,7 @@ const Start = () => {
             </Link>
           </div>
           <div className="start-content__human">
-            <img src={isSmallWindow ? ImgHumanSleepSm: ImgHumanSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
+            <img src={isWindowSmall ? ImgHumanSleepSm: ImgHumanSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
           </div>
         </div>
       </Content>
