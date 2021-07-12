@@ -8,6 +8,7 @@ import {AnimatePresence} from 'framer-motion'
 import './style/App.scss'
 import Start from './pages/Start'
 import Preface from './pages/Preface'
+import FriendSleep from './pages/FriendSleep'
 import CallPolice from './pages/CallPolice'
 import PoliceCame from './pages/PoliceCame'
 import Siren from './pages/Siren'
@@ -25,6 +26,9 @@ const App = () => {
           </Route>
           <Route path="/preface">
             <Preface />
+          </Route>
+          <Route path="/friend-sleep">
+            <FriendSleep />
           </Route>
           <Route path="/call-police">
             <CallPolice nameFriend="ปิยะบุตร" />

@@ -67,8 +67,6 @@ const Preface = () => {
     setShowScene2(true)
   }
 
-  console.log(history);
-
   const linkToNextPage = () => {
     if (isWindowSmall && showScene2) {
       history.push('/call-police')
