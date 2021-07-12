@@ -6,7 +6,6 @@ import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layouts/Content'
 import ButtonSound from '../components/ButtonSound'
 import ButtonNext from '../components/ButtonNext'
-import { v4 as uuidv4 } from 'uuid'
 
 const CallPolice = ({nameFriend}) => {
   // motion Variant
@@ -79,7 +78,6 @@ const CallPolice = ({nameFriend}) => {
 
   const skipScene = () => {
     if (isWindowSmall) {
-      console.log(nextScene);
       if (nextScene === 'scene2') {
         setShowScene1(false)
 
@@ -107,7 +105,7 @@ const CallPolice = ({nameFriend}) => {
               {
                 showScene1
                 && <motion.p className="box-story__text text-story"
-                  key={uuidv4()}
+                  key="textScene1"
                   variants={textVariant}
                   initial="hidden"
                   animate="show"
@@ -118,7 +116,7 @@ const CallPolice = ({nameFriend}) => {
               {
                 !isWindowSmall && showScene1
                 && <motion.div className="box-story__button"
-                    key={uuidv4()}
+                    key="buttonNextScene1"
                     variants={buttonVariant}
                     initial="hidden"
                     animate="show"
@@ -130,7 +128,7 @@ const CallPolice = ({nameFriend}) => {
               {
                 showScene2
                 && <motion.p className="box-story__text text-story"
-                  key={uuidv4()}
+                key="textScene2"
                   variants={textVariant}
                   initial="hidden"
                   animate="show"
@@ -141,7 +139,7 @@ const CallPolice = ({nameFriend}) => {
               {
                 !isWindowSmall && showScene2
                 && <motion.div className="box-story__button"
-                    key={uuidv4()}
+                    key="buttonNextScene2"
                     variants={buttonVariant}
                     initial="hidden"
                     animate="show"
@@ -153,7 +151,6 @@ const CallPolice = ({nameFriend}) => {
               {
                 showScene3
                 && <motion.p
-                    key={uuidv4()}
                     className="box-story__text text-story"
                     variants={textVariant}
                     initial="hidden"
@@ -165,7 +162,7 @@ const CallPolice = ({nameFriend}) => {
               }
               {
                 showScene3
-                &&  <motion.div className="box-story__button" key="6"
+                &&  <motion.div className="box-story__button"
                       variants={buttonVariant}
                       initial="hidden"
                       animate="show"
