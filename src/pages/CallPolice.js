@@ -40,7 +40,6 @@ const CallPolice = ({nameFriend}) => {
     show: {
       opacity: 1,
       transition: {
-        type: 'tween',
         ease: "easeInOut",
         delay: 1.5,
         duration: 0.5
@@ -60,8 +59,7 @@ const CallPolice = ({nameFriend}) => {
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
 
-  const [endScene1, setEndScene1] = useState(false)
-  const [endScene2, setEndScene2] = useState(false)
+  let nextScene = ''
 
   const changeToScene2 = () => {
     setShowScene1(false)
@@ -81,20 +79,21 @@ const CallPolice = ({nameFriend}) => {
 
   const skipScene = () => {
     if (isWindowSmall) {
-    //   if (endScene1) {
-    //     setShowScene1(false)
+      console.log(nextScene);
+      if (nextScene === 'scene2') {
+        setShowScene1(false)
 
-    //     setTimeout(() => {
-    //       setShowScene2(true)
-    //     }, 300)
-    //   } else if (endScene2) {
-    //     setShowScene1(false)
-    //     setShowScene2(false)
+        setTimeout(() => {
+          setShowScene2(true)
+        }, 300)
+      } else if (nextScene === 'scene3') {
+        setShowScene1(false)
+        setShowScene2(false)
 
-    //     setTimeout(() => {
-    //       setShowScene3(true)
-    //     }, 300)
-    //   }
+        setTimeout(() => {
+          setShowScene3(true)
+        }, 300)
+      }
     }
   }
 
@@ -113,7 +112,7 @@ const CallPolice = ({nameFriend}) => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  // onAnimationComplete={ () => setEndScene1(true) }
+                  onAnimationComplete={ () => nextScene = 'scene2' }
                 >แต่กลับพบว่า<br />{nameFriend} ตัวเย็นเฉียบ<br />หน้าซีด และไม่หายใจ</motion.p>
               }
               {
@@ -136,7 +135,7 @@ const CallPolice = ({nameFriend}) => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  // onAnimationComplete={ () => setEndScene2(true) }
+                  onAnimationComplete={ () => nextScene = 'scene3' }
                 >{nameFriend}<br />"เสียชีวิต"</motion.p>
               }
               {
