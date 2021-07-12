@@ -1,15 +1,21 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Content from '../layouts/Content'
-import ButtonBack from '../components/ButtonBack'
 import ButtonSound from '../components/ButtonSound'
 import ButtonNext from '../components/ButtonNext'
-import bgScene from '../image/scene01/bg_scene_01.svg'
+import bgScenePC from '../image/pages/darkroom/bg_scene_01.svg'
 
 const DarkRoom = () => {
+  // Motion Variants
   const textVariant = {
     hidden: { y: 0, opacity: 0 },
-    show: { y: -220, opacity: 1 },
+    show: { y: '-100%', opacity: 1 },
+    exit: {
+      opacity: 0,
+      transition: {
+        type: 'tween',
+      }
+    }
   }
 
   const sceneVariant = {
@@ -25,6 +31,12 @@ const DarkRoom = () => {
         delay: 3,
         duration: 2,
       }
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        type: 'tween',
+      }
     }
   }
 
@@ -34,49 +46,59 @@ const DarkRoom = () => {
       opacity: 0
     },
     show: {
-      y: -180,
+      y: '-100%',
       opacity: 1,
       transition: {
         delay: 5,
         duration: 1,
       }
     },
+    exit: {
+      opacity: 0,
+      transition: {
+        type: 'tween',
+      }
+    }
   }
 
   return (
     <>
-      <ButtonBack />
       <ButtonSound />
       <Content>
-        <div className="scene-panel scene1">
-          <motion.div
-            className="scene1__figure"
-            initial="hidden"
-            animate="show"
-            variants={sceneVariant}
-          >
-            <img className="scene1__image" src={bgScene} alt="" />
-          </motion.div>
-          <div className="scene1__container">
-            <motion.div 
-              className="scene1__text text-story"
-              initial="hidden"
-              animate="show"
-              variants={textVariant}
-              transition={{ duration: 3 }}
-            >
-              คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
-            </motion.div>
+        <AnimatePresence>
+          <div className="scene-panel scene1">
             <motion.div
-              className="scene1__button"
+              className="scene1__figure"
               initial="hidden"
               animate="show"
-              variants={buttonVariant}
+              exit="exit"
+              variants={sceneVariant}
             >
-              <ButtonNext/>
+              <img className="scene1__image" src={bgScenePC} alt="" />
             </motion.div>
+            <div className="scene1__container">
+              <motion.div 
+                className="scene1__text text-story"
+                initial="hidden"
+                animate="show"
+                exit="exit"
+                variants={textVariant}
+                transition={{ duration: 3 }}
+              >
+                คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
+              </motion.div>
+              <motion.div
+                className="scene1__button"
+                initial="hidden"
+                animate="show"
+                exit="exit"
+                variants={buttonVariant}
+              >
+                <ButtonNext/>
+              </motion.div>
+            </div>
           </div>
-        </div>
+        </AnimatePresence>
       </Content>
     </>
   )
