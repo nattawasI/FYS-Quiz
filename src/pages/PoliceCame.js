@@ -7,52 +7,52 @@ import ButtonNext from '../components/ButtonNext'
 import BgDeadManMd from '../image/pages/police-came/bg_deadman_md.svg'
 import BgDeadManSm from '../image/pages/police-came/bg_deadman_sm.svg'
 
+// Motion Variants
+const bodyVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: "easeInOut",
+      delay: 0.5,
+      duration: 1
+    }
+  }
+}
+
+const textVariant = {
+  hidden: {
+    opacity: 0,
+    y: 50
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeInOut",
+      delay: 0.5,
+      duration: 1
+    }
+  }
+}
+
+const buttonVariant = {
+  hidden: {
+    opacity: 0
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: "easeInOut",
+      delay: 1.5,
+      duration: 0.5
+    }
+  }
+}
+
 const PoliceCame = () => {
-  // Motion Variants
-  const bodyVariant = {
-    hidden: {
-      opacity: 0,
-    },
-    show: {
-      opacity: 1,
-      transition: {
-        ease: "easeInOut",
-        delay: 0.5,
-        duration: 1
-      }
-    }
-  }
-
-  const textVariant = {
-    hidden: {
-      opacity: 0,
-      y: 50
-    },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        ease: "easeInOut",
-        delay: 0.5,
-        duration: 1
-      }
-    }
-  }
-
-  const buttonVariant = {
-    hidden: {
-      opacity: 0
-    },
-    show: {
-      opacity: 1,
-      transition: {
-        ease: "easeInOut",
-        delay: 1.5,
-        duration: 0.5
-      }
-    }
-  }
-
   const isWindowSmall = UseWindowSmall()
 
   return (

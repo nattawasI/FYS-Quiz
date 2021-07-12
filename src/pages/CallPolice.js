@@ -7,52 +7,51 @@ import Content from '../layouts/Content'
 import ButtonSound from '../components/ButtonSound'
 import ButtonNext from '../components/ButtonNext'
 
+// motion Variant
+const textVariant = {
+  hidden: {
+    opacity: 0,
+    y: 70
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: 'easeInOut',
+      delay: 0.5,
+      duration: 1
+    },
+  },
+  exit: {
+    y: -100,
+    opacity: 0,
+    transition: {
+      type: 'tween',
+    }
+  }
+}
+
+const buttonVariant = {
+  hidden: {
+    opacity: 0
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      delay: 1.5,
+      duration: 0.5
+    }
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      type: 'tween',
+    }
+  }
+}
+
 const CallPolice = ({nameFriend}) => {
-  // motion Variant
-  const textVariant = {
-    hidden: {
-      opacity: 0,
-      y: 70
-    },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        ease: "easeInOut",
-        delay: 0.5,
-        duration: 1
-      },
-    },
-    exit: {
-      y: -100,
-      opacity: 0,
-      transition: {
-        type: 'tween',
-      }
-    }
-  }
-
-  const buttonVariant = {
-    hidden: {
-      opacity: 0
-    },
-    show: {
-      opacity: 1,
-      transition: {
-        ease: "easeInOut",
-        delay: 1.5,
-        duration: 0.5
-      }
-    },
-    exit: {
-      opacity: 0,
-      transition: {
-        type: 'tween',
-        delay: 0
-      }
-    }
-  }
-
   const isWindowSmall = UseWindowSmall()
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
@@ -128,7 +127,7 @@ const CallPolice = ({nameFriend}) => {
               {
                 showScene2
                 && <motion.p className="box-story__text text-story"
-                key="textScene2"
+                  key="textScene2"
                   variants={textVariant}
                   initial="hidden"
                   animate="show"
@@ -148,34 +147,34 @@ const CallPolice = ({nameFriend}) => {
                     <ButtonNext onClick={changeToScene3} />
                   </motion.div>
               }
-              {
-                showScene3
-                && <motion.p
-                    className="box-story__text text-story"
-                    variants={textVariant}
+            </AnimatePresence>
+            {
+              showScene3
+              && <motion.p
+                  className="box-story__text text-story"
+                  variants={textVariant}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                >
+                  คุณตกใจมาก โวยวายเสียงดัง!<br />แล้วรีบหยิบมือถือ โทรแจ้งตำรวจทันที
+                </motion.p>
+            }
+            {
+              showScene3
+              &&  <motion.div className="box-story__button"
+                    variants={buttonVariant}
                     initial="hidden"
                     animate="show"
-                    exit="exit"
                   >
-                    คุณตกใจมาก โวยวายเสียงดัง!<br />แล้วรีบหยิบมือถือ โทรแจ้งตำรวจทันที
-                  </motion.p>
-              }
-              {
-                showScene3
-                &&  <motion.div className="box-story__button"
-                      variants={buttonVariant}
-                      initial="hidden"
-                      animate="show"
-                    >
-                      <button type="button" className="button-call">
-                        <span className="button-call__btn button-call__btn--wave-out" alt="Call Button"></span>
-                        <span className="button-call__btn button-call__btn--wave-in"></span>
-                        <span className="button-call__btn button-call__btn--body"></span>
-                        <span className="button-call__btn button-call__btn--touch"></span>
-                      </button>
-                    </motion.div>
-              }
-            </AnimatePresence>
+                    <button type="button" className="button-call">
+                      <span className="button-call__btn button-call__btn--wave-out" alt="Call Button"></span>
+                      <span className="button-call__btn button-call__btn--wave-in"></span>
+                      <span className="button-call__btn button-call__btn--body"></span>
+                      <span className="button-call__btn button-call__btn--touch"></span>
+                    </button>
+                  </motion.div>
+            }
           </div>
         </div>
       </Content>
