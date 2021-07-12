@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {motion} from 'framer-motion'
 import {Link} from 'react-router-dom'
 
 const ButtonNext = ({path, onClick, dark}) => {
@@ -19,9 +18,9 @@ const ButtonNext = ({path, onClick, dark}) => {
         ? <Link className={classStyle()} to={path}>
             ไปต่อ
           </Link>
-        : <motion.button type="button" className={classStyle()} whileHover={{ scale: 1.1}} onClick={handleClick}>
+        : <button type="button" className={classStyle()} onClick={handleClick}>
             ไปต่อ
-          </motion.button>
+          </button>
       }
     </>
   )

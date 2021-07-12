@@ -57,6 +57,7 @@ const CallPolice = ({nameFriend}) => {
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
 
+  const durationTimeout = 250
   let nextScene = ''
 
   const changeToScene2 = () => {
@@ -64,7 +65,7 @@ const CallPolice = ({nameFriend}) => {
 
     setTimeout(() => {
       setShowScene2(true)
-    }, 300)
+    }, durationTimeout)
   }
 
   const changeToScene3 = () => {
@@ -72,7 +73,7 @@ const CallPolice = ({nameFriend}) => {
 
     setTimeout(() => {
       setShowScene3(true)
-    }, 300)
+    }, durationTimeout)
   }
 
   const skipScene = () => {
@@ -82,14 +83,14 @@ const CallPolice = ({nameFriend}) => {
 
         setTimeout(() => {
           setShowScene2(true)
-        }, 300)
+        }, durationTimeout)
       } else if (nextScene === 'scene3') {
         setShowScene1(false)
         setShowScene2(false)
 
         setTimeout(() => {
           setShowScene3(true)
-        }, 300)
+        }, durationTimeout)
       }
     }
   }

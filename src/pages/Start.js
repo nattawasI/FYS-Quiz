@@ -13,7 +13,7 @@ import ImgHumanSleepMd from '../image/pages/start/img_human_sleep_md.svg'
 import ImgHumanSleepSm from '../image/pages/start/img_human_sleep_sm.svg'
 
 // Motion Variants
-const sceneVariant = {
+const containerVariant = {
   hidden: {
     opacity: 0,
   },
@@ -33,24 +33,45 @@ const sceneVariant = {
   }
 }
 
+const ribbonVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1,
+    }
+  }
+}
+
 const Start = () => {
   const isSmallWindow = UseWindowSmall()
   return (
-    <>
+    <motion.div
+      variants={containerVariant}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <ButtonSound />
-      <div className="start-ribbon-left">
+      <motion.div className="start-ribbon-left"
+        variants={ribbonVariant}
+        initial="hidden"
+        animate="show"
+      >
         <img src={isSmallWindow ? ImgRibbonLeftSm: ImgRibbonLeftMd} alt="Crime scene do not enter" />
-      </div>
-      <div className="start-ribbon-right">
+      </motion.div>
+      <motion.div className="start-ribbon-right"
+        variants={ribbonVariant}
+        initial="hidden"
+        animate="show"
+      >
         <img src={isSmallWindow ? ImgRibbonRightSm: ImgRibbonRightMd} alt="Crime scene do not enter" />
-      </div>
+      </motion.div>
       <Content>
-        <motion.div className="scene-panel start-content"
-          variants={sceneVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-        >
+        <div className="scene-panel start-content">
           <div className="start-content__heading">
             <h1 className="start-content__heading-title start-content__title">
               <img src={ImgTitle} alt="ฆาตกรบนโต๊ะอาหาร" />
@@ -62,9 +83,9 @@ const Start = () => {
           <div className="start-content__human">
             <img src={isSmallWindow ? ImgHumanSleepSm: ImgHumanSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
           </div>
-        </motion.div>
+        </div>
       </Content>
-    </>
+    </motion.div>
   )
 }
 

@@ -10,7 +10,6 @@
   font-size: 1.4rem;
   font-weight: 300;
   color: $white;
-  transition: transform 0.3s;
 
   @include md-up {
     top: 3.125vw;
@@ -42,6 +41,14 @@
   &--dark::before {
     background-image: url('../../image/icon/icon_back_black.svg');
   }
+
+  @include md-up {
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 }
 
 /* button-mute
@@ -55,7 +62,6 @@
   right: 16px;
   z-index: 10;
   line-height: 1;
-  transition: transform 0.3s;
 
   @include md-up {
     top: 3.125vw;
@@ -70,6 +76,14 @@
       // width: 55px;
       width: 2.969vw;
       height: 2.969vw;
+    }
+  }
+
+  @include md-up {
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 }
@@ -107,5 +121,13 @@
 
   &--dark::after {
     background-image: url('../../image/icon/icon_next_black.svg');
+  }
+
+  @include md-up {
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }

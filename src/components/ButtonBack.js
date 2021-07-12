@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {motion} from 'framer-motion'
 
 const ButtonBack = ({dark}) => {
   const classStyle = () => {
@@ -8,9 +7,9 @@ const ButtonBack = ({dark}) => {
   }
 
   return (
-    <motion.button type="button" className={classStyle()} whileHover={{ scale: 1.1}}>
+    <button type="button" className={classStyle()}>
       ย้อนกลับ
-    </motion.button>
+    </button>
   )
 }
 
