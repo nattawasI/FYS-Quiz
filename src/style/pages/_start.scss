@@ -85,7 +85,6 @@
       padding-top: 4%;
       background-image: url('../../image/pages/start/bg_button_start_md.svg');
       transition: transform 0.2s ease-in-out;
-      font-size: 2.188vw;
 
       &:hover {
         transform: scale(1.1);
@@ -111,7 +110,7 @@
     line-height: 1;
 
     @include md-up {
-      font-size: 4rem;
+      font-size: 2.188vw;
     }
   }
 
