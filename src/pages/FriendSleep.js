@@ -52,14 +52,14 @@ const buttonVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 1
+      delay: 2
     }
   }
 }
 
 const friendVariant = {
   hidden: {
-    y: 70,
+    y: 100,
     opacity: 0,
   },
   show: {
@@ -67,7 +67,8 @@ const friendVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 1
+      duration: 1,
+      delay: 1
     }
   }
 }
@@ -107,9 +108,13 @@ const FriendSleep = () => {
                 </motion.div>
             }
           </div>
-          <div className="friend-sleep__friend">
+          <motion.div className="friend-sleep__friend"
+            variants={friendVariant}
+            initial="hidden"
+            animate="show"
+          >
             <img src={isWindowSmall ? ImgFriendSleepSm: ImgFriendSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
-          </div>
+          </motion.div>
         </motion.div>
       </Content>
     </>
