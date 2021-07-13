@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -76,6 +77,7 @@ const friendVariant = {
 
 const FriendSleep = () => {
   const isWindowSmall = UseWindowSmall()
+  const history = useHistory()
 
   const [showModal, setShowModal] = useState(false)
 

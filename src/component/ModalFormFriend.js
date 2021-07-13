@@ -1,6 +1,7 @@
 import React, {useRef, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import {motion} from 'framer-motion'
+import { useUserActionContext } from '../context/UserContext'
 import Button from './Button'
 import InputText from './InputText'
 
@@ -42,11 +43,13 @@ const formVariant = {
 }
 
 const ModalFormFriend = () => {
+  const { addFriendNameContext, addFriendGenderContext } = useUserActionContext()
+
   const inputRef = useRef(null)
   const history = useHistory()
 
   const inputFriendName = (val) => {
-    console.log(val);
+    addFriendNameContext(val)
   }
 
   const linkToNextPage = () => {
@@ -54,6 +57,7 @@ const ModalFormFriend = () => {
   }
 
   const getGender = (gender) => {
+    addFriendGenderContext(gender)
     linkToNextPage()
   }
 

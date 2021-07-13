@@ -1,8 +1,8 @@
 
 import React, {useState} from 'react'
-import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import {motion, AnimatePresence} from 'framer-motion'
+import { useUserStateContext } from '../context/UserContext'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -72,7 +72,8 @@ const buttonVariant = {
   }
 }
 
-const CallPolice = ({nameFriend}) => {
+const CallPolice = () => {
+  const { friendNameContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
@@ -137,7 +138,7 @@ const CallPolice = ({nameFriend}) => {
                   animate="show"
                   exit="exit"
                   onAnimationComplete={ () => nextScene = 'scene2' }
-                >แต่กลับพบว่า<br />{nameFriend} ตัวเย็นเฉียบ<br />หน้าซีด และไม่หายใจ</motion.p>
+                >แต่กลับพบว่า<br />{friendNameContext} ตัวเย็นเฉียบ<br />หน้าซีด และไม่หายใจ</motion.p>
               }
               {
                 !isWindowSmall && showScene1
@@ -160,7 +161,7 @@ const CallPolice = ({nameFriend}) => {
                   animate="show"
                   exit="exit"
                   onAnimationComplete={ () => nextScene = 'scene3' }
-                >{nameFriend}<br />"เสียชีวิต"</motion.p>
+                >{friendNameContext}<br />"เสียชีวิต"</motion.p>
               }
               {
                 !isWindowSmall && showScene2
@@ -206,10 +207,6 @@ const CallPolice = ({nameFriend}) => {
       </Content>
     </>
   )
-}
-
-CallPolice.propTypes = {
-  nameFriend: PropTypes.string.isRequired
 }
 
 export default CallPolice

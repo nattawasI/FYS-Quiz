@@ -1,6 +1,7 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
 import {motion} from 'framer-motion'
+import { useUserStateContext } from '../context/UserContext'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonBack from '../component/ButtonBack'
@@ -91,6 +92,7 @@ const buttonVariant = {
 }
 
 const WakeFriendUp = () => {
+  const { friendNameContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
   const history = useHistory()
   let allowLinkToNext = false
@@ -118,7 +120,7 @@ const WakeFriendUp = () => {
               variants={textVariant}
               initial="hidden"
               animate="show"
-            >คุณพยายามปลุก ปิยะบุตร<br />ให้ไปนอนบนที่นอน</motion.p>
+            >คุณพยายามปลุก { friendNameContext }<br />ให้ไปนอนบนที่นอน</motion.p>
             {
               !isWindowSmall
               && <motion.div className="box-story__button"
