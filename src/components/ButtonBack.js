@@ -1,24 +1,39 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
 
-const ButtonBack = ({dark}) => {
+const ButtonBack = ({dark, to, onClick}) => {
   const classStyle = () => {
-    return dark ? 'button-back button-back--dark' : 'button-dark'
+    return dark ? 'button-back button-back--dark' : 'button-back'
+  }
+
+  const handleClick = () => {
+    onClick()
   }
 
   return (
-    <button type="button" className={classStyle()}>
-      ย้อนกลับ
-    </button>
+    <>
+      {
+        to
+        ? <Link className={classStyle()} to={to}>
+            ย้อนกลับ
+          </Link>
+        : <button type="button" className={classStyle()} onClick={handleClick}>
+            ย้อนกลับ
+          </button>
+      }
+    </>
   )
 }
 
 ButtonBack.propTypes = {
-  dark: PropTypes.bool
+  dark: PropTypes.bool,
+  path: PropTypes.string,
 }
 
 ButtonBack.defaultProps = {
-  dark: false
+  dark: false,
+  path: '',
 }
 
 export default ButtonBack

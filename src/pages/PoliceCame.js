@@ -1,4 +1,5 @@
 import React from 'react'
+import {useHistory} from 'react-router-dom'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layouts/Content'
@@ -8,32 +9,54 @@ import BgDeadManMd from '../image/pages/police-came/bg_deadman_md.svg'
 import BgDeadManSm from '../image/pages/police-came/bg_deadman_sm.svg'
 
 // Motion Variants
-const bodyVariant = {
+const containerVariant = {
   hidden: {
     opacity: 0,
   },
   show: {
     opacity: 1,
     transition: {
-      ease: "easeInOut",
-      delay: 0.5,
+      ease: 'easeInOut',
       duration: 1
+    }
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1
+    }
+  }
+}
+
+const bodyVariant = {
+  hidden: {
+    y: 70,
+    opacity: 0,
+  },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.5,
+      delay: 1,
     }
   }
 }
 
 const textVariant = {
   hidden: {
+    y: 70,
     opacity: 0,
-    y: 50
   },
   show: {
-    opacity: 1,
     y: 0,
+    opacity: 1,
     transition: {
       ease: "easeInOut",
-      delay: 0.5,
-      duration: 1
+      duration: 0.5,
+      delay: 1,
     }
   }
 }
@@ -46,20 +69,32 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
+      duration: 0.5,
       delay: 1.5,
-      duration: 0.5
     }
   }
 }
 
 const PoliceCame = () => {
   const isWindowSmall = UseWindowSmall()
+  const history = useHistory()
+
+  const linkToNextPage = () => {
+    if (isWindowSmall) {
+      history.push('/siren')
+    }
+  }
 
   return (
     <>
       <ButtonSound />
       <Content>
-        <div className="scene-panel police-came">
+        <motion.div className="scene-panel police-came" onClick={linkToNextPage}
+          variants={containerVariant}
+          initial="hidden"
+          animate="show"
+          exit="exit"
+        >
           <motion.div className="police-came__body"
             variants={bodyVariant}
             initial="hidden"
@@ -80,11 +115,11 @@ const PoliceCame = () => {
                   initial="hidden"
                   animate="show"
                 >
-                  <ButtonNext />
+                  <ButtonNext to="/siren" />
                 </motion.div>
             }
           </div>
-        </div>
+        </motion.div>
       </Content>
     </>
   )

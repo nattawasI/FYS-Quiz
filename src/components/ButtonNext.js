@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
-const ButtonNext = ({path, onClick, dark}) => {
+const ButtonNext = ({dark, to, onClick}) => {
   const classStyle = () => {
     return dark ? 'button-next button-next--dark' : 'button-next'
   }
@@ -14,8 +14,8 @@ const ButtonNext = ({path, onClick, dark}) => {
   return (
     <>
       {
-        path
-        ? <Link className={classStyle()} to={path}>
+        to
+        ? <Link className={classStyle()} to={to}>
             ไปต่อ
           </Link>
         : <button type="button" className={classStyle()} onClick={handleClick}>
@@ -27,15 +27,15 @@ const ButtonNext = ({path, onClick, dark}) => {
 }
 
 ButtonNext.propTypes = {
-  path: PropTypes.string,
+  dark: PropTypes.bool,
+  to: PropTypes.string,
   onClick: PropTypes.func,
-  dark: PropTypes.bool
 }
 
 ButtonNext.defaultProps = {
-  path: '',
+  dark: false,
+  to: '',
   onClick: () => {},
-  dark: false
 }
 
 export default ButtonNext

@@ -1,6 +1,7 @@
 
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
 import {motion, AnimatePresence} from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layouts/Content'
@@ -8,6 +9,26 @@ import ButtonSound from '../components/ButtonSound'
 import ButtonNext from '../components/ButtonNext'
 
 // motion Variant
+const containerVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1
+    }
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1
+    }
+  }
+}
+
 const textVariant = {
   hidden: {
     opacity: 0,
@@ -99,7 +120,12 @@ const CallPolice = ({nameFriend}) => {
     <>
       <ButtonSound />
       <Content>
-        <div className="scene-panel call-police" onClick={skipScene}>
+        <motion.div className="scene-panel call-police" onClick={skipScene}
+          variants={containerVariant}
+          initial="hidden"
+          animate="show"
+          exit="exit"
+        >
           <div className="box-story">
             <AnimatePresence>
               {
@@ -156,7 +182,6 @@ const CallPolice = ({nameFriend}) => {
                   variants={textVariant}
                   initial="hidden"
                   animate="show"
-                  exit="exit"
                 >
                   คุณตกใจมาก โวยวายเสียงดัง!<br />แล้วรีบหยิบมือถือ โทรแจ้งตำรวจทันที
                 </motion.p>
@@ -168,16 +193,16 @@ const CallPolice = ({nameFriend}) => {
                     initial="hidden"
                     animate="show"
                   >
-                    <button type="button" className="button-call">
+                    <Link to="/police-came" className="button-call">
                       <span className="button-call__btn button-call__btn--wave-out" alt="Call Button"></span>
                       <span className="button-call__btn button-call__btn--wave-in"></span>
                       <span className="button-call__btn button-call__btn--body"></span>
                       <span className="button-call__btn button-call__btn--touch"></span>
-                    </button>
+                    </Link>
                   </motion.div>
             }
           </div>
-        </div>
+        </motion.div>
       </Content>
     </>
   )

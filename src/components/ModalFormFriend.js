@@ -1,4 +1,5 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useRef, useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
 import {motion} from 'framer-motion'
 import Button from './Button'
 import InputText from './InputText'
@@ -13,6 +14,13 @@ const containerVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 0.7
+    }
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1
     }
   }
 }
@@ -35,13 +43,18 @@ const formVariant = {
 
 const ModalFormFriend = () => {
   const inputRef = useRef(null)
+  const history = useHistory()
 
   const inputFriendName = (val) => {
     console.log(val);
   }
 
+  const linkToNextPage = () => {
+    history.push('/wake-friend-up')
+  }
+
   const getGender = (gender) => {
-    console.log(gender);
+    linkToNextPage()
   }
 
   useEffect(() => {
@@ -53,6 +66,7 @@ const ModalFormFriend = () => {
       variants={containerVariant}
       initial="hidden"
       animate="show"
+      exit="exit"
     >
       <motion.div className="modal-form-friend__form"
         variants={formVariant}

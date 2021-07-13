@@ -9,6 +9,7 @@ import './style/App.scss'
 import Start from './pages/Start'
 import Preface from './pages/Preface'
 import FriendSleep from './pages/FriendSleep'
+import WakeFriendUp from './pages/WakeFriendUp'
 import CallPolice from './pages/CallPolice'
 import PoliceCame from './pages/PoliceCame'
 import Siren from './pages/Siren'
@@ -29,6 +30,9 @@ const App = () => {
           </Route>
           <Route path="/friend-sleep">
             <FriendSleep />
+          </Route>
+          <Route path="/wake-friend-up">
+            <WakeFriendUp />
           </Route>
           <Route path="/call-police">
             <CallPolice nameFriend="ปิยะบุตร" />

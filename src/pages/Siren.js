@@ -6,6 +6,26 @@ import ButtonSound from '../components/ButtonSound'
 import ButtonNext from '../components/ButtonNext'
 
 // Motion Variants
+const containerVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1
+    }
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1
+    }
+  }
+}
+
 const bgVariant = {
   hidden: {
     opacity: 0
@@ -57,9 +77,13 @@ const Siren = () => {
     <>
       <ButtonSound />
       <Content>
-        <div className="scene-panel siren">
+        <motion.div className="scene-panel siren"
+          variants={containerVariant}
+          initial="hidden"
+          animate="show"
+          exit="exit"
+        >
           <motion.div className="siren__background"
-            // style={bgStyle}
             variants={bgVariant}
             initial="hidden"
             animate="show"
@@ -81,7 +105,7 @@ const Siren = () => {
                 </motion.div>
             }
           </div>
-        </div>
+        </motion.div>
       </Content>
     </>
   )
