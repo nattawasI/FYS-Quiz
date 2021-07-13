@@ -1,12 +1,12 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
-import Content from '../layouts/Content'
-import ButtonSound from '../components/ButtonSound'
-import ButtonNext from '../components/ButtonNext'
-import BgDeadManMd from '../image/pages/police-came/bg_deadman_md.svg'
-import BgDeadManSm from '../image/pages/police-came/bg_deadman_sm.svg'
+import UseWindowSmall from '../utilityhook/useWindowSmall'
+import Content from '../layout/Content'
+import ButtonSound from '../component/ButtonSound'
+import ButtonNext from '../component/ButtonNext'
+import BgDeadManMd from '../image/page/police-came/bg_deadman_md.svg'
+import BgDeadManSm from '../image/page/police-came/bg_deadman_sm.svg'
 
 // Motion Variants
 const containerVariant = {

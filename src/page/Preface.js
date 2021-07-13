@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
-import Content from '../layouts/Content'
-import ButtonNext from '../components/ButtonNext'
+import UseWindowSmall from '../utilityhook/useWindowSmall'
+import Content from '../layout/Content'
+import ButtonNext from '../component/ButtonNext'
 import IconTouchNext from '../image/icon/icon_touch_next.svg'
 
 // Motion Variants

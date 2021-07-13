@@ -6,13 +6,13 @@ import {
 } from "react-router-dom"
 import {AnimatePresence} from 'framer-motion'
 import './style/App.scss'
-import Start from './pages/Start'
-import Preface from './pages/Preface'
-import FriendSleep from './pages/FriendSleep'
-import WakeFriendUp from './pages/WakeFriendUp'
-import CallPolice from './pages/CallPolice'
-import PoliceCame from './pages/PoliceCame'
-import Siren from './pages/Siren'
+import Start from './page/Start'
+import Preface from './page/Preface'
+import FriendSleep from './page/FriendSleep'
+import WakeFriendUp from './page/WakeFriendUp'
+import CallPolice from './page/CallPolice'
+import PoliceCame from './page/PoliceCame'
+import Siren from './page/Siren'
 
 
 const App = () => {

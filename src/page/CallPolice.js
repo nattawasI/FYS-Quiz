@@ -3,10 +3,10 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import {motion, AnimatePresence} from 'framer-motion'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
-import Content from '../layouts/Content'
-import ButtonSound from '../components/ButtonSound'
-import ButtonNext from '../components/ButtonNext'
+import UseWindowSmall from '../utilityhook/useWindowSmall'
+import Content from '../layout/Content'
+import ButtonSound from '../component/ButtonSound'
+import ButtonNext from '../component/ButtonNext'
 
 // motion Variant
 const containerVariant = {

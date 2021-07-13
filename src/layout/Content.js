@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import UseSetFrame from '../utilityhooks/useSetFrame'
+import UseSetFrame from '../utilityhook/useSetFrame'
 
 const Content = ({ children, bgColor }) => {
   const frameStyle = UseSetFrame()

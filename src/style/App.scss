@@ -3,24 +3,24 @@
 @import "./_color";
 @import "./_reset";
 
-/* Components */
-@import "./components/_button.scss";
-@import "./components/_text.scss";
-@import "./components/_input.scss";
-@import "./components/_scene-panel.scss";
-@import "./components/_box.scss";
-@import "./components/_modal-form-friend.scss";
+/* component */
+@import "./component/_button.scss";
+@import "./component/_text.scss";
+@import "./component/_input.scss";
+@import "./component/_scene-panel.scss";
+@import "./component/_box.scss";
+@import "./component/_modal-form-friend.scss";
 
-/* Layouts */
-@import "./layouts/_content.scss";
+/* layout */
+@import "./layout/_content.scss";
 
-/* Pages */
-@import "./pages/_start.scss";
-@import "./pages/_preface.scss";
-@import "./pages/_friend-sleep.scss";
-@import "./pages/_call-police.scss";
-@import "./pages/_police-came.scss";
-@import "./pages/_siren.scss";
+/* page */
+@import "./page/_start.scss";
+@import "./page/_preface.scss";
+@import "./page/_friend-sleep.scss";
+@import "./page/_call-police.scss";
+@import "./page/_police-came.scss";
+@import "./page/_siren.scss";
 
 /* Responsive */
-@import "./utils/_responsive.scss";
+@import "./util/_responsive.scss";

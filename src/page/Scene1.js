@@ -1,7 +1,7 @@
 import React from 'react'
-import Content from '../layouts/Content'
-import ButtonBack from '../components/ButtonBack'
-import ButtonSound from '../components/ButtonSound'
+import Content from '../layout/Content'
+import ButtonBack from '../component/ButtonBack'
+import ButtonSound from '../component/ButtonSound'
 
 const Scene1 = () => {
   return (

@@ -75,7 +75,7 @@
     position: relative;
     width: 97px;
     height: 38px;
-    background-image: url('../../image/pages/start/bg_button_start_sm.svg');
+    background-image: url('../../image/page/start/bg_button_start_sm.svg');
     background-size: 100% auto;
     background-position: center;
     background-repeat: no-repeat;
@@ -83,7 +83,7 @@
     @include md-up {
       width: 12%;
       padding-top: 4%;
-      background-image: url('../../image/pages/start/bg_button_start_md.svg');
+      background-image: url('../../image/page/start/bg_button_start_md.svg');
       transition: transform 0.2s ease-in-out;
 
       &:hover {

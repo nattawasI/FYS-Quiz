@@ -1,14 +1,14 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
-import Content from '../layouts/Content'
-import ButtonBack from '../components/ButtonBack'
-import ButtonNext from '../components/ButtonNext'
-import ButtonSound from '../components/ButtonSound'
-import ImgFriendSleepMd from '../image/pages/friend-sleep/img_friend_sleep_md.svg'
-import ImgFriendSleepSm from '../image/pages/friend-sleep/img_friend_sleep_sm.svg'
-import ImgArmMd from '../image/pages/wake-friend-up/img_arm_md.svg'
+import UseWindowSmall from '../utilityhook/useWindowSmall'
+import Content from '../layout/Content'
+import ButtonBack from '../component/ButtonBack'
+import ButtonNext from '../component/ButtonNext'
+import ButtonSound from '../component/ButtonSound'
+import ImgFriendSleepMd from '../image/page/friend-sleep/img_friend_sleep_md.svg'
+import ImgFriendSleepSm from '../image/page/friend-sleep/img_friend_sleep_sm.svg'
+import ImgArmMd from '../image/page/wake-friend-up/img_arm_md.svg'
 
 // Motion Variants
 const containerVariant = {
@@ -103,7 +103,7 @@ const WakeFriendUp = () => {
 
   return (
     <>
-      <ButtonBack />
+      <ButtonBack to="/friend-sleep" />
       <ButtonSound />
       <Content>
         <motion.div className="scene-panel friend-sleep"

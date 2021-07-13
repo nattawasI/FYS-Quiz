@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
-import Content from '../layouts/Content'
-import ButtonNext from '../components/ButtonNext'
-import ButtonSound from '../components/ButtonSound'
-import ModalFormFriend from '../components/ModalFormFriend'
-import ImgFriendSleepMd from '../image/pages/friend-sleep/img_friend_sleep_md.svg'
-import ImgFriendSleepSm from '../image/pages/friend-sleep/img_friend_sleep_sm.svg'
+import UseWindowSmall from '../utilityhook/useWindowSmall'
+import Content from '../layout/Content'
+import ButtonNext from '../component/ButtonNext'
+import ButtonSound from '../component/ButtonSound'
+import ModalFormFriend from '../component/ModalFormFriend'
+import ImgFriendSleepMd from '../image/page/friend-sleep/img_friend_sleep_md.svg'
+import ImgFriendSleepSm from '../image/page/friend-sleep/img_friend_sleep_sm.svg'
 
 // Motion Variants
 const containerVariant = {

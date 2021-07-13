@@ -13,7 +13,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: url('../../image/pages/siren/bg_siren_sm.svg');
+    background-image: url('../../image/page/siren/bg_siren_sm.svg');
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -23,7 +23,7 @@
     animation-delay: 2s;
 
     @include md-up {
-      background-image: url('../../image/pages/siren/bg_siren_md.svg');
+      background-image: url('../../image/page/siren/bg_siren_md.svg');
     }
   }
 
@@ -41,10 +41,10 @@
 @include md-down {
   @keyframes siren {
     0%, 50% {
-      background-image: url('../../image/pages/siren/bg_siren_sm_on.svg');
+      background-image: url('../../image/page/siren/bg_siren_sm_on.svg');
     }
     51%, 100% {
-      background-image: url('../../image/pages/siren/bg_siren_sm.svg');
+      background-image: url('../../image/page/siren/bg_siren_sm.svg');
     }
   }
 }
@@ -52,10 +52,10 @@
 @include md-up {
   @keyframes siren {
     0%, 50% {
-      background-image: url('../../image/pages/siren/bg_siren_md_on.svg');
+      background-image: url('../../image/page/siren/bg_siren_md_on.svg');
     }
     51%, 100% {
-      background-image: url('../../image/pages/siren/bg_siren_md.svg');
+      background-image: url('../../image/page/siren/bg_siren_md.svg');
     }
   }
 }

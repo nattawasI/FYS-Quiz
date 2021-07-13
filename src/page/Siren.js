@@ -1,9 +1,9 @@
 import React from 'react'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
-import Content from '../layouts/Content'
-import ButtonSound from '../components/ButtonSound'
-import ButtonNext from '../components/ButtonNext'
+import UseWindowSmall from '../utilityhook/useWindowSmall'
+import Content from '../layout/Content'
+import ButtonSound from '../component/ButtonSound'
+import ButtonNext from '../component/ButtonNext'
 
 // Motion Variants
 const containerVariant = {
