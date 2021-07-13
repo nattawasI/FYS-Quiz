@@ -1,14 +1,38 @@
 .scene1 {
   &__figure {
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 50%;
+    right: auto;
     bottom: 0;
+    transform: translateX(-50%);
+    pointer-events: none;
+
+    @include md-down() {
+      bottom: -38px;
+    }
   }
 
   &__image {
     display: block;
     margin: auto;
+
+    &--pc {
+      @include md-up() {
+        display: block;
+      }
+      @include md-down() {
+        display: none;
+      }
+    }
+
+    &--sp {
+      @include md-up() {
+        display: none;
+      }
+      @include md-down() {
+        display: block;
+      }
+    }
   }
 
   &__container {
@@ -17,5 +41,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    position: relative;
+    z-index: 10;
   }
 }
