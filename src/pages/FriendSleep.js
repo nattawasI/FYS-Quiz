@@ -107,7 +107,7 @@ const FriendSleep = () => {
                 </motion.div>
             }
           </div>
-          <div className="start-sleep__friend">
+          <div className="friend-sleep__friend">
             <img src={isWindowSmall ? ImgFriendSleepSm: ImgFriendSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
           </div>
         </motion.div>

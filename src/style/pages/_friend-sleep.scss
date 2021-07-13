@@ -1,9 +1,11 @@
 .friend-sleep {
   &__text {
-    margin-top: 25%;
+    position: relative;
+    z-index: 2;
+    top: 25%;
 
     @include md-up {
-      margin-top: 8%;
+      top: 8%;
     }
   }
 
@@ -14,7 +16,6 @@
     bottom: 0;
     z-index: 1;
     height: 52%;
-    overflow: hidden;
 
     @include md-down {
       display: flex;
@@ -22,7 +23,7 @@
     }
 
     @include md-up {
-      height: 65%;
+      height: 60%;
     }
 
     > img {
