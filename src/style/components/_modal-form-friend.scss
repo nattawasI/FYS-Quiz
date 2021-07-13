@@ -1,0 +1,66 @@
+.modal-form-friend {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__input {
+    width: 260px;
+
+    @include md-up {
+      width: 515px;
+    }
+  }
+
+  &__label {
+    margin-top: 30px;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: $white;
+    line-height: 1.4;
+
+    @include md-up {
+      margin-top: 60px;
+      font-size: 3.5rem;
+    }
+  }
+
+  &__button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+    @include md-up {
+      margin-top: 15px;
+    }
+  }
+
+  &__button {
+    width: 135px;
+
+    @include md-up {
+      width: 240px;
+    }
+
+    &:last-child {
+      margin-left: 15px;
+
+      @include md-up {
+        margin-left: 35px;
+      }
+    }
+  }
+}

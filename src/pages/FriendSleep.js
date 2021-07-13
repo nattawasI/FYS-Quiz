@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layouts/Content'
 import ButtonNext from '../components/ButtonNext'
+import ModalFormFriend from '../components/ModalFormFriend'
 import ImgFriendSleepMd from '../image/pages/friend-sleep/img_friend_sleep_md.svg'
 import ImgFriendSleepSm from '../image/pages/friend-sleep/img_friend_sleep_sm.svg'
 
@@ -77,6 +78,12 @@ const FriendSleep = () => {
   const isWindowSmall = UseWindowSmall()
   const history = useHistory()
 
+  const [showModal, setShowModal] = useState(false)
+
+  const openModalFormFriend = () => {
+    setShowModal(true)
+  }
+
   const linkToNextPage = () => {
     // history.push('/call-police')
   }
@@ -104,7 +111,7 @@ const FriendSleep = () => {
                   initial="hidden"
                   animate="show"
                 >
-                  <ButtonNext />
+                  <ButtonNext onClick={openModalFormFriend} />
                 </motion.div>
             }
           </div>
@@ -117,6 +124,9 @@ const FriendSleep = () => {
           </motion.div>
         </motion.div>
       </Content>
+      {
+        showModal && <ModalFormFriend />
+      }
     </>
   )
 }

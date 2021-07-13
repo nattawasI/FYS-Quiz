@@ -35,8 +35,18 @@ img {
 
 button {
   font-family: 'Kanit';
+  font-weight: 300;
   appearance: none;
   background: none;
   border: none;
   cursor: pointer;
+}
+
+input {
+  font-family: 'Kanit';
+  font-weight: 300;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
 }
