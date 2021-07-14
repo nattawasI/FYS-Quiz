@@ -92,7 +92,7 @@ const buttonVariant = {
 }
 
 const WakeFriendUp = () => {
-  const { friendNameContext } = useUserStateContext()
+  const { friendInfoContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
   const history = useHistory()
   let allowLinkToNext = false
@@ -120,7 +120,7 @@ const WakeFriendUp = () => {
               variants={textVariant}
               initial="hidden"
               animate="show"
-            >คุณพยายามปลุก { friendNameContext }<br />ให้ไปนอนบนที่นอน</motion.p>
+            >คุณพยายามปลุก { friendInfoContext.name }<br />ให้ไปนอนบนที่นอน</motion.p>
             {
               !isWindowSmall
               && <motion.div className="box-story__button"
