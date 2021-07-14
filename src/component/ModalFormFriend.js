@@ -102,13 +102,13 @@ const ModalFormFriend = () => {
           <div className="modal-form-friend__button">
             <Button
               color="blue"
-              onClick={() => getGender('ชาย')}
+              onClick={() => getGender('male')}
             >ชาย</Button>
           </div>
           <div className="modal-form-friend__button">
             <Button
               color="pink"
-              onClick={() => getGender('หญิง')}
+              onClick={() => getGender('female')}
             >หญิง</Button>
           </div>
         </div>

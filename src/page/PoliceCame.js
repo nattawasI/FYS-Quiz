@@ -1,5 +1,6 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
+import { useUserStateContext } from '../context/UserContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -7,6 +8,8 @@ import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
 import BgDeadManMd from '../image/page/police-came/bg_deadman_md.svg'
 import BgDeadManSm from '../image/page/police-came/bg_deadman_sm.svg'
+import BgDeadWomenMd from '../image/page/police-came/bg_deadwomen_md.svg'
+import BgDeadWomenSm from '../image/page/police-came/bg_deadwomen_sm.svg'
 
 // Motion Variants
 const containerVariant = {
@@ -76,6 +79,7 @@ const buttonVariant = {
 }
 
 const PoliceCame = () => {
+  const { friendInfoContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
   const history = useHistory()
 
@@ -100,7 +104,11 @@ const PoliceCame = () => {
             initial="hidden"
             animate="show"
           >
-            <img src={isWindowSmall ? BgDeadManSm : BgDeadManMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
+            {
+              friendInfoContext.gender === 'male'
+              ? <img src={isWindowSmall ? BgDeadManSm : BgDeadManMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
+              : <img src={isWindowSmall ? BgDeadWomenSm : BgDeadWomenMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
+            }
           </motion.div>
           <div className="police-came__content box-story">
             <motion.p className="box-story__text text-story"
