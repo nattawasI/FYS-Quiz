@@ -17,10 +17,8 @@
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: 100% auto;
-    animation-name: siren;
-    animation-duration: 0.7s;
-    animation-iteration-count:infinite;
-    animation-delay: 2s;
+    -webkit-animation: siren 0.7s linear 2s infinite;
+    animation: siren 0.7s linear 2s infinite;
 
     @include md-up {
       background-image: url('../../image/page/siren/bg_siren_md.svg');
@@ -47,10 +45,28 @@
       background-image: url('../../image/page/siren/bg_siren_sm.svg');
     }
   }
+
+  @-webkit-keyframes siren {
+    0%, 50% {
+      background-image: url('../../image/page/siren/bg_siren_sm_on.svg');
+    }
+    51%, 100% {
+      background-image: url('../../image/page/siren/bg_siren_sm.svg');
+    }
+  }
 }
 
 @include md-up {
   @keyframes siren {
+    0%, 50% {
+      background-image: url('../../image/page/siren/bg_siren_md_on.svg');
+    }
+    51%, 100% {
+      background-image: url('../../image/page/siren/bg_siren_md.svg');
+    }
+  }
+
+  @-webkit-keyframes siren {
     0%, 50% {
       background-image: url('../../image/page/siren/bg_siren_md_on.svg');
     }
