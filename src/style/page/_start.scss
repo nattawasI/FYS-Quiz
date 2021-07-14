@@ -1,0 +1,147 @@
+.start-ribbon-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 152px;
+
+  @include md-up {
+    width: 24%;
+  }
+
+  > img {
+    width: 100%;
+  }
+}
+
+.start-ribbon-right {
+  position: fixed;
+  top: -32px;
+  right: 0;
+  width: 170px;
+
+  @include md-up {
+    top: 0;
+    width: 25%;
+  }
+
+  > img {
+    width: 100%;
+  }
+}
+
+.start-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__heading {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include md-up {
+      top: 12.5%;
+    }
+  }
+
+  &__heading-button {
+    margin-top: 35px;
+
+    @include md-up {
+      margin-top: 3.2%;
+    }
+  }
+
+  &__title {
+    width: 307px;
+    line-height: 1;
+
+    @include md-up {
+      width: 40%;
+    }
+
+    > img {
+      width: 100%;
+    }
+  }
+
+  &__button {
+    position: relative;
+    width: 97px;
+    height: 38px;
+    background-image: url('../../image/page/start/bg_button_start_sm.svg');
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include md-up {
+      width: 12%;
+      padding-top: 4%;
+      background-image: url('../../image/page/start/bg_button_start_md.svg');
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    > img {
+      width: 100%;
+    }
+  }
+
+  &__button-text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.1rem;
+    color: $black;
+    line-height: 1;
+
+    @include md-up {
+      font-size: 2.188vw;
+    }
+  }
+
+  &__human {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    height: 52%;
+
+    @include md-down {
+      display: flex;
+      justify-content: center;
+    }
+
+    @include md-up {
+      height: 65%;
+    }
+
+    > img {
+      height: 100%;
+
+      @include md-down {
+        margin-left: -25px;
+      }
+
+      @include md-up {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

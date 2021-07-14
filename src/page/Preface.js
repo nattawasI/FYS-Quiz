@@ -1,0 +1,132 @@
+import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
+import {motion} from 'framer-motion'
+import UseWindowSmall from '../utilityhook/useWindowSmall'
+import Content from '../layout/Content'
+import ButtonNext from '../component/ButtonNext'
+import IconTouchNext from '../image/icon/icon_touch_next.svg'
+
+// Motion Variants
+const sceneVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1
+    }
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1
+    }
+  }
+}
+
+const textVariant = {
+  hidden: {
+    y: 70,
+    opacity: 0,
+  },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1
+    }
+  }
+}
+
+const buttonVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1,
+      delay: 1
+    }
+  }
+}
+
+const Preface = () => {
+  const isWindowSmall = UseWindowSmall()
+  const [showScene1, setShowScene1] = useState(true)
+  const [showScene2, setShowScene2] = useState(false)
+  const history = useHistory()
+
+  const changeToScene2 = () => {
+    setShowScene1(false)
+    setShowScene2(true)
+  }
+
+  const linkToNextPage = () => {
+    if (isWindowSmall && showScene2) {
+      history.push('/friend-sleep')
+    }
+  }
+
+  return (
+    <>
+      <Content bgColor="white">
+        <div className="scene-panel preface" onClick={linkToNextPage}>
+          <div className="preface__content box-story">
+            {
+              showScene1
+              && <motion.div
+                  className="preface__scene"
+                  key="scene1"
+                  variants={sceneVariant}
+                  exit='exit'
+                >
+                  <motion.p className="box-story__text preface__text"
+                    variants={textVariant}
+                    initial="hidden"
+                    animate="show"
+                  >*เนื้อหาในเว็บนี้เป็นผลงาน<br />การออกแบบการสื่อสารผ่านการเล่าเรื่องราว<br />ให้ผู้เล่นมีส่วนร่วมด้วย<br />ไม่ใช่แบบสอบถามทางจิตวิทยาแต่อย่างใด<br />ในคดีการตายของเพื่อนสนิท</motion.p>
+                  {
+                    isWindowSmall
+                    ? <motion.div className="box-story__button"
+                        variants={buttonVariant}
+                        initial="hidden"
+                        animate="show"
+                      >
+                        <ButtonNext dark onClick={changeToScene2} />
+                      </motion.div>
+                    : <motion.div className="box-story__button"
+                        variants={buttonVariant}
+                        initial="hidden"
+                        animate="show"
+                      >
+                        <ButtonNext dark to="/friend-sleep" />
+                      </motion.div>
+                  }
+                </motion.div>
+            }
+            {
+              showScene2
+              &&  <motion.div className="preface__scene"
+                    key="scene2"
+                    variants={sceneVariant}
+                    initial="hidden"
+                    animate="show"
+                    exit="exit"
+                  >
+                    <img className="preface__icon-touch" src={IconTouchNext} alt="แตะหน้าจอเพื่อไปต่อ" />
+                </motion.div>
+            }
+          </div>
+        </div>
+      </Content>
+    </>
+  )
+}
+
+export default Preface

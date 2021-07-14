@@ -1,0 +1,61 @@
+.siren {
+  display: flex;
+  justify-content: center;
+  background-color: $blue;
+
+  @include md-up {
+    align-items: center;
+  }
+
+  &__background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('../../image/page/siren/bg_siren_sm.svg');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    animation-name: siren;
+    animation-duration: 0.7s;
+    animation-iteration-count:infinite;
+    animation-delay: 2s;
+
+    @include md-up {
+      background-image: url('../../image/page/siren/bg_siren_md.svg');
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+
+    @include md-down {
+      position: relative;
+      top: 16%;
+    }
+  }
+}
+
+@include md-down {
+  @keyframes siren {
+    0%, 50% {
+      background-image: url('../../image/page/siren/bg_siren_sm_on.svg');
+    }
+    51%, 100% {
+      background-image: url('../../image/page/siren/bg_siren_sm.svg');
+    }
+  }
+}
+
+@include md-up {
+  @keyframes siren {
+    0%, 50% {
+      background-image: url('../../image/page/siren/bg_siren_md_on.svg');
+    }
+    51%, 100% {
+      background-image: url('../../image/page/siren/bg_siren_md.svg');
+    }
+  }
+}

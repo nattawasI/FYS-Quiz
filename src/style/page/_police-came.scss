@@ -1,0 +1,38 @@
+.police-came {
+  display: flex;
+  justify-content: center;
+  background-color: $blue;
+
+  &__body {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    @include md-up {
+      height: 60%;
+    }
+  }
+
+  &__body-img {
+    @include md-down {
+      width: 100%;
+    }
+
+    @include md-up {
+      height: 100%;
+    }
+  }
+
+  &__content {
+    position: relative;
+    top: 20%;
+
+    @include md-up {
+      top: 9.2%;
+    }
+  }
+}

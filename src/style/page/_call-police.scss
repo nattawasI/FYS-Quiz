@@ -1,0 +1,105 @@
+.call-police {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-call {
+  display: block;
+  position: relative;
+  width: 34.133vw;
+  height: 34.133vw;
+
+  @include md-up {
+    width: 20.990vw;
+    height: 20.990vw;
+  }
+
+  &__btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }
+
+  &__btn--body {
+    z-index: 2;
+    background-image: url('../../image/page/callpolice/icon_call.svg');
+  }
+
+  &__btn--wave-in {
+    z-index: 1;
+    background-image: url('../../image/page/callpolice/icon_call_wave_in.svg');
+    opacity: 0;
+    animation-name: wavein;
+    animation-duration: 0.7s;
+    animation-iteration-count:infinite;
+    animation-delay: 2.2s;
+  }
+
+  &__btn--wave-out {
+    z-index: 1;
+    background-image: url('../../image/page/callpolice/icon_call_wave_out.svg');
+    opacity: 0;
+    animation-name: waveout;
+    animation-duration: 0.7s;
+    animation-iteration-count:infinite;
+    animation-delay: 2.2s;
+  }
+
+  &__btn--touch {
+    z-index: 3;
+    opacity: 1;
+    background-image: url('../../image/page/callpolice/icon_touch.svg');
+    animation-name: touch;
+    animation-duration: 2.2s;
+  }
+
+  &:hover {
+    @include md-up {
+      .button-call__btn--body {
+        background-image: url('../../image/page/callpolice/icon_call_hover.svg');
+      }
+    }
+  }
+}
+
+@keyframes wavein {
+  0%, 66% {
+    opacity: 1;
+  }
+  67%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes waveout {
+  0%, 33% {
+    opacity: 0
+  }
+  34%, 66% {
+    opacity: 1;
+  }
+  67%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes touch {
+  0% {
+    opacity: 1;
+  }
+  5% {
+    opacity: 0;
+  }
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
