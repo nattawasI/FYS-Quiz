@@ -1,5 +1,6 @@
 import React from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import {useHistory} from 'react-router-dom'
+import { motion } from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -87,91 +88,105 @@ const buttonVariant = {
   },
 }
 
-const simpleExit = {
-  opacity: 0,
-  transition: {
-    type: 'tween',
+const containerVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1
+    }
+  },
+  exit: {
+    x: '-100vw',
+    transition: {
+      ease: 'easeInOut',
+      duration: 1
+    }
   }
 }
 
 const DarkRoom = () => {
   const isWindowSmall = UseWindowSmall()
+  const history = useHistory()
+  let allowLinkToNext = false
+
+  const linkToNextPage = () => {
+    if (isWindowSmall && allowLinkToNext) {
+      history.push('/open-switch')
+    }
+  }
+
   return (
     <>
       <ButtonSound />
       <Content>
-        <div className="scene-panel scene1">
-          <AnimatePresence>
+        <motion.div className="scene-panel dark-room" onClick={linkToNextPage}
+          variants={containerVariant}
+          initial="hidden"
+          animate="show"
+          exit="exit"
+        >
+          {
+            !isWindowSmall && <motion.div
+              key="darkroom-figure-01"
+              className="dark-room__figure"
+              variants={sceneVariantMD}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+            >
+              <img className="dark-room__image dark-room__image--pc" src={bgSceneMD} alt="" />
+            </motion.div>
+          }
+          {
+            isWindowSmall && <motion.div
+              key="darkroom-figure-02"
+              className="dark-room__figure"
+              initial="hidden"
+              animate="show"
+              variants={sceneVariantSM}
+              onAnimationComplete={ () => allowLinkToNext = true }
+            >
+              <img className="dark-room__image dark-room__image--sp" src={bgSceneSM} alt="" />
+            </motion.div>
+          }
+          <div key="darkroom-02" className="dark-room__container">
             {
-              <AnimatePresence key="darkroom-01" exitBeforeEnter>
-                {
-                  !isWindowSmall && <motion.div
-                    key="darkroom-figure-01"
-                    className="scene1__figure"
+              isWindowSmall
+              ? <motion.div
+                  key="darkroom-text-02"
+                  className="dark-room__text text-story"
+                  initial="hidden"
+                  animate="show"
+                  variants={textVariantSM}
+                >
+                  คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
+                </motion.div>
+              : <div>
+                  <motion.div
+                    key="darkroom-text-01"
+                    className="dark-room__text text-story"
+                    variants={textVariantMD}
                     initial="hidden"
                     animate="show"
-                    variants={sceneVariantMD}
-                    exit={simpleExit}
                   >
-                    <img className="scene1__image scene1__image--pc" src={bgSceneMD} alt="" />
+                    คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
                   </motion.div>
-                }
-                {
-                  isWindowSmall && <motion.div
-                    key="darkroom-figure-02"
-                    className="scene1__figure"
+                  <motion.div
+                    className="dark-room__button"
+                    variants={buttonVariant}
                     initial="hidden"
                     animate="show"
-                    variants={sceneVariantSM}
-                    exit={simpleExit}
                   >
-                    <img className="scene1__image scene1__image--sp" src={bgSceneSM} alt="" />
+                    <ButtonNext to="/open-switch" />
                   </motion.div>
-                }
-              </AnimatePresence>
+                </div>
             }
-            {
-              <div key="darkroom-02" className="scene1__container">
-                <AnimatePresence>
-                  {
-                    !isWindowSmall
-                    && <>
-                      <motion.div
-                        key="darkroom-text-01"
-                        className="scene1__text text-story"
-                        initial="hidden"
-                        animate="show"
-                        variants={textVariantMD}
-                      >
-                        คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
-                      </motion.div>
-                      <motion.div
-                        className="scene1__button"
-                        initial="hidden"
-                        animate="show"
-                        variants={buttonVariant}
-                        exit={simpleExit}
-                      >
-                        <ButtonNext/>
-                      </motion.div>
-                    </>
-                  }
-                  {
-                    isWindowSmall && <motion.div
-                      key="darkroom-text-02"
-                      className="scene1__text text-story"
-                      initial="hidden"
-                      animate="show"
-                      variants={textVariantSM}
-                    >
-                      คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
-                    </motion.div>
-                  }
-                </AnimatePresence>
-              </div>
-            }
-          </AnimatePresence>
-        </div>
+          </div>
+        </motion.div>
       </Content>
     </>
   )
