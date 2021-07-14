@@ -10,6 +10,7 @@ import WakeFriendUp from './page/WakeFriendUp'
 import CallPolice from './page/CallPolice'
 import PoliceCame from './page/PoliceCame'
 import Siren from './page/Siren'
+import OpenSwitch from './page/OpenSwitch'
 
 const App = () => {
   const location = useLocation()
@@ -39,6 +40,9 @@ const App = () => {
             </Route>
             <Route path="/siren">
               <Siren />
+            </Route>
+            <Route path="/open-switch">
+              <OpenSwitch />
             </Route>
           </Switch>
         </AnimatePresence>
