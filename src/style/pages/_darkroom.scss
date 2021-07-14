@@ -3,17 +3,16 @@
     position: absolute;
     left: 50%;
     right: auto;
-    bottom: 0;
+    bottom: -38px;
     transform: translateX(-50%);
     pointer-events: none;
 
-    @include md-down() {
-      bottom: -38px;
+    @include md-up() {
+      bottom: 0;
     }
   }
 
   &__image {
-    display: block;
     margin: auto;
 
     &--pc {
