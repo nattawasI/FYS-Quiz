@@ -1,0 +1,198 @@
+.open-switch {
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__content {
+    position: absolute;
+    z-index: 50;
+    text-align: center;
+  }
+
+  &__hand {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    pointer-events: none;
+  }
+
+  &__shade {
+    position: absolute;
+    top: 0;
+    left: auto;
+    right: auto;
+    bottom: 0;
+
+    &--sm {
+      @include md-up {
+        display: none;
+      }
+    }
+
+    &--md {
+      right: 0;
+
+      @include md-down {
+        display: none;
+      }
+    }
+  }
+
+  .switch {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    @include md-down {
+      transform: translate(-50%, -50%);
+    }
+
+    @include md-up {
+      top: 13.1481%;
+      right: 26.875%;
+      left: auto;
+    }
+
+    &__button {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      overflow: hidden;
+      width: 120px;
+      height: 120px;
+
+      @include md-up {
+        width: 240px;
+        height: 240px;
+      }
+    }
+
+    &__plate {
+      @include md-down {
+        width: 74px;
+      }
+    }
+  }
+
+  .hand {
+    &__normal {
+      // position: absolute;
+
+      @include md-up {
+        // right: -335px;
+        // bottom: -47px;
+      }
+    }
+
+    &__pointer {}
+  }
+
+  .controller {
+    &__container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+
+      &::after,
+      &::before {
+        content: '';
+        position: absolute;
+      }
+
+      &::before {
+        top: 50%;
+        left: 50%;
+        z-index: 1;
+        transform: translate(-50%, -50%);
+        background-color: $white;
+        border-radius: 5px;
+        width: 38px;
+        height: 100px;
+      }
+
+      &::after {
+        top: 6px;
+        left: 6px;
+        z-index: -1;
+        width: 74px;
+        height: 122px;
+        background-image: url('../../image/pages/open-switch/bg_switch_controller.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+    }
+
+    &__button {
+      position: absolute;
+      top: 18px;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      width: 100%;
+      height: 26px;
+      background-color: $pink;
+    }
+  }
+
+  .pulse {
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.36;
+      background-color: $pink;
+      border-radius: 50%;
+    }
+
+    &::after {
+      width: 86px;
+      height: 86px;
+
+      @include md-up {
+        width: 180px;
+        height: 180px;
+      }
+    }
+
+    &::before {
+      width: 120px;
+      height: 120px;
+
+      @include md-up {
+        width: 240px;
+        height: 240px;
+      }
+    }
+
+    &__pointer {
+      position: absolute;
+      right: 20px;
+      bottom: 15px;
+      z-index: 15;
+
+      @include md-down {
+        width: 20px;
+      }
+
+      @include md-up {
+        right: 30px;
+        bottom: 30px;
+      }
+    }
+  }
+}
