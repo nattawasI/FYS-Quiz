@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
+import { useUserStateContext } from '../context/UserContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -76,14 +76,22 @@ const friendVariant = {
 }
 
 const FriendSleep = () => {
+  const { friendInfoContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
-  const history = useHistory()
 
   const [showModal, setShowModal] = useState(false)
 
   const openModalFormFriend = () => {
     setShowModal(true)
   }
+
+  useEffect(() => {
+    if (friendInfoContext.name) {
+      setShowModal(true)
+    } else {
+      setShowModal(false)
+    }
+  }, [friendInfoContext])
 
   return (
     <>

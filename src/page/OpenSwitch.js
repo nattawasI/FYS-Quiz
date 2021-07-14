@@ -3,7 +3,7 @@ import {AnimatePresence, motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
-import ButtonNext from '../component/ButtonNext'
+//import ButtonNext from '../component/ButtonNext'
 import BGShadeMD from '../image/page/open-switch/bg_shade_md.svg';
 import BGShadeSM from '../image/page/open-switch/bg_shade_sm.svg';
 import SwitchPlate from '../image/page/open-switch/bg_switch_plate.svg';
@@ -217,7 +217,7 @@ const OpenSwitch = () => {
 
   // Switch
   const [openSwitch, setOpenSwitch] = useState(false)
-  const [openedSwitch, setOpenedSwitch] = useState(false)
+  // const [openedSwitch, setOpenedSwitch] = useState(false)
 
   const TabNextScene = () => {
     if (!toggleNextScene) return

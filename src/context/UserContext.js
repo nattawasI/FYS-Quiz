@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from 'react'
+import React, { useState, createContext, useContext, useEffect } from 'react'
 
 const UserStateContext = createContext()
 const UserActionContext = createContext()
@@ -13,26 +13,26 @@ export const useUserActionContext = () => {
 
 const UserProvider = ({ children }) => {
   // state
-  const [friendInfoContext, setFriendNameContext] = useState({
-    name: '',
-    gender: ''
-  })
+  const [friendInfoContext, setFriendNameContext] = useState({})
 
-  const [name, setName] = useState('')
+  // key store
+  const KEY_STORAGE = 'friendInfo'
 
   // function
-  const addFriendInfoContext = ({name, gender}) => {
-    console.log('name: ', name);
-    console.log('gender: ', gender);
-    addFriendInfoContext({
-      name,
-      gender
-    })
+  const addFriendInfoContext = ({ name, gender }) => {
+    const friendInfo = { name, gender }
+    setFriendNameContext(friendInfo)
+
+    sessionStorage.setItem(KEY_STORAGE, JSON.stringify(friendInfo))
   }
 
-  const addName = (name) => {
-    setName(name)
-  }
+  useEffect(() => {
+    const data = JSON.parse(sessionStorage.getItem(KEY_STORAGE))
+
+    if (data) {
+      setFriendNameContext(data)
+    }
+  }, [])
 
   const userStateStore = { // use this pass to value
     friendInfoContext,
@@ -40,7 +40,6 @@ const UserProvider = ({ children }) => {
 
   const userActionStore = { // use this pass to value
     addFriendInfoContext,
-    addName,
   }
 
   return (
