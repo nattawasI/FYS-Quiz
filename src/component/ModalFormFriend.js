@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import {motion} from 'framer-motion'
 import { useUserActionContext } from '../context/UserContext'
@@ -43,13 +43,20 @@ const formVariant = {
 }
 
 const ModalFormFriend = () => {
-  const { addFriendNameContext, addFriendGenderContext } = useUserActionContext()
+  const { addFriendInfoContext, addName } = useUserActionContext()
 
   const inputRef = useRef(null)
   const history = useHistory()
 
-  const inputFriendName = (val) => {
-    addFriendNameContext(val)
+  const [info, setInfo] = useState({
+    name: '',
+    gender: 'ชาย'
+  })
+
+  const changeFriendName = (val) => {
+    console.log(val);
+    addName(val)
+    // setInfo({...info, ...{ name: val }})
   }
 
   const linkToNextPage = () => {
@@ -57,7 +64,7 @@ const ModalFormFriend = () => {
   }
 
   const getGender = (gender) => {
-    addFriendGenderContext(gender)
+    // setInfo({...info, ...{ gender: gender }})
     linkToNextPage()
   }
 
@@ -81,7 +88,7 @@ const ModalFormFriend = () => {
           <InputText
             ref={inputRef}
             placeholder="ใส่ชื่อเพื่อนของคุณ"
-            onChange={inputFriendName}
+            onChange={changeFriendName}
           />
         </div>
         <p className="modal-form-friend__label text-story">ระบุเพศของเพื่อนคุณ</p>

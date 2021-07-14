@@ -13,26 +13,34 @@ export const useUserActionContext = () => {
 
 const UserProvider = ({ children }) => {
   // state
-  const [friendNameContext, setFriendNameContext] = useState('')
-  const [friendGenderContext, setFriendGenderContext] = useState('')
+  const [friendInfoContext, setFriendNameContext] = useState({
+    name: '',
+    gender: ''
+  })
+
+  const [name, setName] = useState('')
 
   // function
-  const addFriendNameContext = (friendName) => {
-    setFriendNameContext(friendName)
+  const addFriendInfoContext = ({name, gender}) => {
+    console.log('name: ', name);
+    console.log('gender: ', gender);
+    addFriendInfoContext({
+      name,
+      gender
+    })
   }
 
-  const addFriendGenderContext = (friendGender) => {
-    setFriendGenderContext(friendGender)
+  const addName = (name) => {
+    setName(name)
   }
 
   const userStateStore = { // use this pass to value
-    friendNameContext,
-    friendGenderContext,
+    friendInfoContext,
   }
 
   const userActionStore = { // use this pass to value
-    addFriendNameContext,
-    addFriendGenderContext,
+    addFriendInfoContext,
+    addName,
   }
 
   return (

@@ -73,7 +73,7 @@ const buttonVariant = {
 }
 
 const CallPolice = () => {
-  const { friendNameContext } = useUserStateContext()
+  const { friendInfoContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
@@ -138,7 +138,7 @@ const CallPolice = () => {
                   animate="show"
                   exit="exit"
                   onAnimationComplete={ () => nextScene = 'scene2' }
-                >แต่กลับพบว่า<br />{friendNameContext} ตัวเย็นเฉียบ<br />หน้าซีด และไม่หายใจ</motion.p>
+                >แต่กลับพบว่า<br />{friendInfoContext.name} ตัวเย็นเฉียบ<br />หน้าซีด และไม่หายใจ</motion.p>
               }
               {
                 !isWindowSmall && showScene1
@@ -161,7 +161,7 @@ const CallPolice = () => {
                   animate="show"
                   exit="exit"
                   onAnimationComplete={ () => nextScene = 'scene3' }
-                >{friendNameContext}<br />"เสียชีวิต"</motion.p>
+                >{friendInfoContext.name}<br />"เสียชีวิต"</motion.p>
               }
               {
                 !isWindowSmall && showScene2
