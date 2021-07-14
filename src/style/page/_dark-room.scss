@@ -15,21 +15,15 @@
   &__image {
     margin: auto;
 
-    &--pc {
-      @include md-up() {
-        display: block;
-      }
+    &--md {
       @include md-down() {
         display: none;
       }
     }
 
-    &--sp {
+    &--sm {
       @include md-up() {
         display: none;
-      }
-      @include md-down() {
-        display: block;
       }
     }
   }
@@ -42,5 +36,9 @@
     height: 100%;
     position: relative;
     z-index: 10;
+  }
+
+  &__button {
+    text-align: center;
   }
 }
