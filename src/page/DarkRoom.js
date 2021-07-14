@@ -124,7 +124,7 @@ const DarkRoom = () => {
 
   const linkToNextPage = () => {
     if (isWindowSmall && allowLinkToNext) {
-      history.push('/open-switch')
+      history.push('/friend-sleep')
     }
   }
 
@@ -189,7 +189,7 @@ const DarkRoom = () => {
                         initial="hidden"
                         animate="show"
                       >
-                        <ButtonNext to="/open-switch" />
+                        <ButtonNext to="/friend-sleep" />
                       </motion.div>
                     </AnimatePresence>
                   </motion.div>

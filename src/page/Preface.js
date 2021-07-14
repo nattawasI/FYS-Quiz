@@ -69,7 +69,7 @@ const Preface = () => {
 
   const linkToNextPage = () => {
     if (isWindowSmall && showScene2) {
-      history.push('/friend-sleep')
+      history.push('/dark-room')
     }
   }
 
@@ -105,7 +105,7 @@ const Preface = () => {
                         initial="hidden"
                         animate="show"
                       >
-                        <ButtonNext dark to="/friend-sleep" />
+                        <ButtonNext dark to="/dark-room" />
                       </motion.div>
                   }
                 </motion.div>

@@ -20,10 +20,10 @@ const Content = ({ children, bgColor }) => {
 
   useEffect(() => {
     const checkIsLandscape = () => {
-      const winWidth = window.innerWidth
-      const winHeight = window.innerHeight
+      const screenWidth = window.screen.availWidth
+      const screenHeight = window.screen.availHeight
 
-      if (isWindowSmall && winWidth > winHeight) {
+      if (isWindowSmall && screenWidth > screenHeight) {
         setIsLandscape(true)
       } else {
         setIsLandscape(false)
