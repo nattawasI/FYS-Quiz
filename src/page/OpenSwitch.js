@@ -1,15 +1,15 @@
 import React, {useState} from 'react'
 import {AnimatePresence, motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
-import Content from '../layouts/Content'
-import ButtonSound from '../components/ButtonSound'
-import ButtonNext from '../components/ButtonNext'
-import BGShadeMD from '../image/pages/open-switch/bg_shade_md.svg';
-import BGShadeSM from '../image/pages/open-switch/bg_shade_sm.svg';
-import SwitchPlate from '../image/pages/open-switch/bg_switch_plate.svg';
-import IconPointer from '../image/pages/open-switch/ico_pointer_01.svg';
-import NormalHand from '../image/pages/open-switch/img_hand_01.svg';
-import PointerHand from '../image/pages/open-switch/img_hand_02.svg';
+import UseWindowSmall from '../utilityhook/useWindowSmall'
+import Content from '../layout/Content'
+import ButtonSound from '../component/ButtonSound'
+import ButtonNext from '../component/ButtonNext'
+import BGShadeMD from '../image/page/open-switch/bg_shade_md.svg';
+import BGShadeSM from '../image/page/open-switch/bg_shade_sm.svg';
+import SwitchPlate from '../image/page/open-switch/bg_switch_plate.svg';
+import IconPointer from '../image/page/open-switch/ico_pointer_01.svg';
+import NormalHand from '../image/page/open-switch/img_hand_01.svg';
+import PointerHand from '../image/page/open-switch/img_hand_02.svg';
 
 const ShadeVariantsMD = {
   hidden: {
