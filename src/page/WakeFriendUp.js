@@ -9,7 +9,8 @@ import ButtonNext from '../component/ButtonNext'
 import ButtonSound from '../component/ButtonSound'
 import ImgFriendSleepMd from '../image/page/friend-sleep/img_friend_sleep_md.svg'
 import ImgFriendSleepSm from '../image/page/friend-sleep/img_friend_sleep_sm.svg'
-import ImgArmMd from '../image/page/wake-friend-up/img_arm_md.svg'
+import ImgArmMd from '../image/page/friend-sleep/img_arm_md.svg'
+import ImgArmSm from '../image/page/friend-sleep/img_arm_sm.svg'
 
 // Motion Variants
 const containerVariant = {
@@ -66,17 +67,6 @@ const armVariant = {
   }
 }
 
-const wakeVariant = {
-  animate: {
-    y: [-30, 0, -30, 0],
-    transition: {
-      type: 'tween',
-      duration: 1,
-      delay: 3
-    }
-  },
-}
-
 const buttonVariant = {
   hidden: {
     opacity: 0,
@@ -96,6 +86,18 @@ const WakeFriendUp = () => {
   const isWindowSmall = UseWindowSmall()
   const history = useHistory()
   let allowLinkToNext = false
+
+  // motion variant which has dynamic
+  const wakeVariant = {
+    animate: {
+      y: isWindowSmall ? [0, -10, 0, -10, 0]: [0, -20, 0, -20, 0],
+      transition: {
+        type: 'tween',
+        duration: 1,
+        delay: 3
+      }
+    },
+  }
 
   const linkToNextPage = () => {
     if (isWindowSmall && allowLinkToNext) {
@@ -142,7 +144,7 @@ const WakeFriendUp = () => {
             animate="show"
           >
             <motion.img
-              src={ImgArmMd}
+              src={isWindowSmall ? ImgArmSm : ImgArmMd}
               alt="แขน"
               variants={wakeVariant}
               animate="animate"

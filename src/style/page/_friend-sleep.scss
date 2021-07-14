@@ -2,7 +2,7 @@
   &__text {
     position: relative;
     z-index: 3;
-    top: 25%;
+    top: 20%;
 
     @include md-up {
       top: 8%;
@@ -19,8 +19,7 @@
     @include md-down {
       display: flex;
       justify-content: center;
-      height: 52%;
-      // height: 100%;
+      height: 61%;
     }
 
     @include md-up {
@@ -28,12 +27,7 @@
     }
 
     > img {
-      // width: 100%;
       height: 100%;
-
-      @include md-down {
-        margin-left: -25px;
-      }
 
       @include md-up {
         width: 100%;
@@ -44,9 +38,16 @@
 
   &__arm {
     position: absolute;
-    bottom: 0;
-    right: 0;
     z-index: 2;
+
+    @include md-down {
+      bottom: -7%;
+      left: 1%;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 61%;
+    }
 
     @include md-up {
       bottom: -13%;
@@ -55,27 +56,13 @@
     }
 
     > img {
-      width: 100%;
-    }
-  }
+      @include md-down {
+        height: 100%;
+      }
 
-  &.animate {
-    animation-name: arm;
-    animation-duration: 0.7s;
-    animation-iteration-count: 2;
-    // animation-timing-function: ease-out;
-    // animation-delay: 3s;
-  }
-}
-
-@include md-up {
-  @keyframes arm {
-    0%, 50% {
-      bottom: -13%;
-    }
-
-    100% {
-      bottom: -10%;
+      @include md-up {
+        width: 100%;
+      }
     }
   }
 }
