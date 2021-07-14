@@ -4,7 +4,7 @@ import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../component/ButtonNext'
-import IconTouchNext from '../image/icon/icon_touch_next.svg'
+import IconFingerprint from '../image/icon/icon_fingerprint.svg'
 
 // Motion Variants
 const sceneVariant = {
@@ -119,7 +119,12 @@ const Preface = () => {
                     animate="show"
                     exit="exit"
                   >
-                    <img className="preface__icon-touch" src={IconTouchNext} alt="แตะหน้าจอเพื่อไปต่อ" />
+                    <div className="box-howto">
+                      <i className="box-howto__icon">
+                        <img src={IconFingerprint} alt="แตะหน้าจอเพื่อไปต่อ" />
+                      </i>
+                      <p className="box-howto__text">แตะหน้าจอเพื่อไปต่อ</p>
+                    </div>
                 </motion.div>
             }
           </div>

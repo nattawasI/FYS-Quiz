@@ -12,3 +12,21 @@
     }
   }
 }
+
+.box-howto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__icon {
+    text-align: center;
+  }
+
+  &__text {
+    margin-top: 16px;
+    font-size: 1.8rem;
+    color: $black;
+    text-align: center;
+  }
+}
