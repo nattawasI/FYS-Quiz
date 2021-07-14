@@ -1,4 +1,4 @@
-$md: 768px;
+$md: 1024px;
 
 @mixin md-down {
   @media (max-width: $md) { @content; }
