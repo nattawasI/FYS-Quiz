@@ -79,40 +79,27 @@ const CallPolice = () => {
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
 
-  const durationTimeout = 250
   let nextScene = ''
 
   const changeToScene2 = () => {
     setShowScene1(false)
-
-    setTimeout(() => {
-      setShowScene2(true)
-    }, durationTimeout)
+    setShowScene2(true)
   }
 
   const changeToScene3 = () => {
     setShowScene2(false)
-
-    setTimeout(() => {
-      setShowScene3(true)
-    }, durationTimeout)
+    setShowScene3(true)
   }
 
   const skipScene = () => {
     if (isWindowSmall) {
       if (nextScene === 'scene2') {
         setShowScene1(false)
-
-        setTimeout(() => {
-          setShowScene2(true)
-        }, durationTimeout)
+        setShowScene2(true)
       } else if (nextScene === 'scene3') {
         setShowScene1(false)
         setShowScene2(false)
-
-        setTimeout(() => {
-          setShowScene3(true)
-        }, durationTimeout)
+        setShowScene3(true)
       }
     }
   }
@@ -127,7 +114,7 @@ const CallPolice = () => {
           animate="show"
           exit="exit"
         >
-          <div className="box-story">
+          <div className="box-story call-police__scene call-police__scene--1">
             <AnimatePresence>
               {
                 showScene1
@@ -152,6 +139,10 @@ const CallPolice = () => {
                     <ButtonNext onClick={changeToScene2} />
                   </motion.div>
               }
+            </AnimatePresence>
+          </div>
+          <div className="box-story call-police__scene call-police__scene--2">
+            <AnimatePresence>
               {
                 showScene2
                 && <motion.p className="box-story__text text-story"
@@ -176,6 +167,8 @@ const CallPolice = () => {
                   </motion.div>
               }
             </AnimatePresence>
+          </div>
+          <div className="box-story call-police__scene call-police__scene--3">
             {
               showScene3
               && <motion.p
