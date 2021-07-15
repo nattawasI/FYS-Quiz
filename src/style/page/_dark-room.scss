@@ -7,6 +7,13 @@
     transform: translateX(-50%);
     pointer-events: none;
 
+    @include md-down {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 78%;
+    }
+
     @include md-up() {
       bottom: 0;
     }
@@ -14,6 +21,14 @@
 
   &__image {
     margin: auto;
+
+    @include md-down {
+      height: 100%;
+    }
+
+    @include md-up {
+      transform: translateY(7.500vw);
+    }
 
     &--md {
       @include md-down() {
@@ -36,6 +51,11 @@
     height: 100%;
     position: relative;
     z-index: 10;
+  }
+
+  &__text--static {
+    position: relative;
+    top: -29%;
   }
 
   &__button {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -120,11 +120,109 @@ const containerVariant = {
 const DarkRoom = () => {
   const isWindowSmall = UseWindowSmall()
   const history = useHistory()
-  let allowLinkToNext = false
+
+  // state
+  const [skipAnimate, setSkipAnimate] = useState(false)
+
+  const skipAnimation = () => {
+    if (!skipAnimate && !animateComplete) {
+      setSkipAnimate(true)
+      animateComplete = true
+    }
+  }
 
   const linkToNextPage = () => {
-    if (isWindowSmall && allowLinkToNext) {
+    if (animateComplete) {
       history.push('/friend-sleep')
+    }
+  }
+
+  const touchPanelSm = () => {
+    if (isWindowSmall) {
+      linkToNextPage()
+      skipAnimation()
+    }
+  }
+
+  // function for rendering
+  let animateComplete = false
+  const renderBackground = () => {
+    if (isWindowSmall) {
+      return (
+        skipAnimate
+        ? <div className="dark-room__figure">
+            <img className="dark-room__image dark-room__image--sm" src={bgSceneSM} alt="" />
+          </div>
+        : <AnimatePresence>
+            <motion.div
+              key="darkroom-figure-02"
+              className="dark-room__figure"
+              initial="hidden"
+              animate="show"
+              variants={sceneVariantSM}
+              onAnimationComplete={ () => animateComplete = true }
+            >
+              <img className="dark-room__image dark-room__image--sm" src={bgSceneSM} alt="" />
+            </motion.div>
+          </AnimatePresence>
+      )
+    } else {
+      return (
+        <motion.div
+          key="darkroom-figure-01"
+          className="dark-room__figure"
+          variants={sceneVariantMD}
+          initial="hidden"
+          animate="show"
+          exit="exit"
+        >
+          <img className="dark-room__image dark-room__image--md" src={bgSceneMD} alt="" />
+        </motion.div>
+      )
+    }
+  }
+
+  const renderText = () => {
+    if (isWindowSmall) {
+      return (
+        skipAnimate
+        ? <div className="dark-room__text dark-room__text--static text-story">
+            คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
+          </div>
+        : <AnimatePresence>
+            <motion.div
+              key="darkroom-text-02"
+              className="dark-room__text text-story"
+              initial="hidden"
+              animate="show"
+              variants={textVariantSM}
+            >
+              คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
+            </motion.div>
+          </AnimatePresence>
+      )
+    } else {
+      return (
+        <>
+          <motion.div
+            key="darkroom-text-01"
+            className="dark-room__text text-story"
+            variants={textVariantMD}
+            initial="hidden"
+            animate="show"
+          >
+            คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
+            <motion.div
+              className="dark-room__button"
+              variants={buttonVariant}
+              initial="hidden"
+              animate="show"
+            >
+              <ButtonNext to="/friend-sleep" />
+            </motion.div>
+          </motion.div>
+        </>
+      )
     }
   }
 
@@ -132,68 +230,18 @@ const DarkRoom = () => {
     <>
       <ButtonSound />
       <Content>
-        <motion.div className="scene-panel dark-room" onClick={linkToNextPage}
+        <motion.div className="scene-panel dark-room" onClick={touchPanelSm}
           variants={containerVariant}
           initial="hidden"
           animate="show"
           exit="exit"
         >
           {
-            isWindowSmall
-            ? <motion.div
-              key="darkroom-figure-02"
-              className="dark-room__figure"
-              initial="hidden"
-              animate="show"
-              variants={sceneVariantSM}
-              onAnimationComplete={ () => allowLinkToNext = true }
-            >
-              <img className="dark-room__image dark-room__image--sm" src={bgSceneSM} alt="" />
-            </motion.div>
-            : <motion.div
-              key="darkroom-figure-01"
-              className="dark-room__figure"
-              variants={sceneVariantMD}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-            >
-              <img className="dark-room__image dark-room__image--md" src={bgSceneMD} alt="" />
-            </motion.div>
+            renderBackground()
           }
           <div key="darkroom-02" className="dark-room__container">
             {
-              isWindowSmall
-              ? <motion.div
-                  key="darkroom-text-02"
-                  className="dark-room__text text-story"
-                  initial="hidden"
-                  animate="show"
-                  variants={textVariantSM}
-                >
-                  คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
-                </motion.div>
-              : <div>
-                  <motion.div
-                    key="darkroom-text-01"
-                    className="dark-room__text text-story"
-                    variants={textVariantMD}
-                    initial="hidden"
-                    animate="show"
-                  >
-                    คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
-                    <AnimatePresence>
-                      <motion.div
-                        className="dark-room__button"
-                        variants={buttonVariant}
-                        initial="hidden"
-                        animate="show"
-                      >
-                        <ButtonNext to="/friend-sleep" />
-                      </motion.div>
-                    </AnimatePresence>
-                  </motion.div>
-                </div>
+              renderText()
             }
           </div>
         </motion.div>
