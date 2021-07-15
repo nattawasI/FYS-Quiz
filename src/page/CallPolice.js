@@ -40,7 +40,7 @@ const textVariant = {
     transition: {
       ease: 'easeInOut',
       delay: 0.5,
-      duration: 1
+      duration: 0.9
     },
   },
   exit: {
@@ -60,7 +60,7 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      delay: 1.5,
+      delay: 1,
       duration: 0.5
     }
   },
