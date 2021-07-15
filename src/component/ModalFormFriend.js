@@ -14,14 +14,14 @@ const containerVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 0.7
+      duration: 0.3
     }
   },
   exit: {
     opacity: 0,
     transition: {
       ease: 'easeInOut',
-      duration: 1
+      duration: 0.7
     }
   }
 }
@@ -36,8 +36,8 @@ const formVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 1,
-      delay: 0.7
+      duration: 0.3,
+      delay: 0.3
     }
   }
 }
