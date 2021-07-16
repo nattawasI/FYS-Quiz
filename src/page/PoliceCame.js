@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {useUserStateContext} from '../context/UserContext'
-import {motion} from 'framer-motion'
+import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -24,7 +24,7 @@ const bodyVariant = {
     transition: {
       ease: "easeInOut",
       duration: 0.5,
-      delay: 1,
+      delay: 0.7,
     }
   }
 }
@@ -40,7 +40,7 @@ const textVariant = {
     transition: {
       ease: "easeInOut",
       duration: 0.5,
-      delay: 1,
+      delay: 0.7,
     }
   }
 }
@@ -54,19 +54,115 @@ const buttonVariant = {
     transition: {
       ease: "easeInOut",
       duration: 0.5,
-      delay: 1.5,
+      delay: 1.2,
     }
   }
 }
 
 const PoliceCame = () => {
-  const { friendInfoContext } = useUserStateContext()
-  const isWindowSmall = UseWindowSmall()
+  // router
   const history = useHistory()
 
-  const linkToNextPage = () => {
+  // context
+  const {friendInfoContext} = useUserStateContext()
+
+  // utilityhook
+  const isWindowSmall = UseWindowSmall()
+
+  // state
+  const [skipAnimate, setSkipAnimate] = useState(false)
+  const [animateComplete, setAnimateComplete] = useState(false)
+
+
+  // function
+  const touchPanelSm = () => {
     if (isWindowSmall) {
-      history.push('/siren')
+      if (animateComplete) {
+        history.push('/siren')
+      } else {
+        if (!skipAnimate) {
+          setAnimateComplete(true)
+          setSkipAnimate(true)
+        }
+      }
+    }
+  }
+
+  // function for rendering
+  const renderBody = () => {
+    if (isWindowSmall) {
+      return (
+        skipAnimate
+        ? <div className="police-came__body">
+            {
+              friendInfoContext.gender === 'male'
+              ? <img src={isWindowSmall ? BgDeadManSm : BgDeadManMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
+              : <img src={isWindowSmall ? BgDeadWomenSm : BgDeadWomenMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
+            }
+          </div>
+        : <AnimatePresence>
+            <motion.div className="police-came__body"
+              variants={bodyVariant}
+              initial="hidden"
+              animate="show"
+            >
+              {
+                friendInfoContext.gender === 'male'
+                ? <img src={isWindowSmall ? BgDeadManSm : BgDeadManMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
+                : <img src={isWindowSmall ? BgDeadWomenSm : BgDeadWomenMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
+              }
+            </motion.div>
+          </AnimatePresence>
+      )
+    } else {
+      return (
+        <motion.div className="police-came__body"
+          variants={bodyVariant}
+          initial="hidden"
+          animate="show"
+        >
+          {
+            friendInfoContext.gender === 'male'
+            ? <img src={isWindowSmall ? BgDeadManSm : BgDeadManMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
+            : <img src={isWindowSmall ? BgDeadWomenSm : BgDeadWomenMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
+          }
+        </motion.div>
+      )
+    }
+  }
+
+  const renderText = () => {
+    if (isWindowSmall) {
+      return (
+        skipAnimate
+        ? <p className="box-story__text text-story">เมื่อตำรวจมาถึง ก็สำรวจที่เกิดเหตุทันที<br />แล้วขอเชิญคุณไปสอบสวน</p>
+        : <AnimatePresence>
+            <motion.p className="box-story__text text-story"
+              variants={textVariant}
+              initial="hidden"
+              animate="show"
+              onAnimationComplete={ () => setAnimateComplete(true) }
+            >เมื่อตำรวจมาถึง ก็สำรวจที่เกิดเหตุทันที<br />แล้วขอเชิญคุณไปสอบสวน</motion.p>
+          </AnimatePresence>
+      )
+    } else {
+      return (
+        <>
+          <motion.p className="box-story__text text-story"
+            variants={textVariant}
+            initial="hidden"
+            animate="show"
+            onAnimationComplete={ () => setAnimateComplete(true) }
+          >เมื่อตำรวจมาถึง ก็สำรวจที่เกิดเหตุทันที<br />แล้วขอเชิญคุณไปสอบสวน</motion.p>
+          <motion.div className="box-story__button"
+            variants={buttonVariant}
+            initial="hidden"
+            animate="show"
+          >
+            <ButtonNext to="/siren" />
+          </motion.div>
+        </>
+      )
     }
   }
 
@@ -74,38 +170,18 @@ const PoliceCame = () => {
     <>
       <ButtonSound />
       <Content>
-        <motion.div className="scene-panel police-came" onClick={linkToNextPage}
+        <motion.div className="scene-panel police-came" onClick={touchPanelSm}
           variants={containerVariant}
           initial="hidden"
           animate="show"
           exit="exit"
         >
-          <motion.div className="police-came__body"
-            variants={bodyVariant}
-            initial="hidden"
-            animate="show"
-          >
-            {
-              friendInfoContext.gender === 'male'
-              ? <img src={isWindowSmall ? BgDeadManSm : BgDeadManMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
-              : <img src={isWindowSmall ? BgDeadWomenSm : BgDeadWomenMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
-            }
-          </motion.div>
+          {
+            renderBody()
+          }
           <div className="police-came__content box-story">
-            <motion.p className="box-story__text text-story"
-              variants={textVariant}
-              initial="hidden"
-              animate="show"
-            >เมื่อตำรวจมาถึง ก็สำรวจที่เกิดเหตุทันที<br />แล้วขอเชิญคุณไปสอบสวน</motion.p>
             {
-              !isWindowSmall
-              && <motion.div className="box-story__button"
-                  variants={buttonVariant}
-                  initial="hidden"
-                  animate="show"
-                >
-                  <ButtonNext to="/siren" />
-                </motion.div>
+              renderText()
             }
           </div>
         </motion.div>

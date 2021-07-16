@@ -17,8 +17,8 @@
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: 100% auto;
-    -webkit-animation: siren 0.7s linear 2s infinite;
-    animation: siren 0.7s linear 2s infinite;
+    -webkit-animation: siren 0.7s linear infinite;
+    animation: siren 0.7s linear infinite;
 
     @include md-up {
       background-image: url('../../image/page/siren/bg_siren_md.svg');

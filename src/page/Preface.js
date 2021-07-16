@@ -15,14 +15,14 @@ const sceneVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 1
+      duration: 0.5
     }
   },
   exit: {
     opacity: 0,
     transition: {
       ease: 'easeInOut',
-      duration: 1
+      duration: 0.5
     }
   }
 }

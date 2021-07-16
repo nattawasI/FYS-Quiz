@@ -27,6 +27,7 @@ const sceneVariantMD = {
     }
   },
 }
+
 const sceneVariantSM = {
   hidden: {
     y: 0,
