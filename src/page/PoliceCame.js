@@ -1,7 +1,8 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
-import { useUserStateContext } from '../context/UserContext'
+import {useUserStateContext} from '../context/UserContext'
 import {motion} from 'framer-motion'
+import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -12,26 +13,6 @@ import BgDeadWomenMd from '../image/page/police-came/bg_deadwomen_md.svg'
 import BgDeadWomenSm from '../image/page/police-came/bg_deadwomen_sm.svg'
 
 // Motion Variants
-const containerVariant = {
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      ease: 'easeInOut',
-      duration: 1
-    }
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      ease: 'easeInOut',
-      duration: 1
-    }
-  }
-}
-
 const bodyVariant = {
   hidden: {
     y: 70,

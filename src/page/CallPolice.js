@@ -2,33 +2,14 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import {motion, AnimatePresence} from 'framer-motion'
-import { useUserStateContext } from '../context/UserContext'
+import {containerVariant} from '../variable/MotionVariant'
+import {useUserStateContext} from '../context/UserContext'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
 
 // motion Variant
-const containerVariant = {
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      ease: 'easeInOut',
-      duration: 1
-    }
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      ease: 'easeInOut',
-      duration: 1
-    }
-  }
-}
-
 const textVariant = {
   hidden: {
     opacity: 0,
