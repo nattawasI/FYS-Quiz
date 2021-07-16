@@ -75,6 +75,8 @@ const friendVariant = {
   }
 }
 
+let animateComplete = false
+
 const FriendSleep = () => {
   const { friendInfoContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
@@ -83,10 +85,19 @@ const FriendSleep = () => {
   const [skipAnimate, setSkipAnimate] = useState(false)
 
   const openModalFormFriend = () => {
-    if (skipAnimate) {
-      setShowModal(true)
-    } else {
-      setSkipAnimate(true)
+    setShowModal(true)
+  }
+
+  const touchPanelSm = () => {
+    if (isWindowSmall) {
+      if (animateComplete) {
+        openModalFormFriend()
+      } else {
+        if (!skipAnimate) {
+          animateComplete = true
+          setSkipAnimate(true)
+        }
+      }
     }
   }
 
@@ -103,7 +114,7 @@ const FriendSleep = () => {
               variants={friendVariant}
               initial="hidden"
               animate="show"
-              onAnimationComplete={ () => setSkipAnimate(true) }
+              onAnimationComplete={ () => animateComplete = true }
             >
               <img src={isWindowSmall ? ImgFriendSleepSm: ImgFriendSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
             </motion.div>
@@ -178,7 +189,7 @@ const FriendSleep = () => {
           initial="hidden"
           animate="show"
           exit="exit"
-          onClick={openModalFormFriend}
+          onClick={touchPanelSm}
         >
           <div className="friend-sleep__text box-story">
             {

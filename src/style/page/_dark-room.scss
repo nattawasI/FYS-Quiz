@@ -1,21 +1,26 @@
 .dark-room {
   &__figure {
     position: absolute;
-    left: 50%;
-    right: auto;
-    bottom: -38px;
-    transform: translateX(-50%);
     pointer-events: none;
 
     @include md-down {
+      right: -16%;
+      bottom: -80px;
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      height: 78%;
+      height: 80%;
+    }
+
+    @media screen and (max-width: 1024px), screen and (min-height: 1000px) {
+      right: -15%;
+      height: 100%;
     }
 
     @include md-up() {
       bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 
@@ -51,6 +56,10 @@
     height: 100%;
     position: relative;
     z-index: 10;
+  }
+
+  &__text {
+    text-align: center;
   }
 
   &__text--static {

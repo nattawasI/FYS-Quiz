@@ -28,11 +28,11 @@ const sceneVariantMD = {
 }
 const sceneVariantSM = {
   hidden: {
-    x: "-50%",
+    y: 0,
     opacity: 0,
   },
   show: {
-    y: [196, 196, 196, 38],
+    y: [196, 196, 196, 0],
     opacity: [0, 0, 0, 1],
     transition: {
       duration: 3,
@@ -64,7 +64,7 @@ const textVariantSM = {
     opacity: 0,
   },
   show: {
-    y: [25, 0, 0, -196],
+    y: [25, 0, 0, -300],
     opacity: [0, 1, 1, 1],
     transition: {
       duration: 3,
@@ -117,6 +117,8 @@ const containerVariant = {
   }
 }
 
+let animateComplete = false
+
 const DarkRoom = () => {
   const isWindowSmall = UseWindowSmall()
   const history = useHistory()
@@ -124,28 +126,21 @@ const DarkRoom = () => {
   // state
   const [skipAnimate, setSkipAnimate] = useState(false)
 
-  const skipAnimation = () => {
-    if (!skipAnimate && !animateComplete) {
-      setSkipAnimate(true)
-      animateComplete = true
-    }
-  }
-
-  const linkToNextPage = () => {
-    if (animateComplete) {
-      history.push('/friend-sleep')
-    }
-  }
-
   const touchPanelSm = () => {
     if (isWindowSmall) {
-      linkToNextPage()
-      skipAnimation()
+      console.log(animateComplete);
+      if (animateComplete) {
+        history.push('/friend-sleep')
+      } else {
+        if (!skipAnimate) {
+          animateComplete = true
+          setSkipAnimate(true)
+        }
+      }
     }
   }
 
   // function for rendering
-  let animateComplete = false
   const renderBackground = () => {
     if (isWindowSmall) {
       return (
