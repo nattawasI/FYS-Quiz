@@ -16,7 +16,7 @@ const textVariantMD = {
     opacity: 0,
   },
   show: {
-    y: [0, 0, -300],
+    y: [0, 0, -270],
     opacity: [0, 1, 1],
     transition: {
       duration: 2,
@@ -32,7 +32,7 @@ const textVariantSM = {
     opacity: 0,
   },
   show: {
-    y: [25, 0, 0, -300],
+    y: [25, 0, 0, -200],
     opacity: [0, 1, 1, 1],
     transition: {
       duration: 2,

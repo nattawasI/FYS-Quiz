@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {motion} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
+import {homeVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -32,7 +32,7 @@ const Start = () => {
 
   return (
     <motion.div
-      variants={containerVariant}
+      variants={homeVariant}
       initial="hidden"
       animate="show"
       exit="exit"
