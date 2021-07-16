@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
-import {motion} from 'framer-motion'
+import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -11,7 +11,7 @@ import ButtonNext from '../component/ButtonNext'
 const textVariant = {
   hidden: {
     opacity: 0,
-    y: 50
+    y: 90
   },
   show: {
     opacity: 1,
@@ -19,9 +19,23 @@ const textVariant = {
     transition: {
       ease: "easeInOut",
       duration: 0.7,
-      delay: 0.7,
+      delay: 0.5,
     }
-  }
+  },
+}
+
+const boxTextVariant = {
+  hidden: {
+    y: 0
+  },
+  show: {
+    y: -170,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.7,
+      delay: 1.5,
+    }
+  },
 }
 
 const bgVariant = {
@@ -32,8 +46,8 @@ const bgVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 1,
-      delay: 0.7,
+      duration: 0.7,
+      delay: 1.5,
     }
   }
 }
@@ -47,7 +61,7 @@ const buttonVariant = {
     transition: {
       ease: "easeInOut",
       duration: 0.7,
-      delay: 1.5,
+      delay: 2.5,
     }
   }
 }
@@ -87,6 +101,7 @@ const Siren = () => {
             variants={bgVariant}
             initial="hidden"
             animate="show"
+            onAnimationComplete={ () => setAnimateComplete(true) }
           ></motion.div>
       )
     } else {
@@ -104,21 +119,32 @@ const Siren = () => {
     if (isWindowSmall) {
       return (
         skipAnimate
-        ? <p className="box-story__text text-story">
-            ตอนนี้ คุณตกเป็นผู้ต้องสงสัย<br />ในคดีการตายของเพื่อนสนิท
-          </p>
-        : <motion.p className="box-story__text text-story"
-            variants={textVariant}
-            initial="hidden"
-            animate="show"
-            onAnimationComplete={ () => setAnimateComplete(true) }
-          >
-            ตอนนี้ คุณตกเป็นผู้ต้องสงสัย<br />ในคดีการตายของเพื่อนสนิท
-          </motion.p>
+        ? <div className="siren__content siren__content--static box-story">
+            <p className="box-story__text text-story">ตอนนี้ คุณตกเป็นผู้ต้องสงสัย<br />ในคดีการตายของเพื่อนสนิท</p>
+          </div>
+        : <AnimatePresence>
+            <motion.div className="siren__content box-story"
+              variants={boxTextVariant}
+              initial="hidden"
+              animate="show"
+            >
+              <motion.p className="box-story__text text-story"
+                variants={textVariant}
+                initial="hidden"
+                animate="show"
+              >
+                ตอนนี้ คุณตกเป็นผู้ต้องสงสัย<br />ในคดีการตายของเพื่อนสนิท
+              </motion.p>
+            </motion.div>
+          </AnimatePresence>
       )
     } else {
       return (
-        <>
+        <motion.div className="siren__content box-story"
+          variants={boxTextVariant}
+          initial="hidden"
+          animate="show"
+        >
           <motion.p className="box-story__text text-story"
             variants={textVariant}
             initial="hidden"
@@ -133,7 +159,7 @@ const Siren = () => {
           >
             <ButtonNext />
           </motion.div>
-        </>
+        </motion.div>
       )
     }
   }
@@ -151,11 +177,9 @@ const Siren = () => {
           {
             renderBackground()
           }
-          <div className="siren__content box-story">
-            {
-              renderText()
-            }
-          </div>
+          {
+            renderText()
+          }
         </motion.div>
       </Content>
     </>

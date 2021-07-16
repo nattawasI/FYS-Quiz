@@ -19,7 +19,8 @@ const textVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 1
+      duration: 1,
+      delay: 0.5
     }
   }
 }
