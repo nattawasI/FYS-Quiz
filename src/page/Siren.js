@@ -8,20 +8,6 @@ import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
 
 // Motion Variants
-const bgVariant = {
-  hidden: {
-    opacity: 0
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      ease: "easeInOut",
-      delay: 0.5,
-      duration: 2
-    }
-  }
-}
-
 const textVariant = {
   hidden: {
     opacity: 0,
@@ -32,8 +18,22 @@ const textVariant = {
     y: 0,
     transition: {
       ease: "easeInOut",
-      delay: 0.5,
-      duration: 1
+      duration: 0.7,
+      delay: 0.7,
+    }
+  }
+}
+
+const bgVariant = {
+  hidden: {
+    opacity: 0
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: "easeInOut",
+      duration: 1,
+      delay: 0.7,
     }
   }
 }
@@ -46,8 +46,8 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
+      duration: 0.7,
       delay: 1.5,
-      duration: 1
     }
   }
 }

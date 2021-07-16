@@ -15,14 +15,14 @@ const sceneVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 0.5
+      duration: 0.7,
     }
   },
   exit: {
     opacity: 0,
     transition: {
       ease: 'easeInOut',
-      duration: 0.5
+      duration: 0.7
     }
   }
 }
@@ -37,7 +37,7 @@ const textVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 1
+      duration: 0.7
     }
   }
 }
@@ -57,11 +57,14 @@ const buttonVariant = {
 }
 
 const Preface = () => {
+  const history = useHistory()
   const isWindowSmall = UseWindowSmall()
+
+  // state
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
-  const history = useHistory()
 
+  // function
   const changeToScene2 = () => {
     setShowScene1(false)
     setShowScene2(true)

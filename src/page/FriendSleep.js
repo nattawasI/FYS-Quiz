@@ -13,11 +13,9 @@ import ImgFriendSleepSm from '../image/page/friend-sleep/img_friend_sleep_sm.svg
 // Motion Variants
 const textVariant = {
   hidden: {
-    y: 70,
     opacity: 0,
   },
   show: {
-    y: 0,
     opacity: 1,
     transition: {
       ease: 'easeInOut',
@@ -34,7 +32,7 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 1,
+      duration: 2,
       delay: 2
     }
   }
@@ -60,10 +58,12 @@ const FriendSleep = () => {
   const { friendInfoContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
 
+  // state
   const [showModal, setShowModal] = useState(false)
   const [skipAnimate, setSkipAnimate] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
 
+  // function
   const openModalFormFriend = () => {
     setShowModal(true)
   }

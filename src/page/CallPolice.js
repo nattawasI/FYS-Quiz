@@ -41,7 +41,7 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      delay: 1,
+      delay: 1.5,
       duration: 0.5
     }
   },
@@ -56,12 +56,13 @@ const buttonVariant = {
 const CallPolice = () => {
   const { friendInfoContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
+
+  // state
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
 
-  let nextScene = ''
-
+  // function
   const changeToScene2 = () => {
     setShowScene1(false)
     setShowScene2(true)
@@ -72,6 +73,7 @@ const CallPolice = () => {
     setShowScene3(true)
   }
 
+  let nextScene = ''
   const skipScene = () => {
     if (isWindowSmall) {
       if (nextScene === 'scene2') {

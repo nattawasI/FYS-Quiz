@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
-import {motion} from 'framer-motion'
+import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import {useUserStateContext} from '../context/UserContext'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -24,8 +24,8 @@ const textVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 1,
-      delay: 1,
+      duration: 0.7,
+      delay: 0.5,
     }
   }
 }
@@ -43,7 +43,7 @@ const armVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 2
+      delay: 1
     }
   }
 }
@@ -57,7 +57,7 @@ const buttonVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 4
+      delay: 3
     }
   }
 }
@@ -66,7 +66,6 @@ const WakeFriendUp = () => {
   const { friendInfoContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
   const history = useHistory()
-  let allowLinkToNext = false
 
   // motion variant which has dynamic
   const wakeVariant = {
@@ -75,14 +74,104 @@ const WakeFriendUp = () => {
       transition: {
         type: 'tween',
         duration: 1,
-        delay: 3
+        delay: 2
       }
     },
   }
 
-  const linkToNextPage = () => {
-    if (isWindowSmall && allowLinkToNext) {
-      history.push('/call-police')
+  // state
+  const [skipAnimate, setSkipAnimate] = useState(false)
+  const [animateComplete, setAnimateComplete] = useState(false)
+
+  // function
+  const touchPanelSm = () => {
+    if (isWindowSmall) {
+      if (animateComplete) {
+        history.push('/call-police')
+      } else {
+        if (!skipAnimate) {
+          setAnimateComplete(true)
+          setSkipAnimate(true)
+        }
+      }
+    }
+  }
+
+  // function for rendering
+  const renderText = () => {
+    if (isWindowSmall){
+      return (
+        skipAnimate
+        ? <p className="box-story__text text-story">คุณพยายามปลุก { friendInfoContext.name }<br />ให้ไปนอนบนที่นอน</p>
+        : <AnimatePresence>
+            <motion.p className="box-story__text text-story"
+              variants={textVariant}
+              initial="hidden"
+              animate="show"
+            >คุณพยายามปลุก { friendInfoContext.name }<br />ให้ไปนอนบนที่นอน</motion.p>
+          </AnimatePresence>
+      )
+    } else {
+      return (
+        <>
+          <motion.p className="box-story__text text-story"
+            variants={textVariant}
+            initial="hidden"
+            animate="show"
+          >คุณพยายามปลุก { friendInfoContext.name }<br />ให้ไปนอนบนที่นอน</motion.p>
+          <motion.div className="box-story__button"
+            variants={buttonVariant}
+            initial="hidden"
+            animate="show"
+          >
+            <ButtonNext to="/call-police" />
+          </motion.div>
+        </>
+      )
+    }
+  }
+
+  const renderArm = () => {
+    if (isWindowSmall) {
+      return (
+        skipAnimate
+        ? <div className="friend-sleep__arm">
+            <img src={isWindowSmall ? ImgArmSm : ImgArmMd} alt="แขน" />
+          </div>
+        : <AnimatePresence>
+            <motion.div
+              className="friend-sleep__arm"
+              variants={armVariant}
+              initial="hidden"
+              animate="show"
+            >
+              <motion.img
+                src={isWindowSmall ? ImgArmSm : ImgArmMd}
+                alt="แขน"
+                variants={wakeVariant}
+                animate="animate"
+                onAnimationComplete={ () => setAnimateComplete(true) }
+              />
+            </motion.div>
+          </AnimatePresence>
+      )
+    } else {
+      return (
+        <motion.div
+          className="friend-sleep__arm"
+          variants={armVariant}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.img
+            src={isWindowSmall ? ImgArmSm : ImgArmMd}
+            alt="แขน"
+            variants={wakeVariant}
+            animate="animate"
+            onAnimationComplete={ () => setAnimateComplete(true) }
+          />
+        </motion.div>
+      )
     }
   }
 
@@ -96,42 +185,19 @@ const WakeFriendUp = () => {
           initial="hidden"
           animate="show"
           exit="exit"
-          onClick={linkToNextPage}
+          onClick={touchPanelSm}
         >
           <div className="friend-sleep__text box-story">
-            <motion.p className="box-story__text text-story"
-              variants={textVariant}
-              initial="hidden"
-              animate="show"
-            >คุณพยายามปลุก { friendInfoContext.name }<br />ให้ไปนอนบนที่นอน</motion.p>
             {
-              !isWindowSmall
-              && <motion.div className="box-story__button"
-                  variants={buttonVariant}
-                  initial="hidden"
-                  animate="show"
-                >
-                  <ButtonNext to="/call-police" />
-                </motion.div>
+              renderText()
             }
           </div>
           <div className="friend-sleep__friend">
             <img src={isWindowSmall ? ImgFriendSleepSm: ImgFriendSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
           </div>
-          <motion.div
-            className="friend-sleep__arm"
-            variants={armVariant}
-            initial="hidden"
-            animate="show"
-          >
-            <motion.img
-              src={isWindowSmall ? ImgArmSm : ImgArmMd}
-              alt="แขน"
-              variants={wakeVariant}
-              animate="animate"
-              onAnimationComplete={ () => allowLinkToNext = true }
-            />
-          </motion.div>
+          {
+            renderArm()
+          }
         </motion.div>
       </Content>
     </>

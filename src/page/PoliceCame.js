@@ -23,8 +23,8 @@ const bodyVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.5,
-      delay: 0.7,
+      duration: 0.7,
+      delay: 0.5,
     }
   }
 }
@@ -39,8 +39,8 @@ const textVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.5,
-      delay: 0.7,
+      duration: 0.7,
+      delay: 0.5,
     }
   }
 }
@@ -53,8 +53,8 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.5,
-      delay: 1.2,
+      duration: 0.7,
+      delay: 1.5,
     }
   }
 }
