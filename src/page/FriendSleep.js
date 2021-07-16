@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useUserStateContext } from '../context/UserContext'
 import {motion, AnimatePresence} from 'framer-motion'
+import {containerVariant} from '../common/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../component/ButtonNext'
@@ -10,26 +11,6 @@ import ImgFriendSleepMd from '../image/page/friend-sleep/img_friend_sleep_md.svg
 import ImgFriendSleepSm from '../image/page/friend-sleep/img_friend_sleep_sm.svg'
 
 // Motion Variants
-const containerVariant = {
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      ease: 'easeInOut',
-      duration: 1
-    }
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      ease: 'easeInOut',
-      duration: 1
-    }
-  }
-}
-
 const textVariant = {
   hidden: {
     y: 70,
@@ -75,14 +56,13 @@ const friendVariant = {
   }
 }
 
-let animateComplete = false
-
 const FriendSleep = () => {
   const { friendInfoContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
 
   const [showModal, setShowModal] = useState(false)
   const [skipAnimate, setSkipAnimate] = useState(false)
+  const [animateComplete, setAnimateComplete] = useState(false)
 
   const openModalFormFriend = () => {
     setShowModal(true)
@@ -94,7 +74,7 @@ const FriendSleep = () => {
         openModalFormFriend()
       } else {
         if (!skipAnimate) {
-          animateComplete = true
+          setAnimateComplete(true)
           setSkipAnimate(true)
         }
       }
@@ -114,7 +94,7 @@ const FriendSleep = () => {
               variants={friendVariant}
               initial="hidden"
               animate="show"
-              onAnimationComplete={ () => animateComplete = true }
+              onAnimationComplete={ () => setAnimateComplete(true) }
             >
               <img src={isWindowSmall ? ImgFriendSleepSm: ImgFriendSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
             </motion.div>

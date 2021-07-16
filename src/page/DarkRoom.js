@@ -117,23 +117,21 @@ const containerVariant = {
   }
 }
 
-let animateComplete = false
-
 const DarkRoom = () => {
   const isWindowSmall = UseWindowSmall()
   const history = useHistory()
 
   // state
   const [skipAnimate, setSkipAnimate] = useState(false)
+  const [animateComplete, setAnimateComplete] = useState(false)
 
   const touchPanelSm = () => {
     if (isWindowSmall) {
-      console.log(animateComplete);
       if (animateComplete) {
         history.push('/friend-sleep')
       } else {
         if (!skipAnimate) {
-          animateComplete = true
+          setAnimateComplete(true)
           setSkipAnimate(true)
         }
       }
@@ -155,7 +153,7 @@ const DarkRoom = () => {
               initial="hidden"
               animate="show"
               variants={sceneVariantSM}
-              onAnimationComplete={ () => animateComplete = true }
+              onAnimationComplete={ () => setAnimateComplete(true) }
             >
               <img className="dark-room__image dark-room__image--sm" src={bgSceneSM} alt="" />
             </motion.div>
