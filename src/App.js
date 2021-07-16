@@ -11,7 +11,7 @@ import WakeFriendUp from './page/WakeFriendUp'
 import CallPolice from './page/CallPolice'
 import PoliceCame from './page/PoliceCame'
 import Siren from './page/Siren'
-import OpenSwitch from './page/OpenSwitch'
+import TurnOnLight from './page/TurnOnLight'
 
 const App = () => {
   const location = useLocation()
@@ -45,8 +45,8 @@ const App = () => {
             <Route path="/siren">
               <Siren />
             </Route>
-            <Route path="/open-switch">
-              <OpenSwitch />
+            <Route path="/turn-on-light">
+              <TurnOnLight />
             </Route>
           </Switch>
         </AnimatePresence>
