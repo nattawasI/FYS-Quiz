@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import {useRouteActionContext} from '../context/RouteContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -67,8 +67,7 @@ const buttonVariant = {
 }
 
 const Siren = () => {
-  // router
-  const history = useHistory()
+  const {changeCurrentPageContext} = useRouteActionContext()
 
   // utilityhook
   const isWindowSmall = UseWindowSmall()
@@ -78,10 +77,14 @@ const Siren = () => {
   const [animateComplete, setAnimateComplete] = useState(false)
 
   // function
+  const goToNextPage = () => {
+    changeCurrentPageContext('Investigate')
+  }
+
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (animateComplete) {
-        history.push('/siren')
+        goToNextPage()
       } else {
         if (!skipAnimate) {
           setAnimateComplete(true)
@@ -165,7 +168,12 @@ const Siren = () => {
   }
 
   return (
-    <>
+    <motion.div
+      variants={containerVariant}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <ButtonSound />
       <Content>
         <motion.div className="scene-panel siren" onClick={touchPanelSm}
@@ -182,7 +190,7 @@ const Siren = () => {
           }
         </motion.div>
       </Content>
-    </>
+    </motion.div>
   )
 }
 

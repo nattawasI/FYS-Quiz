@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react'
-import {useHistory} from 'react-router-dom'
+import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
 import { useUserStateContext, useUserActionContext } from '../context/UserContext'
 import Button from './Button'
@@ -45,14 +45,14 @@ const formVariant = {
 const ModalFormFriend = () => {
   const { friendInfoContext } = useUserStateContext()
   const { addFriendInfoContext } = useUserActionContext()
+  const {changeCurrentPageContext} = useRouteActionContext()
 
   const inputRef = useRef(null)
-  const history = useHistory()
 
   const [error, setError] = useState(false)
 
-  const linkToNextPage = () => {
-    history.push('/wake-friend-up')
+  const goToNextPage = () => {
+    changeCurrentPageContext('WakeFriendUp')
   }
 
   const getGender = (gender) => {
@@ -62,7 +62,7 @@ const ModalFormFriend = () => {
         name: inputRef.current.value,
         gender: gender
       })
-      linkToNextPage()
+      goToNextPage()
     } else {
       setError(true)
     }

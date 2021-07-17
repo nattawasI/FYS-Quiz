@@ -1,7 +1,7 @@
 import React from 'react'
-import {useRouteStateContext} from '../context/RouteContext'
+import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
-import {homeVariant} from '../variable/MotionVariant'
+import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -28,16 +28,16 @@ const ribbonVariant = {
 }
 
 const Start = () => {
-  const {changeCurrentPageContext} = useRouteStateContext()
+  const {changeCurrentPageContext} = useRouteActionContext()
   const isWindowSmall = UseWindowSmall()
 
   const goToNextPage = () => {
-    changeCurrentPageContext('preface')
+    changeCurrentPageContext('Preface')
   }
 
   return (
     <motion.div
-      variants={homeVariant}
+      variants={containerVariant}
       initial="hidden"
       animate="show"
       exit="exit"

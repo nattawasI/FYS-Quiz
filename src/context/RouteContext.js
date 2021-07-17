@@ -13,12 +13,12 @@ export const useRouteActionContext = () => {
 
 const RouteProvider = ({ children }) => {
   // state
-  const [currentPageContext, setCurrentPaontext] = useState('start')
+  const [currentPageContext, setCurrentPageContext] = useState('WakeFriendUp')
 
 
   // function
   const changeCurrentPageContext = (pageTarget) => {
-    console.log(pageTarget);
+    setCurrentPageContext(pageTarget)
   }
 
 

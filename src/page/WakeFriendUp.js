@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useRouteActionContext} from '../context/RouteContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import {useUserStateContext} from '../context/UserContext'
@@ -36,7 +37,7 @@ const textVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 0.7,
+      duration: 1,
       delay: 1,
     }
   }
@@ -75,6 +76,7 @@ const buttonVariant = {
 }
 
 const WakeFriendUp = () => {
+  const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
 
@@ -95,10 +97,18 @@ const WakeFriendUp = () => {
   const [animateComplete, setAnimateComplete] = useState(false)
 
   // function
+  const goToPrevPage = () => {
+    changeCurrentPageContext('FriendSleep')
+  }
+
+  const goToNextPage = () => {
+    changeCurrentPageContext('CallPolice')
+  }
+
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (animateComplete) {
-        // history.push('/call-police')
+        goToNextPage()
       } else {
         if (!skipAnimate) {
           setAnimateComplete(true)
@@ -165,7 +175,7 @@ const WakeFriendUp = () => {
             initial="hidden"
             animate="show"
           >
-            <ButtonNext to="call-police" />
+            <ButtonNext onClick={goToNextPage} />
           </motion.div>
         </>
       )
@@ -223,7 +233,7 @@ const WakeFriendUp = () => {
       animate="show"
       exit="exit"
     >
-      <ButtonBack to="friend-sleep" />
+      <ButtonBack onClick={goToPrevPage} />
       <ButtonSound />
       <Content>
         <div className="scene-panel friend-sleep" onClick={touchPanelSm}>

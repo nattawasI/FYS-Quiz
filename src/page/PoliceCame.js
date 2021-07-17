@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {useHistory} from 'react-router-dom'
 import {useUserStateContext} from '../context/UserContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
@@ -60,9 +59,6 @@ const buttonVariant = {
 }
 
 const PoliceCame = () => {
-  // router
-  const history = useHistory()
-
   // context
   const {friendInfoContext} = useUserStateContext()
 
@@ -78,7 +74,7 @@ const PoliceCame = () => {
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (animateComplete) {
-        history.push('/siren')
+        //
       } else {
         if (!skipAnimate) {
           setAnimateComplete(true)

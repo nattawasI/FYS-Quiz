@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ButtonNext = ({dark, to, onClick}) => {
+const ButtonNext = ({dark, onClick}) => {
   const classStyle = () => {
     return dark ? 'button-next button-next--dark' : 'button-next'
   }
@@ -19,13 +19,11 @@ const ButtonNext = ({dark, to, onClick}) => {
 
 ButtonNext.propTypes = {
   dark: PropTypes.bool,
-  to: PropTypes.string,
   onClick: PropTypes.func,
 }
 
 ButtonNext.defaultProps = {
   dark: false,
-  to: '',
   onClick: () => {},
 }
 

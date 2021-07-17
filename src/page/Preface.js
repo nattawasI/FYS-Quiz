@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
+import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
+import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
+
 import Content from '../layout/Content'
 import ButtonNext from '../component/ButtonNext'
 import IconFingerprint from '../image/icon/icon_fingerprint.svg'
@@ -14,14 +17,14 @@ const sceneVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 0.7,
+      duration: 1,
     }
   },
   exit: {
     opacity: 0,
     transition: {
       ease: 'easeInOut',
-      duration: 0.7
+      duration: 1
     }
   }
 }
@@ -36,7 +39,7 @@ const textVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 0.7
+      duration: 1
     }
   }
 }
@@ -49,13 +52,14 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 1,
+      duration: 0.7,
       delay: 1
     }
   }
 }
 
 const Preface = () => {
+  const {changeCurrentPageContext} = useRouteActionContext()
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -68,16 +72,19 @@ const Preface = () => {
     setShowScene2(true)
   }
 
-  const linkToNextPage = () => {
-    if (isWindowSmall && showScene2) {
-      // 
-    }
+  const goToNextPage = () => {
+    changeCurrentPageContext('DarkRoom')
   }
 
   return (
-    <>
+    <motion.div
+      variants={containerVariant}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <Content bgColor="white">
-        <div className="scene-panel preface" onClick={linkToNextPage}>
+        <div className="scene-panel preface">
           <div className="preface__content box-story">
             {
               showScene1
@@ -106,7 +113,7 @@ const Preface = () => {
                         initial="hidden"
                         animate="show"
                       >
-                        <ButtonNext dark to="dark-room" />
+                        <ButtonNext dark onClick={goToNextPage} />
                       </motion.div>
                   }
                 </motion.div>
@@ -119,6 +126,7 @@ const Preface = () => {
                     initial="hidden"
                     animate="show"
                     exit="exit"
+                    onClick={goToNextPage}
                   >
                     <div className="box-howto">
                       <i className="box-howto__icon">
@@ -131,7 +139,7 @@ const Preface = () => {
           </div>
         </div>
       </Content>
-    </>
+    </motion.div>
   )
 }
 

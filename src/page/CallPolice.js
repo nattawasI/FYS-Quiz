@@ -1,6 +1,6 @@
 
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {useRouteActionContext} from '../context/RouteContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import {useUserStateContext} from '../context/UserContext'
@@ -21,7 +21,7 @@ const textVariant = {
     transition: {
       ease: 'easeInOut',
       delay: 0.5,
-      duration: 0.9
+      duration: 1
     },
   },
   exit: {
@@ -54,6 +54,7 @@ const buttonVariant = {
 }
 
 const CallPolice = () => {
+  const {changeCurrentPageContext} = useRouteActionContext()
   const { friendInfoContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
 
@@ -63,6 +64,10 @@ const CallPolice = () => {
   const [showScene3, setShowScene3] = useState(false)
 
   // function
+  const goToNextPage = () => {
+    changeCurrentPageContext('PoliceCame')
+  }
+
   const changeToScene2 = () => {
     setShowScene1(false)
     setShowScene2(true)
@@ -88,15 +93,15 @@ const CallPolice = () => {
   }
 
   return (
-    <>
+    <motion.div
+      variants={containerVariant}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <ButtonSound />
       <Content>
-        <motion.div className="scene-panel call-police" onClick={skipScene}
-          variants={containerVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-        >
+        <div className="scene-panel call-police" onClick={skipScene}>
           <div className="box-story call-police__scene call-police__scene--1">
             <AnimatePresence>
               {
@@ -170,20 +175,22 @@ const CallPolice = () => {
                     initial="hidden"
                     animate="show"
                   >
-                    <Link to="/police-came" className="button-call">
-                      <span className="button-call__btn button-call__btn--wave-out" alt="Call Button"></span>
+                    <button type="button" className="button-call" onClick={goToNextPage}>
+                      <span className="button-call__btn button-call__btn--wave-out"></span>
                       <span className="button-call__btn button-call__btn--wave-in"></span>
                       <span className="button-call__btn button-call__btn--body"></span>
                       <span className="button-call__btn button-call__btn--touch"></span>
-                    </Link>
+                    </button>
                   </motion.div>
             }
           </div>
-        </motion.div>
+        </div>
       </Content>
-    </>
+    </motion.div>
   )
 }
+
+// to="police-came"
 
 export default CallPolice
 

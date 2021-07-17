@@ -5,19 +5,42 @@ import Preface from './Preface'
 import DarkRoom from './DarkRoom'
 import FriendSleep from './FriendSleep'
 import WakeFriendUp from './WakeFriendUp'
-// import CallPolice from './CallPolice'
-// import PoliceCame from './PoliceCame'
-// import Siren from './Siren'
-// import OpenSwitch from './OpenSwitch'
-
-const listPages = ['start', 'preface', 'dark-room', 'friend-sleep', 'wake-friend-up', 'call-police', 'police-came', 'siren']
+import CallPolice from './CallPolice'
+import PoliceCame from './PoliceCame'
+import Siren from './Siren'
 
 const Index = () => {
   const {currentPageContext} = useRouteStateContext()
 
+  const renderPage = () => {
+    if (currentPageContext === 'Start') {
+      return <Start />
+    } else if (currentPageContext === 'Preface') {
+      return <Preface />
+    } else if (currentPageContext === 'DarkRoom') {
+      return <DarkRoom />
+    } else if (currentPageContext === 'FriendSleep') {
+      return <FriendSleep />
+    } else if (currentPageContext === 'WakeFriendUp') {
+      return <WakeFriendUp />
+    } else if (currentPageContext === 'CallPolice') {
+      return <CallPolice />
+    } else if (currentPageContext === 'PoliceCame') {
+      return <PoliceCame />
+    } else if (currentPageContext === 'Siren') {
+      return <Siren />
+    } // else if (currentPageContext === 'PageName') {
+    //   return <PageName />
+    // } else if (currentPageContext === 'PageName') {
+    //   return <PageName />
+    // }
+  }
+
   return (
     <div className="page-content">
-      <WakeFriendUp />
+      {
+        renderPage()
+      }
     </div>
   )
 }

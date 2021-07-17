@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useRouteActionContext} from '../context/RouteContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -20,7 +21,8 @@ const textVariantMD = {
     transition: {
       duration: 2,
       ease: "easeInOut",
-      times: [0, 0.5, 1]
+      times: [0, 0.5, 1],
+      delay: 1
     }
   },
 }
@@ -36,7 +38,8 @@ const textVariantSM = {
     transition: {
       duration: 2,
       ease: "easeInOut",
-      times: [0, 0.4, 0.7, 1]
+      times: [0, 0.4, 0.7, 1],
+      delay: 1
     }
   }
 }
@@ -51,8 +54,8 @@ const backgroundVariantMD = {
     scale: 1,
     opacity: 1,
     transition: {
-      delay: 1,
-      duration: 0.9,
+      delay: 2,
+      duration: 1,
       ease: "easeInOut",
     }
   },
@@ -69,7 +72,8 @@ const backgroundVariantSM = {
     transition: {
       duration: 2,
       ease: "easeInOut",
-      times: [0, 0.4, 0.7, 1]
+      times: [0, 0.4, 0.7, 1],
+      delay: 1
     },
   },
 }
@@ -83,13 +87,14 @@ const buttonVariant = {
     y: 0,
     opacity: 1,
     transition: {
-      delay: 2,
-      duration: 1,
+      duration: 0.7,
+      delay: 3
     }
   }
 }
 
 const DarkRoom = () => {
+  const {changeCurrentPageContext} = useRouteActionContext()
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -97,10 +102,14 @@ const DarkRoom = () => {
   const [animateComplete, setAnimateComplete] = useState(false)
 
   // function
+  const goToNextPage = () => {
+    changeCurrentPageContext('FriendSleep')
+  }
+
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (animateComplete) {
-        // 
+        goToNextPage()
       } else {
         if (!skipAnimate) {
           setAnimateComplete(true)
@@ -183,7 +192,7 @@ const DarkRoom = () => {
               initial="hidden"
               animate="show"
             >
-              <ButtonNext to="friend-sleep" />
+              <ButtonNext onClick={goToNextPage} />
             </motion.div>
           </motion.div>
         </>
