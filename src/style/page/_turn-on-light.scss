@@ -79,18 +79,16 @@
       left: auto;
       right: 0;
       bottom: 0;
-      transform-origin: 50% 100%;
-      transform: scale(1.7);
 
       @include md-up {
         left: auto;
-        transform-origin: 50% 100%;
-        transform: scale(1.8);
       }
     }
 
     &__image {
       height: 100%;
+      transform-origin: 75% 100%;
+      transform: scale(1.7);
     }
   }
 
@@ -140,6 +138,7 @@
     }
 
     &__button {
+      cursor: pointer;
       position: absolute;
       bottom: 20%;
       left: 50%;
@@ -147,11 +146,7 @@
       z-index: 20;
       background-color: $pink;
       width: 100%;
-      height: 10%;
-
-      @include md-up {
-        height: 26%;
-      }
+      height: 26%;
     }
 
   }
@@ -166,7 +161,6 @@
     overflow: hidden;
     width: 120px;
     height: 120px;
-    opacity: 0;
 
     @include md-up {
       top: calc(50% - 6px);
