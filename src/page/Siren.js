@@ -176,19 +176,14 @@ const Siren = () => {
     >
       <ButtonSound />
       <Content>
-        <motion.div className="scene-panel siren" onClick={touchPanelSm}
-          variants={containerVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-        >
+        <div className="scene-panel siren" onClick={touchPanelSm}>
           {
             renderBackground()
           }
           {
             renderText()
           }
-        </motion.div>
+        </div>
       </Content>
     </motion.div>
   )
