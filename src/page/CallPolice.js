@@ -101,8 +101,8 @@ const CallPolice = () => {
     >
       <ButtonSound />
       <Content>
-        <div className="scene-panel call-police" onClick={skipScene}>
-          <div className="box-story call-police__scene call-police__scene--1">
+        <div className="scene-panel scene-animate" onClick={skipScene}>
+          <div className="box-story scene-animate__scene scene-animate__scene--1">
             <AnimatePresence>
               {
                 showScene1
@@ -129,7 +129,7 @@ const CallPolice = () => {
               }
             </AnimatePresence>
           </div>
-          <div className="box-story call-police__scene call-police__scene--2">
+          <div className="box-story scene-animate__scene scene-animate__scene--2">
             <AnimatePresence>
               {
                 showScene2
@@ -156,7 +156,7 @@ const CallPolice = () => {
               }
             </AnimatePresence>
           </div>
-          <div className="box-story call-police__scene call-police__scene--3">
+          <div className="box-story scene-animate__scene scene-animate__scene--3">
             {
               showScene3
               && <motion.p

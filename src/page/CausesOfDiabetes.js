@@ -9,7 +9,7 @@ import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
 
 // motion Variant
-const textVariant = {
+const sceneVariant = {
   hidden: {
     opacity: 0,
     y: 70
@@ -59,21 +59,15 @@ const Suggestion = () => {
   // state
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
-  const [showScene3, setShowScene3] = useState(false)
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('End')
+    changeCurrentPageContext('Symptoms')
   }
 
   const changeToScene2 = () => {
     setShowScene1(false)
     setShowScene2(true)
-  }
-
-  const changeToScene3 = () => {
-    setShowScene2(false)
-    setShowScene3(true)
   }
 
   let nextScene = ''
@@ -82,10 +76,6 @@ const Suggestion = () => {
       if (nextScene === 'scene2') {
         setShowScene1(false)
         setShowScene2(true)
-      } else if (nextScene === 'scene3') {
-        setShowScene1(false)
-        setShowScene2(false)
-        setShowScene3(true)
       }
     }
   }
@@ -98,20 +88,20 @@ const Suggestion = () => {
       exit="exit"
     >
       <ButtonSound />
-      <Content>
+      <Content bgColor="blue">
         <div className="scene-panel scene-animate" onClick={skipScene}>
           <div className="box-story scene-animate__scene scene-animate__scene--1">
             <AnimatePresence>
               {
                 showScene1
                 && <motion.p className="box-story__text text-story"
-                  key="textScene1"
-                  variants={textVariant}
+                  key="scene1"
+                  variants={sceneVariant}
                   initial="hidden"
                   animate="show"
                   exit="exit"
                   onAnimationComplete={ () => nextScene = 'scene2' }
-                >หากพบอาการเหล่านี้<br />ให้รีบไปพบแพทย์เพื่อเช็กทันที</motion.p>
+                >คุณรู้ไหม<br /><span className="text-story--bigger">"โรคเบาหวาน"</span> เกิดจากอะไร?</motion.p>
               }
               {
                 !isWindowSmall && showScene1
@@ -131,14 +121,15 @@ const Suggestion = () => {
             <AnimatePresence>
               {
                 showScene2
-                && <motion.p className="box-story__text text-story"
-                  key="textScene2"
-                  variants={textVariant}
-                  initial="hidden"
-                  animate="show"
-                  exit="exit"
-                  onAnimationComplete={ () => nextScene = 'scene3' }
-                >แต่ถ้าไม่มีอาการ<br /><span className="text-story--bigger">คุณยังโชคดี</span></motion.p>
+                && <motion.div className="box-story__text"
+                    key="scene2"
+                    variants={sceneVariant}
+                    initial="hidden"
+                    animate="show"
+                    exit="exit"
+                  >
+                    <p className="text-story">เกิดจาก</p>
+                  </motion.div>
               }
               {
                 !isWindowSmall && showScene2
@@ -149,35 +140,10 @@ const Suggestion = () => {
                     animate="show"
                     exit="exit"
                   >
-                    <ButtonNext onClick={changeToScene3} />
+                    <ButtonNext onClick={goToNextPage} />
                   </motion.div>
               }
             </AnimatePresence>
-          </div>
-          <div className="box-story scene-animate__scene scene-animate__scene--3">
-            {
-              showScene3
-              && <motion.p
-                  className="box-story__text text-story"
-                  variants={textVariant}
-                  initial="hidden"
-                  animate="show"
-                >
-                  และควรดูแลตัวเองต่อไป<br />ให้ห่างไกล <span className="text-story--bigger">”ฆาตกร"</span> <br className="sm-show" />ที่ทำให้เป็นโรคเบาหวาน
-                </motion.p>
-            }
-            {
-              showScene3
-              &&  <motion.div className="box-story__button"
-                    key="buttonNextScene2"
-                    variants={buttonVariant}
-                    initial="hidden"
-                    animate="show"
-                    exit="exit"
-                  >
-                    <ButtonNext onClick={goToNextPage} />
-                  </motion.div>
-            }
           </div>
         </div>
       </Content>
