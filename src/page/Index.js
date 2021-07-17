@@ -8,6 +8,8 @@ import WakeFriendUp from './WakeFriendUp'
 import CallPolice from './CallPolice'
 import PoliceCame from './PoliceCame'
 import Siren from './Siren'
+import Suggestion from './Suggestion'
+import CausesOfDiabetes from './CausesOfDiabetes'
 
 const Index = () => {
   const {currentPageContext} = useRouteStateContext()
@@ -29,11 +31,11 @@ const Index = () => {
       return <PoliceCame />
     } else if (currentPageContext === 'Siren') {
       return <Siren />
-    } // else if (currentPageContext === 'PageName') {
-    //   return <PageName />
-    // } else if (currentPageContext === 'PageName') {
-    //   return <PageName />
-    // }
+    } else if (currentPageContext === 'CausesOfDiabetes') {
+      return <CausesOfDiabetes />
+    } else if (currentPageContext === 'Suggestion') {
+      return <Suggestion />
+    }
   }
 
   return (

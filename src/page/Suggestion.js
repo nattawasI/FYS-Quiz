@@ -3,7 +3,6 @@ import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
-import {useUserStateContext} from '../context/UserContext'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -53,9 +52,8 @@ const buttonVariant = {
   }
 }
 
-const CallPolice = () => {
+const Suggestion = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
-  const { friendInfoContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -65,7 +63,7 @@ const CallPolice = () => {
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('PoliceCame')
+    changeCurrentPageContext('End')
   }
 
   const changeToScene2 = () => {
@@ -113,7 +111,7 @@ const CallPolice = () => {
                   animate="show"
                   exit="exit"
                   onAnimationComplete={ () => nextScene = 'scene2' }
-                >แต่กลับพบว่า<br />{friendInfoContext.name} ตัวเย็นเฉียบ<br />หน้าซีด และไม่หายใจ</motion.p>
+                >หากพบอาการเหล่านี้<br />ให้รีบไปพบแพทย์เพื่อเช็กทันที</motion.p>
               }
               {
                 !isWindowSmall && showScene1
@@ -140,7 +138,7 @@ const CallPolice = () => {
                   animate="show"
                   exit="exit"
                   onAnimationComplete={ () => nextScene = 'scene3' }
-                >{friendInfoContext.name}<br />"เสียชีวิต"</motion.p>
+                >แต่ถ้าไม่มีอาการ<br /><span className="text-story--bigger">คุณยังโชคดี</span></motion.p>
               }
               {
                 !isWindowSmall && showScene2
@@ -165,22 +163,18 @@ const CallPolice = () => {
                   initial="hidden"
                   animate="show"
                 >
-                  คุณตกใจมาก โวยวายเสียงดัง!<br />แล้วรีบหยิบมือถือ โทรแจ้งตำรวจทันที
+                  และควรดูแลตัวเองต่อไป<br />ให้ห่างไกล <span className="text-story--bigger">”ฆาตกร"</span> <br className="sm-show" />ที่ทำให้เป็นโรคเบาหวาน
                 </motion.p>
             }
             {
               showScene3
               &&  <motion.div className="box-story__button"
+                    key="buttonNextScene2"
                     variants={buttonVariant}
                     initial="hidden"
                     animate="show"
                   >
-                    <button type="button" className="button-call" onClick={goToNextPage}>
-                      <span className="button-call__btn button-call__btn--wave-out"></span>
-                      <span className="button-call__btn button-call__btn--wave-in"></span>
-                      <span className="button-call__btn button-call__btn--body"></span>
-                      <span className="button-call__btn button-call__btn--touch"></span>
-                    </button>
+                    <ButtonNext onClick={goToNextPage} />
                   </motion.div>
             }
           </div>
@@ -190,5 +184,5 @@ const CallPolice = () => {
   )
 }
 
-export default CallPolice
+export default Suggestion
 

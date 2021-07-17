@@ -1,0 +1,78 @@
+.causes-of-diabetes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  &__text {
+    text-align: center;
+  }
+
+  &__list {
+    margin-top: 30px;
+
+    @include md-up {
+      margin-top: 3.802vw;
+    }
+  }
+}
+
+.list-causes-of-diabetes {
+  display: flex;
+  width: 1420px;
+  max-width: 1420px;
+
+  @media only screen and (max-width: 1420px) {
+    width: 100vw;
+    padding: 0 30px;
+  }
+
+  @include md-down {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+  }
+
+  &__item {
+    @include md-down {
+      display: flex;
+      justify-content: center;
+      width: 160px;
+      margin-bottom: 20px;
+    }
+
+    @include md-up {
+      flex-grow: 1;
+      padding: 0 8%;
+    }
+  }
+
+  &__image {
+    width: 120px;
+
+    @include md-up {
+      width: 100%;
+    }
+  }
+
+  &__image > img {
+    width: 100%;
+  }
+
+  &__text {
+    margin-top: 20px;
+    font-size: 1.8rem;
+    font-weight: 200;
+    line-height: 1.7;
+    text-align: center;
+
+    @include md-down {
+      white-space: nowrap;
+    }
+
+    @include md-up {
+      font-size: 1.823vw;
+    }
+  }
+}
