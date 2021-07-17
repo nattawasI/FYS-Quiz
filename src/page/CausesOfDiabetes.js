@@ -7,6 +7,9 @@ import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
+import ImgHabit from '../image/page/causes-of-diabetes/img-habit.svg'
+import ImgDna from '../image/page/causes-of-diabetes/img-dna.svg'
+import ImgHabitDna from '../image/page/causes-of-diabetes/img-habit-dna.svg'
 
 // motion Variant
 const sceneVariant = {
@@ -101,7 +104,7 @@ const Suggestion = () => {
                   animate="show"
                   exit="exit"
                   onAnimationComplete={ () => nextScene = 'scene2' }
-                >คุณรู้ไหม<br /><span className="text-story--bigger">"โรคเบาหวาน"</span> เกิดจากอะไร?</motion.p>
+                >คุณรู้ไหม<br /><span className="text-story--bigger">"โรคเบาหวาน"</span> <br className="sm-show" />เกิดจากอะไร?</motion.p>
               }
               {
                 !isWindowSmall && showScene1
@@ -118,35 +121,58 @@ const Suggestion = () => {
             </AnimatePresence>
           </div>
           <div className="box-story scene-animate__scene scene-animate__scene--2">
-            <AnimatePresence>
-              {
-                showScene2
-                && <motion.div className="box-story__text"
-                    key="scene2"
-                    variants={sceneVariant}
-                    initial="hidden"
-                    animate="show"
-                    exit="exit"
-                  >
-                    <p className="text-story">เกิดจาก</p>
-                  </motion.div>
-              }
-              {
-                !isWindowSmall && showScene2
-                && <motion.div className="box-story__button"
-                    key="buttonNextScene2"
-                    variants={buttonVariant}
-                    initial="hidden"
-                    animate="show"
-                    exit="exit"
-                  >
-                    <ButtonNext onClick={goToNextPage} />
-                  </motion.div>
-              }
-            </AnimatePresence>
+            {
+              showScene2
+              && <motion.div className="box-story__text causes-of-diabetes"
+                  key="scene2"
+                  variants={sceneVariant}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                >
+                  <p className="text-story causes-of-diabetes__text">เกิดจาก</p>
+                  <ul className="causes-of-diabetes__list list-causes-of-diabetes">
+                    <li className="list-causes-of-diabetes__item">
+                      <div className="list-causes-of-diabetes__card">
+                        <figure className="list-causes-of-diabetes__image">
+                          <img src={ImgHabit} alt="พฤติกรรมการใช้ชีวิตประจำวัน" />
+                          <figcaption className="list-causes-of-diabetes__text">พฤติกรรม<br />การใช้ชีวิตประจำวัน</figcaption>
+                        </figure>
+                      </div>
+                    </li>
+                    <li className="list-causes-of-diabetes__item">
+                      <div className="list-causes-of-diabetes__card">
+                        <figure className="list-causes-of-diabetes__image">
+                          <img src={ImgDna} alt="พันธุกรรม" />
+                          <figcaption className="list-causes-of-diabetes__text">พันธุกรรม</figcaption>
+                        </figure>
+                      </div>
+                    </li>
+                    <li className="list-causes-of-diabetes__item">
+                      <div className="list-causes-of-diabetes__card">
+                        <figure className="list-causes-of-diabetes__image">
+                          <img src={ImgHabitDna} alt="เป็นได้ทั้ง 2 อย่าง" />
+                          <figcaption className="list-causes-of-diabetes__text">เป็นได้ทั้ง 2 อย่าง</figcaption>
+                        </figure>
+                      </div>
+                    </li>
+                  </ul>
+                </motion.div>
+            }
           </div>
         </div>
       </Content>
+      {
+        !isWindowSmall && showScene2
+        && <motion.div className="button-fixed-right-bottom"
+            key="buttonNextScene2"
+            variants={buttonVariant}
+            initial="hidden"
+            animate="show"
+          >
+            <ButtonNext onClick={goToNextPage} />
+          </motion.div>
+      }
     </motion.div>
   )
 }

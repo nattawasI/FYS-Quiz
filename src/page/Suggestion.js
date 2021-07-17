@@ -173,7 +173,6 @@ const Suggestion = () => {
                     variants={buttonVariant}
                     initial="hidden"
                     animate="show"
-                    exit="exit"
                   >
                     <ButtonNext onClick={goToNextPage} />
                   </motion.div>
