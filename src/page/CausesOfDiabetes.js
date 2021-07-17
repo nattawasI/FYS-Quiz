@@ -22,15 +22,15 @@ const sceneVariant = {
     y: 0,
     transition: {
       ease: 'easeInOut',
-      delay: 0.5,
+      delay: 1,
       duration: 1
     },
   },
   exit: {
-    y: -100,
     opacity: 0,
     transition: {
       type: 'tween',
+      duration: 1
     }
   }
 }
@@ -51,6 +51,7 @@ const buttonVariant = {
     opacity: 0,
     transition: {
       type: 'tween',
+      duration: 1
     }
   }
 }
