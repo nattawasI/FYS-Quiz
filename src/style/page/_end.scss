@@ -1,0 +1,104 @@
+.end {
+  background-color: $blue;
+
+  &__container {
+    height: 100%;
+  }
+
+  &__coffee {
+    position: absolute;
+    top: 9.6059%;
+    left: 5.3333%;
+    z-index: 10;
+
+    @include md-down {
+      width: 41.6%;
+    }
+
+    @include md-up {
+      top: -22.7777%;
+      left: 25.8333%;
+    }
+  }
+
+  &__ribbon-top {
+    position: absolute;
+    z-index: 20;
+
+    @include md-down {
+      top: -5.6650%;
+      left: 52%;
+      height: 22.9064%;
+      transform-origin: left top;
+      transform: rotate(17deg);
+    }
+
+    @include md-up {
+      top: -7.5925%;
+      right: -16.7708%;
+    }
+  }
+
+  &__ribbon-bottom {
+    position: absolute;
+    z-index: 20;
+
+    @include md-down {
+      right: -36.2666%;
+      bottom: -5.7881%;
+      height: 31.527%;
+      transform-origin: left center;
+      transform: rotate(-4deg);
+    }
+    
+    @include md-up {
+      right: -10.0520%;
+      bottom: -13.8888%;
+    }
+  }
+
+  &__person {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+
+  &__body {
+    height: 100%;
+  }
+
+  .social {
+    position: absolute;
+    // left: 35.7333%;
+    right: 27.4479%;
+    bottom: 38.9162%;
+    z-index: 40;
+    overflow: hidden;
+
+    @include md-up {
+      right: auto;
+      left: 50.5%;
+      // right: 27.4479%;
+      bottom: 31.1111%;
+      margin: 0 -1.3541vw;
+    }
+
+    &__item {
+      float: left;
+      margin: 0 6px;
+
+      @include md-up {
+        margin: 0 1.3541vw;
+      }
+    }
+
+    // &__icon {
+    //   width: 3.3333vw;
+
+    //   @include md-up {
+    //     width: 3.3333vw;
+    //   }
+    // }
+  }
+}

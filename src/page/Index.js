@@ -8,6 +8,7 @@ import WakeFriendUp from './WakeFriendUp'
 import CallPolice from './CallPolice'
 import PoliceCame from './PoliceCame'
 import Siren from './Siren'
+import End from './End'
 
 const Index = () => {
   const {currentPageContext} = useRouteStateContext()
@@ -29,6 +30,8 @@ const Index = () => {
       return <PoliceCame />
     } else if (currentPageContext === 'Siren') {
       return <Siren />
+    } else if (currentPageContext === 'End') {
+      return <End />
     } // else if (currentPageContext === 'PageName') {
     //   return <PageName />
     // } else if (currentPageContext === 'PageName') {
