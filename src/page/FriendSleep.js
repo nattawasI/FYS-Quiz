@@ -20,7 +20,7 @@ const textVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 1
+      delay: 0.5
     }
   }
 }

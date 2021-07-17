@@ -22,7 +22,7 @@ const textVariantMD = {
       duration: 2,
       ease: "easeInOut",
       times: [0, 0.5, 1],
-      delay: 1
+      delay: 0.5
     }
   },
 }
@@ -39,7 +39,7 @@ const textVariantSM = {
       duration: 2,
       ease: "easeInOut",
       times: [0, 0.4, 0.7, 1],
-      delay: 1
+      delay: 0.5
     }
   }
 }
@@ -54,9 +54,9 @@ const backgroundVariantMD = {
     scale: 1,
     opacity: 1,
     transition: {
-      delay: 2,
       duration: 1,
       ease: "easeInOut",
+      delay: 1.5,
     }
   },
 }
@@ -73,7 +73,7 @@ const backgroundVariantSM = {
       duration: 2,
       ease: "easeInOut",
       times: [0, 0.4, 0.7, 1],
-      delay: 1
+      delay: 0.5
     },
   },
 }
@@ -88,7 +88,7 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       duration: 0.7,
-      delay: 3
+      delay: 2.5
     }
   }
 }

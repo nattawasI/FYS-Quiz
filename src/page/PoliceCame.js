@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useRouteActionContext} from '../context/RouteContext'
 import {useUserStateContext} from '../context/UserContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
@@ -22,7 +23,7 @@ const bodyVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
       delay: 0.5,
     }
   }
@@ -38,7 +39,7 @@ const textVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
       delay: 0.5,
     }
   }
@@ -52,13 +53,15 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
       delay: 1.5,
     }
   }
 }
 
 const PoliceCame = () => {
+  const {changeCurrentPageContext} = useRouteActionContext()
+
   // context
   const {friendInfoContext} = useUserStateContext()
 
@@ -71,10 +74,14 @@ const PoliceCame = () => {
 
 
   // function
+  const goToNextPage = () => {
+    changeCurrentPageContext('Siren')
+  }
+
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (animateComplete) {
-        //
+        goToNextPage()
       } else {
         if (!skipAnimate) {
           setAnimateComplete(true)
@@ -155,7 +162,7 @@ const PoliceCame = () => {
             initial="hidden"
             animate="show"
           >
-            <ButtonNext to="siren" />
+            <ButtonNext onClick={goToNextPage} />
           </motion.div>
         </>
       )
