@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {AnimatePresence, motion} from 'framer-motion'
+import {AnimatePresence, motion, useAnimation} from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -185,8 +185,8 @@ const PointerHandVariant = {
     x: 0,
     y: 0,
     transition: {
-      delay: 1,
-      duration: 1,
+      delay: 0.5,
+      duration: 0.5,
       ease: 'easeInOut',
     }
   },
@@ -232,8 +232,8 @@ const SwitchVariant = {
     x: '-50%',
     y: 0,
     transition: {
-      delay: 1.5,
-      duration: 1,
+      delay: 1,
+      duration: 0.5,
       ease: 'easeInOut',
     }
   },
@@ -267,13 +267,19 @@ const TurnOnLight = () => {
   const [showScene2, setShowScene2] = useState(false);
   const [openSwitch, setOpenSwitch] = useState(false);
   const [nextScene, setNextScene] = useState(false);
+  const switchControl = useAnimation();
 
   const changeToScene2 = () => {
     setShowScene1(false)
     setShowScene2(true)
   }
 
-  const handleSwitch = () => !openSwitch && setOpenSwitch(true)
+  const handleSwitch = () => {
+    if (!openSwitch) {
+      setOpenSwitch(true)
+      switchControl.start('show')
+    }
+  }
 
   const switchOpened = () => {
     if (openSwitch) {
@@ -404,16 +410,13 @@ const TurnOnLight = () => {
                 <img className="switch__plate" src={openSwitch ? SwitchPlateLight : SwitchPlateDark} alt="switch plate" />
                 <div className="switch__button controller" onClick={handleSwitch}>
                   <div className="controller__container">
-                    {
-                      openSwitch &&
-                      <motion.div
-                        className="controller__button"
-                        variants={SwitchVariant}
-                        initial="hidden"
-                        animate="show"
-                        onAnimationComplete={switchOpened}
-                      ></motion.div>
-                    }
+                    <motion.div
+                      className="controller__button"
+                      variants={SwitchVariant}
+                      initial="hidden"
+                      animate={switchControl}
+                      onAnimationComplete={switchOpened}
+                    ></motion.div>
                   </div>
                   <AnimatePresence>
                     {

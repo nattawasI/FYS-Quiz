@@ -11,35 +11,23 @@
   &__content {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
-    height: 100%;
 
     @include md-down {
-      padding-bottom: 70%;
+      padding-top: 30%;
     }
 
     @include md-up {
+      align-items: center;
       padding-right: 50%;
+      height: 100%;
     }
   }
 
   &__text {
     position: relative;
     z-index: 50;
-    // position: absolute;
-    // top: 20%;
-    // left: 0;
-    // right: 0;
-    // bottom: 0;
-    // z-index: 50;
     text-align: center;
-
-    // @include md-up {
-    //   top: 50%;
-    //   transform: translateY(-50%);
-    //   padding-right: 50%;
-    // }
   }
 
   .hand {
@@ -132,14 +120,14 @@
   .controller {
     &__container {
       position: absolute;
-      top: calc(50% - 3px);
-      left: calc(50% - 3px);
+      top: calc(50% - 6px);
+      left: calc(50% - 6px);
       z-index: 20;
       transform: translate(-50%, -50%);
       background-color: $white;
       border-radius: 2px;
       width: 18.4210%;
-      height: 28.3333%;
+      height: 29%;
       overflow: hidden;
 
       @include md-up {
@@ -147,7 +135,7 @@
         left: calc(50% - 6px);
         border-radius: 5px;
         width: 17.4311%;
-        height: 29.8245%;
+        height: 30%;
       }
     }
 
@@ -159,10 +147,10 @@
       z-index: 20;
       background-color: $pink;
       width: 100%;
-      height: 10px;
+      height: 10%;
 
       @include md-up {
-        height: 26px;
+        height: 26%;
       }
     }
 
