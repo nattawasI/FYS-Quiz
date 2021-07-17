@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {useHistory} from 'react-router-dom'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import {useUserStateContext} from '../context/UserContext'
@@ -14,6 +13,19 @@ import ImgArmMd from '../image/page/friend-sleep/img_arm_md.svg'
 import ImgArmSm from '../image/page/friend-sleep/img_arm_sm.svg'
 
 // Motion Variants
+const friendVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 1,
+    }
+  }
+}
+
 const textVariant = {
   hidden: {
     y: 70,
@@ -25,7 +37,7 @@ const textVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 0.7,
-      delay: 0.5,
+      delay: 1,
     }
   }
 }
@@ -43,7 +55,7 @@ const armVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 1
+      delay: 1.5
     }
   }
 }
@@ -57,15 +69,14 @@ const buttonVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 3
+      delay: 3.5
     }
   }
 }
 
 const WakeFriendUp = () => {
-  const { friendInfoContext } = useUserStateContext()
+  const {friendInfoContext} = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
-  const history = useHistory()
 
   // motion variant which has dynamic
   const wakeVariant = {
@@ -87,7 +98,7 @@ const WakeFriendUp = () => {
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (animateComplete) {
-        history.push('/call-police')
+        // history.push('/call-police')
       } else {
         if (!skipAnimate) {
           setAnimateComplete(true)
@@ -98,6 +109,36 @@ const WakeFriendUp = () => {
   }
 
   // function for rendering
+  const renderFriend = () => {
+    if (isWindowSmall) {
+      return (
+        skipAnimate
+        ? <div className="friend-sleep__friend">
+            <img src={isWindowSmall ? ImgFriendSleepSm: ImgFriendSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
+          </div>
+        : <AnimatePresence>
+            <motion.div className="friend-sleep__friend"
+              variants={friendVariant}
+              initial="hidden"
+              animate="show"
+            >
+              <img src={isWindowSmall ? ImgFriendSleepSm: ImgFriendSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
+            </motion.div>
+          </AnimatePresence>
+      )
+    } else {
+      return (
+        <motion.div className="friend-sleep__friend"
+          variants={friendVariant}
+          initial="hidden"
+          animate="show"
+        >
+          <img src={isWindowSmall ? ImgFriendSleepSm: ImgFriendSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
+        </motion.div>
+      )
+    }
+  }
+
   const renderText = () => {
     if (isWindowSmall){
       return (
@@ -124,7 +165,7 @@ const WakeFriendUp = () => {
             initial="hidden"
             animate="show"
           >
-            <ButtonNext to="/call-police" />
+            <ButtonNext to="call-police" />
           </motion.div>
         </>
       )
@@ -176,31 +217,30 @@ const WakeFriendUp = () => {
   }
 
   return (
-    <>
-      <ButtonBack to="/friend-sleep" />
+    <motion.div
+      variants={containerVariant}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
+      <ButtonBack to="friend-sleep" />
       <ButtonSound />
       <Content>
-        <motion.div className="scene-panel friend-sleep"
-          variants={containerVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-          onClick={touchPanelSm}
-        >
+        <div className="scene-panel friend-sleep" onClick={touchPanelSm}>
           <div className="friend-sleep__text box-story">
             {
               renderText()
             }
           </div>
-          <div className="friend-sleep__friend">
-            <img src={isWindowSmall ? ImgFriendSleepSm: ImgFriendSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
-          </div>
+          {
+            renderFriend()
+          }
           {
             renderArm()
           }
-        </motion.div>
+        </div>
       </Content>
-    </>
+    </motion.div>
   )
 }
 

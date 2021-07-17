@@ -4,7 +4,7 @@ import Start from './Start'
 import Preface from './Preface'
 import DarkRoom from './DarkRoom'
 import FriendSleep from './FriendSleep'
-// import WakeFriendUp from './WakeFriendUp'
+import WakeFriendUp from './WakeFriendUp'
 // import CallPolice from './CallPolice'
 // import PoliceCame from './PoliceCame'
 // import Siren from './Siren'
@@ -17,7 +17,7 @@ const Index = () => {
 
   return (
     <div className="page-content">
-      <FriendSleep />
+      <WakeFriendUp />
     </div>
   )
 }

@@ -159,7 +159,7 @@ const PoliceCame = () => {
             initial="hidden"
             animate="show"
           >
-            <ButtonNext to="/siren" />
+            <ButtonNext to="siren" />
           </motion.div>
         </>
       )
