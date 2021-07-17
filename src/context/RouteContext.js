@@ -15,7 +15,6 @@ const RouteProvider = ({ children }) => {
   // state
   const [currentPageContext, setCurrentPageContext] = useState('Suggestion')
 
-
   // function
   const changeCurrentPageContext = (pageTarget) => {
     setCurrentPageContext(pageTarget)
