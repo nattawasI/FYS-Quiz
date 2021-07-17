@@ -53,7 +53,7 @@ const buttonVariant = {
   }
 }
 
-const CallPolice = () => {
+const Sugesstion = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
   const { friendInfoContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
@@ -65,7 +65,7 @@ const CallPolice = () => {
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('PoliceCame')
+    changeCurrentPageContext('End')
   }
 
   const changeToScene2 = () => {
@@ -113,7 +113,7 @@ const CallPolice = () => {
                   animate="show"
                   exit="exit"
                   onAnimationComplete={ () => nextScene = 'scene2' }
-                >แต่กลับพบว่า<br />{friendInfoContext.name} ตัวเย็นเฉียบ<br />หน้าซีด และไม่หายใจ</motion.p>
+                >หากพบอาการเหล่านี้<br />ให้รีบไปพบแพทย์เพื่อเช็กทันที</motion.p>
               }
               {
                 !isWindowSmall && showScene1
@@ -140,7 +140,7 @@ const CallPolice = () => {
                   animate="show"
                   exit="exit"
                   onAnimationComplete={ () => nextScene = 'scene3' }
-                >{friendInfoContext.name}<br />"เสียชีวิต"</motion.p>
+                >แต่ถ้าไม่มีอาการ<br /><span className="text-story--bigger"></span>คุณยังโชคดี</motion.p>
               }
               {
                 !isWindowSmall && showScene2
@@ -190,5 +190,5 @@ const CallPolice = () => {
   )
 }
 
-export default CallPolice
+export default Sugesstion
 
