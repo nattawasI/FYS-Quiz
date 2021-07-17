@@ -20,21 +20,7 @@ const textVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 0.5
-    }
-  }
-}
-
-const buttonVariant = {
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      ease: 'easeInOut',
-      duration: 2,
-      delay: 2
+      delay: 1
     }
   }
 }
@@ -50,7 +36,21 @@ const friendVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 1
+      delay: 2
+    }
+  }
+}
+
+const buttonVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 0.7,
+      delay: 3
     }
   }
 }
@@ -162,16 +162,15 @@ const FriendSleep = () => {
   }, [friendInfoContext])
 
   return (
-    <>
+    <motion.div
+      variants={containerVariant}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <ButtonSound />
       <Content>
-        <motion.div className="scene-panel friend-sleep"
-          variants={containerVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-          onClick={touchPanelSm}
-        >
+        <div className="scene-panel friend-sleep" onClick={touchPanelSm}>
           <div className="friend-sleep__text box-story">
             {
               renderText()
@@ -180,12 +179,12 @@ const FriendSleep = () => {
           {
             renderBackground()
           }
-        </motion.div>
+        </div>
       </Content>
       {
         showModal && <ModalFormFriend />
       }
-    </>
+    </motion.div>
   )
 }
 

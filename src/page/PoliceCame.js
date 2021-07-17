@@ -167,15 +167,15 @@ const PoliceCame = () => {
   }
 
   return (
-    <>
+    <motion.div
+      variants={containerVariant}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <ButtonSound />
       <Content>
-        <motion.div className="scene-panel police-came" onClick={touchPanelSm}
-          variants={containerVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-        >
+        <div className="scene-panel police-came" onClick={touchPanelSm}>
           {
             renderBody()
           }
@@ -184,9 +184,9 @@ const PoliceCame = () => {
               renderText()
             }
           </div>
-        </motion.div>
+        </div>
       </Content>
-    </>
+    </motion.div>
   )
 }
 

@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {useHistory} from 'react-router-dom'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -57,7 +56,6 @@ const buttonVariant = {
 }
 
 const Preface = () => {
-  const history = useHistory()
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -72,7 +70,7 @@ const Preface = () => {
 
   const linkToNextPage = () => {
     if (isWindowSmall && showScene2) {
-      history.push('/dark-room')
+      // 
     }
   }
 
@@ -108,7 +106,7 @@ const Preface = () => {
                         initial="hidden"
                         animate="show"
                       >
-                        <ButtonNext dark to="/dark-room" />
+                        <ButtonNext dark to="dark-room" />
                       </motion.div>
                   }
                 </motion.div>

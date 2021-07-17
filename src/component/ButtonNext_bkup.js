@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
 
 const ButtonNext = ({dark, to, onClick}) => {
   const classStyle = () => {
@@ -11,9 +12,17 @@ const ButtonNext = ({dark, to, onClick}) => {
   }
 
   return (
-    <button type="button" className={classStyle()} onClick={handleClick}>
-      ไปต่อ
-    </button>
+    <>
+      {
+        to
+        ? <Link className={classStyle()} to={to}>
+            ไปต่อ
+          </Link>
+        : <button type="button" className={classStyle()} onClick={handleClick}>
+            ไปต่อ
+          </button>
+      }
+    </>
   )
 }
 

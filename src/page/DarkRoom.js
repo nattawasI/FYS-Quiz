@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {useHistory} from 'react-router-dom'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -92,7 +91,6 @@ const buttonVariant = {
 
 const DarkRoom = () => {
   const isWindowSmall = UseWindowSmall()
-  const history = useHistory()
 
   // state
   const [skipAnimate, setSkipAnimate] = useState(false)
@@ -102,7 +100,7 @@ const DarkRoom = () => {
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (animateComplete) {
-        history.push('/friend-sleep')
+        // 
       } else {
         if (!skipAnimate) {
           setAnimateComplete(true)
@@ -185,7 +183,7 @@ const DarkRoom = () => {
               initial="hidden"
               animate="show"
             >
-              <ButtonNext to="/friend-sleep" />
+              <ButtonNext to="friend-sleep" />
             </motion.div>
           </motion.div>
         </>
@@ -194,15 +192,15 @@ const DarkRoom = () => {
   }
 
   return (
-    <>
+    <motion.div
+      variants={containerVariant}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <ButtonSound />
       <Content>
-        <motion.div className="scene-panel dark-room" onClick={touchPanelSm}
-          variants={containerVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-        >
+        <div className="scene-panel dark-room" onClick={touchPanelSm}>
           {
             renderBackground()
           }
@@ -211,9 +209,9 @@ const DarkRoom = () => {
               renderText()
             }
           </div>
-        </motion.div>
+        </div>
       </Content>
-    </>
+    </motion.div>
   )
 }
 
