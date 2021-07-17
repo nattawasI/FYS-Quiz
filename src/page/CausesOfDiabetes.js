@@ -165,7 +165,6 @@ const Suggestion = () => {
       {
         !isWindowSmall && showScene2
         && <motion.div className="button-fixed-right-bottom"
-            key="buttonNextScene2"
             variants={buttonVariant}
             initial="hidden"
             animate="show"

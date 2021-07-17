@@ -8,8 +8,9 @@ import WakeFriendUp from './WakeFriendUp'
 import CallPolice from './CallPolice'
 import PoliceCame from './PoliceCame'
 import Siren from './Siren'
-import Suggestion from './Suggestion'
+import VideoDoctor from './VideoDoctor'
 import CausesOfDiabetes from './CausesOfDiabetes'
+import Suggestion from './Suggestion'
 
 const Index = () => {
   const {currentPageContext} = useRouteStateContext()
@@ -31,6 +32,8 @@ const Index = () => {
       return <PoliceCame />
     } else if (currentPageContext === 'Siren') {
       return <Siren />
+    } else if (currentPageContext === 'VideoDoctor') {
+      return <VideoDoctor />
     } else if (currentPageContext === 'CausesOfDiabetes') {
       return <CausesOfDiabetes />
     } else if (currentPageContext === 'Suggestion') {
