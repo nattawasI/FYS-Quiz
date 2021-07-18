@@ -43,8 +43,8 @@ const formVariant = {
 }
 
 const ModalFormFriend = () => {
-  const { friendInfoContext } = useUserStateContext()
-  const { addFriendInfoContext } = useUserActionContext()
+  const {friendInfoContext} = useUserStateContext()
+  const {addFriendInfoContext} = useUserActionContext()
   const {changeCurrentPageContext} = useRouteActionContext()
 
   const inputRef = useRef(null)

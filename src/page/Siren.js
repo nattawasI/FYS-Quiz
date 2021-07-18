@@ -85,12 +85,13 @@ const Siren = () => {
     if (isWindowSmall) {
       if (animateComplete) {
         goToNextPage()
-      } else {
-        if (!skipAnimate) {
-          setAnimateComplete(true)
-          setSkipAnimate(true)
-        }
       }
+      // else {
+      //   if (!skipAnimate) {
+      //     setAnimateComplete(true)
+      //     setSkipAnimate(true)
+      //   }
+      // }
     }
   }
 
@@ -160,7 +161,7 @@ const Siren = () => {
             initial="hidden"
             animate="show"
           >
-            <ButtonNext />
+            <ButtonNext onClick={goToNextPage} />
           </motion.div>
         </motion.div>
       )
@@ -176,19 +177,14 @@ const Siren = () => {
     >
       <ButtonSound />
       <Content>
-        <motion.div className="scene-panel siren" onClick={touchPanelSm}
-          variants={containerVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-        >
+        <div className="scene-panel siren" onClick={touchPanelSm}>
           {
             renderBackground()
           }
           {
             renderText()
           }
-        </motion.div>
+        </div>
       </Content>
     </motion.div>
   )

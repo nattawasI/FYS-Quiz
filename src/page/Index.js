@@ -3,11 +3,19 @@ import {useRouteStateContext} from '../context/RouteContext'
 import Start from './Start'
 import Preface from './Preface'
 import DarkRoom from './DarkRoom'
+import TurnOnLight from './TurnOnLight'
 import FriendSleep from './FriendSleep'
 import WakeFriendUp from './WakeFriendUp'
 import CallPolice from './CallPolice'
 import PoliceCame from './PoliceCame'
 import Siren from './Siren'
+import Investigate from './Investigate'
+import VideoDoctor from './VideoDoctor'
+import CausesOfDiabetes from './CausesOfDiabetes'
+import ResultSymptoms from './ResultSymptoms'
+import Suggestion from './Suggestion'
+import DeadBody from './DeadBody'
+import Murder from './Murder'
 import End from './End'
 
 const Index = () => {
@@ -20,6 +28,8 @@ const Index = () => {
       return <Preface />
     } else if (currentPageContext === 'DarkRoom') {
       return <DarkRoom />
+    } else if (currentPageContext === 'TurnOnLight') {
+      return <TurnOnLight />
     } else if (currentPageContext === 'FriendSleep') {
       return <FriendSleep />
     } else if (currentPageContext === 'WakeFriendUp') {
@@ -30,13 +40,23 @@ const Index = () => {
       return <PoliceCame />
     } else if (currentPageContext === 'Siren') {
       return <Siren />
+    } else if (currentPageContext === 'Investigate') {
+      return <Investigate />
+    } else if (currentPageContext === 'VideoDoctor') {
+      return <VideoDoctor />
+    } else if (currentPageContext === 'CausesOfDiabetes') {
+      return <CausesOfDiabetes />
+    } else if (currentPageContext === 'ResultSymptoms') {
+      return <ResultSymptoms />
+    } else if (currentPageContext === 'Suggestion') {
+      return <Suggestion />
+    } else if (currentPageContext === 'DeadBody') {
+      return <DeadBody />
+    } else if (currentPageContext === 'Murder') {
+      return <Murder />
     } else if (currentPageContext === 'End') {
       return <End />
-    } // else if (currentPageContext === 'PageName') {
-    //   return <PageName />
-    // } else if (currentPageContext === 'PageName') {
-    //   return <PageName />
-    // }
+    } 
   }
 
   return (

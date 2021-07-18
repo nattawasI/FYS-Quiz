@@ -1,0 +1,65 @@
+.investigate {
+  position: absolute;
+  top: 35vw;
+  left: 0;
+  right: 0;
+  height: 100vh;
+
+  @media only screen and (min-width: 768px) {
+    top: 15vw;
+  }
+
+  @include md-up {
+    top: 2.083vw;
+  }
+
+  &__police {
+    position: relative;
+    bottom: -2px;
+    display: flex;
+    justify-content: center;
+    height: 35%;
+
+    @media only screen and (min-width: 768px) {
+      height: 45%;
+    }
+
+    @include md-up {
+      height: 64%;
+    }
+
+    > img {
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  &__photo {
+    text-align: center;
+
+    @media only screen and (max-width: 1024px) {
+      height: 16%;
+    }
+
+    @media only screen and (max-width: 768px) {
+      height: 12%;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      transform: translateY(-22%);
+    }
+
+    > img {
+      @include md-down {
+        height: 100%;
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    height: 1000px;
+    background-color: $blue;
+  }
+}

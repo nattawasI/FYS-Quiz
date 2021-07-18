@@ -13,6 +13,8 @@ const Content = ({ children, bgColor }) => {
   const classStyle = () => {
     if (bgColor === 'white') {
       return 'content content--light'
+    } else if (bgColor === 'blue') {
+      return 'content content--blue'
     } else {
       return 'content'
     }
