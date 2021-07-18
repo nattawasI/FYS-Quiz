@@ -1,16 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="739" viewBox="0 0 1920 739">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2500" height="696" viewBox="0 0 2500 696">
   <defs>
     <clipPath id="clip-path">
-      <rect id="Rectangle_180" data-name="Rectangle 180" width="1920" height="739" fill="none"/>
+      <rect id="Rectangle_182" data-name="Rectangle 182" width="2500" height="696" transform="translate(-290 40)" fill="none"/>
     </clipPath>
   </defs>
-  <g id="Mask_Group_10" data-name="Mask Group 10" clip-path="url(#clip-path)">
-    <g id="Group_332" data-name="Group 332" transform="translate(0 -114.516)">
+  <g id="Mask_Group_11" data-name="Mask Group 11" transform="translate(290 -40)" clip-path="url(#clip-path)">
+    <g id="Group_332" data-name="Group 332" transform="translate(0 -114.517)">
       <g id="Chair" transform="translate(-2629.911 0.196)">
         <path id="Path_921" data-name="Path 921" d="M3903.439,717.235s-14.392-12.858-42.279-16.589-132.238-10.483-263.9-10.483-209.887,1.081-245.28,7.165-56.67,19.907-56.67,19.907c-12.15-19.907,4.495-94.3,8.771-117.842,0,0,21.45-119.591,25.45-140.452s15.7-33.709,61.142-39.73,71.062-6.434,211.4-6.434,202.507,2.83,222.255,6.19,38.773,19.781,44.613,48.709c5.712,28.26,22.449,126.746,23.231,131.346.011.064.011.117.022.17,2.036,12.423,12.6,64.746,14.84,86.307S3903.439,717.235,3903.439,717.235Z" fill="#f49d29"/>
         <path id="Path_922" data-name="Path 922" d="M3318.615,518.654c12.118-10.376,17.484-23.256,19.273-27.55s20.394-3.4,20.394-3.4l29.338-27.37,11.091-56.887,397.443-3.22-16.4,23.04s40.134,34.646,48.451,53.984,19.289,32.888,35.032,53.066,38.64,34.688,38.64,34.688l19.078,139.014-461.116,63.214-206.869-58.993Z"/>
       </g>
-      <path id="Path_923" data-name="Path 923" d="M2611.96,574.914s309.863,148.242,978.654,148.242c697.07,0,978.655-148.242,978.655-148.242v621.833H2611.96Z" transform="translate(-2629.911 6.64)" fill="#155aa7"/>
+      <path id="Path_923" data-name="Path 923" d="M2611.96,574.914s395.777,198.792,1250,198.792c890.342,0,1250-198.792,1250-198.792V1408.79h-2500Z" transform="translate(-2901.959 -44.982)" fill="#155aa7"/>
       <g id="Officer" transform="translate(-2629.911 0.196)">
         <g id="Group_308" data-name="Group 308">
           <path id="Path_924" data-name="Path 924" d="M3526.285,340.817l1.606,38.948,52.531,42.817h9.054l50.854-45.138,2.945-44.365Z" fill="#f9cfcc"/>
