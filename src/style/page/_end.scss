@@ -71,17 +71,18 @@
   .social {
     position: absolute;
     // left: 35.7333%;
-    right: 27.4479%;
+    right: 23.2%;
     bottom: 38.9162%;
     z-index: 40;
     overflow: hidden;
+    transform: translateX(25%);
 
     @include md-up {
-      right: auto;
-      left: 50.5%;
+      right: 27.4479%;
+      // left: 50.5%;
       // right: 27.4479%;
       bottom: 31.1111%;
-      margin: 0 -1.3541vw;
+      margin: 0 -1.3541%;
     }
 
     &__item {
@@ -89,7 +90,7 @@
       margin: 0 6px;
 
       @include md-up {
-        margin: 0 1.3541vw;
+        margin: 0 1.3541%;
       }
     }
 

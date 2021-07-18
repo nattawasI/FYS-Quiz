@@ -24,7 +24,7 @@ const personVariant = {
     opacity: 1,
     transition: {
       delay: 0.5,
-      duration: 1,
+      duration: 0.5,
       ease: 'easeInOut',
     }
   },
@@ -39,8 +39,8 @@ const RibbonTopVariant = {
     y: 0,
     opacity: 1,
     transition: {
-      delay: 1.5,
-      duration: 1,
+      delay: 1,
+      duration: 0.5,
       ease: 'easeInOut',
     }
   },
@@ -55,8 +55,8 @@ const RibbonBottomVariant = {
     y: 0,
     opacity: 1,
     transition: {
-      delay: 1.5,
-      duration: 1,
+      delay: 1,
+      duration: 0.5,
       ease: 'easeInOut',
     }
   },
@@ -71,8 +71,8 @@ const CoffeeVariant = {
     y: 0,
     opacity: 1,
     transition: {
-      delay: 1.5,
-      duration: 1,
+      delay: 1,
+      duration: 0.5,
       ease: 'easeInOut',
     }
   },
