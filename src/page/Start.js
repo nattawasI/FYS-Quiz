@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -28,7 +28,12 @@ const ribbonVariant = {
 }
 
 const Start = () => {
+  const {changeCurrentPageContext} = useRouteActionContext()
   const isWindowSmall = UseWindowSmall()
+
+  const goToNextPage = () => {
+    changeCurrentPageContext('Preface')
+  }
 
   return (
     <motion.div
@@ -58,9 +63,9 @@ const Start = () => {
             <h1 className="start-content__heading-title start-content__title">
               <img src={ImgTitle} alt="ฆาตกรบนโต๊ะอาหาร" />
             </h1>
-            <Link to="/preface" className="start-content__heading-button start-content__button">
+            <button type="button" className="start-content__heading-button start-content__button" onClick={goToNextPage}>
               <span className="start-content__button-text">เริ่ม</span>
-            </Link>
+            </button>
           </div>
           <div className="start-content__human">
             <img src={isWindowSmall ? ImgHumanSleepSm: ImgHumanSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />

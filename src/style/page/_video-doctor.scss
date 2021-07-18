@@ -1,0 +1,23 @@
+.video-doctor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+
+  @include md-up {
+    padding: 0 30px;
+  }
+}
+
+.video-box {
+  width: 100%;
+
+  @include md-up {
+    width: 72.917vw;
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+  }
+}

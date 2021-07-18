@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {useHistory} from 'react-router-dom'
-import {motion} from 'framer-motion'
+import {useRouteActionContext} from '../context/RouteContext'
+import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -8,6 +8,36 @@ import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
 
 // Motion Variants
+const textVariant = {
+  hidden: {
+    opacity: 0,
+    y: 90
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.7,
+      delay: 0.5,
+    }
+  },
+}
+
+const boxTextVariant = {
+  hidden: {
+    y: 0
+  },
+  show: {
+    y: -170,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.7,
+      delay: 1.5,
+    }
+  },
+}
+
 const bgVariant = {
   hidden: {
     opacity: 0
@@ -16,24 +46,8 @@ const bgVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      delay: 0.5,
-      duration: 2
-    }
-  }
-}
-
-const textVariant = {
-  hidden: {
-    opacity: 0,
-    y: 50
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ease: "easeInOut",
-      delay: 0.5,
-      duration: 1
+      duration: 0.7,
+      delay: 1.5,
     }
   }
 }
@@ -46,15 +60,14 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      delay: 1.5,
-      duration: 1
+      duration: 0.7,
+      delay: 2.5,
     }
   }
 }
 
 const Siren = () => {
-  // router
-  const history = useHistory()
+  const {changeCurrentPageContext} = useRouteActionContext()
 
   // utilityhook
   const isWindowSmall = UseWindowSmall()
@@ -64,16 +77,21 @@ const Siren = () => {
   const [animateComplete, setAnimateComplete] = useState(false)
 
   // function
+  const goToNextPage = () => {
+    changeCurrentPageContext('Investigate')
+  }
+
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (animateComplete) {
-        history.push('/siren')
-      } else {
-        if (!skipAnimate) {
-          setAnimateComplete(true)
-          setSkipAnimate(true)
-        }
+        goToNextPage()
       }
+      // else {
+      //   if (!skipAnimate) {
+      //     setAnimateComplete(true)
+      //     setSkipAnimate(true)
+      //   }
+      // }
     }
   }
 
@@ -87,6 +105,7 @@ const Siren = () => {
             variants={bgVariant}
             initial="hidden"
             animate="show"
+            onAnimationComplete={ () => setAnimateComplete(true) }
           ></motion.div>
       )
     } else {
@@ -104,21 +123,32 @@ const Siren = () => {
     if (isWindowSmall) {
       return (
         skipAnimate
-        ? <p className="box-story__text text-story">
-            ตอนนี้ คุณตกเป็นผู้ต้องสงสัย<br />ในคดีการตายของเพื่อนสนิท
-          </p>
-        : <motion.p className="box-story__text text-story"
-            variants={textVariant}
-            initial="hidden"
-            animate="show"
-            onAnimationComplete={ () => setAnimateComplete(true) }
-          >
-            ตอนนี้ คุณตกเป็นผู้ต้องสงสัย<br />ในคดีการตายของเพื่อนสนิท
-          </motion.p>
+        ? <div className="siren__content siren__content--static box-story">
+            <p className="box-story__text text-story">ตอนนี้ คุณตกเป็นผู้ต้องสงสัย<br />ในคดีการตายของเพื่อนสนิท</p>
+          </div>
+        : <AnimatePresence>
+            <motion.div className="siren__content box-story"
+              variants={boxTextVariant}
+              initial="hidden"
+              animate="show"
+            >
+              <motion.p className="box-story__text text-story"
+                variants={textVariant}
+                initial="hidden"
+                animate="show"
+              >
+                ตอนนี้ คุณตกเป็นผู้ต้องสงสัย<br />ในคดีการตายของเพื่อนสนิท
+              </motion.p>
+            </motion.div>
+          </AnimatePresence>
       )
     } else {
       return (
-        <>
+        <motion.div className="siren__content box-story"
+          variants={boxTextVariant}
+          initial="hidden"
+          animate="show"
+        >
           <motion.p className="box-story__text text-story"
             variants={textVariant}
             initial="hidden"
@@ -131,34 +161,32 @@ const Siren = () => {
             initial="hidden"
             animate="show"
           >
-            <ButtonNext />
+            <ButtonNext onClick={goToNextPage} />
           </motion.div>
-        </>
+        </motion.div>
       )
     }
   }
 
   return (
-    <>
+    <motion.div
+      variants={containerVariant}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <ButtonSound />
       <Content>
-        <motion.div className="scene-panel siren" onClick={touchPanelSm}
-          variants={containerVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-        >
+        <div className="scene-panel siren" onClick={touchPanelSm}>
           {
             renderBackground()
           }
-          <div className="siren__content box-story">
-            {
-              renderText()
-            }
-          </div>
-        </motion.div>
+          {
+            renderText()
+          }
+        </div>
       </Content>
-    </>
+    </motion.div>
   )
 }
 

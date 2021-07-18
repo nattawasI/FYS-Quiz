@@ -28,11 +28,13 @@
   &__content {
     position: relative;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    @include md-down {
-      position: relative;
-      top: 16vh;
-    }
+  &__content--static {
+    transform: translateY(-170px);
   }
 }
 

@@ -13,21 +13,6 @@ import ImgFriendSleepSm from '../image/page/friend-sleep/img_friend_sleep_sm.svg
 // Motion Variants
 const textVariant = {
   hidden: {
-    y: 70,
-    opacity: 0,
-  },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      ease: 'easeInOut',
-      duration: 1
-    }
-  }
-}
-
-const buttonVariant = {
-  hidden: {
     opacity: 0,
   },
   show: {
@@ -35,7 +20,7 @@ const buttonVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 2
+      delay: 0.5
     }
   }
 }
@@ -51,7 +36,21 @@ const friendVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 1
+      delay: 1.5
+    }
+  }
+}
+
+const buttonVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 0.7,
+      delay: 2
     }
   }
 }
@@ -60,10 +59,12 @@ const FriendSleep = () => {
   const { friendInfoContext } = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
 
-  const [showModal, setShowModal] = useState(false)
+  // state
   const [skipAnimate, setSkipAnimate] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
+  // function
   const openModalFormFriend = () => {
     setShowModal(true)
   }
@@ -72,12 +73,13 @@ const FriendSleep = () => {
     if (isWindowSmall) {
       if (animateComplete) {
         openModalFormFriend()
-      } else {
-        if (!skipAnimate) {
-          setAnimateComplete(true)
-          setSkipAnimate(true)
-        }
       }
+      // else {
+      //   if (!skipAnimate) {
+      //     setAnimateComplete(true)
+      //     setSkipAnimate(true)
+      //   }
+      // }
     }
   }
 
@@ -161,16 +163,15 @@ const FriendSleep = () => {
   }, [friendInfoContext])
 
   return (
-    <>
+    <motion.div
+      variants={containerVariant}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <ButtonSound />
       <Content>
-        <motion.div className="scene-panel friend-sleep"
-          variants={containerVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-          onClick={touchPanelSm}
-        >
+        <div className="scene-panel friend-sleep" onClick={touchPanelSm}>
           <div className="friend-sleep__text box-story">
             {
               renderText()
@@ -179,12 +180,12 @@ const FriendSleep = () => {
           {
             renderBackground()
           }
-        </motion.div>
+        </div>
       </Content>
       {
         showModal && <ModalFormFriend />
       }
-    </>
+    </motion.div>
   )
 }
 

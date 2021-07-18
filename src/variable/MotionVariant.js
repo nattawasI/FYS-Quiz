@@ -7,14 +7,14 @@ export const containerVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 0.5
+      duration: 1
     }
   },
   exit: {
     opacity: 0,
     transition: {
       ease: 'easeInOut',
-      duration: 0.5
+      duration: 1
     }
   }
 }

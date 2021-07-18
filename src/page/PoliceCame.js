@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import {useRouteActionContext} from '../context/RouteContext'
 import {useUserStateContext} from '../context/UserContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
@@ -23,8 +23,8 @@ const bodyVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.5,
-      delay: 0.7,
+      duration: 1,
+      delay: 0.5,
     }
   }
 }
@@ -39,8 +39,8 @@ const textVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.5,
-      delay: 0.7,
+      duration: 1,
+      delay: 0.5,
     }
   }
 }
@@ -53,15 +53,14 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.5,
-      delay: 1.2,
+      duration: 1,
+      delay: 1.5,
     }
   }
 }
 
 const PoliceCame = () => {
-  // router
-  const history = useHistory()
+  const {changeCurrentPageContext} = useRouteActionContext()
 
   // context
   const {friendInfoContext} = useUserStateContext()
@@ -75,16 +74,21 @@ const PoliceCame = () => {
 
 
   // function
+  const goToNextPage = () => {
+    changeCurrentPageContext('Siren')
+  }
+
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (animateComplete) {
-        history.push('/siren')
-      } else {
-        if (!skipAnimate) {
-          setAnimateComplete(true)
-          setSkipAnimate(true)
-        }
+        goToNextPage()
       }
+      // else {
+      //   if (!skipAnimate) {
+      //     setAnimateComplete(true)
+      //     setSkipAnimate(true)
+      //   }
+      // }
     }
   }
 
@@ -159,7 +163,7 @@ const PoliceCame = () => {
             initial="hidden"
             animate="show"
           >
-            <ButtonNext to="/siren" />
+            <ButtonNext onClick={goToNextPage} />
           </motion.div>
         </>
       )
@@ -167,15 +171,15 @@ const PoliceCame = () => {
   }
 
   return (
-    <>
+    <motion.div
+      variants={containerVariant}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <ButtonSound />
       <Content>
-        <motion.div className="scene-panel police-came" onClick={touchPanelSm}
-          variants={containerVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-        >
+        <div className="scene-panel police-came" onClick={touchPanelSm}>
           {
             renderBody()
           }
@@ -184,9 +188,9 @@ const PoliceCame = () => {
               renderText()
             }
           </div>
-        </motion.div>
+        </div>
       </Content>
-    </>
+    </motion.div>
   )
 }
 

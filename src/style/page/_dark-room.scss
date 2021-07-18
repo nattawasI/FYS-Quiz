@@ -20,7 +20,11 @@
     @include md-up() {
       bottom: 0;
       left: 50%;
+      width: 100%;
+      height: auto;
       transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
     }
   }
 
@@ -64,7 +68,7 @@
 
   &__text--static {
     position: relative;
-    top: -29%;
+    transform: translateY(-200px);
   }
 
   &__button {
