@@ -150,24 +150,24 @@ const CausesOfDiabetes = () => {
                         <div className="list-causes-of-diabetes__card">
                           <figure className="list-causes-of-diabetes__image">
                             <img src={ImgHabit} alt="พฤติกรรมการใช้ชีวิตประจำวัน" />
-                            <figcaption className="list-causes-of-diabetes__text">พฤติกรรม<br />การใช้ชีวิตประจำวัน</figcaption>
                           </figure>
+                          <div className="list-causes-of-diabetes__text">พฤติกรรม<br />การใช้ชีวิตประจำวัน</div>
                         </div>
                       </li>
                       <li className="list-causes-of-diabetes__item">
                         <div className="list-causes-of-diabetes__card">
                           <figure className="list-causes-of-diabetes__image">
                             <img src={ImgDna} alt="พันธุกรรม" />
-                            <figcaption className="list-causes-of-diabetes__text">พันธุกรรม</figcaption>
                           </figure>
+                          <div className="list-causes-of-diabetes__text">พันธุกรรม</div>
                         </div>
                       </li>
                       <li className="list-causes-of-diabetes__item">
                         <div className="list-causes-of-diabetes__card">
                           <figure className="list-causes-of-diabetes__image">
                             <img src={ImgHabitDna} alt="เป็นได้ทั้ง 2 อย่าง" />
-                            <figcaption className="list-causes-of-diabetes__text">เป็นได้ทั้ง 2 อย่าง</figcaption>
                           </figure>
+                          <div className="list-causes-of-diabetes__text">เป็นได้ทั้ง 2 อย่าง</div>
                         </div>
                       </li>
                     </ul>

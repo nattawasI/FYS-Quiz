@@ -1,0 +1,129 @@
+.risk-symptoms {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 16.495vw;
+
+  @include md-up {
+    padding-top: 100px;
+  }
+
+  &__title {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  &__list {
+    position: relative;
+    z-index: 1;
+    margin-top: 4.498vw;
+
+    @include md-up {
+      margin-top: 60px;
+    }
+  }
+
+  &__curve {
+    position: absolute;
+    top: 135px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: $black;
+
+    @include md-up {
+      top: 190px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -89px;
+      left: 0;
+      width: 100%;
+      height: 90px;
+      background-image: url('../../image/page/result-symptoms/bg_curve.svg');
+      background-size: 1024px  auto;
+      background-position: center top;
+      background-repeat: no-repeat;
+
+      @include md-up {
+        top: -125px;
+        height: 126px;
+        background-size: 1920px auto;
+      }
+    }
+  }
+}
+
+.list-risk-symptoms {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  @media only screen and (min-width: 1200px) {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+
+    @include md-down {
+      width: 50%;
+    }
+
+    @media only screen and (max-width: 768px) {
+      &:not(:nth-child(-n + 2)) {
+        margin-top: 30px;
+      }
+    }
+
+    @media only screen and (min-width: 769px) {
+      width: 33.33%;
+
+      &:not(:nth-child(-n + 3)) {
+        margin-top: 145px;
+      }
+    }
+  }
+
+  &__image {
+    width: 96px;
+    margin: 0 auto;
+
+    @media only screen and (min-width: 769px) {
+      width: 125px;
+    }
+
+    @media only screen and (min-width: 769px) {
+      width: 175px;
+    }
+  }
+
+  &__image > img {
+    width: 100%;
+  }
+
+  &__text {
+    margin-top: 10px;
+    font-size: 1.8rem;
+    font-weight: 200;
+    line-height: 1.7;
+    text-align: center;
+
+    @include md-down {
+      white-space: nowrap;
+    }
+
+    @include md-up {
+      font-size: 1.823vw;
+    }
+  }
+}
