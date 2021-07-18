@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
-import {motion, AnimatePresence} from 'framer-motion'
+import {useRouteActionContext} from '../context/RouteContext'
+import {motion, AnimateSharedLayout} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
-import ButtonSound from '../component/ButtonSound'
 import Content from '../layout/Content'
+import ButtonSound from '../component/ButtonSound'
 import Facebook from '../image/page/end/ico_facebook.svg'
 import Line from '../image/page/end/ico_line.svg'
 import Shared from '../image/page/end/ico_shared.svg'
@@ -79,7 +80,34 @@ const CoffeeVariant = {
 }
 
 const End = () => {
+  // route context
+  const {changeCurrentPageContext} = useRouteActionContext()
+
+  // utility hook
   const isWindowSmall = UseWindowSmall()
+
+  // state
+  const [skipAnimate, setSkipAnimate] = useState(false)
+  const [animateComplete, setAnimateComplete] = useState(false)
+
+  // function
+  const goToNextPage = () => {
+    changeCurrentPageContext('PageName')
+  }
+
+  const touchPanelSm = () => {
+    if (isWindowSmall) {
+      if (animateComplete) {
+        goToNextPage()
+      } else {
+        if (!skipAnimate) {
+          setAnimateComplete(true)
+          setSkipAnimate(true)
+        }
+      }
+    }
+  }
+
   const Socials = [
     {
       icon: Shared,
@@ -108,7 +136,7 @@ const End = () => {
     >
       <ButtonSound />
       <Content>
-        <div className="scene-panel end">
+        <div className="scene-panel end" onClick={touchPanelSm}>
           <div className="end__container">
             <div className="end__content">
               <motion.img
@@ -144,18 +172,25 @@ const End = () => {
                 initial="hidden"
                 animate="show"
               >
-                <img  className="end__body" src={ isWindowSmall ? PersonSM : PersonMD } alt="dead body" />
-                <motion.div className="end__social social">
-                  {
-                    Socials.map((item, index) => (
-                      <motion.div key={`social-key-${index}`} className="social__item">
-                        <a className="social__link" href="#dummy">
-                          <img className="social__icon" src={item.icon} alt={item.name} />
-                        </a>
-                      </motion.div>
-                    ))
-                  }
-                </motion.div>
+                <div className="end__body">
+                  <img  className="end__body-image" src={ isWindowSmall ? PersonSM : PersonMD } alt="dead body" />
+                </div>
+                <div className="social">
+                  
+                  <AnimateSharedLayout>
+                    <motion.div className="social__list" layout>
+                      {
+                        Socials.map((item, index) => (
+                          <motion.div key={`social-key-${index}`} className="social__item">
+                            <a className="social__link" href="#dummy">
+                              <img className="social__icon" src={item.icon} alt={item.name} />
+                            </a>
+                          </motion.div>
+                        ))
+                      }
+                    </motion.div>
+                  </AnimateSharedLayout>
+                </div>
               </motion.div>
             </div>
           </div>
