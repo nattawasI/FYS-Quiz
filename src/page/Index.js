@@ -15,6 +15,7 @@ import CausesOfDiabetes from './CausesOfDiabetes'
 import ResultSymptoms from './ResultSymptoms'
 import Suggestion from './Suggestion'
 import DeadBody from './DeadBody'
+import Murder from './Murder'
 
 const Index = () => {
   const {currentPageContext} = useRouteStateContext()
@@ -50,6 +51,8 @@ const Index = () => {
       return <Suggestion />
     } else if (currentPageContext === 'DeadBody') {
       return <DeadBody />
+    } else if (currentPageContext === 'Murder') {
+      return <Murder />
     }
   }
 
