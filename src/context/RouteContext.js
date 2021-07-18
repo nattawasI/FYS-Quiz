@@ -13,7 +13,7 @@ export const useRouteActionContext = () => {
 
 const RouteProvider = ({ children }) => {
   // state
-  const [currentPageContext, setCurrentPageContext] = useState('CausesOfDiabetes')
+  const [currentPageContext, setCurrentPageContext] = useState('TurnOnLight')
 
   // function
   const changeCurrentPageContext = (pageTarget) => {

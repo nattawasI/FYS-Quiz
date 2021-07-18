@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import { AnimatePresence, motion, useAnimation } from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
+import {useRouteActionContext} from '../context/RouteContext'
+import {containerVariant} from '../variable/MotionVariant'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
@@ -134,7 +136,7 @@ const ShadeLighterVariants = {
   show: {
     scale: 1.7,
     transition: {
-      delay: 1.5,
+      delay: 0.5,
       duration: 1,
       ease: 'easeInOut',
     }
@@ -185,7 +187,7 @@ const PointerHandVariant = {
     x: 0,
     y: 0,
     transition: {
-      delay: 1,
+      delay: 0.5,
       duration: 0.5,
       ease: 'easeInOut',
     }
@@ -222,54 +224,27 @@ const SwitchPlateVariant = {
   }
 }
 
-const SwitchVariant = {
-  hidden: {
-    y: '-140%',
-    x: '-50%',
-    opacity: 1,
-  },
-  show: {
-    x: '-50%',
-    y: 0,
-    transition: {
-      delay: 1,
-      duration: 0.5,
-      ease: 'easeInOut',
-    }
-  },
-}
-
-const PulseVariant = {
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      delay: 5,
-      duration: 0.5,
-      ease: 'easeInOut',
-    }
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      duration: 1,
-      type: 'tween',
-    }
-  }
-}
-
 const TurnOnLight = () => {
-  const isWindowSmall = UseWindowSmall();
+  // route context
+  const {changeCurrentPageContext} = useRouteActionContext()
 
+  // utility hook
+  const isWindowSmall = UseWindowSmall()
+
+  // state
   const [showScene1, setShowScene1] = useState(true);
   const [showScene2, setShowScene2] = useState(false);
   const [openSwitch, setOpenSwitch] = useState(false);
   const [nextScene, setNextScene] = useState(false);
   const [skipAnimate, setSkipAnimate] = useState(false)
+  const [animateComplete, setAnimateComplete] = useState(false)
   const switchControl = useAnimation();
-  const animateComplete = false;
+  let switchBreaker = false;
+
+  // function
+  const goToNextPage = () => {
+    changeCurrentPageContext('FriendSleep')
+  }
 
   const changeToScene2 = () => {
     setShowScene1(false)
@@ -277,10 +252,14 @@ const TurnOnLight = () => {
   }
 
   const handleSwitch = () => {
-    if (!openSwitch) {
+    if (!openSwitch && switchBreaker) {
       setOpenSwitch(true)
       switchControl.start('show')
     }
+  }
+
+  const completedScene1 = () => {
+    switchBreaker = true;
   }
 
   const switchOpened = () => {
@@ -293,8 +272,52 @@ const TurnOnLight = () => {
   
   const touchPanelSm = () => {
     if (isWindowSmall) {
-      if (!skipAnimate) {
-        setSkipAnimate(true)
+      if (animateComplete) {
+        console.log(1);
+        // goToNextPage()
+      } else {
+        if (!skipAnimate) {
+          setAnimateComplete(true)
+          setSkipAnimate(true)
+        }
+      }
+    }
+  }
+
+  const SwitchVariant = {
+    hidden: {
+      y: '-140%',
+      x: '-50%',
+      opacity: 1,
+    },
+    show: {
+      x: '-50%',
+      y: 0,
+      transition: {
+        delay: skipAnimate ? 0.5 : 1,
+        duration: 0.5,
+        ease: 'easeInOut',
+      }
+    },
+  }
+
+  const PulseVariant = {
+    hidden: {
+      opacity: 0,
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        delay: skipAnimate ? 0 : 5,
+        duration: 0.5,
+        ease: 'easeInOut',
+      }
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 1,
+        type: 'tween',
       }
     }
   }
@@ -304,8 +327,7 @@ const TurnOnLight = () => {
     if (isWindowSmall) {
       return (
         skipAnimate
-        ?
-          <div className="turn-on-light__target switch">
+        ? <div className="turn-on-light__target switch">
             <img className="switch__plate" src={openSwitch ? SwitchPlateLight : SwitchPlateDark} alt="switch plate" />
             <div className="switch__button controller" onClick={handleSwitch}>
               <div className="controller__container">
@@ -317,13 +339,24 @@ const TurnOnLight = () => {
                   onAnimationComplete={switchOpened}
                 ></motion.div>
               </div>
-              <div className="pulse">
-                <img className="pulse__pointer" src={IconPointer} alt="click to open switch" />
-              </div>
+              <AnimatePresence>
+                {
+                  !openSwitch &&
+                  <motion.div
+                    className="pulse"
+                    variants={PulseVariant}
+                    initial="hidden"
+                    animate="show"
+                    exit="exit"
+                    onAnimationComplete={completedScene1}
+                  >
+                    <img className="pulse__pointer" src={IconPointer} alt="click to open switch" />
+                  </motion.div>
+                }
+              </AnimatePresence>
             </div>
           </div>
-        :
-          <motion.div
+        : <motion.div
             className="turn-on-light__target switch"
             variants={SwitchPlateVariant}
             initial="hidden"
@@ -350,6 +383,7 @@ const TurnOnLight = () => {
                     initial="hidden"
                     animate="show"
                     exit="exit"
+                    onAnimationComplete={completedScene1}
                   >
                     <img className="pulse__pointer" src={IconPointer} alt="click to open switch" />
                   </motion.div>
@@ -387,6 +421,7 @@ const TurnOnLight = () => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
+                  onAnimationComplete={completedScene1}
                 >
                   <img className="pulse__pointer" src={IconPointer} alt="click to open switch" />
                 </motion.div>
@@ -398,7 +433,7 @@ const TurnOnLight = () => {
     }
   }
 
-  const rederTest = () => {
+  const rederText = () => {
     return (
       skipAnimate
       ?
@@ -439,7 +474,7 @@ const TurnOnLight = () => {
                     animate="show"
                     exit="exit"
                   >
-                    <ButtonNext/>
+                    <ButtonNext onClick={goToNextPage}/>
                   </motion.div>
                 }
               </motion.div>
@@ -505,6 +540,7 @@ const TurnOnLight = () => {
         </div>
     )
   }
+
   const renderBackground = () => {
     return (
       skipAnimate
@@ -567,14 +603,19 @@ const TurnOnLight = () => {
   }
 
   return (
-    <>
+    <motion.div
+      variants={containerVariant}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <ButtonSound />
       <Content>
         <div className="scene-panel turn-on-light" onClick={touchPanelSm}>
           <div className={`turn-on-light__container ${ openSwitch && 'turn-on-light__container--blue' }`}>
             <div className="turn-on-light__content">
               {
-                rederTest()
+                rederText()
               }
               {
                 renderHand()
@@ -589,7 +630,7 @@ const TurnOnLight = () => {
           </div>
         </div>
       </Content>
-    </>
+    </motion.div>
   )
 }
 

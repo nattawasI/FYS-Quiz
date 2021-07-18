@@ -1,7 +1,7 @@
 .turn-on-light {
   &__container {
     height: 100%;
-    transition: background-color 0.5s ease-in-out 1.5s;
+    transition: background-color 0.5s ease-in-out 1s;
 
     &--blue {
       background-color: $blue;
@@ -53,7 +53,7 @@
 
     &__pointer {
       @include md-down {
-        left: calc(50% - 6px);
+        left: calc(50% - 12px);
         bottom: 11.0837%;
         // bottom: 13.3004%;
       }
@@ -96,8 +96,8 @@
     position: absolute;
 
     @include md-down {
-      top: calc(50% - 6px);
-      left: calc(50% + 6px);
+      top: calc(50% - 3px);
+      left: calc(50% - 3px);
       transform: translate(-50%, -50%);
       height: 17.9910%;
       width: auto;
@@ -118,8 +118,8 @@
   .controller {
     &__container {
       position: absolute;
-      top: calc(50% - 6px);
-      left: calc(50% - 6px);
+      top: calc(50% - 3px);
+      left: calc(50% - 3px);
       z-index: 20;
       transform: translate(-50%, -50%);
       background-color: $white;

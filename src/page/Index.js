@@ -3,6 +3,7 @@ import {useRouteStateContext} from '../context/RouteContext'
 import Start from './Start'
 import Preface from './Preface'
 import DarkRoom from './DarkRoom'
+import TurnOnLight from './TurnOnLight'
 import FriendSleep from './FriendSleep'
 import WakeFriendUp from './WakeFriendUp'
 import CallPolice from './CallPolice'
@@ -24,6 +25,8 @@ const Index = () => {
       return <Preface />
     } else if (currentPageContext === 'DarkRoom') {
       return <DarkRoom />
+    } else if (currentPageContext === 'TurnOnLight') {
+      return <TurnOnLight />
     } else if (currentPageContext === 'FriendSleep') {
       return <FriendSleep />
     } else if (currentPageContext === 'WakeFriendUp') {
