@@ -1,0 +1,46 @@
+.dead-body {
+  $root: '.dead-body';
+
+  &__container {
+    height: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+
+    @include md-down {
+      padding-top: 25.2463%;
+      height: auto;
+    }
+
+    @include md-up {
+      padding-right: 63.3333%;
+    }
+
+    #{$root}__text {
+      text-align: center;
+    }
+  }
+
+  &__body {
+    position: absolute;
+    left: -9.0666%;
+    bottom: -5.1724%;
+    height: 100%;
+
+    @include md-up {
+      top: -8.7037%;
+      right: 0;
+      left: auto;
+      bottom: auto;
+      height: auto;
+      // bottom: -22.2222%;
+    }
+  }
+}

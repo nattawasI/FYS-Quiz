@@ -13,6 +13,7 @@ import VideoDoctor from './VideoDoctor'
 import CausesOfDiabetes from './CausesOfDiabetes'
 import ResultSymptoms from './ResultSymptoms'
 import Suggestion from './Suggestion'
+import DeadBody from './DeadBody'
 
 const Index = () => {
   const {currentPageContext} = useRouteStateContext()
@@ -44,6 +45,8 @@ const Index = () => {
       return <ResultSymptoms />
     } else if (currentPageContext === 'Suggestion') {
       return <Suggestion />
+    } else if (currentPageContext === 'DeadBody') {
+      return <DeadBody />
     }
   }
 
