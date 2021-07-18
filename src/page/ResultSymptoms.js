@@ -14,7 +14,6 @@ import ImgTired from '../image/page/result-symptoms/img_tired.svg'
 import ImgNumb from '../image/page/result-symptoms/img_numb.svg'
 import ImgThirsty from '../image/page/result-symptoms/img_thirsty.svg'
 import ImgSlowRecovery from '../image/page/result-symptoms/img_slow_recovery.svg'
-import BgCurve from '../image/page/result-symptoms/bg_curve.svg'
 
 // motion Variant
 const sceneVariant = {
@@ -82,9 +81,8 @@ const bgRiskSymptomsVariant = {
     y: 0,
     transition: {
       ease: 'easeInOut',
-      delay: 0.7,
       duration: 1,
-      delay: 1
+      delay: 0.7
     }
   }
 }

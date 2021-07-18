@@ -60,9 +60,9 @@ const FriendSleep = () => {
   const isWindowSmall = UseWindowSmall()
 
   // state
-  const [showModal, setShowModal] = useState(false)
   const [skipAnimate, setSkipAnimate] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   // function
   const openModalFormFriend = () => {
@@ -73,12 +73,13 @@ const FriendSleep = () => {
     if (isWindowSmall) {
       if (animateComplete) {
         openModalFormFriend()
-      } else {
-        if (!skipAnimate) {
-          setAnimateComplete(true)
-          setSkipAnimate(true)
-        }
       }
+      // else {
+      //   if (!skipAnimate) {
+      //     setAnimateComplete(true)
+      //     setSkipAnimate(true)
+      //   }
+      // }
     }
   }
 
