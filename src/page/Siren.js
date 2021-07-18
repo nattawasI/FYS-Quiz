@@ -161,7 +161,7 @@ const Siren = () => {
             initial="hidden"
             animate="show"
           >
-            <ButtonNext />
+            <ButtonNext onClick={goToNextPage} />
           </motion.div>
         </motion.div>
       )
