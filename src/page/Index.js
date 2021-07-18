@@ -10,6 +10,7 @@ import PoliceCame from './PoliceCame'
 import Siren from './Siren'
 import VideoDoctor from './VideoDoctor'
 import CausesOfDiabetes from './CausesOfDiabetes'
+import ResultSymptoms from './ResultSymptoms'
 import Suggestion from './Suggestion'
 
 const Index = () => {
@@ -36,6 +37,8 @@ const Index = () => {
       return <VideoDoctor />
     } else if (currentPageContext === 'CausesOfDiabetes') {
       return <CausesOfDiabetes />
+    } else if (currentPageContext === 'ResultSymptoms') {
+      return <ResultSymptoms />
     } else if (currentPageContext === 'Suggestion') {
       return <Suggestion />
     }

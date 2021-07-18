@@ -57,7 +57,7 @@ const buttonVariant = {
   }
 }
 
-const CausesOfDiabetes = () => {
+const ResultSymptoms = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
   const isWindowSmall = UseWindowSmall()
 
@@ -217,5 +217,5 @@ const CausesOfDiabetes = () => {
   )
 }
 
-export default CausesOfDiabetes
+export default ResultSymptoms
 
