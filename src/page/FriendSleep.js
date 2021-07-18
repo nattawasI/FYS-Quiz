@@ -36,7 +36,7 @@ const friendVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 2
+      delay: 1.5
     }
   }
 }
@@ -50,7 +50,7 @@ const buttonVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 0.7,
-      delay: 3
+      delay: 2
     }
   }
 }

@@ -8,6 +8,7 @@ import WakeFriendUp from './WakeFriendUp'
 import CallPolice from './CallPolice'
 import PoliceCame from './PoliceCame'
 import Siren from './Siren'
+import Investigate from './Investigate'
 import VideoDoctor from './VideoDoctor'
 import CausesOfDiabetes from './CausesOfDiabetes'
 import ResultSymptoms from './ResultSymptoms'
@@ -33,6 +34,8 @@ const Index = () => {
       return <PoliceCame />
     } else if (currentPageContext === 'Siren') {
       return <Siren />
+    } else if (currentPageContext === 'Investigate') {
+      return <Investigate />
     } else if (currentPageContext === 'VideoDoctor') {
       return <VideoDoctor />
     } else if (currentPageContext === 'CausesOfDiabetes') {
