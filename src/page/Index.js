@@ -16,6 +16,7 @@ import ResultSymptoms from './ResultSymptoms'
 import Suggestion from './Suggestion'
 import DeadBody from './DeadBody'
 import Murder from './Murder'
+import Evidence from './Evidence'
 
 const Index = () => {
   const {currentPageContext} = useRouteStateContext()
@@ -53,6 +54,8 @@ const Index = () => {
       return <DeadBody />
     } else if (currentPageContext === 'Murder') {
       return <Murder />
+    } else if (currentPageContext === 'Evidence') {
+      return <Evidence />
     }
   }
 
