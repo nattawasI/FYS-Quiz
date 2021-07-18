@@ -1,0 +1,220 @@
+.turn-on-light {
+  &__container {
+    height: 100%;
+    transition: background-color 0.5s ease-in-out 1s;
+
+    &--blue {
+      background-color: $blue;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @include md-down {
+      padding-top: 30%;
+    }
+
+    @include md-up {
+      align-items: center;
+      padding-right: 50%;
+      height: 100%;
+    }
+  }
+
+  &__text {
+    position: relative;
+    z-index: 50;
+    text-align: center;
+  }
+
+  .hand {
+    &__normal,
+    &__pointer {
+      position: absolute;
+      left: 50%;
+      bottom: -1%;
+      z-index: 30;
+      height: 100%;
+      width: auto;
+  
+      @include md-down {
+        height: 40%;
+      }
+
+      @include md-up {
+        left: 68%;
+        bottom: -6%;
+        height: auto;
+      }
+    }
+
+    &__pointer {
+      @include md-down {
+        left: calc(50% - 12px);
+        bottom: 11.0837%;
+        // bottom: 13.3004%;
+      }
+
+      @include md-up {
+        left: 65.5%;
+        height: auto;
+      }
+    }
+
+    &__normal-image,
+    &__pointer-image {
+      @include md-down {
+        height: 100%;
+      }
+    }
+  }
+
+  .shade {
+    &__figure {
+      position: absolute;
+      top: 0;
+      left: auto;
+      right: 0;
+      bottom: 0;
+
+      @include md-up {
+        left: auto;
+      }
+    }
+
+    &__image {
+      height: 100%;
+      transform-origin: 75% 100%;
+      transform: scale(1.7);
+    }
+  }
+
+  .switch {
+    position: absolute;
+
+    @include md-down {
+      top: calc(50% - 3px);
+      left: calc(50% - 3px);
+      transform: translate(-50%, -50%);
+      height: 17.9910%;
+      width: auto;
+    }
+
+    @include md-up {
+      top: 13.1481%;
+      left: 61.7187%;
+      transform: translate(0, 0);
+    }
+
+    &__plate {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  .controller {
+    &__container {
+      position: absolute;
+      top: calc(50% - 3px);
+      left: calc(50% - 3px);
+      z-index: 20;
+      transform: translate(-50%, -50%);
+      background-color: $white;
+      border-radius: 2px;
+      width: 18.4210%;
+      height: 29%;
+      overflow: hidden;
+
+      @include md-up {
+        top: calc(50% - 6px);
+        left: calc(50% - 6px);
+        border-radius: 5px;
+        width: 17.4311%;
+        height: 30%;
+      }
+    }
+
+    &__button {
+      cursor: pointer;
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      background-color: $pink;
+      width: 100%;
+      height: 26%;
+    }
+
+  }
+  
+  .pulse {
+    cursor: pointer;
+    position: absolute;
+    top: calc(50% - 3px);
+    left: calc(50% - 3px);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+
+    @include md-up {
+      top: calc(50% - 6px);
+      left: calc(50% - 6px);
+      width: 240px;
+      height: 240px;
+    }
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.36;
+      background-color: $pink;
+      border-radius: 50%;
+    }
+
+    &::after {
+      width: 86px;
+      height: 86px;
+
+      @include md-up {
+        width: 180px;
+        height: 180px;
+      }
+    }
+
+    &::before {
+      width: 120px;
+      height: 120px;
+
+      @include md-up {
+        width: 240px;
+        height: 240px;
+      }
+    }
+
+    &__pointer {
+      position: absolute;
+      right: 20px;
+      bottom: 15px;
+      z-index: 15;
+
+      @include md-down {
+        width: 20px;
+      }
+
+      @include md-up {
+        right: 30px;
+        bottom: 30px;
+      }
+    }
+  }
+}
