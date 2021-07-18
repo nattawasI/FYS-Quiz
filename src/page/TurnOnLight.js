@@ -239,6 +239,7 @@ const TurnOnLight = () => {
   const [skipAnimate, setSkipAnimate] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
   const switchControl = useAnimation();
+  const buttonNextControl = useAnimation();
   let switchBreaker = false;
 
   // function
@@ -265,6 +266,7 @@ const TurnOnLight = () => {
   const switchOpened = () => {
     if (openSwitch) {
       setTimeout(() => {
+        buttonNextControl.start('show')
         setNextScene(true)
       }, 500)
     }
@@ -273,8 +275,7 @@ const TurnOnLight = () => {
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (animateComplete) {
-        console.log(1);
-        // goToNextPage()
+        goToNextPage()
       } else {
         if (!skipAnimate) {
           setAnimateComplete(true)
@@ -466,17 +467,14 @@ const TurnOnLight = () => {
                 exit="exit"
               >
                 เพื่อให้ห้องนี้<br/>สว่างขึ้นมากอีกครั้ง
-                {
-                  nextScene &&
-                  <motion.div
-                    variants={buttonNextVariant}
-                    initial="hidden"
-                    animate="show"
-                    exit="exit"
-                  >
-                    <ButtonNext onClick={goToNextPage}/>
-                  </motion.div>
-                }
+                <motion.div
+                  variants={buttonNextVariant}
+                  initial="hidden"
+                  animate={buttonNextControl}
+                  exit="exit"
+                >
+                  <ButtonNext onClick={goToNextPage}/>
+                </motion.div>
               </motion.div>
             }
           </AnimatePresence>
