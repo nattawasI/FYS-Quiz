@@ -1,6 +1,7 @@
 
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
+import {useUserActionContext} from '../context/UserContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -59,16 +60,27 @@ const buttonVariant = {
 
 const CausesOfDiabetes = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {addSymptomContext} = useUserActionContext()
   const isWindowSmall = UseWindowSmall()
+
+  // ref
+  const inputRef = useRef(null)
 
   // state
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
+  const [error, setError] = useState(false)
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('ResultSymptoms')
+    const inputValue = inputRef.current.value
+    if (inputValue) {
+      addSymptomContext(inputValue)
+      changeCurrentPageContext('ResultSymptoms')
+    } else {
+      setError(true)
+    }
   }
 
   const changeToScene2 = () => {
@@ -187,7 +199,11 @@ const CausesOfDiabetes = () => {
                 >
                   <p className="text-story causes-of-diabetes__text">แล้วรู้ไหม<br /><span className="text-story--bigger">"โรคเบาหวาน"</span> <br className="sm-show" />มีอาการเป็นอย่างไร?</p>
                   <div className="symptoms__input">
-                    <InputText placeholder="ถ้าไม่รู้ลองพิมพ์เดาดูก่อนก็ได้..." />
+                    <InputText
+                      ref={inputRef}
+                      placeholder="ถ้าไม่รู้ลองพิมพ์เดาดูก่อนก็ได้..."
+                      isError={error}
+                    />
                   </div>
                   {
                     showScene3

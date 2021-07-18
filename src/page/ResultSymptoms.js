@@ -1,6 +1,7 @@
 
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
+import {useUserStateContext} from '../context/UserContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -109,6 +110,7 @@ const buttonVariant = {
 }
 
 const ResultSymptoms = () => {
+  const {symptomContext} = useUserStateContext()
   const {changeCurrentPageContext} = useRouteActionContext()
   const isWindowSmall = UseWindowSmall()
 
@@ -201,7 +203,7 @@ const ResultSymptoms = () => {
                     animate="show"
                     exit="exit"
                     onAnimationComplete={ () => nextScene = 'scene3' }
-                  >"จากการให้ปากคำ"<br /><span className="text-story--bigger">คุณเองก็มีความเสี่ยง <br className="sm-show" />”โรคเบาหวาน”</span> <br />เพราะพฤติกรรมของคุณบรอน <br className="sm-show" />คล้ายกับเพื่อนสนิท</motion.p>
+                  >"จากการให้ปากคำ"<br /><span className="text-story--bigger">คุณเองก็มีความเสี่ยง <br className="sm-show" />”โรคเบาหวาน”</span> <br />เพราะพฤติกรรมของคุณ{symptomContext} <br className="sm-show" />คล้ายกับเพื่อนสนิท</motion.p>
               }
               {
                 !isWindowSmall && showScene2

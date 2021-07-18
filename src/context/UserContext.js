@@ -18,6 +18,7 @@ export const useUserActionContext = () => {
 const UserProvider = ({ children }) => {
   // state
   const [friendInfoContext, setFriendNameContext] = useState({})
+  const [symptomContext, setSymptomContext] = useState('')
 
   // key store
   // const KEY_STORAGE = 'friendInfo'
@@ -30,6 +31,10 @@ const UserProvider = ({ children }) => {
     // sessionStorage.setItem(KEY_STORAGE, JSON.stringify(friendInfo))
   }
 
+  const addSymptomContext = (symptom) => {
+    setSymptomContext(symptom)
+  }
+
   // useEffect(() => {
   //   const data = JSON.parse(sessionStorage.getItem(KEY_STORAGE))
 
@@ -40,10 +45,12 @@ const UserProvider = ({ children }) => {
 
   const userStateStore = { // use this pass to value
     friendInfoContext,
+    symptomContext,
   }
 
   const userActionStore = { // use this pass to value
     addFriendInfoContext,
+    addSymptomContext,
   }
 
   return (
