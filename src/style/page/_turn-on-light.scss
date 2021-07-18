@@ -54,7 +54,8 @@
     &__pointer {
       @include md-down {
         left: calc(50% - 12px);
-        bottom: 11.0837%;
+        bottom: calc(-13.7931% - 6px);
+        height: 64.532%;
         // bottom: 13.3004%;
       }
 

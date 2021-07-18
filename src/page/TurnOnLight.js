@@ -14,7 +14,8 @@ import SwitchPlateDark from '../image/page/turn-on-light/img_switch_01.svg';
 import SwitchPlateLight from '../image/page/turn-on-light/img_switch_02.svg';
 import IconPointer from '../image/page/turn-on-light/ico_pointer_01.svg';
 import NormalHand from '../image/page/turn-on-light/img_hand_01.svg';
-import PointerHand from '../image/page/turn-on-light/img_hand_02.svg';
+import PointerHandMD from '../image/page/turn-on-light/img_hand_02_md.svg';
+import PointerHandSM from '../image/page/turn-on-light/img_hand_02_sm.svg';
 
 const textIntro01Variant = {
   hidden: {
@@ -502,7 +503,7 @@ const TurnOnLight = () => {
                 animate="show"
                 exit="exit"
               >
-                <img className="hand__pointer-image" src={PointerHand} alt="" />
+                <img className="hand__pointer-image" src={ isWindowSmall ? PointerHandSM : PointerHandMD } alt="" />
               </motion.div>
             }
           </AnimatePresence>
@@ -531,7 +532,7 @@ const TurnOnLight = () => {
                 animate="show"
                 exit="exit"
               >
-                <img className="hand__pointer-image" src={PointerHand} alt="" />
+                <img className="hand__pointer-image" src={ isWindowSmall ? PointerHandSM : PointerHandMD } alt="" />
               </motion.div>
             }
           </AnimatePresence>
