@@ -1,7 +1,7 @@
 
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
-import {useUserStateContext} from '../context/UserContext'
+// import {useUserStateContext} from '../context/UserContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -110,7 +110,7 @@ const buttonVariant = {
 }
 
 const ResultSymptoms = () => {
-  const {symptomContext} = useUserStateContext()
+  // const {symptomContext} = useUserStateContext()
   const {changeCurrentPageContext} = useRouteActionContext()
   const isWindowSmall = UseWindowSmall()
 

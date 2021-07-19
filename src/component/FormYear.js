@@ -1,8 +1,7 @@
-import React, {useRef, useState} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {motion} from 'framer-motion'
-import { useUserStateContext, useUserActionContext } from '../context/UserContext'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
+// import UseWindowSmall from '../utilityhook/useWindowSmall'
 import ButtonNext from './ButtonNext'
 import InputText from './InputText'
 
@@ -40,7 +39,7 @@ const FormYear = ({changeScene}) => {
   // context
 
   // utility hook
-  const isWindowSmall = UseWindowSmall()
+  // const isWindowSmall = UseWindowSmall()
 
   const handleClick = () => {
     changeScene()

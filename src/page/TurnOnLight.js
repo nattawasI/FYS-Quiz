@@ -236,7 +236,7 @@ const TurnOnLight = () => {
   const [showScene1, setShowScene1] = useState(true);
   const [showScene2, setShowScene2] = useState(false);
   const [openSwitch, setOpenSwitch] = useState(false);
-  const [nextScene, setNextScene] = useState(false);
+  // const [nextScene, setNextScene] = useState(false);
   const [skipAnimate, setSkipAnimate] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
   const switchControl = useAnimation();
@@ -266,22 +266,21 @@ const TurnOnLight = () => {
     if (openSwitch) {
       setTimeout(() => {
         buttonNextControl.start('show')
-        setNextScene(true)
+        // setNextScene(true)
       }, 500)
     }
   }
-  
+
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (animateComplete) {
         goToNextPage()
+      } else {
+        if (!skipAnimate) {
+          setAnimateComplete(false)
+          setSkipAnimate(false)
+        }
       }
-      // else {
-      //   if (!skipAnimate) {
-      //     setAnimateComplete(true)
-      //     setSkipAnimate(true)
-      //   }
-      // }
     }
   }
 

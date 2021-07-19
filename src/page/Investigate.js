@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
-import { useUserStateContext, useUserActionContext } from '../context/UserContext'
+import { useUserStateContext } from '../context/UserContext'
 import {motion, AnimatePresence, useAnimation} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -47,16 +47,16 @@ const buttonVariant = {
   }
 }
 
-const photoVariant = {
-  exit: {
-    opacity: 0,
-    transition: {
-      ease: "easeInOut",
-      duration: 0.7,
-      delay: 1,
-    }
-  }
-}
+// const photoVariant = {
+//   exit: {
+//     opacity: 0,
+//     transition: {
+//       ease: "easeInOut",
+//       duration: 0.7,
+//       delay: 1,
+//     }
+//   }
+// }
 
 const contentVariant = {
   hidden: {
@@ -200,20 +200,20 @@ const Investigate = () => {
     setSceneQuiz(true)
   }
 
-  const backToSceneQuiz = () => {
-    setSceneFormYear(false)
-    setSceneQuiz(true)
-  }
+  // const backToSceneQuiz = () => {
+  //   setSceneFormYear(false)
+  //   setSceneQuiz(true)
+  // }
 
   const changeToSceneFormYear = () => {
     setSceneQuiz(false)
     setSceneFormYear(true)
   }
 
-  const backToSceneFormYear = () => {
-    setSceneActivityToday(false)
-    setSceneFormYear(true)
-  }
+  // const backToSceneFormYear = () => {
+  //   setSceneActivityToday(false)
+  //   setSceneFormYear(true)
+  // }
 
   const changeToSceneActivityToday = () => {
     setSceneFormYear(false)

@@ -1,8 +1,8 @@
 import React, {useRef, useState} from 'react'
 import PropTypes from 'prop-types'
 import {motion, AnimatePresence} from 'framer-motion'
-import { useUserStateContext, useUserActionContext } from '../context/UserContext'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
+import { useUserActionContext } from '../context/UserContext'
+// import UseWindowSmall from '../utilityhook/useWindowSmall'
 import ButtonNext from './ButtonNext'
 import InputText from './InputText'
 
@@ -42,7 +42,7 @@ const FormYourName = ({changeScene}) => {
   const {addUserNameContext} = useUserActionContext()
 
   // utility hook
-  const isWindowSmall = UseWindowSmall()
+  // const isWindowSmall = UseWindowSmall()
 
   // ref
   const inputRef = useRef(null)

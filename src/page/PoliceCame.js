@@ -82,13 +82,12 @@ const PoliceCame = () => {
     if (isWindowSmall) {
       if (animateComplete) {
         goToNextPage()
+      } else {
+        if (!skipAnimate) {
+          setAnimateComplete(true)
+          setSkipAnimate(true)
+        }
       }
-      // else {
-      //   if (!skipAnimate) {
-      //     setAnimateComplete(true)
-      //     setSkipAnimate(true)
-      //   }
-      // }
     }
   }
 

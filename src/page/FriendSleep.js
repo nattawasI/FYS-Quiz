@@ -73,13 +73,12 @@ const FriendSleep = () => {
     if (isWindowSmall) {
       if (animateComplete) {
         openModalFormFriend()
+      } else {
+        if (!skipAnimate) {
+          setAnimateComplete(false)
+          setSkipAnimate(false)
+        }
       }
-      // else {
-      //   if (!skipAnimate) {
-      //     setAnimateComplete(true)
-      //     setSkipAnimate(true)
-      //   }
-      // }
     }
   }
 
