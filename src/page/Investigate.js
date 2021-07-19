@@ -7,6 +7,7 @@ import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
 import FormYourName from '../component/FormYourName'
+import FormYear from '../component/FormYear'
 import ImgPoliceMd from '../image/page/investigate/img_police_md.svg'
 import ImgPoliceSm from '../image/page/investigate/img_police_sm.svg'
 import ImgPhotoMd from '../image/page/investigate/img_photo_md.svg'
@@ -42,7 +43,7 @@ const textVariant = {
     y: 0,
     transition: {
       ease: "easeInOut",
-      duration: 1,
+      duration: 0.7,
     }
   },
 }
@@ -61,6 +62,15 @@ const buttonVariant = {
   }
 }
 
+const contentVariant = {
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.7
+    }
+  }
+}
+
 const Investigate = () => {
   // route context
   const {changeCurrentPageContext} = useRouteActionContext()
@@ -75,6 +85,7 @@ const Investigate = () => {
   // const [skipAnimate, setSkipAnimate] = useState(false)
   // const [animateComplete, setAnimateComplete] = useState(false)
   const [animateTable, setAnimateTable] = useState(false)
+  const [scene, setScene] = useState('')
 
   // function
   const goToNextPage = () => {
@@ -104,6 +115,14 @@ const Investigate = () => {
     }
   }
 
+  const toggleA = () => {
+    if (scene === 'a') {
+      setScene('')
+    } else {
+      setScene('a')
+    }
+  }
+
   return (
     <motion.div
       variants={containerVariant}
@@ -111,7 +130,7 @@ const Investigate = () => {
       animate="show"
       exit="exit"
     >
-      <ButtonSound />
+      <ButtonSound onClick={toggleA} />
       <Content>
         <motion.div className="investigate" onClick={touchPanelSm}
           variants={panelVariant}
@@ -190,27 +209,42 @@ const Investigate = () => {
                     </motion.div>
                 }
               </div> */}
-              <div className="box-story">
-                <motion.p className="box-story__text text-story"
-                  variants={textVariant}
-                  initial="hidden"
-                  animate="show"
-                  exit="exit"
-                  // onAnimationComplete={ () => nextScene = 'scene3' }
-                >ตอนนี้เราได้ทราบ<br className="sm-show" />สาเหตุการเสียชีวิตแล้ว</motion.p>
+              <AnimatePresence>
                 {
-                  !isWindowSmall
-                  && <motion.div className="box-story__button"
-                      key="buttonNextScene1"
-                      variants={buttonVariant}
-                      initial="hidden"
-                      animate="show"
-                      exit="exit"
-                    >
-                      <ButtonNext />
-                    </motion.div>
+                  scene === 'a'
+                  && <motion.div
+                        variants={contentVariant}
+                        exit="exit"
+                      >
+                        <div className="box-story">
+                          <motion.p className="box-story__text text-story"
+                            variants={textVariant}
+                            initial="hidden"
+                            animate="show"
+                            exit="exit"
+                            // onAnimationComplete={ () => nextScene = 'scene3' }
+                          >ตอนนี้เราได้ทราบ<br className="sm-show" />สาเหตุการเสียชีวิตแล้ว</motion.p>
+                          {
+                            !isWindowSmall
+                            && <motion.div className="box-story__button"
+                                key="buttonNextScene1"
+                                variants={buttonVariant}
+                                initial="hidden"
+                                animate="show"
+                                exit="exit"
+                              >
+                                <ButtonNext />
+                              </motion.div>
+                          }
+                        </div>
+                      </motion.div>
                 }
-              </div>
+              </AnimatePresence>
+              {/* <AnimatePresence>
+                {
+                  <FormYear />
+                }
+              </AnimatePresence> */}
             </div>
           </div>
         </motion.div>

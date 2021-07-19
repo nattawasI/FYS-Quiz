@@ -31,3 +31,30 @@
     margin-top: 25px;
   }
 }
+
+.form-year {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__input {
+    @include md-down {
+      width: 260px;
+      margin-top: 15px;
+    }
+
+    @include md-up {
+      width: 17.448vw;
+      margin-left: 2.604vw;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+  }
+}
