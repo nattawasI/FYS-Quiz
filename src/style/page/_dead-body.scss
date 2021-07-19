@@ -16,7 +16,8 @@
 
     @include md-down {
       padding-top: 25.2463%;
-      height: auto;
+      align-items: center;
+      justify-content: flex-start;
     }
 
     @include md-up {

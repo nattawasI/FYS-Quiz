@@ -1,13 +1,15 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
-import {motion, AnimatePresence} from 'framer-motion'
+import {motion} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
-import DeadbodyMD from '../image/page/dead-body/img_deadbody_md.svg'
-import DeadbodySM from '../image/page/dead-body/img_deadbody_sm.svg'
+import DeadbodyMaleMD from '../image/page/dead-body/img_deadbody_male_md.svg'
+import DeadbodyMaleSM from '../image/page/dead-body/img_deadbody_male_sm.svg'
+import DeadbodyFemaleMD from '../image/page/dead-body/img_deadbody_female_md.svg'
+import DeadbodyFemaleSM from '../image/page/dead-body/img_deadbody_female_sm.svg'
 
 
 // Motion Variants
@@ -73,12 +75,12 @@ const DeadBody = () => {
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
-  const [skipAnimate, setSkipAnimate] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
+  let gender = 'Female'
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('PageName')
+    changeCurrentPageContext('Murder')
   }
 
   const changeToScene2 = () => {
@@ -251,15 +253,30 @@ const DeadBody = () => {
             {
               renderScene3()
             }
-            <motion.img
-              className="dead-body__body"
-              src={ isWindowSmall ? DeadbodySM : DeadbodyMD }
-              alt="dead body"
-              variants={bodyVariant}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-            />
+            {
+              gender === 'Male' &&
+              <motion.img
+                className="dead-body__body"
+                src={ isWindowSmall ? DeadbodyMaleSM : DeadbodyMaleMD }
+                alt="dead body"
+                variants={bodyVariant}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+              />
+            }
+            {
+              gender === 'Female' &&
+              <motion.img
+                className="dead-body__body"
+                src={ isWindowSmall ? DeadbodyFemaleSM : DeadbodyFemaleMD }
+                alt="dead body"
+                variants={bodyVariant}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+              />
+            }
           </div>
         </div>
       </Content>
