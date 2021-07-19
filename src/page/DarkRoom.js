@@ -103,7 +103,7 @@ const DarkRoom = () => {
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('FriendSleep')
+    changeCurrentPageContext('TurnOnLight')
   }
 
   const touchPanelSm = () => {

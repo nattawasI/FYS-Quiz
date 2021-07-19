@@ -260,9 +260,7 @@ const TurnOnLight = () => {
     }
   }
 
-  const completedScene1 = () => {
-    switchBreaker = true;
-  }
+  const completedScene1 = () => switchBreaker = true;
 
   const switchOpened = () => {
     if (openSwitch) {
@@ -277,12 +275,13 @@ const TurnOnLight = () => {
     if (isWindowSmall) {
       if (animateComplete) {
         goToNextPage()
-      } else {
-        if (!skipAnimate) {
-          setAnimateComplete(true)
-          setSkipAnimate(true)
-        }
       }
+      // else {
+      //   if (!skipAnimate) {
+      //     setAnimateComplete(true)
+      //     setSkipAnimate(true)
+      //   }
+      // }
     }
   }
 
@@ -468,14 +467,17 @@ const TurnOnLight = () => {
                 exit="exit"
               >
                 เพื่อให้ห้องนี้<br/>สว่างขึ้นมากอีกครั้ง
-                <motion.div
-                  variants={buttonNextVariant}
-                  initial="hidden"
-                  animate={buttonNextControl}
-                  exit="exit"
-                >
-                  <ButtonNext onClick={goToNextPage}/>
-                </motion.div>
+                {
+                  !isWindowSmall &&
+                  <motion.div
+                    variants={buttonNextVariant}
+                    initial="hidden"
+                    animate={buttonNextControl}
+                    exit="exit"
+                  >
+                    <ButtonNext onClick={goToNextPage}/>
+                  </motion.div>
+                }
               </motion.div>
             }
           </AnimatePresence>
@@ -531,6 +533,7 @@ const TurnOnLight = () => {
                 initial="hidden"
                 animate="show"
                 exit="exit"
+                onAnimationComplete={ () => setAnimateComplete(true) }
               >
                 <img className="hand__pointer-image" src={ isWindowSmall ? PointerHandSM : PointerHandMD } alt="" />
               </motion.div>
