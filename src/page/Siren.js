@@ -78,7 +78,7 @@ const Siren = () => {
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('Investigate')
+    changeCurrentPageContext('DeadBody')
   }
 
   const touchPanelSm = () => {
