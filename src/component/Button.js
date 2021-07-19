@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 const Button = (props) => {
   const classStyle = () => {
     if (props.color) {
-      return `button button--${props.color}`
+      return `button button--${props.color} ${props.className}`
     } else {
-      return 'button'
+      return `button ${props.className}`
     }
   }
 
@@ -22,11 +22,13 @@ const Button = (props) => {
 }
 
 Button.propTypes = {
+  className: PropTypes.string,
   color: PropTypes.string,
   onClick: PropTypes.func
 }
 
 Button.defaultProps = {
+  className: '',
   color: '',
   onClick: () => {}
 }

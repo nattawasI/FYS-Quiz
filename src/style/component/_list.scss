@@ -67,3 +67,32 @@
     color: $white;
   }
 }
+
+.list-quiz {
+  &__question {
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 7%;
+  }
+
+  &__item {
+    &:not(:first-child) {
+      margin-top: 6%;
+    }
+  }
+
+  &__button {
+    width: 72vw;
+    height: 10.667vw;
+
+    @include md-up {
+      width: 26.563vw;
+      height: 3.906vw;
+    }
+  }
+}

@@ -9,6 +9,7 @@ import ButtonBack from '../component/ButtonBack'
 import ButtonNext from '../component/ButtonNext'
 import FormYourName from '../component/FormYourName'
 import ListCardActivity from '../component/ListCardActivity'
+import ListQuiz from '../component/ListQuiz'
 import FormYear from '../component/FormYear'
 import ImgPoliceMd from '../image/page/investigate/img_police_md.svg'
 import ImgPoliceSm from '../image/page/investigate/img_police_sm.svg'
@@ -115,8 +116,8 @@ const Investigate = () => {
   const [sceneYourName, setSceneYourName] = useState(false)
   const [sceneMurder, setSceneMurder] = useState(false)
   const [sceneAskCooperation, setSceneAskCooperation] = useState(false)
-  const [sceneActivityOften, setSceneActivityOften] = useState(true)
-  const [sceneQuiz, setSceneQuiz] = useState(false)
+  const [sceneActivityOften, setSceneActivityOften] = useState(false)
+  const [sceneQuiz, setSceneQuiz] = useState(true)
   const [sceneFormYear, setSceneFormYear] = useState(false)
   const [sceneActivityToday, setSceneActivityToday] = useState(false)
   const [sceneThankYou, setSceneThankYou] = useState(false)
@@ -283,7 +284,7 @@ const Investigate = () => {
                       variants={contentVariant}
                       exit="exit"
                     >
-                      Quiz
+                      <ListQuiz />
                     </motion.div>
                 }
                 {
