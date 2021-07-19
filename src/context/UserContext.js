@@ -18,6 +18,7 @@ export const useUserActionContext = () => {
 const UserProvider = ({ children }) => {
   // state
   const [userNameContext, setUserNameContext] = useState('')
+  const [yearsKnownContext, setYearsKnownContext] = useState('')
   const [friendInfoContext, setFriendNameContext] = useState({})
   const [symptomContext, setSymptomContext] = useState('')
 

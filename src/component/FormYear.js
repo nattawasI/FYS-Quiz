@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {motion} from 'framer-motion'
 import { useUserStateContext, useUserActionContext } from '../context/UserContext'
@@ -30,8 +30,8 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      delay: 1.5,
-      duration: 0.7
+      duration: 0.7,
+      delay: 0.7,
     }
   },
 }
@@ -39,12 +39,17 @@ const buttonVariant = {
 const FormYear = ({changeScene}) => {
   // context
 
-  // utility hook
-  const isWindowSmall = UseWindowSmall()
+  // ref
+  const inputRef = useRef(null)
 
+  // function
   const handleClick = () => {
     changeScene()
   }
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
 
   return (
     <div className="form-year">
@@ -57,7 +62,7 @@ const FormYear = ({changeScene}) => {
       >
         <div className="form-year__label text-story">คุณรู้จักเพื่อนสนิทคนนี้มากี่ปี?</div>
         <div className="form-year__input">
-          <InputText placeholder="ใส่ตัวเลข..." />
+          <InputText ref={inputRef} type="number" placeholder="ใส่ตัวเลข..." />
         </div>
       </motion.div>
       <motion.div className="form-year__button"

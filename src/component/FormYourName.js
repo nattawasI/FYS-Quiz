@@ -1,54 +1,51 @@
-import React, {useRef, useState} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {motion, AnimatePresence} from 'framer-motion'
 import { useUserStateContext, useUserActionContext } from '../context/UserContext'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
 import ButtonNext from './ButtonNext'
 import InputText from './InputText'
 
-// Motion Variants
-const formVariant = {
-  hidden: {
-    opacity: 0,
-    y: 70
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ease: 'easeInOut',
-      delay: 1,
-      duration: 0.7
-    },
-  },
-}
-
-const buttonVariant = {
-  hidden: {
-    opacity: 0
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      ease: 'easeInOut',
-      delay: 1.5,
-      duration: 0.7
-    }
-  },
-}
-
 const FormYourName = ({changeScene}) => {
   // context
+  const {userNameContext} = useUserStateContext()
   const {addUserNameContext} = useUserActionContext()
-
-  // utility hook
-  const isWindowSmall = UseWindowSmall()
 
   // ref
   const inputRef = useRef(null)
 
   // state
   const [error, setError] = useState(false)
+
+  // Motion Variants
+  const formVariant = {
+    hidden: {
+      opacity: 0,
+      y: 70
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: 'easeInOut',
+        duration: 0.7,
+        delay: userNameContext ? 0: 1
+      },
+    },
+  }
+
+  const buttonVariant = {
+    hidden: {
+      opacity: 0
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        ease: 'easeInOut',
+        duration: 0.7,
+        delay: userNameContext ? 0.7: 1.5
+      }
+    },
+  }
 
   const handleClick = () => {
     const inputValue = inputRef.current.value
@@ -60,6 +57,10 @@ const FormYourName = ({changeScene}) => {
       setError(true)
     }
   }
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
 
   return (
     <AnimatePresence>
@@ -74,6 +75,7 @@ const FormYourName = ({changeScene}) => {
           <div className="form-your-name__input">
             <InputText
               ref={inputRef}
+              value={userNameContext}
               isError={error}
               placeholder="ชื่อตัวเอง"
             />

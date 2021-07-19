@@ -28,6 +28,10 @@
     @include md-down {
       width: 280px;
     }
+
+    @include md-up {
+      transition: transform 0.2s ease-in-out;
+    }
   }
 
   &__img--game {
@@ -52,8 +56,13 @@
     display: block;
 
     &:hover {
-      .list-card-activity__text {
-        color: $pink;
+      @include md-up {
+        .list-card-activity__img {
+          transform: translateY(-20px);
+        }
+        .list-card-activity__text {
+          color: $pink;
+        }
       }
     }
   }
