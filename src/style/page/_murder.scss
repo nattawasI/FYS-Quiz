@@ -1,0 +1,48 @@
+.murder {
+  &__container {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  &__content {
+    @include md-down {
+      margin-bottom: 2.3399%;
+    }
+  }
+
+  &__text {
+    text-align: center;
+  }
+
+  &__text--pointing {
+    margin-top: 6.6502%;
+
+    @include md-up {
+      margin-top: 4.0740%;
+    }
+  }
+
+  &__figure {
+    position: relative;
+    text-align: center;
+  }
+
+  &__image {
+    @include md-down {
+      width: 84.8%;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    left: 52.3480%;
+    bottom: -11.8181%;
+  }
+}
