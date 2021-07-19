@@ -1,0 +1,68 @@
+.list-card-activity {
+  display: flex;
+
+  @include md-down {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include md-up {
+    justify-content: center;
+  }
+
+  &__item {
+    @include md-down {
+      &:not(:first-child) {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  &__item--food {
+    @include md-up {
+      position: relative;
+    }
+  }
+
+  &__img {
+    @include md-down {
+      width: 280px;
+    }
+  }
+
+  &__img--game {
+    @include md-up {
+      width: 30.625vw;
+    }
+  }
+
+  &__img--food {
+    @include md-up {
+      width: 26.042vw;
+    }
+  }
+
+  &__img--exercise {
+    @include md-up {
+      width: 30.625vw;
+    }
+  }
+
+  &__button {
+    display: block;
+
+    &:hover {
+      .list-card-activity__text {
+        color: $pink;
+      }
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    text-align: center;
+    font-size: 1.823vw;
+    transition: color 0.2s ease-in-out;
+    color: $white;
+  }
+}

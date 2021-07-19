@@ -88,3 +88,22 @@
     }
   }
 }
+
+.form-activity {
+  &__title {
+    text-align: center;
+
+    @include md-down {
+      // font-size: 2rem;
+      font-size: 5.333vw;
+    }
+  }
+
+  &__list {
+    margin-top: 25px;
+
+    @include md-up {
+      margin-top: 4%;
+    }
+  }
+}
