@@ -94,7 +94,7 @@ const Investigate = () => {
       }
     },
     end: {
-      y: isWindowSmall ? '-30%': '-22%',
+      y: isWindowSmall ? '-30%': '-35%',
       transition: {
         type: 'tween',
         ease: "easeInOut",
@@ -109,8 +109,9 @@ const Investigate = () => {
   // state
   // const [skipAnimate, setSkipAnimate] = useState(false)
   // const [animateComplete, setAnimateComplete] = useState(false)
-  const [animateTable, setAnimateTable] = useState(true)
-  const [showPhoto, setShowPhoto] = useState(false)
+  const [animateTable, setAnimateTable] = useState(false)
+  const [fadePhoto, setFadePhoto] = useState(false)
+  const [hidePhoto, setHidePhoto] = useState(false)
   const [sceneYourName, setSceneYourName] = useState(false)
   const [sceneMurder, setSceneMurder] = useState(false)
   const [sceneAskCooperation, setSceneAskCooperation] = useState(false)
@@ -140,20 +141,30 @@ const Investigate = () => {
   }
 
   const toggleAnimateTable = () => {
-    if (animateTable) {
-      setShowPhoto(true)
-      // panelControl.start('initial')
-      // setAnimateTable(false)
+    if (!animateTable) {
+      panelControl.start('end')
+      setAnimateTable(true)
+      setFadePhoto(true)
+      setTimeout(() => {
+        setHidePhoto(true)
+      }, 700)
     } else {
-      setShowPhoto(false)
-      // panelControl.start('end')
-      // setAnimateTable(true)
+      panelControl.start('initial')
+      setAnimateTable(false)
+      setHidePhoto(false)
+      setTimeout(() => {
+        setFadePhoto(false)
+      }, 700)
     }
+    toggleShowPhoto()
   }
 
-  useEffect(() => {
-    toggleAnimateTable()
-  }, [])
+  const toggleShowPhoto = () => {
+    setFadePhoto(!fadePhoto)
+    setTimeout(() => {
+      setHidePhoto(!hidePhoto)
+    }, 700)
+  }
 
   return (
     <motion.div
@@ -174,12 +185,9 @@ const Investigate = () => {
             <img src={isWindowSmall ? ImgPoliceSm: ImgPoliceMd} alt="ตำรวจ" />
           </div>
           <div className="investigate__space">
-            {
-              showPhoto
-              && <div className="investigate__photo">
-                  <img src={isWindowSmall ? ImgPhotoSm: ImgPhotoMd} alt="รูปถ่าย" />
-                </div>
-            }
+            <div className={`investigate__photo${fadePhoto? " fade-out": ''}${hidePhoto? " hidden": ''}`}>
+              <img src={isWindowSmall ? ImgPhotoSm: ImgPhotoMd} alt="รูปถ่าย" />
+            </div>
             <div className="investigate__content">
               <AnimatePresence>
                 {

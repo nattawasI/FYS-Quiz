@@ -59,7 +59,8 @@
   }
 
   &__text {
-    display: inline-block;
+    display: block;
+    margin-top: 15px;
     text-align: center;
     font-size: 1.823vw;
     transition: color 0.2s ease-in-out;
