@@ -1,9 +1,23 @@
+.investigate-wrap {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background-color: $black;
+  }
+}
 .investigate {
   position: absolute;
-  top: 35vw;
+  top: 32vw;
   left: 0;
   right: 0;
+  z-index: 1;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   @media only screen and (min-width: 768px) {
     top: 15vw;
@@ -15,6 +29,7 @@
 
   &__police {
     position: relative;
+    z-index: 1;
     bottom: -2px;
     display: flex;
     justify-content: center;
@@ -38,7 +53,7 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    transition: opacity 0.7s ease-in-out;
+    transition: all 0.7s ease-in-out;
 
     &.fade-out {
       opacity: 0;
@@ -49,7 +64,7 @@
     }
 
     @media only screen and (max-width: 1024px) {
-      height: 16%;
+      height: 17%;
     }
 
     @media only screen and (max-width: 768px) {
@@ -60,8 +75,7 @@
       height: 8%;
     }
 
-    @media only screen and (min-width: 1024px) {
-      height: 17%;
+    @media only screen and (min-width: 1025px) {
       transform: translateY(-41%);
     }
 
@@ -90,7 +104,8 @@
     position: relative;
     display: flex;
     justify-content: center;
-    padding-top: 15px;
+    align-items: flex-start;
+    min-height: 1000px;
 
     @include md-up {
       padding-top: 2.5vw;

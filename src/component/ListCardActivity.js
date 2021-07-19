@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import ImgCardGameMd from '../image/page/investigate/img_card_game_md.svg'
 import ImgCardGameSm from '../image/page/investigate/img_card_game_sm.svg'
@@ -7,13 +8,17 @@ import ImgCardFoodSm from '../image/page/investigate/img_card_food_sm.svg'
 import ImgCardExerciseMd from '../image/page/investigate/img_card_exercise_md.svg'
 import ImgCardExerciseSm from '../image/page/investigate/img_card_exercise_sm.svg'
 
-const ListCardActivity = () => {
+const ListCardActivity = ({changeScene}) => {
   const isWindowSmall = UseWindowSmall()
+
+  const chooseActivity = () => {
+    changeScene()
+  }
 
   return (
     <ul className="list-card-activity">
       <li className="list-card-activity__item list-card-activity__item--game">
-        <button type="button" className="list-card-activity__button">
+        <button type="button" className="list-card-activity__button" onClick={chooseActivity}>
           <img
             className="list-card-activity__img list-card-activity__img--game"
             src={isWindowSmall ? ImgCardGameSm: ImgCardGameMd}
@@ -23,7 +28,7 @@ const ListCardActivity = () => {
         </button>
       </li>
       <li className="list-card-activity__item list-card-activity__item--food">
-        <button type="button" className="list-card-activity__button">
+        <button type="button" className="list-card-activity__button" onClick={chooseActivity}>
           <img
             className="list-card-activity__img list-card-activity__img--food"
             src={isWindowSmall ? ImgCardFoodSm: ImgCardFoodMd}
@@ -33,7 +38,7 @@ const ListCardActivity = () => {
         </button>
       </li>
       <li className="list-card-activity__item list-card-activity__item--exercise">
-        <button type="button" className="list-card-activity__button">
+        <button type="button" className="list-card-activity__button" onClick={chooseActivity}>
           <img
             className="list-card-activity__img list-card-activity__img--exercise"
             src={isWindowSmall ? ImgCardExerciseSm: ImgCardExerciseMd}
@@ -44,6 +49,14 @@ const ListCardActivity = () => {
       </li>
     </ul>
   )
+}
+
+ListCardActivity.propTypes = {
+  changeScene: PropTypes.func,
+}
+
+ListCardActivity.defaultProps = {
+  changeScene: () => {},
 }
 
 export default ListCardActivity

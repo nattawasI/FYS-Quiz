@@ -9,7 +9,8 @@
   height: 43px;
   background-color: $white;
   border-radius: 50px;
-  font-size: 2.2rem;
+  // font-size: 1.8rem;
+  font-size: 4.800vw;
   text-align: center;
   color: $black;
   overflow: hidden;
@@ -17,7 +18,8 @@
 
   @include md-up {
     height: 75px;
-    font-size: 3.5rem;
+    // font-size: 3.5rem;
+    font-size: 1.823vw;
   }
 
   &:hover {

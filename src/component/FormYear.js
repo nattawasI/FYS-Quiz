@@ -1,4 +1,5 @@
 import React, {useRef, useState} from 'react'
+import PropTypes from 'prop-types'
 import {motion} from 'framer-motion'
 import { useUserStateContext, useUserActionContext } from '../context/UserContext'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -16,7 +17,6 @@ const formVariant = {
     y: 0,
     transition: {
       ease: 'easeInOut',
-      delay: 0.5,
       duration: 0.7
     },
   },
@@ -36,14 +36,14 @@ const buttonVariant = {
   },
 }
 
-const FormYourName = () => {
+const FormYear = ({changeScene}) => {
   // context
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
 
   const handleClick = () => {
-    console.log(1);
+    changeScene()
   }
 
   return (
@@ -73,4 +73,12 @@ const FormYourName = () => {
   )
 }
 
-export default FormYourName
+FormYear.propTypes = {
+  changeScene: PropTypes.func,
+}
+
+FormYear.defaultProps = {
+  changeScene: () => {},
+}
+
+export default FormYear

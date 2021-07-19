@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
+import { useUserStateContext, useUserActionContext } from '../context/UserContext'
 import {motion, AnimatePresence, useAnimation} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -66,6 +67,13 @@ const contentVariant = {
     transition: {
       ease: "easeInOut",
       duration: 0.7,
+    }
+  },
+  firstShow: {
+    opacity: 1,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.7,
       delay: 1,
     }
   },
@@ -81,6 +89,9 @@ const Investigate = () => {
   // route context
   const {changeCurrentPageContext} = useRouteActionContext()
 
+  // user context
+  const {friendInfoContext, userNameContext} = useUserStateContext()
+
   // utility hook
   const isWindowSmall = UseWindowSmall()
 
@@ -95,7 +106,7 @@ const Investigate = () => {
       }
     },
     end: {
-      y: isWindowSmall ? '-30%': '-35%',
+      y: isWindowSmall ? '-35vh': '-37vh',
       transition: {
         type: 'tween',
         ease: "easeInOut",
@@ -113,11 +124,11 @@ const Investigate = () => {
   const [animateTable, setAnimateTable] = useState(false)
   const [fadePhoto, setFadePhoto] = useState(false)
   const [hidePhoto, setHidePhoto] = useState(false)
-  const [sceneYourName, setSceneYourName] = useState(false)
+  const [sceneYourName, setSceneYourName] = useState(true)
   const [sceneMurder, setSceneMurder] = useState(false)
   const [sceneAskCooperation, setSceneAskCooperation] = useState(false)
   const [sceneActivityOften, setSceneActivityOften] = useState(false)
-  const [sceneQuiz, setSceneQuiz] = useState(true)
+  const [sceneQuiz, setSceneQuiz] = useState(false)
   const [sceneFormYear, setSceneFormYear] = useState(false)
   const [sceneActivityToday, setSceneActivityToday] = useState(false)
   const [sceneThankYou, setSceneThankYou] = useState(false)
@@ -125,20 +136,7 @@ const Investigate = () => {
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('PageName')
-  }
-
-  const touchPanelSm = () => {
-    if (isWindowSmall) {
-      // if (animateComplete) {
-      //   goToNextPage()
-      // } else {
-      //   if (!skipAnimate) {
-      //     setAnimateComplete(true)
-      //     setSkipAnimate(true)
-      //   }
-      // }
-    }
+    changeCurrentPageContext('DeadBody')
   }
 
   const toggleAnimateTable = () => {
@@ -157,14 +155,80 @@ const Investigate = () => {
         setFadePhoto(false)
       }, 700)
     }
-    toggleShowPhoto()
   }
 
-  const toggleShowPhoto = () => {
-    setFadePhoto(!fadePhoto)
-    setTimeout(() => {
-      setHidePhoto(!hidePhoto)
-    }, 700)
+  let nextScene = ''
+  const touchPanelSm = () => {
+    if (isWindowSmall) {
+      if (nextScene === 'sceneAskCooperation') {
+        changeToSceneAskCooperation()
+      } else if (nextScene === 'sceneActivityOften') {
+        changeToSceneActivityOften()
+      } else if (nextScene === 'sceneThankYou') {
+        changeToSceneThankYou()
+      } else if (nextScene === 'sceneCause') {
+        changeToSceneCause()
+      } else if (nextScene === 'nextPage') {
+        goToNextPage()
+      }
+    }
+  }
+
+  const backToSceneYourName = () => {
+    setSceneMurder(false)
+    setSceneYourName(true)
+  }
+
+  const changeToSceneMurder = () => {
+    setSceneYourName(false)
+    setSceneMurder(true)
+  }
+
+  const changeToSceneAskCooperation = () => {
+    setSceneMurder(false)
+    setSceneAskCooperation(true)
+  }
+
+  const changeToSceneActivityOften = () => {
+    toggleAnimateTable()
+    setSceneAskCooperation(false)
+    setSceneActivityOften(true)
+  }
+
+  const changeToSceneQuiz = () => {
+    setSceneActivityOften(false)
+    setSceneQuiz(true)
+  }
+
+  const backToSceneQuiz = () => {
+    setSceneFormYear(false)
+    setSceneQuiz(true)
+  }
+
+  const changeToSceneFormYear = () => {
+    setSceneQuiz(false)
+    setSceneFormYear(true)
+  }
+
+  const backToSceneFormYear = () => {
+    setSceneActivityToday(false)
+    setSceneFormYear(true)
+  }
+
+  const changeToSceneActivityToday = () => {
+    setSceneFormYear(false)
+    setSceneActivityToday(true)
+  }
+
+  const changeToSceneThankYou = () => {
+    toggleAnimateTable()
+    setSceneActivityToday(false)
+    setSceneThankYou(true)
+  }
+
+  const changeToSceneCause = () => {
+    setSceneThankYou(false)
+    setSceneCause(true)
   }
 
   return (
@@ -174,9 +238,25 @@ const Investigate = () => {
       animate="show"
       exit="exit"
     >
+      {
+        sceneMurder
+        && <ButtonBack onClick={backToSceneYourName} />
+      }
+      {
+        sceneMurder
+        && <ButtonBack onClick={backToSceneYourName} />
+      }
+      {
+        sceneMurder
+        && <ButtonBack onClick={backToSceneYourName} />
+      }
+      {
+        sceneMurder
+        && <ButtonBack onClick={backToSceneYourName} />
+      }
       <ButtonBack />
       <ButtonSound onClick={toggleAnimateTable} />
-      <Content>
+      <Content bgColor="blue" className="investigate-wrap">
         <motion.div className="investigate" onClick={touchPanelSm}
           variants={panelVariant}
           initial="hidden"
@@ -190,7 +270,7 @@ const Investigate = () => {
               <img src={isWindowSmall ? ImgPhotoSm: ImgPhotoMd} alt="รูปถ่าย" />
             </div>
             <div className="investigate__content">
-              <AnimatePresence>
+              <AnimatePresence exitBeforeEnter>
                 {
                   sceneYourName
                   && <motion.div
@@ -198,7 +278,7 @@ const Investigate = () => {
                       variants={contentVariant}
                       exit="exit"
                     >
-                      <FormYourName />
+                      <FormYourName changeScene={changeToSceneMurder} />
                     </motion.div>
                 }
                 {
@@ -214,7 +294,7 @@ const Investigate = () => {
                           initial="hidden"
                           animate="show"
                           exit="exit"
-                          // onAnimationComplete={ () => nextScene = 'scene2' }
+                          onAnimationComplete={ () => nextScene = 'sceneAskCooperation' }
                         >ตอนนี้เรากำลังสงสัยว่านี่คือ<br /><span className="text-story--bigger">"คดีฆาตกรรม"</span></motion.p>
                         {
                           !isWindowSmall
@@ -224,6 +304,7 @@ const Investigate = () => {
                               initial="hidden"
                               animate="show"
                               exit="exit"
+                              onClick={changeToSceneAskCooperation}
                             >
                               <ButtonNext />
                             </motion.div>
@@ -244,8 +325,8 @@ const Investigate = () => {
                           initial="hidden"
                           animate="show"
                           exit="exit"
-                          // onAnimationComplete={ () => nextScene = 'scene3' }
-                        >ขอความร่วมมือ คุณบรอน<br />ในการให้ปากคำด้วยนะครับ</motion.p>
+                          onAnimationComplete={ () => nextScene = 'sceneActivityOften' }
+                        >ขอความร่วมมือ คุณ{userNameContext}<br />ในการให้ปากคำด้วยนะครับ</motion.p>
                         {
                           !isWindowSmall
                           && <motion.div className="box-story__button"
@@ -255,7 +336,7 @@ const Investigate = () => {
                               animate="show"
                               exit="exit"
                             >
-                              <ButtonNext />
+                              <ButtonNext onClick={changeToSceneActivityOften} />
                             </motion.div>
                         }
                       </div>
@@ -271,9 +352,9 @@ const Investigate = () => {
                       animate="show"
                       exit="exit"
                     >
-                      <div className="text-story form-activity__title">เริ่มจากก่อนเกิดเหตุ กิจกรรมระหว่างคุณ<br />กับคุณ ปิยะบุตร ที่ทำบ่อย ๆ คืออะไร? </div>
+                      <div className="text-story form-activity__title">เริ่มจากก่อนเกิดเหตุ กิจกรรมระหว่างคุณ<br />กับคุณ {friendInfoContext.name} ที่ทำบ่อย ๆ คืออะไร? </div>
                       <div className="form-activity__list">
-                        <ListCardActivity />
+                        <ListCardActivity changeScene={changeToSceneQuiz} />
                       </div>
                     </motion.div>
                 }
@@ -282,9 +363,11 @@ const Investigate = () => {
                   && <motion.div
                       key="scene-quiz"
                       variants={contentVariant}
+                      initial="hidden"
+                      animate="show"
                       exit="exit"
                     >
-                      <ListQuiz />
+                      <ListQuiz changeScene={changeToSceneFormYear} />
                     </motion.div>
                 }
                 {
@@ -294,7 +377,7 @@ const Investigate = () => {
                       variants={contentVariant}
                       exit="exit"
                     >
-                      <FormYear />
+                      <FormYear changeScene={changeToSceneActivityToday} />
                     </motion.div>
                 }
                 {
@@ -309,7 +392,7 @@ const Investigate = () => {
                     >
                       <div className="text-story form-activity__title">กิจกรรมสุดท้ายที่รู้สึกว่า<br />ได้ทำร่วมกับเพื่อนสนิท ในวันเกิดเหตุ?</div>
                       <div className="form-activity__list">
-                        <ListCardActivity />
+                        <ListCardActivity changeScene={changeToSceneThankYou} />
                       </div>
                     </motion.div>
                 }
@@ -326,7 +409,7 @@ const Investigate = () => {
                         initial="hidden"
                         animate="show"
                         exit="exit"
-                        // onAnimationComplete={ () => nextScene = 'scene3' }
+                        onAnimationComplete={ () => nextScene = 'sceneCause' }
                       >ขอบคุณในการให้ปากคำ</motion.p>
                       {
                         !isWindowSmall
@@ -337,7 +420,7 @@ const Investigate = () => {
                             animate="show"
                             exit="exit"
                           >
-                            <ButtonNext />
+                            <ButtonNext onClick={changeToSceneCause} />
                           </motion.div>
                       }
                     </div>
@@ -356,7 +439,7 @@ const Investigate = () => {
                             initial="hidden"
                             animate="show"
                             exit="exit"
-                            // onAnimationComplete={ () => nextScene = 'scene3' }
+                            onAnimationComplete={ () => nextScene = 'nextPage' }
                           >ตอนนี้เราได้ทราบ<br className="sm-show" />สาเหตุการเสียชีวิตแล้ว</motion.p>
                           {
                             !isWindowSmall
@@ -367,7 +450,7 @@ const Investigate = () => {
                                 animate="show"
                                 exit="exit"
                               >
-                                <ButtonNext />
+                                <ButtonNext onClick={goToNextPage} />
                               </motion.div>
                           }
                         </div>

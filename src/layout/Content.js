@@ -4,7 +4,7 @@ import UseWindowSmall from '../utilityhook/useWindowSmall'
 import UseSetFrame from '../utilityhook/useSetFrame'
 import IconRotate from '../image/icon/icon_rotate.svg'
 
-const Content = ({ children, bgColor }) => {
+const Content = ({ children, bgColor, className }) => {
   const frameStyle = UseSetFrame()
   const isWindowSmall = UseWindowSmall()
 
@@ -12,11 +12,11 @@ const Content = ({ children, bgColor }) => {
 
   const classStyle = () => {
     if (bgColor === 'white') {
-      return 'content content--light'
+      return `content content--light${' ' + className}`
     } else if (bgColor === 'blue') {
-      return 'content content--blue'
+      return `content content--blue${' ' + className}`
     } else {
-      return 'content'
+      return `content${' ' + className}`
     }
   }
 
@@ -61,11 +61,13 @@ const Content = ({ children, bgColor }) => {
 Content.propTypes = {
   children: PropTypes.element.isRequired,
   bgColor: PropTypes.string,
+  className: PropTypes.string,
 }
 
 Content.defaultProps = {
   children: PropTypes.element.isRequired,
   bgColor: 'black',
+  className: ''
 }
 
 export default Content

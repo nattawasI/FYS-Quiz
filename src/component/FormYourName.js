@@ -1,4 +1,5 @@
 import React, {useRef, useState} from 'react'
+import PropTypes from 'prop-types'
 import {motion, AnimatePresence} from 'framer-motion'
 import { useUserStateContext, useUserActionContext } from '../context/UserContext'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -16,7 +17,7 @@ const formVariant = {
     y: 0,
     transition: {
       ease: 'easeInOut',
-      delay: 0.5,
+      delay: 1,
       duration: 0.7
     },
   },
@@ -36,16 +37,28 @@ const buttonVariant = {
   },
 }
 
-const FormYourName = () => {
+const FormYourName = ({changeScene}) => {
   // context
-  const {friendInfoContext} = useUserStateContext()
-  const {addFriendInfoContext} = useUserActionContext()
+  const {addUserNameContext} = useUserActionContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
 
+  // ref
+  const inputRef = useRef(null)
+
+  // state
+  const [error, setError] = useState(false)
+
   const handleClick = () => {
-    console.log(1);
+    const inputValue = inputRef.current.value
+
+    if (inputValue) {
+      addUserNameContext(inputValue)
+      changeScene()
+    } else {
+      setError(true)
+    }
   }
 
   return (
@@ -59,7 +72,11 @@ const FormYourName = () => {
         >
           <div className="form-your-name__label text-story">สวัสดีครับคุณ</div>
           <div className="form-your-name__input">
-            <InputText placeholder="ชื่อตัวเอง" />
+            <InputText
+              ref={inputRef}
+              isError={error}
+              placeholder="ชื่อตัวเอง"
+            />
           </div>
         </motion.div>
         <motion.div className="form-your-name__button"
@@ -73,6 +90,14 @@ const FormYourName = () => {
       </div>
     </AnimatePresence>
   )
+}
+
+FormYourName.propTypes = {
+  changeScene: PropTypes.func,
+}
+
+FormYourName.defaultProps = {
+  changeScene: () => {},
 }
 
 export default FormYourName

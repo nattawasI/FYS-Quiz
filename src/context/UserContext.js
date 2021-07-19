@@ -17,6 +17,7 @@ export const useUserActionContext = () => {
 
 const UserProvider = ({ children }) => {
   // state
+  const [userNameContext, setUserNameContext] = useState('')
   const [friendInfoContext, setFriendNameContext] = useState({})
   const [symptomContext, setSymptomContext] = useState('')
 
@@ -24,6 +25,9 @@ const UserProvider = ({ children }) => {
   // const KEY_STORAGE = 'friendInfo'
 
   // function
+  const addUserNameContext = (name) => {
+    setUserNameContext(name)
+  }
   const addFriendInfoContext = ({ name, gender }) => {
     const friendInfo = { name, gender }
     setFriendNameContext(friendInfo)
@@ -44,11 +48,13 @@ const UserProvider = ({ children }) => {
   // }, [])
 
   const userStateStore = { // use this pass to value
+    userNameContext,
     friendInfoContext,
     symptomContext,
   }
 
   const userActionStore = { // use this pass to value
+    addUserNameContext,
     addFriendInfoContext,
     addSymptomContext,
   }

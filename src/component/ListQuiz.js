@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import ListQuizButton from './ListQuizButton'
 
-const ListQuiz = () => {
+const ListQuiz = ({changeScene}) => {
   const isWindowSmall = UseWindowSmall()
 
   return (
@@ -10,17 +11,25 @@ const ListQuiz = () => {
       <div className="list-quiz__question text-story">คุณกับเพื่อนเล่นเกมดึกแค่ไหน</div>
       <ul className="list-quiz__list">
         <li className="list-quiz__item">
-          <ListQuizButton />
+          <ListQuizButton changeScene={changeScene} />
         </li>
         <li className="list-quiz__item">
-          <ListQuizButton />
+          <ListQuizButton changeScene={changeScene} />
         </li>
         <li className="list-quiz__item">
-          <ListQuizButton />
+          <ListQuizButton changeScene={changeScene} />
         </li>
       </ul>
     </div>
   )
+}
+
+ListQuiz.propTypes = {
+  changeScene: PropTypes.func,
+}
+
+ListQuiz.defaultProps = {
+  changeScene: () => {},
 }
 
 export default ListQuiz
