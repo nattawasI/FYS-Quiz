@@ -26,7 +26,7 @@ const textIntro01Variant = {
     opacity: 1,
     transition: {
       delay: 1,
-      duration: 1,
+      duration: 0.5,
       ease: 'easeInOut',
     }
   },
@@ -34,8 +34,8 @@ const textIntro01Variant = {
     y: -50,
     opacity: 0,
     transition: {
-      delay: 1,
-      duration: 1,
+      delay: 0.5,
+      duration: 0.5,
       type: 'tween',
     }
   }
@@ -50,7 +50,7 @@ const textIntro02Variant = {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 1,
+      duration: 0.5,
       ease: 'easeInOut',
     }
   },
@@ -58,8 +58,8 @@ const textIntro02Variant = {
     y: -50,
     opacity: 0,
     transition: {
-      delay: 1,
-      duration: 1,
+      delay: 0.5,
+      duration: 0.5,
       type: 'tween',
     }
   }
@@ -120,7 +120,7 @@ const ShadeVariants = {
   show: {
     scale: 1.7,
     transition: {
-      delay: 4,
+      delay: 3,
       duration: 1,
       ease: 'easeInOut',
     }
@@ -163,7 +163,7 @@ const NormalHandVariant = {
       originX: 1,
       originY: 1,
       delay: 1,
-      duration: 1,
+      duration: 0.5,
       ease: 'easeOut',
     }
   },
@@ -210,7 +210,7 @@ const SwitchPlateVariant = {
   show: {
     opacity: 1,
     transition: {
-      delay: 4,
+      delay: 3,
       duration: 1,
       ease: 'easeInOut',
     }
@@ -309,7 +309,7 @@ const TurnOnLight = () => {
     show: {
       opacity: 1,
       transition: {
-        delay: skipAnimate ? 0 : 5,
+        delay: skipAnimate ? 0 : 4,
         duration: 0.5,
         ease: 'easeInOut',
       }
