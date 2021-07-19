@@ -98,29 +98,38 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-end;
-      margin: 0 -1.3541%;
-      padding-right: 85px;
+      margin: 0 -1.6vw;
+      // padding-left: 42.54%;
+      // padding-right: 85px;
+      padding-right: 22.6666%;
 
       @include md-up {
-        padding-right: 27.4479vw;
+        justify-content: flex-start;
+        margin: 0 -1.5104vw;
+        padding-left: 50%;
+        // padding-right: 27.4479vw;
       }
     }
 
     &__item {
       flex: 0 1 auto;
-      margin: 0 6px;
+      padding: 0 1.6vw;
 
       @include md-up {
-        margin: 0 1.3541%;
+        padding: 0 1.5104vw;
       }
     }
 
+    &__link {
+      display: block;
+    }
+
     &__icon {
-      width: 8vw;
-      max-width: 50px;
+      width: 30px;
 
       @include md-up {
-        width: 3.3333vw;
+        width: 3.4vw;
+        max-width: inherit;
       }
     }
   }

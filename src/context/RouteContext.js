@@ -13,7 +13,7 @@ export const useRouteActionContext = () => {
 
 const RouteProvider = ({ children }) => {
   // state
-  const [currentPageContext, setCurrentPageContext] = useState('DarkRoom')
+  const [currentPageContext, setCurrentPageContext] = useState('End')
 
 
   // function
