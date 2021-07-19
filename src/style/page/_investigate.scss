@@ -18,14 +18,14 @@
     bottom: -2px;
     display: flex;
     justify-content: center;
-    height: 35%;
+    height: 40%;
 
     @media only screen and (min-width: 768px) {
       height: 45%;
     }
 
     @include md-up {
-      height: 64%;
+      height: 61%;
     }
 
     > img {
@@ -35,6 +35,8 @@
   }
 
   &__photo {
+    display: flex;
+    justify-content: center;
     text-align: center;
 
     @media only screen and (max-width: 1024px) {
@@ -45,8 +47,20 @@
       height: 12%;
     }
 
+    @media only screen and (max-width: 400px) {
+      height: 8%;
+    }
+
     @media only screen and (min-width: 1024px) {
-      transform: translateY(-22%);
+      height: 17%;
+      transform: translateY(-41%);
+    }
+
+    @include md-up {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
     }
 
     > img {
@@ -56,10 +70,21 @@
     }
   }
 
-  &__content {
+  &__space {
     position: relative;
     z-index: 1;
     height: 1000px;
     background-color: $blue;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+
+    @include md-up {
+      padding-top: 2.5vw;
+    }
   }
 }

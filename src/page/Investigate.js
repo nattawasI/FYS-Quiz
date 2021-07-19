@@ -6,6 +6,7 @@ import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
+import FormYourName from '../component/FormYourName'
 import ImgPoliceMd from '../image/page/investigate/img_police_md.svg'
 import ImgPoliceSm from '../image/page/investigate/img_police_sm.svg'
 import ImgPhotoMd from '../image/page/investigate/img_photo_md.svg'
@@ -34,7 +35,7 @@ const panelVariant = {
 const textVariant = {
   hidden: {
     opacity: 0,
-    y: 90
+    y: 70
   },
   show: {
     opacity: 1,
@@ -55,7 +56,7 @@ const buttonVariant = {
     transition: {
       ease: "easeInOut",
       duration: 0.7,
-      delay: 2.5,
+      delay: 1,
     }
   }
 }
@@ -120,9 +121,96 @@ const Investigate = () => {
           <div className="investigate__police">
             <img src={isWindowSmall ? ImgPoliceSm: ImgPoliceMd} alt="ตำรวจ" />
           </div>
-          <div className="investigate__content">
+          <div className="investigate__space">
             <div className="investigate__photo">
               <img src={isWindowSmall ? ImgPhotoSm: ImgPhotoMd} alt="รูปถ่าย" />
+            </div>
+            <div className="investigate__content">
+              {/* <FormYourName /> */}
+              {/* <div className="box-story">
+                <motion.p className="box-story__text text-story"
+                  variants={textVariant}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                  // onAnimationComplete={ () => nextScene = 'scene2' }
+                >ตอนนี้เรากำลังสงสัยว่านี่คือ<br /><span className="text-story--bigger">"คดีฆาตกรรม"</span></motion.p>
+                {
+                  !isWindowSmall
+                  && <motion.div className="box-story__button"
+                      key="buttonNextScene1"
+                      variants={buttonVariant}
+                      initial="hidden"
+                      animate="show"
+                      exit="exit"
+                    >
+                      <ButtonNext />
+                    </motion.div>
+                }
+              </div> */}
+              {/* <div className="box-story">
+                <motion.p className="box-story__text text-story"
+                  variants={textVariant}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                  // onAnimationComplete={ () => nextScene = 'scene3' }
+                >ขอความร่วมมือ คุณบรอน<br />ในการให้ปากคำด้วยนะครับ</motion.p>
+                {
+                  !isWindowSmall
+                  && <motion.div className="box-story__button"
+                      key="buttonNextScene1"
+                      variants={buttonVariant}
+                      initial="hidden"
+                      animate="show"
+                      exit="exit"
+                    >
+                      <ButtonNext />
+                    </motion.div>
+                }
+              </div> */}
+              {/* <div className="box-story">
+                <motion.p className="box-story__text text-story"
+                  variants={textVariant}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                  // onAnimationComplete={ () => nextScene = 'scene3' }
+                >ขอบคุณในการให้ปากคำ</motion.p>
+                {
+                  !isWindowSmall
+                  && <motion.div className="box-story__button"
+                      key="buttonNextScene1"
+                      variants={buttonVariant}
+                      initial="hidden"
+                      animate="show"
+                      exit="exit"
+                    >
+                      <ButtonNext />
+                    </motion.div>
+                }
+              </div> */}
+              <div className="box-story">
+                <motion.p className="box-story__text text-story"
+                  variants={textVariant}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                  // onAnimationComplete={ () => nextScene = 'scene3' }
+                >ตอนนี้เราได้ทราบ<br className="sm-show" />สาเหตุการเสียชีวิตแล้ว</motion.p>
+                {
+                  !isWindowSmall
+                  && <motion.div className="box-story__button"
+                      key="buttonNextScene1"
+                      variants={buttonVariant}
+                      initial="hidden"
+                      animate="show"
+                      exit="exit"
+                    >
+                      <ButtonNext />
+                    </motion.div>
+                }
+              </div>
             </div>
           </div>
         </motion.div>

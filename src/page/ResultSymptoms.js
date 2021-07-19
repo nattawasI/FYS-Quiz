@@ -203,7 +203,7 @@ const ResultSymptoms = () => {
                     animate="show"
                     exit="exit"
                     onAnimationComplete={ () => nextScene = 'scene3' }
-                  >"จากการให้ปากคำ"<br /><span className="text-story--bigger">คุณเองก็มีความเสี่ยง <br className="sm-show" />”โรคเบาหวาน”</span> <br />เพราะพฤติกรรมของคุณ{symptomContext} <br className="sm-show" />คล้ายกับเพื่อนสนิท</motion.p>
+                  >"จากการให้ปากคำ"<br /><span className="text-story--bigger">คุณเองก็มีความเสี่ยง <br className="sm-show" />”โรคเบาหวาน”</span> <br />เพราะพฤติกรรมของคุณบรอน <br className="sm-show" />คล้ายกับเพื่อนสนิท</motion.p>
               }
               {
                 !isWindowSmall && showScene2
