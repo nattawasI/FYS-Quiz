@@ -1,7 +1,11 @@
 .turn-on-light {
   &__container {
     height: 100%;
-    transition: background-color 0.7s ease-in-out 1s;
+    transition: background-color 0s ease-in-out 1.4s;
+
+    @include md-up {
+      transition: background-color 0.7s ease-in-out 1s;
+    }
 
     &--blue {
       background-color: $blue;
