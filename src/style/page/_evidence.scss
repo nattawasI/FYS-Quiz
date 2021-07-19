@@ -10,7 +10,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding-top: 10.4679%;
+    // padding-top: 10.4679%;
+    padding-top: 15.4679%;
 
     @include md-up {
       padding-top: 6.0185%;
@@ -70,7 +71,8 @@
       }
 
       &__image {
-        width: 32vw;
+        // width: 32vw;
+        width: 15vh;
         max-width: 250px;
 
         @include md-up {
@@ -101,7 +103,7 @@
       background-size: auto 100%;
       background-position: center bottom;
       background-repeat: no-repeat;
-  
+
       @include md-up {
         bottom: 0;
         height: 52.037%;

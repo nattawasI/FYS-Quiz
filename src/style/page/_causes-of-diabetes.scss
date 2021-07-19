@@ -66,6 +66,7 @@
     font-weight: 200;
     line-height: 1.7;
     text-align: center;
+    white-space: nowrap;
 
     @include md-down {
       white-space: nowrap;

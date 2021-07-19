@@ -31,9 +31,12 @@
 
   &__body {
     position: absolute;
-    left: -9.0666%;
     bottom: -5.1724%;
     height: 100%;
+
+    @include md-down {
+      left: 0;
+    }
 
     @include md-up {
       top: -8.7037%;
@@ -46,6 +49,6 @@
   }
 
   &__button {
-    margin-top: 15px;
+    margin-top: 20px;
   }
 }

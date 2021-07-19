@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
+import {useUserStateContext} from '../context/UserContext'
 import {motion} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -68,6 +69,9 @@ const DeadBody = () => {
   // route context
   const {changeCurrentPageContext} = useRouteActionContext()
 
+  // context
+  const {friendInfoContext} = useUserStateContext()
+
   // utility hook
   const isWindowSmall = UseWindowSmall()
 
@@ -76,7 +80,6 @@ const DeadBody = () => {
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
-  let gender = 'Female'
 
   // function
   const goToNextPage = () => {
@@ -254,7 +257,7 @@ const DeadBody = () => {
               renderScene3()
             }
             {
-              gender === 'Male' &&
+              friendInfoContext.gender === 'male' &&
               <motion.img
                 className="dead-body__body"
                 src={ isWindowSmall ? DeadbodyMaleSM : DeadbodyMaleMD }
@@ -266,7 +269,7 @@ const DeadBody = () => {
               />
             }
             {
-              gender === 'Female' &&
+              friendInfoContext.gender === 'female' &&
               <motion.img
                 className="dead-body__body"
                 src={ isWindowSmall ? DeadbodyFemaleSM : DeadbodyFemaleMD }
