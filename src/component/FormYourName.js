@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
-import {motion, AnimatePresence} from 'framer-motion'
+import {motion} from 'framer-motion'
 import { useUserStateContext, useUserActionContext } from '../context/UserContext'
 import ButtonNext from './ButtonNext'
 import InputText from './InputText'
@@ -47,7 +47,9 @@ const FormYourName = ({changeScene}) => {
     },
   }
 
-  const handleClick = () => {
+
+  const submitForm = (e) => {
+    e.preventDefault()
     const inputValue = inputRef.current.value
 
     if (inputValue) {
@@ -63,8 +65,8 @@ const FormYourName = ({changeScene}) => {
   }, [])
 
   return (
-    <AnimatePresence>
-      <div className="form-your-name">
+    <div className="form-your-name">
+      <form onSubmit={submitForm}>
         <motion.div className="form-your-name__form"
           variants={formVariant}
           initial="hidden"
@@ -87,10 +89,10 @@ const FormYourName = ({changeScene}) => {
           animate="show"
           exit="exit"
         >
-          <ButtonNext onClick={handleClick} />
+          <ButtonNext onClick={submitForm} />
         </motion.div>
-      </div>
-    </AnimatePresence>
+      </form>
+    </div>
   )
 }
 

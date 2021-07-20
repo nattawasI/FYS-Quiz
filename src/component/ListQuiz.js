@@ -23,16 +23,16 @@ const quizVariant = {
   }
 }
 
-const ListQuiz = ({changeScene, listQuiz, nextQuestion, currentQuestion, boxControl}) => {
+const ListQuiz = ({changeScene, listQuiz, nextQuestion, currentQuestion, boxQuizControl}) => {
   const [indexQuiz, setIndexQuiz] = useState(0)
 
   const goToNextQuestion = () => {
     if (indexQuiz < listQuiz.length - 1) {
-      boxControl.start('hidden')
+      boxQuizControl.start('hidden')
 
       setTimeout(() => {
         nextQuestion()
-        boxControl.start('show')
+        boxQuizControl.start('show')
       }, 600)
     } else {
       changeScene()
@@ -46,7 +46,7 @@ const ListQuiz = ({changeScene, listQuiz, nextQuestion, currentQuestion, boxCont
   return (
     <motion.div className="list-quiz"
       initial={false}
-      animate={boxControl}
+      animate={boxQuizControl}
       variants={quizVariant}
     >
       <div className="list-quiz__question text-story">{ listQuiz[indexQuiz].question }</div>
@@ -73,7 +73,7 @@ ListQuiz.propTypes = {
   listQuiz: PropTypes.array,
   currentQuestion: PropTypes.number,
   nextQuestion: PropTypes.func,
-  boxControl: PropTypes.object,
+  boxQuizControl: PropTypes.object,
 }
 
 ListQuiz.defaultProps = {
@@ -81,7 +81,7 @@ ListQuiz.defaultProps = {
   listQuiz: [],
   currentQuestion: 0,
   nextQuestion: () => {},
-  boxControl: () => {}
+  boxQuizControl: () => {}
 }
 
 export default ListQuiz

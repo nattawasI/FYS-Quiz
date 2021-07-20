@@ -103,7 +103,8 @@ const CausesOfDiabetes = () => {
     }
   }
 
-  const submitSympton = () => {
+  const submitSympton = (e) => {
+    e.preventDefault()
     const inputValue = inputRef.current.value
     if (inputValue) {
       addSymptomContext(inputValue)
@@ -205,32 +206,34 @@ const CausesOfDiabetes = () => {
             </AnimatePresence>
           </div>
           <div className="box-story scene-animate__scene scene-animate__scene--3">
-            {
-              showScene3
-              && <motion.div className="box-story__text symptoms"
-                  key="scene2"
-                  variants={sceneVariant}
-                  initial="hidden"
-                  animate="show"
-                  exit="exit"
-                >
-                  <p className="text-story causes-of-diabetes__text">แล้วรู้ไหม<br /><span className="text-story--bigger">"โรคเบาหวาน"</span> <br className="sm-show" />มีอาการเป็นอย่างไร?</p>
-                  <div className="symptoms__input">
-                    <InputText
-                      ref={inputRef}
-                      isError={error}
-                      value={symptomContext}
-                      placeholder="ถ้าไม่รู้ลองพิมพ์เดาดูก่อนก็ได้..."
-                    />
-                  </div>
-                  {
-                    showScene3
-                    &&  <div className="symptoms__button">
-                          <ButtonNext onClick={submitSympton} />
-                        </div>
-                  }
-                </motion.div>
-            }
+            <form onSubmit={submitSympton}>
+              {
+                showScene3
+                && <motion.div className="box-story__text symptoms"
+                    key="scene2"
+                    variants={sceneVariant}
+                    initial="hidden"
+                    animate="show"
+                    exit="exit"
+                  >
+                      <p className="text-story causes-of-diabetes__text">แล้วรู้ไหม<br /><span className="text-story--bigger">"โรคเบาหวาน"</span> <br className="sm-show" />มีอาการเป็นอย่างไร?</p>
+                      <div className="symptoms__input">
+                        <InputText
+                          ref={inputRef}
+                          isError={error}
+                          value={symptomContext}
+                          placeholder="ถ้าไม่รู้ลองพิมพ์เดาดูก่อนก็ได้..."
+                        />
+                      </div>
+                      {
+                        showScene3
+                        &&  <div className="symptoms__button">
+                              <ButtonNext onClick={submitSympton} />
+                            </div>
+                      }
+                  </motion.div>
+              }
+            </form>
           </div>
         </div>
       </Content>

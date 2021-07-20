@@ -85,11 +85,11 @@
   width: 100%;
 
   &__input {
-    width: 300px;
+    width: 80vw;
     margin-top: 20px;
 
     @include md-up {
-      width: 36%;
+      width: 36.458vw;
       margin-top: 40px;
     }
   }

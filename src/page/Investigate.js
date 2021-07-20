@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import { useUserStateContext } from '../context/UserContext'
 import {motion, AnimatePresence, useAnimation} from 'framer-motion'
@@ -85,29 +85,8 @@ const Investigate = () => {
   // utility hook
   const isWindowSmall = UseWindowSmall()
 
-  // Motion Variants
-  const panelVariant = {
-    initial: {
-      y: 0,
-      transition: {
-        type: 'tween',
-        ease: "easeInOut",
-        duration: 0.7,
-      }
-    },
-    end: {
-      y: isWindowSmall ? '-35vh': '-37vh',
-      transition: {
-        type: 'tween',
-        ease: "easeInOut",
-        duration: 0.7,
-      }
-    },
-  }
-
   // useAnimation Motion
-  const panelControl = useAnimation()
-  const boxControl = useAnimation()
+  const boxQuizControl = useAnimation()
 
   // state
   // const [skipAnimate, setSkipAnimate] = useState(false)
@@ -134,15 +113,11 @@ const Investigate = () => {
 
   const toggleAnimateTable = () => {
     if (!animateTable) {
-      panelControl.start('end')
-      setAnimateTable(true)
       setFadePhoto(true)
       setTimeout(() => {
         setHidePhoto(true)
       }, 700)
     } else {
-      panelControl.start('initial')
-      setAnimateTable(false)
       setHidePhoto(false)
       setTimeout(() => {
         setFadePhoto(false)
@@ -241,16 +216,24 @@ const Investigate = () => {
 
   const prevQuestion = () => {
     if (currentQuestion > 0) {
-      boxControl.start('hidden')
+      boxQuizControl.start('hidden')
       setTimeout(() => {
         setCurrentQuestion(currentQuestion - 1)
-        boxControl.start('show')
+        boxQuizControl.start('show')
       }, 600)
     } else {
       setSceneQuiz(false)
       setSceneActivityOften(true)
     }
   }
+
+  useEffect(() => {
+    if (sceneActivityOften) {
+      setAnimateTable(true)
+    } else if (sceneThankYou) {
+      setAnimateTable(false)
+    }
+  }, [sceneActivityOften, sceneThankYou])
 
   return (
     <motion.div
@@ -289,11 +272,7 @@ const Investigate = () => {
       }
       <ButtonSound />
       <Content bgColor="blue" className="investigate-wrap">
-        <motion.div className="investigate" onClick={touchPanelSm}
-          variants={panelVariant}
-          initial="hidden"
-          animate={panelControl}
-        >
+        <div className={`investigate${animateTable? ' animate': ''}`} onClick={touchPanelSm}>
           <div className="investigate__police">
             <img src={isWindowSmall ? ImgPoliceSm: ImgPoliceMd} alt="ตำรวจ" />
           </div>
@@ -406,7 +385,7 @@ const Investigate = () => {
                             listQuiz={QuizData.game}
                             nextQuestion={nextQuestion}
                             currentQuestion= {currentQuestion}
-                            boxControl={boxControl}
+                            boxQuizControl={boxQuizControl}
                           />
                       }
                       {
@@ -416,7 +395,7 @@ const Investigate = () => {
                             listQuiz={QuizData.food}
                             nextQuestion={nextQuestion}
                             currentQuestion= {currentQuestion}
-                            boxControl={boxControl}
+                            boxQuizControl={boxQuizControl}
                           />
                       }
                       {
@@ -426,7 +405,7 @@ const Investigate = () => {
                             listQuiz={QuizData.exercise}
                             nextQuestion={nextQuestion}
                             currentQuestion= {currentQuestion}
-                            boxControl={boxControl}
+                            boxQuizControl={boxQuizControl}
                           />
                       }
                     </motion.div>
@@ -495,7 +474,7 @@ const Investigate = () => {
                         exit="exit"
                       >
                         <div className="box-story">
-                          <motion.p className="box-story__text text-story"
+                          <motion.p className="box-story__text text-story text-thankyou"
                             variants={textVariant}
                             initial="hidden"
                             animate="show"
@@ -520,7 +499,7 @@ const Investigate = () => {
               </AnimatePresence>
             </div>
           </div>
-        </motion.div>
+        </div>
       </Content>
     </motion.div>
   )
