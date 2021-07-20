@@ -1,8 +1,8 @@
-<svg id="Component_59_11" data-name="Component 59 – 11" xmlns="http://www.w3.org/2000/svg" width="64.673" height="64.673" viewBox="0 0 64.673 64.673">
+<svg id="Component_59_36" data-name="Component 59 – 36" xmlns="http://www.w3.org/2000/svg" width="64.673" height="64.673" viewBox="0 0 64.673 64.673">
   <g id="Group_1123" data-name="Group 1123">
     <g id="Group_1122" data-name="Group 1122">
       <circle id="Ellipse_105" data-name="Ellipse 105" cx="32.337" cy="32.337" r="32.337"/>
     </g>
   </g>
-  <path id="Path_1816" data-name="Path 1816" d="M6229.55,729.678a6.7,6.7,0,0,0-4.45,1.708l-8.765-5.344a6.1,6.1,0,0,0-.013-3.334l8.813-5.449a6.921,6.921,0,1,0-2.1-3.385l-8.812,5.449a6.754,6.754,0,1,0,.034,10.119l8.766,5.344a6.683,6.683,0,0,0-.226,1.646,6.754,6.754,0,1,0,6.754-6.754Z" transform="translate(-6189.004 -691.973)" fill="#fff"/>
+  <path id="Icon_feather-paperclip" data-name="Icon feather-paperclip" d="M32.16,16.575,18.375,30.36A9.005,9.005,0,0,1,5.64,17.625L19.425,3.84a6,6,0,0,1,8.49,8.49l-13.8,13.785A3,3,0,1,1,9.87,21.87L22.6,9.15" transform="translate(14.755 14.797)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
 </svg>
