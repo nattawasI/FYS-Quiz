@@ -269,29 +269,29 @@ const TurnOnLight = () => {
     }
   }
   
-  const ShadeLighterVariants = {
-    hidden: {
-      originX: 0.75,
-      originY: 1,
-      scale: 1.7,
-      opacity: 0,
-    },
-    show: {
-      opacity: 1,
-      transition: {
-        delay: 0,
-        duration: 0,
-        ease: 'easeInOut',
-      }
-    },
-    exit: {
-      opacity: 0,
-      transition: {
-        duration: 1,
-        type: 'tween',
-      }
-    }
-  }
+  // const ShadeLighterVariants = {
+  //   hidden: {
+  //     originX: 0.75,
+  //     originY: 1,
+  //     scale: 1.7,
+  //     opacity: 0,
+  //   },
+  //   show: {
+  //     opacity: 1,
+  //     transition: {
+  //       delay: 0,
+  //       duration: 0,
+  //       ease: 'easeInOut',
+  //     }
+  //   },
+  //   exit: {
+  //     opacity: 0,
+  //     transition: {
+  //       duration: 1,
+  //       type: 'tween',
+  //     }
+  //   }
+  // }
 
   const SwitchVariant = {
     hidden: {
@@ -557,34 +557,24 @@ const TurnOnLight = () => {
       ?
         <div className="turn-on-light__bg shade">
           <div className="shade__figure">
-            <AnimatePresence exitBeforeEnter>
-              {
-                !openSwitch &&
-                <motion.img
-                  key="bg-shade-key-01"
-                  className="shade__image"
-                  src={ BGShadeSM }
-                  alt=""
-                  variants={ShadeVariants}
-                  initial="hidden"
-                  animate="show"
-                  exit="exit"
-                />
-              }
-              {
-                openSwitch &&
-                <motion.img
-                  key="bg-shade-key-02"
-                  src={ BGShadeLighterSM } 
-                  alt=""
-                  className="shade__image shade__image--light"
-                  variants={ShadeLighterVariants}
-                  initial="hidden"
-                  animate="show"
-                  exit="exit"
-                />
-              }
-            </AnimatePresence>
+            <motion.img
+              src={ isWindowSmall ? BGShadeSM : BGShadeMD } 
+              alt="background shade"
+              className="shade__image"
+              variants={ShadeVariants}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+            />
+            <motion.img
+              src={ isWindowSmall ? BGShadeLighterSM : BGShadeLighterMD } 
+              alt="background shade lighter"
+              className="shade__image shade__image--light"
+              variants={ShadeVariants}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+            />
           </div>
         </div>
       :
@@ -596,34 +586,24 @@ const TurnOnLight = () => {
             animate="show"
             exit="exit"
           >
-            <AnimatePresence exitBeforeEnter>
-              {
-                !openSwitch &&
-                <motion.img
-                  key="bg-shade-key-01"
-                  src={ isWindowSmall ? BGShadeSM : BGShadeMD } 
-                  alt=""
-                  className="shade__image"
-                  variants={ShadeVariants}
-                  initial="hidden"
-                  animate="show"
-                  exit="exit"
-                />
-              }
-              {
-                openSwitch &&
-                <motion.img
-                  key="bg-shade-key-02"
-                  src={ isWindowSmall ? BGShadeLighterSM : BGShadeLighterMD } 
-                  alt=""
-                  className="shade__image"
-                  variants={ShadeLighterVariants}
-                  initial="hidden"
-                  animate="show"
-                  exit="exit"
-                />
-              }
-            </AnimatePresence>
+            <motion.img
+              src={ isWindowSmall ? BGShadeSM : BGShadeMD } 
+              alt="background shade"
+              className="shade__image"
+              variants={ShadeVariants}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+            />
+            <motion.img
+              src={ isWindowSmall ? BGShadeLighterSM : BGShadeLighterMD } 
+              alt="background shade lighter"
+              className="shade__image shade__image--light"
+              variants={ShadeVariants}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+            />
           </motion.div>
         </div>
     )
