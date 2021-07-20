@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
-import { useUserStateContext } from '../context/UserContext'
+import {useUserStateContext} from '../context/UserContext'
 import {motion, AnimatePresence, useAnimation} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'

@@ -1,12 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {useUserActionContext} from '../context/UserContext'
 import Button from './Button'
 
-const ListQuizButton = ({choice, changeQuestion, goToNextQuestion}) => {
+const ListQuizButton = ({choice, changeQuestion}) => {
   const choiceLabel = choice.label
   // const choiceScore = choice.score
 
+  const {addChoicesContext} = useUserActionContext()
+
   const handleClick = () => {
+    addChoicesContext(choice)
     changeQuestion()
   }
 
@@ -19,13 +23,11 @@ ListQuizButton.propTypes = {
   choice: PropTypes.object,
   changeQuestion: PropTypes.func,
   changeScene: PropTypes.func,
-  goToNextQuestion: PropTypes.func,
 }
 
 ListQuizButton.defaultProps = {
   choice: {},
   changeQuestion: () => {},
-  goToNextQuestion: () => {}
 }
 
 export default ListQuizButton

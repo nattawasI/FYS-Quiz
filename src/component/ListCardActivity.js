@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {useUserActionContext} from '../context/UserContext'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import ImgCardGameMd from '../image/page/investigate/img_card_game_md.svg'
 import ImgCardGameSm from '../image/page/investigate/img_card_game_sm.svg'
@@ -9,10 +10,12 @@ import ImgCardExerciseMd from '../image/page/investigate/img_card_exercise_md.sv
 import ImgCardExerciseSm from '../image/page/investigate/img_card_exercise_sm.svg'
 
 const ListCardActivity = ({changeScene, chooseActivity}) => {
+  const {addActivityOftenContext} = useUserActionContext()
   const isWindowSmall = UseWindowSmall()
 
   const handleClick = (activity) => {
     chooseActivity(activity)
+    addActivityOftenContext(activity)
     changeScene()
   }
 
