@@ -44,7 +44,7 @@ const VideoDoctor = () => {
     >
       <ButtonSound />
       <Content bgColor="blue">
-        <div className="scene-panel video-doctor">
+        <div className="scene-panel scene-panel--items-center video-doctor">
           <div className="video-box">
             <video
               ref={videoRef}

@@ -1,7 +1,7 @@
 export const QuizData = {
   game: [
     {
-      question: 'คุณกับเพื่อนเล่นเกมส์ดึกแค่ไหน',
+      question: 'คุณกับเพื่อนเล่นเกมส์ดึกแค่ไหน?',
       choices: [
         {
           id: 'game-1-1',
@@ -25,7 +25,7 @@ export const QuizData = {
       choices: [
         {
           id: 'game-2-1',
-          label: 'จัดเต็ม ขนมกรบกรอบ น้ำอัดลม ฯลฯ',
+          label: 'จัดเต็ม ขนมกรุบกรอบ น้ำอัดลม ฯลฯ',
           score: 2
         },
         {

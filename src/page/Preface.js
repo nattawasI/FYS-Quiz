@@ -84,7 +84,7 @@ const Preface = () => {
       exit="exit"
     >
       <Content bgColor="white">
-        <div className="scene-panel preface">
+        <div className="scene-panel scene-panel--items-center preface">
           <div className="preface__content box-story">
             {
               showScene1

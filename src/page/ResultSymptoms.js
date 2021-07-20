@@ -1,6 +1,7 @@
 
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
+import {useUserStateContext} from '../context/UserContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -110,6 +111,7 @@ const buttonVariant = {
 
 const ResultSymptoms = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {userNameContext} = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -163,138 +165,81 @@ const ResultSymptoms = () => {
       <ButtonSound dark />
       <Content bgColor="white">
         <div className="scene-panel scene-animate" onClick={skipScene}>
-          <div className="box-story scene-animate__scene scene-animate__scene--1">
-            <AnimatePresence>
-              {
-                showScene1
-                && <motion.p className="box-story__text text-story text-story--black"
-                  key="scene1"
-                  variants={sceneVariant}
-                  initial="hidden"
-                  animate="show"
-                  exit="exit"
-                  onAnimationComplete={ () => nextScene = 'scene2' }
-                >นอกจากนี้ ฆาตกรยังเป็น<br /><span className="text-story--bigger">”ความเครียด”</span> <br className="sm-show" />ของเพื่อนคุณอีกด้วย</motion.p>
-              }
-              {
-                !isWindowSmall && showScene1
-                && <motion.div className="box-story__button"
-                    key="buttonNextScene1"
-                    variants={buttonVariant}
-                    initial="hidden"
-                    animate="show"
-                    exit="exit"
-                  >
-                    <ButtonNext dark onClick={changeToScene2} />
-                  </motion.div>
-              }
-            </AnimatePresence>
+          <div className="risk-symptoms">
+            <motion.p className="text-story text-story--black risk-symptoms__title"
+              variants={titleRiskSymptomsVariant}
+              initial="hidden"
+              animate="show"
+            >
+              คุณเองก็เช็กความเสี่ยงโรคเบาหวาน<br />ได้จากอาการเหล่านี้
+            </motion.p>
+            <motion.div className="risk-symptoms__list"
+              variants={listRiskSymptomsVariant}
+              initial="hidden"
+              animate="show"
+            >
+              <motion.div className="risk-symptoms__curve"
+                variants={bgRiskSymptomsVariant}
+                initial="hidden"
+                animate="show"
+                onAnimationComplete={ () => nextScene = 'NextPage' }
+              ></motion.div>
+              <ul className="list-risk-symptoms">
+                <li className="list-risk-symptoms__item">
+                  <div className="list-risk-symptoms__card">
+                    <figure className="list-risk-symptoms__image">
+                      <img src={ImgToilet} alt="กลางคืนปัสสาวะบ่อย" />
+                    </figure>
+                    <div className="list-risk-symptoms__text">กลางคืนปัสสาวะบ่อย</div>
+                  </div>
+                </li>
+                <li className="list-risk-symptoms__item">
+                  <div className="list-risk-symptoms__card">
+                    <figure className="list-risk-symptoms__image">
+                      <img src={ImgWeightLoss} alt="น้ำหนักลดไม่มีสาเหตุ" />
+                    </figure>
+                    <div className="list-risk-symptoms__text">น้ำหนักลดไม่มีสาเหตุ</div>
+                  </div>
+                </li>
+                <li className="list-risk-symptoms__item">
+                  <div className="list-risk-symptoms__card">
+                    <figure className="list-risk-symptoms__image">
+                      <img src={ImgTired} alt="เหนื่อยง่าย" />
+                    </figure>
+                    <div className="list-risk-symptoms__text">เหนื่อยง่าย</div>
+                  </div>
+                </li>
+                <li className="list-risk-symptoms__item">
+                  <div className="list-risk-symptoms__card">
+                    <figure className="list-risk-symptoms__image">
+                      <img src={ImgNumb} alt="มือเท้ามีอาการชา" />
+                    </figure>
+                    <div className="list-risk-symptoms__text">มือเท้ามีอาการชา</div>
+                  </div>
+                </li>
+                <li className="list-risk-symptoms__item">
+                  <div className="list-risk-symptoms__card">
+                    <figure className="list-risk-symptoms__image">
+                      <img src={ImgThirsty} alt="หิวน้ำตลอดเวลา" />
+                    </figure>
+                    <div className="list-risk-symptoms__text">หิวน้ำตลอดเวลา</div>
+                  </div>
+                </li>
+                <li className="list-risk-symptoms__item">
+                  <div className="list-risk-symptoms__card">
+                    <figure className="list-risk-symptoms__image">
+                      <img src={ImgSlowRecovery} alt="แผลหายช้า" />
+                    </figure>
+                    <div className="list-risk-symptoms__text">แผลหายช้า</div>
+                  </div>
+                </li>
+              </ul>
+            </motion.div>
           </div>
-          <div className="box-story scene-animate__scene scene-animate__scene--2">
-            <AnimatePresence>
-              {
-                showScene2
-                && <motion.p className="box-story__text text-story text-story--black"
-                    key="scene2"
-                    variants={sceneVariant}
-                    initial="hidden"
-                    animate="show"
-                    exit="exit"
-                    onAnimationComplete={ () => nextScene = 'scene3' }
-                  >"จากการให้ปากคำ"<br /><span className="text-story--bigger">คุณเองก็มีความเสี่ยง <br className="sm-show" />”โรคเบาหวาน”</span> <br />เพราะพฤติกรรมของคุณบรอน <br className="sm-show" />คล้ายกับเพื่อนสนิท</motion.p>
-              }
-              {
-                !isWindowSmall && showScene2
-                && <motion.div className="box-story__button"
-                    key="buttonNextScene1"
-                    variants={buttonVariant}
-                    initial="hidden"
-                    animate="show"
-                    exit="exit"
-                  >
-                    <ButtonNext dark onClick={changeToScene3} />
-                  </motion.div>
-              }
-            </AnimatePresence>
-          </div>
-          {
-            showScene3
-            && <div className="risk-symptoms">
-                <motion.p className="text-story text-story--black risk-symptoms__title"
-                  variants={titleRiskSymptomsVariant}
-                  initial="hidden"
-                  animate="show"
-                >
-                  คุณเองก็เช็กความเสี่ยงโรคเบาหวาน<br />ได้จากอาการเหล่านี้
-                </motion.p>
-                <motion.div className="risk-symptoms__list"
-                  variants={listRiskSymptomsVariant}
-                  initial="hidden"
-                  animate="show"
-                >
-                  <motion.div className="risk-symptoms__curve"
-                    variants={bgRiskSymptomsVariant}
-                    initial="hidden"
-                    animate="show"
-                    onAnimationComplete={ () => nextScene = 'NextPage' }
-                  ></motion.div>
-                  <ul className="list-risk-symptoms">
-                    <li className="list-risk-symptoms__item">
-                      <div className="list-risk-symptoms__card">
-                        <figure className="list-risk-symptoms__image">
-                          <img src={ImgToilet} alt="กลางคืนปัสสาวะบ่อย" />
-                        </figure>
-                        <div className="list-risk-symptoms__text">กลางคืนปัสสาวะบ่อย</div>
-                      </div>
-                    </li>
-                    <li className="list-risk-symptoms__item">
-                      <div className="list-risk-symptoms__card">
-                        <figure className="list-risk-symptoms__image">
-                          <img src={ImgWeightLoss} alt="น้ำหนักลดไม่มีสาเหตุ" />
-                        </figure>
-                        <div className="list-risk-symptoms__text">น้ำหนักลดไม่มีสาเหตุ</div>
-                      </div>
-                    </li>
-                    <li className="list-risk-symptoms__item">
-                      <div className="list-risk-symptoms__card">
-                        <figure className="list-risk-symptoms__image">
-                          <img src={ImgTired} alt="เหนื่อยง่าย" />
-                        </figure>
-                        <div className="list-risk-symptoms__text">เหนื่อยง่าย</div>
-                      </div>
-                    </li>
-                    <li className="list-risk-symptoms__item">
-                      <div className="list-risk-symptoms__card">
-                        <figure className="list-risk-symptoms__image">
-                          <img src={ImgNumb} alt="มือเท้ามีอาการชา" />
-                        </figure>
-                        <div className="list-risk-symptoms__text">มือเท้ามีอาการชา</div>
-                      </div>
-                    </li>
-                    <li className="list-risk-symptoms__item">
-                      <div className="list-risk-symptoms__card">
-                        <figure className="list-risk-symptoms__image">
-                          <img src={ImgThirsty} alt="หิวน้ำตลอดเวลา" />
-                        </figure>
-                        <div className="list-risk-symptoms__text">หิวน้ำตลอดเวลา</div>
-                      </div>
-                    </li>
-                    <li className="list-risk-symptoms__item">
-                      <div className="list-risk-symptoms__card">
-                        <figure className="list-risk-symptoms__image">
-                          <img src={ImgSlowRecovery} alt="แผลหายช้า" />
-                        </figure>
-                        <div className="list-risk-symptoms__text">แผลหายช้า</div>
-                      </div>
-                    </li>
-                  </ul>
-                </motion.div>
-              </div>
-          }
         </div>
       </Content>
       {
-        !isWindowSmall && showScene3
+        !isWindowSmall
         && <AnimatePresence>
             <motion.div className="button-fixed-right-bottom"
               variants={buttonVariant}

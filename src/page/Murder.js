@@ -68,7 +68,7 @@ const Investigate = () => {
     >
       <ButtonSound />
       <Content>
-        <div className="scene-panel murder" onClick={touchPanelSm}>
+        <div className="scene-panel scene-panel--items-center murder" onClick={touchPanelSm}>
           <div className="murder__container">
             <motion.div
               className="murder__content"

@@ -73,7 +73,7 @@ const FormYourName = ({changeScene}) => {
           animate="show"
           exit="exit"
         >
-          <div className="form-your-name__label text-story">สวัสดีครับคุณ</div>
+          <div className="form-your-name__label text-story">สวัสดีครับคุณ?</div>
           <div className="form-your-name__input">
             <InputText
               ref={inputRef}

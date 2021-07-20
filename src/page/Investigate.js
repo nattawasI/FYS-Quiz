@@ -196,7 +196,6 @@ const Investigate = () => {
   }
 
   const backToSceneActivityToday = () => {
-    toggleAnimateTable()
     setSceneThankYou(false)
     setSceneActivityToday(true)
   }
@@ -228,12 +227,12 @@ const Investigate = () => {
   }
 
   useEffect(() => {
-    if (sceneActivityOften) {
+    if (sceneActivityOften || sceneActivityToday) {
       setAnimateTable(true)
     } else if (sceneThankYou) {
       setAnimateTable(false)
     }
-  }, [sceneActivityOften, sceneThankYou])
+  }, [sceneActivityOften, sceneActivityToday, sceneThankYou])
 
   return (
     <motion.div
