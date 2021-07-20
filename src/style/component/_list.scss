@@ -78,8 +78,14 @@
 }
 
 .list-quiz {
+  padding: 16px;
+
   &__question {
     text-align: center;
+
+    @include md-down {
+      font-size: 4.867vw;
+    }
   }
 
   &__list {
@@ -96,11 +102,11 @@
   }
 
   &__button {
-    width: 72vw;
+    width: 75vw;
     height: 10.667vw;
 
     @include md-up {
-      width: 26.563vw;
+      width: 28.563vw;
       height: 3.906vw;
     }
   }

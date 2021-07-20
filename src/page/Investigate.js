@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
-import { useUserStateContext, useUserActionContext } from '../context/UserContext'
+import { useUserStateContext } from '../context/UserContext'
 import {motion, AnimatePresence, useAnimation} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -16,6 +16,7 @@ import ImgPoliceMd from '../image/page/investigate/img_police_md.svg'
 import ImgPoliceSm from '../image/page/investigate/img_police_sm.svg'
 import ImgPhotoMd from '../image/page/investigate/img_photo_md.svg'
 import ImgPhotoSm from '../image/page/investigate/img_photo_sm.svg'
+import {QuizData} from '../variable/QuizData'
 
 // Motion Variants
 const textVariant = {
@@ -44,7 +45,7 @@ const buttonVariant = {
       duration: 0.7,
       delay: 0.7,
     }
-  }
+  },
 }
 
 const contentVariant = {
@@ -106,6 +107,7 @@ const Investigate = () => {
 
   // useAnimation Motion
   const panelControl = useAnimation()
+  const boxControl = useAnimation()
 
   // state
   // const [skipAnimate, setSkipAnimate] = useState(false)
@@ -113,15 +115,17 @@ const Investigate = () => {
   const [animateTable, setAnimateTable] = useState(false)
   const [fadePhoto, setFadePhoto] = useState(false)
   const [hidePhoto, setHidePhoto] = useState(false)
-  const [sceneYourName, setSceneYourName] = useState(true)
+  const [sceneYourName, setSceneYourName] = useState(false)
   const [sceneMurder, setSceneMurder] = useState(false)
   const [sceneAskCooperation, setSceneAskCooperation] = useState(false)
-  const [sceneActivityOften, setSceneActivityOften] = useState(false)
+  const [sceneActivityOften, setSceneActivityOften] = useState(true)
   const [sceneQuiz, setSceneQuiz] = useState(false)
   const [sceneFormYear, setSceneFormYear] = useState(false)
   const [sceneActivityToday, setSceneActivityToday] = useState(false)
   const [sceneThankYou, setSceneThankYou] = useState(false)
   const [sceneCause, setSceneCause] = useState(false)
+  const [activityOften, setActivityOften] = useState('')
+  const [currentQuestion, setCurrentQuestion] = useState(0)
 
   // function
   const goToNextPage = () => {
@@ -227,6 +231,27 @@ const Investigate = () => {
     setSceneCause(true)
   }
 
+  const chooseActivityOften = (activity) => {
+    setActivityOften(activity)
+  }
+
+  const nextQuestion = () => {
+    setCurrentQuestion(currentQuestion + 1)
+  }
+
+  const prevQuestion = () => {
+    if (currentQuestion > 0) {
+      boxControl.start('hidden')
+      setTimeout(() => {
+        setCurrentQuestion(currentQuestion - 1)
+        boxControl.start('show')
+      }, 600)
+    } else {
+      setSceneQuiz(false)
+      setSceneActivityOften(true)
+    }
+  }
+
   return (
     <motion.div
       variants={containerVariant}
@@ -244,7 +269,11 @@ const Investigate = () => {
       }
       {
         sceneQuiz // จะกลับไปหน้า quiz แต่ละอัน
-        && <ButtonBack />
+        && <ButtonBack
+            variants={buttonVariant}
+            exit="exit"
+            onClick={prevQuestion}
+          />
       }
       {
         sceneFormYear // กลับไปหน้า quiz ล่าสุด
@@ -258,7 +287,7 @@ const Investigate = () => {
         sceneThankYou // กลับไปหน้า ActivityToday
         && <ButtonBack onClick={backToSceneActivityToday} />
       }
-      <ButtonSound onClick={toggleAnimateTable} />
+      <ButtonSound />
       <Content bgColor="blue" className="investigate-wrap">
         <motion.div className="investigate" onClick={touchPanelSm}
           variants={panelVariant}
@@ -357,7 +386,7 @@ const Investigate = () => {
                     >
                       <div className="text-story form-activity__title">เริ่มจากก่อนเกิดเหตุ กิจกรรมระหว่างคุณ<br />กับคุณ {friendInfoContext.name} ที่ทำบ่อย ๆ คืออะไร? </div>
                       <div className="form-activity__list">
-                        <ListCardActivity changeScene={changeToSceneQuiz} />
+                        <ListCardActivity changeScene={changeToSceneQuiz} chooseActivity={chooseActivityOften} />
                       </div>
                     </motion.div>
                 }
@@ -370,9 +399,38 @@ const Investigate = () => {
                       animate="show"
                       exit="exit"
                     >
-                      <ListQuiz changeScene={changeToSceneFormYear} />
+                      {
+                        activityOften === 'game'
+                        && <ListQuiz
+                            changeScene={changeToSceneFormYear}
+                            listQuiz={QuizData.game}
+                            nextQuestion={nextQuestion}
+                            currentQuestion= {currentQuestion}
+                            boxControl={boxControl}
+                          />
+                      }
+                      {
+                        activityOften === 'food'
+                        && <ListQuiz
+                            changeScene={changeToSceneFormYear}
+                            listQuiz={QuizData.food}
+                            nextQuestion={nextQuestion}
+                            currentQuestion= {currentQuestion}
+                            boxControl={boxControl}
+                          />
+                      }
+                      {
+                        activityOften === 'exercise'
+                        && <ListQuiz
+                            changeScene={changeToSceneFormYear}
+                            listQuiz={QuizData.exercise}
+                            nextQuestion={nextQuestion}
+                            currentQuestion= {currentQuestion}
+                            boxControl={boxControl}
+                          />
+                      }
                     </motion.div>
-                }
+                }QuizData
                 {
                   sceneFormYear
                   && <motion.div
