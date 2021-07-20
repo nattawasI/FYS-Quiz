@@ -1,16 +1,8 @@
 $xs: 576px;
 $sm: 768px;
-$tb: 1024px;
+$md: 1024px;
 $lg: 1200px;
 $xl: 1400px;
-
-@mixin md-down {
-  @media (max-width: $tb) { @content; }
-}
-
-@mixin md-up {
-  @media (min-width: $tb + 1) { @content; }
-}
 
 // X-Small devices (portrait phones, less than 576px)
 @mixin xs-down {
@@ -22,9 +14,14 @@ $xl: 1400px;
   @media (max-width: $sm) { @content; }
 }
 
-// Medium devices (tablets, less than 992px)
-@mixin tb-down {
-  @media (max-width: $tb) { @content; }
+// Medium devices (tablets, less than 1024px)
+@mixin md-down {
+  @media (max-width: $md) { @content; }
+}
+
+// Medium devices (tablets, more than 1024px)
+@mixin md-up {
+  @media (min-width: $md + 1) { @content; }
 }
 
 // Large devices (desktops, less than 1200px)
