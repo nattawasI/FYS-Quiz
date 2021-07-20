@@ -7,25 +7,32 @@
 
   &__content {
     display: flex;
-    flex-flow: column wrap;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     height: 100%;
     position: relative;
     z-index: 10;
 
     @include md-down {
+      flex-direction: column;
       padding-top: 25.2463%;
       align-items: center;
       justify-content: flex-start;
     }
 
     @include md-up {
-      padding-right: 63.3333%;
+      padding-right: 69.375%;
     }
 
     #{$root}__text {
+      flex: 0 1 auto;
       text-align: center;
+    }
+
+    #{$root}__button {
+      display: block;
+      flex: 0 1 auto;
     }
   }
 
@@ -44,7 +51,6 @@
       left: auto;
       bottom: auto;
       height: auto;
-      // bottom: -22.2222%;
     }
   }
 

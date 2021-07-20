@@ -133,16 +133,16 @@ const DeadBody = () => {
             >
               สรุปก็คือ<br/>เพื่อนของคุณถูก<br/>
               <span className="text-story--bigger">"ฆาตกรรม"</span>
+              <motion.span
+                className="dead-body__button"
+                variants={buttonVariant}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+              >
+                <ButtonNext onClick={changeToScene2} />
+              </motion.span>
             </motion.p>
-            <motion.div
-              className="dead-body__button"
-              variants={buttonVariant}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-            >
-              <ButtonNext onClick={changeToScene2} />
-            </motion.div>
           </div>
         )
       }
@@ -176,16 +176,16 @@ const DeadBody = () => {
               exit="exit"
             >
               เราพบคนร้าย<br/>ในที่เกิดเหตุ
+              <motion.span
+                className="dead-body__button"
+                variants={buttonVariant}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+              >
+                <ButtonNext onClick={changeToScene3} />
+              </motion.span>
             </motion.p>
-            <motion.div
-              className="dead-body__button"
-              variants={buttonVariant}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-            >
-              <ButtonNext onClick={changeToScene3} />
-            </motion.div>
           </div>
         )
       }
@@ -220,16 +220,16 @@ const DeadBody = () => {
               exit="exit"
             >
               แต่ว่า...<br/>ไม่ใช่คุณ
+              <motion.span
+                className="dead-body__button"
+                variants={buttonVariant}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+              >
+                <ButtonNext onClick={goToNextPage} />
+              </motion.span>
             </motion.p>
-            <motion.div
-              className="dead-body__button"
-              variants={buttonVariant}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-            >
-              <ButtonNext onClick={goToNextPage} />
-            </motion.div>
           </div>
         )
       }
