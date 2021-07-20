@@ -30,7 +30,7 @@
   }
 
   &.animate {
-    top: -35%;
+    top: -24vh;
 
     @include md-up {
       top: -37%;
@@ -124,6 +124,8 @@
 }
 
 .form-activity {
+  padding-top: 3vh;
+
   &__title {
     text-align: center;
 
