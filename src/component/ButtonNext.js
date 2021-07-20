@@ -6,8 +6,8 @@ const ButtonNext = ({dark, onClick}) => {
     return dark ? 'button-next button-next--dark' : 'button-next'
   }
 
-  const handleClick = () => {
-    onClick()
+  const handleClick = (e) => {
+    onClick(e)
   }
 
   return (
