@@ -1,27 +1,26 @@
 .dark-room {
   &__figure {
     position: absolute;
-    pointer-events: none;
+    left: 0;
+    bottom: 0;
 
     @include md-down {
-      right: -16%;
-      bottom: -80px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      height: 80%;
-    }
+      right: -19.4666%;
+      height: 80.5418%;
 
-    @media screen and (max-width: 1024px), screen and (min-height: 1000px) {
-      right: -15%;
-      height: 100%;
+      @media screen and (min-height: 1024px) {
+        left: auto;
+        right: -10.4%;
+        bottom: -5.1851%;
+        height: 100%;
+      }
     }
 
     @include md-up() {
-      bottom: 0;
+      top: -6.1111%;
+      bottom: -13.3333%;
       left: 50%;
-      width: 100%;
-      height: auto;
+      width: auto;
       transform: translateX(-50%);
       display: flex;
       justify-content: center;
@@ -30,14 +29,14 @@
 
   &__image {
     margin: auto;
+    height: 100%;
 
-    @include md-down {
-      height: 100%;
-    }
+    // @include md-down {
+    // }
 
-    @include md-up {
-      transform: translateY(7.500vw);
-    }
+    // @include md-up {
+    //   transform: translateY(7.500vw);
+    // }
 
     &--md {
       @include md-down() {
@@ -64,11 +63,12 @@
 
   &__text {
     text-align: center;
+    transform: translateY(-100%);
   }
 
   &__text--static {
     position: relative;
-    transform: translateY(-200px);
+    transform: translateY(-200%);
   }
 
   &__button {

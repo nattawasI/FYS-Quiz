@@ -12,12 +12,10 @@ import bgSceneSM from '../image/page/darkroom/bg_scene_01_sm.svg'
 // Motion Variants
 const textVariantMD = {
   hidden: {
-    y: 0,
     opacity: 0,
   },
   show: {
-    y: [0, 0, -270],
-    opacity: [0, 1, 1],
+    opacity: 1,
     transition: {
       duration: 2,
       ease: "easeInOut",
@@ -29,11 +27,11 @@ const textVariantMD = {
 
 const textVariantSM = {
   hidden: {
-    y: 25,
+    y: '5%',
     opacity: 0,
   },
   show: {
-    y: [25, 0, 0, -200],
+    y: ['5%', '0%', '0%', '-200%'],
     opacity: [0, 1, 1, 1],
     transition: {
       duration: 2,
@@ -43,6 +41,7 @@ const textVariantSM = {
     }
   }
 }
+
 const backgroundVariantMD = {
   hidden: {
     originY: 1,
