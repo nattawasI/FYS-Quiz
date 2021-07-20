@@ -111,8 +111,8 @@ const WakeFriendUp = () => {
         goToNextPage()
       } else {
         if (!skipAnimate) {
-          setAnimateComplete(true)
-          setSkipAnimate(true)
+          setAnimateComplete(false) // We will change to 'true' if We want to use function 'skip'
+          setSkipAnimate(false) // We will change to 'true' if We want to use function 'skip'
         }
       }
     }

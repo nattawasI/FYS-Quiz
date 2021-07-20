@@ -9,6 +9,7 @@
     background-color: $black;
   }
 }
+
 .investigate {
   position: absolute;
   top: 32vw;
@@ -18,6 +19,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: top 0.7s ease-in-out;
 
   @media only screen and (min-width: 768px) {
     top: 15vw;
@@ -25,6 +27,14 @@
 
   @include md-up {
     top: 2.083vw;
+  }
+
+  &.animate {
+    top: -35%;
+
+    @include md-up {
+      top: -37%;
+    }
   }
 
   &__police {
@@ -129,5 +139,11 @@
     @include md-up {
       margin-top: 4%;
     }
+  }
+}
+
+.text-thankyou {
+  @include md-up {
+    padding-top: 3vh;
   }
 }

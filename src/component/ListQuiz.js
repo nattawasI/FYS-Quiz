@@ -1,35 +1,87 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
-// import UseWindowSmall from '../utilityhook/useWindowSmall'
+import {motion} from 'framer-motion'
 import ListQuizButton from './ListQuizButton'
 
-const ListQuiz = ({changeScene}) => {
-  // const isWindowSmall = UseWindowSmall()
+const quizVariant = {
+  hidden: {
+    opacity: 0
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.7,
+    }
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.7,
+    }
+  }
+}
+
+const ListQuiz = ({changeScene, listQuiz, nextQuestion, currentQuestion, boxQuizControl}) => {
+  const [indexQuiz, setIndexQuiz] = useState(0)
+
+  const goToNextQuestion = () => {
+    if (indexQuiz < listQuiz.length - 1) {
+      boxQuizControl.start('hidden')
+
+      setTimeout(() => {
+        nextQuestion()
+        boxQuizControl.start('show')
+      }, 600)
+    } else {
+      changeScene()
+    }
+  }
+
+  useEffect(() => {
+    setIndexQuiz(currentQuestion)
+  }, [currentQuestion])
 
   return (
-    <div className="list-quiz">
-      <div className="list-quiz__question text-story">คุณกับเพื่อนเล่นเกมดึกแค่ไหน</div>
+    <motion.div className="list-quiz"
+      initial={false}
+      animate={boxQuizControl}
+      variants={quizVariant}
+    >
+      <div className="list-quiz__question text-story">{ listQuiz[indexQuiz].question }</div>
       <ul className="list-quiz__list">
-        <li className="list-quiz__item">
-          <ListQuizButton changeScene={changeScene} />
-        </li>
-        <li className="list-quiz__item">
-          <ListQuizButton changeScene={changeScene} />
-        </li>
-        <li className="list-quiz__item">
-          <ListQuizButton changeScene={changeScene} />
-        </li>
+        {
+          listQuiz[indexQuiz].choices.map(choice => {
+            return (
+              <li className="list-quiz__item" key={choice.id}>
+                <ListQuizButton
+                  choice={choice}
+                  changeQuestion={goToNextQuestion}
+                />
+              </li>
+            )
+          })
+        }
       </ul>
-    </div>
+    </motion.div>
   )
 }
 
 ListQuiz.propTypes = {
   changeScene: PropTypes.func,
+  listQuiz: PropTypes.array,
+  currentQuestion: PropTypes.number,
+  nextQuestion: PropTypes.func,
+  boxQuizControl: PropTypes.object,
 }
 
 ListQuiz.defaultProps = {
   changeScene: () => {},
+  listQuiz: [],
+  currentQuestion: 0,
+  nextQuestion: () => {},
+  boxQuizControl: () => {}
 }
 
 export default ListQuiz

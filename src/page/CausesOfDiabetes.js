@@ -1,13 +1,14 @@
 
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
-import {useUserActionContext} from '../context/UserContext'
+import {useUserStateContext, useUserActionContext} from '../context/UserContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
+import ButtonBack from '../component/ButtonBack'
 import InputText from '../component/InputText'
 import ImgHabit from '../image/page/causes-of-diabetes/img-habit.svg'
 import ImgDna from '../image/page/causes-of-diabetes/img-dna.svg'
@@ -24,8 +25,8 @@ const sceneVariant = {
     y: 0,
     transition: {
       ease: 'easeInOut',
+      duration: 1,
       delay: 0.7,
-      duration: 1
     },
   },
   exit: {
@@ -45,8 +46,8 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      delay: 1.2,
-      duration: 0.7
+      duration: 0.7,
+      delay: 1.3,
     }
   },
   exit: {
@@ -60,6 +61,7 @@ const buttonVariant = {
 
 const CausesOfDiabetes = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {symptomContext} = useUserStateContext()
   const {addSymptomContext} = useUserActionContext()
   const isWindowSmall = UseWindowSmall()
 
@@ -73,14 +75,8 @@ const CausesOfDiabetes = () => {
   const [error, setError] = useState(false)
 
   // function
-  const goToNextPage = () => {
-    const inputValue = inputRef.current.value
-    if (inputValue) {
-      addSymptomContext(inputValue)
-      changeCurrentPageContext('ResultSymptoms')
-    } else {
-      setError(true)
-    }
+  const backToPrevPage = () => {
+    changeCurrentPageContext('VideoDoctor')
   }
 
   const changeToScene2 = () => {
@@ -107,6 +103,25 @@ const CausesOfDiabetes = () => {
     }
   }
 
+  const submitSympton = (e) => {
+    e.preventDefault()
+    const inputValue = inputRef.current.value
+    if (inputValue) {
+      addSymptomContext(inputValue)
+      changeCurrentPageContext('ResultSymptoms')
+    } else {
+      setError(true)
+    }
+  }
+
+  useEffect(() => {
+    if (symptomContext) {
+      setShowScene1(false)
+      setShowScene2(false)
+      setShowScene3(true)
+    }
+  }, [symptomContext])
+
   return (
     <motion.div
       variants={containerVariant}
@@ -114,6 +129,9 @@ const CausesOfDiabetes = () => {
       animate="show"
       exit="exit"
     >
+      {
+        showScene1 && <ButtonBack onClick={backToPrevPage} />
+      }
       <ButtonSound />
       <Content bgColor="blue">
         <div className="scene-panel scene-animate" onClick={skipScene}>
@@ -188,31 +206,34 @@ const CausesOfDiabetes = () => {
             </AnimatePresence>
           </div>
           <div className="box-story scene-animate__scene scene-animate__scene--3">
-            {
-              showScene3
-              && <motion.div className="box-story__text symptoms"
-                  key="scene2"
-                  variants={sceneVariant}
-                  initial="hidden"
-                  animate="show"
-                  exit="exit"
-                >
-                  <p className="text-story causes-of-diabetes__text">แล้วรู้ไหม<br /><span className="text-story--bigger">"โรคเบาหวาน"</span> <br className="sm-show" />มีอาการเป็นอย่างไร?</p>
-                  <div className="symptoms__input">
-                    <InputText
-                      ref={inputRef}
-                      placeholder="ถ้าไม่รู้ลองพิมพ์เดาดูก่อนก็ได้..."
-                      isError={error}
-                    />
-                  </div>
-                  {
-                    showScene3
-                    &&  <div className="symptoms__button">
-                          <ButtonNext onClick={goToNextPage} />
-                        </div>
-                  }
-                </motion.div>
-            }
+            <form onSubmit={submitSympton}>
+              {
+                showScene3
+                && <motion.div className="box-story__text symptoms"
+                    key="scene2"
+                    variants={sceneVariant}
+                    initial="hidden"
+                    animate="show"
+                    exit="exit"
+                  >
+                      <p className="text-story causes-of-diabetes__text">แล้วรู้ไหม<br /><span className="text-story--bigger">"โรคเบาหวาน"</span> <br className="sm-show" />มีอาการเป็นอย่างไร?</p>
+                      <div className="symptoms__input">
+                        <InputText
+                          ref={inputRef}
+                          isError={error}
+                          value={symptomContext}
+                          placeholder="ถ้าไม่รู้ลองพิมพ์เดาดูก่อนก็ได้..."
+                        />
+                      </div>
+                      {
+                        showScene3
+                        &&  <div className="symptoms__button">
+                              <ButtonNext onClick={submitSympton} />
+                            </div>
+                      }
+                  </motion.div>
+              }
+            </form>
           </div>
         </div>
       </Content>

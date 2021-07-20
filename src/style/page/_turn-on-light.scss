@@ -1,10 +1,12 @@
 .turn-on-light {
+  $root: '.turn-on-light';
+
   &__container {
     height: 100%;
     transition: background-color 0s ease-in-out 1.4s;
 
     @include md-up {
-      transition: background-color 0.7s ease-in-out 1s;
+      transition: background-color 0.7s ease-in-out 0.7s;
     }
 
     &--blue {
@@ -43,6 +45,7 @@
       z-index: 30;
       height: 100%;
       width: auto;
+      pointer-events: none;
   
       @include md-down {
         height: 40%;
@@ -52,6 +55,12 @@
         left: 68%;
         bottom: -6%;
         height: auto;
+      }
+    }
+
+    &__normal {
+      @include md-up {
+        height: 76.9444%;
       }
     }
 
@@ -65,15 +74,13 @@
 
       @include md-up {
         left: 65.5%;
-        height: auto;
+        height: 76.9444%;
       }
     }
 
     &__normal-image,
     &__pointer-image {
-      @include md-down {
-        height: 100%;
-      }
+      height: 100%;
     }
   }
 
@@ -94,6 +101,10 @@
       height: 100%;
       transform-origin: 75% 100%;
       transform: scale(1.7);
+
+      &--lighter {
+        display: none;
+      }
     }
   }
 
@@ -111,6 +122,7 @@
     @include md-up {
       top: 13.1481%;
       left: 61.7187%;
+      height: 31.574%;
       transform: translate(0, 0);
     }
 
