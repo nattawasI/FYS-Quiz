@@ -223,3 +223,29 @@
     bottom: 2.167vw;
   }
 }
+
+.button-restart {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.8rem;
+  color: $white;
+
+  @include md-up {
+    font-size: 1.563vw;
+  }
+
+  &::before {
+    content: '';
+    width: 2.2rem;
+    height: 2.2rem;
+    margin-right: 10px;
+    background: url('../../image/icon/icon_restart.svg') center no-repeat;
+    background-size: 100%;
+
+    @include md-up {
+      width: 2.083vw;
+      height: 2.083vw;
+      margin-right: 13px;
+    }
+  }
+}

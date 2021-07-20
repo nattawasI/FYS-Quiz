@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
+import {useUserStateContext} from '../context/UserContext'
 import {motion, AnimateSharedLayout} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
+import ButtonRestart from '../component/ButtonRestart'
 import Facebook from '../image/page/end/ico_facebook.svg'
 import Line from '../image/page/end/ico_line.svg'
 import Shared from '../image/page/end/ico_shared.svg'
@@ -12,10 +14,28 @@ import Twitter from '../image/page/end/ico_twitter.svg'
 import Coffee from '../image/page/end/img_coffee.svg'
 import RibbonTop from '../image/page/end/ico_ribbon_01.svg'
 import RibbonBottom from '../image/page/end/ico_ribbon_02.svg'
-import PersonMD from '../image/page/end/img_man_md.png'
-import PersonSM from '../image/page/end/img_man_sm.png'
+import DeadbodyMaleMD from '../image/page/end/img_deadbody_male_md.png'
+import DeadbodyMaleSM from '../image/page/end/img_deadbody_male_sm.png'
+import DeadbodyFemaleMD from '../image/page/end/img_deadbody_female_md.png'
+import DeadbodyFemaleSM from '../image/page/end/img_deadbody_female_sm.png'
 
 const personVariant = {
+  hidden: {
+    y: 200,
+    opacity: 0,
+  },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      duration: 0.5,
+      ease: 'easeInOut',
+    }
+  },
+}
+
+const socialVariant = {
   hidden: {
     y: 200,
     opacity: 0,
@@ -83,6 +103,9 @@ const End = () => {
   // route context
   const {changeCurrentPageContext} = useRouteActionContext()
 
+  // context
+  const {friendInfoContext} = useUserStateContext()
+
   // utility hook
   const isWindowSmall = UseWindowSmall()
 
@@ -127,6 +150,9 @@ const End = () => {
     }
   ]
 
+  // hardcode to check image
+  // friendInfoContext.gender = 'female'
+
   return (
     <motion.div
       variants={containerVariant}
@@ -139,6 +165,9 @@ const End = () => {
         <div className="scene-panel end" onClick={touchPanelSm}>
           <div className="end__container">
             <div className="end__content">
+              <div className="end__button">
+                <ButtonRestart />
+              </div>
               <motion.img
                 className="end__ribbon-top"
                 src={ RibbonTop }
@@ -172,26 +201,54 @@ const End = () => {
                 initial="hidden"
                 animate="show"
               >
-                <div className="end__body">
-                  <img  className="end__body-image" src={ isWindowSmall ? PersonSM : PersonMD } alt="dead body" />
-                </div>
-                <div className="social">
-                  
-                  <AnimateSharedLayout>
-                    <motion.div className="social__list" layout>
-                      {
-                        Socials.map((item, index) => (
-                          <motion.div key={`social-key-${index}`} className="social__item">
-                            <a className="social__link" href="#dummy">
-                              <img className="social__icon" src={item.icon} alt={item.name} />
-                            </a>
-                          </motion.div>
-                        ))
-                      }
-                    </motion.div>
-                  </AnimateSharedLayout>
+                <div className="end__body dead-body">
+                {
+                  friendInfoContext.gender === 'male' &&
+                  <motion.img
+                    className="dead-body__image"
+                    src={ isWindowSmall ? DeadbodyMaleSM : DeadbodyMaleMD }
+                    alt="dead body"
+                    // variants={bodyVariant}
+                    // initial="hidden"
+                    // animate="show"
+                    // exit="exit"
+                  />
+                }
+                {
+                  friendInfoContext.gender === 'female' &&
+                  <motion.img
+                    className="dead-body__image"
+                    src={ isWindowSmall ? DeadbodyFemaleSM : DeadbodyFemaleMD }
+                    alt="dead body"
+                    // variants={bodyVariant}
+                    // initial="hidden"
+                    // animate="show"
+                    // exit="exit"
+                  />
+                }
+                  {/* <img  className="end__body-image" src={ isWindowSmall ? PersonSM : PersonMD } alt="dead body" /> */}
                 </div>
               </motion.div>
+              
+              <div className="end__social social">
+                <motion.div
+                  className="social__list"
+                  variants={socialVariant}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                >
+                  {
+                    Socials.map((item, index) => (
+                      <motion.div key={`social-key-${index}`} className="social__item">
+                        <a className="social__link" href="#dummy">
+                          <img className="social__icon" src={item.icon} alt={item.name} />
+                        </a>
+                      </motion.div>
+                    ))
+                  }
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>
