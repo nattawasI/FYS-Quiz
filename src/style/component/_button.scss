@@ -214,7 +214,12 @@
 
 .button-fixed-right-bottom {
   position: fixed;
-  right: 2.167vw;
-  bottom: 2.167vw;
+  right: 4.167vw;
+  bottom: 4.167vw;
   z-index: 10;
+
+  @include md-up {
+    right: 2.167vw;
+    bottom: 2.167vw;
+  }
 }
