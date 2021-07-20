@@ -91,20 +91,26 @@
       left: auto;
       right: 0;
       bottom: 0;
-
-      @include md-up {
-        left: auto;
-      }
     }
 
     &__image {
+      position: absolute;
+      top: 0;
+      left: auto;
+      right: 0;
+      bottom: 0;
       height: 100%;
       transform-origin: 75% 100%;
       transform: scale(1.7);
+    }
 
-      &--lighter {
-        display: none;
-      }
+    &__image--normal {
+      z-index: 1;
+    }
+
+    &__image--lighter {
+      z-index: 2;
+      display: none;
     }
   }
 
