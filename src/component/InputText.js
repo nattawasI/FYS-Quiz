@@ -1,7 +1,7 @@
 import React, {forwardRef, useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 
-const Input = forwardRef(({placeholder, value, onChange, isError}, ref) => {
+const Input = forwardRef(({type, placeholder, value, onChange, isError}, ref) => {
   const [inputValue, setInputValue] = useState(value)
   const [error, setError] = useState(isError)
 
@@ -23,7 +23,7 @@ const Input = forwardRef(({placeholder, value, onChange, isError}, ref) => {
   return (
     <div className={classStyle()}>
       <input
-        type="text"
+        type={type}
         ref={ref}
         placeholder={placeholder}
         value={inputValue}
@@ -34,6 +34,7 @@ const Input = forwardRef(({placeholder, value, onChange, isError}, ref) => {
 })
 
 Input.propTypes = {
+  type: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
@@ -41,6 +42,7 @@ Input.propTypes = {
 }
 
 Input.defaultProps = {
+  type: 'text',
   placeholder: '',
   value: '',
   onChange: () => {},

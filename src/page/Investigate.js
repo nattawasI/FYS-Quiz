@@ -42,18 +42,7 @@ const buttonVariant = {
     transition: {
       ease: "easeInOut",
       duration: 0.7,
-      delay: 1,
-    }
-  }
-}
-
-const photoVariant = {
-  exit: {
-    opacity: 0,
-    transition: {
-      ease: "easeInOut",
-      duration: 0.7,
-      delay: 1,
+      delay: 0.7,
     }
   }
 }
@@ -176,6 +165,7 @@ const Investigate = () => {
 
   const backToSceneYourName = () => {
     setSceneMurder(false)
+    setSceneAskCooperation(false)
     setSceneYourName(true)
   }
 
@@ -200,19 +190,14 @@ const Investigate = () => {
     setSceneQuiz(true)
   }
 
-  const backToSceneQuiz = () => {
-    setSceneFormYear(false)
-    setSceneQuiz(true)
-  }
-
   const changeToSceneFormYear = () => {
     setSceneQuiz(false)
     setSceneFormYear(true)
   }
 
-  const backToSceneFormYear = () => {
-    setSceneActivityToday(false)
-    setSceneFormYear(true)
+  const backToSceneQuiz = () => {
+    setSceneFormYear(false)
+    setSceneQuiz(true)
   }
 
   const changeToSceneActivityToday = () => {
@@ -220,10 +205,21 @@ const Investigate = () => {
     setSceneActivityToday(true)
   }
 
+  const backToSceneFormYear = () => {
+    setSceneActivityToday(false)
+    setSceneFormYear(true)
+  }
+
   const changeToSceneThankYou = () => {
     toggleAnimateTable()
     setSceneActivityToday(false)
     setSceneThankYou(true)
+  }
+
+  const backToSceneActivityToday = () => {
+    toggleAnimateTable()
+    setSceneThankYou(false)
+    setSceneActivityToday(true)
   }
 
   const changeToSceneCause = () => {
@@ -243,18 +239,25 @@ const Investigate = () => {
         && <ButtonBack onClick={backToSceneYourName} />
       }
       {
-        sceneMurder
+        sceneAskCooperation
         && <ButtonBack onClick={backToSceneYourName} />
       }
       {
-        sceneMurder
-        && <ButtonBack onClick={backToSceneYourName} />
+        sceneQuiz // จะกลับไปหน้า quiz แต่ละอัน
+        && <ButtonBack />
       }
       {
-        sceneMurder
-        && <ButtonBack onClick={backToSceneYourName} />
+        sceneFormYear // กลับไปหน้า quiz ล่าสุด
+        && <ButtonBack onClick={backToSceneQuiz} />
       }
-      <ButtonBack />
+      {
+        sceneActivityToday // กลับไปหน้า FormYear
+        && <ButtonBack onClick={backToSceneFormYear} />
+      }
+      {
+        sceneThankYou // กลับไปหน้า ActivityToday
+        && <ButtonBack onClick={backToSceneActivityToday} />
+      }
       <ButtonSound onClick={toggleAnimateTable} />
       <Content bgColor="blue" className="investigate-wrap">
         <motion.div className="investigate" onClick={touchPanelSm}

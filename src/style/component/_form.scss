@@ -9,7 +9,7 @@
     }
 
     @include md-up {
-      justify-content: center;
+      align-items: center;
     }
   }
 
@@ -47,14 +47,14 @@
     }
 
     @include md-up {
-      width: 17.448vw;
-      margin-left: 2.604vw;
+      width: 18.229vw;
+      margin-top: 6%;
     }
   }
 
   &__button {
     display: flex;
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 8%;
   }
 }

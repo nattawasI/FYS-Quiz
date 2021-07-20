@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
 import ListQuizButton from './ListQuizButton'
 
 const ListQuiz = ({changeScene}) => {
-  const isWindowSmall = UseWindowSmall()
 
   return (
     <div className="list-quiz">

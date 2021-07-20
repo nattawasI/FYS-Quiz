@@ -1,8 +1,7 @@
-import React, {useRef, useState} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {motion} from 'framer-motion'
 import { useUserStateContext, useUserActionContext } from '../context/UserContext'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
 import ButtonNext from './ButtonNext'
 import InputText from './InputText'
 
@@ -30,21 +29,38 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      delay: 1.5,
-      duration: 0.7
+      duration: 0.7,
+      delay: 0.7,
     }
   },
 }
 
 const FormYear = ({changeScene}) => {
   // context
+  const {yearsKnownContext} = useUserStateContext()
+  const {addYearsKnownContext} = useUserActionContext()
 
-  // utility hook
-  const isWindowSmall = UseWindowSmall()
+  // ref
+  const inputRef = useRef(null)
 
+  // state
+  const [error, setError] = useState(false)
+
+  // function
   const handleClick = () => {
-    changeScene()
+    const inputValue = inputRef.current.value
+
+    if (inputValue) {
+      addYearsKnownContext(inputValue)
+      changeScene()
+    } else {
+      setError(true)
+    }
   }
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
 
   return (
     <div className="form-year">
@@ -57,7 +73,13 @@ const FormYear = ({changeScene}) => {
       >
         <div className="form-year__label text-story">คุณรู้จักเพื่อนสนิทคนนี้มากี่ปี?</div>
         <div className="form-year__input">
-          <InputText placeholder="ใส่ตัวเลข..." />
+          <InputText
+            ref={inputRef}
+            type="number"
+            placeholder="ใส่ตัวเลข..."
+            value={yearsKnownContext}
+            isError={error}
+          />
         </div>
       </motion.div>
       <motion.div className="form-year__button"

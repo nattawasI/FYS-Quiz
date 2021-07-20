@@ -82,13 +82,12 @@ const PoliceCame = () => {
     if (isWindowSmall) {
       if (animateComplete) {
         goToNextPage()
+      } else {
+        if (!skipAnimate) {
+          setAnimateComplete(false) // We will change to 'true' if We want to use function 'skip'
+          setSkipAnimate(false) // We will change to 'true' if We want to use function 'skip'
+        }
       }
-      // else {
-      //   if (!skipAnimate) {
-      //     setAnimateComplete(true)
-      //     setSkipAnimate(true)
-      //   }
-      // }
     }
   }
 
