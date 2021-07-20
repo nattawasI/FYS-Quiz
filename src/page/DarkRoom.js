@@ -15,11 +15,12 @@ const textVariantMD = {
     opacity: 0,
   },
   show: {
-    opacity: 1,
+    y: ["0%", "0%", "-100%"],
+    opacity: [0, 1, 1],
     transition: {
       duration: 2,
       ease: "easeInOut",
-      times: [0, 0.5, 1],
+      times: [0, 0.6, 1],
       delay: 0.5
     }
   },
@@ -27,11 +28,11 @@ const textVariantMD = {
 
 const textVariantSM = {
   hidden: {
-    y: '5%',
+    y: "5%",
     opacity: 0,
   },
   show: {
-    y: ['5%', '0%', '0%', '-200%'],
+    y: ["5%", "0%", "0%", "-200%"],
     opacity: [0, 1, 1, 1],
     transition: {
       duration: 2,
@@ -55,25 +56,8 @@ const backgroundVariantMD = {
     transition: {
       duration: 1,
       ease: "easeInOut",
-      delay: 1.5,
+      delay: 1.7,
     }
-  },
-}
-
-const backgroundVariantSM = {
-  hidden: {
-    y: 0,
-    opacity: 0,
-  },
-  show: {
-    y: [196, 196, 196, 0],
-    opacity: [0, 0, 0, 1],
-    transition: {
-      duration: 2,
-      ease: "easeInOut",
-      times: [0, 0.4, 0.7, 1],
-      delay: 0.5
-    },
   },
 }
 
@@ -116,6 +100,23 @@ const DarkRoom = () => {
         }
       }
     }
+  }
+
+  const backgroundVariantSM = {
+    hidden: {
+      x: isWindowSmall ? "-50%" : 0,
+      y: 176,
+      opacity: 0,
+    },
+    show: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut",
+        delay: 2,
+      },
+    },
   }
 
   // function for rendering

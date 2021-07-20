@@ -5,16 +5,16 @@
     bottom: 0;
 
     @include md-down {
-      right: -19.4666%;
+      left: 50%;
       height: 80.5418%;
+      transform: translateX(-50%);
 
       @media screen and (min-height: 1024px) {
-        left: auto;
-        right: -10.4%;
         bottom: -5.1851%;
         height: 100%;
       }
     }
+
 
     @include md-up() {
       top: -6.1111%;
@@ -30,13 +30,6 @@
   &__image {
     margin: auto;
     height: 100%;
-
-    // @include md-down {
-    // }
-
-    // @include md-up {
-    //   transform: translateY(7.500vw);
-    // }
 
     &--md {
       @include md-down() {
