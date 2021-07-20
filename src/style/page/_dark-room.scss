@@ -6,34 +6,13 @@
 
     @include md-down {
       left: 50%;
-      // right: -19.4666%;
       height: 80.5418%;
       transform: translateX(-50%);
 
       @media screen and (min-height: 1024px) {
-        // right: -10.4%;
         bottom: -5.1851%;
         height: 100%;
       }
-    }
-
-    // @include sm-down {
-    //   left: -13.5%;
-    //   right: -13.5%;
-
-    //   @media screen and (min-height: 737px) {
-    //     height: 80.5418%;
-    //   }
-    // }
-
-    @include xs-down {
-      left: 45%;
-
-      // @media screen and (min-height: 720px) {
-      //   left: auto;
-      //   right: -19.4666%;
-      //   height: 100%;  
-      // }
     }
 
 
@@ -51,13 +30,6 @@
   &__image {
     margin: auto;
     height: 100%;
-
-    // @include md-down {
-    // }
-
-    // @include md-up {
-    //   transform: translateY(7.500vw);
-    // }
 
     &--md {
       @include md-down() {
