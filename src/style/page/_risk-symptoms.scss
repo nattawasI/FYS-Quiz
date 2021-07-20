@@ -7,7 +7,7 @@
   padding-top: 16.495vw;
 
   @include md-up {
-    padding-top: 100px;
+    padding-top: 9vh;
   }
 
   &__title {
@@ -25,7 +25,11 @@
     margin-top: 4.498vw;
 
     @include md-up {
-      margin-top: 60px;
+      margin-top: 2%;
+    }
+
+    @media only screen and (min-width: 1440px) {
+      margin-top: 5%;
     }
   }
 
@@ -92,7 +96,7 @@
       width: 33.33%;
 
       &:not(:nth-child(-n + 3)) {
-        margin-top: 145px;
+        margin-top: 6%;
       }
     }
   }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
@@ -28,16 +28,12 @@ const VideoDoctor = () => {
   // route context
   const {changeCurrentPageContext} = useRouteActionContext()
 
-  // utility hook
-  const isWindowSmall = UseWindowSmall()
+  // ref
+  const videoRef = useRef(null)
 
   // function
   const goToNextPage = () => {
     changeCurrentPageContext('CausesOfDiabetes')
-  }
-
-  const touchPanelSm = () => {
-    goToNextPage()
   }
 
   return (
@@ -49,24 +45,27 @@ const VideoDoctor = () => {
     >
       <ButtonSound />
       <Content bgColor="blue">
-        <div className="scene-panel video-doctor" onClick={touchPanelSm}>
+        <div className="scene-panel video-doctor">
           <div className="video-box">
-            <video controls poster={ImgPosterDoctor}>
+            <video
+              ref={videoRef}
+              controls
+              autoPlay
+              muted
+              poster={ImgPosterDoctor}
+            >
               <source src={VideoDoctorMp4} type="video/mp4" />
             </video>
           </div>
         </div>
       </Content>
-      {
-        !isWindowSmall
-        && <motion.div className="button-fixed-right-bottom"
-            variants={buttonVariant}
-            initial="hidden"
-            animate="show"
-          >
-            <ButtonNext onClick={goToNextPage} />
-          </motion.div>
-      }
+      <motion.div className="button-fixed-right-bottom"
+        variants={buttonVariant}
+        initial="hidden"
+        animate="show"
+      >
+        <ButtonNext onClick={goToNextPage} />
+      </motion.div>
     </motion.div>
   )
 }
