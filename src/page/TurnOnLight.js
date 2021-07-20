@@ -224,7 +224,7 @@ const TurnOnLight = () => {
   const completedScene1 = () => switchBreaker = true;
 
   const switchOpened = () => {
-    if (openSwitch) {
+    if (openSwitch && !nextScene) {
       setTimeout(() => {
         buttonNextControl.start('show')
         setNextScene(true)
