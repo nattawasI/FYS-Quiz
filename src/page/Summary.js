@@ -10,7 +10,11 @@ import ButtonNext from '../component/ButtonNext'
 import ImgNoteMd from '../image/page/summary/img_note_md.svg'
 import ImgNoteSm from '../image/page/summary/img_note_sm.svg'
 import ImgRisk100Md from '../image/page/summary/img_risk_100_md.svg'
+import ImgRisk50Md from '../image/page/summary/img_risk_50_md.svg'
+import ImgRisk0Md from '../image/page/summary/img_risk_0_md.svg'
 import ImgRisk100Sm from '../image/page/summary/img_risk_100_sm.svg'
+import ImgRisk50Sm from '../image/page/summary/img_risk_50_sm.svg'
+import ImgRisk0Sm from '../image/page/summary/img_risk_0_sm.svg'
 
 // Motion Variants
 const textVariant = {
@@ -81,7 +85,7 @@ const buttonVariant = {
 const Summary = () => {
   // route context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {choicesContext} = useUserStateContext()
+  const {activityOftenContext, choicesContext} = useUserStateContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
@@ -89,15 +93,46 @@ const Summary = () => {
   // state
   const [animateComplete, setAnimateComplete] = useState(false)
   const [paperSmRender, setPaperSmRender] = useState(false)
+  const [sumScore, setSumScore] = useState(0)
 
   // function
-  const goToNextPage = () => { 
+  const goToNextPage = () => {
     changeCurrentPageContext('ResultSymptoms')
   }
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
       goToNextPage()
+    }
+  }
+
+  const renderActivityOften = () => {
+    if (activityOftenContext === 'game') {
+      return 'เล่นเกม'
+    } else if (activityOftenContext === 'food') {
+      return 'กิน'
+    } else if (activityOftenContext === 'exercise') {
+      return 'ออกกำลังกาย'
+    }
+  }
+
+  const renderImgPaperSm = () => {
+    if (sumScore >= 4) {
+      return <img src={ImgRisk100Sm} alt={ 'คุณเองก็มีความเสี่ยง "โรคเบาหวาน" เพราะพฤติกรรมของคุณคล้ายกับเพื่อนสนิท'} />
+    } else if (sumScore === 2 || sumScore === 3) {
+      return <img src={ImgRisk50Sm} alt={ 'คุณเองมีความเสี่ยงเป็น "โรคเบาหวาน" เล็กน้อย แต่เพื่อนของคุณเสียชีวิตจาก "โรคเบาหวาน" เพราะสาเหตุจำเพาะที่อาจเกิดจากพันธุกรรม'} />
+    } else {
+      return <img src={ImgRisk0Sm} alt={ 'คุณไม่เสี่ยงเป็น "โรคเบาหวาน" แต่เพื่อนของคุณเสียชีวิตจาก "โรคเบาหวาน" เพราะสาเหตุจำเพาะที่อาจเกิดจากพันธุกรรม'} />
+    }
+  }
+
+  const renderImgPaperMd = () => {
+    if (sumScore >= 4) {
+      return <img src={ImgRisk100Md} alt={ 'คุณเองก็มีความเสี่ยง "โรคเบาหวาน" เพราะพฤติกรรมของคุณคล้ายกับเพื่อนสนิท'} />
+    } else if (sumScore === 2 || sumScore === 3) {
+      return <img src={ImgRisk50Md} alt={ 'คุณเองมีความเสี่ยงเป็น "โรคเบาหวาน" เล็กน้อย แต่เพื่อนของคุณเสียชีวิตจาก "โรคเบาหวาน" เพราะสาเหตุจำเพาะที่อาจเกิดจากพันธุกรรม'} />
+    } else {
+      return <img src={ImgRisk0Md} alt={ 'คุณไม่เสี่ยงเป็น "โรคเบาหวาน" แต่เพื่อนของคุณเสียชีวิตจาก "โรคเบาหวาน" เพราะสาเหตุจำเพาะที่อาจเกิดจากพันธุกรรม'} />
     }
   }
 
@@ -108,6 +143,19 @@ const Summary = () => {
       }, 1800);
     }
   }, [isWindowSmall, paperSmRender])
+
+  useEffect(() => {
+    const calculateSummary = () => {
+      let score = 0
+      for(const choice of choicesContext) {
+        score = score + choice.score
+      }
+
+      setSumScore(score)
+    }
+
+    calculateSummary()
+  }, [choicesContext])
 
   return (
     <motion.div
@@ -128,24 +176,37 @@ const Summary = () => {
             <div className="text-summary">
               <div className="text-summary__title">สรุปจากการให้ปากคำของคุณ</div>
               <ul className="text-summary__list list-summary">
-                <li className="list-summary__item">ออกกำลังกาย</li>
-                <li className="list-summary__item">หิวมาก แวะหาอะไรกินต่อ</li>
-                <li className="list-summary__item">เดือนละ 1 ครั้ง</li>
-                <li className="list-summary__item">พากันไปหาของกินต่อ</li>
+                <li className="list-summary__item">
+                  {
+                    renderActivityOften()
+                  }
+                </li>
+                {
+                  choicesContext.length
+                  // eslint-disable-next-line array-callback-return
+                  ? choicesContext.map((choice, index) => {
+                      return <li className="list-summary__item" key={'bullet' + (index + 1)}>{choice.label}</li>
+                    })
+                  : ''
+                }
               </ul>
             </div>
           </motion.div>
           {
             isWindowSmall
             ? <div className={`summary__paper${paperSmRender? ' animate': ''}`}>
-                <img src={ImgRisk100Sm} alt="" />
+                {
+                  renderImgPaperSm()
+                }
               </div>
             : <motion.div className="summary__paper"
                 initial="hidden"
                 animate="show"
                 variants={paperMdVariant}
               >
-                <img src={ImgRisk100Md} alt="" />
+                {
+                  renderImgPaperMd()
+                }
               </motion.div>
           }
           <motion.div className="summary__note"
