@@ -1,0 +1,139 @@
+.summary {
+  &__paper {
+    position: relative;
+
+    @include md-up {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 56.25%;
+      height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    @include md-down {
+      top: 1vh;
+      right: -17vw;
+      height: 80vh;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+
+      &.animate {
+        opacity: 1;
+      }
+    }
+
+    @include xs-down {
+      top: 6vh;
+      right: -7vw;
+      height: 74vh;
+    }
+  }
+
+  &__paper > img {
+    width: auto;
+    height: 100%;
+  }
+
+  &__content {
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    @include md-up {
+      top: 22vh;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    @include md-down {
+      top: 12.741vw;
+    }
+
+    @include xs-down {
+      top: 16.741vw;
+    }
+  }
+
+  &__note {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    @include md-down {
+      height: 16.049vh;
+    }
+
+    @include md-up {
+      width: 30%;
+    }
+  }
+
+  &__note > img {
+    @include md-down {
+      height: 100%;
+    }
+
+    @include md-up {
+      width: 100%;
+    }
+  }
+}
+
+.text-summary {
+  @include md-up {
+    width: 70%;
+  }
+
+  &__title {
+    font-size:  5.333vw;
+
+    @include xs-up {
+      font-size: 3.590vw;
+    }
+
+    @include md-up {
+      font-size: 2.083vw;
+    }
+  }
+}
+
+.list-summary {
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 3.733vw;
+    font-weight: 200;
+
+    @include xs-up {
+      font-size: 2.8vw;
+    }
+
+    @include md-up {
+      font-size: 1.302vw;
+    }
+
+    &::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      margin-right: 10px;
+      background: url('../../image/icon/icon_bullet.svg') 0 0 no-repeat;
+      background-size: 100%;
+
+      @include md-up {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}

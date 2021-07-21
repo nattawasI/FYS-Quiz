@@ -111,46 +111,15 @@ const buttonVariant = {
 
 const ResultSymptoms = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {userNameContext} = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
 
   // state
-  const [showScene1, setShowScene1] = useState(true)
-  const [showScene2, setShowScene2] = useState(false)
-  const [showScene3, setShowScene3] = useState(false)
+  const [animateEnd, setAnimateEnd] = useState(false)
 
   // function
-  const goToPrevPage = () => {
-    changeCurrentPageContext('CausesOfDiabetes')
-  }
-
   const goToNextPage = () => {
-    changeCurrentPageContext('Suggestion')
-  }
-
-  const changeToScene2 = () => {
-    setShowScene1(false)
-    setShowScene2(true)
-  }
-
-  const changeToScene3 = () => {
-    setShowScene2(false)
-    setShowScene3(true)
-  }
-
-  let nextScene = ''
-  const skipScene = () => {
-    if (isWindowSmall) {
-      if (nextScene === 'scene2') {
-        setShowScene1(false)
-        setShowScene2(true)
-      } else if (nextScene === 'scene3') {
-        setShowScene1(false)
-        setShowScene2(false)
-        setShowScene3(true)
-      } else if (nextScene === 'NextPage') {
-        goToNextPage()
-      }
+    if (animateEnd) {
+      changeCurrentPageContext('Suggestion')
     }
   }
 
@@ -161,10 +130,9 @@ const ResultSymptoms = () => {
       animate="show"
       exit="exit"
     >
-      <ButtonBack dark onClick={goToPrevPage} />
       <ButtonSound dark />
       <Content bgColor="white">
-        <div className="scene-panel scene-animate" onClick={skipScene}>
+        <div className="scene-panel scene-animate" onClick={goToNextPage}>
           <div className="risk-symptoms">
             <motion.p className="text-story text-story--black risk-symptoms__title"
               variants={titleRiskSymptomsVariant}
@@ -182,7 +150,7 @@ const ResultSymptoms = () => {
                 variants={bgRiskSymptomsVariant}
                 initial="hidden"
                 animate="show"
-                onAnimationComplete={ () => nextScene = 'NextPage' }
+                onAnimationEnd={() => setAnimateEnd(true)}
               ></motion.div>
               <ul className="list-risk-symptoms">
                 <li className="list-risk-symptoms__item">

@@ -48,8 +48,19 @@
     }
   }
 
+  &__card {
+    cursor: pointer;
+
+    &:hover {
+      .list-causes-of-diabetes__image {
+        transform: scale(1.1);
+      }
+    }
+  }
+
   &__image {
     width: 120px;
+    transition: transform 0.2s ease-in-out;
 
     @include md-up {
       width: 100%;
