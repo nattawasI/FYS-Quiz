@@ -38,6 +38,47 @@ const sceneVariant = {
   }
 }
 
+const textVariant = {
+  hidden: {
+    opacity: 0,
+    y: 70
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'tween',
+      ease: 'easeInOut',
+      duration: 1,
+      delay: 0.7,
+    },
+  },
+}
+
+const listVariant = {
+  hidden: {
+    opacity: 0,
+    y: '50vh'
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'tween',
+      ease: 'easeInOut',
+      duration: 1,
+      delay: 2,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      type: 'tween',
+      duration: 0.7
+    }
+  }
+}
+
 const buttonVariant = {
   hidden: {
     opacity: 0
@@ -80,7 +121,7 @@ const CausesOfDiabetes = () => {
   }
 
   const goToNextPage = () => {
-    changeCurrentPageContext('ResultSymptoms')
+    changeCurrentPageContext('Summary')
   }
 
   const changeToScene2 = () => {
@@ -92,20 +133,6 @@ const CausesOfDiabetes = () => {
     setShowScene2(false)
     setShowScene3(true)
   }
-
-  let nextScene = ''
-  // const skipScene = () => {
-  //   if (isWindowSmall) {
-  //     if (nextScene === 'scene2') {
-  //       setShowScene1(false)
-  //       setShowScene2(true)
-  //     } else if (nextScene === 'scene3') {
-  //       setShowScene1(false)
-  //       setShowScene2(false)
-  //       setShowScene3(true)
-  //     }
-  //   }
-  // }
 
   const submitSympton = (e) => {
     e.preventDefault()
@@ -144,19 +171,21 @@ const CausesOfDiabetes = () => {
               {
                 showScene1
                 && <motion.div className="box-story__text causes-of-diabetes"
-                    key="scene1"
                     variants={sceneVariant}
                     initial="hidden"
                     animate="show"
                     exit="exit"
                   >
                     <motion.p className="box-story__text text-story causes-of-diabetes__text"
-                      key="scene1"
-                      variants={sceneVariant}
+                      variants={textVariant}
                       initial="hidden"
                       animate="show"
                     >คุณรู้ไหม<br /><span className="text-story--bigger">"โรคเบาหวาน"</span> <br className="sm-show" />เกิดจากอะไร?</motion.p>
-                    <ul className="causes-of-diabetes__list list-causes-of-diabetes">
+                    <motion.ul className="causes-of-diabetes__list list-causes-of-diabetes"
+                      variants={listVariant}
+                      initial="hidden"
+                      animate="show"
+                    >
                       <li className="list-causes-of-diabetes__item">
                         <div className="list-causes-of-diabetes__card" onClick={changeToScene2}>
                           <figure className="list-causes-of-diabetes__image">
@@ -181,17 +210,17 @@ const CausesOfDiabetes = () => {
                           <div className="list-causes-of-diabetes__text">เป็นได้ทั้ง 2 อย่าง</div>
                         </div>
                       </li>
-                    </ul>
+                    </motion.ul>
                   </motion.div>
               }
             </AnimatePresence>
           </div>
           <div className="box-story scene-animate__scene scene-animate__scene--3">
             <form onSubmit={submitSympton}>
+              <AnimatePresence>
               {
                 showScene2
                 && <motion.div className="box-story__text symptoms"
-                    key="scene2"
                     variants={sceneVariant}
                     initial="hidden"
                     animate="show"
@@ -213,7 +242,8 @@ const CausesOfDiabetes = () => {
                             </div>
                       }
                   </motion.div>
-              }
+                }
+              </AnimatePresence>
             </form>
           </div>
           <div className="box-story scene-animate__scene scene-animate__scene--3">
@@ -221,18 +251,15 @@ const CausesOfDiabetes = () => {
               {
                 showScene3
                 && <motion.p className="box-story__text text-story"
-                  key="scene1"
                   variants={sceneVariant}
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  onAnimationComplete={ () => nextScene = 'scene2' }
                 >นอกจากนี้ ฆาตกรยังเป็น<br /><span className="text-story--bigger">”ความเครียด”</span> <br />ของเพื่อนคุณอีกด้วย</motion.p>
               }
               {
                 !isWindowSmall && showScene3
                 && <motion.div className="box-story__button"
-                    key="buttonNextScene1"
                     variants={buttonVariant}
                     initial="hidden"
                     animate="show"

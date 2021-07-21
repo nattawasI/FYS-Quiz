@@ -9,9 +9,19 @@ $xl: 1400px;
   @media (max-width: $xs) { @content; }
 }
 
+// X-Small devices (portrait phones, more than 576px)
+@mixin xs-up {
+  @media (min-width: $xs + 1) { @content; }
+}
+
 // Small devices (landscape phones, less than 768px)
 @mixin sm-down {
   @media (max-width: $sm) { @content; }
+}
+
+// Small devices (landscape phones, more than 768px)
+@mixin sm-up {
+  @media (min-width: $sm + 1) { @content; }
 }
 
 // Medium devices (tablets, less than 1024px)
@@ -29,9 +39,19 @@ $xl: 1400px;
   @media (max-width: $lg) { @content; }
 }
 
+// X-Large devices (large desktops, more than 1400px)
+@mixin lg-up {
+  @media (min-width: $lg + 1) { @content; }
+}
+
 // X-Large devices (large desktops, less than 1400px)
 @mixin xl-down {
   @media (max-width: $xl) { @content; }
+}
+
+// X-Large devices (ladesktops, more than 1400px)rge 
+@mixin xl-up {
+  @media (min-width: $xl + 1) { @content; }
 }
 
 // iphone SE size

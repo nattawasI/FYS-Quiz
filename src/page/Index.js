@@ -11,13 +11,14 @@ import CallPolice from './CallPolice'
 import PoliceCame from './PoliceCame'
 import Siren from './Siren'
 import Investigate from './Investigate'
-import VideoDoctor from './VideoDoctor'
-import CausesOfDiabetes from './CausesOfDiabetes'
-import ResultSymptoms from './ResultSymptoms'
-import Suggestion from './Suggestion'
 import DeadBody from './DeadBody'
 import Murder from './Murder'
 import Evidence from './Evidence'
+import VideoDoctor from './VideoDoctor'
+import CausesOfDiabetes from './CausesOfDiabetes'
+import Summary from './Summary'
+import ResultSymptoms from './ResultSymptoms'
+import Suggestion from './Suggestion'
 import End from './End'
 
 const Index = () => {
@@ -44,20 +45,22 @@ const Index = () => {
       return <Siren />
     } else if (currentPageContext === 'Investigate') {
       return <Investigate />
-    } else if (currentPageContext === 'VideoDoctor') {
-      return <VideoDoctor />
-    } else if (currentPageContext === 'CausesOfDiabetes') {
-      return <CausesOfDiabetes />
-    } else if (currentPageContext === 'ResultSymptoms') {
-      return <ResultSymptoms />
-    } else if (currentPageContext === 'Suggestion') {
-      return <Suggestion />
     } else if (currentPageContext === 'DeadBody') {
       return <DeadBody />
     } else if (currentPageContext === 'Murder') {
       return <Murder />
     } else if (currentPageContext === 'Evidence') {
       return <Evidence />
+    } else if (currentPageContext === 'VideoDoctor') {
+      return <VideoDoctor />
+    } else if (currentPageContext === 'CausesOfDiabetes') {
+      return <CausesOfDiabetes />
+    } else if (currentPageContext === 'Summary') {
+      return <Summary />
+    } else if (currentPageContext === 'ResultSymptoms') {
+      return <ResultSymptoms />
+    } else if (currentPageContext === 'Suggestion') {
+      return <Suggestion />
     } else if (currentPageContext === 'End') {
       return <End />
     }

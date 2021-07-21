@@ -1,8 +1,7 @@
 import React, {
   useState,
   createContext,
-  useContext,
-  useEffect
+  useContext
 } from 'react'
 
 const UserStateContext = createContext()
@@ -21,8 +20,19 @@ const UserProvider = ({ children }) => {
   const [userNameContext, setUserNameContext] = useState('')
   const [yearsKnownContext, setYearsKnownContext] = useState('')
   const [friendInfoContext, setFriendNameContext] = useState({})
-  const [activityOftenContext, setActivityOftenContext] = useState('')
-  const [choicesContext, setChoicesContext] = useState([])
+  const [activityOftenContext, setActivityOftenContext] = useState('exercise')
+  const [choicesContext, setChoicesContext] = useState([
+    {
+      id: 'exercise-1-1',
+      label: 'เกือบทุกวัน',
+      score: 0
+    },
+    {
+      id: 'exercise-2-1',
+      label: 'ปาร์ตี้ต่อ เพื่อนๆ รออยู่',
+      score: 1
+    }
+  ])
   const [symptomContext, setSymptomContext] = useState('')
 
   // key store
@@ -50,21 +60,19 @@ const UserProvider = ({ children }) => {
 
   const addActivityOftenContext = (activity) => {
     setActivityOftenContext(activity)
+    setChoicesContext([])
   }
 
   const addChoicesContext = (choice) => {
     setChoicesContext([...choicesContext, choice])
   }
 
-  useEffect(() => {
-    setChoicesContext([])
-  }, [activityOftenContext])
-
   const userStateStore = { // use this pass to value
     userNameContext,
     yearsKnownContext,
     friendInfoContext,
     activityOftenContext,
+    choicesContext,
     symptomContext,
   }
 
