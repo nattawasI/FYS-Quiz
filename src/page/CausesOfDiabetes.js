@@ -113,6 +113,7 @@ const CausesOfDiabetes = () => {
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
+  const [canGoNextPage, setCanGoNextPage] = useState(false)
   const [error, setError] = useState(false)
 
   // function
@@ -145,11 +146,23 @@ const CausesOfDiabetes = () => {
     }
   }
 
+  const touchPanelSm = () => {
+    if (canGoNextPage) {
+      goToNextPage()
+    }
+  }
+
   useEffect(() => {
     if (symptomContext) {
       setShowScene1(false)
       setShowScene2(false)
       setShowScene3(true)
+    }
+
+    return () => {
+      setShowScene1(false)
+      setShowScene2(false)
+      setShowScene3(false)
     }
   }, [symptomContext])
 
@@ -165,7 +178,7 @@ const CausesOfDiabetes = () => {
       }
       <ButtonSound />
       <Content bgColor="blue">
-        <div className="scene-panel scene-panel--items-center scene-animate">
+        <div className="scene-panel scene-panel--items-center scene-animate" onClick={touchPanelSm}>
           <div className="box-story scene-animate__scene scene-animate__scene--1">
             <AnimatePresence>
               {
@@ -251,15 +264,18 @@ const CausesOfDiabetes = () => {
               {
                 showScene3
                 && <motion.p className="box-story__text text-story"
+                  key="scene3-text"
                   variants={sceneVariant}
                   initial="hidden"
                   animate="show"
                   exit="exit"
+                  onAnimationComplete={() => setCanGoNextPage(true)}
                 >นอกจากนี้ ฆาตกรยังเป็น<br /><span className="text-story--bigger">”ความเครียด”</span> <br />ของเพื่อนคุณอีกด้วย</motion.p>
               }
               {
                 !isWindowSmall && showScene3
                 && <motion.div className="box-story__button"
+                    key="scene3-button"
                     variants={buttonVariant}
                     initial="hidden"
                     animate="show"

@@ -22,6 +22,7 @@ const UserProvider = ({ children }) => {
   const [friendInfoContext, setFriendNameContext] = useState({})
   const [activityOftenContext, setActivityOftenContext] = useState('')
   const [choicesContext, setChoicesContext] = useState([])
+  const [activityTodayContext, setActivityTodayContext] = useState('')
   const [symptomContext, setSymptomContext] = useState('')
 
   // key store
@@ -56,12 +57,17 @@ const UserProvider = ({ children }) => {
     setChoicesContext([...choicesContext, choice])
   }
 
+  const addActivityTodayContext = (activity) => {
+    setActivityTodayContext(activity)
+  }
+
   const userStateStore = { // use this pass to value
     userNameContext,
     yearsKnownContext,
     friendInfoContext,
     activityOftenContext,
     choicesContext,
+    activityTodayContext,
     symptomContext,
   }
 
@@ -71,6 +77,7 @@ const UserProvider = ({ children }) => {
     addFriendInfoContext,
     addActivityOftenContext,
     addChoicesContext,
+    addActivityTodayContext,
     addSymptomContext,
   }
 

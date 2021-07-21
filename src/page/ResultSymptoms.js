@@ -93,8 +93,12 @@ const ResultSymptoms = () => {
 
   // function
   const goToNextPage = () => {
+    changeCurrentPageContext('Suggestion')
+  }
+
+  const touchPanelSm = () => {
     if (animateEnd) {
-      changeCurrentPageContext('Suggestion')
+      goToNextPage()
     }
   }
 
@@ -107,7 +111,7 @@ const ResultSymptoms = () => {
     >
       <ButtonSound dark />
       <Content bgColor="white">
-        <div className="scene-panel scene-animate" onClick={goToNextPage}>
+        <div className="scene-panel scene-animate" onClick={touchPanelSm}>
           <div className="risk-symptoms">
             <motion.p className="text-story text-story--black risk-symptoms__title"
               variants={titleRiskSymptomsVariant}
@@ -125,7 +129,7 @@ const ResultSymptoms = () => {
                 variants={bgRiskSymptomsVariant}
                 initial="hidden"
                 animate="show"
-                onAnimationEnd={() => setAnimateEnd(true)}
+                onAnimationComplete={() => setAnimateEnd(true)}
               ></motion.div>
               <ul className="list-risk-symptoms">
                 <li className="list-risk-symptoms__item">

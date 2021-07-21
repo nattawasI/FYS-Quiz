@@ -364,7 +364,7 @@ const Investigate = () => {
                     >
                       <div className="text-story form-activity__title">เริ่มจากก่อนเกิดเหตุ กิจกรรมระหว่างคุณ<br />กับคุณ {friendInfoContext.name} ที่ทำบ่อย ๆ คืออะไร? </div>
                       <div className="form-activity__list">
-                        <ListCardActivity changeScene={changeToSceneQuiz} chooseActivity={chooseActivityOften} />
+                        <ListCardActivity type="often" changeScene={changeToSceneQuiz} chooseActivity={chooseActivityOften} />
                       </div>
                     </motion.div>
                 }
@@ -431,7 +431,7 @@ const Investigate = () => {
                     >
                       <div className="text-story form-activity__title">กิจกรรมสุดท้ายที่รู้สึกว่า<br />ได้ทำร่วมกับเพื่อนสนิท ในวันเกิดเหตุ?</div>
                       <div className="form-activity__list">
-                        <ListCardActivity changeScene={changeToSceneThankYou} />
+                        <ListCardActivity type="today"  changeScene={changeToSceneThankYou} />
                       </div>
                     </motion.div>
                 }

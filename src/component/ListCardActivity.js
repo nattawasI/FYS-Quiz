@@ -9,13 +9,18 @@ import ImgCardFoodSm from '../image/page/investigate/img_card_food_sm.svg'
 import ImgCardExerciseMd from '../image/page/investigate/img_card_exercise_md.svg'
 import ImgCardExerciseSm from '../image/page/investigate/img_card_exercise_sm.svg'
 
-const ListCardActivity = ({changeScene, chooseActivity}) => {
-  const {addActivityOftenContext} = useUserActionContext()
+const ListCardActivity = ({type, changeScene, chooseActivity}) => {
+  const {addActivityOftenContext, addActivityTodayContext} = useUserActionContext()
   const isWindowSmall = UseWindowSmall()
 
   const handleClick = (activity) => {
     chooseActivity(activity)
-    addActivityOftenContext(activity)
+
+    if (type === 'often') {
+      addActivityOftenContext(activity)
+    } else {
+      addActivityTodayContext(activity)
+    }
     changeScene()
   }
 
@@ -56,6 +61,7 @@ const ListCardActivity = ({changeScene, chooseActivity}) => {
 }
 
 ListCardActivity.propTypes = {
+  type: PropTypes.string.isRequired,
   changeScene: PropTypes.func,
   chooseActivity: PropTypes.func,
 }
