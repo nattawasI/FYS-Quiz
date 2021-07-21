@@ -20,9 +20,9 @@
   &__coffee {
     position: absolute;
     // top: 9.6059%;
-    bottom: 87%;
     // right: 46.9230%;
     left: 5.3333%;
+    bottom: 87%;
     z-index: 5;
 
     @include md-down {
@@ -123,38 +123,6 @@
   }
 
   .social {
-    // position: absolute;
-    // left: 0;
-    // right: 0;
-    // bottom: 38.9162%;
-    // z-index: 40;
-    // // z-index: 40;
-    // overflow: hidden;
-
-    // @include xs-down {
-
-    //   @media screen and (max-height: 667px) {
-    //     bottom: 38.9162%;
-    //   }
-
-    //   @media screen and (min-height: 668px) {
-    //     bottom: 38.9162%;
-    //   }
-    // }
-
-    // @include md-down {
-    //   @media screen and (min-height: 1024px) {
-    //     bottom: 38.9162%;
-    //   }
-    // }
-
-    // @include md-up {
-    //   right: 27.4479%;
-    //   left: 50.5%;
-    //   right: 27.4479%;
-    //   bottom: 31.1111%;
-    // }
-
     &__list {
       position: absolute;
       left: auto;
@@ -164,10 +132,6 @@
       display: flex;
       flex-wrap: wrap;
       margin: 0 -1.6vw;
-      // transform: translateX(26.8%);
-      // padding-left: 42.54%;
-      // padding-right: 85px;
-      // padding-right: 22.6666%;
 
       @include iphone-se {
         right: 56px;
@@ -177,7 +141,6 @@
       @include iphone {
         bottom: 46.9%;
       }
-
 
       @include ratio-wide-frame {
         bottom: 46.9%;

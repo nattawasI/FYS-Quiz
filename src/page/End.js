@@ -115,7 +115,7 @@ const End = () => {
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('PageName')
+    changeCurrentPageContext('Start')
   }
 
   const touchPanelSm = () => {
@@ -151,7 +151,7 @@ const End = () => {
   ]
 
   // hardcode to check image
-  // friendInfoContext.gender = 'female'
+  friendInfoContext.gender = 'female'
 
   return (
     <motion.div
@@ -166,7 +166,7 @@ const End = () => {
           <div className="end__container">
             <div className="end__content">
               <div className="end__button">
-                <ButtonRestart />
+                <ButtonRestart onClick={goToNextPage} />
               </div>
               <motion.img
                 className="end__ribbon-top"
@@ -204,29 +204,20 @@ const End = () => {
                 <div className="end__body dead-body">
                 {
                   friendInfoContext.gender === 'male' &&
-                  <motion.img
+                  <img
                     className="dead-body__image"
                     src={ isWindowSmall ? DeadbodyMaleSM : DeadbodyMaleMD }
                     alt="dead body"
-                    // variants={bodyVariant}
-                    // initial="hidden"
-                    // animate="show"
-                    // exit="exit"
                   />
                 }
                 {
                   friendInfoContext.gender === 'female' &&
-                  <motion.img
+                  <img
                     className="dead-body__image"
                     src={ isWindowSmall ? DeadbodyFemaleSM : DeadbodyFemaleMD }
                     alt="dead body"
-                    // variants={bodyVariant}
-                    // initial="hidden"
-                    // animate="show"
-                    // exit="exit"
                   />
                 }
-                  {/* <img  className="end__body-image" src={ isWindowSmall ? PersonSM : PersonMD } alt="dead body" /> */}
                 </div>
               </motion.div>
               

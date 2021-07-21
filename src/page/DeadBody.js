@@ -104,6 +104,9 @@ const DeadBody = () => {
     }
   }
 
+  // hardcode to check image
+  friendInfoContext.gender = 'female'
+
   const renderScene1 = () => {
     if (showScene1) {
       if (isWindowSmall) {
