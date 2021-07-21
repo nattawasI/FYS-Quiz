@@ -20,19 +20,8 @@ const UserProvider = ({ children }) => {
   const [userNameContext, setUserNameContext] = useState('')
   const [yearsKnownContext, setYearsKnownContext] = useState('')
   const [friendInfoContext, setFriendNameContext] = useState({})
-  const [activityOftenContext, setActivityOftenContext] = useState('exercise')
-  const [choicesContext, setChoicesContext] = useState([
-    {
-      id: 'exercise-1-1',
-      label: 'เกือบทุกวัน',
-      score: 0
-    },
-    {
-      id: 'exercise-2-1',
-      label: 'ปาร์ตี้ต่อ เพื่อนๆ รออยู่',
-      score: 1
-    }
-  ])
+  const [activityOftenContext, setActivityOftenContext] = useState('')
+  const [choicesContext, setChoicesContext] = useState([])
   const [symptomContext, setSymptomContext] = useState('')
 
   // key store

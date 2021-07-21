@@ -1,12 +1,10 @@
 
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
-import {useUserStateContext} from '../context/UserContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
-import ButtonBack from '../component/ButtonBack'
 import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
 import ImgToilet from '../image/page/result-symptoms/img_toilet.svg'
@@ -17,29 +15,6 @@ import ImgThirsty from '../image/page/result-symptoms/img_thirsty.svg'
 import ImgSlowRecovery from '../image/page/result-symptoms/img_slow_recovery.svg'
 
 // motion Variant
-const sceneVariant = {
-  hidden: {
-    opacity: 0,
-    y: 70
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ease: 'easeInOut',
-      delay: 0.7,
-      duration: 1
-    },
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      type: 'tween',
-      duration: 0.7
-    }
-  }
-}
-
 const titleRiskSymptomsVariant = {
   hidden: {
     opacity: 0,

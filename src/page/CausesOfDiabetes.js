@@ -50,7 +50,7 @@ const textVariant = {
       type: 'tween',
       ease: 'easeInOut',
       duration: 1,
-      delay: 0.7,
+      delay: 1,
     },
   },
 }
@@ -58,7 +58,7 @@ const textVariant = {
 const listVariant = {
   hidden: {
     opacity: 0,
-    y: '50vh'
+    y: 70
   },
   show: {
     opacity: 1,
