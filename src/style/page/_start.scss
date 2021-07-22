@@ -15,7 +15,7 @@
 
 .start-ribbon-right {
   position: fixed;
-  top: -32px;
+  top: -3.951vw;
   right: 0;
   width: 45.333vw;
 
@@ -139,7 +139,7 @@
       height: 100%;
 
       @include md-down {
-        margin-left: -25px;
+        margin-left: -6.667vw;
       }
 
       @include md-up {
