@@ -18,7 +18,7 @@
   }
 
   &__input {
-    width: 260px;
+    width: 69.333vw;
 
     @include md-up {
       width: 515px;
@@ -26,8 +26,7 @@
   }
 
   &__label {
-    margin-top: 30px;
-    font-size: 2.2rem;
+    margin-top: 3vh;
     font-weight: 300;
     color: $white;
     line-height: 1.4;
@@ -41,7 +40,7 @@
   &__button-group {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 2vh;
 
     @include md-up {
       margin-top: 15px;
@@ -49,7 +48,7 @@
   }
 
   &__button {
-    width: 135px;
+    width: 36vw;
 
     @include md-up {
       width: 240px;

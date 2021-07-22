@@ -10,7 +10,11 @@
   }
 
   &__list {
-    margin-top: 30px;
+    margin-top: 5.556vw;
+
+    @include sm-up {
+      margin-top: 5.859vw;
+    }
 
     @include md-up {
       margin-top: 3.802vw;
@@ -38,13 +42,15 @@
     @include md-down {
       display: flex;
       justify-content: center;
-      width: 160px;
-      margin-bottom: 20px;
+      padding: 0 6.667vw;
     }
 
     @include md-up {
       flex-grow: 1;
-      padding: 0 8%;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
     }
   }
 
@@ -59,16 +65,20 @@
   }
 
   &__image {
-    width: 120px;
     transition: transform 0.2s ease-in-out;
-
-    @include md-up {
-      width: 100%;
-    }
   }
 
   &__image > img {
-    width: 100%;
+    width: 30.933vw;
+
+    @include sm-up {
+      width: 24.089vw;
+    }
+
+
+    @include md-up {
+      width: 16.667vw;
+    }
   }
 
   &__text {
@@ -77,14 +87,14 @@
     align-items: center;
     min-height: 3em;
     margin-top: 20px;
-    font-size: 1.8rem;
+    font-size: 4.800vw;
     font-weight: 300;
     line-height: 1.7;
     text-align: center;
     white-space: nowrap;
 
-    @include md-down {
-      white-space: nowrap;
+    @include sm-up {
+      font-size: 3.516vw;
     }
 
     @include md-up {
@@ -101,11 +111,11 @@
 
   &__input {
     width: 80vw;
-    margin-top: 20px;
+    margin-top: 3vh;
 
     @include md-up {
       width: 36.458vw;
-      margin-top: 40px;
+      margin-top: 4vh;
     }
   }
 

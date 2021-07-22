@@ -6,19 +6,22 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 43px;
+  height: 11.467vw;
   background-color: $white;
   border-radius: 50px;
-  // font-size: 1.8rem;
   font-size: 3.800vw;
   text-align: center;
   color: $black;
   overflow: hidden;
   transition: all 0.2s ease-in-out;
 
+  @include sm-up {
+    height: 8.467vw;
+    font-size: 3.5vw;
+  }
+
   @include md-up {
     height: 75px;
-    // font-size: 3.5rem;
     font-size: 1.823vw;
   }
 
@@ -31,11 +34,16 @@
   &::after {
     content: '';
     position: absolute;
-    width: 25px;
-    height: 28px;
+    width: 6.667vw;
+    height: 7.467vw;
     background-position: left bottom;
     background-size: 100% auto;
     background-repeat: no-repeat;
+
+    @include sm-up {
+      width: 3.667vw;
+      height: 4.467vw;
+    }
 
     @include md-up {
       width: 43px;
@@ -44,8 +52,8 @@
   }
 
   &::after {
-    top: 3px;
-    right: 3px;
+    top: 0.800vw;
+    right: 0.800vw;
     background-image: url('../../image/icon/icon_gloss_white_sm_top_right.svg');
 
     @include md-up {
@@ -78,18 +86,63 @@
   }
 }
 
+/* button-sound
+--------------------------------------- */
+.button-sound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 4.267vw;
+  right: 4.267vw;
+  z-index: 10;
+  line-height: 1;
+
+  @include md-up {
+    top: 3.125vw;
+    right: 3.125vw;
+  }
+
+  img {
+    width: 6.400vw;
+    height: 6.400vw;
+
+    @include sm-up {
+      width: 4.5vw;
+      height: 4.5vw;
+    }
+
+    @include md-up {
+      width: 2.969vw;
+      height: 2.969vw;
+    }
+  }
+
+  @include md-up {
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
 /* button-back
 --------------------------------------- */
 .button-back {
   display: flex;
   align-items: center;
   position: fixed;
-  top: 16px;
-  left: 16px;
+  top: 4.267vw;
+  left: 4.267vw;
   z-index: 10;
-  font-size: 1.4rem;
+  font-size: 4.800vw;
   font-weight: 300;
   color: $white;
+
+  @include sm-up {
+    font-size: 3.5vw;
+  }
 
   @include md-up {
     top: 3.125vw;
@@ -99,13 +152,18 @@
 
   &::before {
     content: '';
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 5.333vw;
+    height: 5.333vw;
     margin-right: 10px;
     background-image: url('../../image/icon/icon_back.svg');
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
+
+    @include sm-up {
+      width: 3.5vw;
+      height: 3.5vw;
+    }
 
     @include md-up {
       width: 2.083vw;
@@ -131,50 +189,17 @@
   }
 }
 
-/* button-mute
---------------------------------------- */
-.button-mute {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  z-index: 10;
-  line-height: 1;
-
-  @include md-up {
-    top: 3.125vw;
-    right: 3.125vw;
-  }
-
-  img {
-    width: 24px;
-    height: 24px;
-
-    @include md-up {
-      // width: 55px;
-      width: 2.969vw;
-      height: 2.969vw;
-    }
-  }
-
-  @include md-up {
-    transition: transform 0.2s ease-in-out;
-
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
-}
-
 /* button-next
 --------------------------------------- */
 .button-next {
   display: inline-flex;
   align-items: center;
-  font-size: 1.8rem;
+  font-size: 4.800vw;
   color: $white;
+
+  @include sm-up {
+    font-size: 3.5vw;
+  }
 
   @include md-up {
     font-size: 1.563vw;
@@ -182,11 +207,16 @@
 
   &::after {
     content: '';
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 5.333vw;
+    height: 5.333vw;
     margin-left: 10px;
     background: url('../../image/icon/icon_next.svg') center no-repeat;
     background-size: 100%;
+
+    @include sm-up {
+      width: 3.5vw;
+      height: 3.5vw;
+    }
 
     @include md-up {
       width: 2.083vw;
