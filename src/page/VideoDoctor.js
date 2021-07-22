@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
@@ -17,8 +17,7 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
-      delay: 1,
+      duration: 0.2
     }
   }
 }
@@ -30,9 +29,18 @@ const VideoDoctor = () => {
   // ref
   const videoRef = useRef(null)
 
+  // state
+  const [isPlaying, setIsplaying] = useState(false)
+
   // function
   const goToNextPage = () => {
     changeCurrentPageContext('CausesOfDiabetes')
+  }
+
+  const handlePlay = () => {
+    setTimeout(() => {
+      setIsplaying(true)
+    }, 1000)
   }
 
   return (
@@ -49,22 +57,24 @@ const VideoDoctor = () => {
             <video
               ref={videoRef}
               controls
-              autoPlay
-              muted
               poster={ImgPosterDoctor}
+              onPlaying={handlePlay}
             >
               <source src={VideoDoctorMp4} type="video/mp4" />
             </video>
           </div>
         </div>
       </Content>
-      <motion.div className="button-fixed-right-bottom"
-        variants={buttonVariant}
-        initial="hidden"
-        animate="show"
-      >
-        <ButtonNext onClick={goToNextPage} />
-      </motion.div>
+      {
+        isPlaying
+        && <motion.div className="button-fixed-right-bottom"
+            variants={buttonVariant}
+            initial="hidden"
+            animate="show"
+          >
+            <ButtonNext onClick={goToNextPage} />
+          </motion.div>
+      }
     </motion.div>
   )
 }

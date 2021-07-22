@@ -11,14 +11,14 @@ const quizVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
     }
   },
   exit: {
     opacity: 0,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
     }
   }
 }

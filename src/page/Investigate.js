@@ -29,7 +29,7 @@ const textVariant = {
     y: 0,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
     }
   },
 }
@@ -42,8 +42,8 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
-      delay: 0.7,
+      duration: 1,
+      delay: 1,
     }
   },
 }
@@ -56,21 +56,21 @@ const contentVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
     }
   },
   firstShow: {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
       delay: 1,
     }
   },
   exit: {
     opacity: 0,
     transition: {
-      duration: 0.7
+      duration: 1
     }
   }
 }
@@ -226,6 +226,20 @@ const Investigate = () => {
     }
   }
 
+  const buttonBackHandleClick = () => {
+    if (sceneMurder || sceneAskCooperation) {
+      backToSceneYourName()
+    } else if (sceneQuiz) {
+      prevQuestion()
+    } else if (sceneFormYear) {
+      backToSceneQuiz()
+    } else if (sceneActivityToday) {
+      backToSceneFormYear()
+    } else if (sceneThankYou) {
+      backToSceneActivityToday()
+    }
+  }
+
   useEffect(() => {
     if (sceneActivityOften || sceneActivityToday) {
       setAnimateTable(true)
@@ -242,32 +256,11 @@ const Investigate = () => {
       exit="exit"
     >
       {
-        sceneMurder
-        && <ButtonBack onClick={backToSceneYourName} />
-      }
-      {
-        sceneAskCooperation
-        && <ButtonBack onClick={backToSceneYourName} />
-      }
-      {
-        sceneQuiz // จะกลับไปหน้า quiz แต่ละอัน
-        && <ButtonBack
+        (sceneMurder || sceneAskCooperation || sceneQuiz || sceneFormYear || sceneActivityToday || sceneThankYou)
+        && <ButtonBack onClick={buttonBackHandleClick}
             variants={buttonVariant}
             exit="exit"
-            onClick={prevQuestion}
           />
-      }
-      {
-        sceneFormYear // กลับไปหน้า quiz ล่าสุด
-        && <ButtonBack onClick={backToSceneQuiz} />
-      }
-      {
-        sceneActivityToday // กลับไปหน้า FormYear
-        && <ButtonBack onClick={backToSceneFormYear} />
-      }
-      {
-        sceneThankYou // กลับไปหน้า ActivityToday
-        && <ButtonBack onClick={backToSceneActivityToday} />
       }
       <ButtonSound />
       <Content bgColor="blue" className="investigate-wrap">
@@ -408,7 +401,7 @@ const Investigate = () => {
                           />
                       }
                     </motion.div>
-                }QuizData
+                }
                 {
                   sceneFormYear
                   && <motion.div

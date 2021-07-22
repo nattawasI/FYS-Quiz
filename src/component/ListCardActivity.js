@@ -33,7 +33,7 @@ const ListCardActivity = ({type, changeScene, chooseActivity}) => {
             src={isWindowSmall ? ImgCardGameSm: ImgCardGameMd}
             alt="ชวนเล่นเกม"
           />
-          <span className="list-card-activity__text md-show">ชวนเล่นเกม</span>
+          <span className="list-card-activity__text list-card-activity__text--game md-show">ชวนเล่นเกม</span>
         </button>
       </li>
       <li className="list-card-activity__item list-card-activity__item--food">
@@ -43,7 +43,7 @@ const ListCardActivity = ({type, changeScene, chooseActivity}) => {
             src={isWindowSmall ? ImgCardFoodSm: ImgCardFoodMd}
             alt="ชวนกิน"
           />
-          <span className="list-card-activity__text md-show">ชวนกิน</span>
+          <span className="list-card-activity__text list-card-activity__text--food md-show">ชวนกิน</span>
         </button>
       </li>
       <li className="list-card-activity__item list-card-activity__item--exercise">
@@ -53,7 +53,7 @@ const ListCardActivity = ({type, changeScene, chooseActivity}) => {
             src={isWindowSmall ? ImgCardExerciseSm: ImgCardExerciseMd}
             alt="ชวนออกกำลังกาย"
           />
-          <span className="list-card-activity__text md-show">ชวนออกกำลังกาย</span>
+          <span className="list-card-activity__text list-card-activity__text--exercise md-show">ชวนออกกำลังกาย</span>
         </button>
       </li>
     </ul>
