@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
+import {MotionUtilities} from '../variable/MotionUtilities'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -18,10 +19,10 @@ const textVariantMD = {
     y: ["0%", "0%", "-100%"],
     opacity: [0, 1, 1],
     transition: {
-      duration: 2,
+      duration: MotionUtilities.speed.speedTwo,
       ease: "easeInOut",
       times: [0, 0.6, 1],
-      delay: 0.5
+      delay: MotionUtilities.speed.speedOne
     }
   },
 }
@@ -35,10 +36,10 @@ const textVariantSM = {
     y: ["5%", "0%", "0%", "-200%"],
     opacity: [0, 1, 1, 1],
     transition: {
-      duration: 2,
+      duration: MotionUtilities.speed.speedTwo,
       ease: "easeInOut",
       times: [0, 0.4, 0.7, 1],
-      delay: 0.5
+      delay: MotionUtilities.speed.speedOne
     }
   }
 }
@@ -54,10 +55,27 @@ const backgroundVariantMD = {
     scale: 1,
     opacity: 1,
     transition: {
-      duration: 1,
+      duration: MotionUtilities.speed.speedOne,
       ease: "easeInOut",
-      delay: 1.7,
+      delay: MotionUtilities.speed.speedTwo,
     }
+  },
+}
+
+const backgroundVariantSM = {
+  hidden: {
+    x: "-50%",
+    y: 190,
+    opacity: 0,
+  },
+  show: {
+    y: [190, 190, 190, 0],
+    opacity: [0, 0, 0, 1],
+    transition: {
+      duration: MotionUtilities.speed.speedThree,
+      ease: "easeInOut",
+      times: [0, 0.4, 0.7, 1],
+    },
   },
 }
 
@@ -70,8 +88,8 @@ const buttonVariant = {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.7,
-      delay: 2.5
+      duration: MotionUtilities.speed.speedOne,
+      delay: MotionUtilities.speed.speedThree
     }
   }
 }
@@ -81,7 +99,6 @@ const DarkRoom = () => {
   const isWindowSmall = UseWindowSmall()
 
   // state
-  const [skipAnimate, setSkipAnimate] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
 
   // function
@@ -90,112 +107,37 @@ const DarkRoom = () => {
   }
 
   const touchPanelSm = () => {
-    if (isWindowSmall) {
-      if (animateComplete) {
-        goToNextPage()
-      } else {
-        if (!skipAnimate) {
-          setAnimateComplete(false) // We will change to 'true' if We want to use function 'skip'
-          setSkipAnimate(false) // We will change to 'true' if We want to use function 'skip'
-        }
-      }
+    if (isWindowSmall && animateComplete) {
+      goToNextPage()
     }
-  }
-
-  const backgroundVariantSM = {
-    hidden: {
-      x: isWindowSmall ? "-50%" : 0,
-      y: 176,
-      opacity: 0,
-    },
-    show: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeInOut",
-        delay: 2,
-      },
-    },
   }
 
   // function for rendering
   const renderBackground = () => {
     if (isWindowSmall) {
       return (
-        skipAnimate
-        ? <div className="dark-room__figure">
-            <img className="dark-room__image dark-room__image--sm" src={bgSceneSM} alt="" />
-          </div>
-        : <AnimatePresence>
-            <motion.div
-              key="darkroom-figure-02"
-              className="dark-room__figure"
-              initial="hidden"
-              animate="show"
-              variants={backgroundVariantSM}
-              onAnimationComplete={ () => setAnimateComplete(true) }
-            >
-              <img className="dark-room__image dark-room__image--sm" src={bgSceneSM} alt="" />
-            </motion.div>
-          </AnimatePresence>
+        <AnimatePresence>
+          <motion.div
+            className="dark-room__figure"
+            variants={ backgroundVariantSM }
+            initial="hidden"
+            animate="show"
+            onAnimationComplete={ () => setAnimateComplete(true) }
+          >
+            <img className="dark-room__image dark-room__image--sm" src={ bgSceneSM } alt="dark room background" />
+          </motion.div>
+        </AnimatePresence>
       )
     } else {
       return (
         <motion.div
-          key="darkroom-figure-01"
           className="dark-room__figure"
           variants={backgroundVariantMD}
           initial="hidden"
           animate="show"
-          exit="exit"
         >
-          <img className="dark-room__image dark-room__image--md" src={bgSceneMD} alt="" />
+          <img className="dark-room__image dark-room__image--md" src={ bgSceneMD } alt="dark room background" />
         </motion.div>
-      )
-    }
-  }
-
-  const renderText = () => {
-    if (isWindowSmall) {
-      return (
-        skipAnimate
-        ? <div className="dark-room__text dark-room__text--static text-story">
-            คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
-          </div>
-        : <AnimatePresence>
-            <motion.div
-              key="darkroom-text-02"
-              className="dark-room__text text-story"
-              initial="hidden"
-              animate="show"
-              variants={textVariantSM}
-            >
-              คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
-            </motion.div>
-          </AnimatePresence>
-      )
-    } else {
-      return (
-        <>
-          <motion.div
-            key="darkroom-text-01"
-            className="dark-room__text text-story"
-            variants={textVariantMD}
-            initial="hidden"
-            animate="show"
-          >
-            คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
-            <motion.div
-              className="dark-room__button"
-              variants={buttonVariant}
-              initial="hidden"
-              animate="show"
-            >
-              <ButtonNext onClick={goToNextPage} />
-            </motion.div>
-          </motion.div>
-        </>
       )
     }
   }
@@ -213,10 +155,26 @@ const DarkRoom = () => {
           {
             renderBackground()
           }
-          <div key="darkroom-02" className="dark-room__container">
-            {
-              renderText()
-            }
+          <div className="dark-room__container">
+            <motion.div
+              className="dark-room__text text-story"
+              variants={ isWindowSmall ? textVariantSM : textVariantMD}
+              initial="hidden"
+              animate="show"
+            >
+              คุณตื่นขึ้นมากลางดึก<br/>แล้วมีเเต่ความมืดสลัว
+              {
+                !isWindowSmall &&
+                <motion.div
+                  className="dark-room__button"
+                  variants={buttonVariant}
+                  initial="hidden"
+                  animate="show"
+                >
+                  <ButtonNext onClick={goToNextPage} />
+                </motion.div>
+              }
+            </motion.div>
           </div>
         </div>
       </Content>

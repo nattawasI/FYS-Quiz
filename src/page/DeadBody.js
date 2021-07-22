@@ -3,6 +3,7 @@ import {useRouteActionContext} from '../context/RouteContext'
 import {useUserStateContext} from '../context/UserContext'
 import {motion} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
+import {MotionUtilities} from '../variable/MotionUtilities'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -16,15 +17,15 @@ import DeadbodyFemaleSM from '../image/page/dead-body/img_deadbody_female_sm.svg
 // Motion Variants
 const textVariant = {
   hidden: {
+    y: 120,
     opacity: 0,
-    y: 120
   },
   show: {
-    opacity: 1,
     y: 0,
+    opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: MotionUtilities.speed.speedOne,
     }
   },
 }
@@ -37,14 +38,14 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
-      delay: 0.7,
+      duration: MotionUtilities.speed.speedOne,
+      delay: MotionUtilities.speed.speedOne,
     }
   },
   exit: {
     opacity: 0,
     transition: {
-      duration: 0.7,
+      duration: MotionUtilities.speed.speedOne,
       type: 'tween',
     }
   },
@@ -60,7 +61,7 @@ const bodyVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: MotionUtilities.speed.speedOne,
     }
   },
 }
@@ -97,10 +98,8 @@ const DeadBody = () => {
   }
 
   const touchPanelSm = () => {
-    if (isWindowSmall) {
-      if (animateComplete) {
-        goToNextPage()
-      }
+    if (isWindowSmall && animateComplete) {
+      goToNextPage()
     }
   }
 
@@ -261,27 +260,35 @@ const DeadBody = () => {
             }
             {
               friendInfoContext.gender === 'male' &&
-              <motion.img
+              <motion.div
                 className="dead-body__body"
-                src={ isWindowSmall ? DeadbodyMaleSM : DeadbodyMaleMD }
-                alt="dead body"
                 variants={bodyVariant}
                 initial="hidden"
                 animate="show"
                 exit="exit"
-              />
+              >
+                <img
+                  className="dead-body__body-image"
+                  src={ isWindowSmall ? DeadbodyMaleSM : DeadbodyMaleMD }
+                  alt="dead body"
+                />
+              </motion.div>
             }
             {
               friendInfoContext.gender === 'female' &&
-              <motion.img
+              <motion.div
                 className="dead-body__body"
-                src={ isWindowSmall ? DeadbodyFemaleSM : DeadbodyFemaleMD }
-                alt="dead body"
                 variants={bodyVariant}
                 initial="hidden"
                 animate="show"
                 exit="exit"
-              />
+              >
+                <img
+                  className="dead-body__body-image"
+                  src={ isWindowSmall ? DeadbodyFemaleSM : DeadbodyFemaleMD }
+                  alt="dead body"
+                />
+              </motion.div>
             }
           </div>
         </div>

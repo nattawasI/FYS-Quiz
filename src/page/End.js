@@ -3,6 +3,7 @@ import {useRouteActionContext} from '../context/RouteContext'
 import {useUserStateContext} from '../context/UserContext'
 import {motion} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
+import {MotionUtilities} from '../variable/MotionUtilities'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -22,14 +23,14 @@ import DeadbodyFemaleSM from '../image/page/end/img_deadbody_female_sm.png'
 const personVariant = {
   hidden: {
     y: 200,
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
     y: 0,
-    opacity: 1,
+    opacity: MotionUtilities.opacity.opacityOne,
     transition: {
-      delay: 0.5,
-      duration: 0.5,
+      duration: MotionUtilities.speed.speedOne,
+      delay: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
     }
   },
@@ -38,14 +39,14 @@ const personVariant = {
 const socialVariant = {
   hidden: {
     y: 200,
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
     y: 0,
-    opacity: 1,
+    opacity: MotionUtilities.opacity.opacityOne,
     transition: {
-      delay: 0.5,
-      duration: 0.5,
+      delay: MotionUtilities.speed.speedOne,
+      duration: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
     }
   },
@@ -54,14 +55,14 @@ const socialVariant = {
 const RibbonTopVariant = {
   hidden: {
     y: -150,
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
     y: 0,
-    opacity: 1,
+    opacity: MotionUtilities.opacity.opacityOne,
     transition: {
-      delay: 1,
-      duration: 0.5,
+      delay: MotionUtilities.speed.speedOne,
+      duration: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
     }
   },
@@ -70,14 +71,14 @@ const RibbonTopVariant = {
 const RibbonBottomVariant = {
   hidden: {
     y: 150,
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
     y: 0,
-    opacity: 1,
+    opacity: MotionUtilities.opacity.opacityOne,
     transition: {
-      delay: 1,
-      duration: 0.5,
+      duration: MotionUtilities.speed.speedOne,
+      delay: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
     }
   },
@@ -86,14 +87,14 @@ const RibbonBottomVariant = {
 const CoffeeVariant = {
   hidden: {
     y: -150,
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
     y: 0,
-    opacity: 1,
+    opacity: MotionUtilities.opacity.opacityOne,
     transition: {
-      delay: 1,
-      duration: 0.5,
+      duration: MotionUtilities.speed.speedOne,
+      delay: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
     }
   },
@@ -116,19 +117,6 @@ const End = () => {
   // function
   const goToNextPage = () => {
     changeCurrentPageContext('Start')
-  }
-
-  const touchPanelSm = () => {
-    if (isWindowSmall) {
-      if (animateComplete) {
-        goToNextPage()
-      } else {
-        if (!skipAnimate) {
-          setAnimateComplete(true)
-          setSkipAnimate(true)
-        }
-      }
-    }
   }
 
   const Socials = [
@@ -160,14 +148,14 @@ const End = () => {
       animate="show"
       exit="exit"
     >
+      <div className="button-fixed-left-top">
+        <ButtonRestart onClick={goToNextPage} />
+      </div>
       <ButtonSound />
       <Content>
-        <div className="scene-panel end" onClick={touchPanelSm}>
+        <div className="scene-panel end">
           <div className="end__container">
             <div className="end__content">
-              <div className="end__button">
-                <ButtonRestart onClick={goToNextPage} />
-              </div>
               <motion.img
                 className="end__ribbon-top"
                 src={ RibbonTop }
@@ -231,7 +219,11 @@ const End = () => {
                 >
                   {
                     Socials.map((item, index) => (
-                      <motion.div key={`social-key-${index}`} className="social__item">
+                      <motion.div
+                        key={`social-key-${index}`}
+                        className="social__item"
+                        whileHover={{ scale: 1.2 }}
+                      >
                         <a className="social__link" href="#dummy">
                           <img className="social__icon" src={item.icon} alt={item.name} />
                         </a>

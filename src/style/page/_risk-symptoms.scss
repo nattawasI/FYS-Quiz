@@ -105,6 +105,12 @@
     width: 96px;
     margin: 0 auto;
 
+    @include xs-down {
+      @media screen and (max-height: 667px) {
+        width: 80px;
+      }
+    }
+
     @include xs-up {
       width: 125px;
     }

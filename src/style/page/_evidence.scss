@@ -25,11 +25,17 @@
 
   &__list {
     position: absolute;
-    // top: 33.2512vh;
-    bottom: 15.3940%;
+    top: 33.2512vh;
+    // bottom: 15.3940%;
     left: 16vw;
     right: 16vw;
     z-index: 30;
+
+    @include sm-down {
+      @media screen and (max-height: 667px) {
+        top: 29vh;
+      }
+    }
 
     @include md-up {
       // top: 37.5vh;
@@ -71,10 +77,16 @@
       }
 
       &__image {
-        // width: 32vw;
-        width: 15vh;
-        max-width: 250px;
+        width: 32vw;
 
+        @include md-down {
+          max-width: 250px;
+
+          @media screen and (min-height: 1024px) {
+            width: 24vw;
+          }
+        }
+        
         @include md-up {
           width: 14.9895vw;
           max-width: inherit;

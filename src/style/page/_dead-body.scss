@@ -9,7 +9,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     height: 100%;
     position: relative;
     z-index: 10;
@@ -48,10 +48,14 @@
     @include md-up {
       // top: -8.7037%;
       right: 0;
-      bottom: -8.7037%;
-      width: 100%;
+      left: auto;
+      bottom: -22.2222%;
       height: auto;
     }
+  }
+
+  &__body-image {
+    height: 100%;
   }
 
   &__button {

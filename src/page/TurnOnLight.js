@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useAnimation } from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import {useRouteActionContext} from '../context/RouteContext'
 import {containerVariant} from '../variable/MotionVariant'
+import {MotionUtilities} from '../variable/MotionUtilities'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
@@ -17,6 +18,11 @@ import NormalHand from '../image/page/turn-on-light/img_hand_01.svg';
 import PointerHandMD from '../image/page/turn-on-light/img_hand_02_md.svg';
 import PointerHandSM from '../image/page/turn-on-light/img_hand_02_sm.svg';
 
+// const MotionUtilities.speed.speedOne   = 1;
+// const MotionUtilities.speed.speedTwo   = 2;
+// const MotionUtilities.speed.speedThree = 3;
+// const MotionUtilities.speed.speedFour  = 4;
+
 const textIntro01Variant = {
   hidden: {
     y: 50,
@@ -26,8 +32,8 @@ const textIntro01Variant = {
     y: 0,
     opacity: 1,
     transition: {
-      delay: 1,
-      duration: 0.7,
+      delay: MotionUtilities.speed.speedOne,
+      duration: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
     }
   },
@@ -35,8 +41,8 @@ const textIntro01Variant = {
     y: -50,
     opacity: 0,
     transition: {
-      delay: 0.7,
-      duration: 0.5,
+      delay: MotionUtilities.speed.speedOne,
+      duration: MotionUtilities.speed.speedOne,
       type: 'tween',
     }
   }
@@ -51,7 +57,7 @@ const textIntro02Variant = {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.7,
+      duration: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
     }
   },
@@ -59,8 +65,8 @@ const textIntro02Variant = {
     y: -50,
     opacity: 0,
     transition: {
-      delay: 0.7,
-      duration: 0.5,
+      delay: MotionUtilities.speed.speedOne,
+      duration: MotionUtilities.speed.speedOne,
       type: 'tween',
     }
   }
@@ -75,15 +81,15 @@ const buttonNextVariant = {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 1,
+      duration: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
     }
   },
   exit: {
     opacity: 0,
     transition: {
-      delay: 1,
-      duration: 1,
+      delay: MotionUtilities.speed.speedOne,
+      duration: MotionUtilities.speed.speedOne,
       type: 'tween',
     }
   }
@@ -98,7 +104,7 @@ const ShadeContainerVariants = {
     x: 0,
     opacity: 1,
     transition: {
-      duration: 1,
+      duration: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
     }
   },
@@ -106,7 +112,7 @@ const ShadeContainerVariants = {
     x: '-100%',
     opacity: 0,
     transition: {
-      duration: 1,
+      duration: MotionUtilities.speed.speedOne,
       type: 'tween',
     }
   }
@@ -124,8 +130,8 @@ const NormalHandVariant = {
     transition: {
       originX: 1,
       originY: 1,
-      delay: 1,
-      duration: 0.7,
+      delay: MotionUtilities.speed.speedOne,
+      duration: MotionUtilities.speed.speedOne,
       ease: 'easeOut',
     }
   },
@@ -134,7 +140,7 @@ const NormalHandVariant = {
     y: 0,
     opacity: 0,
     transition: {
-      duration: 0.5,
+      duration: MotionUtilities.speed.speedOne,
       type: 'tween',
     }
   }
@@ -149,8 +155,7 @@ const PointerHandVariant = {
     x: 0,
     y: 0,
     transition: {
-      delay: 0.5,
-      duration: 0.7,
+      duration: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
     }
   },
@@ -159,10 +164,27 @@ const PointerHandVariant = {
     y: 0,
     opacity: 0,
     transition: {
-      duration: 0.5,
+      duration: MotionUtilities.speed.speedOne,
       type: 'tween',
     }
   }
+}
+
+const SwitchVariant = {
+  hidden: {
+    y: '-140%',
+    x: '-50%',
+    opacity: 1,
+  },
+  show: {
+    x: '-50%',
+    y: 0,
+    transition: {
+      delay: MotionUtilities.speed.speedOne,
+      duration: MotionUtilities.speed.speedOne,
+      ease: 'easeInOut',
+    }
+  },
 }
 
 const SwitchPlateVariant = {
@@ -172,15 +194,15 @@ const SwitchPlateVariant = {
   show: {
     opacity: 1,
     transition: {
-      delay: 3,
-      duration: 1,
+      delay: MotionUtilities.speed.speedFour,
+      duration: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
     }
   },
   exit: {
     opacity: 0,
     transition: {
-      duration: 1,
+      duration: MotionUtilities.speed.speedOne,
       type: 'tween',
     }
   }
@@ -198,7 +220,6 @@ const TurnOnLight = () => {
   const [showScene2, setShowScene2] = useState(false);
   const [openSwitch, setOpenSwitch] = useState(false);
   const [nextScene, setNextScene] = useState(false);
-  const [skipAnimate, setSkipAnimate] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
   const switchControl = useAnimation();
   const buttonNextControl = useAnimation();
@@ -228,20 +249,13 @@ const TurnOnLight = () => {
       setTimeout(() => {
         buttonNextControl.start('show')
         setNextScene(true)
-      }, 500)
+      }, 0)
     }
   }
 
   const touchPanelSm = () => {
-    if (isWindowSmall) {
-      if (animateComplete) {
-        goToNextPage()
-      } else {
-        if (!skipAnimate) {
-          setAnimateComplete(false) // We will change to 'true' if We want to use function 'skip'
-          setSkipAnimate(false) // We will change to 'true' if We want to use function 'skip'
-        }
-      }
+    if (isWindowSmall && animateComplete) {
+      goToNextPage()
     }
   }
 
@@ -254,60 +268,19 @@ const TurnOnLight = () => {
     show: {
       scale: 1.7,
       transition: {
-        delay: 3,
-        duration: 0.7,
+        delay: MotionUtilities.speed.speedFour,
+        duration: MotionUtilities.speed.speedOne,
         ease: 'easeInOut',
       }
     },
     exit: {
       opacity: 0,
       transition: {
-        delay: isWindowSmall ? 0 : 1.4,
+        delay: isWindowSmall ? 0 : MotionUtilities.speed.speedTwo,
         duration: 0,
         type: 'tween',
       }
     }
-  }
-  
-  // const ShadeLighterVariants = {
-  //   hidden: {
-  //     originX: 0.75,
-  //     originY: 1,
-  //     scale: 1.7,
-  //     opacity: 0,
-  //   },
-  //   show: {
-  //     opacity: 1,
-  //     transition: {
-  //       delay: 0,
-  //       duration: 0,
-  //       ease: 'easeInOut',
-  //     }
-  //   },
-  //   exit: {
-  //     opacity: 0,
-  //     transition: {
-  //       duration: 1,
-  //       type: 'tween',
-  //     }
-  //   }
-  // }
-
-  const SwitchVariant = {
-    hidden: {
-      y: '-140%',
-      x: '-50%',
-      opacity: 1,
-    },
-    show: {
-      x: '-50%',
-      y: 0,
-      transition: {
-        delay: isWindowSmall ? 1 : 1,
-        duration: 0.7,
-        ease: 'easeInOut',
-      }
-    },
   }
 
   const PulseVariant = {
@@ -317,7 +290,7 @@ const TurnOnLight = () => {
     show: {
       opacity: 1,
       transition: {
-        delay: isWindowSmall ? 0 : 4,
+        delay: isWindowSmall ? 0 : 5,
         duration: 0.5,
         ease: 'easeInOut',
       }
@@ -325,288 +298,10 @@ const TurnOnLight = () => {
     exit: {
       opacity: 0,
       transition: {
-        duration: 1,
+        duration: MotionUtilities.speed.speedOne,
         type: 'tween',
       }
     }
-  }
-
-  // function for rendering
-  const renderSwitch = () => {
-    if (isWindowSmall) {
-      return (
-        skipAnimate
-        ? <div className="turn-on-light__target switch">
-            <img className="switch__plate" src={openSwitch ? SwitchPlateLight : SwitchPlateDark} alt="switch plate" />
-            <div className="switch__button controller" onClick={handleSwitch}>
-              <div className="controller__container">
-                <motion.div
-                  className="controller__button"
-                  variants={SwitchVariant}
-                  initial="hidden"
-                  animate={switchControl}
-                  onAnimationComplete={switchOpened}
-                ></motion.div>
-              </div>
-              <AnimatePresence>
-                {
-                  !openSwitch &&
-                  <motion.div
-                    className="pulse"
-                    variants={PulseVariant}
-                    initial="hidden"
-                    animate="show"
-                    exit="exit"
-                    onAnimationComplete={completedScene1}
-                  >
-                    <img className="pulse__pointer" src={IconPointer} alt="click to open switch" />
-                  </motion.div>
-                }
-              </AnimatePresence>
-            </div>
-          </div>
-        : <motion.div
-            className="turn-on-light__target switch"
-            variants={SwitchPlateVariant}
-            initial="hidden"
-            animate="show"
-            exit="exit"
-          >
-            <img className="switch__plate" src={openSwitch ? SwitchPlateLight : SwitchPlateDark} alt="switch plate" />
-            <div className="switch__button controller" onClick={handleSwitch}>
-              <div className="controller__container">
-                <motion.div
-                  className="controller__button"
-                  variants={SwitchVariant}
-                  initial="hidden"
-                  animate={switchControl}
-                  onAnimationComplete={switchOpened}
-                ></motion.div>
-              </div>
-              <AnimatePresence>
-                {
-                  !openSwitch &&
-                  <motion.div
-                    className="pulse"
-                    variants={PulseVariant}
-                    initial="hidden"
-                    animate="show"
-                    exit="exit"
-                    onAnimationComplete={completedScene1}
-                  >
-                    <img className="pulse__pointer" src={IconPointer} alt="click to open switch" />
-                  </motion.div>
-                }
-              </AnimatePresence>
-            </div>
-          </motion.div>
-      )
-    } else {
-      return (
-        <motion.div
-          className="turn-on-light__target switch"
-          variants={SwitchPlateVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-        >
-          <img className="switch__plate" src={openSwitch ? SwitchPlateLight : SwitchPlateDark} alt="switch plate" />
-          <div className="switch__button controller" onClick={handleSwitch}>
-            <div className="controller__container">
-              <motion.div
-                className="controller__button"
-                variants={SwitchVariant}
-                initial="hidden"
-                animate={switchControl}
-                onAnimationComplete={switchOpened}
-              ></motion.div>
-            </div>
-            <AnimatePresence>
-              {
-                !openSwitch &&
-                <motion.div
-                  className="pulse"
-                  variants={PulseVariant}
-                  initial="hidden"
-                  animate="show"
-                  exit="exit"
-                  onAnimationComplete={completedScene1}
-                >
-                  <img className="pulse__pointer" src={IconPointer} alt="click to open switch" />
-                </motion.div>
-              }
-            </AnimatePresence>
-          </div>
-        </motion.div>
-      )
-    }
-  }
-
-  const rederText = () => {
-    return (
-      skipAnimate
-      ?
-        <div className="turn-on-light__text">
-          <p className="text-story">เพื่อให้ห้องนี้<br/>สว่างขึ้นมากอีกครั้ง</p>
-        </div>
-      : 
-        <div className="turn-on-light__text">
-          <AnimatePresence exitBeforeEnter>
-            {
-              showScene1 &&
-              <motion.div
-                key="text-content-01"
-                className="text-story"
-                variants={textIntro01Variant}
-                initial="hidden"
-                animate="show"
-                exit="exit"
-                onAnimationComplete={changeToScene2}
-              >คุณพยายามคลำไปตามกำแพง<br/>เพื่อหาสวิทช์เปิดไฟ</motion.div>
-            }
-            {
-              showScene2 &&
-              <motion.div
-                key="text-content-02"
-                className="text-story"
-                variants={textIntro02Variant}
-                initial="hidden"
-                animate="show"
-                exit="exit"
-              >
-                เพื่อให้ห้องนี้<br/>สว่างขึ้นมากอีกครั้ง
-                {
-                  !isWindowSmall &&
-                  <motion.div
-                    variants={buttonNextVariant}
-                    initial="hidden"
-                    animate={buttonNextControl}
-                    exit="exit"
-                  >
-                    <ButtonNext onClick={goToNextPage}/>
-                  </motion.div>
-                }
-              </motion.div>
-            }
-          </AnimatePresence>
-        </div>
-    )
-  }
-
-  const renderHand = () => {
-    return (
-      skipAnimate
-      ?
-        <div className="turn-on-light__hand hand">
-          {
-            !openSwitch &&  
-            <div className="hand__normal">
-              <img className="hand__normal-image" src={NormalHand} alt="" />
-            </div>
-          }
-          <AnimatePresence>
-            {
-              openSwitch && <motion.div
-                className="hand__pointer"
-                variants={PointerHandVariant}
-                initial="hidden"
-                animate="show"
-                exit="exit"
-              >
-                <img className="hand__pointer-image" src={ isWindowSmall ? PointerHandSM : PointerHandMD } alt="" />
-              </motion.div>
-            }
-          </AnimatePresence>
-        </div>
-      :
-        <div className="turn-on-light__hand hand">
-          <AnimatePresence exitBeforeEnter>
-            {
-              !openSwitch &&  <motion.div
-                key="turn-on-light-hand-01"
-                className="hand__normal"
-                variants={NormalHandVariant}
-                initial="hidden"
-                animate="show"
-                exit="exit"
-              >
-                <img className="hand__normal-image" src={NormalHand} alt="" />
-              </motion.div>
-            }
-            {
-              openSwitch && <motion.div
-                key="turn-on-light-hand-02"
-                className="hand__pointer"
-                variants={PointerHandVariant}
-                initial="hidden"
-                animate="show"
-                exit="exit"
-                onAnimationComplete={ () => setAnimateComplete(true) }
-              >
-                <img className="hand__pointer-image" src={ isWindowSmall ? PointerHandSM : PointerHandMD } alt="" />
-              </motion.div>
-            }
-          </AnimatePresence>
-        </div>
-    )
-  }
-
-  const renderBackground = () => {
-    return (
-      skipAnimate
-      ?
-        <div className="turn-on-light__bg shade">
-          <div className="shade__figure">
-            <motion.img
-              src={ isWindowSmall ? BGShadeSM : BGShadeMD } 
-              alt="background shade"
-              className="shade__image"
-              variants={ShadeVariants}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-            />
-            <motion.img
-              src={ isWindowSmall ? BGShadeLighterSM : BGShadeLighterMD } 
-              alt="background shade lighter"
-              className="shade__image shade__image--light"
-              variants={ShadeVariants}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-            />
-          </div>
-        </div>
-      :
-        <div className="turn-on-light__bg shade">
-          <motion.div
-            className="shade__figure"
-            variants={ShadeContainerVariants}
-            initial="hidden"
-            animate="show"
-            exit="exit"
-          >
-            <motion.img
-              src={ isWindowSmall ? BGShadeSM : BGShadeMD } 
-              alt="background shade"
-              className="shade__image"
-              variants={ShadeVariants}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-            />
-            <motion.img
-              src={ isWindowSmall ? BGShadeLighterSM : BGShadeLighterMD } 
-              alt="background shade lighter"
-              className="shade__image shade__image--light"
-              variants={ShadeVariants}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-            />
-          </motion.div>
-        </div>
-    )
   }
 
   return (
@@ -621,18 +316,140 @@ const TurnOnLight = () => {
         <div className="scene-panel turn-on-light" onClick={touchPanelSm}>
           <div className={`turn-on-light__container ${ openSwitch && 'turn-on-light__container--blue' }`}>
             <div className="turn-on-light__content">
-              {
-                rederText()
-              }
-              {
-                renderHand()
-              }
-              {
-                renderBackground()
-              }
-              {
-                renderSwitch()
-              }
+              <div className="turn-on-light__text">
+                <AnimatePresence exitBeforeEnter>
+                  {
+                    showScene1 &&
+                    <motion.div
+                      key="text-content-01"
+                      className="text-story"
+                      variants={textIntro01Variant}
+                      initial="hidden"
+                      animate="show"
+                      exit="exit"
+                      onAnimationComplete={changeToScene2}
+                    >คุณพยายามคลำไปตามกำแพง<br/>เพื่อหาสวิทช์เปิดไฟ</motion.div>
+                  }
+                  {
+                    showScene2 &&
+                    <motion.div
+                      key="text-content-02"
+                      className="text-story"
+                      variants={textIntro02Variant}
+                      initial="hidden"
+                      animate="show"
+                      exit="exit"
+                    >
+                      เพื่อให้ห้องนี้<br/>สว่างขึ้นมากอีกครั้ง
+                      {
+                        !isWindowSmall &&
+                        <motion.div
+                          variants={buttonNextVariant}
+                          initial="hidden"
+                          animate={buttonNextControl}
+                          exit="exit"
+                        >
+                          <ButtonNext onClick={goToNextPage}/>
+                        </motion.div>
+                      }
+                    </motion.div>
+                  }
+                </AnimatePresence>
+              </div>
+              <div className="turn-on-light__hand hand">
+                <AnimatePresence exitBeforeEnter>
+                  {
+                    !openSwitch &&  <motion.div
+                      key="turn-on-light-hand-01"
+                      className="hand__normal"
+                      variants={NormalHandVariant}
+                      initial="hidden"
+                      animate="show"
+                      exit="exit"
+                    >
+                      <img className="hand__normal-image" src={NormalHand} alt="" />
+                    </motion.div>
+                  }
+                  {
+                    openSwitch && <motion.div
+                      key="turn-on-light-hand-02"
+                      className="hand__pointer"
+                      variants={PointerHandVariant}
+                      initial="hidden"
+                      animate="show"
+                      exit="exit"
+                      onAnimationComplete={ () => setAnimateComplete(true) }
+                    >
+                      <img className="hand__pointer-image" src={ isWindowSmall ? PointerHandSM : PointerHandMD } alt="" />
+                    </motion.div>
+                  }
+                </AnimatePresence>
+              </div>
+
+              <div className="turn-on-light__bg shade">
+                <motion.div
+                  className="shade__figure"
+                  variants={ShadeContainerVariants}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                >
+                  <motion.img
+                    src={ isWindowSmall ? BGShadeSM : BGShadeMD } 
+                    alt="background shade"
+                    className="shade__image shade__image--normal"
+                    variants={ShadeVariants}
+                    initial="hidden"
+                    animate="show"
+                    exit="exit"
+                  />
+                  <motion.img
+                    src={ isWindowSmall ? BGShadeLighterSM : BGShadeLighterMD } 
+                    alt="background shade lighter"
+                    className="shade__image shade__image--lighter"
+                    variants={ShadeVariants}
+                    initial="hidden"
+                    animate="show"
+                    exit="exit"
+                  />
+                </motion.div>
+              </div>
+
+              <motion.div
+                className="turn-on-light__target switch"
+                variants={SwitchPlateVariant}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+              >
+                <img className="switch__plate" src={openSwitch ? SwitchPlateLight : SwitchPlateDark} alt="switch plate" />
+                <div className="switch__button controller" onClick={handleSwitch}>
+                  <div className="controller__container">
+                    <motion.div
+                      className="controller__button"
+                      variants={SwitchVariant}
+                      initial="hidden"
+                      animate={switchControl}
+                      onAnimationComplete={switchOpened}
+                    ></motion.div>
+                  </div>
+                  <AnimatePresence>
+                    {
+                      !openSwitch &&
+                      <motion.div
+                        className="pulse"
+                        variants={PulseVariant}
+                        initial="hidden"
+                        animate="show"
+                        exit="exit"
+                        onAnimationComplete={completedScene1}
+                      >
+                        <img className="pulse__pointer" src={IconPointer} alt="click to open switch" />
+                      </motion.div>
+                    }
+                  </AnimatePresence>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>
