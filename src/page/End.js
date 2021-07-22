@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {useUserStateContext} from '../context/UserContext'
 import {motion} from 'framer-motion'
@@ -110,10 +110,6 @@ const End = () => {
   // utility hook
   const isWindowSmall = UseWindowSmall()
 
-  // state
-  const [skipAnimate, setSkipAnimate] = useState(false)
-  const [animateComplete, setAnimateComplete] = useState(false)
-
   // function
   const goToNextPage = () => {
     changeCurrentPageContext('Start')
@@ -208,7 +204,6 @@ const End = () => {
                 }
                 </div>
               </motion.div>
-              
               <div className="end__social social">
                 <motion.div
                   className="social__list"

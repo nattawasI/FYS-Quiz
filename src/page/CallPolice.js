@@ -42,7 +42,7 @@ const buttonVariant = {
     transition: {
       ease: 'easeInOut',
       delay: 1.5,
-      duration: 0.5
+      duration: 0.7
     }
   },
   exit: {

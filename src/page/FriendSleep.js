@@ -20,7 +20,7 @@ const textVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 0.5
+      delay: 1
     }
   }
 }
@@ -36,7 +36,7 @@ const friendVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 1.5
+      delay: 2
     }
   }
 }
@@ -49,8 +49,8 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: 'easeIn',
-      duration: 1,
-      delay: 2.5
+      duration: 0.7,
+      delay: 3
     }
   }
 }
