@@ -56,7 +56,7 @@ const armVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 1.5
+      delay: 2
     }
   }
 }
@@ -83,7 +83,7 @@ const WakeFriendUp = () => {
   // motion variant which has dynamic
   const wakeVariant = {
     animate: {
-      y: isWindowSmall ? [0, 20, 0, 20]: [0, 30, 0, 30],
+      y: isWindowSmall ? [0, 0, 0, 20, 0, 20]: [0, 0, 0, 30, 0, 30],
       transition: {
         type: 'tween',
         duration: 1,
