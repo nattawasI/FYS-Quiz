@@ -18,10 +18,10 @@
   }
 
   &__text--pointing {
-    margin-top: 6.6502%;
+    margin-top: 6.6502vh;
 
     @include md-up {
-      margin-top: 4.0740%;
+      margin-top: 4.0740vh;
     }
   }
 
@@ -31,8 +31,10 @@
   }
 
   &__image {
-    @include md-down {
-      width: 84.8%;
+    width: 84.8vw;
+
+    @include md-up {
+      width: 37.6562vw;
     }
 
     &:hover {

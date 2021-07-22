@@ -18,19 +18,14 @@ import NormalHand from '../image/page/turn-on-light/img_hand_01.svg';
 import PointerHandMD from '../image/page/turn-on-light/img_hand_02_md.svg';
 import PointerHandSM from '../image/page/turn-on-light/img_hand_02_sm.svg';
 
-// const MotionUtilities.speed.speedOne   = 1;
-// const MotionUtilities.speed.speedTwo   = 2;
-// const MotionUtilities.speed.speedThree = 3;
-// const MotionUtilities.speed.speedFour  = 4;
-
 const textIntro01Variant = {
   hidden: {
     y: 50,
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
     y: 0,
-    opacity: 1,
+    opacity: MotionUtilities.opacity.opacityOne,
     transition: {
       delay: MotionUtilities.speed.speedOne,
       duration: MotionUtilities.speed.speedOne,
@@ -39,7 +34,7 @@ const textIntro01Variant = {
   },
   exit: {
     y: -50,
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
     transition: {
       delay: MotionUtilities.speed.speedOne,
       duration: MotionUtilities.speed.speedOne,
@@ -51,11 +46,11 @@ const textIntro01Variant = {
 const textIntro02Variant = {
   hidden: {
     y: 50,
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
     y: 0,
-    opacity: 1,
+    opacity: MotionUtilities.opacity.opacityOne,
     transition: {
       duration: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
@@ -63,7 +58,7 @@ const textIntro02Variant = {
   },
   exit: {
     y: -50,
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
     transition: {
       delay: MotionUtilities.speed.speedOne,
       duration: MotionUtilities.speed.speedOne,
@@ -75,18 +70,18 @@ const textIntro02Variant = {
 const buttonNextVariant = {
   hidden: {
     y: 50,
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
     y: 0,
-    opacity: 1,
+    opacity: MotionUtilities.opacity.opacityOne,
     transition: {
       duration: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
     }
   },
   exit: {
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
     transition: {
       delay: MotionUtilities.speed.speedOne,
       duration: MotionUtilities.speed.speedOne,
@@ -98,11 +93,11 @@ const buttonNextVariant = {
 const ShadeContainerVariants = {
   hidden: {
     x: '100%',
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
     x: 0,
-    opacity: 1,
+    opacity: MotionUtilities.opacity.opacityOne,
     transition: {
       duration: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
@@ -110,7 +105,7 @@ const ShadeContainerVariants = {
   },
   exit: {
     x: '-100%',
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
     transition: {
       duration: MotionUtilities.speed.speedOne,
       type: 'tween',
@@ -122,7 +117,7 @@ const NormalHandVariant = {
   hidden: {
     x: '100%',
     y: '100%',
-    opacity: 1,
+    opacity: MotionUtilities.opacity.opacityOne,
   },
   show: {
     x: 0,
@@ -136,9 +131,7 @@ const NormalHandVariant = {
     }
   },
   exit: {
-    x: 0,
-    y: 0,
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
     transition: {
       duration: MotionUtilities.speed.speedOne,
       type: 'tween',
@@ -149,7 +142,7 @@ const NormalHandVariant = {
 const PointerHandVariant = {
   hidden: {
     y: '-4.5%',
-    opacity: 1,
+    opacity: MotionUtilities.opacity.opacityOne,
   },
   show: {
     x: 0,
@@ -162,7 +155,7 @@ const PointerHandVariant = {
   exit: {
     x: 0,
     y: 0,
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
     transition: {
       duration: MotionUtilities.speed.speedOne,
       type: 'tween',
@@ -174,10 +167,9 @@ const SwitchVariant = {
   hidden: {
     y: '-140%',
     x: '-50%',
-    opacity: 1,
+    opacity: MotionUtilities.opacity.opacityOne,
   },
   show: {
-    x: '-50%',
     y: 0,
     transition: {
       delay: MotionUtilities.speed.speedOne,
@@ -189,10 +181,10 @@ const SwitchVariant = {
 
 const SwitchPlateVariant = {
   hidden: {
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
-    opacity: 1,
+    opacity: MotionUtilities.opacity.opacityOne,
     transition: {
       delay: MotionUtilities.speed.speedFour,
       duration: MotionUtilities.speed.speedOne,
@@ -200,7 +192,7 @@ const SwitchPlateVariant = {
     }
   },
   exit: {
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
     transition: {
       duration: MotionUtilities.speed.speedOne,
       type: 'tween',
@@ -227,7 +219,9 @@ const TurnOnLight = () => {
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('FriendSleep')
+    if (animateComplete) {
+      changeCurrentPageContext('FriendSleep')
+    }
   }
 
   const changeToScene2 = () => {
@@ -261,7 +255,7 @@ const TurnOnLight = () => {
 
   const ShadeVariants = {
     hidden: {
-      originX: 0.75,
+      originX: 0.8,
       originY: 1,
       scale: 1,
     },
@@ -274,10 +268,10 @@ const TurnOnLight = () => {
       }
     },
     exit: {
-      opacity: 0,
+      opacity: MotionUtilities.opacity.opacityZero,
       transition: {
-        delay: isWindowSmall ? 0 : MotionUtilities.speed.speedTwo,
         duration: 0,
+        delay: isWindowSmall ? 0 : MotionUtilities.speed.speedTwo,
         type: 'tween',
       }
     }
@@ -313,7 +307,7 @@ const TurnOnLight = () => {
     >
       <ButtonSound />
       <Content>
-        <div className="scene-panel turn-on-light" onClick={touchPanelSm}>
+        <div className="scene-panel scene-panel--items-center turn-on-light" onClick={touchPanelSm}>
           <div className={`turn-on-light__container ${ openSwitch && 'turn-on-light__container--blue' }`}>
             <div className="turn-on-light__content">
               <div className="turn-on-light__text">
@@ -340,7 +334,7 @@ const TurnOnLight = () => {
                       animate="show"
                       exit="exit"
                     >
-                      เพื่อให้ห้องนี้<br/>สว่างขึ้นมากอีกครั้ง
+                      เพื่อให้ห้องนี้<br/>สว่างขึ้นมาอีกครั้ง
                       {
                         !isWindowSmall &&
                         <motion.div

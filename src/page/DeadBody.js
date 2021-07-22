@@ -84,21 +84,31 @@ const DeadBody = () => {
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('Murder')
+    if (animateComplete) {
+      changeCurrentPageContext('Murder')
+    }
   }
 
   const changeToScene2 = () => {
-    setShowScene1(false)
-    setShowScene2(true)
+    if (animateComplete) {
+      setShowScene1(false)
+      setShowScene2(true)
+      setAnimateComplete(false)
+    }
   }
 
   const changeToScene3 = () => {
-    setShowScene2(false)
-    setShowScene3(true)
+    if (animateComplete) {
+      setShowScene2(false)
+      setShowScene3(true)
+      setAnimateComplete(false)
+    }
   }
 
+  const completeAnimated = () => setAnimateComplete(true)
+
   const touchPanelSm = () => {
-    if (isWindowSmall && animateComplete) {
+    if (isWindowSmall && showScene3) {
       goToNextPage()
     }
   }
@@ -117,6 +127,7 @@ const DeadBody = () => {
               initial="hidden"
               animate="show"
               exit="exit"
+              onAnimationComplete={completeAnimated}
             >
               สรุปก็คือ<br/>เพื่อนของคุณถูก<br/>
               <span className="text-story--bigger">"ฆาตกรรม"</span>
@@ -141,6 +152,7 @@ const DeadBody = () => {
                 initial="hidden"
                 animate="show"
                 exit="exit"
+                onAnimationComplete={completeAnimated}
               >
                 <ButtonNext onClick={changeToScene2} />
               </motion.span>
@@ -162,6 +174,7 @@ const DeadBody = () => {
               initial="hidden"
               animate="show"
               exit="exit"
+              onAnimationComplete={completeAnimated}
             >
               และเราพบคนร้าย... ในที่เกิดเหตุ
             </motion.p>
@@ -184,6 +197,7 @@ const DeadBody = () => {
                 initial="hidden"
                 animate="show"
                 exit="exit"
+                onAnimationComplete={completeAnimated}
               >
                 <ButtonNext onClick={changeToScene3} />
               </motion.span>
@@ -205,7 +219,7 @@ const DeadBody = () => {
               initial="hidden"
               animate="show"
               exit="exit"
-              onAnimationComplete={ () => setAnimateComplete(true) }
+              onAnimationComplete={completeAnimated}
             >
               แต่ว่า... ไม่ใช่คุณ
             </motion.p>
@@ -228,6 +242,7 @@ const DeadBody = () => {
                 initial="hidden"
                 animate="show"
                 exit="exit"
+                onAnimationComplete={completeAnimated}
               >
                 <ButtonNext onClick={goToNextPage} />
               </motion.span>
@@ -247,7 +262,7 @@ const DeadBody = () => {
     >
       <ButtonSound />
       <Content>
-        <div className="scene-panel dead-body" onClick={touchPanelSm}>
+        <div className="scene-panel scene-panel--items-center dead-body" onClick={touchPanelSm}>
           <div className="dead-body__container">
             {
               renderScene1()
