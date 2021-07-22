@@ -226,6 +226,20 @@ const Investigate = () => {
     }
   }
 
+  const buttonBackHandleClick = () => {
+    if (sceneMurder || sceneAskCooperation) {
+      backToSceneYourName()
+    } else if (sceneQuiz) {
+      prevQuestion()
+    } else if (sceneFormYear) {
+      backToSceneQuiz()
+    } else if (sceneActivityToday) {
+      backToSceneFormYear()
+    } else if (sceneThankYou) {
+      backToSceneActivityToday()
+    }
+  }
+
   useEffect(() => {
     if (sceneActivityOften || sceneActivityToday) {
       setAnimateTable(true)
@@ -242,32 +256,11 @@ const Investigate = () => {
       exit="exit"
     >
       {
-        sceneMurder
-        && <ButtonBack onClick={backToSceneYourName} />
-      }
-      {
-        sceneAskCooperation
-        && <ButtonBack onClick={backToSceneYourName} />
-      }
-      {
-        sceneQuiz // จะกลับไปหน้า quiz แต่ละอัน
-        && <ButtonBack
+        (sceneMurder || sceneAskCooperation || sceneQuiz || sceneFormYear || sceneActivityToday || sceneThankYou)
+        && <ButtonBack onClick={buttonBackHandleClick}
             variants={buttonVariant}
             exit="exit"
-            onClick={prevQuestion}
           />
-      }
-      {
-        sceneFormYear // กลับไปหน้า quiz ล่าสุด
-        && <ButtonBack onClick={backToSceneQuiz} />
-      }
-      {
-        sceneActivityToday // กลับไปหน้า FormYear
-        && <ButtonBack onClick={backToSceneFormYear} />
-      }
-      {
-        sceneThankYou // กลับไปหน้า ActivityToday
-        && <ButtonBack onClick={backToSceneActivityToday} />
       }
       <ButtonSound />
       <Content bgColor="blue" className="investigate-wrap">
@@ -408,7 +401,7 @@ const Investigate = () => {
                           />
                       }
                     </motion.div>
-                }QuizData
+                }
                 {
                   sceneFormYear
                   && <motion.div
