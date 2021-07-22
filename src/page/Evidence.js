@@ -106,32 +106,43 @@ const Investigate = () => {
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
+  const [animateComplete, setAnimateComplete] = useState(false)
 
   const Evidences = [ Donut, Candy, Hamburger, BubbleTea, Whiskey ]
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('VideoDoctor')
+    if (animateComplete) {
+      changeCurrentPageContext('VideoDoctor')
+    }
   }
 
+  const completeAnimated = () => setAnimateComplete(true)
+
   const changeToScene2 = () => {
-    setShowScene1(false)
-    setShowScene2(true)
+    if (animateComplete) {
+      setShowScene1(false)
+      setShowScene2(true)
+      setAnimateComplete(false)
+    }
   }
 
   const changeToScene3 = () => {
-    setShowScene2(false)
-    setShowScene3(true)
+    if (animateComplete) {
+      setShowScene2(false)
+      setShowScene3(true)
+      setAnimateComplete(false)
+    }
   }
 
   const touchPanelSm = () => {
     if (isWindowSmall) {
-      if (showScene3) {
+      if (showScene3 && animateComplete) {
         goToNextPage()
       } else {
-        if(showScene1) {
+        if(showScene1 && animateComplete) {
           changeToScene2()
-        } else if (showScene2) {
+        } else if (showScene2 && animateComplete) {
           changeToScene3()
         }
       }
@@ -147,7 +158,7 @@ const Investigate = () => {
     >
       <ButtonSound dark />
       <Content bgColor="white">
-        <div className="scene-panel evidence" onClick={touchPanelSm}>
+        <div className="scene-panel scene-panel--items-center evidence" onClick={touchPanelSm}>
           <div className="evidence__container">
             <div className="evidence__content">
               <AnimatePresence exitBeforeEnter>
@@ -160,6 +171,7 @@ const Investigate = () => {
                     initial="hidden"
                     animate="show"
                     exit="exit"
+                    onAnimationComplete={completeAnimated}
                   >
                     สำหรับคดีนี้ฆาตกร ก็คือ<br/><b>เหล่าหลักฐานในที่เกิดเหตุ</b>
                   </motion.p>
@@ -173,6 +185,7 @@ const Investigate = () => {
                     initial="hidden"
                     animate="show"
                     exit="exit"
+                    onAnimationComplete={completeAnimated}
                   >
                     คุณอาจสงสัยว่าทำไม?
                   </motion.div>
@@ -186,6 +199,7 @@ const Investigate = () => {
                     initial="hidden"
                     animate="show"
                     exit="exit"
+                    onAnimationComplete={completeAnimated}
                   >
                     ผมจะให้หมอมาช่วยอธิบาย<br/>ให้เข้าใจมากขึ้นครับ
                   </motion.div>

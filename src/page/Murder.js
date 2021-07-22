@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
@@ -48,13 +48,20 @@ const Investigate = () => {
   // utility hook
   const isWindowSmall = UseWindowSmall()
 
+  // state
+  const [animateComplete, setAnimateComplete] = useState(false)
+
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('Evidence')
+    if (animateComplete) {
+      changeCurrentPageContext('Evidence')
+    }
   }
 
+  const completeAnimated = () => setAnimateComplete(true)
+
   const touchPanelSm = () => {
-    if (isWindowSmall) {
+    if (isWindowSmall && animateComplete) {
       goToNextPage()
     }
   }
@@ -87,11 +94,12 @@ const Investigate = () => {
               initial="hidden"
               animate="show"
               exit="exit"
+              onAnimationComplete={completeAnimated}
             >
               <motion.img
                 className="murder__image"
                 src={MurderImage}
-                alt=""
+                alt="murder evidence"
                 whileHover={{ y: -20 }}
                 onClick={goToNextPage}
               />

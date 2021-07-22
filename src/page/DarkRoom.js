@@ -56,8 +56,8 @@ const backgroundVariantMD = {
     opacity: 1,
     transition: {
       duration: MotionUtilities.speed.speedOne,
-      ease: "easeInOut",
       delay: MotionUtilities.speed.speedTwo,
+      ease: "easeInOut",
     }
   },
 }
@@ -89,7 +89,7 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       duration: MotionUtilities.speed.speedOne,
-      delay: MotionUtilities.speed.speedThree
+      delay: MotionUtilities.speed.speedFour
     }
   }
 }
@@ -103,8 +103,12 @@ const DarkRoom = () => {
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('TurnOnLight')
+    if (animateComplete) {
+      changeCurrentPageContext('TurnOnLight')
+    }
   }
+
+  const completedAnimate = () => setAnimateComplete(true)
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
@@ -122,7 +126,7 @@ const DarkRoom = () => {
             variants={ backgroundVariantSM }
             initial="hidden"
             animate="show"
-            onAnimationComplete={ () => setAnimateComplete(true) }
+            onAnimationComplete={completedAnimate}
           >
             <img className="dark-room__image dark-room__image--sm" src={ bgSceneSM } alt="dark room background" />
           </motion.div>
@@ -135,6 +139,7 @@ const DarkRoom = () => {
           variants={backgroundVariantMD}
           initial="hidden"
           animate="show"
+          onAnimationComplete={completedAnimate}
         >
           <img className="dark-room__image dark-room__image--md" src={ bgSceneMD } alt="dark room background" />
         </motion.div>
