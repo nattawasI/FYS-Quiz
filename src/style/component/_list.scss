@@ -74,6 +74,14 @@
     font-size: 1.823vw;
     transition: color 0.2s ease-in-out;
     color: $white;
+
+    &--game {
+      padding-right: 24%;
+    }
+
+    &--exercise {
+      padding-left: 24%;
+    }
   }
 }
 
