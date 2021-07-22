@@ -16,7 +16,7 @@ const ButtonSound = ({dark, onClick}) => {
   return (
     <button
       type="button"
-      className="button-mute"
+      className="button-sound"
       onClick={handleClick}>
       {
         mute

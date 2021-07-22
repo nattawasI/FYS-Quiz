@@ -105,10 +105,8 @@ const WakeFriendUp = () => {
   }
 
   const touchPanelSm = () => {
-    if (isWindowSmall) {
-      if (animateComplete) {
-        goToNextPage()
-      }
+    if (isWindowSmall && animateComplete) {
+      goToNextPage()
     }
   }
 

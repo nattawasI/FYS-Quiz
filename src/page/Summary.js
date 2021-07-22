@@ -140,7 +140,7 @@ const Summary = () => {
     if (isWindowSmall) {
       setTimeout(() => {
         setPaperSmRender(true)
-      }, 1800);
+      }, 1700);
     }
   }, [isWindowSmall, paperSmRender])
 

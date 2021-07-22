@@ -86,6 +86,8 @@ const Suggestion = () => {
         setShowScene1(false)
         setShowScene2(false)
         setShowScene3(true)
+      } else {
+        goToNextPage()
       }
     }
   }
@@ -167,7 +169,7 @@ const Suggestion = () => {
                 </motion.p>
             }
             {
-              showScene3
+              !isWindowSmall && showScene3
               &&  <motion.div className="box-story__button"
                     key="buttonNextScene2"
                     variants={buttonVariant}

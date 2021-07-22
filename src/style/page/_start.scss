@@ -2,10 +2,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 152px;
+  width: 40.533vw;
 
   @include md-up {
-    width: 24%;
+    width: 24vw;
   }
 
   > img {
@@ -15,13 +15,13 @@
 
 .start-ribbon-right {
   position: fixed;
-  top: -32px;
+  top: -3.951vw;
   right: 0;
-  width: 170px;
+  width: 45.333vw;
 
   @include md-up {
     top: 0;
-    width: 25%;
+    width: 25vw;
   }
 
   > img {
@@ -36,7 +36,7 @@
 
   &__heading {
     position: absolute;
-    top: 20%;
+    top: 20vh;
     left: 0;
     right: 0;
     z-index: 2;
@@ -46,24 +46,24 @@
     justify-content: center;
 
     @include md-up {
-      top: 12.5%;
+      top: 12.5vh;
     }
   }
 
   &__heading-button {
-    margin-top: 35px;
+    margin-top: 5vh;
 
     @include md-up {
-      margin-top: 3.2%;
+      margin-top: 6.5vh;
     }
   }
 
   &__title {
-    width: 307px;
+    width: 80vw;
     line-height: 1;
 
     @include md-up {
-      width: 40%;
+      width: 40vw;
     }
 
     > img {
@@ -73,21 +73,21 @@
 
   &__button {
     position: relative;
-    width: 97px;
-    height: 38px;
+    width: 25.867vw;
+    height: 10.133vw;
     background-image: url('../../image/page/start/bg_button_start_sm.svg');
     background-size: 100% auto;
     background-position: center;
     background-repeat: no-repeat;
 
     @include md-up {
-      width: 12%;
-      padding-top: 4%;
+      width: 12vw;
+      height: 4vw;
       background-image: url('../../image/page/start/bg_button_start_md.svg');
       transition: transform 0.2s ease-in-out;
 
       &:hover {
-        transform: scale(1.1);
+        transform: scale(1.1) translateZ(0);
       }
     }
 
@@ -105,9 +105,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.1rem;
+    font-size: 5.867vw;
     color: $black;
     line-height: 1;
+
+    @include sm-up {
+      font-size: 3.516vw;
+    }
 
     @include md-up {
       font-size: 2.188vw;
@@ -120,7 +124,7 @@
     left: 0;
     bottom: 0;
     z-index: 1;
-    height: 52%;
+    height: 52vh;
 
     @include md-down {
       display: flex;
@@ -128,14 +132,14 @@
     }
 
     @include md-up {
-      height: 65%;
+      height: 65vh;
     }
 
     > img {
       height: 100%;
 
       @include md-down {
-        margin-left: -25px;
+        margin-left: -6.667vw;
       }
 
       @include md-up {
