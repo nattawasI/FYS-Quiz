@@ -2,10 +2,10 @@
   &__text {
     position: relative;
     z-index: 3;
-    top: 20%;
+    top: 17vh;
 
     @include md-up {
-      top: 8%;
+      top: 8vh;
     }
   }
 

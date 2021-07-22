@@ -99,8 +99,8 @@
   line-height: 1;
 
   @include md-up {
-    top: 3.125vw;
-    right: 3.125vw;
+    top: 2vw;
+    right: 2.5vw;
   }
 
   img {
@@ -145,8 +145,8 @@
   }
 
   @include md-up {
-    top: 3.125vw;
-    left: 3.125vw;
+    top: 2vw;
+    left: 2.5vw;
     font-size: 1.563vw;
   }
 
