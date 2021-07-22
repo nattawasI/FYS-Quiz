@@ -72,6 +72,10 @@
   }
 
   &__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 3em;
     margin-top: 20px;
     font-size: 1.8rem;
     font-weight: 300;

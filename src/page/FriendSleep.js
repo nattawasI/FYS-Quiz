@@ -69,10 +69,8 @@ const FriendSleep = () => {
   }
 
   const touchPanelSm = () => {
-    if (isWindowSmall) {
-      if (animateComplete) {
-        openModalFormFriend()
-      }
+    if (isWindowSmall && animateComplete) {
+      openModalFormFriend()
     }
   }
 
