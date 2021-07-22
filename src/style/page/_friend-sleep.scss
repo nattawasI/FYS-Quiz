@@ -41,7 +41,7 @@
     z-index: 2;
 
     @include md-down {
-      bottom: -7%;
+      bottom: -4%;
       left: 1%;
       display: flex;
       justify-content: center;
@@ -50,7 +50,8 @@
     }
 
     @include md-up {
-      bottom: -13%;
+      // bottom: -13%;
+      bottom: -9%;
       right: 10%;
       width: 30%;
     }
