@@ -1,7 +1,7 @@
 
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
-import {motion, AnimatePresence} from 'framer-motion'
+import {motion} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -25,8 +25,8 @@ const titleRiskSymptomsVariant = {
     y: 0,
     transition: {
       ease: 'easeInOut',
-      delay: 0.7,
-      duration: 1
+      duration: 1,
+      delay: 0.7
     }
   }
 }
@@ -41,8 +41,8 @@ const listRiskSymptomsVariant = {
     y: 0,
     transition: {
       ease: 'easeInOut',
-      delay: 0.7,
       duration: 1,
+      delay: 0.7
     }
   }
 }
@@ -71,17 +71,10 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
+      duration: 0.7,
       delay: 1.2,
-      duration: 0.7
     }
   },
-  exit: {
-    opacity: 0,
-    transition: {
-      type: 'tween',
-      duration: 0.7
-    }
-  }
 }
 
 const ResultSymptoms = () => {
@@ -187,16 +180,13 @@ const ResultSymptoms = () => {
       </Content>
       {
         !isWindowSmall
-        && <AnimatePresence>
-            <motion.div className="button-fixed-right-bottom"
-              variants={buttonVariant}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-            >
-              <ButtonNext onClick={goToNextPage} />
-            </motion.div>
-          </AnimatePresence>
+        && <motion.div className="button-fixed-right-bottom"
+            variants={buttonVariant}
+            initial="hidden"
+            animate="show"
+          >
+            <ButtonNext onClick={goToNextPage} />
+          </motion.div>
       }
     </motion.div>
   )

@@ -16,7 +16,11 @@ const Content = ({ children, bgColor, className }) => {
     } else if (bgColor === 'blue') {
       return `content content--blue${' ' + className}`
     } else {
-      return `content${' ' + className}`
+      if (className) {
+        return `content${' ' + className}`
+      } else {
+        return 'content'
+      }
     }
   }
 

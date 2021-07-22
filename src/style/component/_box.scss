@@ -5,10 +5,10 @@
   text-align: center;
 
   &__button {
-    margin-top: 20px;
+    margin-top: 3vh;
 
     @include md-up {
-      margin-top: 1vw;
+      margin-top: 2.5vw;
     }
   }
 }
@@ -24,9 +24,13 @@
   }
 
   &__text {
-    margin-top: 16px;
-    font-size: 1.8rem;
+    margin-top: 3vh;
+    font-size: 4.800vw;
     color: $black;
     text-align: center;
+
+    @include sm-up {
+      font-size: 3.516vw;
+    }
   }
 }

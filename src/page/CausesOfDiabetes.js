@@ -33,7 +33,7 @@ const sceneVariant = {
     opacity: 0,
     transition: {
       type: 'tween',
-      duration: 0.7
+      duration: 1
     }
   }
 }
@@ -74,7 +74,7 @@ const listVariant = {
     opacity: 0,
     transition: {
       type: 'tween',
-      duration: 0.7
+      duration: 1
     }
   }
 }
@@ -87,17 +87,10 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 0.7,
-      delay: 1.3,
+      duration: 1,
+      delay: 1.5,
     }
   },
-  exit: {
-    opacity: 0,
-    transition: {
-      type: 'tween',
-      duration: 0.7
-    }
-  }
 }
 
 const CausesOfDiabetes = () => {
@@ -279,7 +272,6 @@ const CausesOfDiabetes = () => {
                     variants={buttonVariant}
                     initial="hidden"
                     animate="show"
-                    exit="exit"
                   >
                     <ButtonNext onClick={goToNextPage} />
                   </motion.div>

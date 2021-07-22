@@ -45,12 +45,12 @@
   &__input {
     @include md-down {
       width: 260px;
-      margin-top: 15px;
+      margin-top: 3.5vh;
     }
 
     @include md-up {
       width: 18.229vw;
-      margin-top: 6%;
+      margin-top: 6vh;
     }
   }
 
