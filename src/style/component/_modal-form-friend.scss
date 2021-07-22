@@ -21,7 +21,7 @@
     width: 69.333vw;
 
     @include md-up {
-      width: 515px;
+      width: 26.823vw;
     }
   }
 
@@ -32,8 +32,8 @@
     line-height: 1.4;
 
     @include md-up {
-      margin-top: 60px;
-      font-size: 3.5rem;
+      margin-top: 5vh;
+      font-size: 1.823vw;
     }
   }
 
@@ -41,17 +41,13 @@
     display: flex;
     justify-content: center;
     margin-top: 2vh;
-
-    @include md-up {
-      margin-top: 15px;
-    }
   }
 
   &__button {
     width: 36vw;
 
     @include md-up {
-      width: 240px;
+      width: 12.500vw;
     }
 
     &:last-child {

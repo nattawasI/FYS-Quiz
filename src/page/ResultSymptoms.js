@@ -89,7 +89,7 @@ const ResultSymptoms = () => {
   const isWindowSmall = UseWindowSmall()
 
   // state
-  const [animateEnd, setAnimateEnd] = useState(false)
+  const [animateComplete, setAnimateComplete] = useState(false)
 
   // function
   const goToNextPage = () => {
@@ -97,7 +97,7 @@ const ResultSymptoms = () => {
   }
 
   const touchPanelSm = () => {
-    if (animateEnd) {
+    if (isWindowSmall && animateComplete) {
       goToNextPage()
     }
   }
@@ -129,7 +129,7 @@ const ResultSymptoms = () => {
                 variants={bgRiskSymptomsVariant}
                 initial="hidden"
                 animate="show"
-                onAnimationComplete={() => setAnimateEnd(true)}
+                onAnimationComplete={() => setAnimateComplete(true)}
               ></motion.div>
               <ul className="list-risk-symptoms">
                 <li className="list-risk-symptoms__item">

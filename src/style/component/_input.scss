@@ -21,8 +21,8 @@
     }
 
     @include md-up {
-      width: 43px;
-      height: 48px;
+      width: 2.240vw;
+      height: 2.500vw;
     }
   }
 
@@ -32,8 +32,8 @@
     background-image: url('../../image/icon/icon_gloss_gray_sm_bottom_left.svg');
 
     @include md-up {
-      bottom: 4px;
-      left: 4px;
+      bottom: 0.208vw;;
+      left: 0.208vw;;
       background-image: url('../../image/icon/icon_gloss_gray_md_bottom_left.svg');
     }
   }
@@ -44,8 +44,8 @@
     background-image: url('../../image/icon/icon_gloss_gray_sm_top_right.svg');
 
     @include md-up {
-      top: 4px;
-      right: 4px;
+      top: 0.208vw;
+      right: 0.208vw;
       background-image: url('../../image/icon/icon_gloss_gray_md_top_right.svg');
     }
   }
@@ -65,8 +65,8 @@
     }
 
     @include md-up {
-      height: 75px;
-      font-size: 3.5rem;
+      height: 3.906vw;
+      font-size: 1.823vw;
     }
 
     &::-webkit-input-placeholder, /* Edge */
