@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {useUserStateContext} from '../context/UserContext'
-import {motion, AnimatePresence} from 'framer-motion'
+import {motion} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -69,7 +69,6 @@ const PoliceCame = () => {
   const isWindowSmall = UseWindowSmall()
 
   // state
-  const [skipAnimate, setSkipAnimate] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
 
 
@@ -82,90 +81,7 @@ const PoliceCame = () => {
     if (isWindowSmall) {
       if (animateComplete) {
         goToNextPage()
-      } else {
-        if (!skipAnimate) {
-          setAnimateComplete(false) // We will change to 'true' if We want to use function 'skip'
-          setSkipAnimate(false) // We will change to 'true' if We want to use function 'skip'
-        }
       }
-    }
-  }
-
-  // function for rendering
-  const renderBody = () => {
-    if (isWindowSmall) {
-      return (
-        skipAnimate
-        ? <div className="police-came__body">
-            {
-              friendInfoContext.gender === 'male'
-              ? <img src={isWindowSmall ? BgDeadManSm : BgDeadManMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
-              : <img src={isWindowSmall ? BgDeadWomenSm : BgDeadWomenMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
-            }
-          </div>
-        : <AnimatePresence>
-            <motion.div className="police-came__body"
-              variants={bodyVariant}
-              initial="hidden"
-              animate="show"
-            >
-              {
-                friendInfoContext.gender === 'male'
-                ? <img src={isWindowSmall ? BgDeadManSm : BgDeadManMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
-                : <img src={isWindowSmall ? BgDeadWomenSm : BgDeadWomenMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
-              }
-            </motion.div>
-          </AnimatePresence>
-      )
-    } else {
-      return (
-        <motion.div className="police-came__body"
-          variants={bodyVariant}
-          initial="hidden"
-          animate="show"
-        >
-          {
-            friendInfoContext.gender === 'male'
-            ? <img src={isWindowSmall ? BgDeadManSm : BgDeadManMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
-            : <img src={isWindowSmall ? BgDeadWomenSm : BgDeadWomenMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
-          }
-        </motion.div>
-      )
-    }
-  }
-
-  const renderText = () => {
-    if (isWindowSmall) {
-      return (
-        skipAnimate
-        ? <p className="box-story__text text-story">เมื่อตำรวจมาถึง ก็สำรวจที่เกิดเหตุทันที<br />แล้วขอเชิญคุณไปสอบสวน</p>
-        : <AnimatePresence>
-            <motion.p className="box-story__text text-story"
-              variants={textVariant}
-              initial="hidden"
-              animate="show"
-              onAnimationComplete={ () => setAnimateComplete(true) }
-            >เมื่อตำรวจมาถึง ก็สำรวจที่เกิดเหตุทันที<br />แล้วขอเชิญคุณไปสอบสวน</motion.p>
-          </AnimatePresence>
-      )
-    } else {
-      return (
-        <>
-          <motion.p className="box-story__text text-story"
-            variants={textVariant}
-            initial="hidden"
-            animate="show"
-            onAnimationComplete={ () => setAnimateComplete(true) }
-          >เมื่อตำรวจมาถึง ก็สำรวจที่เกิดเหตุทันที<br />แล้วขอเชิญคุณไปสอบสวน</motion.p>
-          <motion.div className="box-story__button"
-            variants={buttonVariant}
-            initial="hidden"
-            animate="show"
-          >
-            <ButtonNext onClick={goToNextPage} />
-          </motion.div>
-        </>
-      )
     }
   }
 
@@ -179,12 +95,33 @@ const PoliceCame = () => {
       <ButtonSound />
       <Content>
         <div className="scene-panel police-came" onClick={touchPanelSm}>
-          {
-            renderBody()
-          }
-          <div className="police-came__content box-story">
+          <motion.div className="police-came__body"
+            variants={bodyVariant}
+            initial="hidden"
+            animate="show"
+          >
             {
-              renderText()
+              friendInfoContext.gender === 'male'
+              ? <img src={isWindowSmall ? BgDeadManSm : BgDeadManMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
+              : <img src={isWindowSmall ? BgDeadWomenSm : BgDeadWomenMd} className="police-came__body-img" alt="ศพเพื่อนนอนตาย" />
+            }
+          </motion.div>
+          <div className="police-came__content box-story">
+            <motion.p className="box-story__text text-story"
+              variants={textVariant}
+              initial="hidden"
+              animate="show"
+              onAnimationComplete={ () => setAnimateComplete(true) }
+            >เมื่อตำรวจมาถึง ก็สำรวจที่เกิดเหตุทันที<br />แล้วขอเชิญคุณไปสอบสวน</motion.p>
+            {
+              !isWindowSmall
+              && <motion.div className="box-story__button"
+                  variants={buttonVariant}
+                  initial="hidden"
+                  animate="show"
+                >
+                  <ButtonNext onClick={goToNextPage} />
+                </motion.div>
             }
           </div>
         </div>
