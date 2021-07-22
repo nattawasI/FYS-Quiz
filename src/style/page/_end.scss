@@ -144,10 +144,6 @@
         left: 50%;
         // right: 27.5%;
         margin: 0 -1.4583vw;
-
-        @include ratio-wxga-frame {
-          // right: 28.5%;
-        }
       }
     }
 

@@ -233,10 +233,6 @@
   @include md-up {
     left: 2.167vw;
     top: 2.167vw;
-
-    @include ratio-wxga-frame {
-      left: 8vw;
-    }
   }
 }
 
