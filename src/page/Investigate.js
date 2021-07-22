@@ -29,7 +29,7 @@ const textVariant = {
     y: 0,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
     }
   },
 }
@@ -42,8 +42,8 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
-      delay: 0.7,
+      duration: 1,
+      delay: 1,
     }
   },
 }
@@ -56,21 +56,21 @@ const contentVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
     }
   },
   firstShow: {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
       delay: 1,
     }
   },
   exit: {
     opacity: 0,
     transition: {
-      duration: 0.7
+      duration: 1
     }
   }
 }
