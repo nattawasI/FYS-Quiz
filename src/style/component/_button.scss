@@ -224,6 +224,22 @@
   }
 }
 
+.button-fixed-left-top {
+  position: fixed;
+  left: 4.167vw;
+  top: 4.167vw;
+  z-index: 99;
+
+  @include md-up {
+    left: 2.167vw;
+    top: 2.167vw;
+
+    @include ratio-wxga-frame {
+      left: 8vw;
+    }
+  }
+}
+
 .button-restart {
   display: inline-flex;
   align-items: center;

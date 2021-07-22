@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
+import {MotionUtilities} from '../variable/MotionUtilities'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -13,24 +14,46 @@ import BubbleTea from '../image/page/evidence/img_bubbletea.png'
 import Hamburger from '../image/page/evidence/img_hamburger.png'
 
 // Motion Variants
-const textVariant = {
+const firstTextVariant = {
   hidden: {
-    opacity: 0,
-    y: 120
+    y: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
-    opacity: 1,
-    y: 0,
+    opacity: MotionUtilities.opacity.opacityOne,
     transition: {
+      duration: MotionUtilities.speed.speedOne,
       ease: "easeInOut",
-      duration: 1,
     }
   },
   exit: {
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
     transition: {
+      duration: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
-      duration: 0.35,
+      type: 'tween',
+    }
+  }
+}
+
+const textVariant = {
+  hidden: {
+    y: 80,
+    opacity: MotionUtilities.opacity.opacityZero,
+  },
+  show: {
+    y: 0,
+    opacity: MotionUtilities.opacity.opacityOne,
+    transition: {
+      duration: MotionUtilities.speed.speedOne,
+      ease: "easeInOut",
+    }
+  },
+  exit: {
+    opacity: MotionUtilities.opacity.opacityZero,
+    transition: {
+      duration: MotionUtilities.speed.speedOne,
+      ease: 'easeInOut',
       type: 'tween',
     }
   }
@@ -38,34 +61,35 @@ const textVariant = {
 
 const buttonVariant = {
   hidden: {
-    opacity: 0
+    opacity: MotionUtilities.opacity.opacityZero
   },
   show: {
-    opacity: 1,
+    opacity: MotionUtilities.opacity.opacityOne,
     transition: {
       ease: "easeInOut",
-      duration: 0.5,
-      delay: 1,
+      duration: MotionUtilities.speed.speedOne,
+      delay: MotionUtilities.speed.speedOne,
     }
   }
 }
 
 const evidenceVariant = {
   hidden: {
-    opacity: 0,
-    y: 160
+    y: 160,
+    opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
-    opacity: 1,
     y: 0,
+    opacity: MotionUtilities.opacity.opacityOne,
     transition: {
+      duration: MotionUtilities.speed.speedOne,
       ease: "easeInOut",
-      duration: 1,
     }
   },
   exit: {
-    opacity: 0,
+    opacity: MotionUtilities.opacity.opacityZero,
     transition: {
+      duration: MotionUtilities.speed.speedOne,
       type: 'tween',
     }
   }
@@ -121,7 +145,7 @@ const Investigate = () => {
       animate="show"
       exit="exit"
     >
-      <ButtonSound />
+      <ButtonSound dark />
       <Content bgColor="white">
         <div className="scene-panel evidence" onClick={touchPanelSm}>
           <div className="evidence__container">
@@ -132,7 +156,7 @@ const Investigate = () => {
                   <motion.p
                     key="evidence-text-01"
                     className="evidence__text text-story text-story--black"
-                    variants={textVariant}
+                    variants={firstTextVariant}
                     initial="hidden"
                     animate="show"
                     exit="exit"

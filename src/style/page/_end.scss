@@ -5,22 +5,8 @@
     height: 100%;
   }
 
-  &__button {
-    position: absolute;
-    top: 35px;
-    left: 15px;
-    z-index: 50;
-
-    @include md-up {
-      top: 50px;
-      left: 58px;
-    }
-  }
-
   &__coffee {
     position: absolute;
-    // top: 9.6059%;
-    // right: 46.9230%;
     left: 5.3333%;
     bottom: 87%;
     z-index: 5;
@@ -42,6 +28,7 @@
     @include md-up {
       top: -22.7777%;
       left: 25.8333%;
+      width: 22.5vw;
     }
   }
 
@@ -153,8 +140,14 @@
 
       @include md-up {
         bottom: 28.8888%;
-        right: 27.5%;
+        right: auto;
+        left: 50%;
+        // right: 27.5%;
         margin: 0 -1.4583vw;
+
+        @include ratio-wxga-frame {
+          // right: 28.5%;
+        }
       }
     }
 
@@ -175,7 +168,7 @@
       width: 8vw;
 
       @include md-up {
-        width: 3.4vw;
+        width: auto;
       }
     }
   }

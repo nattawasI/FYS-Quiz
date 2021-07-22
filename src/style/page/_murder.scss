@@ -44,5 +44,10 @@
     position: absolute;
     left: 52.3480%;
     bottom: -11.8181%;
+
+    @include md-down {
+      width: 5.3333vw;
+      max-width: 100%;
+    }
   }
 }

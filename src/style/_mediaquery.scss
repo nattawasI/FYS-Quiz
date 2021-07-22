@@ -49,10 +49,17 @@ $xl: 1400px;
   @media screen and (width : 414px) and (height : 736px) { @content; }
 }
 
+/* sqaure portrait 4:3 */
 @mixin ratio-square-frame {
   @media (aspect-ratio: 4/3) { @content; }
 }
 
+/* wide portrait 16:9 */
 @mixin ratio-wide-frame {
   @media (aspect-ratio: 9/16) { @content; }
+}
+
+/* width 1440 x 900 // 16:10 */
+@mixin ratio-wxga-frame {
+  @media (aspect-ratio: 16/10) { @content; }
 }
