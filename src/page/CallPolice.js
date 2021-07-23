@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
@@ -55,17 +55,20 @@ const buttonVariant = {
 
 const CallPolice = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
-  const { friendInfoContext } = useUserStateContext()
+  const {friendInfoContext} = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
 
   // state
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
+  const [canCall, setCancall] = useState(false)
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('PoliceCame')
+    if (canCall) {
+      changeCurrentPageContext('PoliceCame')
+    }
   }
 
   const changeToScene2 = () => {
@@ -91,6 +94,14 @@ const CallPolice = () => {
       }
     }
   }
+
+  useEffect(() => {
+    if (showScene3) {
+      setTimeout(() => {
+        setCancall(true)
+      }, 3000);
+    }
+  }, [showScene3])
 
   return (
     <motion.div
