@@ -4,13 +4,14 @@ import {motion} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import {useUserStateContext} from '../context/UserContext'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
+import UseCurrentDevice from '../utilityhook/useCurrentDevice'
 import Content from '../layout/Content'
 import ButtonBack from '../component/ButtonBack'
 import ButtonNext from '../component/ButtonNext'
 import ButtonSound from '../component/ButtonSound'
 import ImgHumanSleepMd from '../image/page/start/img_human_sleep_md.svg'
 import ImgHumanSleepSm from '../image/page/start/img_human_sleep_sm.svg'
-import ImgArmMd from '../image/page/friend-sleep/img_arm_md.svg'
+import ImgArmMd from '../image/page/friend-sleep/img_arm_md2.svg'
 import ImgArmSm from '../image/page/friend-sleep/img_arm_sm.svg'
 
 // Motion Variants
@@ -79,11 +80,20 @@ const WakeFriendUp = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
+  const currentDevice = UseCurrentDevice()
+
+  const armKeyFrame = () => {
+    if (currentDevice === 'desktop' || currentDevice === 'tablet') {
+      return [0, 0, 0, 30, 0, 30]
+    } else {
+      return [0, 0, 0, 20, 0, 20]
+    }
+  }
 
   // motion variant which has dynamic
   const wakeVariant = {
     animate: {
-      y: isWindowSmall ? [0, 0, 0, 20, 0, 20]: [0, 0, 0, 30, 0, 30],
+      y: armKeyFrame(),
       transition: {
         type: 'tween',
         duration: 1,
