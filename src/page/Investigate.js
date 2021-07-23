@@ -218,6 +218,7 @@ const Investigate = () => {
   }
 
   const backToSceneQuiz = () => {
+    removeChoicesContext()
     setSceneFormYear(false)
     setSceneQuiz(true)
   }
@@ -257,6 +258,8 @@ const Investigate = () => {
   }
 
   const prevQuestion = () => {
+    removeChoicesContext()
+
     if (currentQuestion > 0) {
       boxQuizControl.start('hidden')
       setTimeout(() => {

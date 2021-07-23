@@ -57,8 +57,9 @@ const UserProvider = ({ children }) => {
     setChoicesContext([...choicesContext, choice])
   }
 
-  const removeChoicesContext = (choice) => {
-    console.log(1);
+  const removeChoicesContext = () => {
+    choicesContext.pop()
+    setChoicesContext(choicesContext)
   }
 
   const addActivityTodayContext = (activity) => {
