@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <UserProvider>
-      <div className="App">
+      <div className="App" style={{ height: "100%" }}>
         <RouteProvider>
           <Index />
         </RouteProvider>

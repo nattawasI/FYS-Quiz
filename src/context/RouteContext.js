@@ -13,7 +13,11 @@ export const useRouteActionContext = () => {
 
 const RouteProvider = ({ children }) => {
   // state
+<<<<<<< Updated upstream
   const [currentPageContext, setCurrentPageContext] = useState('TurnOnLight')
+=======
+  const [currentPageContext, setCurrentPageContext] = useState('Evidence')
+>>>>>>> Stashed changes
 
   // function
   const changeCurrentPageContext = (pageTarget) => {

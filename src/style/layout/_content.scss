@@ -1,5 +1,11 @@
 .content {
+<<<<<<< Updated upstream
   height: 100vh;
+=======
+  position: relative;
+  z-index: 1;
+  height: 100%;
+>>>>>>> Stashed changes
   background-color: $black;
   overflow: hidden;
 
@@ -13,7 +19,7 @@
 
   &__main {
     position: relative;
-    height: 100vh;
+    height: 100%;
   }
 }
 

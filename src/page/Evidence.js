@@ -155,6 +155,7 @@ const Investigate = () => {
       initial="hidden"
       animate="show"
       exit="exit"
+      style={{ height: "100%" }}
     >
       <ButtonSound dark />
       <Content bgColor="white">
