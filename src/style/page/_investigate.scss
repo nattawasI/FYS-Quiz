@@ -43,14 +43,14 @@
     }
 
     @include md-up {
-      height: 45vh;
+      height: 31vh;
     }
 
     &.animate {
       height: 75vh;
 
       @include md-up {
-        height: 75vh;
+        height: 69vh;
       }
     }
   }
@@ -166,7 +166,8 @@
     }
 
     @include md-up {
-      font-size: 2.865vw;
+      // font-size: 2.865vw;
+      font-size: 2.3vw;
     }
   }
 

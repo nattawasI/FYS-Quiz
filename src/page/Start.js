@@ -63,11 +63,22 @@ const Start = () => {
             <h1 className="start-content__heading-title start-content__title">
               <img src={ImgTitle} alt="ฆาตกรบนโต๊ะอาหาร" />
             </h1>
-            <button type="button" className="start-content__heading-button start-content__button" onClick={goToNextPage}>
-              <span className="start-content__button-text">เริ่ม</span>
-            </button>
+            {
+              isWindowSmall
+              && <button type="button" className="start-content__heading-button start-content__button" onClick={goToNextPage}>
+                  <span className="start-content__button-text">เริ่ม</span>
+                </button>
+            }
           </div>
           <div className="start-content__human">
+            {
+              !isWindowSmall
+              && <div className="start-content__human-button">
+                  <button type="button" className="start-content__button" onClick={goToNextPage}>
+                    <span className="start-content__button-text">เริ่ม</span>
+                  </button>
+                </div>
+            }
             <img src={isWindowSmall ? ImgHumanSleepSm: ImgHumanSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
           </div>
         </div>

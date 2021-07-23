@@ -7,7 +7,7 @@
       top: 0;
       right: 0;
       width: 56.25%;
-      height: 84vh;
+      height: 80vh;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
@@ -46,11 +46,14 @@
     width: 100%;
 
     @include md-up {
-      top: 22vh;
+      // top: 22vh;
+      top: -5vh;
       width: 50%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      justify-content: center;
     }
 
     @include md-down {
