@@ -86,7 +86,7 @@ const Investigate = () => {
             >
               <p className="murder__text text-story">คุณอาจสงสัยว่าใครคือ</p>
               <p className="murder__text text-story--bigger">"ฆาตกร"</p>
-              <p className="murder__text murder__text--pointing text-story">ลองดูนี่</p>
+              <p className="murder__text murder__text--pointing text-story text-story--small">ลองดูนี่</p>
             </motion.div>
             <motion.div
               className="murder__figure"
