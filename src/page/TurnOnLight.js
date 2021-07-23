@@ -133,7 +133,7 @@ const NormalHandVariant = {
   exit: {
     opacity: MotionUtilities.opacity.opacityZero,
     transition: {
-      duration: MotionUtilities.speed.speedOne,
+      duration: 0.5,
       type: 'tween',
     }
   }
@@ -148,6 +148,7 @@ const PointerHandVariant = {
     x: 0,
     y: 0,
     transition: {
+      delay: 0.5,
       duration: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
     }
