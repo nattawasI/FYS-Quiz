@@ -89,7 +89,7 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       duration: MotionUtilities.speed.speedOne,
-      delay: MotionUtilities.speed.speedFour
+      delay: MotionUtilities.speed.speedThree
     }
   }
 }

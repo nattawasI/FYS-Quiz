@@ -48,7 +48,8 @@
     justify-content: center;
 
     @include md-up {
-      top: 12.5vh;
+      top: 10.5vh;
+      margin-left: -4vw;
     }
   }
 
@@ -65,7 +66,7 @@
     line-height: 1;
 
     @include md-up {
-      width: 40vw;
+      width: 35vw;
     }
 
     > img {
@@ -81,16 +82,16 @@
     background-size: 100% auto;
     background-position: center;
     background-repeat: no-repeat;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1) translateZ(0);
+    }
 
     @include md-up {
       width: 12vw;
       height: 4vw;
       background-image: url('../../image/page/start/bg_button_start_md.svg');
-      transition: transform 0.2s ease-in-out;
-
-      &:hover {
-        transform: scale(1.1) translateZ(0);
-      }
     }
 
     > img {
@@ -127,14 +128,12 @@
     bottom: 0;
     z-index: 1;
     height: 52vh;
-
-    @include md-down {
-      display: flex;
-      justify-content: center;
-    }
+    display: flex;
+    justify-content: center;
 
     @include md-up {
-      height: 65vh;
+      bottom: -16.7vh;
+      height: 80vh;
     }
 
     > img {
@@ -143,11 +142,20 @@
       @include md-down {
         margin-left: -6.667vw;
       }
+    }
+  }
 
-      @include md-up {
-        width: 100%;
-        height: auto;
-      }
+  &__human-button {
+    position: absolute;
+    top: -2vh;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+
+    .start-content__button {
+      margin-left: -4vw;
     }
   }
 }

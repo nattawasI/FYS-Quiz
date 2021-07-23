@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from 'react'
+import React, {useRef, useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
 import { useUserStateContext, useUserActionContext } from '../context/UserContext'
@@ -71,10 +71,6 @@ const ModalFormFriend = () => {
   const handleChangeInput = () => {
     setError(false)
   }
-
-  useEffect(() => {
-    inputRef.current.focus()
-  }, [])
 
   return (
     <motion.div className="modal-form-friend"

@@ -57,6 +57,10 @@ const UserProvider = ({ children }) => {
     setChoicesContext([...choicesContext, choice])
   }
 
+  const removeChoicesContext = (choice) => {
+    console.log(1);
+  }
+
   const addActivityTodayContext = (activity) => {
     setActivityTodayContext(activity)
   }
@@ -77,6 +81,7 @@ const UserProvider = ({ children }) => {
     addFriendInfoContext,
     addActivityOftenContext,
     addChoicesContext,
+    removeChoicesContext,
     addActivityTodayContext,
     addSymptomContext,
   }

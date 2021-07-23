@@ -15,23 +15,23 @@
     left: 0;
     bottom: 0;
     z-index: 1;
+    display: flex;
+    justify-content: center;
 
     @include md-down {
-      display: flex;
-      justify-content: center;
       height: 61vh;
     }
 
     @include md-up {
-      height: 60vh;
+      bottom: -16.7vh;
+      height: 80vh;
     }
 
     > img {
       height: 100%;
 
-      @include md-up {
-        width: 100%;
-        height: auto;
+      @include md-down {
+        margin-left: -6.667vw;
       }
     }
   }
