@@ -29,7 +29,7 @@ const firstTextVariant = {
   exit: {
     opacity: MotionUtilities.opacity.opacityZero,
     transition: {
-      duration: MotionUtilities.speed.speedOne,
+      duration: 0.7,
       ease: 'easeInOut',
       type: 'tween',
     }
@@ -38,7 +38,7 @@ const firstTextVariant = {
 
 const textVariant = {
   hidden: {
-    y: 80,
+    y: 120,
     opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
@@ -52,7 +52,7 @@ const textVariant = {
   exit: {
     opacity: MotionUtilities.opacity.opacityZero,
     transition: {
-      duration: MotionUtilities.speed.speedOne,
+      duration: 0.7,
       ease: 'easeInOut',
       type: 'tween',
     }
