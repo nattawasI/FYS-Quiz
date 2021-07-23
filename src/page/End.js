@@ -134,9 +134,6 @@ const End = () => {
     }
   ]
 
-  // hardcode to check image
-  friendInfoContext.gender = 'female'
-
   return (
     <motion.div
       variants={containerVariant}
