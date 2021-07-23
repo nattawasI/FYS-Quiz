@@ -11,10 +11,6 @@
     right: 0;
     bottom: 0;
     padding-top: 15vh;
-
-    @include md-up {
-      padding-top: 14.352vw;
-    }
   }
 
   &__text {
@@ -120,7 +116,7 @@
 
       @include md-up {
         bottom: 0;
-        height: 52.037%;
+        height: 58%;
         background-image: url('../../image/page/evidence/bg_curve_md.svg');
       }
     }

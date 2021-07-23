@@ -158,7 +158,7 @@ const Investigate = () => {
     >
       <ButtonSound dark />
       <Content bgColor="white">
-        <div className="scene-panel scene-panel--items-center evidence" onClick={touchPanelSm}>
+        <div className="scene-panel evidence" onClick={touchPanelSm}>
           <div className="evidence__container">
             <div className="evidence__content">
               <AnimatePresence exitBeforeEnter>
