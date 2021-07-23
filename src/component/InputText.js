@@ -7,7 +7,13 @@ const Input = forwardRef(({type, placeholder, value, onChange, isError}, ref) =>
 
   const handleChange = (e) => {
     const val = e.target.value
-    setInputValue(val)
+    if (type === 'number') {
+      if (Number(val) >= 0) {
+        setInputValue(val)
+      }
+    } else {
+      setInputValue(val)
+    }
     setError(false)
     onChange(val)
   }
@@ -22,13 +28,28 @@ const Input = forwardRef(({type, placeholder, value, onChange, isError}, ref) =>
 
   return (
     <div className={classStyle()}>
-      <input
-        type={type}
-        ref={ref}
-        placeholder={placeholder}
-        value={inputValue}
-        onChange={handleChange}
-      />
+      {
+        type === 'text'
+        &&  <input
+              type="text"
+              ref={ref}
+              placeholder={placeholder}
+              value={inputValue}
+              onChange={handleChange}
+            />
+      }
+      {
+        type === 'number'
+        &&  <input
+              type="number"
+              ref={ref}
+              placeholder={placeholder}
+              min="0"
+              max="100"
+              value={inputValue}
+              onChange={handleChange}
+            />
+      }
     </div>
   )
 })

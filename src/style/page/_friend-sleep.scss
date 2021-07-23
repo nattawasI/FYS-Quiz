@@ -29,6 +29,10 @@
 
     > img {
       height: 100%;
+
+      @include md-down {
+        margin-left: -6.667vw;
+      }
     }
   }
 

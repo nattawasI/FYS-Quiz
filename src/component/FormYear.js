@@ -1,8 +1,7 @@
-import React, {useRef, useState, useEffect} from 'react'
+import React, {useRef, useState} from 'react'
 import PropTypes from 'prop-types'
 import {motion} from 'framer-motion'
 import {useUserStateContext, useUserActionContext} from '../context/UserContext'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
 import ButtonNext from './ButtonNext'
 import InputText from './InputText'
 
@@ -37,8 +36,6 @@ const buttonVariant = {
 }
 
 const FormYear = ({changeScene}) => {
-  const isWindowSmall = UseWindowSmall()
-
   // context
   const {yearsKnownContext} = useUserStateContext()
   const {addYearsKnownContext} = useUserActionContext()
@@ -61,12 +58,6 @@ const FormYear = ({changeScene}) => {
       setError(true)
     }
   }
-
-  useEffect(() => {
-    if (!isWindowSmall) {
-      inputRef.current.focus()
-    }
-  }, [isWindowSmall])
 
   return (
     <div className="form-year">

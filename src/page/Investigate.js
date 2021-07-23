@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
-import {useUserStateContext} from '../context/UserContext'
+import {useUserStateContext, useUserActionContext} from '../context/UserContext'
 import {motion, AnimatePresence, useAnimation} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -35,28 +35,6 @@ const policeVariant = {
       delay: 0.5
     }
   },
-}
-
-const formNameVariant = {
-  hidden: {
-    opacity: 0,
-    y: 70
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      ease: "easeInOut",
-      duration: 1,
-      delay: 2
-    }
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      duration: 1
-    }
-  }
 }
 
 const textVariant = {
@@ -121,6 +99,7 @@ const Investigate = () => {
 
   // user context
   const {friendInfoContext, userNameContext} = useUserStateContext()
+  const {removeChoicesContext} = useUserActionContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
@@ -146,6 +125,29 @@ const Investigate = () => {
   const [sceneCause, setSceneCause] = useState(false)
   const [activityOften, setActivityOften] = useState('')
   const [currentQuestion, setCurrentQuestion] = useState(0)
+
+  // motion
+  const formNameVariant = {
+    hidden: {
+      opacity: 0,
+      y: 70
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: "easeInOut",
+        duration: 1,
+        delay: userNameContext? 0: 2
+      }
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 1
+      }
+    }
+  }
 
   // function
   const goToNextPage = () => {

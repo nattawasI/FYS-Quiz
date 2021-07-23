@@ -8,8 +8,8 @@ import Content from '../layout/Content'
 import ButtonBack from '../component/ButtonBack'
 import ButtonNext from '../component/ButtonNext'
 import ButtonSound from '../component/ButtonSound'
-import ImgFriendSleepMd from '../image/page/friend-sleep/img_friend_sleep_md.svg'
-import ImgFriendSleepSm from '../image/page/friend-sleep/img_friend_sleep_sm.svg'
+import ImgHumanSleepMd from '../image/page/start/img_human_sleep_md.svg'
+import ImgHumanSleepSm from '../image/page/start/img_human_sleep_sm.svg'
 import ImgArmMd from '../image/page/friend-sleep/img_arm_md.svg'
 import ImgArmSm from '../image/page/friend-sleep/img_arm_sm.svg'
 
@@ -143,7 +143,7 @@ const WakeFriendUp = () => {
             initial="hidden"
             animate="show"
           >
-            <img src={isWindowSmall ? ImgFriendSleepSm: ImgFriendSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
+            <img src={isWindowSmall ? ImgHumanSleepSm: ImgHumanSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
           </motion.div>
           <motion.div
             className="friend-sleep__arm"
