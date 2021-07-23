@@ -7,8 +7,8 @@ import Content from '../layout/Content'
 import ButtonNext from '../component/ButtonNext'
 import ButtonSound from '../component/ButtonSound'
 import ModalFormFriend from '../component/ModalFormFriend'
-import ImgFriendSleepMd from '../image/page/friend-sleep/img_friend_sleep_md.svg'
-import ImgFriendSleepSm from '../image/page/friend-sleep/img_friend_sleep_sm.svg'
+import ImgHumanSleepMd from '../image/page/start/img_human_sleep_md.svg'
+import ImgHumanSleepSm from '../image/page/start/img_human_sleep_sm.svg'
 
 // Motion Variants
 const textVariant = {
@@ -117,7 +117,7 @@ const FriendSleep = () => {
             animate="show"
             onAnimationComplete={() => setAnimateComplete(true)}
           >
-            <img src={isWindowSmall ? ImgFriendSleepSm: ImgFriendSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
+            <img src={isWindowSmall ? ImgHumanSleepSm: ImgHumanSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
           </motion.div>
         </div>
       </Content>

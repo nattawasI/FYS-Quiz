@@ -1,5 +1,4 @@
 import React from 'react'
-import {useRouteActionContext} from '../context/RouteContext'
 import {useUserStateContext} from '../context/UserContext'
 import {motion} from 'framer-motion'
 import {containerVariant} from '../variable/MotionVariant'
@@ -101,9 +100,6 @@ const CoffeeVariant = {
 }
 
 const End = () => {
-  // route context
-  const {changeCurrentPageContext} = useRouteActionContext()
-
   // context
   const {friendInfoContext} = useUserStateContext()
 
@@ -112,7 +108,7 @@ const End = () => {
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('Start')
+    window.location.reload()
   }
 
   const Socials = [
