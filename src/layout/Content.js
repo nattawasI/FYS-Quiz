@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
-import UseSetFrame from '../utilityhook/useSetFrame'
+// import UseSetFrame from '../utilityhook/useSetFrame'
 import IconRotate from '../image/icon/icon_rotate.svg'
 
 const Content = ({ children, bgColor, className }) => {
-  const frameStyle = UseSetFrame()
+  // const frameStyle = UseSetFrame()
   const isWindowSmall = UseWindowSmall()
 
   const [isLandscape, setIsLandscape] = useState(false)
