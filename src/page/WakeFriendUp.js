@@ -11,7 +11,7 @@ import ButtonNext from '../component/ButtonNext'
 import ButtonSound from '../component/ButtonSound'
 import ImgHumanSleepMd from '../image/page/start/img_human_sleep_md.svg'
 import ImgHumanSleepSm from '../image/page/start/img_human_sleep_sm.svg'
-import ImgArmMd from '../image/page/friend-sleep/img_arm_md2.svg'
+import ImgArmMd from '../image/page/friend-sleep/img_arm_md.svg'
 import ImgArmSm from '../image/page/friend-sleep/img_arm_sm.svg'
 
 // Motion Variants

@@ -64,6 +64,10 @@ $xl: 1400px;
   @media screen and (width : 375px) and (height : 667px) { @content; }
 }
 
+@mixin iphone-x {
+  @media screen and (width : 375px) and (height : 812px) { @content; }
+}
+
 // iphone plus size
 @mixin iphone-plus {
   @media screen and (width : 414px) and (height : 736px) { @content; }
