@@ -5,7 +5,11 @@ import ListQuizButton from './ListQuizButton'
 
 const quizVariant = {
   hidden: {
-    opacity: 0
+    opacity: 0,
+    transition: {
+      ease: "easeInOut",
+      duration: 1,
+    }
   },
   show: {
     opacity: 1,
@@ -33,7 +37,7 @@ const ListQuiz = ({changeScene, listQuiz, nextQuestion, currentQuestion, boxQuiz
       setTimeout(() => {
         nextQuestion()
         boxQuizControl.start('show')
-      }, 600)
+      }, 1000)
     } else {
       changeScene()
     }
@@ -49,9 +53,7 @@ const ListQuiz = ({changeScene, listQuiz, nextQuestion, currentQuestion, boxQuiz
       animate={boxQuizControl}
       variants={quizVariant}
     >
-      <motion.div className="list-quiz__question text-story"
-        va
-      >{ listQuiz[indexQuiz].question }</motion.div>
+      <div className="list-quiz__question text-story">{ listQuiz[indexQuiz].question }</div>
       <ul className="list-quiz__list">
         {
           listQuiz[indexQuiz].choices.map(choice => {

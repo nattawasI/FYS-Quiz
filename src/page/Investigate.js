@@ -265,7 +265,7 @@ const Investigate = () => {
       setTimeout(() => {
         setCurrentQuestion(currentQuestion - 1)
         boxQuizControl.start('show')
-      }, 600)
+      }, 1000)
     } else {
       setSceneQuiz(false)
       setSceneActivityOften(true)

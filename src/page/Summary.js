@@ -157,6 +157,25 @@ const Summary = () => {
     calculateSummary()
   }, [choicesContext])
 
+  const y = [
+    {
+      id: '1',
+      label: 'aaaa'
+    },
+    {
+      id: '2',
+      label: 'bbbb'
+    },
+    {
+      id: '3',
+      label: 'bbbb'
+    },
+    {
+      id: '4',
+      label: 'bbbb'
+    }
+  ]
+
   return (
     <motion.div
       variants={containerVariant}
@@ -182,9 +201,9 @@ const Summary = () => {
                   }
                 </li>
                 {
-                  choicesContext.length
+                  y.length
                   // eslint-disable-next-line array-callback-return
-                  ? choicesContext.map((choice, index) => {
+                  ? y.map((choice, index) => {
                       return <li className="list-summary__item" key={'bullet' + (index + 1)}>{choice.label}</li>
                     })
                   : ''

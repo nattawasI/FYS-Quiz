@@ -1,7 +1,7 @@
 import React, {forwardRef, useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 
-const Input = forwardRef(({type, placeholder, value, onChange, isError}, ref) => {
+const Input = forwardRef(({type, placeholder, value, onChange, isError, onlyText}, ref) => {
   const [inputValue, setInputValue] = useState(value)
   const [error, setError] = useState(isError)
 
@@ -14,6 +14,18 @@ const Input = forwardRef(({type, placeholder, value, onChange, isError}, ref) =>
     } else {
       setInputValue(val)
     }
+
+    if (onlyText) {
+      const regex = new RegExp('[0-9]')
+      const isNumber= regex.test(val)
+
+      if (!isNumber) {
+        setInputValue(val)
+      } else {
+        setInputValue(inputValue + '')
+      }
+    }
+
     setError(false)
     onChange(val)
   }
@@ -59,7 +71,8 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
-  isError: PropTypes.bool
+  isError: PropTypes.bool,
+  onlyText: PropTypes.bool,
 }
 
 Input.defaultProps = {
@@ -67,7 +80,8 @@ Input.defaultProps = {
   placeholder: '',
   value: '',
   onChange: () => {},
-  isError: false
+  isError: false,
+  onlyText: false
 }
 
 export default Input
