@@ -13,7 +13,7 @@ export const useRouteActionContext = () => {
 
 const RouteProvider = ({ children }) => {
   // state
-  const [currentPageContext, setCurrentPageContext] = useState('Siren')
+  const [currentPageContext, setCurrentPageContext] = useState('Investigate')
 
   // function
   const changeCurrentPageContext = (pageTarget) => {

@@ -16,7 +16,7 @@
   &__input {
     @include md-down {
       width: 260px;
-      margin-top: 15px;
+      margin-top: 2vh;
     }
 
     @include md-up {
@@ -28,13 +28,11 @@
   &__button {
     display: flex;
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 3vh;
   }
 }
 
 .form-year {
-  padding-top: 7vh;
-
   &__form {
     display: flex;
     flex-direction: column;
@@ -50,13 +48,13 @@
 
     @include md-up {
       width: 18.229vw;
-      margin-top: 6vh;
+      margin-top: 3vh;
     }
   }
 
   &__button {
     display: flex;
     justify-content: center;
-    margin-top: 8%;
+    margin-top: 3vh;
   }
 }

@@ -1,11 +1,14 @@
 import React, {useRef, useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {motion} from 'framer-motion'
-import { useUserStateContext, useUserActionContext } from '../context/UserContext'
+import {useUserStateContext, useUserActionContext} from '../context/UserContext'
+import UseWindowSmall from '../utilityhook/useWindowSmall'
 import ButtonNext from './ButtonNext'
 import InputText from './InputText'
 
 const FormYourName = ({changeScene}) => {
+  const isWindowSmall = UseWindowSmall()
+
   // context
   const {userNameContext} = useUserStateContext()
   const {addUserNameContext} = useUserActionContext()
@@ -61,8 +64,10 @@ const FormYourName = ({changeScene}) => {
   }
 
   useEffect(() => {
-    inputRef.current.focus()
-  }, [])
+    if (!isWindowSmall) {
+      inputRef.current.focus()
+    }
+  }, [isWindowSmall])
 
   return (
     <div className="form-your-name">

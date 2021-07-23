@@ -49,7 +49,9 @@ const ListQuiz = ({changeScene, listQuiz, nextQuestion, currentQuestion, boxQuiz
       animate={boxQuizControl}
       variants={quizVariant}
     >
-      <div className="list-quiz__question text-story">{ listQuiz[indexQuiz].question }</div>
+      <motion.div className="list-quiz__question text-story"
+        va
+      >{ listQuiz[indexQuiz].question }</motion.div>
       <ul className="list-quiz__list">
         {
           listQuiz[indexQuiz].choices.map(choice => {
