@@ -45,7 +45,7 @@ const Content = ({ children, bgColor, className }) => {
   return (
     <>
       <div className={classStyle()}>
-        <div className="content__main" style={frameStyle}>{children}</div>
+        <div className="content__main">{children}</div>
       </div>
       {
         isWindowSmall && isLandscape
