@@ -27,8 +27,10 @@
 
     @include md-up {
       top: -22.7777%;
-      left: 25.8333%;
-      width: 22.5vw;
+      left: auto;
+      right: 51.5625%;
+      // left: 25.8333%;
+      // width: 22.5vw;
     }
   }
 
@@ -140,10 +142,8 @@
 
       @include md-up {
         bottom: 28.8888%;
-        right: auto;
-        left: 50%;
-        // right: 27.5%;
-        margin: 0 -1.4583vw;
+        right: 27.5%;
+        margin: 0 -28px;
       }
     }
 
@@ -152,7 +152,7 @@
       padding: 0 1.6vw;
 
       @include md-up {
-        padding: 0 1.4583vw;
+        padding: 0 28px;
       }
     }
 

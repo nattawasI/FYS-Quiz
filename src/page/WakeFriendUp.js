@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import {useUserStateContext} from '../context/UserContext'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import UseCurrentDevice from '../utilityhook/useCurrentDevice'
@@ -121,12 +120,7 @@ const WakeFriendUp = () => {
   }
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       <ButtonBack onClick={goToPrevPage} />
       <ButtonSound />
       <Content>
@@ -171,7 +165,7 @@ const WakeFriendUp = () => {
           </motion.div>
         </div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

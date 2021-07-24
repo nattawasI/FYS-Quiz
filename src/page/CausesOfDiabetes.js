@@ -3,7 +3,6 @@ import React, {useState, useRef, useEffect} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {useUserStateContext, useUserActionContext} from '../context/UserContext'
 import {motion, AnimatePresence} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -160,12 +159,7 @@ const CausesOfDiabetes = () => {
   }, [symptomContext])
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       {
         showScene1 && <ButtonBack onClick={backToPrevPage} />
       }
@@ -281,7 +275,7 @@ const CausesOfDiabetes = () => {
           </div>
         </div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

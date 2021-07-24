@@ -2,7 +2,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion, AnimatePresence} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -93,12 +92,7 @@ const Suggestion = () => {
   }
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       <ButtonSound />
       <Content>
         <div className="scene-panel scene-panel--items-center scene-animate" onClick={skipScene}>
@@ -182,7 +176,7 @@ const Suggestion = () => {
           </div>
         </div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useUserStateContext} from '../context/UserContext'
 import {motion} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../component/ButtonNext'
@@ -83,12 +82,7 @@ const FriendSleep = () => {
   }, [friendInfoContext])
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       <ButtonSound />
       <Content>
         <div className="scene-panel friend-sleep" onClick={touchPanelSm}>
@@ -124,7 +118,7 @@ const FriendSleep = () => {
       {
         showModal && <ModalFormFriend />
       }
-    </motion.div>
+    </>
   )
 }
 
