@@ -132,7 +132,12 @@
     justify-content: center;
 
     @include md-up {
-      // height: 65.370vh;
+      height: 65.370vh;
+      // height: 67.37vh;
+    }
+
+    @media screen and (width : 1536px) and (max-height : 864px) {
+      bottom: -5%;
       height: 67.37vh;
     }
 
