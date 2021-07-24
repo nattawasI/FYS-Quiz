@@ -110,8 +110,6 @@ const End = () => {
     }
   ]
 
-  friendInfoContext.gender = 'male'
-
   const setImageHuman = () => {
     if (currentDevice === 'desktop') {
       return friendInfoContext.gender === 'male'? DeadbodyMaleMD: DeadbodyFemaleMD
