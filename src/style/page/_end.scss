@@ -64,7 +64,7 @@
       transform-origin: left center;
       transform: rotate(-4deg);
     }
-    
+
     @include md-up {
       right: -10.0520%;
       bottom: -13.8888%;
@@ -76,33 +76,20 @@
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
     z-index: 10;
+    width: 100%;
     height: 100%;
-
-    @include md-down {
-      top: auto;
-
-      @media screen and (max-height: 667px) {
-        height: 87%;
-      }
-
-      @media screen and (min-height: 668px) {
-        height: 72.2906%;;
-      }
-    }
   }
 
   &__body {
     position: absolute;
-    bottom: 0;
-    right: -96px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
     height: 100%;
-
-    @include md-up {
-      right: 0;
-    }
+    display: flex;
+    justify-content: center;
   }
 
   .dead-body {
@@ -114,57 +101,56 @@
   .social {
     &__list {
       position: absolute;
-      left: auto;
-      right: 23.2%;
-      bottom: 38.9162%;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 40;
       display: flex;
-      flex-wrap: wrap;
-      margin: 0 -1.6vw;
+      justify-content: center;
+      margin-top: 10%;
+      margin-left: 7vw;
 
-      @include iphone-se {
-        right: 56px;
-        bottom: 46.9%;
-      }
-
-      @include iphone {
-        bottom: 46.9%;
-      }
-
-      @include ratio-wide-frame {
-        bottom: 46.9%;
-      }
-
-      @include ratio-square-frame {
-        bottom: 38.9162%;
-        right: 16%;
+      @include sm-up {
+        margin-top: 9%;
+        margin-left: 11vw;
       }
 
       @include md-up {
-        bottom: 28.8888%;
-        right: 27.5%;
-        margin: 0 -28px;
+        margin-top: 15vh;
+        margin-left: 20vh;
       }
     }
 
-    &__item {
-      flex: 0 1 auto;
-      padding: 0 1.6vw;
+    &__item:not(:first-child) {
+      margin-left: 3.8vw;
+
+      @include sm-up {
+        margin-left: 3.125vw;
+      }
 
       @include md-up {
-        padding: 0 28px;
+        margin-left: 5.556vh;
       }
     }
 
     &__link {
-      display: block;
+      display: inline-flex;
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
 
     &__icon {
-      width: 8vw;
+      width: 6.933vw;
+
+      @include sm-up {
+        width: 4.688vw;
+      }
 
       @include md-up {
-        width: auto;
+        width: 5.926vh;
       }
     }
   }

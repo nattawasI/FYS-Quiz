@@ -269,8 +269,12 @@
 .button-restart {
   display: inline-flex;
   align-items: center;
-  font-size: 1.8rem;
+  font-size: 4.800vw;
   color: $white;
+
+  @include sm-up {
+    font-size: 3.5vw;
+  }
 
   @include md-up {
     font-size: 1.563vw;
@@ -278,11 +282,16 @@
 
   &::before {
     content: '';
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 5.333vw;
+    height: 5.333vw;
     margin-right: 10px;
     background: url('../../image/icon/icon_restart.svg') center no-repeat;
     background-size: 100%;
+
+    @include sm-up {
+      width: 3.646vw;
+      height: 3.646vw;
+    }
 
     @include md-up {
       width: 2.083vw;

@@ -2,7 +2,7 @@ import React from 'react'
 import {useUserStateContext} from '../context/UserContext'
 import {motion} from 'framer-motion'
 import {MotionUtilities} from '../variable/MotionUtilities'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
+import UseCurrentDevice from '../utilityhook/useCurrentDevice'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
 import ButtonRestart from '../component/ButtonRestart'
@@ -10,21 +10,20 @@ import Facebook from '../image/page/end/ico_facebook.svg'
 import Line from '../image/page/end/ico_line.svg'
 import Shared from '../image/page/end/ico_shared.svg'
 import Twitter from '../image/page/end/ico_twitter.svg'
-import Coffee from '../image/page/end/img_coffee.svg'
 import RibbonTop from '../image/page/end/ico_ribbon_01.svg'
 import RibbonBottom from '../image/page/end/ico_ribbon_02.svg'
 import DeadbodyMaleMD from '../image/page/end/img_deadbody_male_md.svg'
+import DeadbodyMaleTB from '../image/page/end/img_deadbody_male_tb.svg'
 import DeadbodyMaleSM from '../image/page/end/img_deadbody_male_sm.svg'
 import DeadbodyFemaleMD from '../image/page/end/img_deadbody_female_md.svg'
+import DeadbodyFemaleTB from '../image/page/end/img_deadbody_female_md.svg'
 import DeadbodyFemaleSM from '../image/page/end/img_deadbody_female_sm.svg'
 
 const personVariant = {
   hidden: {
-    y: 200,
     opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
-    y: 0,
     opacity: MotionUtilities.opacity.opacityOne,
     transition: {
       duration: MotionUtilities.speed.speedOne,
@@ -36,11 +35,9 @@ const personVariant = {
 
 const socialVariant = {
   hidden: {
-    y: 200,
     opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
-    y: 0,
     opacity: MotionUtilities.opacity.opacityOne,
     transition: {
       delay: MotionUtilities.speed.speedOne,
@@ -82,28 +79,12 @@ const RibbonBottomVariant = {
   },
 }
 
-const CoffeeVariant = {
-  hidden: {
-    y: -150,
-    opacity: MotionUtilities.opacity.opacityZero,
-  },
-  show: {
-    y: 0,
-    opacity: MotionUtilities.opacity.opacityOne,
-    transition: {
-      duration: MotionUtilities.speed.speedOne,
-      delay: MotionUtilities.speed.speedOne,
-      ease: 'easeInOut',
-    }
-  },
-}
-
 const End = () => {
   // context
   const {friendInfoContext} = useUserStateContext()
 
   // utility hook
-  const isWindowSmall = UseWindowSmall()
+  const currentDevice = UseCurrentDevice()
 
   // function
   const goToNextPage = () => {
@@ -128,6 +109,18 @@ const End = () => {
       name: 'Line',
     }
   ]
+
+  friendInfoContext.gender = 'male'
+
+  const setImageHuman = () => {
+    if (currentDevice === 'desktop') {
+      return friendInfoContext.gender === 'male'? DeadbodyMaleMD: DeadbodyFemaleMD
+    } else if (currentDevice === 'tablet') {
+      return friendInfoContext.gender === 'male'? DeadbodyMaleTB: DeadbodyFemaleTB
+    } else {
+      return friendInfoContext.gender === 'male'? DeadbodyMaleSM: DeadbodyFemaleSM
+    }
+  }
 
   return (
     <>
@@ -157,15 +150,6 @@ const End = () => {
                 animate="show"
               />
 
-              <motion.img
-                className="end__coffee"
-                src={ Coffee }
-                alt="Coffee"
-                variants={CoffeeVariant}
-                initial="hidden"
-                animate="show"
-              />
-
               <motion.div
                 className="end__person"
                 variants={personVariant}
@@ -173,22 +157,11 @@ const End = () => {
                 animate="show"
               >
                 <div className="end__body dead-body">
-                {
-                  friendInfoContext.gender === 'male' &&
                   <img
                     className="dead-body__image"
-                    src={ isWindowSmall ? DeadbodyMaleSM : DeadbodyMaleMD }
+                    src={ setImageHuman() }
                     alt="dead body"
                   />
-                }
-                {
-                  friendInfoContext.gender === 'female' &&
-                  <img
-                    className="dead-body__image"
-                    src={ isWindowSmall ? DeadbodyFemaleSM : DeadbodyFemaleMD }
-                    alt="dead body"
-                  />
-                }
                 </div>
               </motion.div>
               <div className="end__social social">
