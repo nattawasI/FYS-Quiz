@@ -67,14 +67,14 @@
 
     &__pointer {
       @include md-down {
-        left: calc(50% - 12px);
-        bottom: calc(-13.7931% - 6px);
+        left: calc(50% - 36px);
+        bottom: calc(-17%);
         height: 64.532%;
         // bottom: 13.3004%;
       }
 
       @include md-up {
-        left: 65.5%;
+        left: calc(66.6% - 50px);
         height: 76.9444%;
       }
     }

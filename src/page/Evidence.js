@@ -37,7 +37,7 @@ const firstTextVariant = {
 
 const textVariant = {
   hidden: {
-    y: 80,
+    y: '70%',
     opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {

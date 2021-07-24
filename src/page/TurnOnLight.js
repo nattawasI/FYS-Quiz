@@ -114,6 +114,8 @@ const ShadeContainerVariants = {
 
 const NormalHandVariant = {
   hidden: {
+    originX: 1,
+    originY: 1,
     x: '100%',
     y: '100%',
     opacity: MotionUtilities.opacity.opacityOne,
@@ -122,8 +124,6 @@ const NormalHandVariant = {
     x: 0,
     y: 0,
     transition: {
-      originX: 1,
-      originY: 1,
       delay: MotionUtilities.speed.speedOne,
       duration: MotionUtilities.speed.speedOne,
       ease: 'easeOut',
@@ -133,31 +133,6 @@ const NormalHandVariant = {
     opacity: MotionUtilities.opacity.opacityZero,
     transition: {
       duration: 0.5,
-      type: 'tween',
-    }
-  }
-}
-
-const PointerHandVariant = {
-  hidden: {
-    y: '-4.5%',
-    opacity: MotionUtilities.opacity.opacityOne,
-  },
-  show: {
-    x: 0,
-    y: 0,
-    transition: {
-      delay: 0.5,
-      duration: MotionUtilities.speed.speedOne,
-      ease: 'easeInOut',
-    }
-  },
-  exit: {
-    x: 0,
-    y: 0,
-    opacity: MotionUtilities.opacity.opacityZero,
-    transition: {
-      duration: MotionUtilities.speed.speedOne,
       type: 'tween',
     }
   }
@@ -250,6 +225,34 @@ const TurnOnLight = () => {
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
       goToNextPage()
+    }
+  }
+
+  const PointerHandVariant = {
+    hidden: {
+      originX: 1,
+      originY: 1,
+      rotate: 3,
+      y: isWindowSmall ? '-3%' : '-5%',
+      opacity: MotionUtilities.opacity.opacityOne,
+    },
+    show: {
+      x: 0,
+      y: 0,
+      transition: {
+        delay: 0.5,
+        duration: MotionUtilities.speed.speedOne,
+        ease: 'easeInOut',
+      }
+    },
+    exit: {
+      x: 0,
+      y: 0,
+      opacity: MotionUtilities.opacity.opacityZero,
+      transition: {
+        duration: MotionUtilities.speed.speedOne,
+        type: 'tween',
+      }
     }
   }
 
