@@ -128,7 +128,7 @@ const End = () => {
       name: 'Line',
     }
   ]
-  friendInfoContext.gender = 'female'
+
   return (
     <>
       <div className="button-fixed-left-top">
