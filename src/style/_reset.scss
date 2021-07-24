@@ -25,6 +25,11 @@
   }
 }
 
+html,
+body {
+  height: 100%;
+}
+
 a {
   color: $white;
   text-decoration: none;
@@ -60,4 +65,8 @@ input::-webkit-inner-spin-button {
 
 ul {
   list-style: none;
+}
+
+#root {
+  height: 100%;
 }
