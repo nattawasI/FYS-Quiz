@@ -83,7 +83,6 @@ const FriendSleep = () => {
 
   return (
     <>
-      <ButtonSound />
       <Content>
         <div className="scene-panel friend-sleep" onClick={touchPanelSm}>
           <div className="friend-sleep__text box-story">

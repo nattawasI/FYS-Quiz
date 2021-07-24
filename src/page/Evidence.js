@@ -172,7 +172,6 @@ const Evidence = () => {
 
   return (
     <>
-      <ButtonSound dark />
       <Content bgColor="white">
         <div className="scene-panel evidence" onClick={touchPanelSm}>
           <div className="evidence__container">

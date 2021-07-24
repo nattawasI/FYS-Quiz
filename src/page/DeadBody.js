@@ -251,7 +251,6 @@ const DeadBody = () => {
 
   return (
     <>
-      <ButtonSound />
       <Content>
         <div className="scene-panel scene-panel--items-center dead-body" onClick={touchPanelSm}>
           <div className="dead-body__container">

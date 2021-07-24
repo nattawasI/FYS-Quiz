@@ -303,7 +303,6 @@ const TurnOnLight = () => {
 
   return (
     <>
-      <ButtonSound />
       <Content>
         <div className="scene-panel scene-panel--items-center turn-on-light" onClick={touchPanelSm}>
           <div className={`turn-on-light__container ${ openSwitch && 'turn-on-light__container--blue' }`}>

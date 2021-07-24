@@ -302,7 +302,6 @@ const Investigate = () => {
             exit="exit"
           />
       }
-      <ButtonSound />
       <Content>
         <motion.div className="investigate" onClick={touchPanelSm}
           variants={policeVariant}

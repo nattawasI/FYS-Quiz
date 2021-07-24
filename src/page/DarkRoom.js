@@ -146,7 +146,6 @@ const DarkRoom = () => {
 
   return (
     <>
-      <ButtonSound />
       <Content>
         <div className="scene-panel dark-room" onClick={touchPanelSm}>
           {

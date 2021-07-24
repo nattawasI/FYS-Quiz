@@ -36,7 +36,6 @@ const Start = () => {
 
   return (
     <>
-      <ButtonSound />
       <motion.div className="start-ribbon-left"
         variants={ribbonVariant}
         initial="hidden"

@@ -87,7 +87,6 @@ const Siren = () => {
 
   return (
     <>
-      <ButtonSound />
       <Content>
         <div className="scene-panel siren" onClick={touchPanelSm}>
           <motion.div className="siren__background"

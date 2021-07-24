@@ -44,7 +44,6 @@ const VideoDoctor = () => {
 
   return (
     <>
-      <ButtonSound />
       <Content bgColor="blue">
         <div className="scene-panel scene-panel--items-center video-doctor">
           <div className="video-box">

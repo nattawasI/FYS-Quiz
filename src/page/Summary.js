@@ -158,7 +158,6 @@ const Summary = () => {
 
   return (
     <>
-      <ButtonSound />
       <Content bgColor="blue">
         <div className="scene-panel summary" onClick={touchPanelSm}>
           <motion.div className="summary__content"

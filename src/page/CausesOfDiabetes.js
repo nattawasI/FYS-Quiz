@@ -163,7 +163,6 @@ const CausesOfDiabetes = () => {
       {
         showScene1 && <ButtonBack onClick={backToPrevPage} />
       }
-      <ButtonSound />
       <Content bgColor="blue">
         <div className="scene-panel scene-panel--items-center scene-animate" onClick={touchPanelSm}>
           <div className="box-story scene-animate__scene scene-animate__scene--1">

@@ -125,7 +125,6 @@ const End = () => {
       <div className="button-fixed-left-top">
         <ButtonRestart onClick={goToNextPage} />
       </div>
-      <ButtonSound />
       <Content>
         <div className="scene-panel end">
           <div className="end__container">

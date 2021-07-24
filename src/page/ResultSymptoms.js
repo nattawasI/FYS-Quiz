@@ -96,7 +96,6 @@ const ResultSymptoms = () => {
 
   return (
     <>
-      <ButtonSound dark />
       <Content bgColor="white">
         <div className="scene-panel scene-animate" onClick={touchPanelSm}>
           <div className="risk-symptoms">

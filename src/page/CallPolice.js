@@ -104,7 +104,6 @@ const CallPolice = () => {
 
   return (
     <>
-      <ButtonSound />
       <Content>
         <div className="scene-panel scene-panel--items-center scene-animate" onClick={skipScene}>
           <div className="box-story scene-animate__scene scene-animate__scene--1">
