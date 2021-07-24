@@ -46,20 +46,18 @@ const Content = ({ children, bgColor, className }) => {
 
   return (
     <>
-      <div className={classStyle()}>
-        <motion.div
-          className="content__main"
-          variants={containerVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-        >
-          {children}
-        </motion.div>
-      </div>
+      <motion.div
+        className={classStyle()}
+        variants={containerVariant}
+        initial="hidden"
+        animate="show"
+        exit="exit"
+      >
+        {children}
+      </motion.div>
       {
         isWindowSmall && isLandscape
-        &&  <div className="overlay-lanscape">
+        &&  <div className="overlay-landscape">
               <div className="box-howto">
                 <i className="box-howto__icon">
                   <img src={IconRotate} alt="กรุณาตั้งหน้าจอให้อยู่ในรูปแบบแนวตั้ง" />

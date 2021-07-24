@@ -14,9 +14,9 @@
     }
 
     @include md-down {
-      top: 1vh;
+      top: 1%;
       right: -17vw;
-      height: 80vh;
+      height: 80%;
       opacity: 0;
       transition: opacity 1s ease-in-out;
 
@@ -26,9 +26,9 @@
     }
 
     @include xs-down {
-      top: 6vh;
-      right: -7vw;
-      height: 74vh;
+      top: 6%;
+      right: -8.4vw;
+      height: 75%;
     }
   }
 
@@ -46,7 +46,6 @@
     width: 100%;
 
     @include md-up {
-      // top: 22vh;
       top: -5vh;
       width: 50%;
       height: 100%;
@@ -57,11 +56,11 @@
     }
 
     @include md-down {
-      top: 12.741vw;
+      top: 12%;
     }
 
     @include xs-down {
-      top: 16.741vw;
+      top: 10%;
     }
   }
 
@@ -71,7 +70,7 @@
     left: 0;
 
     @include md-down {
-      height: 16.049vh;
+      height: 16%;
     }
 
     @include md-up {

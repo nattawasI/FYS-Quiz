@@ -16,7 +16,7 @@
 
 .start-ribbon-right {
   position: fixed;
-  top: -3.951vw;
+  top: -3.951%;
   right: 0;
   z-index: 9;
   width: 45.333vw;
@@ -38,7 +38,7 @@
 
   &__heading {
     position: absolute;
-    top: 20vh;
+    top: 20%;
     left: 0;
     right: 0;
     z-index: 2;
@@ -54,7 +54,7 @@
   }
 
   &__heading-button {
-    margin-top: 5vh;
+    margin-top: 5%;
 
     @include md-up {
       margin-top: 6.5vh;
@@ -127,7 +127,7 @@
     left: 0;
     bottom: 0;
     z-index: 1;
-    height: 52vh;
+    height: 52%;
     display: flex;
     justify-content: center;
 
