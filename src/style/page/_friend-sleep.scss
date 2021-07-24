@@ -23,7 +23,12 @@
     }
 
     @include md-up {
-      // height: 63vh;
+      height: 63vh;
+      // height: 67.37vh;
+    }
+
+    @media screen and (width : 1536px) and (max-height : 864px) {
+      bottom: -5%;
       height: 67.37vh;
     }
 
