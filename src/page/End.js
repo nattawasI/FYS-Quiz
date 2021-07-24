@@ -16,7 +16,7 @@ import DeadbodyMaleMD from '../image/page/end/img_deadbody_male_md.svg'
 import DeadbodyMaleTB from '../image/page/end/img_deadbody_male_tb.svg'
 import DeadbodyMaleSM from '../image/page/end/img_deadbody_male_sm.svg'
 import DeadbodyFemaleMD from '../image/page/end/img_deadbody_female_md.svg'
-import DeadbodyFemaleTB from '../image/page/end/img_deadbody_female_md.svg'
+import DeadbodyFemaleTB from '../image/page/end/img_deadbody_female_tb.svg'
 import DeadbodyFemaleSM from '../image/page/end/img_deadbody_female_sm.svg'
 
 const personVariant = {
@@ -109,6 +109,8 @@ const End = () => {
       name: 'Line',
     }
   ]
+
+  friendInfoContext.gender = 'female'
 
   const setImageHuman = () => {
     if (currentDevice === 'desktop') {

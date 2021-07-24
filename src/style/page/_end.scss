@@ -29,8 +29,6 @@
       top: -22.7777%;
       left: auto;
       right: 51.5625%;
-      // left: 25.8333%;
-      // width: 22.5vw;
     }
   }
 
@@ -84,17 +82,33 @@
   &__body {
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
+
+    @include md-down {
+      left: 0;
+    }
+
+    @include md-up {
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .dead-body {
     &__image {
+      width: auto;
       height: 100%;
+
+      @include md-down {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: auto;
+        height: 100%;
+      }
     }
   }
 
@@ -102,27 +116,26 @@
     &__list {
       position: absolute;
       top: 50%;
-      left: 50%;
-      transform: translateX(-50%);
       z-index: 40;
       display: flex;
-      justify-content: center;
-      margin-top: 10%;
-      margin-left: 7vw;
 
       @include sm-down {
-        @media screen and (max-height: 568px) {
-          margin-top: 8%;
-          margin-left: 5vw;
-        }
+        right: 13vw;
+        margin-top: 10%;
+      }
+
+      @include iphone-x  {
+        right: 20vw;
       }
 
       @include sm-up {
+        right: 21vw;
         margin-top: 9%;
-        margin-left: 11vw;
       }
 
       @include md-up {
+        left: 50%;
+        transform: translateX(-50%);
         margin-top: 15vh;
         margin-left: 20vh;
       }
@@ -153,16 +166,10 @@
     }
 
     &__icon {
-      width: 6.933vw;
-
-      @include sm-down {
-        @media screen and (max-height: 568px) {
-          width: 5.6vw;
-        }
-      }
+      width: 8vw;
 
       @include sm-up {
-        width: 4.688vw;
+        width: 5vw;
       }
 
       @include md-up {
