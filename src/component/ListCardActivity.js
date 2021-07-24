@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {useUserActionContext} from '../context/UserContext'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
@@ -23,6 +23,13 @@ const ListCardActivity = ({type, changeScene, chooseActivity}) => {
     }
     changeScene()
   }
+
+  useEffect(() => {
+    const imageList = [ImgCardGameMd, ImgCardGameSm, ImgCardFoodMd, ImgCardFoodSm, ImgCardExerciseMd, ImgCardExerciseSm]
+    imageList.forEach((image) => {
+        new Image().src = image
+    })
+  }, [])
 
   return (
     <ul className="list-card-activity">
