@@ -2,7 +2,6 @@
 import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion, AnimatePresence} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import {useUserStateContext} from '../context/UserContext'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -104,12 +103,7 @@ const CallPolice = () => {
   }, [showScene3])
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       <ButtonSound />
       <Content>
         <div className="scene-panel scene-panel--items-center scene-animate" onClick={skipScene}>
@@ -197,7 +191,7 @@ const CallPolice = () => {
           </div>
         </div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

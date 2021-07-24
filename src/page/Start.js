@@ -1,7 +1,6 @@
 import React from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -36,12 +35,7 @@ const Start = () => {
   }
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       <ButtonSound />
       <motion.div className="start-ribbon-left"
         variants={ribbonVariant}
@@ -83,7 +77,7 @@ const Start = () => {
           </div>
         </div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

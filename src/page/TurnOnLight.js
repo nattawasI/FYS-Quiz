@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import { AnimatePresence, motion, useAnimation } from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import {useRouteActionContext} from '../context/RouteContext'
-import {containerVariant} from '../variable/MotionVariant'
 import {MotionUtilities} from '../variable/MotionUtilities'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -300,12 +299,7 @@ const TurnOnLight = () => {
   }
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       <ButtonSound />
       <Content>
         <div className="scene-panel scene-panel--items-center turn-on-light" onClick={touchPanelSm}>
@@ -449,7 +443,7 @@ const TurnOnLight = () => {
           </div>
         </div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

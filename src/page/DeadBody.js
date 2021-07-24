@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {useUserStateContext} from '../context/UserContext'
 import {motion} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import {MotionUtilities} from '../variable/MotionUtilities'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -251,12 +250,7 @@ const DeadBody = () => {
   }
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       <ButtonSound />
       <Content>
         <div className="scene-panel scene-panel--items-center dead-body" onClick={touchPanelSm}>
@@ -305,7 +299,7 @@ const DeadBody = () => {
           </div>
         </div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

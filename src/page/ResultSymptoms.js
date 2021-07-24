@@ -2,7 +2,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -96,12 +95,7 @@ const ResultSymptoms = () => {
   }
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       <ButtonSound dark />
       <Content bgColor="white">
         <div className="scene-panel scene-animate" onClick={touchPanelSm}>
@@ -188,7 +182,7 @@ const ResultSymptoms = () => {
             <ButtonNext onClick={goToNextPage} />
           </motion.div>
       }
-    </motion.div>
+    </>
   )
 }
 

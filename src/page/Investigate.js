@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {useUserStateContext, useUserActionContext} from '../context/UserContext'
 import {motion, AnimatePresence, useAnimation} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import UseCurrentDevice from '../utilityhook/useCurrentDevice'
 import Content from '../layout/Content'
@@ -295,12 +294,7 @@ const Investigate = () => {
   }, [sceneActivityOften, sceneActivityToday, sceneThankYou])
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       {
         (sceneMurder || sceneAskCooperation || sceneQuiz || sceneFormYear || sceneActivityToday || sceneThankYou)
         && <ButtonBack onClick={buttonBackHandleClick}
@@ -564,7 +558,7 @@ const Investigate = () => {
           </div>
         </motion.div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

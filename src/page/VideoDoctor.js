@@ -1,7 +1,6 @@
 import React, {useRef, useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
@@ -44,12 +43,7 @@ const VideoDoctor = () => {
   }
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       <ButtonSound />
       <Content bgColor="blue">
         <div className="scene-panel scene-panel--items-center video-doctor">
@@ -75,7 +69,7 @@ const VideoDoctor = () => {
             <ButtonNext onClick={goToNextPage} />
           </motion.div>
       }
-    </motion.div>
+    </>
   )
 }
 

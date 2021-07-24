@@ -1,7 +1,6 @@
 import React from 'react'
 import {useUserStateContext} from '../context/UserContext'
 import {motion} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import {MotionUtilities} from '../variable/MotionUtilities'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -14,10 +13,10 @@ import Twitter from '../image/page/end/ico_twitter.svg'
 import Coffee from '../image/page/end/img_coffee.svg'
 import RibbonTop from '../image/page/end/ico_ribbon_01.svg'
 import RibbonBottom from '../image/page/end/ico_ribbon_02.svg'
-import DeadbodyMaleMD from '../image/page/end/img_deadbody_male_md.png'
-import DeadbodyMaleSM from '../image/page/end/img_deadbody_male_sm.png'
-import DeadbodyFemaleMD from '../image/page/end/img_deadbody_female_md.png'
-import DeadbodyFemaleSM from '../image/page/end/img_deadbody_female_sm.png'
+import DeadbodyMaleMD from '../image/page/end/img_deadbody_male_md.svg'
+import DeadbodyMaleSM from '../image/page/end/img_deadbody_male_sm.svg'
+import DeadbodyFemaleMD from '../image/page/end/img_deadbody_female_md.svg'
+import DeadbodyFemaleSM from '../image/page/end/img_deadbody_female_sm.svg'
 
 const personVariant = {
   hidden: {
@@ -131,12 +130,7 @@ const End = () => {
   ]
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       <div className="button-fixed-left-top">
         <ButtonRestart onClick={goToNextPage} />
       </div>
@@ -224,7 +218,7 @@ const End = () => {
           </div>
         </div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 
