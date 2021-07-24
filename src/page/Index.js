@@ -67,11 +67,11 @@ const Index = () => {
   }
 
   return (
-    <div className="page-content" style={{ height: "100%" }}>
+    <>
       {
         renderPage()
       }
-    </div>
+    </>
   )
 }
 
