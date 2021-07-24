@@ -110,6 +110,13 @@
       margin-top: 10%;
       margin-left: 7vw;
 
+      @include sm-down {
+        @media screen and (max-height: 568px) {
+          margin-top: 8%;
+          margin-left: 5vw;
+        }
+      }
+
       @include sm-up {
         margin-top: 9%;
         margin-left: 11vw;
@@ -119,6 +126,10 @@
         margin-top: 15vh;
         margin-left: 20vh;
       }
+    }
+
+    &__item {
+      font-size: 0;
     }
 
     &__item:not(:first-child) {
@@ -134,7 +145,6 @@
     }
 
     &__link {
-      display: inline-flex;
       transition: transform 0.2s ease-in-out;
 
       &:hover {
@@ -144,6 +154,12 @@
 
     &__icon {
       width: 6.933vw;
+
+      @include sm-down {
+        @media screen and (max-height: 568px) {
+          width: 5.6vw;
+        }
+      }
 
       @include sm-up {
         width: 4.688vw;

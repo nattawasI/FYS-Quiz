@@ -82,10 +82,6 @@
     display: flex;
     justify-content: center;
 
-    @include md-down {
-      width: 50%;
-    }
-
     @media only screen and (max-width: 768px) {
       &:not(:nth-child(-n + 2)) {
         margin-top: 30px;
@@ -99,6 +95,16 @@
         margin-top: 4.5vh;
       }
     }
+
+    @include md-down {
+      width: 50%;
+
+      @media only screen and (max-height: 568px) {
+        &:not(:nth-child(-n + 2)) {
+          margin-top: 15px;
+        }
+      }
+    }
   }
 
   &__image {
@@ -107,6 +113,12 @@
 
   &__image > img {
     width: 25.333vw;
+
+    @include md-down {
+      @media only screen and (max-height: 568px) {
+        width: 20vw;
+      }
+    }
 
     @include sm-up {
       width: 18.333vw;

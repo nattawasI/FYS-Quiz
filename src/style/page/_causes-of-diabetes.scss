@@ -12,6 +12,12 @@
   &__list {
     margin-top: 5.556vw;
 
+    @include md-down {
+      @media only screen and (max-height: 568px) {
+        margin-top: 2.5vw;
+      }
+    }
+
     @include sm-up {
       margin-top: 5.859vw;
     }
@@ -43,6 +49,10 @@
       display: flex;
       justify-content: center;
       padding: 0 6.667vw;
+
+      @media only screen and (max-height: 568px) {
+        margin-bottom: 10px;
+      }
     }
 
     @include md-up {
@@ -70,6 +80,12 @@
 
   &__image > img {
     width: 30.933vw;
+
+    @include md-down {
+      @media only screen and (max-height: 568px) {
+        width: 20vw;
+      }
+    }
 
     @include sm-up {
       width: 24.089vw;
