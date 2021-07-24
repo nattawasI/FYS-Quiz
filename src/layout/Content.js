@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react'
+import {containerVariant} from '../variable/MotionVariant'
+import {motion} from 'framer-motion'
 import PropTypes from 'prop-types'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
-import UseSetFrame from '../utilityhook/useSetFrame'
+// import UseSetFrame from '../utilityhook/useSetFrame'
 import IconRotate from '../image/icon/icon_rotate.svg'
 
 const Content = ({ children, bgColor, className }) => {
-  const frameStyle = UseSetFrame()
+  // const frameStyle = UseSetFrame()
   const isWindowSmall = UseWindowSmall()
 
   const [isLandscape, setIsLandscape] = useState(false)
@@ -16,7 +18,11 @@ const Content = ({ children, bgColor, className }) => {
     } else if (bgColor === 'blue') {
       return `content content--blue${' ' + className}`
     } else {
-      return `content${' ' + className}`
+      if (className) {
+        return `content${' ' + className}`
+      } else {
+        return 'content'
+      }
     }
   }
 
@@ -41,7 +47,15 @@ const Content = ({ children, bgColor, className }) => {
   return (
     <>
       <div className={classStyle()}>
-        <div className="content__main" style={frameStyle}>{children}</div>
+        <motion.div
+          className="content__main"
+          variants={containerVariant}
+          initial="hidden"
+          animate="show"
+          exit="exit"
+        >
+          {children}
+        </motion.div>
       </div>
       {
         isWindowSmall && isLandscape

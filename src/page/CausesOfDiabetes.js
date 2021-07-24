@@ -3,7 +3,6 @@ import React, {useState, useRef, useEffect} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {useUserStateContext, useUserActionContext} from '../context/UserContext'
 import {motion, AnimatePresence} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -26,14 +25,14 @@ const sceneVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 1,
-      delay: 0.7,
+      delay: 1,
     },
   },
   exit: {
     opacity: 0,
     transition: {
       type: 'tween',
-      duration: 0.7
+      duration: 1
     }
   }
 }
@@ -74,7 +73,7 @@ const listVariant = {
     opacity: 0,
     transition: {
       type: 'tween',
-      duration: 0.7
+      duration: 1
     }
   }
 }
@@ -88,16 +87,9 @@ const buttonVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 0.7,
-      delay: 1.3,
+      delay: 2
     }
   },
-  exit: {
-    opacity: 0,
-    transition: {
-      type: 'tween',
-      duration: 0.7
-    }
-  }
 }
 
 const CausesOfDiabetes = () => {
@@ -167,12 +159,7 @@ const CausesOfDiabetes = () => {
   }, [symptomContext])
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       {
         showScene1 && <ButtonBack onClick={backToPrevPage} />
       }
@@ -246,6 +233,7 @@ const CausesOfDiabetes = () => {
                           isError={error}
                           value={symptomContext}
                           placeholder="ถ้าไม่รู้ลองพิมพ์เดาดูก่อนก็ได้..."
+                          onlyText
                         />
                       </div>
                       {
@@ -279,7 +267,6 @@ const CausesOfDiabetes = () => {
                     variants={buttonVariant}
                     initial="hidden"
                     animate="show"
-                    exit="exit"
                   >
                     <ButtonNext onClick={goToNextPage} />
                   </motion.div>
@@ -288,7 +275,7 @@ const CausesOfDiabetes = () => {
           </div>
         </div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

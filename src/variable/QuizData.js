@@ -1,7 +1,7 @@
 export const QuizData = {
   game: [
     {
-      question: 'คุณกับเพื่อนเล่นเกมส์ดึกแค่ไหน?',
+      question: 'คุณกับเพื่อนเล่นเกมดึกแค่ไหน?',
       choices: [
         {
           id: 'game-1-1',
@@ -10,7 +10,7 @@ export const QuizData = {
         },
         {
           id: 'game-1-2',
-          label: 'เที่ยงคืน - ตี2',
+          label: 'เที่ยงคืน - ตี 2',
           score: 1
         },
         {
@@ -30,7 +30,7 @@ export const QuizData = {
         },
         {
           id: 'game-2-2',
-          label: 'งดของกิน ใจต้องนิ่งอยู่ในเกมส์',
+          label: 'งดของกิน ใจต้องนิ่งอยู่ในเกม',
           score: 0
         }
       ]
@@ -100,7 +100,7 @@ export const QuizData = {
   ],
   exercise: [
     {
-      question: 'ฟิตเนสบ่อยแค่ไหน?',
+      question: 'ออกกำลังกายบ่อยแค่ไหน?',
       choices: [
         {
           id: 'exercise-1-1',
@@ -109,7 +109,7 @@ export const QuizData = {
         },
         {
           id: 'exercise-1-2',
-          label: 'อาทิตย์ละ1-2 ครั้ง',
+          label: 'อาทิตย์ละ 1 - 2 ครั้ง',
           score: 1
         },
         {
@@ -120,7 +120,7 @@ export const QuizData = {
       ]
     },
     {
-      question: 'ออกจากฟิตเนส แล้วไปไหนต่อ?',
+      question: 'หลังจากออกกำลังกายแล้วไปไหนต่อ?',
       choices: [
         {
           id: 'exercise-2-1',

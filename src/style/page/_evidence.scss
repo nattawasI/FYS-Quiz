@@ -10,23 +10,22 @@
     left: 0;
     right: 0;
     bottom: 0;
-    // padding-top: 10.4679%;
-    padding-top: 15.4679%;
-
-    @include md-up {
-      padding-top: 6.0185%;
-    }
+    padding-top: 15vh;
   }
 
   &__text {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 3em;
     text-align: center;
     transform: translateY(-50%);
   }
 
   &__list {
     position: absolute;
-    top: 33.2512vh;
-    // bottom: 15.3940%;
+    top: 30vh;
     left: 16vw;
     right: 16vw;
     z-index: 30;
@@ -86,7 +85,7 @@
             width: 24vw;
           }
         }
-        
+
         @include md-up {
           width: 14.9895vw;
           max-width: inherit;
@@ -118,7 +117,7 @@
 
       @include md-up {
         bottom: 0;
-        height: 52.037%;
+        height: 58%;
         background-image: url('../../image/page/evidence/bg_curve_md.svg');
       }
     }

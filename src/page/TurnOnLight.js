@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import { AnimatePresence, motion, useAnimation } from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import {useRouteActionContext} from '../context/RouteContext'
-import {containerVariant} from '../variable/MotionVariant'
 import {MotionUtilities} from '../variable/MotionUtilities'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
@@ -133,7 +132,7 @@ const NormalHandVariant = {
   exit: {
     opacity: MotionUtilities.opacity.opacityZero,
     transition: {
-      duration: MotionUtilities.speed.speedOne,
+      duration: 0.5,
       type: 'tween',
     }
   }
@@ -148,6 +147,7 @@ const PointerHandVariant = {
     x: 0,
     y: 0,
     transition: {
+      delay: 0.5,
       duration: MotionUtilities.speed.speedOne,
       ease: 'easeInOut',
     }
@@ -299,12 +299,7 @@ const TurnOnLight = () => {
   }
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       <ButtonSound />
       <Content>
         <div className="scene-panel scene-panel--items-center turn-on-light" onClick={touchPanelSm}>
@@ -448,7 +443,7 @@ const TurnOnLight = () => {
           </div>
         </div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

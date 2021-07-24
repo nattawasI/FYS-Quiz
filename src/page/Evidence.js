@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion, AnimatePresence} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import {MotionUtilities} from '../variable/MotionUtilities'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -150,16 +149,10 @@ const Investigate = () => {
   }
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-      style={{ height: "100%" }}
-    >
+    <>
       <ButtonSound dark />
       <Content bgColor="white">
-        <div className="scene-panel scene-panel--items-center evidence" onClick={touchPanelSm}>
+        <div className="scene-panel evidence" onClick={touchPanelSm}>
           <div className="evidence__container">
             <div className="evidence__content">
               <AnimatePresence exitBeforeEnter>
@@ -257,7 +250,7 @@ const Investigate = () => {
           </div>
         </div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 
 import Content from '../layout/Content'
@@ -77,12 +76,7 @@ const Preface = () => {
   }
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       <Content bgColor="white">
         <div className="scene-panel scene-panel--items-center preface">
           <div className="preface__content box-story">
@@ -98,7 +92,7 @@ const Preface = () => {
                     variants={textVariant}
                     initial="hidden"
                     animate="show"
-                  >*เนื้อหาในเว็บนี้เป็นผลงาน<br />การออกแบบการสื่อสารผ่านการเล่าเรื่องราว<br />ให้ผู้เล่นมีส่วนร่วมด้วย<br />ไม่ใช่แบบสอบถามทางจิตวิทยาแต่อย่างใด<br />ในคดีการตายของเพื่อนสนิท</motion.p>
+                  >*เนื้อหาในเว็บนี้เป็นผลงาน<br />การออกแบบการสื่อสารผ่านการเล่าเรื่องราว<br />ให้ผู้เล่นมีส่วนร่วมด้วย<br />ไม่ใช่แบบสอบถามทางจิตวิทยาแต่อย่างใด</motion.p>
                   {
                     isWindowSmall
                     ? <motion.div className="box-story__button"
@@ -139,7 +133,7 @@ const Preface = () => {
           </div>
         </div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

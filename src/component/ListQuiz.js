@@ -5,20 +5,24 @@ import ListQuizButton from './ListQuizButton'
 
 const quizVariant = {
   hidden: {
-    opacity: 0
+    opacity: 0,
+    transition: {
+      ease: "easeInOut",
+      duration: 1,
+    }
   },
   show: {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
     }
   },
   exit: {
     opacity: 0,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
     }
   }
 }
@@ -33,7 +37,7 @@ const ListQuiz = ({changeScene, listQuiz, nextQuestion, currentQuestion, boxQuiz
       setTimeout(() => {
         nextQuestion()
         boxQuizControl.start('show')
-      }, 600)
+      }, 1000)
     } else {
       changeScene()
     }

@@ -2,10 +2,10 @@
   &__text {
     position: relative;
     z-index: 3;
-    top: 20%;
+    top: 17vh;
 
     @include md-up {
-      top: 8%;
+      top: 8vh;
     }
   }
 
@@ -15,23 +15,23 @@
     left: 0;
     bottom: 0;
     z-index: 1;
+    display: flex;
+    justify-content: center;
 
     @include md-down {
-      display: flex;
-      justify-content: center;
-      height: 61%;
+      height: 61vh;
     }
 
     @include md-up {
-      height: 60%;
+      // height: 63vh;
+      height: 67.37vh;
     }
 
     > img {
       height: 100%;
 
-      @include md-up {
-        width: 100%;
-        height: auto;
+      @include md-down {
+        margin-left: -6.667vw;
       }
     }
   }
@@ -41,27 +41,35 @@
     z-index: 2;
 
     @include md-down {
-      bottom: -7%;
+      bottom: -4%;
       left: 1%;
       display: flex;
       justify-content: center;
       width: 100%;
-      height: 61%;
+      height: 61vh;
     }
 
     @include md-up {
-      bottom: -13%;
-      right: 10%;
-      width: 30%;
+      // bottom: -9%;
+      // right: 10%;
+      // width: 30%;
+      bottom: 0;
+      right: 1%;
+      width: 100%;
+      height: 64vh;
+      display: flex;
+      justify-content: center;
     }
 
     > img {
+      width: auto;
+
       @include md-down {
         height: 100%;
       }
 
       @include md-up {
-        width: 100%;
+        height: 100%;
       }
     }
   }

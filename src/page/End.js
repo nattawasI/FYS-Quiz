@@ -1,8 +1,6 @@
-import React, {useState} from 'react'
-import {useRouteActionContext} from '../context/RouteContext'
+import React from 'react'
 import {useUserStateContext} from '../context/UserContext'
 import {motion} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import {MotionUtilities} from '../variable/MotionUtilities'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -15,10 +13,10 @@ import Twitter from '../image/page/end/ico_twitter.svg'
 import Coffee from '../image/page/end/img_coffee.svg'
 import RibbonTop from '../image/page/end/ico_ribbon_01.svg'
 import RibbonBottom from '../image/page/end/ico_ribbon_02.svg'
-import DeadbodyMaleMD from '../image/page/end/img_deadbody_male_md.png'
-import DeadbodyMaleSM from '../image/page/end/img_deadbody_male_sm.png'
-import DeadbodyFemaleMD from '../image/page/end/img_deadbody_female_md.png'
-import DeadbodyFemaleSM from '../image/page/end/img_deadbody_female_sm.png'
+import DeadbodyMaleMD from '../image/page/end/img_deadbody_male_md.svg'
+import DeadbodyMaleSM from '../image/page/end/img_deadbody_male_sm.svg'
+import DeadbodyFemaleMD from '../image/page/end/img_deadbody_female_md.svg'
+import DeadbodyFemaleSM from '../image/page/end/img_deadbody_female_sm.svg'
 
 const personVariant = {
   hidden: {
@@ -101,22 +99,15 @@ const CoffeeVariant = {
 }
 
 const End = () => {
-  // route context
-  const {changeCurrentPageContext} = useRouteActionContext()
-
   // context
   const {friendInfoContext} = useUserStateContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
 
-  // state
-  const [skipAnimate, setSkipAnimate] = useState(false)
-  const [animateComplete, setAnimateComplete] = useState(false)
-
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('Start')
+    window.location.reload()
   }
 
   const Socials = [
@@ -138,16 +129,8 @@ const End = () => {
     }
   ]
 
-  // hardcode to check image
-  friendInfoContext.gender = 'female'
-
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       <div className="button-fixed-left-top">
         <ButtonRestart onClick={goToNextPage} />
       </div>
@@ -208,7 +191,6 @@ const End = () => {
                 }
                 </div>
               </motion.div>
-              
               <div className="end__social social">
                 <motion.div
                   className="social__list"
@@ -236,7 +218,7 @@ const End = () => {
           </div>
         </div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

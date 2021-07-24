@@ -1,8 +1,7 @@
 
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion, AnimatePresence} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import {useUserStateContext} from '../context/UserContext'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
@@ -42,7 +41,7 @@ const buttonVariant = {
     transition: {
       ease: 'easeInOut',
       delay: 1.5,
-      duration: 0.5
+      duration: 0.7
     }
   },
   exit: {
@@ -55,17 +54,20 @@ const buttonVariant = {
 
 const CallPolice = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
-  const { friendInfoContext } = useUserStateContext()
+  const {friendInfoContext} = useUserStateContext()
   const isWindowSmall = UseWindowSmall()
 
   // state
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
+  const [canCall, setCancall] = useState(false)
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('PoliceCame')
+    if (canCall) {
+      changeCurrentPageContext('PoliceCame')
+    }
   }
 
   const changeToScene2 = () => {
@@ -92,13 +94,16 @@ const CallPolice = () => {
     }
   }
 
+  useEffect(() => {
+    if (showScene3) {
+      setTimeout(() => {
+        setCancall(true)
+      }, 3000);
+    }
+  }, [showScene3])
+
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       <ButtonSound />
       <Content>
         <div className="scene-panel scene-panel--items-center scene-animate" onClick={skipScene}>
@@ -186,7 +191,7 @@ const CallPolice = () => {
           </div>
         </div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

@@ -1,18 +1,25 @@
 .text-story {
-  // font-size: 2.2rem;
   font-size: 5.867vw;
   font-weight: 300;
   color: $white;
   line-height: 1.4;
 
+  @include sm-up {
+    font-size: 3.516vw;
+  }
+
   @include md-up {
-    font-size: 2.865vw;
+    font-size: 2.3vw;
+    // font-size: 2.083vw;
   }
 
   &--bigger {
     font-weight: 400;
-    // font-size: 4rem;
     font-size: 10.667vw;
+
+    @include sm-up {
+      font-size: 6.901vw;
+    }
 
     @include md-up {
       font-size: 3.385vw;

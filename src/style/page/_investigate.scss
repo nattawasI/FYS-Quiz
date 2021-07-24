@@ -1,61 +1,57 @@
-.investigate-wrap {
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60%;
-    background-color: $black;
-  }
-}
-
 .investigate {
   position: absolute;
-  top: 32vw;
   left: 0;
-  right: 0;
+  bottom: 0;
   z-index: 1;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  transition: top 0.7s ease-in-out;
-
-  @media only screen and (min-width: 768px) {
-    top: 15vw;
-  }
-
-  @include md-up {
-    top: 2.083vw;
-  }
-
-  &.animate {
-    top: -24vh;
-
-    @include md-up {
-      top: -37%;
-    }
-  }
+  width: 100%;
+  height: auto;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-end;
 
   &__police {
     position: relative;
     z-index: 1;
     bottom: -2px;
-    display: flex;
-    justify-content: center;
-    height: 40%;
+    height: 35.185vh;
 
-    @media only screen and (min-width: 768px) {
-      height: 45%;
+    @include sm-up {
+      height: 36.133vh;
     }
 
     @include md-up {
-      height: 61%;
+      height: 64.259vh;
     }
 
     > img {
-      width: auto;
+      position: relative;
+      left: 50%;
       height: 100%;
+      transform: translatex(-50%);
+    }
+  }
+
+  &__space {
+    position: relative;
+    z-index: 1;
+    background-color: $blue;
+    height: 44.938vh;
+    transition: height 0.7s ease-in-out;
+
+    @include sm-up {
+      height: 46.296vh;
+    }
+
+    @include md-up {
+      height: 31vh;
+    }
+
+    &.animate {
+      height: 75vh;
+
+      @include md-up {
+        height: 69vh;
+      }
     }
   }
 
@@ -73,19 +69,19 @@
       height: 0;
     }
 
-    @media only screen and (max-width: 1024px) {
-      height: 17%;
+    @include md-down {
+      height: 17vh;
     }
 
-    @media only screen and (max-width: 768px) {
-      height: 12%;
+    @include sm-down {
+      height: 12vh;
     }
 
-    @media only screen and (max-width: 400px) {
-      height: 8%;
+    @include xs-down {
+      height: 8vh;
     }
 
-    @media only screen and (min-width: 1025px) {
+    @include md-up {
       transform: translateY(-41%);
     }
 
@@ -103,43 +99,83 @@
     }
   }
 
-  &__space {
-    position: relative;
-    z-index: 1;
-    height: 1500px;
-    background-color: $blue;
-  }
-
   &__content {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    min-height: 1000px;
+  }
+
+
+  &__your-name {
+    @include sm-down {
+      padding-top: 4vh;
+    }
 
     @include md-up {
-      padding-top: 2.5vw;
+      padding-top: 7vh;
+    }
+  }
+
+  &__story {
+    @include sm-down {
+      padding-top: 5vh;
+    }
+
+    @include md-up {
+      padding-top: 5vh;
+    }
+  }
+
+  &__activity {
+    padding-top: 3vh;
+
+    @include sm-up {
+      padding-top: 4vh;
+    }
+
+    @include md-up {
+      padding-top: 5vh;
+    }
+  }
+
+  &__quiz {
+    padding-top: 6vh;
+
+    @include sm-up {
+      padding-top: 7vh;
+    }
+  }
+
+  &__year {
+    padding-top: 6vh;
+
+    @include sm-up {
+      padding-top: 7vh;
     }
   }
 }
 
 .form-activity {
-  padding-top: 3vh;
-
   &__title {
     text-align: center;
+    font-size: 5.333vw;
 
-    @include md-down {
-      // font-size: 2rem;
-      font-size: 5.333vw;
+    @include sm-up {
+      font-size: 3.516vw;
+    }
+
+    @include md-up {
+      // font-size: 2.865vw;
+      font-size: 2.3vw;
     }
   }
 
   &__list {
-    margin-top: 25px;
+    margin-top: 2.5vh;
 
     @include md-up {
-      margin-top: 4%;
+      margin-top: 4vh;
     }
   }
 }

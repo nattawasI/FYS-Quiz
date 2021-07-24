@@ -1,7 +1,6 @@
-import React, {useRef, useState, useEffect} from 'react'
+import React, {useRef, useState} from 'react'
 import PropTypes from 'prop-types'
-import {motion} from 'framer-motion'
-import { useUserStateContext, useUserActionContext } from '../context/UserContext'
+import {useUserStateContext, useUserActionContext} from '../context/UserContext'
 import ButtonNext from './ButtonNext'
 import InputText from './InputText'
 
@@ -16,38 +15,6 @@ const FormYourName = ({changeScene}) => {
   // state
   const [error, setError] = useState(false)
 
-  // Motion Variants
-  const formVariant = {
-    hidden: {
-      opacity: 0,
-      y: 70
-    },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        ease: 'easeInOut',
-        duration: 0.7,
-        delay: userNameContext ? 0: 1
-      },
-    },
-  }
-
-  const buttonVariant = {
-    hidden: {
-      opacity: 0
-    },
-    show: {
-      opacity: 1,
-      transition: {
-        ease: 'easeInOut',
-        duration: 0.7,
-        delay: userNameContext ? 0.7: 1.5
-      }
-    },
-  }
-
-
   const submitForm = (e) => {
     e.preventDefault()
     const inputValue = inputRef.current.value
@@ -60,18 +27,10 @@ const FormYourName = ({changeScene}) => {
     }
   }
 
-  useEffect(() => {
-    inputRef.current.focus()
-  }, [])
-
   return (
     <div className="form-your-name">
       <form onSubmit={submitForm}>
-        <motion.div className="form-your-name__form"
-          variants={formVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
+        <div className="form-your-name__form"
         >
           <div className="form-your-name__label text-story">สวัสดีครับคุณ?</div>
           <div className="form-your-name__input">
@@ -82,15 +41,10 @@ const FormYourName = ({changeScene}) => {
               placeholder="ชื่อตัวเอง"
             />
           </div>
-        </motion.div>
-        <motion.div className="form-your-name__button"
-          variants={buttonVariant}
-          initial="hidden"
-          animate="show"
-          exit="exit"
-        >
+        </div>
+        <div className="form-your-name__button">
           <ButtonNext onClick={submitForm} />
-        </motion.div>
+        </div>
       </form>
     </div>
   )

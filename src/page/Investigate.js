@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
-import {useUserStateContext} from '../context/UserContext'
+import {useUserStateContext, useUserActionContext} from '../context/UserContext'
 import {motion, AnimatePresence, useAnimation} from 'framer-motion'
-import {containerVariant} from '../variable/MotionVariant'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
+import UseCurrentDevice from '../utilityhook/useCurrentDevice'
 import Content from '../layout/Content'
 import ButtonSound from '../component/ButtonSound'
 import ButtonBack from '../component/ButtonBack'
@@ -13,12 +13,29 @@ import ListCardActivity from '../component/ListCardActivity'
 import ListQuiz from '../component/ListQuiz'
 import FormYear from '../component/FormYear'
 import ImgPoliceMd from '../image/page/investigate/img_police_md.svg'
+import ImgPoliceTb from '../image/page/investigate/img_police_tb.svg'
 import ImgPoliceSm from '../image/page/investigate/img_police_sm.svg'
 import ImgPhotoMd from '../image/page/investigate/img_photo_md.svg'
 import ImgPhotoSm from '../image/page/investigate/img_photo_sm.svg'
 import {QuizData} from '../variable/QuizData'
 
 // Motion Variants
+const policeVariant = {
+  hidden: {
+    opacity: 0,
+    y: 80
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeInOut",
+      duration: 1,
+      delay: 0.5
+    }
+  },
+}
+
 const textVariant = {
   hidden: {
     opacity: 0,
@@ -42,8 +59,8 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
-      delay: 0.7,
+      duration: 1,
+      delay: 1,
     }
   },
 }
@@ -56,21 +73,21 @@ const contentVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
     }
   },
   firstShow: {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
       delay: 1,
     }
   },
   exit: {
     opacity: 0,
     transition: {
-      duration: 0.7
+      duration: 1
     }
   }
 }
@@ -81,9 +98,11 @@ const Investigate = () => {
 
   // user context
   const {friendInfoContext, userNameContext} = useUserStateContext()
+  const {removeChoicesContext} = useUserActionContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
+  const currentDevice = UseCurrentDevice()
 
   // useAnimation Motion
   const boxQuizControl = useAnimation()
@@ -105,6 +124,29 @@ const Investigate = () => {
   const [sceneCause, setSceneCause] = useState(false)
   const [activityOften, setActivityOften] = useState('')
   const [currentQuestion, setCurrentQuestion] = useState(0)
+
+  // motion
+  const formNameVariant = {
+    hidden: {
+      opacity: 0,
+      y: 70
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: "easeInOut",
+        duration: 1,
+        delay: userNameContext? 0: 2
+      }
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 1
+      }
+    }
+  }
 
   // function
   const goToNextPage = () => {
@@ -175,6 +217,7 @@ const Investigate = () => {
   }
 
   const backToSceneQuiz = () => {
+    removeChoicesContext()
     setSceneFormYear(false)
     setSceneQuiz(true)
   }
@@ -214,15 +257,31 @@ const Investigate = () => {
   }
 
   const prevQuestion = () => {
+    removeChoicesContext()
+
     if (currentQuestion > 0) {
       boxQuizControl.start('hidden')
       setTimeout(() => {
         setCurrentQuestion(currentQuestion - 1)
         boxQuizControl.start('show')
-      }, 600)
+      }, 1000)
     } else {
       setSceneQuiz(false)
       setSceneActivityOften(true)
+    }
+  }
+
+  const buttonBackHandleClick = () => {
+    if (sceneMurder || sceneAskCooperation) {
+      backToSceneYourName()
+    } else if (sceneQuiz) {
+      prevQuestion()
+    } else if (sceneFormYear) {
+      backToSceneQuiz()
+    } else if (sceneActivityToday) {
+      backToSceneFormYear()
+    } else if (sceneThankYou) {
+      backToSceneActivityToday()
     }
   }
 
@@ -235,47 +294,37 @@ const Investigate = () => {
   }, [sceneActivityOften, sceneActivityToday, sceneThankYou])
 
   return (
-    <motion.div
-      variants={containerVariant}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-    >
+    <>
       {
-        sceneMurder
-        && <ButtonBack onClick={backToSceneYourName} />
-      }
-      {
-        sceneAskCooperation
-        && <ButtonBack onClick={backToSceneYourName} />
-      }
-      {
-        sceneQuiz // จะกลับไปหน้า quiz แต่ละอัน
-        && <ButtonBack
+        (sceneMurder || sceneAskCooperation || sceneQuiz || sceneFormYear || sceneActivityToday || sceneThankYou)
+        && <ButtonBack onClick={buttonBackHandleClick}
             variants={buttonVariant}
             exit="exit"
-            onClick={prevQuestion}
           />
       }
-      {
-        sceneFormYear // กลับไปหน้า quiz ล่าสุด
-        && <ButtonBack onClick={backToSceneQuiz} />
-      }
-      {
-        sceneActivityToday // กลับไปหน้า FormYear
-        && <ButtonBack onClick={backToSceneFormYear} />
-      }
-      {
-        sceneThankYou // กลับไปหน้า ActivityToday
-        && <ButtonBack onClick={backToSceneActivityToday} />
-      }
       <ButtonSound />
-      <Content bgColor="blue" className="investigate-wrap">
-        <div className={`investigate${animateTable? ' animate': ''}`} onClick={touchPanelSm}>
-          <div className="investigate__police">
-            <img src={isWindowSmall ? ImgPoliceSm: ImgPoliceMd} alt="ตำรวจ" />
+      <Content>
+        <motion.div className="investigate" onClick={touchPanelSm}
+          variants={policeVariant}
+          initial="hidden"
+          animate="show"
+        >
+          <div className="investigate__police"
+          >
+            {
+              currentDevice === 'smartphone'
+              && <img src={ImgPoliceSm} alt="ตำรวจ" />
+            }
+            {
+              currentDevice === 'tablet'
+              && <img src={ImgPoliceTb} alt="ตำรวจ" />
+            }
+            {
+              currentDevice === 'desktop'
+              && <img src={ImgPoliceMd} alt="ตำรวจ" />
+            }
           </div>
-          <div className="investigate__space">
+          <div className={`investigate__space${animateTable? ' animate': ''}`}>
             <div className={`investigate__photo${fadePhoto? " fade-out": ''}${hidePhoto? " hidden": ''}`}>
               <img src={isWindowSmall ? ImgPhotoSm: ImgPhotoMd} alt="รูปถ่าย" />
             </div>
@@ -285,7 +334,10 @@ const Investigate = () => {
                   sceneYourName
                   && <motion.div
                       key="scene-your-name"
-                      variants={contentVariant}
+                      className="investigate__your-name"
+                      variants={formNameVariant}
+                      initial="hidden"
+                      animate="show"
                       exit="exit"
                     >
                       <FormYourName changeScene={changeToSceneMurder} />
@@ -295,6 +347,7 @@ const Investigate = () => {
                   sceneMurder
                   && <motion.div
                       key="scene-murdur"
+                      className="investigate__story"
                       variants={contentVariant}
                       exit="exit"
                     >
@@ -305,7 +358,7 @@ const Investigate = () => {
                           animate="show"
                           exit="exit"
                           onAnimationComplete={ () => nextScene = 'sceneAskCooperation' }
-                        >ตอนนี้เรากำลังสงสัยว่านี่คือ<br /><span className="text-story--bigger">"คดีฆาตกรรม"</span></motion.p>
+                        >ตอนนี้เรากำลังสงสัยว่านี่คือ<br />"คดีฆาตกรรม"</motion.p>
                         {
                           !isWindowSmall
                           && <motion.div className="box-story__button"
@@ -325,7 +378,8 @@ const Investigate = () => {
                 {
                   sceneAskCooperation
                   && <motion.div
-                      key="scene-thank-you"
+                      key="scene-ask-cooperation"
+                      className="investigate__story"
                       variants={contentVariant}
                       exit="exit"
                     >
@@ -355,8 +409,8 @@ const Investigate = () => {
                 {
                   sceneActivityOften
                   && <motion.div
-                      className="form-activity"
                       key="scene-activity-often"
+                      className="investigate__activity form-activity"
                       variants={contentVariant}
                       initial="hidden"
                       animate="show"
@@ -372,6 +426,7 @@ const Investigate = () => {
                   sceneQuiz
                   && <motion.div
                       key="scene-quiz"
+                      className="investigate__quiz"
                       variants={contentVariant}
                       initial="hidden"
                       animate="show"
@@ -408,11 +463,12 @@ const Investigate = () => {
                           />
                       }
                     </motion.div>
-                }QuizData
+                }
                 {
                   sceneFormYear
                   && <motion.div
                       key="scene-year"
+                      className="investigate__year"
                       variants={contentVariant}
                       exit="exit"
                     >
@@ -422,7 +478,7 @@ const Investigate = () => {
                 {
                   sceneActivityToday
                   && <motion.div
-                      className="form-activity"
+                      className="investigate__activity form-activity"
                       key="scene-activity-today"
                       variants={contentVariant}
                       initial="hidden"
@@ -439,6 +495,7 @@ const Investigate = () => {
                   sceneThankYou
                   && <motion.div
                       key="scene-thank-you"
+                      className="investigate__story"
                       variants={contentVariant}
                       exit="exit"
                     >
@@ -469,6 +526,7 @@ const Investigate = () => {
                   sceneCause
                   && <motion.div
                         key="scene-cause"
+                        className="investigate__story"
                         variants={contentVariant}
                         exit="exit"
                       >
@@ -498,9 +556,9 @@ const Investigate = () => {
               </AnimatePresence>
             </div>
           </div>
-        </div>
+        </motion.div>
       </Content>
-    </motion.div>
+    </>
   )
 }
 

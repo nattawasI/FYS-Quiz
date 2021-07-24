@@ -13,7 +13,7 @@
   &__item {
     @include md-down {
       &:not(:first-child) {
-        margin-top: 20px;
+        margin-top: 2.5vh;
       }
     }
   }
@@ -25,12 +25,14 @@
   }
 
   &__img {
-    @include md-down {
-      width: 280px;
+    width: 74.667vw;
+
+    @include sm-up {
+      width: 45.667vw;
     }
 
     @include md-up {
-      transition: transform 0.2s ease-in-out;
+      transition: transform 0.3s ease-in-out;
     }
   }
 
@@ -62,6 +64,7 @@
         }
         .list-card-activity__text {
           color: $pink;
+          font-weight: 400;
         }
       }
     }
@@ -74,17 +77,32 @@
     font-size: 1.823vw;
     transition: color 0.2s ease-in-out;
     color: $white;
+
+    &--game {
+      padding-right: 24%;
+    }
+
+    &--exercise {
+      padding-left: 24%;
+    }
   }
 }
 
 .list-quiz {
-  padding: 16px;
+  padding-left: 4.267vw;
+  padding-right: 4.267vw;
 
   &__question {
     text-align: center;
+    font-size: 5.5vw;
 
-    @include md-down {
-      font-size: 4.867vw;
+    @include sm-up {
+      font-size: 3.516vw;
+    }
+
+    @include md-up {
+      font-size: 2.3vw;
+      //font-size: 2.865vw;
     }
   }
 
@@ -92,22 +110,36 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 7%;
+    margin-top: 4vh;
+
+    @include sm-up {
+      margin-top: 5vh;
+    }
   }
 
   &__item {
     &:not(:first-child) {
-      margin-top: 6%;
+      margin-top: 2.5vh;
+
+      @include md-up {
+        margin-top: 3vh;
+      }
     }
   }
 
   &__button {
     width: 75vw;
     height: 10.667vw;
+    font-size: 4.800vw;
+
+    @include sm-up {
+      font-size: 2.865vw;
+    }
 
     @include md-up {
       width: 28.563vw;
       height: 3.906vw;
+      font-size: 1.823vw;
     }
   }
 }
