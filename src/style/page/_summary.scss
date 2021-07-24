@@ -75,18 +75,12 @@
     }
 
     @include md-up {
-      width: 30%;
+      height: 28%;
     }
   }
 
   &__note > img {
-    @include md-down {
-      height: 100%;
-    }
-
-    @include md-up {
-      width: 100%;
-    }
+    height: 100%;
   }
 }
 
