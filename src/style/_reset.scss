@@ -12,12 +12,6 @@
   box-sizing: border-box;
 }
 
-html {
-  @include md-down {
-    height: -webkit-fill-available;
-  }
-}
-
 :root {
   font-size: 62.5%;
 
@@ -28,12 +22,6 @@ html {
     line-height: 1.4;
     color: $white;
     overflow: hidden;
-
-    @include md-down {
-      min-height: 100vh;
-      /* mobile viewport bug fix */
-      min-height: -webkit-fill-available;
-    }
   }
 }
 
