@@ -10,7 +10,11 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding-top: 15vh;
+    padding-top: 14.3518%;
+
+    @include md-up {
+      padding-top: 14.3518vh;
+    }
   }
 
   &__text {
@@ -31,8 +35,12 @@
     z-index: 30;
 
     @include sm-down {
-      @media screen and (max-height: 667px) {
-        top: 29vh;
+      top: auto;
+      bottom: 5%;
+
+      @media screen and (max-height: 568px) {
+        left: 18vw;
+        right: 18vw;
       }
     }
 
@@ -81,6 +89,10 @@
         @include md-down {
           max-width: 250px;
 
+          @media screen and (max-height: 568px) {
+            width: 26vw;
+          }
+
           @media screen and (min-height: 1024px) {
             width: 24vw;
           }
@@ -103,23 +115,22 @@
   }
 
   &__curve {
-    &::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -29px;
-      width: 100%;
-      height: calc(80.665vh + 29px);
-      background-image: url('../../image/page/evidence/bg_curve_sm.svg');
-      background-size: auto 100%;
-      background-position: center bottom;
-      background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -29px;
+    width: 100%;
+    height: 80.665%;
+    background-image: url('../../image/page/evidence/bg_curve_sm.svg');
+    background-size: auto 100%;
+    background-position: center bottom;
+    background-repeat: no-repeat;
 
-      @include md-up {
-        bottom: 0;
-        height: 58%;
-        background-image: url('../../image/page/evidence/bg_curve_md.svg');
-      }
+    @include md-up {
+      bottom: 0;
+      height: 58%;
+      background-image: url('../../image/page/evidence/bg_curve_md.svg');
+      background-size: cover;
     }
   }
 }

@@ -37,7 +37,7 @@ const firstTextVariant = {
 
 const textVariant = {
   hidden: {
-    y: 120,
+    y: 80,
     opacity: MotionUtilities.opacity.opacityZero,
   },
   show: {
@@ -94,7 +94,29 @@ const evidenceVariant = {
   }
 }
 
-const Investigate = () => {
+const curveVariant = {
+  hidden: {
+    y: 120,
+    opacity: MotionUtilities.opacity.opacityZero,
+  },
+  show: {
+    y: 0,
+    opacity: MotionUtilities.opacity.opacityOne,
+    transition: {
+      duration: MotionUtilities.speed.speedOne,
+      ease: "easeInOut",
+    }
+  },
+  exit: {
+    opacity: MotionUtilities.opacity.opacityZero,
+    transition: {
+      duration: MotionUtilities.speed.speedOne,
+      type: 'tween',
+    }
+  }
+}
+
+const Evidence = () => {
   // route context
   const {changeCurrentPageContext} = useRouteActionContext()
 
@@ -246,7 +268,13 @@ const Investigate = () => {
                 }
               </>
             }
-            <div className="evidence__curve"></div>
+            <motion.div
+              className="evidence__curve"
+              variants={curveVariant}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+            ></motion.div>
           </div>
         </div>
       </Content>
@@ -254,4 +282,4 @@ const Investigate = () => {
   )
 }
 
-export default Investigate
+export default Evidence

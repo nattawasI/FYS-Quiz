@@ -37,6 +37,8 @@
   }
 
   .hand {
+    pointer-events: none;
+
     &__normal,
     &__pointer {
       position: absolute;
@@ -45,7 +47,6 @@
       z-index: 30;
       height: 100%;
       width: auto;
-      pointer-events: none;
   
       @include md-down {
         height: 40%;
@@ -85,6 +86,8 @@
   }
 
   .shade {
+    pointer-events: none;
+
     &__figure {
       position: absolute;
       top: 0;
@@ -150,6 +153,13 @@
       height: 29%;
       overflow: hidden;
 
+      @include md-down {
+        @media screen and (max-height: 568px) {
+          top: calc(50% - 1.5px);
+          left: calc(50% - 1.5px);
+        }
+      }
+
       @include md-up {
         top: calc(50% - 6px);
         left: calc(50% - 6px);
@@ -183,6 +193,13 @@
     overflow: hidden;
     width: 120px;
     height: 120px;
+
+    @include md-down {
+      @media screen and (max-height: 568px) {
+        top: calc(50% - 1.5px);
+        left: calc(50% - 1.5px);
+      }
+    }
 
     @include md-up {
       top: calc(50% - 6px);
