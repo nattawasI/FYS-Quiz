@@ -5,7 +5,6 @@ import {motion, AnimatePresence} from 'framer-motion'
 import {useUserStateContext} from '../context/UserContext'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
-import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
 
 // motion Variant

@@ -4,7 +4,6 @@ import {useUserStateContext} from '../context/UserContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
-import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
 import BgDeadManMd from '../image/page/police-came/bg_deadman_md.svg'
 import BgDeadManSm from '../image/page/police-came/bg_deadman_sm.svg'
@@ -84,7 +83,6 @@ const PoliceCame = () => {
 
   return (
     <>
-      <ButtonSound />
       <Content>
         <div className="scene-panel scene-panel--items-center police-came" onClick={touchPanelSm}>
           <motion.div className="police-came__body"

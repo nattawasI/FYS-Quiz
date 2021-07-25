@@ -3,7 +3,6 @@ import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
 import Content from '../layout/Content'
-import ButtonSound from '../component/ButtonSound'
 import MurderImage from '../image/page/murder/img_murder.svg'
 import PointerIcon from '../image/icon/icon_pointer.svg'
 

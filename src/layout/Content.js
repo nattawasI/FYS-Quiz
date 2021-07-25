@@ -1,16 +1,21 @@
 import React, {useState, useEffect} from 'react'
+import {useRouteStateContext} from '../context/RouteContext'
 import {containerVariant} from '../variable/MotionVariant'
 import {motion} from 'framer-motion'
 import PropTypes from 'prop-types'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
-// import UseSetFrame from '../utilityhook/useSetFrame'
+import ButtonSound from '../component/ButtonSound'
 import IconRotate from '../image/icon/icon_rotate.svg'
 
 const Content = ({ children, bgColor, className }) => {
-  // const frameStyle = UseSetFrame()
+  // Utility hook
   const isWindowSmall = UseWindowSmall()
 
+  // Context
+  const {currentPageContext} = useRouteStateContext()
+
   const [isLandscape, setIsLandscape] = useState(false)
+  const [buttonSoundDark, setButtonSoundDark] = useState(false)
 
   const classStyle = () => {
     if (bgColor === 'white') {
@@ -44,8 +49,18 @@ const Content = ({ children, bgColor, className }) => {
     return () => window.removeEventListener('resize', checkIsLandscape)
   }, [isWindowSmall])
 
+
+  useEffect(() => {
+    if (currentPageContext === 'Evidence' || currentPageContext === 'ResultSymptoms') {
+      setButtonSoundDark(true)
+    }
+  }, [currentPageContext])
+
   return (
     <>
+      {
+        currentPageContext !== 'Preface' && <ButtonSound dark={buttonSoundDark} />
+      }
       <motion.div
         className={classStyle()}
         variants={containerVariant}
@@ -79,7 +94,7 @@ Content.propTypes = {
 Content.defaultProps = {
   children: PropTypes.element.isRequired,
   bgColor: 'black',
-  className: ''
+  className: '',
 }
 
 export default Content

@@ -4,7 +4,6 @@ import UseWindowSmall from '../utilityhook/useWindowSmall'
 import {useRouteActionContext} from '../context/RouteContext'
 import {MotionUtilities} from '../variable/MotionUtilities'
 import Content from '../layout/Content'
-import ButtonSound from '../component/ButtonSound'
 import ButtonNext from '../component/ButtonNext'
 import BGShadeMD from '../image/page/turn-on-light/bg_shade_md.svg';
 import BGShadeSM from '../image/page/turn-on-light/bg_shade_sm.svg';

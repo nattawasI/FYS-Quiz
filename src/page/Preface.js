@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {useRouteActionContext} from '../context/RouteContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhook/useWindowSmall'
-
 import Content from '../layout/Content'
 import ButtonNext from '../component/ButtonNext'
 import IconFingerprint from '../image/icon/icon_fingerprint.svg'
