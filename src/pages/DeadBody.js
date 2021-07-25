@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext} from '../contexts/UserContext'
 import {motion} from 'framer-motion'
-import {MotionUtilities} from '../variables/MotionUtilities'
+import {motionVariables} from '../variables/MotionVariant'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
@@ -23,7 +23,7 @@ const textVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: MotionUtilities.speed.speedOne,
+      duration: motionVariables.speed.speedOne,
     }
   },
 }
@@ -36,14 +36,14 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: MotionUtilities.speed.speedOne,
-      delay: MotionUtilities.speed.speedOne,
+      duration: motionVariables.speed.speedOne,
+      delay: motionVariables.speed.speedOne,
     }
   },
   exit: {
     opacity: 0,
     transition: {
-      duration: MotionUtilities.speed.speedOne,
+      duration: motionVariables.speed.speedOne,
       type: 'tween',
     }
   },
@@ -59,7 +59,7 @@ const bodyVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: MotionUtilities.speed.speedOne,
+      duration: motionVariables.speed.speedOne,
     }
   },
 }

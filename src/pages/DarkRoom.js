@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {motionVariables} from '../variables/MotionVariant'
 import {motion, AnimatePresence} from 'framer-motion'
-import {MotionUtilities} from '../variables/MotionUtilities'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
@@ -17,10 +17,10 @@ const textVariantMD = {
     y: ["0%", "0%", "-100%"],
     opacity: [0, 1, 1],
     transition: {
-      duration: MotionUtilities.speed.speedTwo,
+      duration: motionVariables.speed.speedTwo,
       ease: "easeInOut",
       times: [0, 0.6, 1],
-      delay: MotionUtilities.speed.speedOne
+      delay: motionVariables.speed.speedOne
     }
   },
 }
@@ -34,10 +34,10 @@ const textVariantSM = {
     y: ["5%", "0%", "0%", "-200%"],
     opacity: [0, 1, 1, 1],
     transition: {
-      duration: MotionUtilities.speed.speedTwo,
+      duration: motionVariables.speed.speedTwo,
       ease: "easeInOut",
       times: [0, 0.4, 0.7, 1],
-      delay: MotionUtilities.speed.speedOne
+      delay: motionVariables.speed.speedOne
     }
   }
 }
@@ -53,8 +53,8 @@ const backgroundVariantMD = {
     scale: 1,
     opacity: 1,
     transition: {
-      duration: MotionUtilities.speed.speedOne,
-      delay: MotionUtilities.speed.speedTwo,
+      duration: motionVariables.speed.speedOne,
+      delay: motionVariables.speed.speedTwo,
       ease: "easeInOut",
     }
   },
@@ -70,7 +70,7 @@ const backgroundVariantSM = {
     y: [190, 190, 190, 0],
     opacity: [0, 0, 0, 1],
     transition: {
-      duration: MotionUtilities.speed.speedThree,
+      duration: motionVariables.speed.speedThree,
       ease: "easeInOut",
       times: [0, 0.4, 0.7, 1],
     },
@@ -84,8 +84,8 @@ const buttonVariant = {
   show: {
     opacity: 1,
     transition: {
-      duration: MotionUtilities.speed.speedOne,
-      delay: MotionUtilities.speed.speedThree
+      duration: motionVariables.speed.speedOne,
+      delay: motionVariables.speed.speedThree
     }
   }
 }

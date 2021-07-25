@@ -1,7 +1,7 @@
 import React from 'react'
 import {useUserStateContext} from '../contexts/UserContext'
 import {motion} from 'framer-motion'
-import {MotionUtilities} from '../variables/MotionUtilities'
+import {motionVariables} from '../variables/MotionVariant'
 import UseCurrentDevice from '../utilityhooks/useCurrentDevice'
 import Content from '../layout/Content'
 import ButtonRestart from '../components/ButtonRestart'
@@ -20,13 +20,13 @@ import DeadbodyFemaleSM from '../assets/images/page/end/img_deadbody_female_sm.s
 
 const personVariant = {
   hidden: {
-    opacity: MotionUtilities.opacity.opacityZero,
+    opacity: motionVariables.opacity.opacityZero,
   },
   show: {
-    opacity: MotionUtilities.opacity.opacityOne,
+    opacity: motionVariables.opacity.opacityOne,
     transition: {
-      duration: MotionUtilities.speed.speedOne,
-      delay: MotionUtilities.speed.speedOne,
+      duration: motionVariables.speed.speedOne,
+      delay: motionVariables.speed.speedOne,
       ease: 'easeInOut',
     }
   },
@@ -34,13 +34,13 @@ const personVariant = {
 
 const socialVariant = {
   hidden: {
-    opacity: MotionUtilities.opacity.opacityZero,
+    opacity: motionVariables.opacity.opacityZero,
   },
   show: {
-    opacity: MotionUtilities.opacity.opacityOne,
+    opacity: motionVariables.opacity.opacityOne,
     transition: {
-      delay: MotionUtilities.speed.speedOne,
-      duration: MotionUtilities.speed.speedOne,
+      delay: motionVariables.speed.speedOne,
+      duration: motionVariables.speed.speedOne,
       ease: 'easeInOut',
     }
   },
@@ -49,14 +49,14 @@ const socialVariant = {
 const RibbonTopVariant = {
   hidden: {
     y: -150,
-    opacity: MotionUtilities.opacity.opacityZero,
+    opacity: motionVariables.opacity.opacityZero,
   },
   show: {
     y: 0,
-    opacity: MotionUtilities.opacity.opacityOne,
+    opacity: motionVariables.opacity.opacityOne,
     transition: {
-      delay: MotionUtilities.speed.speedOne,
-      duration: MotionUtilities.speed.speedOne,
+      delay: motionVariables.speed.speedOne,
+      duration: motionVariables.speed.speedOne,
       ease: 'easeInOut',
     }
   },
@@ -65,14 +65,14 @@ const RibbonTopVariant = {
 const RibbonBottomVariant = {
   hidden: {
     y: 150,
-    opacity: MotionUtilities.opacity.opacityZero,
+    opacity: motionVariables.opacity.opacityZero,
   },
   show: {
     y: 0,
-    opacity: MotionUtilities.opacity.opacityOne,
+    opacity: motionVariables.opacity.opacityOne,
     transition: {
-      duration: MotionUtilities.speed.speedOne,
-      delay: MotionUtilities.speed.speedOne,
+      duration: motionVariables.speed.speedOne,
+      delay: motionVariables.speed.speedOne,
       ease: 'easeInOut',
     }
   },
