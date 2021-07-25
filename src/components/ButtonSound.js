@@ -1,16 +1,18 @@
-import React, {useState} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import {useSoundStateContext, useSoundActionContext} from '../contexts/SoundContext'
 import IconSound from '../assets/images/icon/icon_sound.svg'
 import IconSoundBlack from '../assets/images/icon/icon_sound_black.svg'
 import IconMute from '../assets/images/icon/icon_mute.svg'
 import IconMuteBlack from '../assets/images/icon/icon_mute_black.svg'
 
-const ButtonSound = ({dark, onClick}) => {
-  const [mute, setMute] = useState(false)
+const ButtonSound = ({dark}) => {
+  // context
+  const {muteContext} = useSoundStateContext()
+  const {toggleMuteSoundContext} = useSoundActionContext()
 
   const handleClick = () => {
-    setMute(!mute)
-    onClick()
+    toggleMuteSoundContext()
   }
 
   return (
@@ -19,7 +21,7 @@ const ButtonSound = ({dark, onClick}) => {
       className="button-sound"
       onClick={handleClick}>
       {
-        mute
+        muteContext
         ? <img src={dark ? IconMuteBlack: IconMute} alt="" />
         : <img src={dark ? IconSoundBlack: IconSound} alt="" />
       }
@@ -29,12 +31,10 @@ const ButtonSound = ({dark, onClick}) => {
 
 ButtonSound.propTypes = {
   dark: PropTypes.bool,
-  onClick: PropTypes.func
 }
 
 ButtonSound.defaultProps = {
   dark: false,
-  onClick: () => {}
 }
 
 export default ButtonSound

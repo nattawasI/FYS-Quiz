@@ -1,5 +1,6 @@
 import React from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -26,10 +27,15 @@ const ribbonVariant = {
 }
 
 const Start = () => {
+  // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
+
+  // utility hook
   const isWindowSmall = UseWindowSmall()
 
   const goToNextPage = () => {
+    playClickSoundContext()
     changeCurrentPageContext('Preface')
   }
 

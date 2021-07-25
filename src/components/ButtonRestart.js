@@ -1,9 +1,14 @@
 // กลับสู่หน้าเริ่มต้น
 import React from 'react'
 import PropTypes from 'prop-types'
+import {useSoundActionContext} from '../contexts/SoundContext'
 
 const ButtonRestart = ({onClick}) => {
+  // context
+  const {playClickSoundContext} = useSoundActionContext()
+
   const handleClick = () => {
+    playClickSoundContext()
     onClick()
   }
 
