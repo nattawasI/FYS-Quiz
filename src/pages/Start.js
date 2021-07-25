@@ -29,13 +29,13 @@ const ribbonVariant = {
 const Start = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {playClickSoundContext} = useSoundActionContext()
+  const {playStartSoundContext} = useSoundActionContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
 
   const goToNextPage = () => {
-    playClickSoundContext()
+    playStartSoundContext()
     changeCurrentPageContext('Preface')
   }
 

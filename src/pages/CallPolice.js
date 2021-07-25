@@ -1,6 +1,7 @@
 
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundStateContext, useSoundActionContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {useUserStateContext} from '../contexts/UserContext'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
@@ -52,8 +53,13 @@ const buttonVariant = {
 }
 
 const CallPolice = () => {
+  // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {muteContext} = useSoundStateContext()
+  const {playClickSoundContext, playDailingSoundContext, playPhoneCallSoundContext, playSirenSoundContext} = useSoundActionContext()
   const {friendInfoContext} = useUserStateContext()
+
+  // utility
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -65,7 +71,16 @@ const CallPolice = () => {
   // function
   const goToNextPage = () => {
     if (canCall) {
-      changeCurrentPageContext('PoliceCame')
+      playPhoneCallSoundContext()
+
+      if (muteContext) {
+        changeCurrentPageContext('PoliceCame')
+      } else {
+        setTimeout(() => {
+          playSirenSoundContext()
+          changeCurrentPageContext('PoliceCame')
+        }, 2000)
+      }
     }
   }
 
@@ -77,15 +92,18 @@ const CallPolice = () => {
   const changeToScene3 = () => {
     setShowScene2(false)
     setShowScene3(true)
+    playDailingSoundContext()
   }
 
   let nextScene = ''
   const skipScene = () => {
     if (isWindowSmall) {
       if (nextScene === 'scene2') {
+        playClickSoundContext()
         setShowScene1(false)
         setShowScene2(true)
       } else if (nextScene === 'scene3') {
+        playClickSoundContext()
         setShowScene1(false)
         setShowScene2(false)
         setShowScene3(true)
@@ -93,13 +111,13 @@ const CallPolice = () => {
     }
   }
 
-  useEffect(() => {
-    if (showScene3) {
-      setTimeout(() => {
-        setCancall(true)
-      }, 3000);
-    }
-  }, [showScene3])
+  const onScene3Complete = () => {
+    playDailingSoundContext()
+
+    setTimeout(() => {
+      setCancall(true)
+    }, 1000);
+  }
 
   return (
     <>
@@ -115,7 +133,7 @@ const CallPolice = () => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  onAnimationComplete={ () => nextScene = 'scene2' }
+                  onAnimationComplete={() => nextScene = 'scene2'}
                 >แต่กลับพบว่า<br />{friendInfoContext.name} ตัวเย็นเฉียบ<br />หน้าซีด และไม่หายใจ</motion.p>
               }
               {
@@ -142,7 +160,7 @@ const CallPolice = () => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  onAnimationComplete={ () => nextScene = 'scene3' }
+                  onAnimationComplete={() => nextScene = 'scene3'}
                 >{friendInfoContext.name}<br />"เสียชีวิต"</motion.p>
               }
               {
@@ -167,6 +185,7 @@ const CallPolice = () => {
                   variants={textVariant}
                   initial="hidden"
                   animate="show"
+                  onAnimationComplete={() => onScene3Complete()}
                 >
                   คุณตกใจมาก โวยวายเสียงดัง!<br />แล้วรีบหยิบมือถือ โทรแจ้งตำรวจทันที
                 </motion.p>

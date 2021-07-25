@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext, useUserActionContext} from '../contexts/UserContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence, useAnimation} from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import UseCurrentDevice from '../utilityhooks/useCurrentDevice'
@@ -92,12 +93,11 @@ const contentVariant = {
 }
 
 const Investigate = () => {
-  // route context
+  // context
   const {changeCurrentPageContext} = useRouteActionContext()
-
-  // user context
   const {friendInfoContext, userNameContext} = useUserStateContext()
   const {removeChoicesContext} = useUserActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
@@ -149,6 +149,7 @@ const Investigate = () => {
 
   // function
   const goToNextPage = () => {
+    playClickSoundContext()
     changeCurrentPageContext('DeadBody')
   }
 
@@ -170,14 +171,19 @@ const Investigate = () => {
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (nextScene === 'sceneAskCooperation') {
+        playClickSoundContext()
         changeToSceneAskCooperation()
       } else if (nextScene === 'sceneActivityOften') {
+        playClickSoundContext()
         changeToSceneActivityOften()
       } else if (nextScene === 'sceneThankYou') {
+        playClickSoundContext()
         changeToSceneThankYou()
       } else if (nextScene === 'sceneCause') {
+        playClickSoundContext()
         changeToSceneCause()
       } else if (nextScene === 'nextPage') {
+        playClickSoundContext()
         goToNextPage()
       }
     }

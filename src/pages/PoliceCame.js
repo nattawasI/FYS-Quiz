@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext} from '../contexts/UserContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -58,10 +59,10 @@ const buttonVariant = {
 }
 
 const PoliceCame = () => {
-  const {changeCurrentPageContext} = useRouteActionContext()
-
   // context
   const {friendInfoContext} = useUserStateContext()
+  const {changeCurrentPageContext} = useRouteActionContext()
+  const {playClickSoundContext, playSirenSoundContext} = useSoundActionContext()
 
   // utilityhook
   const isWindowSmall = UseWindowSmall()
@@ -72,11 +73,13 @@ const PoliceCame = () => {
 
   // function
   const goToNextPage = () => {
+    playSirenSoundContext()
     changeCurrentPageContext('Siren')
   }
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
+      playClickSoundContext()
       goToNextPage()
     }
   }

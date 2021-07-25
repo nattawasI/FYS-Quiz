@@ -2,6 +2,7 @@
 import React, {useState, useRef, useEffect} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext, useUserActionContext} from '../contexts/UserContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -92,7 +93,9 @@ const buttonVariant = {
 }
 
 const CausesOfDiabetes = () => {
+  // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
   const {symptomContext} = useUserStateContext()
   const {addSymptomContext} = useUserActionContext()
   const isWindowSmall = UseWindowSmall()
@@ -119,6 +122,7 @@ const CausesOfDiabetes = () => {
   const changeToScene2 = () => {
     setShowScene1(false)
     setShowScene2(true)
+    playClickSoundContext()
   }
 
   const changeToScene3 = () => {
@@ -139,6 +143,7 @@ const CausesOfDiabetes = () => {
 
   const touchPanelSm = () => {
     if (canGoNextPage) {
+      playClickSoundContext()
       goToNextPage()
     }
   }

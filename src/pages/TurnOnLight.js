@@ -178,7 +178,7 @@ const SwitchPlateVariant = {
 const TurnOnLight = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {playSwitchSoundContext} = useSoundActionContext()
+  const {playClickSoundContext, playSwitchSoundContext} = useSoundActionContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
@@ -229,6 +229,7 @@ const TurnOnLight = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
+      playClickSoundContext()
       goToNextPage()
     }
   }

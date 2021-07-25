@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext} from '../contexts/UserContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -81,9 +82,10 @@ const buttonVariant = {
 }
 
 const Summary = () => {
-  // route context
+  // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {activityOftenContext, choicesContext} = useUserStateContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
@@ -95,6 +97,7 @@ const Summary = () => {
 
   // function
   const goToNextPage = () => {
+    playClickSoundContext()
     changeCurrentPageContext('ResultSymptoms')
   }
 

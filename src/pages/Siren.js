@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -65,7 +66,9 @@ const buttonVariant = {
 }
 
 const Siren = () => {
+  // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {playClickSoundContext, playInvestigationSoundContext} = useSoundActionContext()
 
   // utilityhook
   const isWindowSmall = UseWindowSmall()
@@ -75,11 +78,13 @@ const Siren = () => {
 
   // function
   const goToNextPage = () => {
+    playInvestigationSoundContext()
     changeCurrentPageContext('Investigate')
   }
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
+      playClickSoundContext()
       goToNextPage()
     }
   }
