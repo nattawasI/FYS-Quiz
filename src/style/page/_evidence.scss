@@ -37,11 +37,6 @@
     @include sm-down {
       top: auto;
       bottom: 5%;
-
-      @media screen and (max-height: 568px) {
-        left: 18vw;
-        right: 18vw;
-      }
     }
 
     @include md-up {
@@ -86,12 +81,12 @@
       &__image {
         width: 32vw;
 
+        @include lowest-viewport {
+          width: 100px;
+        }
+
         @include md-down {
           max-width: 250px;
-
-          @media screen and (max-height: 568px) {
-            width: 26vw;
-          }
 
           @media screen and (min-height: 1024px) {
             width: 24vw;

@@ -28,12 +28,16 @@
 
     @include xs-down {
       right: -8.4vw;
-      height: 75%;
+      height: 75vh;
 
       &.animate {
         top: 6%;
       }
     }
+
+    // @include lowest-viewport {
+    //   height: 500px;
+    // }
   }
 
   &__paper > img {

@@ -139,6 +139,11 @@
         margin-top: 15vh;
         margin-left: 20vh;
       }
+
+      @include lowest-viewport {
+        right: 26px;
+        margin-top: 26px;
+      }
     }
 
     &__item {
@@ -174,6 +179,10 @@
 
       @include md-up {
         width: 5.926vh;
+      }
+
+      @include lowest-viewport {
+        width: 30px;
       }
     }
   }

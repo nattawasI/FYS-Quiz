@@ -4,6 +4,10 @@
   color: $white;
   line-height: 1.4;
 
+  @include lowest-viewport {
+    font-size: 2.2rem;
+  }
+
   @include sm-up {
     font-size: 3.516vw;
   }

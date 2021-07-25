@@ -54,6 +54,10 @@ $xl: 1400px;
   @media (min-width: $xl + 1) { @content; }
 }
 
+@mixin lowest-viewport {
+  @media screen and (max-width : 375px) { @content; }
+}
+
 // iphone SE size
 @mixin iphone-se {
   @media screen and (width : 320px) and (height : 568px) { @content; }

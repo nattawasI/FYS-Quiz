@@ -114,10 +114,8 @@
   &__image > img {
     width: 25.333vw;
 
-    @include md-down {
-      @media only screen and (max-height: 568px) {
-        width: 20vw;
-      }
+    @include lowest-viewport {
+      width: 75px;
     }
 
     @include sm-up {
