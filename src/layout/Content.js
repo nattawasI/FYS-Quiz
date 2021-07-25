@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import {useRouteStateContext} from '../context/RouteContext'
-import {containerVariant} from '../variable/MotionVariant'
+import {useRouteStateContext} from '../contexts/RouteContext'
+import {containerVariant} from '../variables/MotionVariant'
 import {motion} from 'framer-motion'
 import PropTypes from 'prop-types'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
-import ButtonSound from '../component/ButtonSound'
-import IconRotate from '../image/icon/icon_rotate.svg'
+import UseWindowSmall from '../utilityhooks/useWindowSmall'
+import ButtonSound from '../components/ButtonSound'
+import IconRotate from '../assets/images/icon/icon_rotate.svg'
 
 const Content = ({ children, bgColor, className }) => {
   // Utility hook

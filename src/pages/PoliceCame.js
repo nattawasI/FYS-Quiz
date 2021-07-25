@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
-import {useRouteActionContext} from '../context/RouteContext'
-import {useUserStateContext} from '../context/UserContext'
+import {useRouteActionContext} from '../contexts/RouteContext'
+import {useUserStateContext} from '../contexts/UserContext'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
+import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
-import ButtonNext from '../component/ButtonNext'
-import BgDeadManMd from '../image/page/police-came/bg_deadman_md.svg'
-import BgDeadManSm from '../image/page/police-came/bg_deadman_sm.svg'
-import BgDeadWomenMd from '../image/page/police-came/bg_deadwomen_md.svg'
-import BgDeadWomenSm from '../image/page/police-came/bg_deadwomen_sm.svg'
+import ButtonNext from '../components/ButtonNext'
+import BgDeadManMd from '../assets/images/page/police-came/bg_deadman_md.svg'
+import BgDeadManSm from '../assets/images/page/police-came/bg_deadman_sm.svg'
+import BgDeadWomenMd from '../assets/images/page/police-came/bg_deadwomen_md.svg'
+import BgDeadWomenSm from '../assets/images/page/police-came/bg_deadwomen_sm.svg'
 
 // Motion Variants
 const bodyVariant = {

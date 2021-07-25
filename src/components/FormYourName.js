@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react'
 import PropTypes from 'prop-types'
-import {useUserStateContext, useUserActionContext} from '../context/UserContext'
+import {useUserStateContext, useUserActionContext} from '../contexts/UserContext'
 import ButtonNext from './ButtonNext'
 import InputText from './InputText'
 

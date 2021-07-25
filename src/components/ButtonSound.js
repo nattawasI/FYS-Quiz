@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
-import IconSound from '../image/icon/icon_sound.svg'
-import IconSoundBlack from '../image/icon/icon_sound_black.svg'
-import IconMute from '../image/icon/icon_mute.svg'
-import IconMuteBlack from '../image/icon/icon_mute_black.svg'
+import IconSound from '../assets/images/icon/icon_sound.svg'
+import IconSoundBlack from '../assets/images/icon/icon_sound_black.svg'
+import IconMute from '../assets/images/icon/icon_mute.svg'
+import IconMuteBlack from '../assets/images/icon/icon_mute_black.svg'
 
 const ButtonSound = ({dark, onClick}) => {
   const [mute, setMute] = useState(false)

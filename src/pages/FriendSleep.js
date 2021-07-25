@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import {useUserStateContext} from '../context/UserContext'
+import {useUserStateContext} from '../contexts/UserContext'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
+import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
-import ButtonNext from '../component/ButtonNext'
-import ModalFormFriend from '../component/ModalFormFriend'
-import ImgHumanSleepMd from '../image/page/start/img_human_sleep_md.svg'
-import ImgHumanSleepSm from '../image/page/start/img_human_sleep_sm.svg'
+import ButtonNext from '../components/ButtonNext'
+import ModalFormFriend from '../components/ModalFormFriend'
+import ImgHumanSleepMd from '../assets/images/page/start/img_human_sleep_md.svg'
+import ImgHumanSleepSm from '../assets/images/page/start/img_human_sleep_sm.svg'
 
 // Motion Variants
 const textVariant = {

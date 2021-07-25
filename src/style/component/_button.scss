@@ -54,12 +54,12 @@
   &::after {
     top: 0.800vw;
     right: 0.800vw;
-    background-image: url('../../image/icon/icon_gloss_white_sm_top_right.svg');
+    background-image: url('../../assets/images/icon/icon_gloss_white_sm_top_right.svg');
 
     @include md-up {
       top: 0.208vw;;
       right: 0.208vw;;
-      background-image: url('../../image/icon/icon_gloss_white_md_top_right.svg');
+      background-image: url('../../assets/images/icon/icon_gloss_white_md_top_right.svg');
     }
   }
 
@@ -155,7 +155,7 @@
     width: 5.333vw;
     height: 5.333vw;
     margin-right: 10px;
-    background-image: url('../../image/icon/icon_back.svg');
+    background-image: url('../../assets/images/icon/icon_back.svg');
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -177,7 +177,7 @@
   }
 
   &--dark::before {
-    background-image: url('../../image/icon/icon_back_black.svg');
+    background-image: url('../../assets/images/icon/icon_back_black.svg');
   }
 
   @include md-up {
@@ -210,7 +210,7 @@
     width: 5.333vw;
     height: 5.333vw;
     margin-left: 10px;
-    background: url('../../image/icon/icon_next.svg') center no-repeat;
+    background: url('../../assets/images/icon/icon_next.svg') center no-repeat;
     background-size: 100%;
 
     @include sm-up {
@@ -230,7 +230,7 @@
   }
 
   &--dark::after {
-    background-image: url('../../image/icon/icon_next_black.svg');
+    background-image: url('../../assets/images/icon/icon_next_black.svg');
   }
 
   @include md-up {
@@ -285,7 +285,7 @@
     width: 5.333vw;
     height: 5.333vw;
     margin-right: 10px;
-    background: url('../../image/icon/icon_restart.svg') center no-repeat;
+    background: url('../../assets/images/icon/icon_restart.svg') center no-repeat;
     background-size: 100%;
 
     @include sm-up {

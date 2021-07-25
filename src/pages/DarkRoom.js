@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
-import {useRouteActionContext} from '../context/RouteContext'
+import {useRouteActionContext} from '../contexts/RouteContext'
 import {motion, AnimatePresence} from 'framer-motion'
-import {MotionUtilities} from '../variable/MotionUtilities'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
+import {MotionUtilities} from '../variables/MotionUtilities'
+import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
-import ButtonNext from '../component/ButtonNext'
-import bgSceneMD from '../image/page/darkroom/bg_scene_01_md.svg'
-import bgSceneSM from '../image/page/darkroom/bg_scene_01_sm.svg'
+import ButtonNext from '../components/ButtonNext'
+import bgSceneMD from '../assets/images/page/darkroom/bg_scene_01_md.svg'
+import bgSceneSM from '../assets/images/page/darkroom/bg_scene_01_sm.svg'
 
 // Motion Variants
 const textVariantMD = {

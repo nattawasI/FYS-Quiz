@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import {useRouteActionContext} from '../context/RouteContext'
+import {useRouteActionContext} from '../contexts/RouteContext'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
+import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
-import MurderImage from '../image/page/murder/img_murder.svg'
-import PointerIcon from '../image/icon/icon_pointer.svg'
+import MurderImage from '../assets/images/page/murder/img_murder.svg'
+import PointerIcon from '../assets/images/icon/icon_pointer.svg'
 
 // Motion Variants
 const textVariant = {

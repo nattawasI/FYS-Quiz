@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {useUserActionContext} from '../context/UserContext'
+import {useUserActionContext} from '../contexts/UserContext'
 import Button from './Button'
 
 const ListQuizButton = ({choice, changeQuestion}) => {

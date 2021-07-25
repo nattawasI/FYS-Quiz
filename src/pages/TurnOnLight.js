@@ -1,20 +1,20 @@
 import React, {useState} from 'react'
 import { AnimatePresence, motion, useAnimation } from 'framer-motion'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
-import {useRouteActionContext} from '../context/RouteContext'
-import {MotionUtilities} from '../variable/MotionUtilities'
+import UseWindowSmall from '../utilityhooks/useWindowSmall'
+import {useRouteActionContext} from '../contexts/RouteContext'
+import {MotionUtilities} from '../variables/MotionUtilities'
 import Content from '../layout/Content'
-import ButtonNext from '../component/ButtonNext'
-import BGShadeMD from '../image/page/turn-on-light/bg_shade_md.svg';
-import BGShadeSM from '../image/page/turn-on-light/bg_shade_sm.svg';
-import BGShadeLighterMD from '../image/page/turn-on-light/bg_shade_lighter_md.svg';
-import BGShadeLighterSM from '../image/page/turn-on-light/bg_shade_lighter_sm.svg';
-import SwitchPlateDark from '../image/page/turn-on-light/img_switch_01.svg';
-import SwitchPlateLight from '../image/page/turn-on-light/img_switch_02.svg';
-import IconPointer from '../image/page/turn-on-light/ico_pointer_01.svg';
-import NormalHand from '../image/page/turn-on-light/img_hand_01.svg';
-import PointerHandMD from '../image/page/turn-on-light/img_hand_02_md.svg';
-import PointerHandSM from '../image/page/turn-on-light/img_hand_02_sm.svg';
+import ButtonNext from '../components/ButtonNext'
+import BGShadeMD from '../assets/images/page/turn-on-light/bg_shade_md.svg';
+import BGShadeSM from '../assets/images/page/turn-on-light/bg_shade_sm.svg';
+import BGShadeLighterMD from '../assets/images/page/turn-on-light/bg_shade_lighter_md.svg';
+import BGShadeLighterSM from '../assets/images/page/turn-on-light/bg_shade_lighter_sm.svg';
+import SwitchPlateDark from '../assets/images/page/turn-on-light/img_switch_01.svg';
+import SwitchPlateLight from '../assets/images/page/turn-on-light/img_switch_02.svg';
+import IconPointer from '../assets/images/page/turn-on-light/ico_pointer_01.svg';
+import NormalHand from '../assets/images/page/turn-on-light/img_hand_01.svg';
+import PointerHandMD from '../assets/images/page/turn-on-light/img_hand_02_md.svg';
+import PointerHandSM from '../assets/images/page/turn-on-light/img_hand_02_sm.svg';
 
 const textIntro01Variant = {
   hidden: {

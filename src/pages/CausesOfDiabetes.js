@@ -1,16 +1,16 @@
 
 import React, {useState, useRef, useEffect} from 'react'
-import {useRouteActionContext} from '../context/RouteContext'
-import {useUserStateContext, useUserActionContext} from '../context/UserContext'
+import {useRouteActionContext} from '../contexts/RouteContext'
+import {useUserStateContext, useUserActionContext} from '../contexts/UserContext'
 import {motion, AnimatePresence} from 'framer-motion'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
+import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
-import ButtonNext from '../component/ButtonNext'
-import ButtonBack from '../component/ButtonBack'
-import InputText from '../component/InputText'
-import ImgHabit from '../image/page/causes-of-diabetes/img-habit.svg'
-import ImgDna from '../image/page/causes-of-diabetes/img-dna.svg'
-import ImgHabitDna from '../image/page/causes-of-diabetes/img-habit-dna.svg'
+import ButtonNext from '../components/ButtonNext'
+import ButtonBack from '../components/ButtonBack'
+import InputText from '../components/InputText'
+import ImgHabit from '../assets/images/page/causes-of-diabetes/img-habit.svg'
+import ImgDna from '../assets/images/page/causes-of-diabetes/img-dna.svg'
+import ImgHabitDna from '../assets/images/page/causes-of-diabetes/img-habit-dna.svg'
 
 // motion Variant
 const sceneVariant = {

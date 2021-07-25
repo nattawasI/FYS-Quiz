@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
-import {useUserActionContext} from '../context/UserContext'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
-import ImgCardGameMd from '../image/page/investigate/img_card_game_md.svg'
-import ImgCardGameSm from '../image/page/investigate/img_card_game_sm.svg'
-import ImgCardFoodMd from '../image/page/investigate/img_card_food_md.svg'
-import ImgCardFoodSm from '../image/page/investigate/img_card_food_sm.svg'
-import ImgCardExerciseMd from '../image/page/investigate/img_card_exercise_md.svg'
-import ImgCardExerciseSm from '../image/page/investigate/img_card_exercise_sm.svg'
+import {useUserActionContext} from '../contexts/UserContext'
+import UseWindowSmall from '../utilityhooks/useWindowSmall'
+import ImgCardGameMd from '../assets/images/page/investigate/img_card_game_md.svg'
+import ImgCardGameSm from '../assets/images/page/investigate/img_card_game_sm.svg'
+import ImgCardFoodMd from '../assets/images/page/investigate/img_card_food_md.svg'
+import ImgCardFoodSm from '../assets/images/page/investigate/img_card_food_sm.svg'
+import ImgCardExerciseMd from '../assets/images/page/investigate/img_card_exercise_md.svg'
+import ImgCardExerciseSm from '../assets/images/page/investigate/img_card_exercise_sm.svg'
 
 const ListCardActivity = ({type, changeScene, chooseActivity}) => {
   const {addActivityOftenContext, addActivityTodayContext} = useUserActionContext()

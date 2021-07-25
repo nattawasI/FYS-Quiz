@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react'
-import {useRouteActionContext} from '../context/RouteContext'
+import {useRouteActionContext} from '../contexts/RouteContext'
 import {motion} from 'framer-motion'
-import { useUserStateContext, useUserActionContext } from '../context/UserContext'
+import { useUserStateContext, useUserActionContext } from '../contexts/UserContext'
 import Button from './Button'
 import InputText from './InputText'
 

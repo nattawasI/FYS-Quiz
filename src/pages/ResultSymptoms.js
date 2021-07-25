@@ -1,16 +1,16 @@
 
 import React, {useState} from 'react'
-import {useRouteActionContext} from '../context/RouteContext'
+import {useRouteActionContext} from '../contexts/RouteContext'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
+import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
-import ButtonNext from '../component/ButtonNext'
-import ImgToilet from '../image/page/result-symptoms/img_toilet.svg'
-import ImgWeightLoss from '../image/page/result-symptoms/img_weight_loss.svg'
-import ImgTired from '../image/page/result-symptoms/img_tired.svg'
-import ImgNumb from '../image/page/result-symptoms/img_numb.svg'
-import ImgThirsty from '../image/page/result-symptoms/img_thirsty.svg'
-import ImgSlowRecovery from '../image/page/result-symptoms/img_slow_recovery.svg'
+import ButtonNext from '../components/ButtonNext'
+import ImgToilet from '../assets/images/page/result-symptoms/img_toilet.svg'
+import ImgWeightLoss from '../assets/images/page/result-symptoms/img_weight_loss.svg'
+import ImgTired from '../assets/images/page/result-symptoms/img_tired.svg'
+import ImgNumb from '../assets/images/page/result-symptoms/img_numb.svg'
+import ImgThirsty from '../assets/images/page/result-symptoms/img_thirsty.svg'
+import ImgSlowRecovery from '../assets/images/page/result-symptoms/img_slow_recovery.svg'
 
 // motion Variant
 const titleRiskSymptomsVariant = {

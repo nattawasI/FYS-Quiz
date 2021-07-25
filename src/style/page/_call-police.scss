@@ -22,12 +22,12 @@
 
   &__btn--body {
     z-index: 2;
-    background-image: url('../../image/page/callpolice/icon_call.svg');
+    background-image: url('../../assets/images/page/callpolice/icon_call.svg');
   }
 
   &__btn--wave-in {
     z-index: 1;
-    background-image: url('../../image/page/callpolice/icon_call_wave_in.svg');
+    background-image: url('../../assets/images/page/callpolice/icon_call_wave_in.svg');
     opacity: 0;
     animation-name: wavein;
     animation-duration: 0.7s;
@@ -37,7 +37,7 @@
 
   &__btn--wave-out {
     z-index: 1;
-    background-image: url('../../image/page/callpolice/icon_call_wave_out.svg');
+    background-image: url('../../assets/images/page/callpolice/icon_call_wave_out.svg');
     opacity: 0;
     animation-name: waveout;
     animation-duration: 0.7s;
@@ -48,7 +48,7 @@
   &__btn--touch {
     z-index: 3;
     opacity: 1;
-    background-image: url('../../image/page/callpolice/icon_touch.svg');
+    background-image: url('../../assets/images/page/callpolice/icon_touch.svg');
     animation-name: touch;
     animation-duration: 2.2s;
   }
@@ -56,7 +56,7 @@
   &:hover {
     @include md-up {
       .button-call__btn--body {
-        background-image: url('../../image/page/callpolice/icon_call_hover.svg');
+        background-image: url('../../assets/images/page/callpolice/icon_call_hover.svg');
       }
     }
   }

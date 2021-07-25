@@ -1,10 +1,10 @@
 import React, {useRef, useState} from 'react'
-import {useRouteActionContext} from '../context/RouteContext'
+import {useRouteActionContext} from '../contexts/RouteContext'
 import {motion} from 'framer-motion'
 import Content from '../layout/Content'
-import ButtonNext from '../component/ButtonNext'
-import VideoDoctorMp4 from '../image/page/video-doctor/doctor.mp4'
-import ImgPosterDoctor from '../image/page/video-doctor/img_poster_doctor.svg'
+import ButtonNext from '../components/ButtonNext'
+import VideoDoctorMp4 from '../assets/images/page/video-doctor/doctor.mp4'
+import ImgPosterDoctor from '../assets/images/page/video-doctor/img_poster_doctor.svg'
 
 // Motion Variants
 const buttonVariant = {

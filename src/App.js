@@ -1,8 +1,8 @@
 import React from 'react'
 import './style/App.scss'
-import UserProvider from './context/UserContext'
-import RouteProvider from './context/RouteContext'
-import Index from './page/Index'
+import UserProvider from './contexts/UserContext'
+import RouteProvider from './contexts/RouteContext'
+import Index from './pages/Index'
 
 const App = () => {
 

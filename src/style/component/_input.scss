@@ -29,24 +29,24 @@
   &::before {
     bottom: 0.800vw;
     left: 0.800vw;
-    background-image: url('../../image/icon/icon_gloss_gray_sm_bottom_left.svg');
+    background-image: url('../../assets/images/icon/icon_gloss_gray_sm_bottom_left.svg');
 
     @include md-up {
       bottom: 0.208vw;;
       left: 0.208vw;;
-      background-image: url('../../image/icon/icon_gloss_gray_md_bottom_left.svg');
+      background-image: url('../../assets/images/icon/icon_gloss_gray_md_bottom_left.svg');
     }
   }
 
   &::after {
     top: 0.800vw;
     right: 0.800vw;
-    background-image: url('../../image/icon/icon_gloss_gray_sm_top_right.svg');
+    background-image: url('../../assets/images/icon/icon_gloss_gray_sm_top_right.svg');
 
     @include md-up {
       top: 0.208vw;
       right: 0.208vw;
-      background-image: url('../../image/icon/icon_gloss_gray_md_top_right.svg');
+      background-image: url('../../assets/images/icon/icon_gloss_gray_md_top_right.svg');
     }
   }
 

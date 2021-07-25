@@ -1,10 +1,10 @@
 
 import React, {useState} from 'react'
-import {useRouteActionContext} from '../context/RouteContext'
+import {useRouteActionContext} from '../contexts/RouteContext'
 import {motion, AnimatePresence} from 'framer-motion'
-import UseWindowSmall from '../utilityhook/useWindowSmall'
+import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
-import ButtonNext from '../component/ButtonNext'
+import ButtonNext from '../components/ButtonNext'
 
 // motion Variant
 const textVariant = {
