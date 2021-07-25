@@ -128,9 +128,9 @@
 
     @include md-up {
       bottom: 0;
-      height: 58%;
+      height: 100%;
       background-image: url('../../assets/images/page/evidence/bg_curve_md.svg');
-      background-size: cover;
+      background-size: auto 60%;
     }
   }
 }

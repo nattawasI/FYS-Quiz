@@ -68,11 +68,10 @@ const textIntro02Variant = {
 
 const buttonNextVariant = {
   hidden: {
-    y: 50,
+    y: 0,
     opacity: motionVariables.opacity.opacityZero,
   },
   show: {
-    y: 0,
     opacity: motionVariables.opacity.opacityOne,
     transition: {
       duration: motionVariables.speed.speedOne,
@@ -238,7 +237,7 @@ const TurnOnLight = () => {
       originX: 1,
       originY: 1,
       rotate: 3,
-      y: isWindowSmall ? '-3%' : '-5%',
+      y: isWindowSmall ? '-3%' : '-4%',
       opacity: motionVariables.opacity.opacityOne,
     },
     show: {

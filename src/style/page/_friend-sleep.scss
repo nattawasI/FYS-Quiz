@@ -23,6 +23,8 @@
     }
 
     @include md-up {
+      left: auto;
+      right: -2%;
       height: 63vh;
       // height: 67.37vh;
     }

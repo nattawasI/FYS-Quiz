@@ -51,6 +51,7 @@ const VideoDoctor = () => {
               controls
               poster={ImgPosterDoctor}
               onPlaying={handlePlay}
+              playsInline
             >
               <source src={VideoDoctorMp4} type="video/mp4" />
             </video>

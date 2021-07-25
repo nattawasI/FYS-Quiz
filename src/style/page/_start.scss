@@ -132,6 +132,7 @@
     justify-content: center;
 
     @include md-up {
+      right: -3.4895%;
       height: 65.370vh;
     }
 
@@ -157,5 +158,9 @@
     z-index: 1;
     display: flex;
     justify-content: center;
+
+    @include md-up {
+      left: -1.7447%;
+    }
   }
 }
