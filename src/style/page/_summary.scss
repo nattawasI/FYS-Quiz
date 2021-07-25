@@ -14,21 +14,25 @@
     }
 
     @include md-down {
-      top: 1%;
+      top: -8%;
       right: -17vw;
       height: 80%;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 1s ease-in-out, top 1s ease-in-out;
 
       &.animate {
+        top: 1%;
         opacity: 1;
       }
     }
 
     @include xs-down {
-      top: 6%;
       right: -8.4vw;
       height: 75%;
+
+      &.animate {
+        top: 6%;
+      }
     }
   }
 

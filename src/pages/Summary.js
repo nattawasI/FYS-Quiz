@@ -138,7 +138,7 @@ const Summary = () => {
     if (isWindowSmall) {
       setTimeout(() => {
         setPaperSmRender(true)
-      }, 1700);
+      }, 900);
     }
   }, [isWindowSmall, paperSmRender])
 
@@ -186,7 +186,7 @@ const Summary = () => {
           </motion.div>
           {
             isWindowSmall
-            ? <div className={`summary__paper${paperSmRender? ' animate': ''}`}>
+            ? <div className={`summary__paper ${paperSmRender? 'animate': ''}`}>
                 {
                   renderImgPaperSm()
                 }
