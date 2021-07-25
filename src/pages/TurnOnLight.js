@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { AnimatePresence, motion, useAnimation } from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {MotionUtilities} from '../variables/MotionUtilities'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
@@ -175,8 +176,9 @@ const SwitchPlateVariant = {
 }
 
 const TurnOnLight = () => {
-  // route context
+  // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {playSwitchSoundContext} = useSoundActionContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
@@ -207,6 +209,10 @@ const TurnOnLight = () => {
     if (!openSwitch && switchBreaker) {
       setOpenSwitch(true)
       switchControl.start('show')
+
+      setTimeout(() => {
+        playSwitchSoundContext()
+      }, 1800);
     }
   }
 
