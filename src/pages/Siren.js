@@ -1,14 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
-import BgSirenMd from '../assets/images/page/siren/bg_siren_md.svg'
-import BgSirenMdOn from '../assets/images/page/siren/bg_siren_md_on.svg'
-import BgSirenSm from '../assets/images/page/siren/bg_siren_sm.svg'
-import BgSirenSmOn from '../assets/images/page/siren/bg_siren_sm_on.svg'
+// import BgSirenMd from '../assets/images/page/siren/bg_siren_md.svg'
+// import BgSirenMdOn from '../assets/images/page/siren/bg_siren_md_on.svg'
+// import BgSirenSm from '../assets/images/page/siren/bg_siren_sm.svg'
+// import BgSirenSmOn from '../assets/images/page/siren/bg_siren_sm_on.svg'
 
 // Motion Variants
 const textVariant = {
@@ -94,7 +94,7 @@ const Siren = () => {
 
   // state
   const [animateComplete, setAnimateComplete] = useState(false)
-  const [bgStyle, setBgStyle] = useState({})
+  // const [bgStyle, setBgStyle] = useState({})
 
   // useEffect(() => {
   //   const backgrounds = isWindowSmall
