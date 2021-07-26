@@ -54,8 +54,24 @@ const SoundProvider = ({ children }) => {
   // action
   const toggleMuteSoundContext = () => {
     playClickSoundContext()
-    setMuteContext(!muteContext)
 
+    console.log(muteContext);
+
+    if (muteContext) {
+      soundStart.muted = false
+      soundHorrow.muted = false
+      soundSiren.muted = false
+      soundInvestigation.muted = false
+      soundSunshine.muted = false
+      setMuteContext(false)
+    } else {
+      soundStart.muted = true
+      soundHorrow.muted = true
+      soundSiren.muted = true
+      soundInvestigation.muted = true
+      soundSunshine.muted = true
+      setMuteContext(true)
+    }
   }
 
   // Effect Sound
@@ -91,7 +107,7 @@ const SoundProvider = ({ children }) => {
     }
   }
 
-  const playCardSound = () => {
+  const playCardSoundContext = () => {
     if (!muteContext) {
       soundCard.play()
     }
@@ -160,7 +176,7 @@ const SoundProvider = ({ children }) => {
     playSwitchSoundContext,
     playDailingSoundContext,
     playPhoneCallSoundContext,
-    playCardSound,
+    playCardSoundContext,
 
     // BG Sound
     playStartSoundContext,

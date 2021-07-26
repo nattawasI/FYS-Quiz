@@ -66,11 +66,13 @@ const CallPolice = () => {
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
+  const [animationComplete, setAnimationComplete] = useState(false)
   const [canCall, setCancall] = useState(false)
 
   // function
   const goToNextPage = () => {
     if (canCall) {
+      playClickSoundContext()
       playPhoneCallSoundContext()
 
       if (muteContext) {
@@ -85,14 +87,19 @@ const CallPolice = () => {
   }
 
   const changeToScene2 = () => {
-    setShowScene1(false)
-    setShowScene2(true)
+    if (animationComplete) {
+      setShowScene1(false)
+      setShowScene2(true)
+      setAnimationComplete(false)
+    }
   }
 
   const changeToScene3 = () => {
-    setShowScene2(false)
-    setShowScene3(true)
-    playDailingSoundContext()
+    if (animationComplete) {
+      setShowScene2(false)
+      setShowScene3(true)
+      setAnimationComplete(false)
+    }
   }
 
   let nextScene = ''
@@ -100,15 +107,18 @@ const CallPolice = () => {
     if (isWindowSmall) {
       if (nextScene === 'scene2') {
         playClickSoundContext()
-        setShowScene1(false)
-        setShowScene2(true)
+        changeToScene2()
       } else if (nextScene === 'scene3') {
         playClickSoundContext()
         setShowScene1(false)
-        setShowScene2(false)
-        setShowScene3(true)
+        changeToScene3()
       }
     }
+  }
+
+  const onSceneComplete = (nextscence) => {
+    nextScene = nextscence
+    setAnimationComplete(true)
   }
 
   const onScene3Complete = () => {
@@ -133,7 +143,7 @@ const CallPolice = () => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  onAnimationComplete={() => nextScene = 'scene2'}
+                  onAnimationComplete={() => onSceneComplete('scene2')}
                 >แต่กลับพบว่า<br />{friendInfoContext.name} ตัวเย็นเฉียบ<br />หน้าซีด และไม่หายใจ</motion.p>
               }
               {
@@ -160,7 +170,7 @@ const CallPolice = () => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  onAnimationComplete={() => nextScene = 'scene3'}
+                  onAnimationComplete={() => onSceneComplete('scene3')}
                 >{friendInfoContext.name}<br />"เสียชีวิต"</motion.p>
               }
               {

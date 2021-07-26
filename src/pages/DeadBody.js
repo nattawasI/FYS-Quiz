@@ -90,17 +90,21 @@ const DeadBody = () => {
   }
 
   const changeToScene2 = () => {
-    setShowScene1(false)
-    setShowScene2(true)
-    setAnimateComplete(false)
-    playClickSoundContext()
+    if (animateComplete) {
+      setShowScene1(false)
+      setShowScene2(true)
+      setAnimateComplete(false)
+      playClickSoundContext()
+    }
   }
 
   const changeToScene3 = () => {
-    setShowScene2(false)
-    setShowScene3(true)
-    setAnimateComplete(false)
-    playClickSoundContext()
+    if (animateComplete) {
+      setShowScene2(false)
+      setShowScene3(true)
+      setAnimateComplete(false)
+      playClickSoundContext()
+    }
   }
 
   const completeAnimated = () => setAnimateComplete(true)
@@ -139,6 +143,7 @@ const DeadBody = () => {
               initial="hidden"
               animate="show"
               exit="exit"
+              onAnimationComplete={completeAnimated}
             >
               สรุปก็คือ<br/>เพื่อนของคุณถูก<br/>
               <span className="text-story--bigger">"ฆาตกรรม"</span>
@@ -148,7 +153,6 @@ const DeadBody = () => {
                 initial="hidden"
                 animate="show"
                 exit="exit"
-                onAnimationComplete={completeAnimated}
               >
                 <ButtonNext onClick={changeToScene2} />
               </motion.span>
@@ -185,6 +189,7 @@ const DeadBody = () => {
               initial="hidden"
               animate="show"
               exit="exit"
+              onAnimationComplete={completeAnimated}
             >
               เราพบคนร้าย<br/>ในที่เกิดเหตุ
               <motion.span
@@ -193,7 +198,6 @@ const DeadBody = () => {
                 initial="hidden"
                 animate="show"
                 exit="exit"
-                onAnimationComplete={completeAnimated}
               >
                 <ButtonNext onClick={changeToScene3} />
               </motion.span>
@@ -230,6 +234,7 @@ const DeadBody = () => {
               initial="hidden"
               animate="show"
               exit="exit"
+              onAnimationComplete={completeAnimated}
             >
               แต่ว่า...<br/>ไม่ใช่คุณ
               <motion.span
@@ -238,7 +243,6 @@ const DeadBody = () => {
                 initial="hidden"
                 animate="show"
                 exit="exit"
-                onAnimationComplete={completeAnimated}
               >
                 <ButtonNext onClick={goToNextPage} />
               </motion.span>
