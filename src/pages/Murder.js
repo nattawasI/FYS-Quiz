@@ -84,20 +84,26 @@ const Investigate = () => {
               <p className="murder__text murder__text--pointing text-story text-story--small">ลองดูนี่</p>
             </motion.div>
             <motion.div
-              className="murder__figure"
+              className="murder__evidance"
               variants={evidenceVariant}
               initial="hidden"
               animate="show"
               exit="exit"
               onAnimationComplete={completeAnimated}
             >
-              <motion.img
-                className="murder__image"
-                src={MurderImage}
-                alt="murder evidence"
+              <motion.div
+                className="murder__figure"
                 whileHover={{ y: -20 }}
                 onClick={goToNextPage}
-              />
+              >
+                <motion.object
+                  className="murder__image"
+                  data={ MurderImage }
+                  type="image/svg+xml"
+                >
+                  {/* <img src="yourfallback.jpg" /> */}
+                </motion.object>
+              </motion.div>
               <img className="murder__icon" src={PointerIcon} alt="" />
             </motion.div>
           </div>

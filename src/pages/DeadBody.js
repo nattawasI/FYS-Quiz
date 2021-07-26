@@ -253,6 +253,8 @@ const DeadBody = () => {
     }
   }
 
+  friendInfoContext.gender = 'male'
+
   return (
     <>
       <Content>
@@ -276,11 +278,9 @@ const DeadBody = () => {
                 animate="show"
                 exit="exit"
               >
-                <img
-                  className="dead-body__body-image"
-                  src={ isWindowSmall ? DeadbodyMaleSM : DeadbodyMaleMD }
-                  alt="dead body"
-                />
+                <object className="dead-body__body-image" data={ isWindowSmall ? DeadbodyMaleSM : DeadbodyMaleMD } type="image/svg+xml">
+                  {/* <img src="yourfallback.jpg" /> */}
+                </object>
               </motion.div>
             }
             {
@@ -292,11 +292,9 @@ const DeadBody = () => {
                 animate="show"
                 exit="exit"
               >
-                <img
-                  className="dead-body__body-image"
-                  src={ isWindowSmall ? DeadbodyFemaleSM : DeadbodyFemaleMD }
-                  alt="dead body"
-                />
+                <object className="dead-body__body-image" data={ isWindowSmall ? DeadbodyFemaleSM : DeadbodyFemaleMD } type="image/svg+xml">
+                  {/* <img src="yourfallback.jpg" /> */}
+                </object>
               </motion.div>
             }
           </div>

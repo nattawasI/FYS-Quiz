@@ -25,20 +25,23 @@
     }
   }
 
-  &__figure {
+  &__evidance {
     position: relative;
     text-align: center;
   }
 
+  &__figure {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   &__image {
     width: 84.8vw;
+    pointer-events: none;
 
     @include md-up {
       width: 37.6562vw;
-    }
-
-    &:hover {
-      cursor: pointer;
     }
   }
 
