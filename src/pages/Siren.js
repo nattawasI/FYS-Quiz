@@ -1,10 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
+import BgSirenMd from '../assets/images/page/siren/bg_siren_md.svg'
+import BgSirenMdOn from '../assets/images/page/siren/bg_siren_md_on.svg'
+import BgSirenSm from '../assets/images/page/siren/bg_siren_sm.svg'
+import BgSirenSmOn from '../assets/images/page/siren/bg_siren_sm_on.svg'
 
 // Motion Variants
 const textVariant = {
@@ -75,6 +79,32 @@ const Siren = () => {
 
   // state
   const [animateComplete, setAnimateComplete] = useState(false)
+  const [bgStyle, setBgStyle] = useState({})
+
+  useEffect(() => {
+    const backgrounds = isWindowSmall
+    ? { bg1: BgSirenSm, bg2: BgSirenSmOn }
+    : { bg1: BgSirenMd, bg2: BgSirenMdOn }
+    let currentBG = 'bg1'
+
+    const changeBG = () => {
+      if (currentBG === 'bg1') {
+        setBgStyle({
+          backgroundImage: `url(${backgrounds.bg1})`
+        })
+        currentBG = 'bg2'
+      } else {
+        setBgStyle({
+          backgroundImage: `url(${backgrounds.bg2})`
+        })
+        currentBG = 'bg1'
+      }
+    }
+
+    let interval = setInterval(changeBG, 300)
+
+    return () => clearInterval(interval)
+  }, [isWindowSmall])
 
   // function
   const goToNextPage = () => {
@@ -93,7 +123,7 @@ const Siren = () => {
     <>
       <Content>
         <div className="scene-panel siren" onClick={touchPanelSm}>
-          <motion.div className="siren__background"
+          <motion.div className="siren__background" style={bgStyle}
             variants={bgVariant}
             initial="hidden"
             animate="show"
