@@ -21,11 +21,11 @@ const RouteProvider = ({ children }) => {
   }
 
 
-  const routeStateStore = { // use this pass to value
+  const routeStateStore = {
     currentPageContext,
   }
 
-  const routeActionStore = { // use this pass to value
+  const routeActionStore = {
     changeCurrentPageContext,
   }
 

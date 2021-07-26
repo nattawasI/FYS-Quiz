@@ -164,11 +164,11 @@ const SoundProvider = ({ children }) => {
     }
   }
 
-  const soundStateStore = { // use this pass to value
+  const soundStateStore = {
     muteContext,
   }
 
-  const soundActionStore = { // use this pass to value
+  const soundActionStore = {
     toggleMuteSoundContext,
 
     // Effect Sound
