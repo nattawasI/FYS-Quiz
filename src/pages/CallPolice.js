@@ -66,6 +66,7 @@ const CallPolice = () => {
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
+  const [nextScene, setNextScene] = useState(false)
   const [animationComplete, setAnimationComplete] = useState(false)
   const [canCall, setCancall] = useState(false)
 
@@ -102,7 +103,6 @@ const CallPolice = () => {
     }
   }
 
-  let nextScene = ''
   const skipScene = () => {
     if (isWindowSmall) {
       if (nextScene === 'scene2') {
@@ -117,7 +117,7 @@ const CallPolice = () => {
   }
 
   const onSceneComplete = (nextscence) => {
-    nextScene = nextscence
+    setNextScene(nextscence)
     setAnimationComplete(true)
   }
 
