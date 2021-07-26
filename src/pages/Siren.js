@@ -41,7 +41,7 @@ const boxTextVariant = {
   },
 }
 
-const bgVariant = {
+const sceneVariant = {
   hidden: {
     opacity: 0
   },
@@ -51,6 +51,21 @@ const bgVariant = {
       ease: "easeInOut",
       duration: 1,
       delay: 2.5,
+    }
+  }
+}
+
+const bgVariant = {
+  hidden: {
+    opacity: 0
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      repeat: Infinity,
+      repeatType: "loop",
+      ease: "easeInOut",
+      duration: 0.7
     }
   }
 }
@@ -123,18 +138,21 @@ const Siren = () => {
     <>
       <Content>
         <div className="scene-panel siren" onClick={touchPanelSm}>
-          <motion.div className="siren__background-1" style={bgStyle}
-            variants={bgVariant}
+          <motion.div
+            className="siren__scene"
+            variants={sceneVariant}
             initial="hidden"
             animate="show"
-            onAnimationComplete={() => setAnimateComplete(true)}
-          ></motion.div>
-          <motion.div className="siren__background-2" style={bgStyle}
-            variants={bgVariant}
-            initial="hidden"
-            animate="show"
-            onAnimationComplete={() => setAnimateComplete(true)}
-          ></motion.div>
+          >
+            <motion.div
+              className="siren__background--front"
+              variants={bgVariant}
+              initial="hidden"
+              animate="show"
+              onAnimationComplete={() => setAnimateComplete(true)}
+            ></motion.div>
+            <div className="siren__background--back"></div>
+          </motion.div>
           <motion.div className="siren__content box-story"
             variants={boxTextVariant}
             initial="hidden"
