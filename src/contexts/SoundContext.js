@@ -55,8 +55,6 @@ const SoundProvider = ({ children }) => {
   const toggleMuteSoundContext = () => {
     playClickSoundContext()
 
-    console.log(muteContext);
-
     if (muteContext) {
       soundStart.muted = false
       soundHorrow.muted = false

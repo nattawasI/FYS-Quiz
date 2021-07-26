@@ -325,6 +325,7 @@ const Investigate = () => {
 
   const chooseGender = (gender) => {
     addUserGenderContext(gender)
+    changeToSceneMurder()
   }
 
   useEffect(() => {
