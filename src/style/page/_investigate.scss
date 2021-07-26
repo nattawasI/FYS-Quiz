@@ -114,6 +114,16 @@
     }
   }
 
+  &__your-gender {
+    @include sm-down {
+      padding-top: 4vh;
+    }
+
+    @include md-up {
+      padding-top: 7vh;
+    }
+  }
+
   &__story {
     @include sm-down {
       padding-top: 5vh;
@@ -180,5 +190,16 @@
 .text-thankyou {
   @include md-up {
     padding-top: 3vh;
+  }
+}
+
+.box-your-gender {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__list {
+    margin-top: 2vh;
   }
 }

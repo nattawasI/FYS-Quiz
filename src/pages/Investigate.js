@@ -6,6 +6,7 @@ import {motion, AnimatePresence, useAnimation} from 'framer-motion'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
 import UseCurrentDevice from '../utilityhooks/useCurrentDevice'
 import Content from '../layout/Content'
+import Button from '../components/Button'
 import ButtonBack from '../components/ButtonBack'
 import ButtonNext from '../components/ButtonNext'
 import FormYourName from '../components/FormYourName'
@@ -46,9 +47,32 @@ const textVariant = {
     y: 0,
     transition: {
       ease: "easeInOut",
-      duration: 0.7,
+      duration: 1,
     }
   },
+}
+
+
+const boxVariant = {
+  hidden: {
+    opacity: 0,
+    y: 70
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "easeInOut",
+      duration: 1,
+    }
+  },
+  exitFade: {
+    opacity: 0,
+    transition: {
+      ease: "easeInOut",
+      duration: 1,
+    }
+  }
 }
 
 const buttonVariant = {
@@ -96,7 +120,7 @@ const Investigate = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext, userNameContext} = useUserStateContext()
-  const {removeChoicesContext} = useUserActionContext()
+  const {addUserGenderContext, removeChoicesContext} = useUserActionContext()
   const {playClickSoundContext} = useSoundActionContext()
 
   // utility hook
@@ -114,6 +138,7 @@ const Investigate = () => {
   const [hidePhoto, setHidePhoto] = useState(false)
   const [sceneYourName, setSceneYourName] = useState(true)
   const [sceneMurder, setSceneMurder] = useState(false)
+  const [sceneYourGender, setSceneYourGender] = useState(false)
   const [sceneAskCooperation, setSceneAskCooperation] = useState(false)
   const [sceneActivityOften, setSceneActivityOften] = useState(false)
   const [sceneQuiz, setSceneQuiz] = useState(false)
@@ -170,7 +195,10 @@ const Investigate = () => {
   let nextScene = ''
   const touchPanelSm = () => {
     if (isWindowSmall) {
-      if (nextScene === 'sceneAskCooperation') {
+      if (nextScene === 'sceneMurder') {
+        playClickSoundContext()
+        changeToSceneMurder()
+      } else if (nextScene === 'sceneAskCooperation') {
         playClickSoundContext()
         changeToSceneAskCooperation()
       } else if (nextScene === 'sceneActivityOften') {
@@ -195,8 +223,13 @@ const Investigate = () => {
     setSceneYourName(true)
   }
 
-  const changeToSceneMurder = () => {
+  const changeToSceneYourGender = () => {
     setSceneYourName(false)
+    setSceneYourGender(true)
+  }
+
+  const changeToSceneMurder = () => {
+    setSceneYourGender(false)
     setSceneMurder(true)
   }
 
@@ -277,7 +310,7 @@ const Investigate = () => {
   }
 
   const buttonBackHandleClick = () => {
-    if (sceneMurder || sceneAskCooperation) {
+    if (sceneYourGender) {
       backToSceneYourName()
     } else if (sceneQuiz) {
       prevQuestion()
@@ -288,6 +321,10 @@ const Investigate = () => {
     } else if (sceneThankYou) {
       backToSceneActivityToday()
     }
+  }
+
+  const chooseGender = (gender) => {
+    addUserGenderContext(gender)
   }
 
   useEffect(() => {
@@ -344,7 +381,37 @@ const Investigate = () => {
                       animate="show"
                       exit="exit"
                     >
-                      <FormYourName changeScene={changeToSceneMurder} />
+                      <FormYourName changeScene={changeToSceneYourGender} />
+                    </motion.div>
+                }
+                {
+                  sceneYourGender
+                  && <motion.div
+                      key="scene-your-gender"
+                      className="investigate__your-gender"
+                      variants={boxVariant}
+                      initial="hidden"
+                      animate="show"
+                      exit="exitFade"
+                      onAnimationComplete={ () => nextScene = 'sceneMurder' }
+                    >
+                      <div className="box-your-gender">
+                        <p className="box-your-gender__text text-story">ระบุเพศของคุณ</p>
+                        <ul className="box-your-gender__list list-gender-button">
+                          <li className="list-gender-button__item">
+                            <Button
+                              color="blue"
+                              onClick={() => chooseGender('male')}
+                            >ชาย</Button>
+                          </li>
+                          <div className="list-gender-button__item">
+                            <Button
+                              color="pink"
+                              onClick={() => chooseGender('female')}
+                            >หญิง</Button>
+                          </div>
+                        </ul>
+                      </div>
                     </motion.div>
                 }
                 {

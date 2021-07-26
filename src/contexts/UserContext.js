@@ -17,7 +17,7 @@ export const useUserActionContext = () => {
 
 const UserProvider = ({ children }) => {
   // state
-  const [userNameContext, setUserNameContext] = useState('')
+  const [userInfoContext, setUserInfoContext] = useState({})
   const [yearsKnownContext, setYearsKnownContext] = useState('')
   const [friendInfoContext, setFriendNameContext] = useState({})
   const [activityOftenContext, setActivityOftenContext] = useState('')
@@ -29,19 +29,21 @@ const UserProvider = ({ children }) => {
   // const KEY_STORAGE = 'friendInfo'
 
   // function
+  const addFriendInfoContext = ({ name, gender }) => {
+    const friendInfo = { name, gender }
+    setFriendNameContext(friendInfo)
+  }
+
   const addUserNameContext = (name) => {
-    setUserNameContext(name)
+    setUserInfoContext({ ...userInfoContext, ...{ name }})
+  }
+
+  const addUserGenderContext = (gender) => {
+    setUserInfoContext({ ...userInfoContext, ...{ gender }})
   }
 
   const addYearsKnownContext = (years) => {
     setYearsKnownContext(years)
-  }
-
-  const addFriendInfoContext = ({ name, gender }) => {
-    const friendInfo = { name, gender }
-    setFriendNameContext(friendInfo)
-
-    // sessionStorage.setItem(KEY_STORAGE, JSON.stringify(friendInfo))
   }
 
   const addSymptomContext = (symptom) => {
@@ -67,9 +69,9 @@ const UserProvider = ({ children }) => {
   }
 
   const userStateStore = { // use this pass to value
-    userNameContext,
-    yearsKnownContext,
     friendInfoContext,
+    userInfoContext,
+    yearsKnownContext,
     activityOftenContext,
     choicesContext,
     activityTodayContext,
@@ -77,9 +79,10 @@ const UserProvider = ({ children }) => {
   }
 
   const userActionStore = { // use this pass to value
-    addUserNameContext,
-    addYearsKnownContext,
     addFriendInfoContext,
+    addUserNameContext,
+    addUserGenderContext,
+    addYearsKnownContext,
     addActivityOftenContext,
     addChoicesContext,
     removeChoicesContext,
