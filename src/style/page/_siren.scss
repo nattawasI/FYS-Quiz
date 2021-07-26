@@ -13,16 +13,16 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../../assets/images/page/siren/bg_siren_sm.svg');
+    // background-image: url('../../assets/images/page/siren/bg_siren_sm.svg');
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: 100% auto;
-    -webkit-animation: siren 0.7s linear infinite;
-    animation: siren 0.7s linear infinite;
+    // -webkit-animation: siren 0.7s linear infinite;
+    // animation: siren 0.7s linear infinite;
 
-    @include md-up {
-      background-image: url('../../assets/images/page/siren/bg_siren_md.svg');
-    }
+    // @include md-up {
+    //   background-image: url('../../assets/images/page/siren/bg_siren_md.svg');
+    // }
   }
 
   &__content {
@@ -34,50 +34,50 @@
   }
 }
 
-@include md-down {
-  @keyframes siren {
-    0%, 50% {
-      background-image: url('../../assets/images/page/siren/bg_siren_sm_on.svg');
-      background-position: center bottom;
-    }
-    51%, 100% {
-      background-image: url('../../assets/images/page/siren/bg_siren_sm.svg');
-      background-position: center bottom;
-    }
-  }
+// @include md-down {
+//   @keyframes siren {
+//     0%, 50% {
+//       background-image: url('../../assets/images/page/siren/bg_siren_sm_on.svg');
+//       background-position: center bottom;
+//     }
+//     51%, 100% {
+//       background-image: url('../../assets/images/page/siren/bg_siren_sm.svg');
+//       background-position: center bottom;
+//     }
+//   }
 
-  @-webkit-keyframes siren {
-    0%, 50% {
-      background-image: url('../../assets/images/page/siren/bg_siren_sm_on.svg');
-      background-position: center bottom;
-    }
-    51%, 100% {
-      background-image: url('../../assets/images/page/siren/bg_siren_sm.svg');
-      background-position: center bottom;
-    }
-  }
-}
+//   @-webkit-keyframes siren {
+//     0%, 50% {
+//       background-image: url('../../assets/images/page/siren/bg_siren_sm_on.svg');
+//       background-position: center bottom;
+//     }
+//     51%, 100% {
+//       background-image: url('../../assets/images/page/siren/bg_siren_sm.svg');
+//       background-position: center bottom;
+//     }
+//   }
+// }
 
-@include md-up {
-  @keyframes siren {
-    0%, 50% {
-      background-image: url('../../assets/images/page/siren/bg_siren_md_on.svg');
-      background-position: center bottom;
-    }
-    51%, 100% {
-      background-image: url('../../assets/images/page/siren/bg_siren_md.svg');
-      background-position: center bottom;
-    }
-  }
+// @include md-up {
+//   @keyframes siren {
+//     0%, 50% {
+//       background-image: url('../../assets/images/page/siren/bg_siren_md_on.svg');
+//       background-position: center bottom;
+//     }
+//     51%, 100% {
+//       background-image: url('../../assets/images/page/siren/bg_siren_md.svg');
+//       background-position: center bottom;
+//     }
+//   }
 
-  @-webkit-keyframes siren {
-    0%, 50% {
-      background-image: url('../../assets/images/page/siren/bg_siren_md_on.svg');
-      background-position: center bottom;
-    }
-    51%, 100% {
-      background-image: url('../../assets/images/page/siren/bg_siren_md.svg');
-      background-position: center bottom;
-    }
-  }
-}
+//   @-webkit-keyframes siren {
+//     0%, 50% {
+//       background-image: url('../../assets/images/page/siren/bg_siren_md_on.svg');
+//       background-position: center bottom;
+//     }
+//     51%, 100% {
+//       background-image: url('../../assets/images/page/siren/bg_siren_md.svg');
+//       background-position: center bottom;
+//     }
+//   }
+// }
