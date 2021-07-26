@@ -19,7 +19,7 @@ const buttonVariant = {
 }
 
 const VideoDoctor = () => {
-  // route context
+  // context
   const {changeCurrentPageContext} = useRouteActionContext()
 
   // function
