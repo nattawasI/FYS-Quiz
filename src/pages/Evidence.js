@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {motionVariables} from '../variables/MotionVariant'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
@@ -116,8 +117,9 @@ const curveVariant = {
 }
 
 const Evidence = () => {
-  // route context
+  // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {playClickSoundContext, playSunshineSoundContext} = useSoundActionContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
@@ -133,6 +135,7 @@ const Evidence = () => {
   // function
   const goToNextPage = () => {
     if (animateComplete) {
+      playSunshineSoundContext()
       changeCurrentPageContext('VideoDoctor')
     }
   }
@@ -144,6 +147,7 @@ const Evidence = () => {
       setShowScene1(false)
       setShowScene2(true)
       setAnimateComplete(false)
+      playClickSoundContext()
     }
   }
 
@@ -152,12 +156,14 @@ const Evidence = () => {
       setShowScene2(false)
       setShowScene3(true)
       setAnimateComplete(false)
+      playClickSoundContext()
     }
   }
 
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (showScene3 && animateComplete) {
+        playClickSoundContext()
         goToNextPage()
       } else {
         if(showScene1 && animateComplete) {

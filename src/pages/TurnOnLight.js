@@ -177,7 +177,7 @@ const SwitchPlateVariant = {
 const TurnOnLight = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {playSwitchSoundContext} = useSoundActionContext()
+  const {playClickSoundContext, playSwitchSoundContext} = useSoundActionContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
@@ -188,9 +188,11 @@ const TurnOnLight = () => {
   const [openSwitch, setOpenSwitch] = useState(false);
   const [nextScene, setNextScene] = useState(false);
   const [animateComplete, setAnimateComplete] = useState(false)
+  const [switchBreaker, setSwitchBreaker] = useState(false)
+
+  // animation control
   const switchControl = useAnimation();
   const buttonNextControl = useAnimation();
-  let switchBreaker = false;
 
   // function
   const goToNextPage = () => {
@@ -215,7 +217,9 @@ const TurnOnLight = () => {
     }
   }
 
-  const completedScene1 = () => switchBreaker = true;
+  const completedScene1 = () => {
+    setSwitchBreaker(true)
+  }
 
   const switchOpened = () => {
     if (openSwitch && !nextScene) {
@@ -228,6 +232,7 @@ const TurnOnLight = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
+      playClickSoundContext()
       goToNextPage()
     }
   }

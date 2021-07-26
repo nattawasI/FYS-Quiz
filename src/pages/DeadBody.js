@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext} from '../contexts/UserContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import {motionVariables} from '../variables/MotionVariant'
 import UseWindowSmall from '../utilityhooks/useWindowSmall'
@@ -67,6 +68,7 @@ const bodyVariant = {
 const DeadBody = () => {
   // route context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // context
   const {friendInfoContext} = useUserStateContext()
@@ -92,6 +94,7 @@ const DeadBody = () => {
       setShowScene1(false)
       setShowScene2(true)
       setAnimateComplete(false)
+      playClickSoundContext()
     }
   }
 
@@ -100,6 +103,7 @@ const DeadBody = () => {
       setShowScene2(false)
       setShowScene3(true)
       setAnimateComplete(false)
+      playClickSoundContext()
     }
   }
 
@@ -107,6 +111,7 @@ const DeadBody = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && showScene3) {
+      playClickSoundContext()
       goToNextPage()
     }
   }
@@ -138,6 +143,7 @@ const DeadBody = () => {
               initial="hidden"
               animate="show"
               exit="exit"
+              onAnimationComplete={completeAnimated}
             >
               สรุปก็คือ<br/>เพื่อนของคุณถูก<br/>
               <span className="text-story--bigger">"ฆาตกรรม"</span>
@@ -147,7 +153,6 @@ const DeadBody = () => {
                 initial="hidden"
                 animate="show"
                 exit="exit"
-                onAnimationComplete={completeAnimated}
               >
                 <ButtonNext onClick={changeToScene2} />
               </motion.span>
@@ -184,6 +189,7 @@ const DeadBody = () => {
               initial="hidden"
               animate="show"
               exit="exit"
+              onAnimationComplete={completeAnimated}
             >
               เราพบคนร้าย<br/>ในที่เกิดเหตุ
               <motion.span
@@ -192,7 +198,6 @@ const DeadBody = () => {
                 initial="hidden"
                 animate="show"
                 exit="exit"
-                onAnimationComplete={completeAnimated}
               >
                 <ButtonNext onClick={changeToScene3} />
               </motion.span>
@@ -229,6 +234,7 @@ const DeadBody = () => {
               initial="hidden"
               animate="show"
               exit="exit"
+              onAnimationComplete={completeAnimated}
             >
               แต่ว่า...<br/>ไม่ใช่คุณ
               <motion.span
@@ -237,7 +243,6 @@ const DeadBody = () => {
                 initial="hidden"
                 animate="show"
                 exit="exit"
-                onAnimationComplete={completeAnimated}
               >
                 <ButtonNext onClick={goToNextPage} />
               </motion.span>
