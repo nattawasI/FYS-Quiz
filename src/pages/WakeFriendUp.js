@@ -146,13 +146,6 @@ const WakeFriendUp = () => {
                 </motion.div>
             }
           </div>
-          <motion.div className="friend-sleep__friend"
-            variants={friendVariant}
-            initial="hidden"
-            animate="show"
-          >
-            <img src={isWindowSmall ? ImgHumanSleepSm: ImgHumanSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
-          </motion.div>
           <motion.div
             className="friend-sleep__arm"
             variants={armVariant}
@@ -166,6 +159,13 @@ const WakeFriendUp = () => {
               animate="animate"
               onAnimationComplete={ () => setAnimateComplete(true) }
             />
+          </motion.div>
+          <motion.div className="friend-sleep__friend"
+            variants={friendVariant}
+            initial="hidden"
+            animate="show"
+          >
+            <img src={isWindowSmall ? ImgHumanSleepSm: ImgHumanSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
           </motion.div>
         </div>
       </Content>

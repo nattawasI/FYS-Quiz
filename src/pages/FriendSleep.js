@@ -88,6 +88,9 @@ const FriendSleep = () => {
 
   return (
     <>
+      {
+        showModal && <ModalFormFriend />
+      }
       <Content>
         <div className="scene-panel friend-sleep" onClick={touchPanelSm}>
           <div className="friend-sleep__text box-story">
@@ -119,9 +122,6 @@ const FriendSleep = () => {
           </motion.div>
         </div>
       </Content>
-      {
-        showModal && <ModalFormFriend />
-      }
     </>
   )
 }
