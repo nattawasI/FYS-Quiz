@@ -1,4 +1,13 @@
-<svg id="BG" xmlns="http://www.w3.org/2000/svg" width="1921.31" height="562.232" viewBox="0 0 1921.31 562.232">
-  <path id="Path_1212" data-name="Path 1212" d="M-17.6-1117.853s304.164,126.1,960.654,126.1c684.249,0,960.655-126.1,960.655-126.1v562.232H-17.6Z" transform="translate(17.605 1117.853)" fill="#155aa7"/>
-  <path id="Path_1213" data-name="Path 1213" d="M-17.6-1117.853s304.164,126.1,960.654,126.1c684.249,0,960.655-126.1,960.655-126.1v562.232H-17.6Z" transform="translate(17.605 1117.853)" fill="#155aa7"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1084" viewBox="0 0 1920 1084">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_198" data-name="Rectangle 198" width="1920" height="1084" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_1" data-name="Mask Group 1" clip-path="url(#clip-path)">
+    <g id="BG" transform="translate(0 521.967)">
+      <path id="Path_1212" data-name="Path 1212" d="M-17.6-1117.853s304.164,126.1,960.654,126.1c684.249,0,960.655-126.1,960.655-126.1v562.232H-17.6Z" transform="translate(17.605 1117.853)" fill="#155aa7"/>
+      <path id="Path_1213" data-name="Path 1213" d="M-17.6-1117.853s304.164,126.1,960.654,126.1c684.249,0,960.655-126.1,960.655-126.1v562.232H-17.6Z" transform="translate(17.605 1117.853)" fill="#155aa7"/>
+    </g>
+  </g>
 </svg>
