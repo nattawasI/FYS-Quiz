@@ -81,30 +81,30 @@ const Siren = () => {
   const [animateComplete, setAnimateComplete] = useState(false)
   const [bgStyle, setBgStyle] = useState({})
 
-  useEffect(() => {
-    const backgrounds = isWindowSmall
-    ? { bg1: BgSirenSm, bg2: BgSirenSmOn }
-    : { bg1: BgSirenMd, bg2: BgSirenMdOn }
-    let currentBG = 'bg1'
+  // useEffect(() => {
+  //   const backgrounds = isWindowSmall
+  //   ? { bg1: BgSirenSm, bg2: BgSirenSmOn }
+  //   : { bg1: BgSirenMd, bg2: BgSirenMdOn }
+  //   let currentBG = 'bg1'
 
-    const changeBG = () => {
-      if (currentBG === 'bg1') {
-        setBgStyle({
-          backgroundImage: `url(${backgrounds.bg1})`
-        })
-        currentBG = 'bg2'
-      } else {
-        setBgStyle({
-          backgroundImage: `url(${backgrounds.bg2})`
-        })
-        currentBG = 'bg1'
-      }
-    }
+  //   const changeBG = () => {
+  //     if (currentBG === 'bg1') {
+  //       setBgStyle({
+  //         backgroundImage: `url(${backgrounds.bg1})`
+  //       })
+  //       currentBG = 'bg2'
+  //     } else {
+  //       setBgStyle({
+  //         backgroundImage: `url(${backgrounds.bg2})`
+  //       })
+  //       currentBG = 'bg1'
+  //     }
+  //   }
 
-    let interval = setInterval(changeBG, 300)
+  //   let interval = setInterval(changeBG, 300)
 
-    return () => clearInterval(interval)
-  }, [isWindowSmall])
+  //   return () => clearInterval(interval)
+  // }, [isWindowSmall])
 
   // function
   const goToNextPage = () => {
@@ -123,7 +123,13 @@ const Siren = () => {
     <>
       <Content>
         <div className="scene-panel siren" onClick={touchPanelSm}>
-          <motion.div className="siren__background" style={bgStyle}
+          <motion.div className="siren__background-1" style={bgStyle}
+            variants={bgVariant}
+            initial="hidden"
+            animate="show"
+            onAnimationComplete={() => setAnimateComplete(true)}
+          ></motion.div>
+          <motion.div className="siren__background-2" style={bgStyle}
             variants={bgVariant}
             initial="hidden"
             animate="show"
