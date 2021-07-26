@@ -1,16 +1,11 @@
 import React from 'react'
 import './style/App.scss'
-import ViewportExtra from 'viewport-extra'
-// import UseWindowSmall from './utilityhooks/useWindowSmall'
 import RouteProvider from './contexts/RouteContext'
 import UserProvider from './contexts/UserContext'
 import SoundProvider from './contexts/SoundContext'
 import Index from './pages/Index'
 
 const App = () => {
-  // Shorthand if maxWidth is not required
-  new ViewportExtra(375)
-
   return (
     <UserProvider>
       <RouteProvider>
