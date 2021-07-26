@@ -344,6 +344,7 @@ const TurnOnLight = () => {
                       {
                         !isWindowSmall &&
                         <motion.div
+                          className={`turn-on-light__button ${ openSwitch && 'animated' }`}
                           variants={buttonNextVariant}
                           initial="hidden"
                           animate={buttonNextControl}

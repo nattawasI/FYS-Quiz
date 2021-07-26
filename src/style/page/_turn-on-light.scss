@@ -36,6 +36,12 @@
     text-align: center;
   }
 
+  &__button {
+    &:not(.animated) {
+      visibility: hidden;
+    }
+  }
+
   .hand {
     pointer-events: none;
 
