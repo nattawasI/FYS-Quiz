@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {useUserActionContext} from '../contexts/UserContext'
 import {useSoundActionContext} from '../contexts/SoundContext'
@@ -30,13 +30,6 @@ const ListCardActivity = ({type, changeScene, chooseActivity}) => {
     playClickSoundContext()
     changeScene()
   }
-
-  useEffect(() => {
-    const imageList = [ImgCardGameMd, ImgCardGameSm, ImgCardFoodMd, ImgCardFoodSm, ImgCardExerciseMd, ImgCardExerciseSm]
-    imageList.forEach((image) => {
-        new Image().src = image
-    })
-  }, [])
 
   return (
     <ul className="list-card-activity">
