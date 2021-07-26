@@ -25,31 +25,23 @@ const UserProvider = ({ children }) => {
   const [activityTodayContext, setActivityTodayContext] = useState('')
   const [symptomContext, setSymptomContext] = useState('')
 
-  // key store
-  // const KEY_STORAGE = 'friendInfo'
-
-  // function
+  /* function
+  -------------------------------------------------------------- */
+  // Phrase 1
   const addFriendInfoContext = ({ name, gender }) => {
     const friendInfo = { name, gender }
     setFriendNameContext(friendInfo)
   }
 
   const addUserNameContext = (name) => {
-    setUserInfoContext({ ...userInfoContext, ...{ name }})
+    setUserInfoContext({...userInfoContext, ...{ name }})
   }
 
   const addUserGenderContext = (gender) => {
-    setUserInfoContext({ ...userInfoContext, ...{ gender }})
+    setUserInfoContext({...userInfoContext, ...{ gender }})
   }
 
-  const addYearsKnownContext = (years) => {
-    setYearsKnownContext(years)
-  }
-
-  const addSymptomContext = (symptom) => {
-    setSymptomContext(symptom)
-  }
-
+  // Phrase 2
   const addActivityOftenContext = (activity) => {
     setActivityOftenContext(activity)
     setChoicesContext([])
@@ -66,6 +58,15 @@ const UserProvider = ({ children }) => {
 
   const addActivityTodayContext = (activity) => {
     setActivityTodayContext(activity)
+  }
+
+  const addYearsKnownContext = (years) => {
+    setYearsKnownContext(years)
+  }
+
+  // Phrase 3
+  const addSymptomContext = (symptom) => {
+    setSymptomContext(symptom)
   }
 
   const userStateStore = {
