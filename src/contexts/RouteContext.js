@@ -13,7 +13,7 @@ export const useRouteActionContext = () => {
 
 const RouteProvider = ({ children }) => {
   // state
-  const [currentPageContext, setCurrentPageContext] = useState('Investigate')
+  const [currentPageContext, setCurrentPageContext] = useState('Start')
 
   // function
   const changeCurrentPageContext = (pageTarget) => {
@@ -21,11 +21,11 @@ const RouteProvider = ({ children }) => {
   }
 
 
-  const routeStateStore = { // use this pass to value
+  const routeStateStore = {
     currentPageContext,
   }
 
-  const routeActionStore = { // use this pass to value
+  const routeActionStore = {
     changeCurrentPageContext,
   }
 

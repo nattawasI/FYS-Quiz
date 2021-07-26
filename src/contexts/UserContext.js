@@ -68,7 +68,7 @@ const UserProvider = ({ children }) => {
     setActivityTodayContext(activity)
   }
 
-  const userStateStore = { // use this pass to value
+  const userStateStore = {
     friendInfoContext,
     userInfoContext,
     yearsKnownContext,
@@ -78,7 +78,7 @@ const UserProvider = ({ children }) => {
     symptomContext,
   }
 
-  const userActionStore = { // use this pass to value
+  const userActionStore = {
     addFriendInfoContext,
     addUserNameContext,
     addUserGenderContext,

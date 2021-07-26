@@ -55,8 +55,6 @@ const SoundProvider = ({ children }) => {
   const toggleMuteSoundContext = () => {
     playClickSoundContext()
 
-    console.log(muteContext);
-
     if (muteContext) {
       soundStart.muted = false
       soundHorrow.muted = false
@@ -164,11 +162,11 @@ const SoundProvider = ({ children }) => {
     }
   }
 
-  const soundStateStore = { // use this pass to value
+  const soundStateStore = {
     muteContext,
   }
 
-  const soundActionStore = { // use this pass to value
+  const soundActionStore = {
     toggleMuteSoundContext,
 
     // Effect Sound
