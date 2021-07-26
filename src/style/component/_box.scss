@@ -34,3 +34,25 @@
     }
   }
 }
+
+.box-rotate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__icon {
+    text-align: center;
+  }
+
+  &__text {
+    margin-top: 3vh;
+    font-size: 2.8vw;
+    color: $black;
+    text-align: center;
+
+    @include sm-up {
+      font-size: 3.516vw;
+    }
+  }
+}

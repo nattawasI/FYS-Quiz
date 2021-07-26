@@ -94,32 +94,6 @@ const Siren = () => {
 
   // state
   const [animateComplete, setAnimateComplete] = useState(false)
-  // const [bgStyle, setBgStyle] = useState({})
-
-  // useEffect(() => {
-  //   const backgrounds = isWindowSmall
-  //   ? { bg1: BgSirenSm, bg2: BgSirenSmOn }
-  //   : { bg1: BgSirenMd, bg2: BgSirenMdOn }
-  //   let currentBG = 'bg1'
-
-  //   const changeBG = () => {
-  //     if (currentBG === 'bg1') {
-  //       setBgStyle({
-  //         backgroundImage: `url(${backgrounds.bg1})`
-  //       })
-  //       currentBG = 'bg2'
-  //     } else {
-  //       setBgStyle({
-  //         backgroundImage: `url(${backgrounds.bg2})`
-  //       })
-  //       currentBG = 'bg1'
-  //     }
-  //   }
-
-  //   let interval = setInterval(changeBG, 300)
-
-  //   return () => clearInterval(interval)
-  // }, [isWindowSmall])
 
   // function
   const goToNextPage = () => {
@@ -143,13 +117,13 @@ const Siren = () => {
             variants={sceneVariant}
             initial="hidden"
             animate="show"
+            onAnimationComplete={() => setAnimateComplete(true)}
           >
             <motion.div
               className="siren__background--front"
               variants={bgVariant}
               initial="hidden"
               animate="show"
-              onAnimationComplete={() => setAnimateComplete(true)}
             ></motion.div>
             <div className="siren__background--back"></div>
           </motion.div>

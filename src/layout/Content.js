@@ -33,8 +33,8 @@ const Content = ({ children, bgColor, className }) => {
 
   useEffect(() => {
     const checkIsLandscape = () => {
-      const screenWidth = window.screen.availWidth
-      const screenHeight = window.screen.availHeight
+      const screenWidth = window.innerWidth
+      const screenHeight = window.innerHeight
 
       if (isWindowSmall && screenWidth > screenHeight) {
         setIsLandscape(true)
@@ -46,8 +46,11 @@ const Content = ({ children, bgColor, className }) => {
     checkIsLandscape()
 
     window.addEventListener('resize', checkIsLandscape)
-    return () => window.removeEventListener('resize', checkIsLandscape)
-  }, [isWindowSmall])
+
+    return () => {
+      window.removeEventListener('resize', checkIsLandscape)
+    }
+  }, [isWindowSmall, isLandscape])
 
 
   useEffect(() => {
@@ -73,11 +76,11 @@ const Content = ({ children, bgColor, className }) => {
       {
         isWindowSmall && isLandscape
         &&  <div className="overlay-landscape">
-              <div className="box-howto">
-                <i className="box-howto__icon">
+              <div className="box-rotate">
+                <i className="box-rotate__icon">
                   <img src={IconRotate} alt="กรุณาตั้งหน้าจอให้อยู่ในรูปแบบแนวตั้ง" />
                 </i>
-                <p className="box-howto__text">กรุณาตั้งหน้าจอให้อยู่ในรูปแบบแนวตั้ง</p>
+                <p className="box-rotate__text">กรุณาตั้งหน้าจอให้อยู่ในรูปแบบแนวตั้ง</p>
               </div>
             </div>
       }
