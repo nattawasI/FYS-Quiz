@@ -63,9 +63,9 @@ const bgVariant = {
     opacity: 1,
     transition: {
       repeat: Infinity,
-      repeatType: "loop",
+      repeatType: "reverse",
       ease: "easeInOut",
-      duration: 0.7
+      duration: 0.5
     }
   }
 }
