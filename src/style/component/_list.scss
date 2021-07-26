@@ -143,3 +143,24 @@
     }
   }
 }
+
+.list-gender-button {
+  display: flex;
+  justify-content: center;
+
+  &__item {
+    width: 36vw;
+
+    @include md-up {
+      width: 12.500vw;
+    }
+
+    &:last-child {
+      margin-left: 15px;
+
+      @include md-up {
+        margin-left: 35px;
+      }
+    }
+  }
+}

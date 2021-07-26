@@ -2,8 +2,8 @@ import React, {useRef, useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {motion} from 'framer-motion'
 import { useUserStateContext, useUserActionContext } from '../contexts/UserContext'
-import Button from './Button'
 import InputText from './InputText'
+import Button from './Button'
 
 // Motion Variants
 const containerVariant = {
@@ -94,20 +94,20 @@ const ModalFormFriend = () => {
           />
         </div>
         <p className="modal-form-friend__label text-story">ระบุเพศของเพื่อนคุณ</p>
-        <div className="modal-form-friend__button-group">
-          <div className="modal-form-friend__button">
+        <ul className="modal-form-friend__gender list-gender-button">
+          <li className="list-gender-button__item">
             <Button
               color="blue"
               onClick={() => getGender('male')}
             >ชาย</Button>
-          </div>
-          <div className="modal-form-friend__button">
+          </li>
+          <div className="list-gender-button__item">
             <Button
               color="pink"
               onClick={() => getGender('female')}
             >หญิง</Button>
           </div>
-        </div>
+        </ul>
       </motion.div>
     </motion.div>
   )
