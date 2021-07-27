@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import {motionVariables} from '../variables/MotionVariant'
 import {motion, AnimatePresence} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
@@ -7,6 +8,7 @@ import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 import bgSceneMD from '../assets/images/page/darkroom/bg_scene_01_md.svg'
 import bgSceneSM from '../assets/images/page/darkroom/bg_scene_01_sm.svg'
+import {playSoundClick} from '../variables/SoundMethod'
 
 // Motion Variants
 const textVariantMD = {
@@ -93,6 +95,9 @@ const buttonVariant = {
 const DarkRoom = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {muteContext} = useSoundStateContext()
+
+  // hooks
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -109,6 +114,7 @@ const DarkRoom = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
+      playSoundClick(muteContext)
       goToNextPage()
     }
   }

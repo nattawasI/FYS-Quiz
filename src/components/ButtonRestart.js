@@ -10,14 +10,14 @@ const ButtonRestart = ({onClick}) => {
   // context
   const {muteContext} = useSoundStateContext()
 
-  const playClickSound = () => {
+  const playSoundClickSound = () => {
     if (!muteContext) {
       soundClick.play()
     }
   }
 
   const handleClick = () => {
-    playClickSound()
+    playSoundClickSound()
     onClick()
   }
 

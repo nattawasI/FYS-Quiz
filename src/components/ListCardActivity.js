@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {useUserActionContext} from '../contexts/UserContext'
-import {useSoundActionContext} from '../contexts/SoundContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import ImgCardGameMd from '../assets/images/page/investigate/img_card_game_md.svg'
 import ImgCardGameSm from '../assets/images/page/investigate/img_card_game_sm.svg'
@@ -9,11 +9,12 @@ import ImgCardFoodMd from '../assets/images/page/investigate/img_card_food_md.sv
 import ImgCardFoodSm from '../assets/images/page/investigate/img_card_food_sm.svg'
 import ImgCardExerciseMd from '../assets/images/page/investigate/img_card_exercise_md.svg'
 import ImgCardExerciseSm from '../assets/images/page/investigate/img_card_exercise_sm.svg'
+import {playSoundClick} from '../variables/SoundMethod'
 
 const ListCardActivity = ({type, changeScene, chooseActivity}) => {
   // context
   const {addActivityOftenContext, addActivityTodayContext} = useUserActionContext()
-  const {playClickSoundContext} = useSoundActionContext()
+  const {muteContext} = useSoundStateContext()
 
   // utility
   const isWindowSmall = UseWindowSmall()
@@ -27,7 +28,7 @@ const ListCardActivity = ({type, changeScene, chooseActivity}) => {
       addActivityTodayContext(activity)
     }
 
-    playClickSoundContext()
+    playSoundClick(muteContext)
     changeScene()
   }
 

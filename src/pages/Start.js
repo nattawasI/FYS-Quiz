@@ -1,5 +1,6 @@
 import React from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -10,6 +11,7 @@ import ImgRibbonRightSm from '../assets/images/page/start/img_ribbon_right_sm.sv
 import ImgTitle from '../assets/images/page/start/img_title.svg'
 import ImgHumanSleepMd from '../assets/images/page/start/img_human_sleep_md.svg'
 import ImgHumanSleepSm from '../assets/images/page/start/img_human_sleep_sm.svg'
+import {playSoundClick} from '../variables/SoundMethod'
 
 // Motion Variants
 const ribbonVariant = {
@@ -28,11 +30,13 @@ const ribbonVariant = {
 const Start = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {muteContext} = useSoundStateContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
 
   const goToNextPage = () => {
+    playSoundClick(muteContext)
     changeCurrentPageContext('Preface')
   }
 

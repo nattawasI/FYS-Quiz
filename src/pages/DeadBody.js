@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext} from '../contexts/UserContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import {motionVariables} from '../variables/MotionVariant'
 import UseWindowSmall from '../hooks/useWindowSmall'
@@ -10,7 +11,7 @@ import DeadbodyMaleMD from '../assets/images/page/dead-body/img_deadbody_male_md
 import DeadbodyMaleSM from '../assets/images/page/dead-body/img_deadbody_male_sm.svg'
 import DeadbodyFemaleMD from '../assets/images/page/dead-body/img_deadbody_female_md.svg'
 import DeadbodyFemaleSM from '../assets/images/page/dead-body/img_deadbody_female_sm.svg'
-
+import {playSoundClick} from '../variables/SoundMethod'
 
 // Motion Variants
 const textVariant = {
@@ -65,13 +66,12 @@ const bodyVariant = {
 }
 
 const DeadBody = () => {
-  // route context
-  const {changeCurrentPageContext} = useRouteActionContext()
-
   // context
+  const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
+  const {muteContext} = useSoundStateContext()
 
-  // utility hook
+  // hooks
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -107,6 +107,7 @@ const DeadBody = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && showScene3) {
+      playSoundClick(muteContext)
       goToNextPage()
     }
   }

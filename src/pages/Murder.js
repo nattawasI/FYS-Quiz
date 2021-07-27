@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import MurderImage from '../assets/images/page/murder/img_murder.svg'
 import PointerIcon from '../assets/images/icon/icon_pointer.svg'
+import {playSoundClick} from '../variables/SoundMethod'
 
 // Motion Variants
 const textVariant = {
@@ -42,8 +44,9 @@ const evidenceVariant = {
 const Investigate = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {muteContext} = useSoundStateContext()
 
-  // utility hook
+  // hooks
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -60,6 +63,7 @@ const Investigate = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
+      playSoundClick(muteContext)
       goToNextPage()
     }
   }

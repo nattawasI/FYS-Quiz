@@ -22,10 +22,17 @@ const VideoDoctor = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
 
+  // state
+  // const [showButton, setShowButton] = useState(true)
+
   // function
   const goToNextPage = () => {
     changeCurrentPageContext('CausesOfDiabetes')
   }
+
+  // const handleClickVideo = () => {
+  //   setShowButton(true)
+  // }
 
   return (
     <>

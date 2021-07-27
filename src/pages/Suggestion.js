@@ -1,10 +1,12 @@
 
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
+import {playSoundClick} from '../variables/SoundMethod'
 
 // motion Variant
 const textVariant = {
@@ -53,6 +55,7 @@ const buttonVariant = {
 const Suggestion = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {muteContext} = useSoundStateContext()
 
   // utility
   const isWindowSmall = UseWindowSmall()
@@ -61,34 +64,44 @@ const Suggestion = () => {
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
+  const [animateComplete, setAnimateComplete] = useState(false)
 
   // function
   const goToNextPage = () => {
     changeCurrentPageContext('End')
   }
 
+  const completeAnimated = () => setAnimateComplete(true)
+
   const changeToScene2 = () => {
-    setShowScene1(false)
-    setShowScene2(true)
+    if (animateComplete) {
+      setShowScene1(false)
+      setShowScene2(true)
+      setAnimateComplete(false)
+    }
   }
 
   const changeToScene3 = () => {
-    setShowScene2(false)
-    setShowScene3(true)
+    if (animateComplete) {
+      setShowScene2(false)
+      setShowScene3(true)
+      setAnimateComplete(false)
+    }
   }
 
-  let nextScene = ''
   const skipScene = () => {
     if (isWindowSmall) {
-      if (nextScene === 'scene2') {
-        setShowScene1(false)
-        setShowScene2(true)
-      } else if (nextScene === 'scene3') {
-        setShowScene1(false)
-        setShowScene2(false)
-        setShowScene3(true)
-      } else {
+      if (showScene3 && animateComplete) {
+        playSoundClick(muteContext)
         goToNextPage()
+      } else {
+        if(showScene1 && animateComplete) {
+          playSoundClick(muteContext)
+          changeToScene2()
+        } else if (showScene2 && animateComplete) {
+          playSoundClick(muteContext)
+          changeToScene3()
+        }
       }
     }
   }
@@ -107,7 +120,7 @@ const Suggestion = () => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  onAnimationComplete={ () => nextScene = 'scene2' }
+                  onAnimationComplete={completeAnimated}
                 >หากพบอาการเหล่านี้<br />ให้รีบไปพบแพทย์เพื่อเช็กทันที</motion.p>
               }
               {
@@ -134,7 +147,7 @@ const Suggestion = () => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  onAnimationComplete={ () => nextScene = 'scene3' }
+                  onAnimationComplete={completeAnimated}
                 >แต่ถ้าไม่มีอาการ<br /><span className="text-story--bigger">คุณยังโชคดี</span></motion.p>
               }
               {
@@ -159,6 +172,7 @@ const Suggestion = () => {
                   variants={textVariant}
                   initial="hidden"
                   animate="show"
+                  onAnimationComplete={completeAnimated}
                 >
                   และควรดูแลตัวเองต่อไป<br />ให้ห่างไกล <span className="text-story--bigger">”ฆาตกร"</span> <br className="sm-show" />ที่ทำให้เป็นโรคเบาหวาน
                 </motion.p>

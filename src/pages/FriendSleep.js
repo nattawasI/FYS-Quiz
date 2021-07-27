@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useUserStateContext} from '../contexts/UserContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -7,6 +8,7 @@ import ButtonNext from '../components/ButtonNext'
 import ModalFormFriend from '../components/ModalFormFriend'
 import ImgHumanSleepMd from '../assets/images/page/start/img_human_sleep_md.svg'
 import ImgHumanSleepSm from '../assets/images/page/start/img_human_sleep_sm.svg'
+import {playSoundClick} from '../variables/SoundMethod'
 
 // Motion Variants
 const textVariant = {
@@ -56,8 +58,9 @@ const buttonVariant = {
 const FriendSleep = () => {
   // context
   const {friendInfoContext} = useUserStateContext()
+  const {muteContext} = useSoundStateContext()
 
-  // utility
+  // hooks
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -71,6 +74,7 @@ const FriendSleep = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
+      playSoundClick(muteContext)
       openModalFormFriend()
     }
   }

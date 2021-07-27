@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
+import {playSoundClick} from '../variables/SoundMethod'
 
 // Motion Variants
 const textVariant = {
@@ -82,8 +84,9 @@ const buttonVariant = {
 const Siren = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {muteContext} = useSoundStateContext()
 
-  // utilityhook
+  // hooks
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -96,6 +99,7 @@ const Siren = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
+      playSoundClick(muteContext)
       goToNextPage()
     }
   }

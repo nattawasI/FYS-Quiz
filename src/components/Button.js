@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {useSoundStateContext} from '../contexts/SoundContext'
-import {playClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethod'
 
 const Button = (props) => {
   // context
@@ -16,7 +16,7 @@ const Button = (props) => {
   }
 
   const handleClick = () => {
-    playClick(muteContext)
+    playSoundClick(muteContext)
     props.onClick()
   }
 

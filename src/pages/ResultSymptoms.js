@@ -1,6 +1,7 @@
 
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -11,6 +12,7 @@ import ImgTired from '../assets/images/page/result-symptoms/img_tired.svg'
 import ImgNumb from '../assets/images/page/result-symptoms/img_numb.svg'
 import ImgThirsty from '../assets/images/page/result-symptoms/img_thirsty.svg'
 import ImgSlowRecovery from '../assets/images/page/result-symptoms/img_slow_recovery.svg'
+import {playSoundClick} from '../variables/SoundMethod'
 
 // motion Variant
 const titleRiskSymptomsVariant = {
@@ -78,8 +80,9 @@ const buttonVariant = {
 const ResultSymptoms = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {muteContext} = useSoundStateContext()
 
-  // utility
+  // hooks
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -92,6 +95,7 @@ const ResultSymptoms = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
+      playSoundClick(muteContext)
       goToNextPage()
     }
   }

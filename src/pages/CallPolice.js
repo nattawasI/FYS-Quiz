@@ -7,6 +7,7 @@ import {useUserStateContext} from '../contexts/UserContext'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
+import {playSoundClick} from '../variables/SoundMethod'
 
 // motion Variant
 const textVariant = {
@@ -55,69 +56,58 @@ const buttonVariant = {
 const CallPolice = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {muteContext} = useSoundStateContext()
   const {friendInfoContext} = useUserStateContext()
+  const {muteContext} = useSoundStateContext()
 
-  // utility
+  // hooks
   const isWindowSmall = UseWindowSmall()
 
   // state
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
-  const [nextScene, setNextScene] = useState(false)
-  const [animationComplete, setAnimationComplete] = useState(false)
+  const [animateComplete, setAnimateComplete] = useState(false)
   const [canCall, setCancall] = useState(false)
 
   // function
   const goToNextPage = () => {
     if (canCall) {
-      if (muteContext) {
-        changeCurrentPageContext('PoliceCame')
-      } else {
-        setTimeout(() => {
-          changeCurrentPageContext('PoliceCame')
-        }, 2000)
-      }
+      changeCurrentPageContext('PoliceCame')
     }
   }
 
+  const completeAnimated = () => setAnimateComplete(true)
+
   const changeToScene2 = () => {
-    if (animationComplete) {
+    if (animateComplete) {
       setShowScene1(false)
       setShowScene2(true)
-      setAnimationComplete(false)
+      setAnimateComplete(false)
     }
   }
 
   const changeToScene3 = () => {
-    if (animationComplete) {
+    if (animateComplete) {
       setShowScene2(false)
       setShowScene3(true)
-      setAnimationComplete(false)
+      setAnimateComplete(false)
     }
   }
 
   const skipScene = () => {
     if (isWindowSmall) {
-      if (nextScene === 'scene2') {
+      if(showScene1 && animateComplete) {
+        playSoundClick(muteContext)
         changeToScene2()
-      } else if (nextScene === 'scene3') {
-        setShowScene1(false)
+      } else if (showScene2 && animateComplete) {
+        playSoundClick(muteContext)
         changeToScene3()
       }
     }
   }
 
-  const onSceneComplete = (nextscence) => {
-    setNextScene(nextscence)
-    setAnimationComplete(true)
-  }
-
   const onScene3Complete = () => {
-    setTimeout(() => {
-      setCancall(true)
-    }, 1000);
+    setCancall(true)
   }
 
   return (
@@ -134,7 +124,7 @@ const CallPolice = () => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  onAnimationComplete={() => onSceneComplete('scene2')}
+                  onAnimationComplete={completeAnimated}
                 >แต่กลับพบว่า<br />{friendInfoContext.name} ตัวเย็นเฉียบ<br />หน้าซีด และไม่หายใจ</motion.p>
               }
               {
@@ -161,7 +151,7 @@ const CallPolice = () => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  onAnimationComplete={() => onSceneComplete('scene3')}
+                  onAnimationComplete={completeAnimated}
                 >{friendInfoContext.name}<br />"เสียชีวิต"</motion.p>
               }
               {
@@ -186,7 +176,7 @@ const CallPolice = () => {
                   variants={textVariant}
                   initial="hidden"
                   animate="show"
-                  onAnimationComplete={() => onScene3Complete()}
+                  onAnimationComplete={onScene3Complete}
                 >
                   คุณตกใจมาก โวยวายเสียงดัง!<br />แล้วรีบหยิบมือถือ โทรแจ้งตำรวจทันที
                 </motion.p>

@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext} from '../contexts/UserContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -9,6 +10,7 @@ import BgDeadManMd from '../assets/images/page/police-came/bg_deadman_md.svg'
 import BgDeadManSm from '../assets/images/page/police-came/bg_deadman_sm.svg'
 import BgDeadWomenMd from '../assets/images/page/police-came/bg_deadwomen_md.svg'
 import BgDeadWomenSm from '../assets/images/page/police-came/bg_deadwomen_sm.svg'
+import {playSoundClick} from '../variables/SoundMethod'
 
 // Motion Variants
 const bodyVariant = {
@@ -61,8 +63,9 @@ const PoliceCame = () => {
   // context
   const {friendInfoContext} = useUserStateContext()
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {muteContext} = useSoundStateContext()
 
-  // utilityhook
+  // hooks
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -76,6 +79,7 @@ const PoliceCame = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
+      playSoundClick(muteContext)
       goToNextPage()
     }
   }

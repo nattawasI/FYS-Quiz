@@ -1,10 +1,10 @@
 import React, {useState, createContext, useContext} from 'react'
 
 // Effect sound
-import SwitchAudio from '../assets/sounds/sound-switch.mp3'
-import DialingPhoneAudio from '../assets/sounds/sound-dialing-phone.mp3'
-import PhoneCallAudio from '../assets/sounds/sound-phone-call.mp3'
-import CardAudio from '../assets/sounds/sound-card.mp3'
+// import SwitchAudio from '../assets/sounds/sound-switch.mp3'
+// import DialingPhoneAudio from '../assets/sounds/sound-dialing-phone.mp3'
+// import PhoneCallAudio from '../assets/sounds/sound-phone-call.mp3'
+// import CardAudio from '../assets/sounds/sound-card.mp3'
 
 // BG sound
 import StartAudio from '../assets/sounds/bg-sound-start.mp3'
@@ -23,6 +23,12 @@ export const useSoundStateContext = () => {
 export const useSoundActionContext = () => {
   return useContext(SoundActionContext)
 }
+
+// Effect Sounds
+// const soundSwitch = new Audio(SwitchAudio)
+// const soundDialingPhone = new Audio(DialingPhoneAudio)
+// const soundPhoneCall = new Audio(PhoneCallAudio)
+// const soundCard = new Audio(CardAudio)
 
 // Bg Sounds
 const soundStart = new Audio(StartAudio)

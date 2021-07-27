@@ -2,6 +2,7 @@
 import React, {useState, useRef, useEffect} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext, useUserActionContext} from '../contexts/UserContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -11,6 +12,7 @@ import InputText from '../components/InputText'
 import ImgHabit from '../assets/images/page/causes-of-diabetes/img-habit.svg'
 import ImgDna from '../assets/images/page/causes-of-diabetes/img-dna.svg'
 import ImgHabitDna from '../assets/images/page/causes-of-diabetes/img-habit-dna.svg'
+import {playSoundClick} from '../variables/SoundMethod'
 
 // motion Variant
 const sceneVariant = {
@@ -96,6 +98,9 @@ const CausesOfDiabetes = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
   const {symptomContext} = useUserStateContext()
   const {addSymptomContext} = useUserActionContext()
+  const {muteContext} = useSoundStateContext()
+
+  // hooks
   const isWindowSmall = UseWindowSmall()
 
   // ref
@@ -127,6 +132,11 @@ const CausesOfDiabetes = () => {
     setShowScene3(true)
   }
 
+  const handleClickCause = () => {
+    playSoundClick(muteContext)
+    changeToScene2()
+  }
+
   const submitSympton = (e) => {
     e.preventDefault()
     const inputValue = inputRef.current.value
@@ -140,6 +150,7 @@ const CausesOfDiabetes = () => {
 
   const touchPanelSm = () => {
     if (canGoNextPage) {
+      playSoundClick(muteContext)
       goToNextPage()
     }
   }
@@ -186,7 +197,7 @@ const CausesOfDiabetes = () => {
                       animate="show"
                     >
                       <li className="list-causes-of-diabetes__item">
-                        <div className="list-causes-of-diabetes__card" onClick={changeToScene2}>
+                        <div className="list-causes-of-diabetes__card" onClick={handleClickCause}>
                           <figure className="list-causes-of-diabetes__image">
                             <img src={ImgHabit} alt="พฤติกรรมการใช้ชีวิตประจำวัน" />
                           </figure>
@@ -194,7 +205,7 @@ const CausesOfDiabetes = () => {
                         </div>
                       </li>
                       <li className="list-causes-of-diabetes__item">
-                        <div className="list-causes-of-diabetes__card" onClick={changeToScene2}>
+                        <div className="list-causes-of-diabetes__card" onClick={handleClickCause}>
                           <figure className="list-causes-of-diabetes__image">
                             <img src={ImgDna} alt="พันธุกรรม" />
                           </figure>
@@ -202,7 +213,7 @@ const CausesOfDiabetes = () => {
                         </div>
                       </li>
                       <li className="list-causes-of-diabetes__item">
-                        <div className="list-causes-of-diabetes__card" onClick={changeToScene2}>
+                        <div className="list-causes-of-diabetes__card" onClick={handleClickCause}>
                           <figure className="list-causes-of-diabetes__image">
                             <img src={ImgHabitDna} alt="เป็นได้ทั้ง 2 อย่าง" />
                           </figure>

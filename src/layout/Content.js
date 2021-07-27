@@ -54,7 +54,7 @@ const Content = ({ children, bgColor, className }) => {
 
 
   useEffect(() => {
-    if (currentPageContext === 'Evidence' || currentPageContext === 'ResultSymptoms') {
+    if (currentPageContext === 'Preface' || currentPageContext === 'Evidence' || currentPageContext === 'ResultSymptoms') {
       setButtonSoundDark(true)
     }
   }, [currentPageContext])

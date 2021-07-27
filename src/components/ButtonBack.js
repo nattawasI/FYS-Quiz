@@ -27,14 +27,14 @@ const ButtonBack = ({dark, onClick}) => {
     return dark ? 'button-back button-back--dark' : 'button-back'
   }
 
-  const playClickSound = () => {
+  const playSoundClickSound = () => {
     if (!muteContext) {
       soundClick.play()
     }
   }
 
   const handleClick = () => {
-    playClickSound()
+    playSoundClickSound()
     onClick()
   }
 

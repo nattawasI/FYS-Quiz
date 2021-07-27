@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 import IconFingerprint from '../assets/images/icon/icon_fingerprint.svg'
+import {playSoundClick} from '../variables/SoundMethod'
 
 // Motion Variants
 const sceneVariant = {
@@ -59,6 +61,7 @@ const buttonVariant = {
 const Preface = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {muteContext} = useSoundStateContext()
 
   // utility
   const isWindowSmall = UseWindowSmall()
@@ -75,6 +78,11 @@ const Preface = () => {
 
   const goToNextPage = () => {
     changeCurrentPageContext('DarkRoom')
+  }
+
+  const handleTouchFingerPrint = () => {
+    playSoundClick(muteContext)
+    goToNextPage()
   }
 
   return (
@@ -122,7 +130,7 @@ const Preface = () => {
                     initial="hidden"
                     animate="show"
                     exit="exit"
-                    onClick={goToNextPage}
+                    onClick={handleTouchFingerPrint}
                   >
                     <div className="box-howto">
                       <i className="box-howto__icon">

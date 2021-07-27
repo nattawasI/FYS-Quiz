@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext} from '../contexts/UserContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -13,6 +14,7 @@ import ImgRisk0Md from '../assets/images/page/summary/img_risk_0_md.svg'
 import ImgRisk100Sm from '../assets/images/page/summary/img_risk_100_sm.svg'
 import ImgRisk50Sm from '../assets/images/page/summary/img_risk_50_sm.svg'
 import ImgRisk0Sm from '../assets/images/page/summary/img_risk_0_sm.svg'
+import {playSoundClick} from '../variables/SoundMethod'
 
 // Motion Variants
 const textVariant = {
@@ -84,8 +86,9 @@ const Summary = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {activityOftenContext, choicesContext} = useUserStateContext()
+  const {muteContext} = useSoundStateContext()
 
-  // utility hook
+  // hooks
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -100,6 +103,7 @@ const Summary = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
+      playSoundClick(muteContext)
       goToNextPage()
     }
   }

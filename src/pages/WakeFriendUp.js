@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import {useUserStateContext} from '../contexts/UserContext'
 import UseWindowSmall from '../hooks/useWindowSmall'
@@ -12,6 +13,7 @@ import ImgHumanSleepSm from '../assets/images/page/start/img_human_sleep_sm.svg'
 import ImgArmMd from '../assets/images/page/friend-sleep/img_arm_md.svg'
 import ImgArmSm from '../assets/images/page/friend-sleep/img_arm_sm.svg'
 import ImgArmXs from '../assets/images/page/friend-sleep/img_arm_xs.svg'
+import {playSoundClick} from '../variables/SoundMethod'
 
 // Motion Variants
 const friendVariant = {
@@ -79,8 +81,9 @@ const WakeFriendUp = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
+  const {muteContext} = useSoundStateContext()
 
-  // utility
+  // hooks
   const isWindowSmall = UseWindowSmall()
   const currentDevice = UseCurrentDevice()
 
@@ -125,6 +128,7 @@ const WakeFriendUp = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
+      playSoundClick(muteContext)
       goToNextPage()
     }
   }

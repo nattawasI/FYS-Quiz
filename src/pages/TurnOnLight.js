@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import {AnimatePresence, motion, useAnimation } from 'framer-motion'
 import {motionVariables} from '../variables/MotionVariant'
-import UseWindowSmall from '../hooks/useWindowSmall'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
+import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 import BGShadeMD from '../assets/images/page/turn-on-light/bg_shade_md.svg';
@@ -15,6 +16,10 @@ import IconPointer from '../assets/images/page/turn-on-light/ico_pointer_01.svg'
 import NormalHand from '../assets/images/page/turn-on-light/img_hand_01.svg';
 import PointerHandMD from '../assets/images/page/turn-on-light/img_hand_02_md.svg';
 import PointerHandSM from '../assets/images/page/turn-on-light/img_hand_02_sm.svg';
+import {playSoundClick} from '../variables/SoundMethod'
+import SwitchAudio from '../assets/sounds/sound-switch.mp3'
+
+const soundSwitch = new Audio(SwitchAudio)
 
 const textIntro01Variant = {
   hidden: {
@@ -176,8 +181,9 @@ const SwitchPlateVariant = {
 const TurnOnLight = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {muteContext} = useSoundStateContext()
 
-  // utility hook
+  // hooks
   const isWindowSmall = UseWindowSmall()
 
   // state
@@ -215,10 +221,17 @@ const TurnOnLight = () => {
     setSwitchBreaker(true)
   }
 
+  const playSoundSwitch = () => {
+    if (!muteContext) {
+      soundSwitch.play()
+    }
+  }
+
   const switchOpened = () => {
     if (openSwitch && !nextScene) {
       setTimeout(() => {
         buttonNextControl.start('show')
+        playSoundSwitch()
         setNextScene(true)
       }, 0)
     }
@@ -226,6 +239,7 @@ const TurnOnLight = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
+      playSoundClick(muteContext)
       goToNextPage()
     }
   }
