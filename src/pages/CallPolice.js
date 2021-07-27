@@ -9,7 +9,7 @@ import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 import PhoneAudio from '../assets/sounds/sound-phone.mp3'
-import {playSoundClick, playSoundBGM} from '../variables/SoundMethods'
+import {playSoundClick} from '../variables/SoundMethods'
 
 // Audio
 const soundPhone = new Audio(PhoneAudio)
@@ -58,7 +58,7 @@ const buttonVariant = {
   }
 }
 
-const CallPolice = ({sounds}) => {
+const CallPolice = ({soundPause, soundPlay}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
@@ -118,7 +118,8 @@ const CallPolice = ({sounds}) => {
 
     setCalling(true)
     setTimeout(() => {
-      playSoundBGM(sounds[0], sounds[1])
+      soundPause.pause()
+      soundPlay.play()
       goToNextPage()
     }, timer)
   }
@@ -226,7 +227,8 @@ const CallPolice = ({sounds}) => {
 }
 
 CallPolice.propTypes = {
-  sounds: PropTypes.array.isRequired,
+  soundPause: PropTypes.object.isRequired,
+  soundPlay: PropTypes.object.isRequired,
 }
 
 export default CallPolice

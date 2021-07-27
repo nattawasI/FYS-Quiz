@@ -60,6 +60,7 @@ const ListQuiz = ({changeScene, listQuiz, nextQuestion, currentQuestion, boxQuiz
             return (
               <li className="list-quiz__item" key={choice.id}>
                 <ListQuizButton
+                  question={listQuiz[indexQuiz].question}
                   choice={choice}
                   changeQuestion={goToNextQuestion}
                 />

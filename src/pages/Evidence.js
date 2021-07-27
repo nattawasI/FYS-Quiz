@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
@@ -117,7 +118,7 @@ const curveVariant = {
   }
 }
 
-const Evidence = () => {
+const Evidence = ({soundPause}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {muteContext} = useSoundStateContext()
@@ -136,6 +137,7 @@ const Evidence = () => {
   // function
   const goToNextPage = () => {
     if (animateComplete) {
+      soundPause.pause()
       changeCurrentPageContext('VideoDoctor')
     }
   }
@@ -284,6 +286,10 @@ const Evidence = () => {
       </Content>
     </>
   )
+}
+
+Evidence.propTypes = {
+  soundPause: PropTypes.object.isRequired,
 }
 
 export default Evidence

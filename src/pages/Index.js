@@ -53,7 +53,7 @@ const Index = () => {
   // function
   const renderPage = () => {
     if (currentPageContext === 'Start') {
-      return <Start sounds={[bgSoundStart]} />
+      return <Start soundPlay={bgSoundStart} />
     } else if (currentPageContext === 'Preface') {
       return <Preface />
     } else if (currentPageContext === 'DarkRoom') {
@@ -65,11 +65,11 @@ const Index = () => {
     } else if (currentPageContext === 'WakeFriendUp') {
       return <WakeFriendUp />
     } else if (currentPageContext === 'CallPolice') {
-      return <CallPolice sounds={[bgSoundStart, bgSoundSiren]} />
+      return <CallPolice soundPause={bgSoundStart} soundPlay={bgSoundSiren} />
     } else if (currentPageContext === 'PoliceCame') {
       return <PoliceCame />
     } else if (currentPageContext === 'Siren') {
-      return <Siren sounds={[bgSoundSiren, bgSoundInvestigation]} />
+      return <Siren soundPause={bgSoundSiren} soundPlay={bgSoundInvestigation} />
     } else if (currentPageContext === 'Investigate') {
       return <Investigate />
     } else if (currentPageContext === 'DeadBody') {
@@ -77,9 +77,9 @@ const Index = () => {
     } else if (currentPageContext === 'Murder') {
       return <Murder />
     } else if (currentPageContext === 'Evidence') {
-      return <Evidence />
+      return <Evidence soundPause={bgSoundInvestigation} />
     } else if (currentPageContext === 'VideoDoctor') {
-      return <VideoDoctor sounds={[bgSoundInvestigation, bgSoundSunshine]} />
+      return <VideoDoctor soundPlay={bgSoundSunshine} />
     } else if (currentPageContext === 'CausesOfDiabetes') {
       return <CausesOfDiabetes />
     } else if (currentPageContext === 'Summary') {

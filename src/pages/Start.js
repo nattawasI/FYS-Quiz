@@ -28,7 +28,7 @@ const ribbonVariant = {
   }
 }
 
-const Start = ({sounds}) => {
+const Start = ({soundPlay}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {muteContext} = useSoundStateContext()
@@ -38,7 +38,7 @@ const Start = ({sounds}) => {
 
   const goToNextPage = () => {
     playSoundClick(muteContext)
-    sounds[0].play()
+    soundPlay.play()
     changeCurrentPageContext('Preface')
   }
 
@@ -89,7 +89,7 @@ const Start = ({sounds}) => {
 }
 
 Start.propTypes = {
-  sounds: PropTypes.array.isRequired,
+  soundPlay: PropTypes.object.isRequired,
 }
 
 export default Start

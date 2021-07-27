@@ -6,7 +6,7 @@ import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
-import {playSoundClick, playSoundBGM} from '../variables/SoundMethods'
+import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const textVariant = {
@@ -82,7 +82,7 @@ const buttonVariant = {
   }
 }
 
-const Siren = ({sounds}) => {
+const Siren = ({soundPause, soundPlay}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {muteContext} = useSoundStateContext()
@@ -95,7 +95,8 @@ const Siren = ({sounds}) => {
 
   // function
   const goToNextPage = () => {
-    playSoundBGM(sounds[0], sounds[1])
+    soundPause.pause()
+    soundPlay.play()
     changeCurrentPageContext('Investigate')
   }
 
@@ -155,7 +156,8 @@ const Siren = ({sounds}) => {
 }
 
 Siren.propTypes = {
-  sounds: PropTypes.array.isRequired,
+  soundPause: PropTypes.object.isRequired,
+  soundPlay: PropTypes.object.isRequired,
 }
 
 export default Siren

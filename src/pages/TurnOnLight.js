@@ -229,9 +229,9 @@ const TurnOnLight = () => {
 
   const switchOpened = () => {
     if (openSwitch && !nextScene) {
+      playSoundSwitch()
       setTimeout(() => {
         buttonNextControl.start('show')
-        playSoundSwitch()
         setNextScene(true)
       }, 0)
     }

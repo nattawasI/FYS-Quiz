@@ -4,7 +4,6 @@ import {useRouteActionContext} from '../contexts/RouteContext'
 import {motion} from 'framer-motion'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
-import {playSoundBGM} from '../variables/SoundMethods'
 
 // Motion Variants
 const buttonVariant = {
@@ -20,7 +19,7 @@ const buttonVariant = {
   }
 }
 
-const VideoDoctor = ({sounds}) => {
+const VideoDoctor = ({soundPlay}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
 
@@ -29,7 +28,7 @@ const VideoDoctor = ({sounds}) => {
 
   // function
   const goToNextPage = () => {
-    playSoundBGM(sounds[0], sounds[1])
+    soundPlay.play()
     changeCurrentPageContext('CausesOfDiabetes')
   }
 
@@ -43,7 +42,7 @@ const VideoDoctor = ({sounds}) => {
         <div className="scene-panel scene-panel--items-center video-doctor">
           <div className="video-wrap">
             <div className="video-box">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/_wyIcYyP8EA?rel=0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/cgT9cwJVkLw" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div>
           </div>
         </div>
@@ -60,7 +59,7 @@ const VideoDoctor = ({sounds}) => {
 }
 
 VideoDoctor.propTypes = {
-  sounds: PropTypes.array.isRequired,
+  soundPlay: PropTypes.object.isRequired,
 }
 
 export default VideoDoctor
