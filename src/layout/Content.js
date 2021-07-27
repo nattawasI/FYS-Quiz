@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import {useRouteStateContext} from '../contexts/RouteContext'
-import {containerVariant} from '../variables/MotionVariant'
 import {motion} from 'framer-motion'
 import PropTypes from 'prop-types'
 import UseWindowSmall from '../hooks/useWindowSmall'
@@ -16,6 +15,26 @@ const Content = ({ children, bgColor, className }) => {
 
   const [isLandscape, setIsLandscape] = useState(false)
   const [buttonSoundDark, setButtonSoundDark] = useState(false)
+
+  const contentVariant = {
+    hidden: {
+      opacity: 0,
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        ease: 'easeInOut',
+        duration: currentPageContext === 'PoliceCame'? 2.5: 1
+      }
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        ease: 'easeInOut',
+        duration: 1
+      }
+    }
+  }
 
   const classStyle = () => {
     if (bgColor === 'white') {
@@ -64,7 +83,7 @@ const Content = ({ children, bgColor, className }) => {
       <ButtonSound dark={buttonSoundDark} />
       <motion.div
         className={classStyle()}
-        variants={containerVariant}
+        variants={contentVariant}
         initial="hidden"
         animate="show"
         exit="exit"

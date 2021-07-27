@@ -23,6 +23,10 @@
   &__btn--body {
     z-index: 2;
     background-image: url('../../assets/images/page/callpolice/icon_call.svg');
+
+    &.active {
+      background-image: url('../../assets/images/page/callpolice/icon_cancel.svg');
+    }
   }
 
   &__btn--wave-in {
@@ -59,7 +63,7 @@
 
   &:hover {
     @include md-up {
-      .button-call__btn--body {
+      .button-call__btn--body:not(.active) {
         background-image: url('../../assets/images/page/callpolice/icon_call_hover.svg');
       }
     }
