@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const url = "http://localhost:14080";
-const APIPOST = (url, data) => {
+const API_POST = (url, data) => {
   return axios.post(url, data, {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -18,7 +18,7 @@ export const saveUser = async (friendInfoContext, userInfoContext, gender) => {
   };
   const {
     data: { id = 0 },
-  } = await APIPOST(url + "/userdata/save", userData);
+  } = await API_POST(url + "/userdata/save", userData);
   return id;
 };
 
@@ -69,7 +69,7 @@ export const saveQuestion1 = async (
     });
   }
   // console.log({ _choicesContext });
-  await APIPOST(url + "/quizsubmit/save", {
+  await API_POST(url + "/quizsubmit/save", {
     datas: _choicesContext,
   });
 };
@@ -92,7 +92,7 @@ export const saveQuestion2 = async (causeDiabetesContext, symptom, userId) => {
     question: "โรคเบาหวาน มีอาการเป็นอย่างไร?",
     score: 0,
   });
-  await APIPOST(url + "/quizsubmit/save", {
+  await API_POST(url + "/quizsubmit/save", {
     datas: _choicesContext,
   });
 };

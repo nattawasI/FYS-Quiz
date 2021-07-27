@@ -69,7 +69,6 @@ const UserProvider = ({ children }) => {
 
   const addActivityTodayContext = async (activity) => {
     setActivityTodayContext(activity);
-
     await saveQuestion1(
       activityOftenContext,
       userId,
@@ -86,7 +85,6 @@ const UserProvider = ({ children }) => {
 
   const addSymptomDiabetesContext = async (symptom) => {
     setSymptomDiabetesContext(symptom);
-
     await saveQuestion2(causeDiabetesContext, symptom, userId);
   };
 
