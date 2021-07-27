@@ -56,6 +56,10 @@
       height: 61%;
     }
 
+    @include xs-down {
+      bottom: 0;
+    }
+
     @include md-up {
       // bottom: -9%;
       // right: 10%;
