@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext, useUserActionContext} from '../contexts/UserContext'
 import {useSoundStateContext} from '../contexts/SoundContext'
@@ -131,14 +131,18 @@ const Investigate = () => {
   // useAnimation Motion
   const boxQuizControl = useAnimation()
 
+  // ref
+  const spaceRef = useRef(null)
+
   // state
   const [animateTable, setAnimateTable] = useState(false)
+  const [heightHidden, setHeightHidden] = useState(null)
   const [fadePhoto, setFadePhoto] = useState(false)
   const [hidePhoto, setHidePhoto] = useState(false)
-  const [sceneYourName, setSceneYourName] = useState(true)
+  const [sceneYourName, setSceneYourName] = useState(false)
   const [sceneMurder, setSceneMurder] = useState(false)
   const [sceneYourGender, setSceneYourGender] = useState(false)
-  const [sceneAskCooperation, setSceneAskCooperation] = useState(false)
+  const [sceneAskCooperation, setSceneAskCooperation] = useState(true)
   const [sceneActivityOften, setSceneActivityOften] = useState(false)
   const [sceneQuiz, setSceneQuiz] = useState(false)
   const [sceneFormYear, setSceneFormYear] = useState(false)
@@ -177,16 +181,29 @@ const Investigate = () => {
   }
 
   const toggleAnimateTable = () => {
+    const percentForExpand = isWindowSmall? 24: 33.33
     if (!animateTable) {
       setFadePhoto(true)
+
       setTimeout(() => {
         setHidePhoto(true)
       }, 700)
+
+      const winHeight = window.innerHeight
+      const heightForHidden = Math.ceil((winHeight*percentForExpand)/100)
+      const spaceHeight = spaceRef.current.offsetHeight
+      setHeightHidden(spaceHeight + heightForHidden)
     } else {
       setHidePhoto(false)
+
       setTimeout(() => {
         setFadePhoto(false)
       }, 700)
+
+      const winHeight = window.innerHeight
+      const heightForHidden = Math.ceil((winHeight*percentForExpand)/100)
+      const spaceHeight = spaceRef.current.offsetHeight
+      setHeightHidden(spaceHeight - heightForHidden)
     }
   }
 
@@ -271,9 +288,9 @@ const Investigate = () => {
   }
 
   const changeToSceneThankYou = () => {
-    toggleAnimateTable()
     setSceneActivityToday(false)
     setSceneThankYou(true)
+    toggleAnimateTable()
   }
 
   const backToSceneActivityToday = () => {
@@ -368,7 +385,7 @@ const Investigate = () => {
               && <img src={ImgPoliceMd} alt="ตำรวจ" />
             }
           </div>
-          <div className={`investigate__space${animateTable? ' animate': ''}`}>
+          <div ref={spaceRef} className={`investigate__space${animateTable? ' animate': ''}`} style={{ height: `${heightHidden}px` }}>
             <div className={`investigate__photo${fadePhoto? " fade-out": ''}${hidePhoto? " hidden": ''}`}>
               <img src={isWindowSmall ? ImgPhotoSm: ImgPhotoMd} alt="รูปถ่าย" />
             </div>

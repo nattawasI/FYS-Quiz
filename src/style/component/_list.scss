@@ -27,6 +27,14 @@
   &__img {
     width: 74.667vw;
 
+    @media screen and (max-height : 667px) {
+      width: 220px;
+    }
+
+    @include xs-up {
+      width: 74.667vw;
+    }
+
     @include sm-up {
       width: 45.667vw;
     }

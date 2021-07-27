@@ -86,7 +86,7 @@ ListQuiz.defaultProps = {
   listQuiz: [],
   currentQuestion: 0,
   nextQuestion: () => {},
-  boxQuizControl: () => {}
+  boxQuizControl: () => {},
 }
 
 export default ListQuiz
