@@ -64,7 +64,6 @@ const FriendSleep = () => {
   const isWindowSmall = UseWindowSmall()
 
   // state
-  const [animateComplete, setAnimateComplete] = useState(false)
   const [completedScene, setCompletedScene] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
@@ -74,7 +73,7 @@ const FriendSleep = () => {
   }
 
   const touchPanelSm = () => {
-    if (isWindowSmall && animateComplete) {
+    if (isWindowSmall && completedScene) {
       playSoundClick(muteContext)
       openModalFormFriend()
     }
@@ -119,7 +118,7 @@ const FriendSleep = () => {
             variants={friendVariant}
             initial={friendInfoContext.name? false: "hidden"}
             animate="show"
-            onAnimationComplete={() => setAnimateComplete(true)}
+            onAnimationComplete={() => setCompletedScene(true)}
           >
             <img src={isWindowSmall ? ImgHumanSleepSm: ImgHumanSleepMd} alt="เพื่อนนอนสลบอยู่บนโต๊ะกินข้าว" />
           </motion.div>

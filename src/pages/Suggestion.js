@@ -64,23 +64,21 @@ const Suggestion = () => {
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
-  const [animateComplete, setAnimateComplete] = useState(false)
   const [completedScene1, setCompletedScene1] = useState(false)
   const [completedScene2, setCompletedScene2] = useState(false)
   const [completedScene3, setCompletedScene3] = useState(false)
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('End')
+    if (completedScene3) {
+      changeCurrentPageContext('End')
+    }
   }
-
-  const completeAnimated = () => setAnimateComplete(true)
 
   const changeToScene2 = () => {
     if (completedScene1) {
       setShowScene1(false)
       setShowScene2(true)
-      setAnimateComplete(false)
     }
   }
 
@@ -88,7 +86,6 @@ const Suggestion = () => {
     if (completedScene2) {
       setShowScene2(false)
       setShowScene3(true)
-      setAnimateComplete(false)
     }
   }
 

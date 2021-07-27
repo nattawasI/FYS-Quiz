@@ -130,7 +130,6 @@ const Evidence = ({soundPause}) => {
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
-  const [animateComplete, setAnimateComplete] = useState(false)
   const [completedScene1, setCompletedScene1] = useState(false)
   const [completedScene2, setCompletedScene2] = useState(false)
   const [completedScene3, setCompletedScene3] = useState(false)
@@ -149,7 +148,6 @@ const Evidence = ({soundPause}) => {
     if (completedScene1) {
       setShowScene1(false)
       setShowScene2(true)
-      setAnimateComplete(false)
     }
   }
 
@@ -157,7 +155,6 @@ const Evidence = ({soundPause}) => {
     if (completedScene2) {
       setShowScene2(false)
       setShowScene3(true)
-      setAnimateComplete(false)
     }
   }
 
