@@ -115,19 +115,17 @@ const DarkRoom = () => {
   const isWindowSmall = UseWindowSmall()
 
   // state
-  const [animateComplete, setAnimateComplete] = useState(false)
+  const [completedScene, setCompletedScene] = useState(false)
 
   // function
   const goToNextPage = () => {
-    if (animateComplete) {
+    if (completedScene) {
       changeCurrentPageContext('TurnOnLight')
     }
   }
 
-  const completedAnimate = () => setAnimateComplete(true)
-
   const touchPanelSm = () => {
-    if (isWindowSmall && animateComplete) {
+    if (isWindowSmall && completedScene) {
       playSoundClick(muteContext)
       goToNextPage()
     }
@@ -143,7 +141,7 @@ const DarkRoom = () => {
             variants={ backgroundVariantSM }
             initial="hidden"
             animate="show"
-            onAnimationComplete={completedAnimate}
+            onAnimationComplete={() => setCompletedScene(true)}
           >
             <img className="dark-room__image dark-room__image--sm" src={ bgSceneSM } alt="dark room background" />
           </motion.div>
@@ -185,9 +183,9 @@ const DarkRoom = () => {
                   variants={buttonVariant}
                   initial="hidden"
                   animate="show"
-                  onAnimationComplete={completedAnimate}
+                  onAnimationComplete={() => setCompletedScene(true)}
                 >
-                  <ButtonNext onClick={goToNextPage} animateCompleted={animateComplete} />
+                  <ButtonNext onClick={goToNextPage} animateCompleted={completedScene} />
                 </motion.div>
               }
             </motion.div>

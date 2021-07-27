@@ -71,40 +71,38 @@ const CallPolice = ({soundPause, soundPlay}) => {
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
-  const [animateComplete, setAnimateComplete] = useState(false)
   const [calling, setCalling] = useState(false)
   const [completedScene1, setCompletedScene1] = useState(false)
   const [completedScene2, setCompletedScene2] = useState(false)
+  const [completedScene3, setCompletedScene3] = useState(false)
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('PoliceCame')
+    if (completedScene3) {
+      changeCurrentPageContext('PoliceCame')
+    }
   }
 
-  const completeAnimated = () => setAnimateComplete(true)
-
   const changeToScene2 = () => {
-    if (animateComplete) {
+    if (completedScene1) {
       setShowScene1(false)
       setShowScene2(true)
-      setAnimateComplete(false)
     }
   }
 
   const changeToScene3 = () => {
-    if (animateComplete) {
+    if (completedScene2) {
       setShowScene2(false)
       setShowScene3(true)
-      setAnimateComplete(false)
     }
   }
 
   const skipScene = () => {
     if (isWindowSmall) {
-      if(showScene1 && animateComplete) {
+      if(showScene1 && completedScene1) {
         playSoundClick(muteContext)
         changeToScene2()
-      } else if (showScene2 && animateComplete) {
+      } else if (showScene2 && completedScene2) {
         playSoundClick(muteContext)
         changeToScene3()
       }
@@ -149,7 +147,7 @@ const CallPolice = ({soundPause, soundPlay}) => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  onAnimationComplete={completeAnimated}
+                  onAnimationComplete={() => setCompletedScene1(true)}
                 >แต่กลับพบว่า<br />{friendInfoContext.name} ตัวเย็นเฉียบ<br />หน้าซีด และไม่หายใจ</motion.p>
               }
               {
@@ -177,7 +175,7 @@ const CallPolice = ({soundPause, soundPlay}) => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  onAnimationComplete={completeAnimated}
+                  onAnimationComplete={() => setCompletedScene2(true)}
                 >{friendInfoContext.name}<br />"เสียชีวิต"</motion.p>
               }
               {
@@ -203,7 +201,6 @@ const CallPolice = ({soundPause, soundPlay}) => {
                   variants={textVariant}
                   initial="hidden"
                   animate="show"
-                  onAnimationComplete={completeAnimated}
                 >
                   คุณตกใจมาก โวยวายเสียงดัง!<br />แล้วรีบหยิบมือถือ โทรแจ้งตำรวจทันที
                 </motion.p>
@@ -214,6 +211,7 @@ const CallPolice = ({soundPause, soundPlay}) => {
                     variants={buttonVariant}
                     initial="hidden"
                     animate="show"
+                    onAnimationComplete={() => setCompletedScene3(true)}
                   >
                     <button type="button" className="button-call" onClick={handleCalling}>
                       <span className={`button-call__btn button-call__btn--wave-out${calling? ' animate': ''}`}></span>

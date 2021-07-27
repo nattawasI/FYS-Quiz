@@ -50,19 +50,17 @@ const Investigate = () => {
   const isWindowSmall = UseWindowSmall()
 
   // state
-  const [animateComplete, setAnimateComplete] = useState(false)
+  const [completedScene, setCompletedScene] = useState(false)
 
   // function
   const goToNextPage = () => {
-    if (animateComplete) {
+    if (completedScene) {
       changeCurrentPageContext('Evidence')
     }
   }
 
-  const completeAnimated = () => setAnimateComplete(true)
-
   const touchPanelSm = () => {
-    if (isWindowSmall && animateComplete) {
+    if (isWindowSmall && completedScene) {
       playSoundClick(muteContext)
       goToNextPage()
     }
@@ -90,7 +88,7 @@ const Investigate = () => {
               initial="hidden"
               animate="show"
               exit="exit"
-              onAnimationComplete={completeAnimated}
+              onAnimationComplete={() => setCompletedScene(true)}
             >
               <motion.div
                 className="murder__figure"

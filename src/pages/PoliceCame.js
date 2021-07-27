@@ -69,17 +69,18 @@ const PoliceCame = () => {
   const isWindowSmall = UseWindowSmall()
 
   // state
-  const [animateComplete, setAnimateComplete] = useState(false)
   const [completedScene, setCompletedScene] = useState(false)
 
 
   // function
   const goToNextPage = () => {
-    changeCurrentPageContext('Siren')
+    if (completedScene) {
+      changeCurrentPageContext('Siren')
+    }
   }
 
   const touchPanelSm = () => {
-    if (isWindowSmall && animateComplete) {
+    if (isWindowSmall && completedScene) {
       playSoundClick(muteContext)
       goToNextPage()
     }
@@ -105,7 +106,6 @@ const PoliceCame = () => {
               variants={textVariant}
               initial="hidden"
               animate="show"
-              onAnimationComplete={ () => setAnimateComplete(true) }
             >เมื่อตำรวจมาถึง ก็สำรวจที่เกิดเหตุทันที<br />แล้วขอเชิญคุณไปสอบสวน</motion.p>
             {
               !isWindowSmall

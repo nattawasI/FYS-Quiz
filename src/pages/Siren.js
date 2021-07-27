@@ -91,7 +91,6 @@ const Siren = ({soundPause, soundPlay}) => {
   const isWindowSmall = UseWindowSmall()
 
   // state
-  const [animateComplete, setAnimateComplete] = useState(false)
   const [completedScene, setCompletedScene] = useState(false)
 
   // function
@@ -102,7 +101,7 @@ const Siren = ({soundPause, soundPlay}) => {
   }
 
   const touchPanelSm = () => {
-    if (isWindowSmall && animateComplete) {
+    if (isWindowSmall && completedScene) {
       playSoundClick(muteContext)
       goToNextPage()
     }
@@ -117,7 +116,6 @@ const Siren = ({soundPause, soundPlay}) => {
             variants={sceneVariant}
             initial="hidden"
             animate="show"
-            onAnimationComplete={() => setAnimateComplete(true)}
           >
             <motion.div
               className="siren__background--front"
@@ -131,6 +129,7 @@ const Siren = ({soundPause, soundPlay}) => {
             variants={boxTextVariant}
             initial="hidden"
             animate="show"
+            onAnimationComplete={() => setCompletedScene(true)}
           >
             <motion.p className="box-story__text text-story"
               variants={textVariant}
