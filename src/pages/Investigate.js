@@ -120,7 +120,7 @@ const contentVariant = {
 const Investigate = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {friendInfoContext, userNameContext} = useUserStateContext()
+  const {friendInfoContext, userInfoContext} = useUserStateContext()
   const {addUserGenderContext, removeChoicesContext} = useUserActionContext()
   const {muteContext} = useSoundStateContext()
 
@@ -160,7 +160,7 @@ const Investigate = () => {
       transition: {
         ease: "easeInOut",
         duration: 1,
-        delay: userNameContext? 0: 2
+        delay: userInfoContext.name? 0: 2
       }
     },
     exit: {
@@ -214,8 +214,7 @@ const Investigate = () => {
   }
 
   const backToSceneYourName = () => {
-    setSceneMurder(false)
-    setSceneAskCooperation(false)
+    setSceneYourGender(false)
     setSceneYourName(true)
   }
 
@@ -227,6 +226,11 @@ const Investigate = () => {
   const changeToSceneMurder = () => {
     setSceneYourGender(false)
     setSceneMurder(true)
+  }
+
+  const backToSceneYourGender = () => {
+    setSceneMurder(false)
+    setSceneYourGender(true)
   }
 
   const changeToSceneAskCooperation = () => {
@@ -308,6 +312,8 @@ const Investigate = () => {
   const buttonBackHandleClick = () => {
     if (sceneYourGender) {
       backToSceneYourName()
+    } else if (sceneMurder) {
+      backToSceneYourGender()
     } else if (sceneQuiz) {
       prevQuestion()
     } else if (sceneFormYear) {
@@ -335,7 +341,7 @@ const Investigate = () => {
   return (
     <>
       {
-        (sceneMurder || sceneAskCooperation || sceneQuiz || sceneFormYear || sceneActivityToday || sceneThankYou)
+        (sceneYourGender || sceneMurder || sceneAskCooperation || sceneQuiz || sceneFormYear || sceneActivityToday || sceneThankYou)
         && <ButtonBack onClick={buttonBackHandleClick}
             variants={buttonVariant}
             exit="exit"
@@ -458,7 +464,7 @@ const Investigate = () => {
                           animate="show"
                           exit="exit"
                           onAnimationComplete={ () => nextScene = 'sceneActivityOften' }
-                        >ขอความร่วมมือ คุณ{userNameContext}<br />ในการให้ปากคำด้วยนะครับ</motion.p>
+                        >ขอความร่วมมือ คุณ{userInfoContext.name}<br />ในการให้ปากคำด้วยนะครับ</motion.p>
                         {
                           !isWindowSmall
                           && <motion.div className="box-story__button"

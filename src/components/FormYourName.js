@@ -6,7 +6,7 @@ import InputText from './InputText'
 
 const FormYourName = ({changeScene}) => {
   // context
-  const {userNameContext} = useUserStateContext()
+  const {userInfoContext} = useUserStateContext()
   const {addUserNameContext} = useUserActionContext()
 
   // ref
@@ -36,7 +36,7 @@ const FormYourName = ({changeScene}) => {
           <div className="form-your-name__input">
             <InputText
               ref={inputRef}
-              value={userNameContext}
+              value={userInfoContext.name}
               isError={error}
               placeholder="ชื่อตัวเอง"
             />

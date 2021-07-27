@@ -259,8 +259,6 @@ const DeadBody = () => {
     }
   }
 
-  friendInfoContext.gender = 'male'
-
   return (
     <>
       <Content>
