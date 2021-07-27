@@ -43,13 +43,13 @@
       height: 31vh;
     }
 
-    &.animate {
-      height: 75vh;
+    // &.animate {
+    //   height: 75vh;
 
-      @include md-up {
-        height: 69vh;
-      }
-    }
+    //   @include md-up {
+    //     height: 69vh;
+    //   }
+    // }
   }
 
   &__photo {
