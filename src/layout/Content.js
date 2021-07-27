@@ -56,7 +56,9 @@ const Content = ({ children, bgColor, className }) => {
       const screenHeight = window.innerHeight
 
       if (isWindowSmall && screenWidth > screenHeight) {
-        setIsLandscape(true)
+        if ((screenWidth - screenHeight) > 200) {
+          setIsLandscape(true)
+        }
       } else {
         setIsLandscape(false)
       }
