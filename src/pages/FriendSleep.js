@@ -8,7 +8,7 @@ import ButtonNext from '../components/ButtonNext'
 import ModalFormFriend from '../components/ModalFormFriend'
 import ImgHumanSleepMd from '../assets/images/page/start/img_human_sleep_md.svg'
 import ImgHumanSleepSm from '../assets/images/page/start/img_human_sleep_sm.svg'
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const textVariant = {

@@ -19,7 +19,7 @@ import ImgPoliceSm from '../assets/images/page/investigate/img_police_sm.svg'
 import ImgPhotoMd from '../assets/images/page/investigate/img_photo_md.svg'
 import ImgPhotoSm from '../assets/images/page/investigate/img_photo_sm.svg'
 import {QuizData} from '../variables/QuizData'
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const policeVariant = {

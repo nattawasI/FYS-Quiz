@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {useRouteStateContext} from '../contexts/RouteContext'
-// import {AnimatePresence} from 'framer-motion'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import Start from './Start'
 import Preface from './Preface'
 import DarkRoom from './DarkRoom'
@@ -21,12 +21,39 @@ import ResultSymptoms from './ResultSymptoms'
 import Suggestion from './Suggestion'
 import End from './End'
 
-const Index = () => {
-  const {currentPageContext} = useRouteStateContext()
+// Audio
+import StartAudio from '../assets/sounds/bg-sound-start.mp3'
+import SirenAudio from '../assets/sounds/bg-sound-siren.mp3'
+import InvestigationAudio from '../assets/sounds/bg-sound-investigation.mp3'
+import SunshineAudio from '../assets/sounds/bg-sound-sunshine.mp3'
 
+const bgSoundStart = new Audio(StartAudio)
+const bgSoundSiren = new Audio(SirenAudio)
+const bgSoundInvestigation = new Audio(InvestigationAudio)
+const bgSoundSunshine = new Audio(SunshineAudio)
+
+// decrease volumn
+const volume = 0.3
+bgSoundStart.volume = volume;
+bgSoundSiren.volume = volume;
+bgSoundInvestigation.volume = volume
+bgSoundSunshine.volume = volume
+
+// set loop
+bgSoundStart.loop = true;
+bgSoundSiren.loop = true;
+bgSoundInvestigation.loop = true
+bgSoundSunshine.loop = true
+
+const Index = () => {
+  // context
+  const {currentPageContext} = useRouteStateContext()
+  const {muteContext} = useSoundStateContext()
+
+  // function
   const renderPage = () => {
     if (currentPageContext === 'Start') {
-      return <Start />
+      return <Start sounds={[bgSoundStart]} />
     } else if (currentPageContext === 'Preface') {
       return <Preface />
     } else if (currentPageContext === 'DarkRoom') {
@@ -38,11 +65,11 @@ const Index = () => {
     } else if (currentPageContext === 'WakeFriendUp') {
       return <WakeFriendUp />
     } else if (currentPageContext === 'CallPolice') {
-      return <CallPolice />
+      return <CallPolice sounds={[bgSoundStart, bgSoundSiren]} />
     } else if (currentPageContext === 'PoliceCame') {
       return <PoliceCame />
     } else if (currentPageContext === 'Siren') {
-      return <Siren />
+      return <Siren sounds={[bgSoundSiren, bgSoundInvestigation]} />
     } else if (currentPageContext === 'Investigate') {
       return <Investigate />
     } else if (currentPageContext === 'DeadBody') {
@@ -52,7 +79,7 @@ const Index = () => {
     } else if (currentPageContext === 'Evidence') {
       return <Evidence />
     } else if (currentPageContext === 'VideoDoctor') {
-      return <VideoDoctor />
+      return <VideoDoctor sounds={[bgSoundInvestigation, bgSoundSunshine]} />
     } else if (currentPageContext === 'CausesOfDiabetes') {
       return <CausesOfDiabetes />
     } else if (currentPageContext === 'Summary') {
@@ -65,6 +92,22 @@ const Index = () => {
       return <End />
     }
   }
+
+
+  // useEffect
+  useEffect(() => {
+    if (muteContext) {
+      bgSoundStart.muted = true
+      bgSoundSiren.muted = true
+      bgSoundInvestigation.muted = true
+      bgSoundSunshine.muted = true
+    } else {
+      bgSoundStart.muted = false
+      bgSoundSiren.muted = false
+      bgSoundInvestigation.muted = false
+      bgSoundSunshine.muted = false
+    }
+  }, [muteContext])
 
   return (
     <>

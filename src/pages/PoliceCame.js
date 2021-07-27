@@ -10,7 +10,7 @@ import BgDeadManMd from '../assets/images/page/police-came/bg_deadman_md.svg'
 import BgDeadManSm from '../assets/images/page/police-came/bg_deadman_sm.svg'
 import BgDeadWomenMd from '../assets/images/page/police-came/bg_deadwomen_md.svg'
 import BgDeadWomenSm from '../assets/images/page/police-came/bg_deadwomen_sm.svg'
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const bodyVariant = {

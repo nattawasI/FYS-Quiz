@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
@@ -11,7 +12,7 @@ import ImgRibbonRightSm from '../assets/images/page/start/img_ribbon_right_sm.sv
 import ImgTitle from '../assets/images/page/start/img_title.svg'
 import ImgHumanSleepMd from '../assets/images/page/start/img_human_sleep_md.svg'
 import ImgHumanSleepSm from '../assets/images/page/start/img_human_sleep_sm.svg'
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const ribbonVariant = {
@@ -27,7 +28,7 @@ const ribbonVariant = {
   }
 }
 
-const Start = () => {
+const Start = ({sounds}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {muteContext} = useSoundStateContext()
@@ -37,6 +38,7 @@ const Start = () => {
 
   const goToNextPage = () => {
     playSoundClick(muteContext)
+    sounds[0].play()
     changeCurrentPageContext('Preface')
   }
 
@@ -84,6 +86,10 @@ const Start = () => {
       </Content>
     </>
   )
+}
+
+Start.propTypes = {
+  sounds: PropTypes.array.isRequired,
 }
 
 export default Start

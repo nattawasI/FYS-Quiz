@@ -6,7 +6,7 @@ import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import MurderImage from '../assets/images/page/murder/img_murder.svg'
 import PointerIcon from '../assets/images/icon/icon_pointer.svg'
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const textVariant = {

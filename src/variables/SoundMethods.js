@@ -6,3 +6,11 @@ export const playSoundClick = (mute) => {
     soundClick.play()
   }
 }
+
+export const playSoundBGM = (currentSound, nextSound) => {
+  currentSound.pause()
+
+  setTimeout(() => {
+    nextSound.play()
+  }, 1000);
+}

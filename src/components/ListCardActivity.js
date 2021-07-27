@@ -9,7 +9,7 @@ import ImgCardFoodMd from '../assets/images/page/investigate/img_card_food_md.sv
 import ImgCardFoodSm from '../assets/images/page/investigate/img_card_food_sm.svg'
 import ImgCardExerciseMd from '../assets/images/page/investigate/img_card_exercise_md.svg'
 import ImgCardExerciseSm from '../assets/images/page/investigate/img_card_exercise_sm.svg'
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethods'
 
 const ListCardActivity = ({type, changeScene, chooseActivity}) => {
   // context

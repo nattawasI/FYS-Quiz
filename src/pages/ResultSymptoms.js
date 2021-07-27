@@ -12,7 +12,7 @@ import ImgTired from '../assets/images/page/result-symptoms/img_tired.svg'
 import ImgNumb from '../assets/images/page/result-symptoms/img_numb.svg'
 import ImgThirsty from '../assets/images/page/result-symptoms/img_thirsty.svg'
 import ImgSlowRecovery from '../assets/images/page/result-symptoms/img_slow_recovery.svg'
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethods'
 
 // motion Variant
 const titleRiskSymptomsVariant = {

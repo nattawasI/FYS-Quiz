@@ -29,20 +29,24 @@
     z-index: 1;
     background-image: url('../../assets/images/page/callpolice/icon_call_wave_in.svg');
     opacity: 0;
-    animation-name: wavein;
-    animation-duration: 0.7s;
-    animation-iteration-count:infinite;
-    animation-delay: 2.2s;
+
+    &.animate {
+      animation-name: wavein;
+      animation-duration: 0.7s;
+      animation-iteration-count:infinite;
+    }
   }
 
   &__btn--wave-out {
     z-index: 1;
     background-image: url('../../assets/images/page/callpolice/icon_call_wave_out.svg');
     opacity: 0;
-    animation-name: waveout;
-    animation-duration: 0.7s;
-    animation-iteration-count:infinite;
-    animation-delay: 2.2s;
+
+    &.animate {
+      animation-name: waveout;
+      animation-duration: 0.7s;
+      animation-iteration-count:infinite;
+    }
   }
 
   &__btn--touch {

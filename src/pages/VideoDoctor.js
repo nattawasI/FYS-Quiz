@@ -1,8 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {motion} from 'framer-motion'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
+import {playSoundBGM} from '../variables/SoundMethods'
 
 // Motion Variants
 const buttonVariant = {
@@ -18,7 +20,7 @@ const buttonVariant = {
   }
 }
 
-const VideoDoctor = () => {
+const VideoDoctor = ({sounds}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
 
@@ -27,6 +29,7 @@ const VideoDoctor = () => {
 
   // function
   const goToNextPage = () => {
+    playSoundBGM(sounds[0], sounds[1])
     changeCurrentPageContext('CausesOfDiabetes')
   }
 
@@ -54,6 +57,10 @@ const VideoDoctor = () => {
       </motion.div>
     </>
   )
+}
+
+VideoDoctor.propTypes = {
+  sounds: PropTypes.array.isRequired,
 }
 
 export default VideoDoctor

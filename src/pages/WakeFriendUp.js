@@ -13,7 +13,7 @@ import ImgHumanSleepSm from '../assets/images/page/start/img_human_sleep_sm.svg'
 import ImgArmMd from '../assets/images/page/friend-sleep/img_arm_md.svg'
 import ImgArmSm from '../assets/images/page/friend-sleep/img_arm_sm.svg'
 import ImgArmXs from '../assets/images/page/friend-sleep/img_arm_xs.svg'
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const friendVariant = {

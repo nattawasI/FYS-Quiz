@@ -14,7 +14,7 @@ import ImgRisk0Md from '../assets/images/page/summary/img_risk_0_md.svg'
 import ImgRisk100Sm from '../assets/images/page/summary/img_risk_100_sm.svg'
 import ImgRisk50Sm from '../assets/images/page/summary/img_risk_50_sm.svg'
 import ImgRisk0Sm from '../assets/images/page/summary/img_risk_0_sm.svg'
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const textVariant = {

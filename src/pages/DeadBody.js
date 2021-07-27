@@ -11,7 +11,7 @@ import DeadbodyMaleMD from '../assets/images/page/dead-body/img_deadbody_male_md
 import DeadbodyMaleSM from '../assets/images/page/dead-body/img_deadbody_male_sm.svg'
 import DeadbodyFemaleMD from '../assets/images/page/dead-body/img_deadbody_female_md.svg'
 import DeadbodyFemaleSM from '../assets/images/page/dead-body/img_deadbody_female_sm.svg'
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const textVariant = {
@@ -106,9 +106,19 @@ const DeadBody = () => {
   const completeAnimated = () => setAnimateComplete(true)
 
   const touchPanelSm = () => {
-    if (isWindowSmall && showScene3) {
-      playSoundClick(muteContext)
-      goToNextPage()
+    if (isWindowSmall) {
+      if (showScene3 && animateComplete) {
+        playSoundClick(muteContext)
+        goToNextPage()
+      } else {
+        if(showScene1 && animateComplete) {
+          playSoundClick(muteContext)
+          changeToScene2()
+        } else if (showScene2 && animateComplete) {
+          playSoundClick(muteContext)
+          changeToScene3()
+        }
+      }
     }
   }
 

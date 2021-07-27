@@ -1,5 +1,6 @@
 
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
@@ -7,7 +8,11 @@ import {useUserStateContext} from '../contexts/UserContext'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
-import {playSoundClick} from '../variables/SoundMethod'
+import PhoneAudio from '../assets/sounds/sound-phone.mp3'
+import {playSoundClick, playSoundBGM} from '../variables/SoundMethods'
+
+// Audio
+const soundPhone = new Audio(PhoneAudio)
 
 // motion Variant
 const textVariant = {
@@ -53,7 +58,7 @@ const buttonVariant = {
   }
 }
 
-const CallPolice = () => {
+const CallPolice = ({sounds}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
@@ -67,13 +72,11 @@ const CallPolice = () => {
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
-  const [canCall, setCancall] = useState(false)
+  const [calling, setCalling] = useState(false)
 
   // function
   const goToNextPage = () => {
-    if (canCall) {
-      changeCurrentPageContext('PoliceCame')
-    }
+    changeCurrentPageContext('PoliceCame')
   }
 
   const completeAnimated = () => setAnimateComplete(true)
@@ -106,9 +109,28 @@ const CallPolice = () => {
     }
   }
 
-  const onScene3Complete = () => {
-    setCancall(true)
+  const handleCalling = () => {
+    const timer = muteContext? 2000: 5000
+
+    if (!muteContext) {
+      soundPhone.play()
+    }
+
+    setCalling(true)
+    setTimeout(() => {
+      playSoundBGM(sounds[0], sounds[1])
+      goToNextPage()
+    }, timer)
   }
+
+  // useEffect
+  useEffect(() => {
+    if (muteContext) {
+      soundPhone.muted = true
+    } else {
+      soundPhone.muted = false
+    }
+  }, [muteContext])
 
   return (
     <>
@@ -176,7 +198,7 @@ const CallPolice = () => {
                   variants={textVariant}
                   initial="hidden"
                   animate="show"
-                  onAnimationComplete={onScene3Complete}
+                  onAnimationComplete={completeAnimated}
                 >
                   คุณตกใจมาก โวยวายเสียงดัง!<br />แล้วรีบหยิบมือถือ โทรแจ้งตำรวจทันที
                 </motion.p>
@@ -188,11 +210,11 @@ const CallPolice = () => {
                     initial="hidden"
                     animate="show"
                   >
-                    <button type="button" className="button-call" onClick={goToNextPage}>
-                      <span className="button-call__btn button-call__btn--wave-out"></span>
-                      <span className="button-call__btn button-call__btn--wave-in"></span>
+                    <button type="button" className="button-call" onClick={handleCalling}>
+                      <span className={`button-call__btn button-call__btn--wave-out${calling? ' animate': ''}`}></span>
+                      <span className={`button-call__btn button-call__btn--wave-in${calling? ' animate': ''}`}></span>
                       <span className="button-call__btn button-call__btn--body"></span>
-                      <span className="button-call__btn button-call__btn--touch"></span>
+                      <span className={`button-call__btn button-call__btn--touch${calling? ' animate': ''}`}></span>
                     </button>
                   </motion.div>
             }
@@ -201,6 +223,10 @@ const CallPolice = () => {
       </Content>
     </>
   )
+}
+
+CallPolice.propTypes = {
+  sounds: PropTypes.array.isRequired,
 }
 
 export default CallPolice

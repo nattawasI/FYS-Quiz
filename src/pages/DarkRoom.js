@@ -8,7 +8,7 @@ import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 import bgSceneMD from '../assets/images/page/darkroom/bg_scene_01_md.svg'
 import bgSceneSM from '../assets/images/page/darkroom/bg_scene_01_sm.svg'
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const textVariantMD = {

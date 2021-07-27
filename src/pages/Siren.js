@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
+import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick, playSoundBGM} from '../variables/SoundMethods'
 
 // Motion Variants
 const textVariant = {
@@ -81,7 +82,7 @@ const buttonVariant = {
   }
 }
 
-const Siren = () => {
+const Siren = ({sounds}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {muteContext} = useSoundStateContext()
@@ -94,6 +95,7 @@ const Siren = () => {
 
   // function
   const goToNextPage = () => {
+    playSoundBGM(sounds[0], sounds[1])
     changeCurrentPageContext('Investigate')
   }
 
@@ -150,6 +152,10 @@ const Siren = () => {
       </Content>
     </>
   )
+}
+
+Siren.propTypes = {
+  sounds: PropTypes.array.isRequired,
 }
 
 export default Siren

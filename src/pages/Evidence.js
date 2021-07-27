@@ -11,7 +11,7 @@ import Candy from '../assets/images/page/evidence/img_candy.png'
 import Whiskey from '../assets/images/page/evidence/img_whiskey.png'
 import BubbleTea from '../assets/images/page/evidence/img_bubbletea.png'
 import Hamburger from '../assets/images/page/evidence/img_hamburger.png'
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const firstTextVariant = {

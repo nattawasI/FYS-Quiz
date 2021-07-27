@@ -16,7 +16,7 @@ import IconPointer from '../assets/images/page/turn-on-light/ico_pointer_01.svg'
 import NormalHand from '../assets/images/page/turn-on-light/img_hand_01.svg';
 import PointerHandMD from '../assets/images/page/turn-on-light/img_hand_02_md.svg';
 import PointerHandSM from '../assets/images/page/turn-on-light/img_hand_02_sm.svg';
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethods'
 import SwitchAudio from '../assets/sounds/sound-switch.mp3'
 
 const soundSwitch = new Audio(SwitchAudio)

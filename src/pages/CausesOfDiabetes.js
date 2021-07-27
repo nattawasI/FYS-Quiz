@@ -12,7 +12,7 @@ import InputText from '../components/InputText'
 import ImgHabit from '../assets/images/page/causes-of-diabetes/img-habit.svg'
 import ImgDna from '../assets/images/page/causes-of-diabetes/img-dna.svg'
 import ImgHabitDna from '../assets/images/page/causes-of-diabetes/img-habit-dna.svg'
-import {playSoundClick} from '../variables/SoundMethod'
+import {playSoundClick} from '../variables/SoundMethods'
 
 // motion Variant
 const sceneVariant = {
