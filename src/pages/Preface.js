@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
+import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 import IconFingerprint from '../assets/images/icon/icon_fingerprint.svg'
@@ -60,7 +59,6 @@ const buttonVariant = {
 const Preface = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {playClickSoundContext, playHorrowSoundContext} = useSoundActionContext()
 
   // utility
   const isWindowSmall = UseWindowSmall()
@@ -76,8 +74,6 @@ const Preface = () => {
   }
 
   const goToNextPage = () => {
-    playClickSoundContext()
-    playHorrowSoundContext()
     changeCurrentPageContext('DarkRoom')
   }
 

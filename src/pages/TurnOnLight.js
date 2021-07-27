@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
 import {AnimatePresence, motion, useAnimation } from 'framer-motion'
 import {motionVariables} from '../variables/MotionVariant'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
+import UseWindowSmall from '../hooks/useWindowSmall'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundActionContext} from '../contexts/SoundContext'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 import BGShadeMD from '../assets/images/page/turn-on-light/bg_shade_md.svg';
@@ -177,7 +176,6 @@ const SwitchPlateVariant = {
 const TurnOnLight = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {playClickSoundContext, playSwitchSoundContext} = useSoundActionContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
@@ -210,10 +208,6 @@ const TurnOnLight = () => {
     if (!openSwitch && switchBreaker) {
       setOpenSwitch(true)
       switchControl.start('show')
-
-      setTimeout(() => {
-        playSwitchSoundContext()
-      }, 1800);
     }
   }
 
@@ -232,7 +226,6 @@ const TurnOnLight = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
-      playClickSoundContext()
       goToNextPage()
     }
   }

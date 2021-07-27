@@ -1,9 +1,8 @@
 
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
+import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 import ImgToilet from '../assets/images/page/result-symptoms/img_toilet.svg'
@@ -79,7 +78,6 @@ const buttonVariant = {
 const ResultSymptoms = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {playClickSoundContext} = useSoundActionContext()
 
   // utility
   const isWindowSmall = UseWindowSmall()
@@ -94,7 +92,6 @@ const ResultSymptoms = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
-      playClickSoundContext()
       goToNextPage()
     }
   }

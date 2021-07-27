@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext} from '../contexts/UserContext'
-import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import {motionVariables} from '../variables/MotionVariant'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
+import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 import DeadbodyMaleMD from '../assets/images/page/dead-body/img_deadbody_male_md.svg'
@@ -68,7 +67,6 @@ const bodyVariant = {
 const DeadBody = () => {
   // route context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {playClickSoundContext} = useSoundActionContext()
 
   // context
   const {friendInfoContext} = useUserStateContext()
@@ -94,7 +92,6 @@ const DeadBody = () => {
       setShowScene1(false)
       setShowScene2(true)
       setAnimateComplete(false)
-      playClickSoundContext()
     }
   }
 
@@ -103,7 +100,6 @@ const DeadBody = () => {
       setShowScene2(false)
       setShowScene3(true)
       setAnimateComplete(false)
-      playClickSoundContext()
     }
   }
 
@@ -111,7 +107,6 @@ const DeadBody = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && showScene3) {
-      playClickSoundContext()
       goToNextPage()
     }
   }

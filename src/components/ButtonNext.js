@@ -1,17 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {useSoundActionContext} from '../contexts/SoundContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
+import {playClick} from '../variables/SoundMethod'
 
 const ButtonNext = ({dark, onClick}) => {
   // context
-  const {playClickSoundContext} = useSoundActionContext()
+  const {muteContext} = useSoundStateContext()
 
   const classStyle = () => {
     return dark ? 'button-next button-next--dark' : 'button-next'
   }
 
   const handleClick = (e) => {
-    playClickSoundContext()
+    playClick(muteContext)
     onClick(e)
   }
 

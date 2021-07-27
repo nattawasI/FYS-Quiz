@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import {useUserStateContext} from '../contexts/UserContext'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
-import UseCurrentDevice from '../utilityhooks/useCurrentDevice'
+import UseWindowSmall from '../hooks/useWindowSmall'
+import UseCurrentDevice from '../hooks/useCurrentDevice'
 import Content from '../layout/Content'
 import ButtonBack from '../components/ButtonBack'
 import ButtonNext from '../components/ButtonNext'
@@ -80,7 +79,6 @@ const WakeFriendUp = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
-  const {playClickSoundContext} = useSoundActionContext()
 
   // utility
   const isWindowSmall = UseWindowSmall()
@@ -127,7 +125,6 @@ const WakeFriendUp = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
-      playClickSoundContext()
       goToNextPage()
     }
   }

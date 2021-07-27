@@ -5,13 +5,15 @@ import IconSound from '../assets/images/icon/icon_sound.svg'
 import IconSoundBlack from '../assets/images/icon/icon_sound_black.svg'
 import IconMute from '../assets/images/icon/icon_mute.svg'
 import IconMuteBlack from '../assets/images/icon/icon_mute_black.svg'
+import {playClick} from '../variables/SoundMethod'
 
 const ButtonSound = ({dark}) => {
   // context
-  const {muteContext} = useSoundStateContext()
   const {toggleMuteSoundContext} = useSoundActionContext()
+  const {muteContext} = useSoundStateContext()
 
   const handleClick = () => {
+    playClick(muteContext)
     toggleMuteSoundContext()
   }
 

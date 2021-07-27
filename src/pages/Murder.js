@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
+import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import MurderImage from '../assets/images/page/murder/img_murder.svg'
 import PointerIcon from '../assets/images/icon/icon_pointer.svg'
@@ -43,7 +42,6 @@ const evidenceVariant = {
 const Investigate = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {playClickSoundContext} = useSoundActionContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
@@ -54,7 +52,6 @@ const Investigate = () => {
   // function
   const goToNextPage = () => {
     if (animateComplete) {
-      playClickSoundContext()
       changeCurrentPageContext('Evidence')
     }
   }

@@ -1,8 +1,7 @@
 import React from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
+import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ImgRibbonLeftMd from '../assets/images/page/start/img_ribbon_left_md.svg'
 import ImgRibbonRightMd from '../assets/images/page/start/img_ribbon_right_md.svg'
@@ -29,13 +28,11 @@ const ribbonVariant = {
 const Start = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {playStartSoundContext} = useSoundActionContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
 
   const goToNextPage = () => {
-    playStartSoundContext()
     changeCurrentPageContext('Preface')
   }
 

@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useUserStateContext} from '../contexts/UserContext'
-import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
+import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 import ModalFormFriend from '../components/ModalFormFriend'
@@ -57,7 +56,6 @@ const buttonVariant = {
 const FriendSleep = () => {
   // context
   const {friendInfoContext} = useUserStateContext()
-  const {playClickSoundContext} = useSoundActionContext()
 
   // utility
   const isWindowSmall = UseWindowSmall()
@@ -68,7 +66,6 @@ const FriendSleep = () => {
 
   // function
   const openModalFormFriend = () => {
-    playClickSoundContext()
     setShowModal(true)
   }
 

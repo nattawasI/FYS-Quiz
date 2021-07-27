@@ -3,7 +3,7 @@ import {useRouteStateContext} from '../contexts/RouteContext'
 import {containerVariant} from '../variables/MotionVariant'
 import {motion} from 'framer-motion'
 import PropTypes from 'prop-types'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
+import UseWindowSmall from '../hooks/useWindowSmall'
 import ButtonSound from '../components/ButtonSound'
 import IconRotate from '../assets/images/icon/icon_rotate.svg'
 
@@ -61,9 +61,7 @@ const Content = ({ children, bgColor, className }) => {
 
   return (
     <>
-      {
-        currentPageContext !== 'Preface' && <ButtonSound dark={buttonSoundDark} />
-      }
+      <ButtonSound dark={buttonSoundDark} />
       <motion.div
         className={classStyle()}
         variants={containerVariant}

@@ -1,7 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {motion} from 'framer-motion'
-import {useSoundActionContext} from '../contexts/SoundContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
+import ClickAudio from '../assets/sounds/sound-click.mp3'
+
+const soundClick = new Audio(ClickAudio)
 
 const buttonVariant = {
   hidden: {
@@ -18,14 +21,20 @@ const buttonVariant = {
 
 const ButtonBack = ({dark, onClick}) => {
   // context
-  const {playClickSoundContext} = useSoundActionContext()
+  const {muteContext} = useSoundStateContext()
 
   const classStyle = () => {
     return dark ? 'button-back button-back--dark' : 'button-back'
   }
 
+  const playClickSound = () => {
+    if (!muteContext) {
+      soundClick.play()
+    }
+  }
+
   const handleClick = () => {
-    playClickSoundContext()
+    playClickSound()
     onClick()
   }
 

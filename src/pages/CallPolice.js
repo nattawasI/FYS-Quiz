@@ -1,10 +1,10 @@
 
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundStateContext, useSoundActionContext} from '../contexts/SoundContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {useUserStateContext} from '../contexts/UserContext'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
+import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 
@@ -56,7 +56,6 @@ const CallPolice = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {muteContext} = useSoundStateContext()
-  const {playClickSoundContext, playDailingSoundContext, playPhoneCallSoundContext, playSirenSoundContext} = useSoundActionContext()
   const {friendInfoContext} = useUserStateContext()
 
   // utility
@@ -73,14 +72,10 @@ const CallPolice = () => {
   // function
   const goToNextPage = () => {
     if (canCall) {
-      playClickSoundContext()
-      playPhoneCallSoundContext()
-
       if (muteContext) {
         changeCurrentPageContext('PoliceCame')
       } else {
         setTimeout(() => {
-          playSirenSoundContext()
           changeCurrentPageContext('PoliceCame')
         }, 2000)
       }
@@ -106,10 +101,8 @@ const CallPolice = () => {
   const skipScene = () => {
     if (isWindowSmall) {
       if (nextScene === 'scene2') {
-        playClickSoundContext()
         changeToScene2()
       } else if (nextScene === 'scene3') {
-        playClickSoundContext()
         setShowScene1(false)
         changeToScene3()
       }
@@ -122,8 +115,6 @@ const CallPolice = () => {
   }
 
   const onScene3Complete = () => {
-    playDailingSoundContext()
-
     setTimeout(() => {
       setCancall(true)
     }, 1000);

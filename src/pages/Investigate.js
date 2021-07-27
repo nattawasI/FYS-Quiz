@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext, useUserActionContext} from '../contexts/UserContext'
-import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence, useAnimation} from 'framer-motion'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
-import UseCurrentDevice from '../utilityhooks/useCurrentDevice'
+import UseWindowSmall from '../hooks/useWindowSmall'
+import UseCurrentDevice from '../hooks/useCurrentDevice'
 import Content from '../layout/Content'
 import Button from '../components/Button'
 import ButtonBack from '../components/ButtonBack'
@@ -121,7 +120,6 @@ const Investigate = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext, userNameContext} = useUserStateContext()
   const {addUserGenderContext, removeChoicesContext} = useUserActionContext()
-  const {playClickSoundContext} = useSoundActionContext()
 
   // utility hook
   const isWindowSmall = UseWindowSmall()
@@ -131,8 +129,6 @@ const Investigate = () => {
   const boxQuizControl = useAnimation()
 
   // state
-  // const [skipAnimate, setSkipAnimate] = useState(false)
-  // const [animateComplete, setAnimateComplete] = useState(false)
   const [animateTable, setAnimateTable] = useState(false)
   const [fadePhoto, setFadePhoto] = useState(false)
   const [hidePhoto, setHidePhoto] = useState(false)
@@ -174,7 +170,6 @@ const Investigate = () => {
 
   // function
   const goToNextPage = () => {
-    playClickSoundContext()
     changeCurrentPageContext('DeadBody')
   }
 
@@ -196,22 +191,16 @@ const Investigate = () => {
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (nextScene === 'sceneMurder') {
-        playClickSoundContext()
         changeToSceneMurder()
       } else if (nextScene === 'sceneAskCooperation') {
-        playClickSoundContext()
         changeToSceneAskCooperation()
       } else if (nextScene === 'sceneActivityOften') {
-        playClickSoundContext()
         changeToSceneActivityOften()
       } else if (nextScene === 'sceneThankYou') {
-        playClickSoundContext()
         changeToSceneThankYou()
       } else if (nextScene === 'sceneCause') {
-        playClickSoundContext()
         changeToSceneCause()
       } else if (nextScene === 'nextPage') {
-        playClickSoundContext()
         goToNextPage()
       }
     }

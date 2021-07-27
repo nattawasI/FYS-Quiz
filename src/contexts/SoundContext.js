@@ -1,7 +1,6 @@
 import React, {useState, createContext, useContext} from 'react'
 
 // Effect sound
-import ClickAudio from '../assets/sounds/sound-click.mp3'
 import SwitchAudio from '../assets/sounds/sound-switch.mp3'
 import DialingPhoneAudio from '../assets/sounds/sound-dialing-phone.mp3'
 import PhoneCallAudio from '../assets/sounds/sound-phone-call.mp3'
@@ -25,15 +24,7 @@ export const useSoundActionContext = () => {
   return useContext(SoundActionContext)
 }
 
-// Effect Sounds
-const soundClick = new Audio(ClickAudio)
-const soundSwitch = new Audio(SwitchAudio)
-const soundDialingPhone = new Audio(DialingPhoneAudio)
-const soundPhoneCall = new Audio(PhoneCallAudio)
-const soundCard = new Audio(CardAudio)
-
 // Bg Sounds
-const bgmDuration = 1000
 const soundStart = new Audio(StartAudio)
 const soundHorrow = new Audio(HorrowAudio)
 const soundSiren = new Audio(SirenAudio)
@@ -53,8 +44,6 @@ const SoundProvider = ({ children }) => {
 
   // action
   const toggleMuteSoundContext = () => {
-    playClickSoundContext()
-
     if (muteContext) {
       soundStart.muted = false
       soundHorrow.muted = false
@@ -72,116 +61,12 @@ const SoundProvider = ({ children }) => {
     }
   }
 
-  // Effect Sound
-  const playClickSoundContext = () => {
-    if (!muteContext) {
-      soundClick.play()
-    }
-  }
-
-  const playSwitchSoundContext = () => {
-    if (!muteContext) {
-      soundSwitch.play()
-    }
-  }
-
-  const playDailingSoundContext = () => {
-    if (!muteContext) {
-      soundDialingPhone.play()
-
-      setTimeout(() => {
-        soundDialingPhone.pause()
-      }, 550);
-    }
-  }
-
-  const playPhoneCallSoundContext = () => {
-    if (!muteContext) {
-      soundPhoneCall.play()
-
-      setTimeout(() => {
-        soundPhoneCall.pause()
-      }, 2000)
-    }
-  }
-
-  const playCardSoundContext = () => {
-    if (!muteContext) {
-      soundCard.play()
-    }
-  }
-
-  // BG Sound
-  const playStartSoundContext = () => {
-    if (!muteContext) {
-      soundClick.play()
-
-      setTimeout(() => {
-        soundStart.play()
-      }, bgmDuration);
-    }
-  }
-
-  const playHorrowSoundContext = () => {
-    if (!muteContext) {
-      soundStart.pause()
-
-      setTimeout(() => {
-        soundHorrow.play()
-      }, bgmDuration);
-    }
-  }
-
-  const playSirenSoundContext = () => {
-    if (!muteContext) {
-      soundHorrow.pause()
-
-      setTimeout(() => {
-        soundSiren.play()
-      }, bgmDuration);
-    }
-  }
-
-  const playInvestigationSoundContext = () => {
-    if (!muteContext) {
-      soundSiren.pause()
-
-      setTimeout(() => {
-        soundInvestigation.play()
-      }, bgmDuration);
-    }
-  }
-
-  const playSunshineSoundContext = () => {
-    if (!muteContext) {
-      soundInvestigation.pause()
-
-      setTimeout(() => {
-        soundSunshine.play()
-      }, bgmDuration);
-    }
-  }
-
   const soundStateStore = {
     muteContext,
   }
 
   const soundActionStore = {
-    toggleMuteSoundContext,
-
-    // Effect Sound
-    playClickSoundContext,
-    playSwitchSoundContext,
-    playDailingSoundContext,
-    playPhoneCallSoundContext,
-    playCardSoundContext,
-
-    // BG Sound
-    playStartSoundContext,
-    playHorrowSoundContext,
-    playSirenSoundContext,
-    playInvestigationSoundContext,
-    playSunshineSoundContext
+    toggleMuteSoundContext
   }
 
   return (

@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {useSoundActionContext} from '../contexts/SoundContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
+import {playClick} from '../variables/SoundMethod'
 
 const Button = (props) => {
   // context
-  const {playClickSoundContext} = useSoundActionContext()
+  const {muteContext} = useSoundStateContext()
 
   const classStyle = () => {
     if (props.color) {
@@ -15,7 +16,7 @@ const Button = (props) => {
   }
 
   const handleClick = () => {
-    playClickSoundContext()
+    playClick(muteContext)
     props.onClick()
   }
 

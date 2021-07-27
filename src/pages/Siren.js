@@ -1,14 +1,9 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
-import UseWindowSmall from '../utilityhooks/useWindowSmall'
+import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
-// import BgSirenMd from '../assets/images/page/siren/bg_siren_md.svg'
-// import BgSirenMdOn from '../assets/images/page/siren/bg_siren_md_on.svg'
-// import BgSirenSm from '../assets/images/page/siren/bg_siren_sm.svg'
-// import BgSirenSmOn from '../assets/images/page/siren/bg_siren_sm_on.svg'
 
 // Motion Variants
 const textVariant = {
@@ -87,7 +82,6 @@ const buttonVariant = {
 const Siren = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {playClickSoundContext, playInvestigationSoundContext} = useSoundActionContext()
 
   // utilityhook
   const isWindowSmall = UseWindowSmall()
@@ -97,13 +91,11 @@ const Siren = () => {
 
   // function
   const goToNextPage = () => {
-    playInvestigationSoundContext()
     changeCurrentPageContext('Investigate')
   }
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
-      playClickSoundContext()
       goToNextPage()
     }
   }

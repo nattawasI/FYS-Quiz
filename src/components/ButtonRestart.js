@@ -1,14 +1,23 @@
 // กลับสู่หน้าเริ่มต้น
 import React from 'react'
 import PropTypes from 'prop-types'
-import {useSoundActionContext} from '../contexts/SoundContext'
+import {useSoundStateContext} from '../contexts/SoundContext'
+import ClickAudio from '../assets/sounds/sound-click.mp3'
+
+const soundClick = new Audio(ClickAudio)
 
 const ButtonRestart = ({onClick}) => {
   // context
-  const {playClickSoundContext} = useSoundActionContext()
+  const {muteContext} = useSoundStateContext()
+
+  const playClickSound = () => {
+    if (!muteContext) {
+      soundClick.play()
+    }
+  }
 
   const handleClick = () => {
-    playClickSoundContext()
+    playClickSound()
     onClick()
   }
 
