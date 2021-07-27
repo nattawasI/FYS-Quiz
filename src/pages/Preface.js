@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useSoundStateContext} from '../contexts/SoundContext'
+import {motionVariables} from '../variables/MotionVariant'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -11,20 +12,20 @@ import {playSoundClick} from '../variables/SoundMethods'
 // Motion Variants
 const sceneVariant = {
   hidden: {
-    opacity: 0,
+    opacity: motionVariables.opacity.opacityZero,
   },
   show: {
-    opacity: 1,
+    opacity: motionVariables.opacity.opacityOne,
     transition: {
       ease: 'easeInOut',
-      duration: 1,
+      duration: motionVariables.speed.speedOne,
     }
   },
   exit: {
-    opacity: 0,
+    opacity: motionVariables.opacity.opacityZero,
     transition: {
       ease: 'easeInOut',
-      duration: 1
+      duration: motionVariables.speed.speedOne
     }
   }
 }
@@ -32,28 +33,28 @@ const sceneVariant = {
 const textVariant = {
   hidden: {
     y: 70,
-    opacity: 0,
+    opacity: motionVariables.opacity.opacityZero,
   },
   show: {
     y: 0,
-    opacity: 1,
+    opacity: motionVariables.opacity.opacityOne,
     transition: {
       ease: 'easeInOut',
-      duration: 1
+      duration: motionVariables.speed.speedOne
     }
   }
 }
 
 const buttonVariant = {
   hidden: {
-    opacity: 0,
+    opacity: motionVariables.opacity.opacityZero,
   },
   show: {
-    opacity: 1,
+    opacity: motionVariables.opacity.opacityOne,
     transition: {
       ease: 'easeInOut',
       duration: 0.7,
-      delay: 1
+      delay: motionVariables.speed.speedOne
     }
   }
 }
@@ -69,6 +70,8 @@ const Preface = () => {
   // state
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
+  const [completedScene, setCompletedScene] = useState(false)
+  const [fingerPrintScene, setFingerPrintScene] = useState(false)
 
   // function
   const changeToScene2 = () => {
@@ -80,10 +83,16 @@ const Preface = () => {
     changeCurrentPageContext('DarkRoom')
   }
 
+  const handleCompletedScene = () => setCompletedScene(true)
+
   const handleTouchFingerPrint = () => {
-    playSoundClick(muteContext)
-    goToNextPage()
+    if (fingerPrintScene) {
+      playSoundClick(muteContext)
+      goToNextPage()
+    }
   }
+
+  console.log(completedScene);
 
   return (
     <>
@@ -109,15 +118,17 @@ const Preface = () => {
                         variants={buttonVariant}
                         initial="hidden"
                         animate="show"
+                        onAnimationComplete={handleCompletedScene}
                       >
-                        <ButtonNext dark onClick={changeToScene2} />
+                        <ButtonNext dark onClick={changeToScene2} animateCompleted={completedScene} />
                       </motion.div>
                     : <motion.div className="box-story__button"
                         variants={buttonVariant}
                         initial="hidden"
                         animate="show"
+                        onAnimationComplete={handleCompletedScene}
                       >
-                        <ButtonNext dark onClick={goToNextPage} />
+                        <ButtonNext dark onClick={goToNextPage} animateCompleted={completedScene}/>
                       </motion.div>
                   }
                 </motion.div>
@@ -131,6 +142,7 @@ const Preface = () => {
                     animate="show"
                     exit="exit"
                     onClick={handleTouchFingerPrint}
+                    onAnimationComplete={ () => setFingerPrintScene(true) }
                   >
                     <div className="box-howto">
                       <i className="box-howto__icon">

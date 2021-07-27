@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {useSoundStateContext} from '../contexts/SoundContext'
 import {playSoundClick} from '../variables/SoundMethods'
 
-const ButtonNext = ({dark, onClick}) => {
+const ButtonNext = ({dark, onClick, animateCompleted}) => {
   // context
   const {muteContext} = useSoundStateContext()
 
@@ -13,7 +13,10 @@ const ButtonNext = ({dark, onClick}) => {
 
   const handleClick = (e) => {
     playSoundClick(muteContext)
-    onClick(e)
+
+    if (animateCompleted) {
+      onClick(e)
+    }
   }
 
   return (
@@ -26,11 +29,13 @@ const ButtonNext = ({dark, onClick}) => {
 ButtonNext.propTypes = {
   dark: PropTypes.bool,
   onClick: PropTypes.func,
+  animateCompleted: PropTypes.bool,
 }
 
 ButtonNext.defaultProps = {
   dark: false,
   onClick: () => {},
+  animateCompleted: false,
 }
 
 export default ButtonNext

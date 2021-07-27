@@ -13,11 +13,15 @@ import {playSoundClick} from '../variables/SoundMethods'
 // Motion Variants
 const textVariantMD = {
   hidden: {
-    opacity: 0,
+    opacity: motionVariables.opacity.opacityZero,
   },
   show: {
     y: ["0%", "0%", "-100%"],
-    opacity: [0, 1, 1],
+    opacity: [
+      motionVariables.opacity.opacityZero,
+      motionVariables.opacity.opacityOne,
+      motionVariables.opacity.opacityOne,
+    ],
     transition: {
       duration: motionVariables.speed.speedTwo,
       ease: "easeInOut",
@@ -30,11 +34,16 @@ const textVariantMD = {
 const textVariantSM = {
   hidden: {
     y: "5%",
-    opacity: 0,
+    opacity: motionVariables.opacity.opacityZero,
   },
   show: {
     y: ["5%", "0%", "0%", "-200%"],
-    opacity: [0, 1, 1, 1],
+    opacity: [
+      motionVariables.opacity.opacityZero,
+      motionVariables.opacity.opacityOne,
+      motionVariables.opacity.opacityOne,
+      motionVariables.opacity.opacityOne,
+    ],
     transition: {
       duration: motionVariables.speed.speedTwo,
       ease: "easeInOut",
@@ -49,11 +58,11 @@ const backgroundVariantMD = {
     originY: 1,
     x: "-50%",
     scale: 0,
-    opacity: 0,
+    opacity: motionVariables.opacity.opacityZero,
   },
   show: {
     scale: 1,
-    opacity: 1,
+    opacity: motionVariables.opacity.opacityOne,
     transition: {
       duration: motionVariables.speed.speedOne,
       delay: motionVariables.speed.speedTwo,
@@ -66,11 +75,16 @@ const backgroundVariantSM = {
   hidden: {
     x: "-50%",
     y: 190,
-    opacity: 0,
+    opacity: motionVariables.opacity.opacityZero,
   },
   show: {
     y: [190, 190, 190, 0],
-    opacity: [0, 0, 0, 1],
+    opacity: [
+      motionVariables.opacity.opacityZero,
+      motionVariables.opacity.opacityZero,
+      motionVariables.opacity.opacityZero,
+      motionVariables.opacity.opacityOne,
+    ],
     transition: {
       duration: motionVariables.speed.speedThree,
       ease: "easeInOut",
@@ -81,10 +95,10 @@ const backgroundVariantSM = {
 
 const buttonVariant = {
   hidden: {
-    opacity: 0
+    opacity: motionVariables.opacity.opacityZero
   },
   show: {
-    opacity: 1,
+    opacity: motionVariables.opacity.opacityOne,
     transition: {
       duration: motionVariables.speed.speedOne,
       delay: motionVariables.speed.speedThree
@@ -142,7 +156,6 @@ const DarkRoom = () => {
           variants={backgroundVariantMD}
           initial="hidden"
           animate="show"
-          onAnimationComplete={completedAnimate}
         >
           <img className="dark-room__image dark-room__image--md" src={ bgSceneMD } alt="dark room background" />
         </motion.div>
@@ -172,8 +185,9 @@ const DarkRoom = () => {
                   variants={buttonVariant}
                   initial="hidden"
                   animate="show"
+                  onAnimationComplete={completedAnimate}
                 >
-                  <ButtonNext onClick={goToNextPage} />
+                  <ButtonNext onClick={goToNextPage} animateCompleted={animateComplete} />
                 </motion.div>
               }
             </motion.div>

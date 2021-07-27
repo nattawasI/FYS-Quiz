@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useSoundStateContext} from '../contexts/SoundContext'
+import {motionVariables} from '../variables/MotionVariant'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -17,13 +18,13 @@ import {playSoundClick} from '../variables/SoundMethods'
 // Motion Variants
 const ribbonVariant = {
   hidden: {
-    opacity: 0,
+    opacity: motionVariables.opacity.opacityZero,
   },
   show: {
-    opacity: 1,
+    opacity: motionVariables.opacity.opacityOne,
     transition: {
       ease: 'easeInOut',
-      duration: 1,
+      duration: motionVariables.speed.speedOne,
     }
   }
 }
