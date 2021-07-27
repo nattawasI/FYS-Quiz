@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {motion} from 'framer-motion'
@@ -25,6 +25,7 @@ const VideoDoctor = ({soundPlay}) => {
 
   // state
   // const [showButton, setShowButton] = useState(true)
+  const [completedScene, setCompletedScene] = useState(false)
 
   // function
   const goToNextPage = () => {
@@ -51,8 +52,9 @@ const VideoDoctor = ({soundPlay}) => {
         variants={buttonVariant}
         initial="hidden"
         animate="show"
+        onAnimationComplete={() => setCompletedScene(true)}
       >
-        <ButtonNext onClick={goToNextPage} />
+        <ButtonNext onClick={goToNextPage} animateCompleted={completedScene} />
       </motion.div>
     </>
   )

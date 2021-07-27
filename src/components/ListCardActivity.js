@@ -36,31 +36,43 @@ const ListCardActivity = ({type, changeScene, chooseActivity}) => {
     <ul className="list-card-activity">
       <li className="list-card-activity__item list-card-activity__item--game">
         <button type="button" className="list-card-activity__button" onClick={() => handleClick('game')}>
-          <img
+          <object
             className="list-card-activity__img list-card-activity__img--game"
-            src={isWindowSmall ? ImgCardGameSm: ImgCardGameMd}
-            alt="ชวนเล่นเกม"
-          />
+            data={isWindowSmall ? ImgCardGameSm: ImgCardGameMd}
+            type="image/svg+xml"
+            aria-labelledby="activity-object-alt-01"
+          >
+            <span id="activity-object-alt-01">ชวนเล่นเกม</span>
+            {/* <img src="yourfallback.jpg" /> */}
+          </object>
           <span className="list-card-activity__text list-card-activity__text--game md-show">ชวนเล่นเกม</span>
         </button>
       </li>
       <li className="list-card-activity__item list-card-activity__item--food">
         <button type="button" className="list-card-activity__button" onClick={() => handleClick('food')}>
-          <img
+          <object
             className="list-card-activity__img list-card-activity__img--food"
-            src={isWindowSmall ? ImgCardFoodSm: ImgCardFoodMd}
-            alt="ชวนกิน"
-          />
+            data={isWindowSmall ? ImgCardFoodSm: ImgCardFoodMd}
+            type="image/svg+xml"
+            aria-labelledby="activity-object-alt-02"
+          >
+            <span id="activity-object-alt-02">ชวนกิน</span>
+            {/* <img src="yourfallback.jpg" /> */}
+          </object>
           <span className="list-card-activity__text list-card-activity__text--food md-show">ชวนกิน</span>
         </button>
       </li>
       <li className="list-card-activity__item list-card-activity__item--exercise">
         <button type="button" className="list-card-activity__button" onClick={() => handleClick('exercise')}>
-          <img
+          <object
             className="list-card-activity__img list-card-activity__img--exercise"
-            src={isWindowSmall ? ImgCardExerciseSm: ImgCardExerciseMd}
-            alt="ชวนออกกำลังกาย"
-          />
+            data={isWindowSmall ? ImgCardExerciseSm: ImgCardExerciseMd}
+            type="image/svg+xml"
+            aria-labelledby="activity-object-alt-03"
+          >
+            <span id="activity-object-alt-03">ชวนออกกำลังกาย</span>
+            {/* <img src="yourfallback.jpg" /> */}
+          </object>
           <span className="list-card-activity__text list-card-activity__text--exercise md-show">ชวนออกกำลังกาย</span>
         </button>
       </li>

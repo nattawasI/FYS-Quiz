@@ -65,6 +65,7 @@ const FriendSleep = () => {
 
   // state
   const [animateComplete, setAnimateComplete] = useState(false)
+  const [completedScene, setCompletedScene] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
   // function
@@ -108,8 +109,9 @@ const FriendSleep = () => {
                   variants={buttonVariant}
                   initial={friendInfoContext.name? false: "hidden"}
                   animate="show"
+                  onAnimationComplete={ () => setCompletedScene(true) }
                 >
-                  <ButtonNext onClick={openModalFormFriend} />
+                  <ButtonNext onClick={openModalFormFriend} animateCompleted={completedScene} />
                 </motion.div>
             }
           </div>

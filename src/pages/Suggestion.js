@@ -65,6 +65,9 @@ const Suggestion = () => {
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
+  const [completedScene1, setCompletedScene1] = useState(false)
+  const [completedScene2, setCompletedScene2] = useState(false)
+  const [completedScene3, setCompletedScene3] = useState(false)
 
   // function
   const goToNextPage = () => {
@@ -74,7 +77,7 @@ const Suggestion = () => {
   const completeAnimated = () => setAnimateComplete(true)
 
   const changeToScene2 = () => {
-    if (animateComplete) {
+    if (completedScene1) {
       setShowScene1(false)
       setShowScene2(true)
       setAnimateComplete(false)
@@ -82,7 +85,7 @@ const Suggestion = () => {
   }
 
   const changeToScene3 = () => {
-    if (animateComplete) {
+    if (completedScene2) {
       setShowScene2(false)
       setShowScene3(true)
       setAnimateComplete(false)
@@ -91,14 +94,14 @@ const Suggestion = () => {
 
   const skipScene = () => {
     if (isWindowSmall) {
-      if (showScene3 && animateComplete) {
+      if (showScene3 && completedScene3) {
         playSoundClick(muteContext)
         goToNextPage()
       } else {
-        if(showScene1 && animateComplete) {
+        if(showScene1 && completedScene1) {
           playSoundClick(muteContext)
           changeToScene2()
-        } else if (showScene2 && animateComplete) {
+        } else if (showScene2 && completedScene2) {
           playSoundClick(muteContext)
           changeToScene3()
         }
@@ -120,7 +123,7 @@ const Suggestion = () => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  onAnimationComplete={completeAnimated}
+                  onAnimationComplete={() => setCompletedScene1(true)}
                 >หากพบอาการเหล่านี้<br />ให้รีบไปพบแพทย์เพื่อเช็กทันที</motion.p>
               }
               {
@@ -131,8 +134,9 @@ const Suggestion = () => {
                     initial="hidden"
                     animate="show"
                     exit="exit"
+                    onAnimationComplete={() => setCompletedScene1(true)}
                   >
-                    <ButtonNext onClick={changeToScene2} />
+                    <ButtonNext onClick={changeToScene2} animateCompleted={completedScene1}/>
                   </motion.div>
               }
             </AnimatePresence>
@@ -147,7 +151,7 @@ const Suggestion = () => {
                   initial="hidden"
                   animate="show"
                   exit="exit"
-                  onAnimationComplete={completeAnimated}
+                  onAnimationComplete={() => setCompletedScene2(true)}
                 >แต่ถ้าไม่มีอาการ<br /><span className="text-story--bigger">คุณยังโชคดี</span></motion.p>
               }
               {
@@ -158,8 +162,9 @@ const Suggestion = () => {
                     initial="hidden"
                     animate="show"
                     exit="exit"
+                    onAnimationComplete={() => setCompletedScene2(true)}
                   >
-                    <ButtonNext onClick={changeToScene3} />
+                    <ButtonNext onClick={changeToScene3} animateCompleted={completedScene2} />
                   </motion.div>
               }
             </AnimatePresence>
@@ -172,7 +177,7 @@ const Suggestion = () => {
                   variants={textVariant}
                   initial="hidden"
                   animate="show"
-                  onAnimationComplete={completeAnimated}
+                  onAnimationComplete={() => setCompletedScene3(true)}
                 >
                   และควรดูแลตัวเองต่อไป<br />ให้ห่างไกล <span className="text-story--bigger">”ฆาตกร"</span> <br className="sm-show" />ที่ทำให้เป็นโรคเบาหวาน
                 </motion.p>
@@ -184,8 +189,9 @@ const Suggestion = () => {
                     variants={buttonVariant}
                     initial="hidden"
                     animate="show"
+                    onAnimationComplete={() => setCompletedScene3(true)}
                   >
-                    <ButtonNext onClick={goToNextPage} />
+                    <ButtonNext onClick={goToNextPage} animateCompleted={completedScene3} />
                   </motion.div>
             }
           </div>

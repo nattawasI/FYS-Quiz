@@ -79,6 +79,9 @@ const DeadBody = () => {
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
+  const [completedScene1, setCompletedScene1] = useState(false)
+  const [completedScene2, setCompletedScene2] = useState(false)
+  const [completedScene3, setCompletedScene3] = useState(false)
 
   // function
   const goToNextPage = () => {
@@ -159,8 +162,9 @@ const DeadBody = () => {
                 initial="hidden"
                 animate="show"
                 exit="exit"
+                onAnimationComplete={() => setCompletedScene1(true)}
               >
-                <ButtonNext onClick={changeToScene2} />
+                <ButtonNext onClick={changeToScene2} animateCompleted={completedScene1} />
               </motion.span>
             </motion.p>
           </div>
@@ -204,8 +208,9 @@ const DeadBody = () => {
                 initial="hidden"
                 animate="show"
                 exit="exit"
+                onAnimationComplete={() => setCompletedScene2(true)}
               >
-                <ButtonNext onClick={changeToScene3} />
+                <ButtonNext onClick={changeToScene3} animateCompleted={completedScene2} />
               </motion.span>
             </motion.p>
           </div>
@@ -249,8 +254,9 @@ const DeadBody = () => {
                 initial="hidden"
                 animate="show"
                 exit="exit"
+                onAnimationComplete={() => setCompletedScene3(true)}
               >
-                <ButtonNext onClick={goToNextPage} />
+                <ButtonNext onClick={goToNextPage} animateCompleted={completedScene3} />
               </motion.span>
             </motion.p>
           </div>

@@ -131,21 +131,22 @@ const Evidence = ({soundPause}) => {
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
+  const [completedScene1, setCompletedScene1] = useState(false)
+  const [completedScene2, setCompletedScene2] = useState(false)
+  const [completedScene3, setCompletedScene3] = useState(false)
 
   const Evidences = [ Donut, Candy, Hamburger, BubbleTea, Whiskey ]
 
   // function
   const goToNextPage = () => {
-    if (animateComplete) {
+    if (completedScene3) {
       soundPause.pause()
       changeCurrentPageContext('VideoDoctor')
     }
   }
 
-  const completeAnimated = () => setAnimateComplete(true)
-
   const changeToScene2 = () => {
-    if (animateComplete) {
+    if (completedScene1) {
       setShowScene1(false)
       setShowScene2(true)
       setAnimateComplete(false)
@@ -153,7 +154,7 @@ const Evidence = ({soundPause}) => {
   }
 
   const changeToScene3 = () => {
-    if (animateComplete) {
+    if (completedScene2) {
       setShowScene2(false)
       setShowScene3(true)
       setAnimateComplete(false)
@@ -162,14 +163,14 @@ const Evidence = ({soundPause}) => {
 
   const touchPanelSm = () => {
     if (isWindowSmall) {
-      if (showScene3 && animateComplete) {
+      if (showScene3 && completedScene3) {
         playSoundClick(muteContext)
         goToNextPage()
       } else {
-        if(showScene1 && animateComplete) {
+        if(showScene1 && completedScene1) {
           playSoundClick(muteContext)
           changeToScene2()
-        } else if (showScene2 && animateComplete) {
+        } else if (showScene2 && completedScene2) {
           playSoundClick(muteContext)
           changeToScene3()
         }
@@ -193,7 +194,7 @@ const Evidence = ({soundPause}) => {
                     initial="hidden"
                     animate="show"
                     exit="exit"
-                    onAnimationComplete={completeAnimated}
+                    onAnimationComplete={() => setCompletedScene1(true)}
                   >
                     สำหรับคดีนี้ฆาตกร ก็คือ<br/><b>เหล่าหลักฐานในที่เกิดเหตุ</b>
                   </motion.p>
@@ -207,7 +208,7 @@ const Evidence = ({soundPause}) => {
                     initial="hidden"
                     animate="show"
                     exit="exit"
-                    onAnimationComplete={completeAnimated}
+                    onAnimationComplete={() => setCompletedScene2(true)}
                   >
                     คุณอาจสงสัยว่าทำไม?
                   </motion.div>
@@ -221,7 +222,7 @@ const Evidence = ({soundPause}) => {
                     initial="hidden"
                     animate="show"
                     exit="exit"
-                    onAnimationComplete={completeAnimated}
+                    onAnimationComplete={() => setCompletedScene3(true)}
                   >
                     ผมจะให้หมอมาช่วยอธิบาย<br/>ให้เข้าใจมากขึ้นครับ
                   </motion.div>
@@ -257,19 +258,19 @@ const Evidence = ({soundPause}) => {
                     initial="hidden"
                     animate="show"
                   >
-                    <ButtonNext onClick={changeToScene2}/>
+                    <ButtonNext onClick={changeToScene2} animateCompleted={completedScene1} />
                   </motion.div>
                 }
                 {
                   showScene2 &&
                   <div className="evidence__button">
-                    <ButtonNext onClick={changeToScene3}/>
+                    <ButtonNext onClick={changeToScene3} animateCompleted={completedScene2} />
                   </div>
                 }
                 {
                   showScene3 &&
                   <div className="evidence__button">
-                    <ButtonNext onClick={goToNextPage}/>
+                    <ButtonNext onClick={goToNextPage} animateCompleted={completedScene3} />
                   </div>
                 }
               </>

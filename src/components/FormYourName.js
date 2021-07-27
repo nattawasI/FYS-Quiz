@@ -4,7 +4,7 @@ import {useUserStateContext, useUserActionContext} from '../contexts/UserContext
 import ButtonNext from './ButtonNext'
 import InputText from './InputText'
 
-const FormYourName = ({changeScene}) => {
+const FormYourName = ({changeScene, checkAnimate}) => {
   // context
   const {userInfoContext} = useUserStateContext()
   const {addUserNameContext} = useUserActionContext()
@@ -43,7 +43,7 @@ const FormYourName = ({changeScene}) => {
           </div>
         </div>
         <div className="form-your-name__button">
-          <ButtonNext onClick={submitForm} />
+          <ButtonNext onClick={submitForm} animateCompleted={checkAnimate} />
         </div>
       </form>
     </div>
@@ -52,10 +52,12 @@ const FormYourName = ({changeScene}) => {
 
 FormYourName.propTypes = {
   changeScene: PropTypes.func,
+  checkAnimate: PropTypes.bool,
 }
 
 FormYourName.defaultProps = {
   changeScene: () => {},
+  checkAnimate: false,
 }
 
 export default FormYourName

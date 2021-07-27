@@ -110,6 +110,8 @@ const CausesOfDiabetes = () => {
   const [showScene1, setShowScene1] = useState(true)
   const [showScene2, setShowScene2] = useState(false)
   const [showScene3, setShowScene3] = useState(false)
+  const [completedScene1, setCompletedScene1] = useState(false)
+  const [completedScene2, setCompletedScene2] = useState(false)
   const [canGoNextPage, setCanGoNextPage] = useState(false)
   const [error, setError] = useState(false)
 
@@ -236,6 +238,7 @@ const CausesOfDiabetes = () => {
                     initial="hidden"
                     animate="show"
                     exit="exit"
+                    onAnimationComplete={() => setCompletedScene1(true)}
                   >
                       <p className="text-story causes-of-diabetes__text">แล้วรู้ไหม<br /><span className="text-story--bigger">"โรคเบาหวาน"</span> <br className="sm-show" />มีอาการเป็นอย่างไร?</p>
                       <div className="symptoms__input">
@@ -250,7 +253,7 @@ const CausesOfDiabetes = () => {
                       {
                         showScene2
                         &&  <div className="symptoms__button">
-                              <ButtonNext onClick={submitSympton} />
+                              <ButtonNext onClick={submitSympton} animateCompleted={completedScene1}/>
                             </div>
                       }
                   </motion.div>
@@ -278,8 +281,9 @@ const CausesOfDiabetes = () => {
                     variants={buttonVariant}
                     initial="hidden"
                     animate="show"
+                    onAnimationComplete={() => setCompletedScene2(true)}
                   >
-                    <ButtonNext onClick={goToNextPage} />
+                    <ButtonNext onClick={goToNextPage} animateCompleted={completedScene2} />
                   </motion.div>
               }
             </AnimatePresence>

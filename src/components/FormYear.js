@@ -35,7 +35,7 @@ const buttonVariant = {
   },
 }
 
-const FormYear = ({changeScene}) => {
+const FormYear = ({changeScene, checkAnimate}) => {
   // context
   const {yearsKnownContext} = useUserStateContext()
   const {addYearsKnownContext} = useUserActionContext()
@@ -77,6 +77,7 @@ const FormYear = ({changeScene}) => {
               placeholder="ใส่ตัวเลข..."
               value={yearsKnownContext}
               isError={error}
+              maxlength="2"
             />
           </div>
         </motion.div>
@@ -87,7 +88,7 @@ const FormYear = ({changeScene}) => {
           animate="show"
           exit="exit"
         >
-          <ButtonNext onClick={submitForm} />
+          <ButtonNext onClick={submitForm} animateCompleted={checkAnimate} />
         </motion.div>
       </form>
     </div>
@@ -96,10 +97,12 @@ const FormYear = ({changeScene}) => {
 
 FormYear.propTypes = {
   changeScene: PropTypes.func,
+  checkAnimate: PropTypes.bool,
 }
 
 FormYear.defaultProps = {
   changeScene: () => {},
+  checkAnimate: false,
 }
 
 export default FormYear

@@ -193,6 +193,7 @@ const TurnOnLight = () => {
   const [nextScene, setNextScene] = useState(false);
   const [animateComplete, setAnimateComplete] = useState(false)
   const [switchBreaker, setSwitchBreaker] = useState(false)
+  const [completedScene, setCompletedScene] = useState(false)
 
   // animation control
   const switchControl = useAnimation();
@@ -356,8 +357,9 @@ const TurnOnLight = () => {
                           initial="hidden"
                           animate={buttonNextControl}
                           exit="exit"
+                          onAnimationComplete={ () => setCompletedScene(true) }
                         >
-                          <ButtonNext onClick={goToNextPage}/>
+                          <ButtonNext onClick={goToNextPage} animateCompleted={completedScene} />
                         </motion.div>
                       }
                     </motion.div>

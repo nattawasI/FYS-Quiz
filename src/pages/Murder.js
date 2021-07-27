@@ -101,7 +101,9 @@ const Investigate = () => {
                   className="murder__image"
                   data={ MurderImage }
                   type="image/svg+xml"
+                  aria-labelledby="murder-object-alt"
                 >
+                  <span id="murder-object-alt">Murderd body</span>
                   {/* <img src="yourfallback.jpg" /> */}
                 </motion.object>
               </motion.div>

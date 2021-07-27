@@ -151,6 +151,12 @@ const Investigate = () => {
   const [sceneCause, setSceneCause] = useState(false)
   const [activityOften, setActivityOften] = useState('')
   const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [startInvestigate, setStartInvestigate] = useState(false)
+  const [murderSuspect, setMurderSuspect] = useState(false)
+  const [askCooperation, setAskCooperation] = useState(false)
+  const [checkedYear, setCheckedYear] = useState(false)
+  const [thankYou, setThankYou] = useState(false)
+  const [completedScene, setCompletedScene] = useState(false)
 
   // motion
   const formNameVariant = {
@@ -400,8 +406,9 @@ const Investigate = () => {
                       initial="hidden"
                       animate="show"
                       exit="exit"
+                      onAnimationComplete={ () => setStartInvestigate(true) }
                     >
-                      <FormYourName changeScene={changeToSceneYourGender} />
+                      <FormYourName changeScene={changeToSceneYourGender} checkAnimate={startInvestigate} />
                     </motion.div>
                 }
                 {
@@ -458,9 +465,9 @@ const Investigate = () => {
                               initial="hidden"
                               animate="show"
                               exit="exit"
-                              onClick={changeToSceneAskCooperation}
+                              onAnimationComplete={ () => setMurderSuspect(true)}
                             >
-                              <ButtonNext />
+                              <ButtonNext onClick={changeToSceneAskCooperation} animateCompleted={murderSuspect}/>
                             </motion.div>
                         }
                       </div>
@@ -490,8 +497,9 @@ const Investigate = () => {
                               initial="hidden"
                               animate="show"
                               exit="exit"
+                              onAnimationComplete={() => setAskCooperation(true)}
                             >
-                              <ButtonNext onClick={changeToSceneActivityOften} />
+                              <ButtonNext onClick={changeToSceneActivityOften} animateCompleted={askCooperation} />
                             </motion.div>
                         }
                       </div>
@@ -562,8 +570,9 @@ const Investigate = () => {
                       className="investigate__year"
                       variants={contentVariant}
                       exit="exit"
+                      onAnimationComplete={() => setCheckedYear(true)}
                     >
-                      <FormYear changeScene={changeToSceneActivityToday} />
+                      <FormYear changeScene={changeToSceneActivityToday} checkAnimate={checkedYear} />
                     </motion.div>
                 }
                 {
@@ -606,8 +615,9 @@ const Investigate = () => {
                             initial="hidden"
                             animate="show"
                             exit="exit"
+                            onAnimationComplete={() => setThankYou(true)}
                           >
-                            <ButtonNext onClick={changeToSceneCause} />
+                            <ButtonNext onClick={changeToSceneCause} animateCompleted={thankYou}/>
                           </motion.div>
                       }
                     </div>
@@ -637,8 +647,9 @@ const Investigate = () => {
                                 initial="hidden"
                                 animate="show"
                                 exit="exit"
+                                onAnimationComplete={() => setCompletedScene(true)}
                               >
-                                <ButtonNext onClick={goToNextPage} />
+                                <ButtonNext onClick={goToNextPage} animateCompleted={completedScene} />
                               </motion.div>
                           }
                         </div>

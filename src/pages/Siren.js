@@ -92,6 +92,7 @@ const Siren = ({soundPause, soundPlay}) => {
 
   // state
   const [animateComplete, setAnimateComplete] = useState(false)
+  const [completedScene, setCompletedScene] = useState(false)
 
   // function
   const goToNextPage = () => {
@@ -144,8 +145,9 @@ const Siren = ({soundPause, soundPlay}) => {
                   variants={buttonVariant}
                   initial="hidden"
                   animate="show"
+                  onAnimationComplete={ () => setCompletedScene(true) }
                 >
-                  <ButtonNext onClick={goToNextPage} />
+                  <ButtonNext onClick={goToNextPage} animateCompleted={completedScene} />
                 </motion.div>
             }
           </motion.div>

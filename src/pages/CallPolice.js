@@ -73,6 +73,8 @@ const CallPolice = ({soundPause, soundPlay}) => {
   const [showScene3, setShowScene3] = useState(false)
   const [animateComplete, setAnimateComplete] = useState(false)
   const [calling, setCalling] = useState(false)
+  const [completedScene1, setCompletedScene1] = useState(false)
+  const [completedScene2, setCompletedScene2] = useState(false)
 
   // function
   const goToNextPage = () => {
@@ -158,8 +160,9 @@ const CallPolice = ({soundPause, soundPlay}) => {
                     initial="hidden"
                     animate="show"
                     exit="exit"
+                    onAnimationComplete={() => setCompletedScene1(true)}
                   >
-                    <ButtonNext onClick={changeToScene2} />
+                    <ButtonNext onClick={changeToScene2} animateCompleted={completedScene1} />
                   </motion.div>
               }
             </AnimatePresence>
@@ -185,8 +188,9 @@ const CallPolice = ({soundPause, soundPlay}) => {
                     initial="hidden"
                     animate="show"
                     exit="exit"
+                    onAnimationComplete={() => setCompletedScene2(true)}
                   >
-                    <ButtonNext onClick={changeToScene3} />
+                    <ButtonNext onClick={changeToScene3} animateCompleted={completedScene2} />
                   </motion.div>
               }
             </AnimatePresence>

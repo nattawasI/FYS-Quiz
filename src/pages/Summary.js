@@ -93,6 +93,7 @@ const Summary = () => {
 
   // state
   const [animateComplete, setAnimateComplete] = useState(false)
+  const [completedScene, setCompletedScene] = useState(false)
   const [paperSmRender, setPaperSmRender] = useState(false)
   const [sumScore, setSumScore] = useState(0)
 
@@ -221,8 +222,9 @@ const Summary = () => {
             variants={buttonVariant}
             initial="hidden"
             animate="show"
+            onAnimationComplete={() => setCompletedScene(true)}
           >
-            <ButtonNext onClick={goToNextPage} />
+            <ButtonNext onClick={goToNextPage} animateCompleted={completedScene} />
           </motion.div>
       }
     </>

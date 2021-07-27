@@ -70,6 +70,7 @@ const PoliceCame = () => {
 
   // state
   const [animateComplete, setAnimateComplete] = useState(false)
+  const [completedScene, setCompletedScene] = useState(false)
 
 
   // function
@@ -112,8 +113,9 @@ const PoliceCame = () => {
                   variants={buttonVariant}
                   initial="hidden"
                   animate="show"
+                  onAnimationComplete={ () => setCompletedScene(true) }
                 >
-                  <ButtonNext onClick={goToNextPage} />
+                  <ButtonNext onClick={goToNextPage} animateCompleted={completedScene} />
                 </motion.div>
             }
           </div>
