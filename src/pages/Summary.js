@@ -138,6 +138,7 @@ const Summary = () => {
     }
   }
 
+  // useEffect
   useEffect(() => {
     if (isWindowSmall) {
       setTimeout(() => {

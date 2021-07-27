@@ -22,10 +22,10 @@ const UserProvider = ({ children }) => {
   const [userInfoContext, setUserInfoContext] = useState({}) // ชื่อ และ เพศ ของคนเล่น
 
   // Phrase 2
-
   const [activityOftenContext, setActivityOftenContext] = useState('') // กิจกรรมที่ทำบ่อยกับเพื่อน?
   const [choicesContext, setChoicesContext] = useState([]) // คำถาม quiz และคำตอบที่ตอบ
-  const [riskDiabetsContext, setRiskDiabetsContext] = useState('') // ความเสี่ยงในการเป็นโรคเบาหวาน
+  // [{ id: '', question: '', label: '', score: 0 }, { id: '', question: '', label: '', score: 0 }, { id: '', question: '', label: '', score: 0 }]
+
   const [yearsKnownContext, setYearsKnownContext] = useState('') // จำนวนปีที่รู้จัก?
   const [activityTodayContext, setActivityTodayContext] = useState('') // กิจกรรมล่าสุด ที่ทำกับเพื่อน ก่อนเพื่อนตาย?
 
@@ -64,16 +64,6 @@ const UserProvider = ({ children }) => {
     setChoicesContext(choicesContext)
   }
 
-  const addRiskDiabetsContext = (score) => {
-    if (score >= 4) {
-      setRiskDiabetsContext('มีความเสี่ยง')
-    } else if (score === 2 || score === 3) {
-      setRiskDiabetsContext('มีความเสี่ยงเล็กน้อย')
-    } else {
-      setRiskDiabetsContext('ไม่มีความเสี่ยง')
-    }
-  }
-
   const addYearsKnownContext = (years) => {
     setYearsKnownContext(years)
   }
@@ -99,7 +89,6 @@ const UserProvider = ({ children }) => {
     // Phrase 2
     activityOftenContext,
     choicesContext,
-    riskDiabetsContext,
     yearsKnownContext,
     activityTodayContext,
 
@@ -118,7 +107,6 @@ const UserProvider = ({ children }) => {
     addActivityOftenContext,
     addChoicesContext,
     removeChoicesContext,
-    addRiskDiabetsContext,
     addYearsKnownContext,
     addActivityTodayContext,
 
