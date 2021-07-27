@@ -18,7 +18,6 @@ import ImgPoliceTb from '../assets/images/page/investigate/img_police_tb.svg'
 import ImgPoliceSm from '../assets/images/page/investigate/img_police_sm.svg'
 import ImgPhotoMd from '../assets/images/page/investigate/img_photo_md.svg'
 import ImgPhotoSm from '../assets/images/page/investigate/img_photo_sm.svg'
-import {QuizData} from '../variables/QuizData'
 import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
@@ -139,17 +138,16 @@ const Investigate = () => {
   const [heightHidden, setHeightHidden] = useState(null)
   const [fadePhoto, setFadePhoto] = useState(false)
   const [hidePhoto, setHidePhoto] = useState(false)
-  const [sceneYourName, setSceneYourName] = useState(true)
+  const [sceneYourName, setSceneYourName] = useState(false) // start from this scene
   const [sceneMurder, setSceneMurder] = useState(false)
   const [sceneYourGender, setSceneYourGender] = useState(false)
-  const [sceneAskCooperation, setSceneAskCooperation] = useState(false)
+  const [sceneAskCooperation, setSceneAskCooperation] = useState(true)
   const [sceneActivityOften, setSceneActivityOften] = useState(false)
   const [sceneQuiz, setSceneQuiz] = useState(false)
   const [sceneFormYear, setSceneFormYear] = useState(false)
   const [sceneActivityToday, setSceneActivityToday] = useState(false)
   const [sceneThankYou, setSceneThankYou] = useState(false)
   const [sceneCause, setSceneCause] = useState(false)
-  const [activityOften, setActivityOften] = useState('')
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [startInvestigate, setStartInvestigate] = useState(false)
   const [murderSuspect, setMurderSuspect] = useState(false)
@@ -307,10 +305,6 @@ const Investigate = () => {
   const changeToSceneCause = () => {
     setSceneThankYou(false)
     setSceneCause(true)
-  }
-
-  const chooseActivityOften = (activity) => {
-    setActivityOften(activity)
   }
 
   const nextQuestion = () => {
@@ -517,7 +511,7 @@ const Investigate = () => {
                     >
                       <div className="text-story form-activity__title">เริ่มจากก่อนเกิดเหตุ กิจกรรมระหว่างคุณ<br />กับคุณ {friendInfoContext.name} ที่ทำบ่อย ๆ คืออะไร? </div>
                       <div className="form-activity__list">
-                        <ListCardActivity type="often" changeScene={changeToSceneQuiz} chooseActivity={chooseActivityOften} />
+                        <ListCardActivity type="often" changeScene={changeToSceneQuiz} />
                       </div>
                     </motion.div>
                 }
@@ -531,36 +525,12 @@ const Investigate = () => {
                       animate="show"
                       exit="exit"
                     >
-                      {
-                        activityOften === 'game'
-                        && <ListQuiz
-                            changeScene={changeToSceneFormYear}
-                            listQuiz={QuizData.game}
-                            nextQuestion={nextQuestion}
-                            currentQuestion= {currentQuestion}
-                            boxQuizControl={boxQuizControl}
-                          />
-                      }
-                      {
-                        activityOften === 'food'
-                        && <ListQuiz
-                            changeScene={changeToSceneFormYear}
-                            listQuiz={QuizData.food}
-                            nextQuestion={nextQuestion}
-                            currentQuestion= {currentQuestion}
-                            boxQuizControl={boxQuizControl}
-                          />
-                      }
-                      {
-                        activityOften === 'exercise'
-                        && <ListQuiz
-                            changeScene={changeToSceneFormYear}
-                            listQuiz={QuizData.exercise}
-                            nextQuestion={nextQuestion}
-                            currentQuestion= {currentQuestion}
-                            boxQuizControl={boxQuizControl}
-                          />
-                      }
+                      <ListQuiz
+                        changeScene={changeToSceneFormYear}
+                        nextQuestion={nextQuestion}
+                        currentQuestion= {currentQuestion}
+                        boxQuizControl={boxQuizControl}
+                      />
                     </motion.div>
                 }
                 {

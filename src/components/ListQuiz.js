@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {motion} from 'framer-motion'
+import {useUserStateContext} from '../contexts/UserContext'
+import {QuizData} from '../variables/QuizData'
 import ListQuizButton from './ListQuizButton'
 
 const quizVariant = {
@@ -27,8 +29,12 @@ const quizVariant = {
   }
 }
 
-const ListQuiz = ({changeScene, listQuiz, nextQuestion, currentQuestion, boxQuizControl}) => {
+const ListQuiz = ({changeScene, nextQuestion, currentQuestion, boxQuizControl}) => {
+  // context
+  const {activityOftenContext} = useUserStateContext()
+
   const [indexQuiz, setIndexQuiz] = useState(0)
+  const [listQuiz, setListQuiz] = useState([])
 
   const goToNextQuestion = () => {
     if (indexQuiz < listQuiz.length - 1) {
@@ -47,35 +53,51 @@ const ListQuiz = ({changeScene, listQuiz, nextQuestion, currentQuestion, boxQuiz
     setIndexQuiz(currentQuestion)
   }, [currentQuestion])
 
+  useEffect(() => {
+    console.log(QuizData.game);
+    if (activityOftenContext === 'game') {
+      setListQuiz(QuizData.game)
+    } else if (activityOftenContext === 'food') {
+      setListQuiz(QuizData.food)
+    } else {
+      setListQuiz(QuizData.exercise)
+    }
+
+  }, [activityOftenContext])
+
   return (
     <motion.div className="list-quiz"
       initial={false}
       animate={boxQuizControl}
       variants={quizVariant}
     >
-      <div className="list-quiz__question text-story">{ listQuiz[indexQuiz].question }</div>
-      <ul className="list-quiz__list">
-        {
-          listQuiz[indexQuiz].choices.map(choice => {
-            return (
-              <li className="list-quiz__item" key={choice.id}>
-                <ListQuizButton
-                  question={listQuiz[indexQuiz].question}
-                  choice={choice}
-                  changeQuestion={goToNextQuestion}
-                />
-              </li>
-            )
-          })
-        }
-      </ul>
+      {
+        listQuiz.length
+        && <>
+            <div className="list-quiz__question text-story">{ listQuiz[indexQuiz].question }</div>
+            <ul className="list-quiz__list">
+              {
+                listQuiz[indexQuiz].choices.map(choice => {
+                  return (
+                    <li className="list-quiz__item" key={choice.id}>
+                      <ListQuizButton
+                        question={listQuiz[indexQuiz].question}
+                        choice={choice}
+                        changeQuestion={goToNextQuestion}
+                      />
+                    </li>
+                  )
+                })
+              }
+            </ul>
+          </>
+      }
     </motion.div>
   )
 }
 
 ListQuiz.propTypes = {
   changeScene: PropTypes.func,
-  listQuiz: PropTypes.array,
   currentQuestion: PropTypes.number,
   nextQuestion: PropTypes.func,
   boxQuizControl: PropTypes.object,
@@ -83,7 +105,6 @@ ListQuiz.propTypes = {
 
 ListQuiz.defaultProps = {
   changeScene: () => {},
-  listQuiz: [],
   currentQuestion: 0,
   nextQuestion: () => {},
   boxQuizControl: () => {},
