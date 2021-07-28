@@ -35,8 +35,7 @@
     z-index: 30;
 
     @include sm-down {
-      top: auto;
-      bottom: 5%;
+      top: 30%;
     }
 
     @include md-up {
