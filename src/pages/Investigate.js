@@ -138,10 +138,10 @@ const Investigate = () => {
   const [heightHidden, setHeightHidden] = useState(null)
   const [fadePhoto, setFadePhoto] = useState(false)
   const [hidePhoto, setHidePhoto] = useState(false)
-  const [sceneYourName, setSceneYourName] = useState(true) // start from this scene
+  const [sceneYourName, setSceneYourName] = useState(false) // start from this scene
   const [sceneMurder, setSceneMurder] = useState(false)
   const [sceneYourGender, setSceneYourGender] = useState(false)
-  const [sceneAskCooperation, setSceneAskCooperation] = useState(false)
+  const [sceneAskCooperation, setSceneAskCooperation] = useState(true)
   const [sceneActivityOften, setSceneActivityOften] = useState(false)
   const [sceneQuiz, setSceneQuiz] = useState(false)
   const [sceneFormYear, setSceneFormYear] = useState(false)
@@ -155,6 +155,7 @@ const Investigate = () => {
   const [checkedYear, setCheckedYear] = useState(false)
   const [thankYou, setThankYou] = useState(false)
   const [completedScene, setCompletedScene] = useState(false)
+  const [completedStateQuizScene, setCompletedStateQuizScene] = useState('end')
 
   // motion
   const formNameVariant = {
@@ -244,14 +245,14 @@ const Investigate = () => {
     setSceneYourGender(true)
   }
 
-  const changeToSceneMurder = () => {
-    setSceneYourGender(false)
-    setSceneMurder(true)
-  }
-
   const backToSceneYourGender = () => {
     setSceneMurder(false)
     setSceneYourGender(true)
+  }
+
+  const changeToSceneMurder = () => {
+    setSceneYourGender(false)
+    setSceneMurder(true)
   }
 
   const changeToSceneAskCooperation = () => {
@@ -270,20 +271,15 @@ const Investigate = () => {
     setSceneQuiz(true)
   }
 
-  const changeToSceneFormYear = () => {
-    setSceneQuiz(false)
-    setSceneFormYear(true)
-  }
-
   const backToSceneQuiz = () => {
     removeChoicesContext()
     setSceneFormYear(false)
     setSceneQuiz(true)
   }
 
-  const changeToSceneActivityToday = () => {
-    setSceneFormYear(false)
-    setSceneActivityToday(true)
+  const changeToSceneFormYear = () => {
+    setSceneQuiz(false)
+    setSceneFormYear(true)
   }
 
   const backToSceneFormYear = () => {
@@ -291,15 +287,20 @@ const Investigate = () => {
     setSceneFormYear(true)
   }
 
-  const changeToSceneThankYou = () => {
-    setSceneActivityToday(false)
-    setSceneThankYou(true)
-    toggleAnimateTable()
+  const changeToSceneActivityToday = () => {
+    setSceneFormYear(false)
+    setSceneActivityToday(true)
   }
 
   const backToSceneActivityToday = () => {
     setSceneThankYou(false)
     setSceneActivityToday(true)
+  }
+
+  const changeToSceneThankYou = () => {
+    setSceneActivityToday(false)
+    setSceneThankYou(true)
+    toggleAnimateTable()
   }
 
   const changeToSceneCause = () => {
@@ -312,17 +313,20 @@ const Investigate = () => {
   }
 
   const prevQuestion = () => {
-    removeChoicesContext()
+    if (completedStateQuizScene === 'start') {
+      removeChoicesContext()
 
-    if (currentQuestion > 0) {
-      boxQuizControl.start('hidden')
-      setTimeout(() => {
-        setCurrentQuestion(currentQuestion - 1)
-        boxQuizControl.start('show')
-      }, 1000)
-    } else {
-      setSceneQuiz(false)
-      setSceneActivityOften(true)
+      if (currentQuestion > 0) {
+        boxQuizControl.start('hidden')
+        setTimeout(() => {
+          setCurrentQuestion(currentQuestion - 1)
+          boxQuizControl.start('show')
+        }, 1000)
+        onCompleteQuizScene()
+      } else {
+        setSceneQuiz(false)
+        setSceneActivityOften(true)
+      }
     }
   }
 
@@ -345,6 +349,14 @@ const Investigate = () => {
   const chooseGender = (gender) => {
     addUserGenderContext(gender)
     changeToSceneMurder()
+  }
+
+  const onCompleteQuizScene = () => {
+    if (completedStateQuizScene === 'start') {
+      setCompletedStateQuizScene('end')
+    } else {
+      setCompletedStateQuizScene('start')
+    }
   }
 
   useEffect(() => {
@@ -524,12 +536,15 @@ const Investigate = () => {
                       initial="hidden"
                       animate="show"
                       exit="exit"
+                      onAnimationComplete={onCompleteQuizScene}
                     >
                       <ListQuiz
                         changeScene={changeToSceneFormYear}
                         nextQuestion={nextQuestion}
                         currentQuestion= {currentQuestion}
                         boxQuizControl={boxQuizControl}
+                        completedStateQuizScene={completedStateQuizScene}
+                        updateCompletedStateQuizScene={onCompleteQuizScene}
                       />
                     </motion.div>
                 }

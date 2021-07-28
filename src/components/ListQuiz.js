@@ -29,7 +29,7 @@ const quizVariant = {
   }
 }
 
-const ListQuiz = ({changeScene, nextQuestion, currentQuestion, boxQuizControl}) => {
+const ListQuiz = ({changeScene, nextQuestion, currentQuestion, boxQuizControl, completedStateQuizScene, updateCompletedStateQuizScene}) => {
   // context
   const {activityOftenContext} = useUserStateContext()
 
@@ -54,7 +54,6 @@ const ListQuiz = ({changeScene, nextQuestion, currentQuestion, boxQuizControl}) 
   }, [currentQuestion])
 
   useEffect(() => {
-    console.log(QuizData.game);
     if (activityOftenContext === 'game') {
       setListQuiz(QuizData.game)
     } else if (activityOftenContext === 'food') {
@@ -70,6 +69,7 @@ const ListQuiz = ({changeScene, nextQuestion, currentQuestion, boxQuizControl}) 
       initial={false}
       animate={boxQuizControl}
       variants={quizVariant}
+      onAnimationComplete={() => updateCompletedStateQuizScene()}
     >
       {
         listQuiz.length
@@ -84,6 +84,7 @@ const ListQuiz = ({changeScene, nextQuestion, currentQuestion, boxQuizControl}) 
                         question={listQuiz[indexQuiz].question}
                         choice={choice}
                         changeQuestion={goToNextQuestion}
+                        completedStateQuizScene={completedStateQuizScene}
                       />
                     </li>
                   )
@@ -101,6 +102,8 @@ ListQuiz.propTypes = {
   currentQuestion: PropTypes.number,
   nextQuestion: PropTypes.func,
   boxQuizControl: PropTypes.object,
+  completedStateQuizScene: PropTypes.string,
+  updateCompletedStateQuizScene: PropTypes.func,
 }
 
 ListQuiz.defaultProps = {
@@ -108,6 +111,8 @@ ListQuiz.defaultProps = {
   currentQuestion: 0,
   nextQuestion: () => {},
   boxQuizControl: () => {},
+  completedStateQuizScene: 'end',
+  updateCompletedStateQuizScene: () => {}
 }
 
 export default ListQuiz
