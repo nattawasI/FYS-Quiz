@@ -139,8 +139,8 @@ const Investigate = () => {
   const [fadePhoto, setFadePhoto] = useState(false)
   const [hidePhoto, setHidePhoto] = useState(false)
   const [sceneYourName, setSceneYourName] = useState(true) // start from this scene
-  const [sceneMurder, setSceneMurder] = useState(false)
   const [sceneYourGender, setSceneYourGender] = useState(false)
+  const [sceneMurder, setSceneMurder] = useState(false)
   const [sceneAskCooperation, setSceneAskCooperation] = useState(false)
   const [sceneActivityOften, setSceneActivityOften] = useState(false)
   const [sceneQuiz, setSceneQuiz] = useState(false)
@@ -244,14 +244,19 @@ const Investigate = () => {
     setSceneYourGender(true)
   }
 
+  const backToSceneYourGender = () => {
+    setSceneMurder(false)
+    setSceneYourGender(true)
+  }
+
   const changeToSceneMurder = () => {
     setSceneYourGender(false)
     setSceneMurder(true)
   }
 
-  const backToSceneYourGender = () => {
-    setSceneMurder(false)
-    setSceneYourGender(true)
+  const backToSceneMurder = () => {
+    setSceneAskCooperation(false)
+    setSceneMurder(true)
   }
 
   const changeToSceneAskCooperation = () => {
@@ -331,7 +336,9 @@ const Investigate = () => {
       backToSceneYourName()
     } else if (sceneMurder) {
       backToSceneYourGender()
-    } else if (sceneQuiz) {
+    } else if (sceneAskCooperation) {
+      backToSceneMurder()
+    }  else if (sceneQuiz) {
       prevQuestion()
     } else if (sceneFormYear) {
       backToSceneQuiz()
