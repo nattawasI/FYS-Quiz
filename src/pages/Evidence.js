@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
-import {motionVariables} from '../variables/MotionVariant'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
@@ -18,17 +17,17 @@ import {playSoundClick} from '../variables/SoundMethods'
 const firstTextVariant = {
   hidden: {
     y: 0,
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      duration: motionVariables.speed.speedOne,
+      duration: 1,
       ease: "easeInOut",
     }
   },
   exit: {
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
     transition: {
       duration: 0.7,
       ease: 'easeInOut',
@@ -40,18 +39,18 @@ const firstTextVariant = {
 const textVariant = {
   hidden: {
     y: '70%',
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
     y: 0,
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      duration: motionVariables.speed.speedOne,
+      duration: 1,
       ease: "easeInOut",
     }
   },
   exit: {
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
     transition: {
       duration: 0.7,
       ease: 'easeInOut',
@@ -62,14 +61,14 @@ const textVariant = {
 
 const buttonVariant = {
   hidden: {
-    opacity: motionVariables.opacity.opacityZero
+    opacity: 0
   },
   show: {
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: motionVariables.speed.speedOne,
-      delay: motionVariables.speed.speedOne,
+      duration: 1,
+      delay: 1,
     }
   }
 }
@@ -77,20 +76,20 @@ const buttonVariant = {
 const evidenceVariant = {
   hidden: {
     y: 160,
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
     y: 0,
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      duration: motionVariables.speed.speedOne,
+      duration: 1.5,
       ease: "easeInOut",
     }
   },
   exit: {
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
     transition: {
-      duration: motionVariables.speed.speedOne,
+      duration: 1,
       type: 'tween',
     }
   }
@@ -99,20 +98,20 @@ const evidenceVariant = {
 const curveVariant = {
   hidden: {
     y: 120,
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
     y: 0,
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      duration: motionVariables.speed.speedOne,
+      duration: 1,
       ease: "easeInOut",
     }
   },
   exit: {
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
     transition: {
-      duration: motionVariables.speed.speedOne,
+      duration: 1,
       type: 'tween',
     }
   }

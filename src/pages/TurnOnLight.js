@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {AnimatePresence, motion, useAnimation } from 'framer-motion'
-import {motionVariables} from '../variables/MotionVariant'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useSoundStateContext} from '../contexts/SoundContext'
 import UseWindowSmall from '../hooks/useWindowSmall'
@@ -24,23 +23,23 @@ const soundSwitch = new Audio(SwitchAudio)
 const textIntro01Variant = {
   hidden: {
     y: 50,
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
     y: 0,
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      delay: motionVariables.speed.speedOne,
-      duration: motionVariables.speed.speedOne,
+      delay: 1,
+      duration: 1,
       ease: 'easeInOut',
     }
   },
   exit: {
     y: -50,
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
     transition: {
-      delay: motionVariables.speed.speedOne,
-      duration: motionVariables.speed.speedOne,
+      delay: 1,
+      duration: 1,
       type: 'tween',
     }
   }
@@ -49,22 +48,22 @@ const textIntro01Variant = {
 const textIntro02Variant = {
   hidden: {
     y: 50,
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
     y: 0,
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      duration: motionVariables.speed.speedOne,
+      duration: 1,
       ease: 'easeInOut',
     }
   },
   exit: {
     y: -50,
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
     transition: {
-      delay: motionVariables.speed.speedOne,
-      duration: motionVariables.speed.speedOne,
+      delay: 1,
+      duration: 1,
       type: 'tween',
     }
   }
@@ -73,20 +72,20 @@ const textIntro02Variant = {
 const buttonNextVariant = {
   hidden: {
     y: 0,
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      duration: motionVariables.speed.speedOne,
+      duration: 1,
       ease: 'easeInOut',
     }
   },
   exit: {
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
     transition: {
-      delay: motionVariables.speed.speedOne,
-      duration: motionVariables.speed.speedOne,
+      delay: 1,
+      duration: 1,
       type: 'tween',
     }
   }
@@ -95,21 +94,21 @@ const buttonNextVariant = {
 const ShadeContainerVariants = {
   hidden: {
     x: '100%',
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
     x: 0,
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      duration: motionVariables.speed.speedOne,
+      duration: 1,
       ease: 'easeInOut',
     }
   },
   exit: {
     x: '-100%',
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
     transition: {
-      duration: motionVariables.speed.speedOne,
+      duration: 1,
       type: 'tween',
     }
   }
@@ -121,19 +120,19 @@ const NormalHandVariant = {
     originY: 1,
     x: '100%',
     y: '100%',
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
   },
   show: {
     x: 0,
     y: 0,
     transition: {
-      delay: motionVariables.speed.speedOne,
-      duration: motionVariables.speed.speedOne,
+      delay: 1,
+      duration: 1,
       ease: 'easeOut',
     }
   },
   exit: {
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
     transition: {
       duration: 0.5,
       type: 'tween',
@@ -145,13 +144,13 @@ const SwitchVariant = {
   hidden: {
     y: '-140%',
     x: '-50%',
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
   },
   show: {
     y: 0,
     transition: {
-      delay: motionVariables.speed.speedOne,
-      duration: motionVariables.speed.speedOne,
+      delay: 1,
+      duration: 1,
       ease: 'easeInOut',
     }
   },
@@ -159,20 +158,20 @@ const SwitchVariant = {
 
 const SwitchPlateVariant = {
   hidden: {
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      delay: motionVariables.speed.speedFour,
-      duration: motionVariables.speed.speedOne,
+      delay: 4,
+      duration: 1,
       ease: 'easeInOut',
     }
   },
   exit: {
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
     transition: {
-      duration: motionVariables.speed.speedOne,
+      duration: 1,
       type: 'tween',
     }
   }
@@ -251,23 +250,23 @@ const TurnOnLight = () => {
       originY: 1,
       rotate: 3,
       y: isWindowSmall ? '-3%' : '-4%',
-      opacity: motionVariables.opacity.opacityOne,
+      opacity: 1,
     },
     show: {
       x: 0,
       y: 0,
       transition: {
         delay: 0.5,
-        duration: motionVariables.speed.speedOne,
+        duration: 1,
         ease: 'easeInOut',
       }
     },
     exit: {
       x: 0,
       y: 0,
-      opacity: motionVariables.opacity.opacityZero,
+      opacity: 0,
       transition: {
-        duration: motionVariables.speed.speedOne,
+        duration: 1,
         type: 'tween',
       }
     }
@@ -282,16 +281,16 @@ const TurnOnLight = () => {
     show: {
       scale: 1.7,
       transition: {
-        delay: motionVariables.speed.speedFour,
-        duration: motionVariables.speed.speedOne,
+        delay: 4,
+        duration: 1,
         ease: 'easeInOut',
       }
     },
     exit: {
-      opacity: motionVariables.opacity.opacityZero,
+      opacity: 0,
       transition: {
         duration: 0,
-        delay: isWindowSmall ? 0 : motionVariables.speed.speedTwo,
+        delay: isWindowSmall ? 0 : 2,
         type: 'tween',
       }
     }
@@ -312,7 +311,7 @@ const TurnOnLight = () => {
     exit: {
       opacity: 0,
       transition: {
-        duration: motionVariables.speed.speedOne,
+        duration: 1,
         type: 'tween',
       }
     }

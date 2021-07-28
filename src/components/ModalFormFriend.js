@@ -14,7 +14,7 @@ const containerVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 0.3
+      duration: 0.7
     }
   },
   exit: {

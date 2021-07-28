@@ -19,7 +19,7 @@ const textVariant = {
     y: 0,
     transition: {
       ease: "easeInOut",
-      duration: 1,
+      duration: 1.5,
     }
   },
 }
@@ -36,7 +36,7 @@ const evidenceVariant = {
     scale: 1,
     transition: {
       ease: "easeInOut",
-      duration: 1,
+      duration: 1.5,
     }
   },
 }

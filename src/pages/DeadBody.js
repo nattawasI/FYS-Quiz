@@ -3,7 +3,6 @@ import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext} from '../contexts/UserContext'
 import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
-import {motionVariables} from '../variables/MotionVariant'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
@@ -24,7 +23,7 @@ const textVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: motionVariables.speed.speedOne,
+      duration: 1.5,
     }
   },
 }
@@ -37,14 +36,14 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: motionVariables.speed.speedOne,
-      delay: motionVariables.speed.speedOne,
+      duration: 1,
+      delay: 1,
     }
   },
   exit: {
     opacity: 0,
     transition: {
-      duration: motionVariables.speed.speedOne,
+      duration: 1,
       type: 'tween',
     }
   },
@@ -60,7 +59,7 @@ const bodyVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: motionVariables.speed.speedOne,
+      duration: 1.5,
     }
   },
 }

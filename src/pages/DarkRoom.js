@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useSoundStateContext} from '../contexts/SoundContext'
-import {motionVariables} from '../variables/MotionVariant'
 import {motion, AnimatePresence} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -13,20 +12,20 @@ import {playSoundClick} from '../variables/SoundMethods'
 // Motion Variants
 const textVariantMD = {
   hidden: {
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
     y: ["0%", "0%", "-100%"],
     opacity: [
-      motionVariables.opacity.opacityZero,
-      motionVariables.opacity.opacityOne,
-      motionVariables.opacity.opacityOne,
+      0,
+      1,
+      1,
     ],
     transition: {
-      duration: motionVariables.speed.speedTwo,
+      duration: 2,
       ease: "easeInOut",
       times: [0, 0.6, 1],
-      delay: motionVariables.speed.speedOne
+      delay: 1
     }
   },
 }
@@ -34,21 +33,21 @@ const textVariantMD = {
 const textVariantSM = {
   hidden: {
     y: "5%",
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
     y: ["5%", "0%", "0%", "-200%"],
     opacity: [
-      motionVariables.opacity.opacityZero,
-      motionVariables.opacity.opacityOne,
-      motionVariables.opacity.opacityOne,
-      motionVariables.opacity.opacityOne,
+      0,
+      1,
+      1,
+      1,
     ],
     transition: {
-      duration: motionVariables.speed.speedTwo,
+      duration: 2,
       ease: "easeInOut",
       times: [0, 0.4, 0.7, 1],
-      delay: motionVariables.speed.speedOne
+      delay: 1
     }
   }
 }
@@ -58,14 +57,14 @@ const backgroundVariantMD = {
     originY: 1,
     x: "-50%",
     scale: 0,
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
     scale: 1,
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      duration: motionVariables.speed.speedOne,
-      delay: motionVariables.speed.speedTwo,
+      duration: 1,
+      delay: 2,
       ease: "easeInOut",
     }
   },
@@ -75,18 +74,18 @@ const backgroundVariantSM = {
   hidden: {
     x: "-50%",
     y: 190,
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
     y: [190, 190, 190, 0],
     opacity: [
-      motionVariables.opacity.opacityZero,
-      motionVariables.opacity.opacityZero,
-      motionVariables.opacity.opacityZero,
-      motionVariables.opacity.opacityOne,
+      0,
+      0,
+      0,
+      1,
     ],
     transition: {
-      duration: motionVariables.speed.speedThree,
+      duration: 3,
       ease: "easeInOut",
       times: [0, 0.4, 0.7, 1],
     },
@@ -95,13 +94,13 @@ const backgroundVariantSM = {
 
 const buttonVariant = {
   hidden: {
-    opacity: motionVariables.opacity.opacityZero
+    opacity: 0
   },
   show: {
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      duration: motionVariables.speed.speedOne,
-      delay: motionVariables.speed.speedThree
+      duration: 1,
+      delay: 3
     }
   }
 }

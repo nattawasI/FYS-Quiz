@@ -1,7 +1,6 @@
 import React from 'react'
 import {useUserStateContext} from '../contexts/UserContext'
 import {motion} from 'framer-motion'
-import {motionVariables} from '../variables/MotionVariant'
 import UseCurrentDevice from '../hooks/useCurrentDevice'
 import Content from '../layout/Content'
 import ButtonRestart from '../components/ButtonRestart'
@@ -20,13 +19,13 @@ import DeadbodyFemaleSM from '../assets/images/page/end/img_deadbody_female_sm.s
 
 const personVariant = {
   hidden: {
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      duration: motionVariables.speed.speedOne,
-      delay: motionVariables.speed.speedOne,
+      duration: 1,
+      delay: 1,
       ease: 'easeInOut',
     }
   },
@@ -34,13 +33,13 @@ const personVariant = {
 
 const socialVariant = {
   hidden: {
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      delay: motionVariables.speed.speedOne,
-      duration: motionVariables.speed.speedOne,
+      delay: 1,
+      duration: 1,
       ease: 'easeInOut',
     }
   },
@@ -49,14 +48,14 @@ const socialVariant = {
 const RibbonTopVariant = {
   hidden: {
     y: -150,
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
     y: 0,
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      delay: motionVariables.speed.speedOne,
-      duration: motionVariables.speed.speedOne,
+      delay: 1,
+      duration: 1,
       ease: 'easeInOut',
     }
   },
@@ -65,14 +64,14 @@ const RibbonTopVariant = {
 const RibbonBottomVariant = {
   hidden: {
     y: 150,
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
     y: 0,
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
-      duration: motionVariables.speed.speedOne,
-      delay: motionVariables.speed.speedOne,
+      duration: 1,
+      delay: 1,
       ease: 'easeInOut',
     }
   },

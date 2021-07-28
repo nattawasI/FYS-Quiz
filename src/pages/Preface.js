@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useSoundStateContext} from '../contexts/SoundContext'
-import {motionVariables} from '../variables/MotionVariant'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -12,20 +11,20 @@ import {playSoundClick} from '../variables/SoundMethods'
 // Motion Variants
 const sceneVariant = {
   hidden: {
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: motionVariables.speed.speedOne,
+      duration: 1,
     }
   },
   exit: {
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
     transition: {
       ease: 'easeInOut',
-      duration: motionVariables.speed.speedOne
+      duration: 1
     }
   }
 }
@@ -33,28 +32,28 @@ const sceneVariant = {
 const textVariant = {
   hidden: {
     y: 70,
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
     y: 0,
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: motionVariables.speed.speedOne
+      duration: 1
     }
   }
 }
 
 const buttonVariant = {
   hidden: {
-    opacity: motionVariables.opacity.opacityZero,
+    opacity: 0,
   },
   show: {
-    opacity: motionVariables.opacity.opacityOne,
+    opacity: 1,
     transition: {
       ease: 'easeInOut',
       duration: 0.7,
-      delay: motionVariables.speed.speedOne
+      delay: 1
     }
   }
 }
