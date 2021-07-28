@@ -435,7 +435,7 @@ const TurnOnLight = () => {
                 <div className="switch__button controller" onClick={handleSwitch}>
                   <div className="controller__container">
                     <motion.div
-                      className="controller__button"
+                      className={`controller__button${openSwitch? ' active': ''}`}
                       variants={SwitchVariant}
                       initial="hidden"
                       animate={switchControl}

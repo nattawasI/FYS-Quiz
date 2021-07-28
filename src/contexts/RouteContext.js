@@ -11,9 +11,9 @@ export const useRouteActionContext = () => {
   return useContext(RouteActionContext)
 }
 
-const RouteProvider = ({ children }) => {
+const RouteProvider = ({children}) => {
   // state
-  const [currentPageContext, setCurrentPageContext] = useState('PoliceCame')
+  const [currentPageContext, setCurrentPageContext] = useState('Start')
 
   // function
   const changeCurrentPageContext = (pageTarget) => {

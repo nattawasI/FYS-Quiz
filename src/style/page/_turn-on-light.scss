@@ -53,7 +53,7 @@
       z-index: 30;
       height: 100%;
       width: auto;
-  
+
       @include md-down {
         height: 40%;
       }
@@ -186,10 +186,13 @@
       background-color: $pink;
       width: 100%;
       height: 26%;
-    }
 
+      &.active {
+        cursor: default;
+      }
+    }
   }
-  
+
   .pulse {
     cursor: pointer;
     position: absolute;

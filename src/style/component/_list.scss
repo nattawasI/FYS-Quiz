@@ -29,7 +29,7 @@
     pointer-events: none;
 
     @media screen and (max-height : 667px) {
-      width: 220px;
+      width: 200px;
     }
 
     @include xs-up {
@@ -47,19 +47,19 @@
 
   &__img--game {
     @include md-up {
-      width: 30.625vw;
+      width: 28vw;
     }
   }
 
   &__img--food {
     @include md-up {
-      width: 26.042vw;
+      width: 24vw;
     }
   }
 
   &__img--exercise {
     @include md-up {
-      width: 30.625vw;
+      width: 28vw;
     }
   }
 
@@ -94,6 +94,10 @@
     &--exercise {
       padding-left: 24%;
     }
+
+    @include md-up {
+      margin-top: 2vh;
+    }
   }
 }
 
@@ -111,7 +115,6 @@
 
     @include md-up {
       font-size: 2.3vw;
-      //font-size: 2.865vw;
     }
   }
 
