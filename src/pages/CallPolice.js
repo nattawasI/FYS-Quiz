@@ -218,7 +218,7 @@ const CallPolice = ({soundPause, soundPlay}) => {
                       <span className={`button-call__btn button-call__btn--wave-in${calling? ' animate': ''}`}></span>
                       <span className="button-call__btn button-call__body--cancel"></span>
                       { !calling && <span className="button-call__btn button-call__body"></span> }
-                      <span className={`button-call__btn button-call__btn--touch${calling? ' animate': ''}`}></span>
+                      { !calling && <span className="button-call__btn button-call__btn--touch"></span> }
                     </button>
                   </motion.div>
             }
