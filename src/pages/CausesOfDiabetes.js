@@ -1,5 +1,6 @@
 
 import React, {useState, useRef, useEffect} from 'react'
+import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext, useUserActionContext} from '../contexts/UserContext'
 import {useSoundStateContext} from '../contexts/SoundContext'
@@ -93,7 +94,7 @@ const buttonVariant = {
   },
 }
 
-const CausesOfDiabetes = () => {
+const CausesOfDiabetes = ({soundPause}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {symptomContext} = useUserStateContext()
@@ -117,6 +118,7 @@ const CausesOfDiabetes = () => {
 
   // function
   const backToPrevPage = () => {
+    soundPause.pause()
     changeCurrentPageContext('VideoDoctor')
   }
 
@@ -292,6 +294,10 @@ const CausesOfDiabetes = () => {
       </Content>
     </>
   )
+}
+
+CausesOfDiabetes.propTypes = {
+  soundPause: PropTypes.object.isRequired,
 }
 
 export default CausesOfDiabetes

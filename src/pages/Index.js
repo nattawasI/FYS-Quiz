@@ -81,7 +81,7 @@ const Index = () => {
     } else if (currentPageContext === 'VideoDoctor') {
       return <VideoDoctor soundPlay={bgSoundSunshine} />
     } else if (currentPageContext === 'CausesOfDiabetes') {
-      return <CausesOfDiabetes />
+      return <CausesOfDiabetes soundPause={bgSoundSunshine} />
     } else if (currentPageContext === 'Summary') {
       return <Summary />
     } else if (currentPageContext === 'ResultSymptoms') {
