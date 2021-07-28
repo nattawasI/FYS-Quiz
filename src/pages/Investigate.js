@@ -83,7 +83,7 @@ const buttonVariant = {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 1,
+      duration: 0.7,
       delay: 1,
     }
   },
@@ -138,10 +138,10 @@ const Investigate = () => {
   const [heightHidden, setHeightHidden] = useState(null)
   const [fadePhoto, setFadePhoto] = useState(false)
   const [hidePhoto, setHidePhoto] = useState(false)
-  const [sceneYourName, setSceneYourName] = useState(false) // start from this scene
+  const [sceneYourName, setSceneYourName] = useState(true) // start from this scene
   const [sceneMurder, setSceneMurder] = useState(false)
   const [sceneYourGender, setSceneYourGender] = useState(false)
-  const [sceneAskCooperation, setSceneAskCooperation] = useState(true)
+  const [sceneAskCooperation, setSceneAskCooperation] = useState(false)
   const [sceneActivityOften, setSceneActivityOften] = useState(false)
   const [sceneQuiz, setSceneQuiz] = useState(false)
   const [sceneFormYear, setSceneFormYear] = useState(false)
