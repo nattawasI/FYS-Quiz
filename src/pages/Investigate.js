@@ -185,7 +185,11 @@ const Investigate = () => {
   }
 
   const toggleAnimateTable = () => {
-    const percentForExpand = isWindowSmall? 24: 33.33
+    const winHeight = window.innerHeight
+    const percentForExpandMd = winHeight <= 864? 35: 34
+    const percentForExpandSm = winHeight <= 568? 26: 24
+    const heightForHidden = isWindowSmall? Math.ceil((winHeight*percentForExpandSm)/100): Math.ceil((winHeight*percentForExpandMd)/100)
+
     if (!animateTable) {
       setFadePhoto(true)
 
@@ -193,8 +197,6 @@ const Investigate = () => {
         setHidePhoto(true)
       }, 700)
 
-      const winHeight = window.innerHeight
-      const heightForHidden = Math.ceil((winHeight*percentForExpand)/100)
       const spaceHeight = spaceRef.current.offsetHeight
       setHeightHidden(spaceHeight + heightForHidden)
     } else {
@@ -204,8 +206,6 @@ const Investigate = () => {
         setFadePhoto(false)
       }, 700)
 
-      const winHeight = window.innerHeight
-      const heightForHidden = Math.ceil((winHeight*percentForExpand)/100)
       const spaceHeight = spaceRef.current.offsetHeight
       setHeightHidden(spaceHeight - heightForHidden)
     }
