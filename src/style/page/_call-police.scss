@@ -20,15 +20,6 @@
     background-size: 100% auto;
   }
 
-  &__btn--body {
-    z-index: 2;
-    background-image: url('../../assets/images/page/callpolice/icon_call.svg');
-
-    &.active {
-      background-image: url('../../assets/images/page/callpolice/icon_cancel.svg');
-    }
-  }
-
   &__btn--wave-in {
     z-index: 1;
     background-image: url('../../assets/images/page/callpolice/icon_call_wave_in.svg');
@@ -59,6 +50,15 @@
     background-image: url('../../assets/images/page/callpolice/icon_touch.svg');
     animation-name: touch;
     animation-duration: 2.2s;
+  }
+
+  &__body {
+    z-index: 2;
+    background-image: url('../../assets/images/page/callpolice/icon_call.svg');
+
+    &--cancel {
+      background-image: url('../../assets/images/page/callpolice/icon_cancel.svg');
+    }
   }
 
   &:hover {

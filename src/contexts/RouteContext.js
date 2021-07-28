@@ -13,7 +13,7 @@ export const useRouteActionContext = () => {
 
 const RouteProvider = ({ children }) => {
   // state
-  const [currentPageContext, setCurrentPageContext] = useState('Investigate')
+  const [currentPageContext, setCurrentPageContext] = useState('CallPolice')
 
   // function
   const changeCurrentPageContext = (pageTarget) => {
