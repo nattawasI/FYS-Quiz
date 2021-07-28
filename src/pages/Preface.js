@@ -92,8 +92,6 @@ const Preface = () => {
     }
   }
 
-  console.log(completedScene);
-
   return (
     <>
       <Content bgColor="white">

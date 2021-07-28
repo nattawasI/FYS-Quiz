@@ -69,13 +69,18 @@ const PoliceCame = () => {
   const isWindowSmall = UseWindowSmall()
 
   // state
+  const [animateButtonComplete, setAnimateButtonComplete] = useState(false)
   const [completedScene, setCompletedScene] = useState(false)
 
 
   // function
   const goToNextPage = () => {
-    if (completedScene) {
-      changeCurrentPageContext('Siren')
+    changeCurrentPageContext('Siren')
+  }
+
+  const handleClick = () => {
+    if (animateButtonComplete) {
+      goToNextPage()
     }
   }
 
@@ -106,6 +111,7 @@ const PoliceCame = () => {
               variants={textVariant}
               initial="hidden"
               animate="show"
+              onAnimationComplete={ () => setCompletedScene(true) }
             >เมื่อตำรวจมาถึง ก็สำรวจที่เกิดเหตุทันที<br />แล้วขอเชิญคุณไปสอบสวน</motion.p>
             {
               !isWindowSmall
@@ -113,9 +119,9 @@ const PoliceCame = () => {
                   variants={buttonVariant}
                   initial="hidden"
                   animate="show"
-                  onAnimationComplete={ () => setCompletedScene(true) }
+                  onAnimationComplete={ () => setAnimateButtonComplete(true) }
                 >
-                  <ButtonNext onClick={goToNextPage} animateCompleted={completedScene} />
+                  <ButtonNext onClick={handleClick} animateCompleted={animateButtonComplete} />
                 </motion.div>
             }
           </div>
