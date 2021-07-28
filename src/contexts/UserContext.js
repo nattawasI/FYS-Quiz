@@ -44,7 +44,13 @@ const UserProvider = ({ children }) => {
 
   const addUserGenderContext = async (gender) => {
     setUserInfoContext({ ...userInfoContext, ...{ gender } });
-    const id = await saveUser(friendInfoContext, userInfoContext, gender);
+    const deviceUser = navigator.userAgent;
+    const id = await saveUser(
+      friendInfoContext,
+      userInfoContext,
+      gender,
+      deviceUser
+    );
     setUserId(id);
   };
 

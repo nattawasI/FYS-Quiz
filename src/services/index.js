@@ -9,12 +9,18 @@ const API_POST = (url, data) => {
   });
 };
 
-export const saveUser = async (friendInfoContext, userInfoContext, gender) => {
+export const saveUser = async (
+  friendInfoContext,
+  userInfoContext,
+  gender,
+  deviceUser
+) => {
   const userData = {
     friend_name: friendInfoContext.name,
     friend_gen: friendInfoContext.name,
     my_name: userInfoContext.name,
     my_gen: gender,
+    device: deviceUser,
   };
   const {
     data: { id = 0 },
