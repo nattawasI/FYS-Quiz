@@ -26,6 +26,7 @@
 
   &__img {
     width: 64vw;
+    pointer-events: none;
 
     @media screen and (max-height : 667px) {
       width: 220px;
