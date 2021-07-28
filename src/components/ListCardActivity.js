@@ -11,7 +11,7 @@ import ImgCardExerciseMd from '../assets/images/page/investigate/img_card_exerci
 import ImgCardExerciseSm from '../assets/images/page/investigate/img_card_exercise_sm.svg'
 import {playSoundClick} from '../variables/SoundMethods'
 
-const ListCardActivity = ({type, changeScene, chooseActivity}) => {
+const ListCardActivity = ({type, changeScene}) => {
   // context
   const {addActivityOftenContext, addActivityTodayContext} = useUserActionContext()
   const {muteContext} = useSoundStateContext()
@@ -20,8 +20,6 @@ const ListCardActivity = ({type, changeScene, chooseActivity}) => {
   const isWindowSmall = UseWindowSmall()
 
   const handleClick = (activity) => {
-    chooseActivity(activity)
-
     if (type === 'often') {
       addActivityOftenContext(activity)
     } else {
@@ -83,12 +81,10 @@ const ListCardActivity = ({type, changeScene, chooseActivity}) => {
 ListCardActivity.propTypes = {
   type: PropTypes.string.isRequired,
   changeScene: PropTypes.func,
-  chooseActivity: PropTypes.func,
 }
 
 ListCardActivity.defaultProps = {
   changeScene: () => {},
-  chooseActivity: () => {},
 }
 
 export default ListCardActivity
