@@ -145,6 +145,10 @@
       height: 100%;
 
       @include md-down {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
         margin-left: -6.667vw;
       }
     }

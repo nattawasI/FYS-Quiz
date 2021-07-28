@@ -187,7 +187,7 @@ const Investigate = () => {
   const toggleAnimateTable = () => {
     const winHeight = window.innerHeight
     const percentForExpandMd = winHeight <= 864? 35: 34
-    const percentForExpandSm = winHeight <= 568? 26: 24
+    const percentForExpandSm = winHeight <= 568? 28: 24
     const heightForHidden = isWindowSmall? Math.ceil((winHeight*percentForExpandSm)/100): Math.ceil((winHeight*percentForExpandMd)/100)
 
     if (!animateTable) {

@@ -29,8 +29,6 @@ body {
   position: relative;
   height: 100%;
   overflow: hidden;
-  --safe-area-inset-bottom: env(safe-area-inset-bottom);
-  height: calc(100% + var(--safe-area-inset-bottom));
 }
 
 a {
@@ -39,7 +37,7 @@ a {
 }
 
 img {
-  vertical-align: middle;
+  vertical-align: bottom;
 }
 
 button {

@@ -84,6 +84,7 @@ const Content = ({ children, bgColor, className }) => {
     <>
       <ButtonSound dark={buttonSoundDark} />
       <motion.div
+        id="content"
         className={classStyle()}
         variants={contentVariant}
         initial="hidden"

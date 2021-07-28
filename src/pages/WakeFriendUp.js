@@ -12,7 +12,6 @@ import ImgHumanSleepMd from '../assets/images/page/start/img_human_sleep_md.svg'
 import ImgHumanSleepSm from '../assets/images/page/start/img_human_sleep_sm.svg'
 import ImgArmMd from '../assets/images/page/friend-sleep/img_arm_md.svg'
 import ImgArmSm from '../assets/images/page/friend-sleep/img_arm_sm.svg'
-import ImgArmXs from '../assets/images/page/friend-sleep/img_arm_xs.svg'
 import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
@@ -112,13 +111,6 @@ const WakeFriendUp = () => {
   const [completedScene, setCompletedScene] = useState(false)
 
   // function
-  const renderImage = () => {
-    if (isWindowSmall) {
-      return window.innerWidth <= 576? ImgArmXs: ImgArmSm
-    } else {
-      return ImgArmMd
-    }
-  }
   const goToPrevPage = () => {
     changeCurrentPageContext('FriendSleep')
   }
@@ -164,7 +156,7 @@ const WakeFriendUp = () => {
             animate="show"
           >
             <motion.img
-              src={renderImage()}
+              src={isWindowSmall? ImgArmSm: ImgArmMd}
               alt="แขน"
               variants={wakeVariant}
               animate="animate"
