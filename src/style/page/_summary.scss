@@ -2,7 +2,7 @@
   &__paper {
     position: relative;
 
-    @include md-up {
+    @include md-up { // desktop
       position: absolute;
       top: 0;
       right: 0;
@@ -13,25 +13,35 @@
       align-items: flex-end;
     }
 
-    @include md-down {
-      top: -8%;
-      right: -17vw;
-      height: 80%;
+    @include md-down { // ipad
+      top: -6%;
+      right: -19vw;
+      height: 75%;
       opacity: 0;
       transition: opacity 1s ease-in-out, top 1s ease-in-out;
 
       &.animate {
-        top: 1%;
+        top: 6%;
         opacity: 1;
       }
     }
 
-    @include xs-down {
+    @include xs-down { // < 576
       right: -8.4vw;
       height: 75vh;
 
       &.animate {
-        top: 6%;
+        top: 4%;
+      }
+
+      @media screen and (max-height : 667px) {
+        right: -10.4vw;
+        height: 68vh;
+      }
+
+      @include iphone-x {
+        right: -6vw;
+        height: 65vh;
       }
     }
   }
@@ -60,11 +70,11 @@
     }
 
     @include md-down {
-      top: 12%;
+      top: 9%;
     }
 
     @include xs-down {
-      top: 10%;
+      top: 9%;
     }
   }
 
@@ -74,7 +84,7 @@
     left: 0;
 
     @include md-down {
-      height: 16%;
+      height: 12%;
     }
 
     @include md-up {
@@ -93,7 +103,7 @@
   }
 
   &__title {
-    font-size:  5.333vw;
+    font-size:  4.8vw;
 
     @include xs-up {
       font-size: 3.590vw;
@@ -106,6 +116,10 @@
 }
 
 .list-summary {
+  @include md-down {
+    margin-left: -5vw;
+  }
+
   &__item {
     position: relative;
     display: flex;
