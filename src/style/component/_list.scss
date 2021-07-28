@@ -13,7 +13,7 @@
   &__item {
     @include md-down {
       &:not(:first-child) {
-        margin-top: 2.5vh;
+        margin-top: 2vh;
       }
     }
   }
@@ -29,7 +29,8 @@
     pointer-events: none;
 
     @media screen and (max-height : 667px) {
-      width: 200px;
+      width: auto;
+      height: 14vh;
     }
 
     @include xs-up {
