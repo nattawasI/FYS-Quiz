@@ -1,15 +1,12 @@
 
 import React, {useState, useEffect} from 'react'
-import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {useUserStateContext} from '../contexts/UserContext'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 import PhoneAudio from '../assets/sounds/sound-phone.mp3'
-import {playSoundClick} from '../variables/SoundMethods'
 
 // Audio
 const soundPhone = new Audio(PhoneAudio)
@@ -58,12 +55,10 @@ const buttonVariant = {
   }
 }
 
-// const CallPolice = ({soundPause, soundPlay}) => {
-const CallPolice = (bgAudio, soundPause, soundPlay) => {
+const CallPolice = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
-  const {muteContext} = useSoundStateContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -98,39 +93,34 @@ const CallPolice = (bgAudio, soundPause, soundPlay) => {
   const skipScene = () => {
     if (isWindowSmall) {
       if(showScene1 && completedScene1) {
-        playSoundClick(muteContext)
         changeToScene2()
       } else if (showScene2 && completedScene2) {
-        playSoundClick(muteContext)
         changeToScene3()
       }
     }
   }
 
   const handleCalling = () => {
-    const timer = muteContext? 2000: 5000
+    // const timer = muteContext? 2000: 5000
 
-    if (!muteContext) {
-      soundPhone.play()
-    }
+    // if (!muteContext) {
+    //   soundPhone.play()
+    // }
 
     setCalling(true)
     setTimeout(() => {
-      console.log(bgAudio);
-      // bgAudio.src = soundPlay
-      // bgAudio.play()
       goToNextPage()
-    }, timer)
+    }, 5000)
   }
 
   // useEffect
-  useEffect(() => {
-    if (muteContext) {
-      soundPhone.muted = true
-    } else {
-      soundPhone.muted = false
-    }
-  }, [muteContext])
+  // useEffect(() => {
+  //   if (muteContext) {
+  //     soundPhone.muted = true
+  //   } else {
+  //     soundPhone.muted = false
+  //   }
+  // }, [muteContext])
 
   return (
     <>

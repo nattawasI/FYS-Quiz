@@ -1,12 +1,10 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
-import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const textVariant = {
@@ -85,7 +83,6 @@ const buttonVariant = {
 const Siren = ({soundPause, soundPlay}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {muteContext} = useSoundStateContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -102,7 +99,6 @@ const Siren = ({soundPause, soundPlay}) => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && completedScene) {
-      playSoundClick(muteContext)
       goToNextPage()
     }
   }
@@ -110,7 +106,7 @@ const Siren = ({soundPause, soundPlay}) => {
   return (
     <>
       <Content>
-        <div className="scene-panel siren" onClick={touchPanelSm}>
+        <div className="scene-panel siren" onTouchStart={touchPanelSm}>
           <motion.div
             className="siren__scene"
             variants={sceneVariant}

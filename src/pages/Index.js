@@ -28,14 +28,11 @@ import bgmInvestigation from '../assets/sounds/bg-sound-investigation.mp3'
 import bgmSunshine from '../assets/sounds/bg-sound-sunshine.mp3'
 
 // Effect
-import effectClick from '../assets/sounds/sound-click.mp3'
+// import effectClick from '../assets/sounds/sound-click.mp3'
 
 const bgAudio = new Audio()
-  bgAudio.volume = 0.3
-  bgAudio.loop = true
-
-const effectAudio = new Audio()
-effectAudio.src = effectClick
+bgAudio.volume = 0.3
+bgAudio.loop = true
 
 const Index = () => {
   // context
@@ -45,43 +42,43 @@ const Index = () => {
   // function
   const renderPage = () => {
     if (currentPageContext === 'Start') {
-      return <Start bgAudio={bgAudio} effectAudio={effectAudio} />
+      return <Start bgAudio={bgAudio} />
     } else if (currentPageContext === 'Preface') {
-      return <Preface effectAudio={effectAudio} />
+      return <Preface />
     } else if (currentPageContext === 'DarkRoom') {
-      return <DarkRoom effectAudio={effectAudio} />
+      return <DarkRoom />
     } else if (currentPageContext === 'TurnOnLight') {
-      return <TurnOnLight effectAudio={effectAudio} />
+      return <TurnOnLight />
     } else if (currentPageContext === 'FriendSleep') {
-      return <FriendSleep effectAudio={effectAudio} />
+      return <FriendSleep />
     } else if (currentPageContext === 'WakeFriendUp') {
-      return <WakeFriendUp effectAudio={effectAudio} />
+      return <WakeFriendUp />
     } else if (currentPageContext === 'CallPolice') {
-      return <CallPolice bgAudio={bgAudio} effectAudio={effectAudio} />
+      return <CallPolice />
     } else if (currentPageContext === 'PoliceCame') {
-      return <PoliceCame effectAudio={effectAudio} />
+      return <PoliceCame />
     } else if (currentPageContext === 'Siren') {
-      return <Siren effectAudio={effectAudio} />
+      return <Siren />
     } else if (currentPageContext === 'Investigate') {
-      return <Investigate effectAudio={effectAudio}  />
+      return <Investigate />
     } else if (currentPageContext === 'DeadBody') {
-      return <DeadBody effectAudio={effectAudio} />
+      return <DeadBody />
     } else if (currentPageContext === 'Murder') {
-      return <Murder effectAudio={effectAudio} />
+      return <Murder />
     } else if (currentPageContext === 'Evidence') {
-      return <Evidence effectAudio={effectAudio} />
+      return <Evidence />
     } else if (currentPageContext === 'VideoDoctor') {
-      return <VideoDoctor effectAudio={effectAudio} />
+      return <VideoDoctor />
     } else if (currentPageContext === 'CausesOfDiabetes') {
-      return <CausesOfDiabetes effectAudio={effectAudio} />
+      return <CausesOfDiabetes />
     } else if (currentPageContext === 'Summary') {
-      return <Summary effectAudio={effectAudio} />
+      return <Summary />
     } else if (currentPageContext === 'ResultSymptoms') {
-      return <ResultSymptoms effectAudio={effectAudio} />
+      return <ResultSymptoms />
     } else if (currentPageContext === 'Suggestion') {
-      return <Suggestion effectAudio={effectAudio} />
+      return <Suggestion />
     } else if (currentPageContext === 'End') {
-      return <End effectAudio={effectAudio} />
+      return <End />
     }
   }
 

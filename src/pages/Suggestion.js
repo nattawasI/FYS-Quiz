@@ -1,12 +1,10 @@
 
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
-import {playSoundClick} from '../variables/SoundMethods'
 
 // motion Variant
 const textVariant = {
@@ -55,7 +53,6 @@ const buttonVariant = {
 const Suggestion = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {muteContext} = useSoundStateContext()
 
   // utility
   const isWindowSmall = UseWindowSmall()
@@ -92,14 +89,11 @@ const Suggestion = () => {
   const skipScene = () => {
     if (isWindowSmall) {
       if (showScene3 && completedScene3) {
-        playSoundClick(muteContext)
         goToNextPage()
       } else {
         if(showScene1 && completedScene1) {
-          playSoundClick(muteContext)
           changeToScene2()
         } else if (showScene2 && completedScene2) {
-          playSoundClick(muteContext)
           changeToScene3()
         }
       }

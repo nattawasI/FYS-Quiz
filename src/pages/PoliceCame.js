@@ -94,7 +94,7 @@ const PoliceCame = () => {
   return (
     <>
       <Content>
-        <div className="scene-panel scene-panel--items-center police-came" onClick={touchPanelSm}>
+        <div className="scene-panel scene-panel--items-center police-came" onTouchStart={touchPanelSm}>
           <motion.div className="police-came__body"
             variants={bodyVariant}
             initial="hidden"

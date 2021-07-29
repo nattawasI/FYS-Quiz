@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext} from '../contexts/UserContext'
-import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -10,7 +9,6 @@ import DeadbodyMaleMD from '../assets/images/page/dead-body/img_deadbody_male_md
 import DeadbodyMaleSM from '../assets/images/page/dead-body/img_deadbody_male_sm.svg'
 import DeadbodyFemaleMD from '../assets/images/page/dead-body/img_deadbody_female_md.svg'
 import DeadbodyFemaleSM from '../assets/images/page/dead-body/img_deadbody_female_sm.svg'
-import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const textVariant = {
@@ -68,7 +66,6 @@ const DeadBody = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
-  const {muteContext} = useSoundStateContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -105,14 +102,11 @@ const DeadBody = () => {
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (showScene3 && completedScene3) {
-        playSoundClick(muteContext)
         goToNextPage()
       } else {
         if(showScene1 && completedScene1) {
-          playSoundClick(muteContext)
           changeToScene2()
         } else if (showScene2 && completedScene2) {
-          playSoundClick(muteContext)
           changeToScene3()
         }
       }
@@ -259,7 +253,7 @@ const DeadBody = () => {
   return (
     <>
       <Content>
-        <div className="scene-panel scene-panel--items-center dead-body" onClick={touchPanelSm}>
+        <div className="scene-panel scene-panel--items-center dead-body" onTouchStart={touchPanelSm}>
           <div className="dead-body__container">
             {
               renderScene1()

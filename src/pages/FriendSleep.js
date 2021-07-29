@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import {useUserStateContext} from '../contexts/UserContext'
-import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -8,7 +7,6 @@ import ButtonNext from '../components/ButtonNext'
 import ModalFormFriend from '../components/ModalFormFriend'
 import ImgHumanSleepMd from '../assets/images/page/start/img_human_sleep_md.svg'
 import ImgHumanSleepSm from '../assets/images/page/start/img_human_sleep_sm.svg'
-import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const textVariant = {
@@ -58,7 +56,6 @@ const buttonVariant = {
 const FriendSleep = () => {
   // context
   const {friendInfoContext} = useUserStateContext()
-  const {muteContext} = useSoundStateContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -74,7 +71,6 @@ const FriendSleep = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && completedScene) {
-      playSoundClick(muteContext)
       openModalFormFriend()
     }
   }
@@ -93,7 +89,7 @@ const FriendSleep = () => {
         showModal && <ModalFormFriend />
       }
       <Content>
-        <div className="scene-panel friend-sleep" onClick={touchPanelSm}>
+        <div className="scene-panel friend-sleep" onTouchStart={touchPanelSm}>
           <div className="friend-sleep__text box-story">
             <motion.p className="box-story__text text-story"
               variants={textVariant}

@@ -3,7 +3,6 @@ import React, {useState, useRef, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext, useUserActionContext} from '../contexts/UserContext'
-import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -13,7 +12,6 @@ import InputText from '../components/InputText'
 import ImgHabit from '../assets/images/page/causes-of-diabetes/img-habit.svg'
 import ImgDna from '../assets/images/page/causes-of-diabetes/img-dna.svg'
 import ImgHabitDna from '../assets/images/page/causes-of-diabetes/img-habit-dna.svg'
-import {playSoundClick} from '../variables/SoundMethods'
 
 // motion Variant
 const sceneVariant = {
@@ -94,13 +92,11 @@ const buttonVariant = {
   },
 }
 
-// const CausesOfDiabetes = ({soundPause}) => {
 const CausesOfDiabetes = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {symptomContext} = useUserStateContext()
   const {addCauseDiabetesContext, addSymptomDiabetesContext} = useUserActionContext()
-  const {muteContext} = useSoundStateContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -119,7 +115,6 @@ const CausesOfDiabetes = () => {
 
   // function
   const backToPrevPage = () => {
-    // soundPause.pause()
     changeCurrentPageContext('VideoDoctor')
   }
 
@@ -138,7 +133,6 @@ const CausesOfDiabetes = () => {
   }
 
   const handleClickCause = (cause) => {
-    playSoundClick(muteContext)
     addCauseDiabetesContext(cause)
     changeToScene2()
   }
@@ -156,7 +150,6 @@ const CausesOfDiabetes = () => {
 
   const touchPanelSm = () => {
     if (canGoNextPage) {
-      playSoundClick(muteContext)
       goToNextPage()
     }
   }
@@ -181,7 +174,7 @@ const CausesOfDiabetes = () => {
         showScene1 && <ButtonBack onClick={backToPrevPage} />
       }
       <Content bgColor="blue">
-        <div className="scene-panel scene-panel--items-center scene-animate" onClick={touchPanelSm}>
+        <div className="scene-panel scene-panel--items-center scene-animate" onTouchStart={touchPanelSm}>
           <div className="box-story scene-animate__scene scene-animate__scene--1">
             <AnimatePresence>
               {
@@ -296,10 +289,6 @@ const CausesOfDiabetes = () => {
     </>
   )
 }
-
-// CausesOfDiabetes.propTypes = {
-//   soundPause: PropTypes.object.isRequired,
-// }
 
 export default CausesOfDiabetes
 

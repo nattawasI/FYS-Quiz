@@ -1,12 +1,10 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import MurderImage from '../assets/images/page/murder/img_murder.svg'
 import PointerIcon from '../assets/images/icon/icon_pointer.svg'
-import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const textVariant = {
@@ -44,7 +42,6 @@ const evidenceVariant = {
 const Investigate = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {muteContext} = useSoundStateContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -61,7 +58,6 @@ const Investigate = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && completedScene) {
-      playSoundClick(muteContext)
       goToNextPage()
     }
   }
@@ -69,7 +65,7 @@ const Investigate = () => {
   return (
     <>
       <Content>
-        <div className="scene-panel scene-panel--items-center murder" onClick={touchPanelSm}>
+        <div className="scene-panel scene-panel--items-center murder" onTouchStart={touchPanelSm}>
           <div className="murder__container">
             <motion.div
               className="murder__content"

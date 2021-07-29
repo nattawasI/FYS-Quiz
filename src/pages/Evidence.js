@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -11,7 +10,6 @@ import Candy from '../assets/images/page/evidence/img_candy.png'
 import Whiskey from '../assets/images/page/evidence/img_whiskey.png'
 import BubbleTea from '../assets/images/page/evidence/img_bubbletea.png'
 import Hamburger from '../assets/images/page/evidence/img_hamburger.png'
-import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const firstTextVariant = {
@@ -120,7 +118,6 @@ const curveVariant = {
 const Evidence = ({soundPause}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {muteContext} = useSoundStateContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -159,14 +156,11 @@ const Evidence = ({soundPause}) => {
   const touchPanelSm = () => {
     if (isWindowSmall) {
       if (showScene3 && completedScene3) {
-        playSoundClick(muteContext)
         goToNextPage()
       } else {
         if(showScene1 && completedScene1) {
-          playSoundClick(muteContext)
           changeToScene2()
         } else if (showScene2 && completedScene2) {
-          playSoundClick(muteContext)
           changeToScene3()
         }
       }
@@ -176,7 +170,7 @@ const Evidence = ({soundPause}) => {
   return (
     <>
       <Content bgColor="white">
-        <div className="scene-panel evidence" onClick={touchPanelSm}>
+        <div className="scene-panel evidence" onTouchStart={touchPanelSm}>
           <div className="evidence__container">
             <div className="evidence__content">
               <AnimatePresence exitBeforeEnter>

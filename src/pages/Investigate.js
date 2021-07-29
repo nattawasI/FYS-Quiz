@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext, useUserActionContext} from '../contexts/UserContext'
-import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence, useAnimation} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import UseCurrentDevice from '../hooks/useCurrentDevice'
@@ -18,7 +17,6 @@ import ImgPoliceTb from '../assets/images/page/investigate/img_police_tb.svg'
 import ImgPoliceSm from '../assets/images/page/investigate/img_police_sm.svg'
 import ImgPhotoMd from '../assets/images/page/investigate/img_photo_md.svg'
 import ImgPhotoSm from '../assets/images/page/investigate/img_photo_sm.svg'
-import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const policeVariant = {
@@ -121,7 +119,6 @@ const Investigate = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext, userInfoContext} = useUserStateContext()
   const {addUserGenderContext, removeChoicesContext} = useUserActionContext()
-  const {muteContext} = useSoundStateContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -217,18 +214,14 @@ const Investigate = () => {
       if (nextScene === 'sceneMurder') {
         changeToSceneMurder()
       } else if (nextScene === 'sceneAskCooperation') {
-        playSoundClick(muteContext)
         changeToSceneAskCooperation()
       } else if (nextScene === 'sceneActivityOften') {
-        playSoundClick(muteContext)
         changeToSceneActivityOften()
       } else if (nextScene === 'sceneThankYou') {
         changeToSceneThankYou()
       } else if (nextScene === 'sceneCause') {
-        playSoundClick(muteContext)
         changeToSceneCause()
       } else if (nextScene === 'nextPage') {
-        playSoundClick(muteContext)
         goToNextPage()
       }
     }
@@ -373,7 +366,7 @@ const Investigate = () => {
           />
       }
       <Content>
-        <motion.div className="investigate" onClick={touchPanelSm}
+        <motion.div className="investigate" onTouchStart={touchPanelSm}
           variants={policeVariant}
           initial="hidden"
           animate="show"

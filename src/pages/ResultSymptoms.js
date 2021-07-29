@@ -1,7 +1,6 @@
 
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -12,7 +11,6 @@ import ImgTired from '../assets/images/page/result-symptoms/img_tired.svg'
 import ImgNumb from '../assets/images/page/result-symptoms/img_numb.svg'
 import ImgThirsty from '../assets/images/page/result-symptoms/img_thirsty.svg'
 import ImgSlowRecovery from '../assets/images/page/result-symptoms/img_slow_recovery.svg'
-import {playSoundClick} from '../variables/SoundMethods'
 
 // motion Variant
 const titleRiskSymptomsVariant = {
@@ -80,7 +78,6 @@ const buttonVariant = {
 const ResultSymptoms = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
-  const {muteContext} = useSoundStateContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -96,7 +93,6 @@ const ResultSymptoms = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
-      playSoundClick(muteContext)
       goToNextPage()
     }
   }
@@ -104,7 +100,7 @@ const ResultSymptoms = () => {
   return (
     <>
       <Content bgColor="white">
-        <div className="scene-panel scene-animate" onClick={touchPanelSm}>
+        <div className="scene-panel scene-animate" onTouchStart={touchPanelSm}>
           <div className="risk-symptoms">
             <motion.p className="text-story text-story--black risk-symptoms__title"
               variants={titleRiskSymptomsVariant}

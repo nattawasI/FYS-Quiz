@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import {useUserStateContext} from '../contexts/UserContext'
 import UseWindowSmall from '../hooks/useWindowSmall'
@@ -12,7 +11,6 @@ import ImgHumanSleepMd from '../assets/images/page/start/img_human_sleep_md.svg'
 import ImgHumanSleepSm from '../assets/images/page/start/img_human_sleep_sm.svg'
 import ImgArmMd from '../assets/images/page/friend-sleep/img_arm_md.svg'
 import ImgArmSm from '../assets/images/page/friend-sleep/img_arm_sm.svg'
-import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const friendVariant = {
@@ -80,7 +78,6 @@ const WakeFriendUp = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
-  const {muteContext} = useSoundStateContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -121,7 +118,6 @@ const WakeFriendUp = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
-      playSoundClick(muteContext)
       goToNextPage()
     }
   }
@@ -130,7 +126,7 @@ const WakeFriendUp = () => {
     <>
       <ButtonBack onClick={goToPrevPage} />
       <Content>
-        <div className="scene-panel friend-sleep" onClick={touchPanelSm}>
+        <div className="scene-panel friend-sleep" onTouchStart={touchPanelSm}>
           <div className="friend-sleep__text box-story">
             <motion.p className="box-story__text text-story"
               variants={textVariant}

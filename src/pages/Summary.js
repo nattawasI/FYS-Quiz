@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext} from '../contexts/UserContext'
-import {useSoundStateContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -14,7 +13,6 @@ import ImgRisk0Md from '../assets/images/page/summary/img_risk_0_md.svg'
 import ImgRisk100Sm from '../assets/images/page/summary/img_risk_100_sm.svg'
 import ImgRisk50Sm from '../assets/images/page/summary/img_risk_50_sm.svg'
 import ImgRisk0Sm from '../assets/images/page/summary/img_risk_0_sm.svg'
-import {playSoundClick} from '../variables/SoundMethods'
 
 // Motion Variants
 const textVariant = {
@@ -86,7 +84,6 @@ const Summary = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {activityOftenContext, choicesContext} = useUserStateContext()
-  const {muteContext} = useSoundStateContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -104,7 +101,6 @@ const Summary = () => {
 
   const touchPanelSm = () => {
     if (isWindowSmall && animateComplete) {
-      playSoundClick(muteContext)
       goToNextPage()
     }
   }
@@ -139,6 +135,20 @@ const Summary = () => {
     }
   }
 
+  const renderNote = () => {
+    if (!(isWindowSmall && window.innerHeight <= 667)) {
+      return (
+        <motion.div className="summary__note"
+          variants={noteVariant}
+          initial="hidden"
+          animate="show"
+        >
+          <img src={isWindowSmall? ImgNoteSm: ImgNoteMd} alt="" />
+        </motion.div>
+      )
+    }
+  }
+
   // useEffect
   useEffect(() => {
     if (isWindowSmall) {
@@ -164,7 +174,7 @@ const Summary = () => {
   return (
     <>
       <Content bgColor="blue">
-        <div className="scene-panel summary" onClick={touchPanelSm}>
+        <div className="scene-panel summary" onTouchStart={touchPanelSm}>
           <motion.div className="summary__content"
             variants={textVariant}
             initial="hidden"
@@ -207,13 +217,9 @@ const Summary = () => {
                 }
               </motion.div>
           }
-          <motion.div className="summary__note"
-            variants={noteVariant}
-            initial="hidden"
-            animate="show"
-          >
-            <img src={isWindowSmall? ImgNoteSm: ImgNoteMd} alt="" />
-          </motion.div>
+          {
+            renderNote()
+          }
         </div>
       </Content>
       {
