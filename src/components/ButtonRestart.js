@@ -2,22 +2,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {useSoundStateContext} from '../contexts/SoundContext'
-import ClickAudio from '../assets/sounds/sound-click.mp3'
-
-const soundClick = new Audio(ClickAudio)
 
 const ButtonRestart = ({onClick}) => {
   // context
   const {muteContext} = useSoundStateContext()
 
-  const playSoundClickSound = () => {
-    if (!muteContext) {
-      soundClick.play()
-    }
-  }
-
   const handleClick = () => {
-    playSoundClickSound()
     onClick()
   }
 

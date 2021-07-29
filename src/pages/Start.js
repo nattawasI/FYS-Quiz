@@ -28,7 +28,7 @@ const ribbonVariant = {
   }
 }
 
-const Start = ({soundPlay}) => {
+const Start = ({bgAudio, soundPlay}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {muteContext} = useSoundStateContext()

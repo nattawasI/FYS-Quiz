@@ -22,22 +22,17 @@ import Suggestion from './Suggestion'
 import End from './End'
 
 // Audio
-import StartAudio from '../assets/sounds/bg-sound-start.mp3'
 import SirenAudio from '../assets/sounds/bg-sound-siren.mp3'
 import InvestigationAudio from '../assets/sounds/bg-sound-investigation.mp3'
 import SunshineAudio from '../assets/sounds/bg-sound-sunshine.mp3'
 
-const bgSound = new Audio(StartAudio)
-const buttonSound = new Audio(SirenAudio)
-
-// decrease volumn
-const volume = 0.3
-bgSound.volume = volume;
-
-// set loop
-bgSound.loop = true;
-
 const Index = () => {
+  const bgAudio = new Audio()
+  bgAudio.volume = 0.3
+  bgAudio.loop = true
+
+  const effectAudio = new Audio()
+
   // context
   const {currentPageContext} = useRouteStateContext()
   const {muteContext} = useSoundStateContext()
@@ -45,7 +40,7 @@ const Index = () => {
   // function
   const renderPage = () => {
     if (currentPageContext === 'Start') {
-      return <Start soundPlay={StartAudio} />
+      return <Start bgAudio={bgAudio} />
     } else if (currentPageContext === 'Preface') {
       return <Preface />
     } else if (currentPageContext === 'DarkRoom') {
@@ -58,7 +53,7 @@ const Index = () => {
       return <WakeFriendUp />
     } else if (currentPageContext === 'CallPolice') {
       // return <CallPolice soundPause={bgSoundStart} soundPlay={SirenAudio} />
-      return <CallPolice soundPause={StartAudio} soundPlay={SirenAudio} />
+      return <CallPolice bgAudio={bgAudio} soundPause={StartAudio} soundPlay={SirenAudio} />
     } else if (currentPageContext === 'PoliceCame') {
       return <PoliceCame />
     } else if (currentPageContext === 'Siren') {
