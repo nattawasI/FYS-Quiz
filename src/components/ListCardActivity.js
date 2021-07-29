@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {useUserActionContext} from '../contexts/UserContext'
-import {useSoundStateContext} from '../contexts/SoundContext'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import ImgCardGameMd from '../assets/images/page/investigate/img_card_game_md.svg'
 import ImgCardGameSm from '../assets/images/page/investigate/img_card_game_sm.svg'
@@ -9,12 +8,10 @@ import ImgCardFoodMd from '../assets/images/page/investigate/img_card_food_md.sv
 import ImgCardFoodSm from '../assets/images/page/investigate/img_card_food_sm.svg'
 import ImgCardExerciseMd from '../assets/images/page/investigate/img_card_exercise_md.svg'
 import ImgCardExerciseSm from '../assets/images/page/investigate/img_card_exercise_sm.svg'
-import {playSoundClick} from '../variables/SoundMethods'
 
 const ListCardActivity = ({type, changeScene}) => {
   // context
   const {addActivityOftenContext, addActivityTodayContext} = useUserActionContext()
-  const {muteContext} = useSoundStateContext()
 
   // utility
   const isWindowSmall = UseWindowSmall()
@@ -26,7 +23,6 @@ const ListCardActivity = ({type, changeScene}) => {
       addActivityTodayContext(activity)
     }
 
-    playSoundClick(muteContext)
     changeScene()
   }
 
@@ -41,7 +37,6 @@ const ListCardActivity = ({type, changeScene}) => {
             aria-labelledby="activity-object-alt-01"
           >
             <span id="activity-object-alt-01">ชวนเล่นเกม</span>
-            {/* <img src="yourfallback.jpg" /> */}
           </object>
           <span className="list-card-activity__text list-card-activity__text--game md-show">ชวนเล่นเกม</span>
         </button>
@@ -55,7 +50,6 @@ const ListCardActivity = ({type, changeScene}) => {
             aria-labelledby="activity-object-alt-02"
           >
             <span id="activity-object-alt-02">ชวนกิน</span>
-            {/* <img src="yourfallback.jpg" /> */}
           </object>
           <span className="list-card-activity__text list-card-activity__text--food md-show">ชวนกิน</span>
         </button>
@@ -69,7 +63,6 @@ const ListCardActivity = ({type, changeScene}) => {
             aria-labelledby="activity-object-alt-03"
           >
             <span id="activity-object-alt-03">ชวนออกกำลังกาย</span>
-            {/* <img src="yourfallback.jpg" /> */}
           </object>
           <span className="list-card-activity__text list-card-activity__text--exercise md-show">ชวนออกกำลังกาย</span>
         </button>

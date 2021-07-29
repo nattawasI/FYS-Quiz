@@ -115,7 +115,6 @@ const DarkRoom = ({effectAudio}) => {
 
   // function
   const goToNextPage = () => {
-    effectAudio.play()
     if (completedScene) {
       changeCurrentPageContext('TurnOnLight')
     }
