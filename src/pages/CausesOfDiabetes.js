@@ -1,6 +1,5 @@
 
 import React, {useState, useRef, useEffect} from 'react'
-import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext, useUserActionContext} from '../contexts/UserContext'
 import {motion, AnimatePresence} from 'framer-motion'
