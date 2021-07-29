@@ -36,11 +36,6 @@
       width: 45.667vw;
     }
 
-    @media screen and (max-height : 667px) {
-      width: auto;
-      height: 13vh;
-    }
-
     @include md-up {
       transition: transform 0.3s ease-in-out;
     }
@@ -49,18 +44,30 @@
   &__img--game {
     @include md-up {
       width: 28vw;
+
+      @media screen and (max-height : 667px) {
+        width: 26vw;
+      }
     }
   }
 
   &__img--food {
     @include md-up {
       width: 24vw;
+
+      @media screen and (max-height : 667px) {
+        width: 22vw;
+      }
     }
   }
 
   &__img--exercise {
     @include md-up {
       width: 28vw;
+
+      @media screen and (max-height : 667px) {
+        width: 26vw;
+      }
     }
   }
 

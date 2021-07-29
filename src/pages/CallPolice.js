@@ -217,10 +217,5 @@ const CallPolice = () => {
   )
 }
 
-// CallPolice.propTypes = {
-//   soundPause: PropTypes.object.isRequired,
-//   soundPlay: PropTypes.object.isRequired,
-// }
-
 export default CallPolice
 
