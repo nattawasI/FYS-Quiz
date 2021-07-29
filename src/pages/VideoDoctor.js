@@ -24,7 +24,6 @@ const VideoDoctor = ({soundPlay}) => {
   const {changeCurrentPageContext} = useRouteActionContext()
 
   // state
-  // const [showButton, setShowButton] = useState(true)
   const [completedScene, setCompletedScene] = useState(false)
 
   // function
@@ -33,15 +32,12 @@ const VideoDoctor = ({soundPlay}) => {
     changeCurrentPageContext('CausesOfDiabetes')
   }
 
-  // const handleClickVideo = () => {
-  //   setShowButton(true)
-  // }
-
   return (
     <>
       <Content bgColor="blue">
         <div className="scene-panel scene-panel--items-center video-doctor">
-          <div className="video-wrap">
+          <div className="video-doctor__heading text-story">กดเพื่อรับชมวิดิโอ</div>
+          <div className="video-doctor__video video-wrap">
             <div className="video-box">
               <iframe width="560" height="315" src="https://www.youtube.com/embed/cgT9cwJVkLw" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div>
