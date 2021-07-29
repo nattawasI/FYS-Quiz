@@ -128,13 +128,19 @@
     }
 
     @include iphone-x  {
-      margin-top: 7%;
-      right: 10vw;
+      margin-top: 11%;
     }
 
     @include xs-up { // ipad
       margin-top: 7%;
-      right: 10vw;
+      // right: 10vw;
+    }
+
+    @include md-down {
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
 
     @include md-up {
@@ -147,6 +153,10 @@
 
     &__list {
       display: flex;
+
+      @include iphone-x  {
+        margin-left: 14%;
+      }
     }
 
     &__item {
