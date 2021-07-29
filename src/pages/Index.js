@@ -27,23 +27,16 @@ import SirenAudio from '../assets/sounds/bg-sound-siren.mp3'
 import InvestigationAudio from '../assets/sounds/bg-sound-investigation.mp3'
 import SunshineAudio from '../assets/sounds/bg-sound-sunshine.mp3'
 
-const bgSoundStart = new Audio(StartAudio)
-const bgSoundSiren = new Audio(SirenAudio)
-const bgSoundInvestigation = new Audio(InvestigationAudio)
-const bgSoundSunshine = new Audio(SunshineAudio)
+const bgSound = new Audio(StartAudio)
+const ButtonSound = new Audio(SirenAudio)
 
 // decrease volumn
 const volume = 0.3
-bgSoundStart.volume = volume;
-bgSoundSiren.volume = volume;
-bgSoundInvestigation.volume = volume
-bgSoundSunshine.volume = volume
+bgSound.volume = volume;
+ButtonSound.volume = volume;
 
 // set loop
-bgSoundStart.loop = true;
-bgSoundSiren.loop = true;
-bgSoundInvestigation.loop = true
-bgSoundSunshine.loop = true
+bgSound.loop = true;
 
 const Index = () => {
   // context
@@ -53,7 +46,7 @@ const Index = () => {
   // function
   const renderPage = () => {
     if (currentPageContext === 'Start') {
-      return <Start soundPlay={bgSoundStart} />
+      return <Start soundPlay={StartAudio} />
     } else if (currentPageContext === 'Preface') {
       return <Preface />
     } else if (currentPageContext === 'DarkRoom') {
@@ -65,11 +58,13 @@ const Index = () => {
     } else if (currentPageContext === 'WakeFriendUp') {
       return <WakeFriendUp />
     } else if (currentPageContext === 'CallPolice') {
-      return <CallPolice soundPause={bgSoundStart} soundPlay={bgSoundSiren} />
+      // return <CallPolice soundPause={bgSoundStart} soundPlay={SirenAudio} />
+      return <CallPolice />
     } else if (currentPageContext === 'PoliceCame') {
       return <PoliceCame />
     } else if (currentPageContext === 'Siren') {
-      return <Siren soundPause={bgSoundSiren} soundPlay={bgSoundInvestigation} />
+      // return <Siren soundPause={bgSoundSiren} soundPlay={bgSoundInvestigation} />
+      return <Siren />
     } else if (currentPageContext === 'Investigate') {
       return <Investigate />
     } else if (currentPageContext === 'DeadBody') {
@@ -77,11 +72,14 @@ const Index = () => {
     } else if (currentPageContext === 'Murder') {
       return <Murder />
     } else if (currentPageContext === 'Evidence') {
-      return <Evidence soundPause={bgSoundInvestigation} />
+      // return <Evidence soundPause={bgSoundInvestigation} />
+      return <Evidence />
     } else if (currentPageContext === 'VideoDoctor') {
-      return <VideoDoctor soundPlay={bgSoundSunshine} />
+      // return <VideoDoctor soundPlay={bgSoundSunshine} />
+      return <VideoDoctor />
     } else if (currentPageContext === 'CausesOfDiabetes') {
-      return <CausesOfDiabetes soundPause={bgSoundSunshine} />
+      // return <CausesOfDiabetes soundPause={bgSoundSunshine} />
+      return <CausesOfDiabetes />
     } else if (currentPageContext === 'Summary') {
       return <Summary />
     } else if (currentPageContext === 'ResultSymptoms') {
@@ -97,15 +95,15 @@ const Index = () => {
   // useEffect
   useEffect(() => {
     if (muteContext) {
-      bgSoundStart.muted = true
-      bgSoundSiren.muted = true
-      bgSoundInvestigation.muted = true
-      bgSoundSunshine.muted = true
+      // bgSoundStart.muted = true
+      // bgSoundSiren.muted = true
+      // bgSoundInvestigation.muted = true
+      // bgSoundSunshine.muted = true
     } else {
-      bgSoundStart.muted = false
-      bgSoundSiren.muted = false
-      bgSoundInvestigation.muted = false
-      bgSoundSunshine.muted = false
+      // bgSoundStart.muted = false
+      // bgSoundSiren.muted = false
+      // bgSoundInvestigation.muted = false
+      // bgSoundSunshine.muted = false
     }
   }, [muteContext])
 
