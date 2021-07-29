@@ -27,9 +27,6 @@ import bgmSiren from '../assets/sounds/bg-sound-siren.mp3'
 import bgmInvestigation from '../assets/sounds/bg-sound-investigation.mp3'
 import bgmSunshine from '../assets/sounds/bg-sound-sunshine.mp3'
 
-// Effect
-// import effectClick from '../assets/sounds/sound-click.mp3'
-
 const bgAudio = new Audio()
 bgAudio.volume = 0.3
 bgAudio.loop = true

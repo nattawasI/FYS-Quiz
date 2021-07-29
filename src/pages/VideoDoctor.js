@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react'
-import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -20,9 +20,10 @@ const buttonVariant = {
   }
 }
 
-const VideoDoctor = ({soundPlay}) => {
+const VideoDoctor = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -36,6 +37,7 @@ const VideoDoctor = ({soundPlay}) => {
 
   // function
   const goToNextPage = () => {
+    playClickSoundContext()
     changeCurrentPageContext('CausesOfDiabetes')
   }
 
@@ -67,10 +69,6 @@ const VideoDoctor = ({soundPlay}) => {
       </motion.div>
     </>
   )
-}
-
-VideoDoctor.propTypes = {
-  soundPlay: PropTypes.object.isRequired,
 }
 
 export default VideoDoctor

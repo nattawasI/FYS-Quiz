@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -106,6 +107,7 @@ const buttonVariant = {
 const DarkRoom = ({effectAudio}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -116,6 +118,7 @@ const DarkRoom = ({effectAudio}) => {
   // function
   const goToNextPage = () => {
     if (completedScene) {
+      playClickSoundContext()
       changeCurrentPageContext('TurnOnLight')
     }
   }

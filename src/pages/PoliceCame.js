@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext} from '../contexts/UserContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -61,6 +62,7 @@ const PoliceCame = () => {
   // context
   const {friendInfoContext} = useUserStateContext()
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -72,6 +74,7 @@ const PoliceCame = () => {
 
   // function
   const goToNextPage = () => {
+    playClickSoundContext()
     changeCurrentPageContext('Siren')
   }
 

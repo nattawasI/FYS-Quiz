@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -79,9 +80,10 @@ const buttonVariant = {
   }
 }
 
-const Siren = ({soundPause, soundPlay}) => {
+const Siren = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -91,8 +93,7 @@ const Siren = ({soundPause, soundPlay}) => {
 
   // function
   const goToNextPage = () => {
-    // soundPause.pause()
-    // soundPlay.play()
+    playClickSoundContext()
     changeCurrentPageContext('Investigate')
   }
 
@@ -150,10 +151,5 @@ const Siren = ({soundPause, soundPlay}) => {
     </>
   )
 }
-
-// Siren.propTypes = {
-//   soundPause: PropTypes.object.isRequired,
-//   soundPlay: PropTypes.object.isRequired,
-// }
 
 export default Siren

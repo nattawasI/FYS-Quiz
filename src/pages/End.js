@@ -1,5 +1,6 @@
 import React from 'react'
 import {useUserStateContext} from '../contexts/UserContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseCurrentDevice from '../hooks/useCurrentDevice'
 import Content from '../layout/Content'
@@ -80,12 +81,14 @@ const RibbonBottomVariant = {
 const End = () => {
   // context
   const {friendInfoContext} = useUserStateContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // utility hook
   const currentDevice = UseCurrentDevice()
 
   // function
   const goToNextPage = () => {
+    playClickSoundContext()
     window.location.reload()
   }
 

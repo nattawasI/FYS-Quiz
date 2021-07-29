@@ -1,4 +1,6 @@
 import React, {useState, createContext, useContext} from 'react'
+import effectClick from '../assets/sounds/sound-click.mp3'
+import useSound from 'use-sound'
 
 const SoundStateContext = createContext()
 const SoundActionContext = createContext()
@@ -12,6 +14,9 @@ export const useSoundActionContext = () => {
 }
 
 const SoundProvider = ({ children }) => {
+  // useSound
+  const [playClickSound] = useSound(effectClick)
+
   // state
   const [muteContext, setMuteContext] = useState(false)
 
@@ -20,12 +25,19 @@ const SoundProvider = ({ children }) => {
     setMuteContext(!muteContext)
   }
 
+  const playClickSoundContext = () => {
+    if (!muteContext) {
+      playClickSound()
+    }
+  }
+
   const soundStateStore = {
     muteContext,
   }
 
   const soundActionStore = {
-    toggleMuteSoundContext
+    toggleMuteSoundContext,
+    playClickSoundContext
   }
 
   return (

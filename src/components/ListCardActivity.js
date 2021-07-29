@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {useUserActionContext} from '../contexts/UserContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import ImgCardGameMd from '../assets/images/page/investigate/img_card_game_md.svg'
 import ImgCardGameSm from '../assets/images/page/investigate/img_card_game_sm.svg'
@@ -12,6 +13,7 @@ import ImgCardExerciseSm from '../assets/images/page/investigate/img_card_exerci
 const ListCardActivity = ({type, changeScene}) => {
   // context
   const {addActivityOftenContext, addActivityTodayContext} = useUserActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // utility
   const isWindowSmall = UseWindowSmall()
@@ -23,6 +25,7 @@ const ListCardActivity = ({type, changeScene}) => {
       addActivityTodayContext(activity)
     }
 
+    playClickSoundContext()
     changeScene()
   }
 

@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -42,6 +43,7 @@ const evidenceVariant = {
 const Investigate = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -52,6 +54,7 @@ const Investigate = () => {
   // function
   const goToNextPage = () => {
     if (completedScene) {
+      playClickSoundContext()
       changeCurrentPageContext('Evidence')
     }
   }

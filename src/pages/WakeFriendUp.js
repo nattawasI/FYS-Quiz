@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {motion} from 'framer-motion'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {useUserStateContext} from '../contexts/UserContext'
+import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import UseCurrentDevice from '../hooks/useCurrentDevice'
 import Content from '../layout/Content'
@@ -78,6 +79,7 @@ const WakeFriendUp = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -109,10 +111,12 @@ const WakeFriendUp = () => {
 
   // function
   const goToPrevPage = () => {
+    playClickSoundContext()
     changeCurrentPageContext('FriendSleep')
   }
 
   const goToNextPage = () => {
+    playClickSoundContext()
     changeCurrentPageContext('CallPolice')
   }
 

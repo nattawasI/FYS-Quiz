@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext} from '../contexts/UserContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -66,6 +67,7 @@ const DeadBody = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -81,12 +83,14 @@ const DeadBody = () => {
   // function
   const goToNextPage = () => {
     if (completedScene3) {
+      playClickSoundContext()
       changeCurrentPageContext('Murder')
     }
   }
 
   const changeToScene2 = () => {
     if (completedScene1) {
+      playClickSoundContext()
       setShowScene1(false)
       setShowScene2(true)
     }
@@ -94,6 +98,7 @@ const DeadBody = () => {
 
   const changeToScene3 = () => {
     if (completedScene2) {
+      playClickSoundContext()
       setShowScene2(false)
       setShowScene3(true)
     }

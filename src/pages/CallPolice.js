@@ -1,15 +1,14 @@
 
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundStateContext, useSoundActionContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import {useUserStateContext} from '../contexts/UserContext'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
-import PhoneAudio from '../assets/sounds/sound-phone.mp3'
-
-// Audio
-const soundPhone = new Audio(PhoneAudio)
+import effectPhone from '../assets/sounds/sound-phone.mp3'
+import useSound from 'use-sound'
 
 // motion Variant
 const textVariant = {
@@ -59,9 +58,14 @@ const CallPolice = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
+  const {playClickSoundContext} = useSoundActionContext()
+  const {muteContext} = useSoundStateContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
+
+  // useSound
+  const [playPhoneSound] = useSound(effectPhone, { volume: muteContext? 0: 1 })
 
   // state
   const [showScene1, setShowScene1] = useState(true)
@@ -73,11 +77,13 @@ const CallPolice = () => {
 
   // function
   const goToNextPage = () => {
+    playClickSoundContext()
     changeCurrentPageContext('PoliceCame')
   }
 
   const changeToScene2 = () => {
     if (completedScene1) {
+      playClickSoundContext()
       setShowScene1(false)
       setShowScene2(true)
     }
@@ -85,6 +91,7 @@ const CallPolice = () => {
 
   const changeToScene3 = () => {
     if (completedScene2) {
+      playClickSoundContext()
       setShowScene2(false)
       setShowScene3(true)
     }
@@ -101,26 +108,19 @@ const CallPolice = () => {
   }
 
   const handleCalling = () => {
-    // const timer = muteContext? 2000: 5000
+    if (!calling) {
+      const timer = muteContext? 2000: 5000
 
-    // if (!muteContext) {
-    //   soundPhone.play()
-    // }
+      if (!muteContext) {
+        playPhoneSound()
+      }
 
-    setCalling(true)
-    setTimeout(() => {
-      goToNextPage()
-    }, 5000)
+      setCalling(true)
+      setTimeout(() => {
+        goToNextPage()
+      }, timer)
+    }
   }
-
-  // useEffect
-  // useEffect(() => {
-  //   if (muteContext) {
-  //     soundPhone.muted = true
-  //   } else {
-  //     soundPhone.muted = false
-  //   }
-  // }, [muteContext])
 
   return (
     <>

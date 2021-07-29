@@ -1,7 +1,8 @@
 import React, {useRef, useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
-import {motion} from 'framer-motion'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {useUserStateContext, useUserActionContext} from '../contexts/UserContext'
+import {motion} from 'framer-motion'
 import InputText from './InputText'
 import Button from './Button'
 
@@ -43,15 +44,21 @@ const formVariant = {
 }
 
 const ModalFormFriend = () => {
+  // context
   const {friendInfoContext} = useUserStateContext()
   const {addFriendInfoContext} = useUserActionContext()
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
+  // ref
   const inputRef = useRef(null)
 
+  // state
   const [error, setError] = useState(false)
 
+  // function
   const goToNextPage = () => {
+    playClickSoundContext()
     changeCurrentPageContext('WakeFriendUp')
   }
 

@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext, useUserActionContext} from '../contexts/UserContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence, useAnimation} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import UseCurrentDevice from '../hooks/useCurrentDevice'
@@ -119,6 +120,7 @@ const Investigate = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext, userInfoContext} = useUserStateContext()
   const {addUserGenderContext, removeChoicesContext} = useUserActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -178,6 +180,7 @@ const Investigate = () => {
 
   // function
   const goToNextPage = () => {
+    playClickSoundContext()
     changeCurrentPageContext('DeadBody')
   }
 
@@ -228,36 +231,43 @@ const Investigate = () => {
   }
 
   const backToSceneYourName = () => {
+    playClickSoundContext()
     setSceneYourGender(false)
     setSceneYourName(true)
   }
 
   const changeToSceneYourGender = () => {
+    playClickSoundContext()
     setSceneYourName(false)
     setSceneYourGender(true)
   }
 
   const backToSceneYourGender = () => {
+    playClickSoundContext()
     setSceneMurder(false)
     setSceneYourGender(true)
   }
 
   const changeToSceneMurder = () => {
+    playClickSoundContext()
     setSceneYourGender(false)
     setSceneMurder(true)
   }
 
   const backToSceneMurder = () => {
+    playClickSoundContext()
     setSceneAskCooperation(false)
     setSceneMurder(true)
   }
 
   const changeToSceneAskCooperation = () => {
+    playClickSoundContext()
     setSceneMurder(false)
     setSceneAskCooperation(true)
   }
 
   const changeToSceneActivityOften = () => {
+    playClickSoundContext()
     toggleAnimateTable()
     setSceneAskCooperation(false)
     setSceneActivityOften(true)
@@ -269,39 +279,46 @@ const Investigate = () => {
   }
 
   const changeToSceneFormYear = () => {
+    playClickSoundContext()
     setSceneQuiz(false)
     setSceneFormYear(true)
   }
 
   const backToSceneQuiz = () => {
+    playClickSoundContext()
     removeChoicesContext()
     setSceneFormYear(false)
     setSceneQuiz(true)
   }
 
   const changeToSceneActivityToday = () => {
+    playClickSoundContext()
     setSceneFormYear(false)
     setSceneActivityToday(true)
   }
 
   const backToSceneFormYear = () => {
+    playClickSoundContext()
     setSceneActivityToday(false)
     setSceneFormYear(true)
   }
 
   const changeToSceneThankYou = () => {
+    playClickSoundContext()
     setSceneActivityToday(false)
     setSceneThankYou(true)
     toggleAnimateTable()
   }
 
   const backToSceneActivityToday = () => {
+    playClickSoundContext()
     toggleAnimateTable()
     setSceneThankYou(false)
     setSceneActivityToday(true)
   }
 
   const changeToSceneCause = () => {
+    playClickSoundContext()
     setSceneThankYou(false)
     setSceneCause(true)
   }
@@ -311,6 +328,7 @@ const Investigate = () => {
   }
 
   const prevQuestion = () => {
+    playClickSoundContext()
     removeChoicesContext()
 
     if (currentQuestion > 0) {
@@ -344,6 +362,7 @@ const Investigate = () => {
   }
 
   const chooseGender = (gender) => {
+    playClickSoundContext()
     addUserGenderContext(gender)
     changeToSceneMurder()
   }

@@ -1,19 +1,22 @@
 import React, {useState} from 'react'
 import {AnimatePresence, motion, useAnimation } from 'framer-motion'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundStateContext, useSoundActionContext} from '../contexts/SoundContext'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
-import BGShadeMD from '../assets/images/page/turn-on-light/bg_shade_md.svg';
-import BGShadeSM from '../assets/images/page/turn-on-light/bg_shade_sm.svg';
-import BGShadeLighterMD from '../assets/images/page/turn-on-light/bg_shade_lighter_md.svg';
-import BGShadeLighterSM from '../assets/images/page/turn-on-light/bg_shade_lighter_sm.svg';
-import SwitchPlateDark from '../assets/images/page/turn-on-light/img_switch_01.svg';
-import SwitchPlateLight from '../assets/images/page/turn-on-light/img_switch_02.svg';
-import IconPointer from '../assets/images/page/turn-on-light/ico_pointer_01.svg';
-import NormalHand from '../assets/images/page/turn-on-light/img_hand_01.svg';
-import PointerHandMD from '../assets/images/page/turn-on-light/img_hand_02_md.svg';
-import PointerHandSM from '../assets/images/page/turn-on-light/img_hand_02_sm.svg';
+import BGShadeMD from '../assets/images/page/turn-on-light/bg_shade_md.svg'
+import BGShadeSM from '../assets/images/page/turn-on-light/bg_shade_sm.svg'
+import BGShadeLighterMD from '../assets/images/page/turn-on-light/bg_shade_lighter_md.svg'
+import BGShadeLighterSM from '../assets/images/page/turn-on-light/bg_shade_lighter_sm.svg'
+import SwitchPlateDark from '../assets/images/page/turn-on-light/img_switch_01.svg'
+import SwitchPlateLight from '../assets/images/page/turn-on-light/img_switch_02.svg'
+import IconPointer from '../assets/images/page/turn-on-light/ico_pointer_01.svg'
+import NormalHand from '../assets/images/page/turn-on-light/img_hand_01.svg'
+import PointerHandMD from '../assets/images/page/turn-on-light/img_hand_02_md.svg'
+import PointerHandSM from '../assets/images/page/turn-on-light/img_hand_02_sm.svg'
+import effectSwitch from '../assets/sounds/sound-switch.mp3'
+import useSound from 'use-sound'
 
 const textIntro01Variant = {
   hidden: {
@@ -175,6 +178,8 @@ const SwitchPlateVariant = {
 const TurnOnLight = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
+  const {muteContext} = useSoundStateContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -188,6 +193,9 @@ const TurnOnLight = () => {
   const [switchBreaker, setSwitchBreaker] = useState(false)
   const [completedScene, setCompletedScene] = useState(false)
 
+  // useSound
+  const [playSwitchSound] = useSound(effectSwitch)
+
   // animation control
   const switchControl = useAnimation();
   const buttonNextControl = useAnimation();
@@ -195,6 +203,7 @@ const TurnOnLight = () => {
   // function
   const goToNextPage = () => {
     if (animateComplete) {
+      playClickSoundContext()
       changeCurrentPageContext('FriendSleep')
     }
   }
@@ -216,7 +225,9 @@ const TurnOnLight = () => {
   }
 
   const playSoundSwitch = () => {
-    // play switch sound
+    if (!muteContext) {
+      playSwitchSound()
+    }
   }
 
   const switchOpened = () => {

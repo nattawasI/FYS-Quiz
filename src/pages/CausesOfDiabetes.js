@@ -2,6 +2,7 @@
 import React, {useState, useRef, useEffect} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {useUserStateContext, useUserActionContext} from '../contexts/UserContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -96,6 +97,7 @@ const CausesOfDiabetes = () => {
   const {changeCurrentPageContext} = useRouteActionContext()
   const {symptomContext} = useUserStateContext()
   const {addCauseDiabetesContext, addSymptomDiabetesContext} = useUserActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // hooks
   const isWindowSmall = UseWindowSmall()
@@ -114,30 +116,38 @@ const CausesOfDiabetes = () => {
 
   // function
   const backToPrevPage = () => {
+    playClickSoundContext()
     changeCurrentPageContext('VideoDoctor')
   }
 
   const goToNextPage = () => {
+    playClickSoundContext()
     changeCurrentPageContext('Summary')
   }
 
   const changeToScene2 = () => {
+    playClickSoundContext()
     setShowScene1(false)
     setShowScene2(true)
   }
 
   const changeToScene3 = () => {
+    playClickSoundContext()
     setShowScene2(false)
     setShowScene3(true)
   }
 
   const handleClickCause = (cause) => {
+    playClickSoundContext()
     addCauseDiabetesContext(cause)
     changeToScene2()
   }
 
   const submitSympton = (e) => {
     e.preventDefault()
+
+    playClickSoundContext()
+
     const inputValue = inputRef.current.value
     if (inputValue) {
       addSymptomDiabetesContext(inputValue)

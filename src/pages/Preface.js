@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {useRouteActionContext} from '../contexts/RouteContext'
+import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
@@ -59,6 +60,7 @@ const buttonVariant = {
 const Preface = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
+  const {playClickSoundContext} = useSoundActionContext()
 
   // utility
   const isWindowSmall = UseWindowSmall()
@@ -71,11 +73,13 @@ const Preface = () => {
 
   // function
   const changeToScene2 = () => {
+    playClickSoundContext()
     setShowScene1(false)
     setShowScene2(true)
   }
 
   const goToNextPage = () => {
+    playClickSoundContext()
     changeCurrentPageContext('DarkRoom')
   }
 
