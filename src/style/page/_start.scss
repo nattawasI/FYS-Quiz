@@ -132,7 +132,7 @@
     justify-content: center;
 
     @include md-up {
-      right: -3.4895%;
+      // right: -3.4895%;
       height: 65.370vh;
     }
 
@@ -149,7 +149,7 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        margin-left: -6.667vw;
+        margin-left: -3.667vw;
       }
     }
   }

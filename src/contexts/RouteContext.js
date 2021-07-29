@@ -13,7 +13,7 @@ export const useRouteActionContext = () => {
 
 const RouteProvider = ({children}) => {
   // state
-  const [currentPageContext, setCurrentPageContext] = useState('VideoDoctor')
+  const [currentPageContext, setCurrentPageContext] = useState('Start')
 
   // function
   const changeCurrentPageContext = (pageTarget) => {
