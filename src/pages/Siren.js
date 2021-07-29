@@ -95,8 +95,8 @@ const Siren = ({soundPause, soundPlay}) => {
 
   // function
   const goToNextPage = () => {
-    soundPause.pause()
-    soundPlay.play()
+    // soundPause.pause()
+    // soundPlay.play()
     changeCurrentPageContext('Investigate')
   }
 
@@ -156,9 +156,9 @@ const Siren = ({soundPause, soundPlay}) => {
   )
 }
 
-Siren.propTypes = {
-  soundPause: PropTypes.object.isRequired,
-  soundPlay: PropTypes.object.isRequired,
-}
+// Siren.propTypes = {
+//   soundPause: PropTypes.object.isRequired,
+//   soundPlay: PropTypes.object.isRequired,
+// }
 
 export default Siren

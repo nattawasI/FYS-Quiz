@@ -58,7 +58,8 @@ const buttonVariant = {
   }
 }
 
-const CallPolice = ({soundPause, soundPlay}) => {
+// const CallPolice = ({soundPause, soundPlay}) => {
+const CallPolice = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
@@ -74,13 +75,10 @@ const CallPolice = ({soundPause, soundPlay}) => {
   const [calling, setCalling] = useState(false)
   const [completedScene1, setCompletedScene1] = useState(false)
   const [completedScene2, setCompletedScene2] = useState(false)
-  const [completedScene3, setCompletedScene3] = useState(false)
 
   // function
   const goToNextPage = () => {
-    if (completedScene3) {
-      changeCurrentPageContext('PoliceCame')
-    }
+    changeCurrentPageContext('PoliceCame')
   }
 
   const changeToScene2 = () => {
@@ -118,8 +116,8 @@ const CallPolice = ({soundPause, soundPlay}) => {
 
     setCalling(true)
     setTimeout(() => {
-      soundPause.pause()
-      soundPlay.play()
+      // soundPause.pause()
+      // soundPlay.play()
       goToNextPage()
     }, timer)
   }
@@ -211,7 +209,6 @@ const CallPolice = ({soundPause, soundPlay}) => {
                     variants={buttonVariant}
                     initial="hidden"
                     animate="show"
-                    onAnimationComplete={() => setCompletedScene3(true)}
                   >
                     <button type="button" className="button-call" onClick={handleCalling}>
                       <span className={`button-call__btn button-call__btn--wave-out${calling? ' animate': ''}`}></span>
@@ -229,10 +226,10 @@ const CallPolice = ({soundPause, soundPlay}) => {
   )
 }
 
-CallPolice.propTypes = {
-  soundPause: PropTypes.object.isRequired,
-  soundPlay: PropTypes.object.isRequired,
-}
+// CallPolice.propTypes = {
+//   soundPause: PropTypes.object.isRequired,
+//   soundPlay: PropTypes.object.isRequired,
+// }
 
 export default CallPolice
 

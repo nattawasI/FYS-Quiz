@@ -94,7 +94,8 @@ const buttonVariant = {
   },
 }
 
-const CausesOfDiabetes = ({soundPause}) => {
+// const CausesOfDiabetes = ({soundPause}) => {
+const CausesOfDiabetes = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {symptomContext} = useUserStateContext()
@@ -118,7 +119,7 @@ const CausesOfDiabetes = ({soundPause}) => {
 
   // function
   const backToPrevPage = () => {
-    soundPause.pause()
+    // soundPause.pause()
     changeCurrentPageContext('VideoDoctor')
   }
 
@@ -296,9 +297,9 @@ const CausesOfDiabetes = ({soundPause}) => {
   )
 }
 
-CausesOfDiabetes.propTypes = {
-  soundPause: PropTypes.object.isRequired,
-}
+// CausesOfDiabetes.propTypes = {
+//   soundPause: PropTypes.object.isRequired,
+// }
 
 export default CausesOfDiabetes
 

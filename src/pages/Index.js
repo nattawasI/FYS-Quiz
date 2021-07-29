@@ -28,12 +28,11 @@ import InvestigationAudio from '../assets/sounds/bg-sound-investigation.mp3'
 import SunshineAudio from '../assets/sounds/bg-sound-sunshine.mp3'
 
 const bgSound = new Audio(StartAudio)
-const ButtonSound = new Audio(SirenAudio)
+const buttonSound = new Audio(SirenAudio)
 
 // decrease volumn
 const volume = 0.3
 bgSound.volume = volume;
-ButtonSound.volume = volume;
 
 // set loop
 bgSound.loop = true;
@@ -59,7 +58,7 @@ const Index = () => {
       return <WakeFriendUp />
     } else if (currentPageContext === 'CallPolice') {
       // return <CallPolice soundPause={bgSoundStart} soundPlay={SirenAudio} />
-      return <CallPolice />
+      return <CallPolice soundPause={StartAudio} soundPlay={SirenAudio} />
     } else if (currentPageContext === 'PoliceCame') {
       return <PoliceCame />
     } else if (currentPageContext === 'Siren') {

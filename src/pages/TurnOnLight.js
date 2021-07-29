@@ -16,9 +16,6 @@ import NormalHand from '../assets/images/page/turn-on-light/img_hand_01.svg';
 import PointerHandMD from '../assets/images/page/turn-on-light/img_hand_02_md.svg';
 import PointerHandSM from '../assets/images/page/turn-on-light/img_hand_02_sm.svg';
 import {playSoundClick} from '../variables/SoundMethods'
-import SwitchAudio from '../assets/sounds/sound-switch.mp3'
-
-const soundSwitch = new Audio(SwitchAudio)
 
 const textIntro01Variant = {
   hidden: {
@@ -223,7 +220,7 @@ const TurnOnLight = () => {
 
   const playSoundSwitch = () => {
     if (!muteContext) {
-      soundSwitch.play()
+      // soundSwitch.play()
     }
   }
 
