@@ -174,11 +174,7 @@ const Summary = () => {
             <div className="text-summary">
               <div className="text-summary__title">สรุปจากการให้ปากคำของคุณ</div>
               <ul className="text-summary__list list-summary">
-                <li className="list-summary__item">kgjljklfdjgklfjgkldjfgkdfjgfjgfjgkljdfgj</li>
-                <li className="list-summary__item">kgjljklfdjgklfjgkldjfgkdfjgfjgfjgkljdfgj</li>
-                <li className="list-summary__item">kgjljklfdjgklfjgkldjfgkdfjgfjgfjgkljdfgj</li>
-                <li className="list-summary__item">kgjljklfdjgklfjgkldjfgkdfjgfjgfjgkljdfgj</li>
-                {/* <li className="list-summary__item">
+                <li className="list-summary__item">
                   {
                     renderActivityOften()
                   }
@@ -190,7 +186,7 @@ const Summary = () => {
                       return <li className="list-summary__item" key={'bullet' + (index + 1)}>{choice.label}</li>
                     })
                   : ''
-                } */}
+                }
               </ul>
             </div>
           </motion.div>
