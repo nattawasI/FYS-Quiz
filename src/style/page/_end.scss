@@ -118,13 +118,11 @@
     z-index: 40;
 
     @media screen and (max-width : 576px) {
-      margin-top: 9%;
-      right: 13vw;
+      margin-top: 10%;
     }
 
     @media screen and (max-width : 375px) {
-      margin-top: 9%;
-      right: 13vw;
+      margin-top: 10%;
     }
 
     @include iphone-x  {
@@ -132,8 +130,7 @@
     }
 
     @include xs-up { // ipad
-      margin-top: 7%;
-      // right: 10vw;
+      margin-top: 9%;
     }
 
     @include md-down {
@@ -154,9 +151,21 @@
     &__list {
       display: flex;
 
-      @include iphone-x  {
-        margin-left: 14%;
-      }
+      // @media screen and (max-width : 576px) {
+      //   margin-left: 30%;
+      // }
+
+      // @media screen and (max-width : 375px) {
+      //   margin-left: 30%;
+      // }
+
+      // @include iphone-x  {
+      //   margin-left: 14%;
+      // }
+
+      // @include xs-up { // ipad
+      //   margin-left: 22%;
+      // }
     }
 
     &__item {

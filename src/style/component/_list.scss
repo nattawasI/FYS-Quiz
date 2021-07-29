@@ -28,17 +28,17 @@
     width: 64vw;
     pointer-events: none;
 
-    @media screen and (max-height : 667px) {
-      width: auto;
-      height: 14vh;
-    }
-
     @include xs-up {
       width: 74.667vw;
     }
 
     @include sm-up {
       width: 45.667vw;
+    }
+
+    @media screen and (max-height : 667px) {
+      width: auto;
+      height: 13vh;
     }
 
     @include md-up {

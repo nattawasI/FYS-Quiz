@@ -59,8 +59,8 @@ $xl: 1400px;
 }
 
 // iphone SE size
-@mixin iphone-se {
-  @media screen and (width : 320px) and (height : 568px) { @content; }
+@mixin iphone-se { // gen 2
+  @media screen and (width : 375px) and (height : 667px) { @content; }
 }
 
 // iphone normal size

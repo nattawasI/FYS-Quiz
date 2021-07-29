@@ -18,7 +18,7 @@ const ListQuizButton = ({question, choice, changeQuestion, disabled, updateDisab
   }
 
   return (
-    <Button className="list-quiz__button" disabled onClick={handleClick}>{choice.label}</Button>
+    <Button className={`list-quiz__button${disabled? ' disabled': ''}`} onClick={handleClick}>{choice.label}</Button>
   )
 }
 

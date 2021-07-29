@@ -34,8 +34,11 @@
   &::after {
     content: '';
     position: absolute;
+    top: 0.800vw;
+    right: 0.800vw;
     width: 6.667vw;
     height: 7.467vw;
+    background-image: url('../../assets/images/icon/icon_gloss_gray_md_top_right.svg');
     background-position: left bottom;
     background-size: 100% auto;
     background-repeat: no-repeat;
@@ -46,20 +49,11 @@
     }
 
     @include md-up {
+      top: 0.208vw;
+      right: 0.208vw;
       width: 2.240vw;
       height: 2.500vw;
-    }
-  }
-
-  &::after {
-    top: 0.800vw;
-    right: 0.800vw;
-    background-image: url('../../assets/images/icon/icon_gloss_white_sm_top_right.svg');
-
-    @include md-up {
-      top: 0.208vw;;
-      right: 0.208vw;;
-      background-image: url('../../assets/images/icon/icon_gloss_white_md_top_right.svg');
+      background-image: url('../../assets/images/icon/icon_gloss_gray_md_top_right.svg');
     }
   }
 
@@ -70,6 +64,14 @@
     &:hover {
       @include md-up {
         background-color: $blue-darker;
+      }
+    }
+
+    &::after {
+      background-image: url('../../assets/images/icon/icon_gloss_white_sm_top_right.svg');
+
+      @include md-up {
+        background-image: url('../../assets/images/icon/icon_gloss_white_md_top_right.svg');
       }
     }
   }
@@ -83,6 +85,20 @@
         background-color: $pink-darker;
       }
     }
+
+    &::after {
+      background-image: url('../../assets/images/icon/icon_gloss_white_sm_top_right.svg');
+
+      @include md-up {
+        background-image: url('../../assets/images/icon/icon_gloss_white_md_top_right.svg');
+      }
+    }
+  }
+
+  &.disabled {
+    background-color: #d9e2ee;
+    pointer-events: none;
+    cursor: default;
   }
 }
 
