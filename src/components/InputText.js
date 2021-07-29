@@ -2,6 +2,7 @@ import React, {forwardRef, useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 
 const Input = forwardRef(({type, placeholder, value, onChange, isError, onlyText}, ref) => {
+  // state
   const [inputValue, setInputValue] = useState(value)
   const [error, setError] = useState(isError)
 
@@ -34,6 +35,10 @@ const Input = forwardRef(({type, placeholder, value, onChange, isError, onlyText
     return error ? 'input-text input-text--error' : 'input-text'
   }
 
+  const handleClick = () => {
+    ref.current.focus()
+  }
+
   useEffect(() => {
     setError(isError)
   }, [isError])
@@ -48,6 +53,7 @@ const Input = forwardRef(({type, placeholder, value, onChange, isError, onlyText
               placeholder={placeholder}
               value={inputValue}
               onChange={handleChange}
+              onClick={handleClick}
             />
       }
       {
@@ -60,6 +66,7 @@ const Input = forwardRef(({type, placeholder, value, onChange, isError, onlyText
               max="100"
               value={inputValue}
               onChange={handleChange}
+              onClick={handleClick}
             />
       }
     </div>

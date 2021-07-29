@@ -33,8 +33,10 @@ const ListQuiz = ({changeScene, nextQuestion, currentQuestion, boxQuizControl}) 
   // context
   const {activityOftenContext} = useUserStateContext()
 
+  // state
   const [indexQuiz, setIndexQuiz] = useState(0)
   const [listQuiz, setListQuiz] = useState([])
+  const [disabledButton, setDisabledButton] = useState(false)
 
   const goToNextQuestion = () => {
     if (indexQuiz < listQuiz.length - 1) {
@@ -51,6 +53,7 @@ const ListQuiz = ({changeScene, nextQuestion, currentQuestion, boxQuizControl}) 
 
   useEffect(() => {
     setIndexQuiz(currentQuestion)
+    setDisabledButton(false)
   }, [currentQuestion])
 
   useEffect(() => {
@@ -84,6 +87,8 @@ const ListQuiz = ({changeScene, nextQuestion, currentQuestion, boxQuizControl}) 
                         question={listQuiz[indexQuiz].question}
                         choice={choice}
                         changeQuestion={goToNextQuestion}
+                        disabled={disabledButton}
+                        updateDisabled={() => setDisabledButton(true)}
                       />
                     </li>
                   )
