@@ -105,7 +105,7 @@ const buttonVariant = {
   }
 }
 
-const DarkRoom = () => {
+const DarkRoom = ({effectAudio}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {muteContext} = useSoundStateContext()
@@ -118,6 +118,7 @@ const DarkRoom = () => {
 
   // function
   const goToNextPage = () => {
+    effectAudio.play()
     if (completedScene) {
       changeCurrentPageContext('TurnOnLight')
     }

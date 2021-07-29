@@ -7,6 +7,8 @@ import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 import IconFingerprint from '../assets/images/icon/icon_fingerprint.svg'
 import {playSoundClick} from '../variables/SoundMethods'
+// Effect
+import effectClick from '../assets/sounds/sound-click.mp3'
 
 // Motion Variants
 const sceneVariant = {
@@ -59,6 +61,7 @@ const buttonVariant = {
 }
 
 const Preface = () => {
+  const effectAudio = new Audio(effectClick)
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {muteContext} = useSoundStateContext()
@@ -74,11 +77,15 @@ const Preface = () => {
 
   // function
   const changeToScene2 = () => {
+    effectAudio.pause()
+    effectAudio.play()
     setShowScene1(false)
     setShowScene2(true)
   }
 
   const goToNextPage = () => {
+    effectAudio.pause()
+    effectAudio.play()
     changeCurrentPageContext('DarkRoom')
   }
 

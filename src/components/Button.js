@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {useSoundStateContext} from '../contexts/SoundContext'
+import UseWindowSmall from '../hooks/useWindowSmall'
 
 const Button = (props) => {
-  // context
-  const {muteContext} = useSoundStateContext()
+  // hooks
+  const isWindowSmall = UseWindowSmall()
 
   const classStyle = () => {
     if (props.color) {
@@ -18,10 +18,24 @@ const Button = (props) => {
     props.onClick()
   }
 
+  const renderButton = () => {
+    if (isWindowSmall) {
+      return (
+        <button type="button" className={classStyle()} onTouchStart={handleClick}>
+          { props.children }
+        </button>
+      )
+    } else {
+      return (
+        <button type="button" className={classStyle()} onClick={handleClick}>
+          { props.children }
+        </button>
+      )
+    }
+  }
+
   return (
-    <button type="button" className={classStyle()} onClick={handleClick}>
-      { props.children }
-    </button>
+    renderButton()
   )
 }
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {useSoundStateContext} from '../contexts/SoundContext'
+import UseWindowSmall from '../hooks/useWindowSmall'
 
 const ButtonNext = ({dark, onClick, animateCompleted}) => {
-  // context
-  const {muteContext} = useSoundStateContext()
+  // hooks
+  const isWindowSmall = UseWindowSmall()
 
   const classStyle = () => {
     return dark ? 'button-next button-next--dark' : 'button-next'
@@ -16,10 +16,24 @@ const ButtonNext = ({dark, onClick, animateCompleted}) => {
     }
   }
 
+  const renderButton = () => {
+    if (isWindowSmall) {
+      return (
+        <button type="button" className={classStyle()} onTouchStart={handleClick}>
+          ไปต่อ
+        </button>
+      )
+    } else {
+      return (
+        <button type="button" className={classStyle()} onClick={handleClick}>
+          ไปต่อ
+        </button>
+      )
+    }
+  }
+
   return (
-    <button type="button" className={classStyle()} onClick={handleClick}>
-      ไปต่อ
-    </button>
+    renderButton()
   )
 }
 

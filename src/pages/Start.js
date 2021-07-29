@@ -28,7 +28,7 @@ const ribbonVariant = {
   }
 }
 
-const Start = ({bgAudio, soundPlay}) => {
+const Start = ({bgAudio, effectAudio}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {muteContext} = useSoundStateContext()
@@ -37,8 +37,8 @@ const Start = ({bgAudio, soundPlay}) => {
   const isWindowSmall = UseWindowSmall()
 
   const goToNextPage = () => {
-    playSoundClick(muteContext)
-    soundPlay.play()
+    playSoundClick(effectAudio, muteContext)
+    bgAudio.play()
     changeCurrentPageContext('Preface')
   }
 
@@ -89,7 +89,7 @@ const Start = ({bgAudio, soundPlay}) => {
 }
 
 Start.propTypes = {
-  soundPlay: PropTypes.object.isRequired,
+  bgAudio: PropTypes.object.isRequired,
 }
 
 export default Start

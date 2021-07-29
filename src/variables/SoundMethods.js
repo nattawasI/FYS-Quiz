@@ -1,6 +1,6 @@
-export const playSoundClick = (mute) => {
-  // const soundClick = new Audio(ClickAudio)
-  // if (!mute) {
-  //   soundClick.play()
-  // }
+export const playSoundClick = (audio, mute) => {
+  if (!mute) {
+    audio.currentTime = 0
+    audio.play()
+  }
 }

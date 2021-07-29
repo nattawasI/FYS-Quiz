@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {motion} from 'framer-motion'
-import {useSoundStateContext} from '../contexts/SoundContext'
+import UseWindowSmall from '../hooks/useWindowSmall'
 
 const buttonVariant = {
   hidden: {
@@ -17,8 +17,8 @@ const buttonVariant = {
 }
 
 const ButtonBack = ({dark, onClick}) => {
-  // context
-  const {muteContext} = useSoundStateContext()
+  // hooks
+  const isWindowSmall = UseWindowSmall()
 
   const classStyle = () => {
     return dark ? 'button-back button-back--dark' : 'button-back'
@@ -28,17 +28,38 @@ const ButtonBack = ({dark, onClick}) => {
     onClick()
   }
 
+  const renderButton = () => {
+    if (isWindowSmall) {
+      return (
+        <motion.button
+          type="button"
+          className={classStyle()}
+          onTouchStart={handleClick}
+          variants={buttonVariant}
+          initial="hidden"
+          animate="show"
+        >
+          ย้อนกลับ
+        </motion.button>
+      )
+    } else {
+      return (
+        <motion.button
+          type="button"
+          className={classStyle()}
+          onClick={handleClick}
+          variants={buttonVariant}
+          initial="hidden"
+          animate="show"
+        >
+          ย้อนกลับ
+        </motion.button>
+      )
+    }
+  }
+
   return (
-    <motion.button
-      type="button"
-      className={classStyle()}
-      onClick={handleClick}
-      variants={buttonVariant}
-      initial="hidden"
-      animate="show"
-    >
-      ย้อนกลับ
-    </motion.button>
+    renderButton()
   )
 }
 

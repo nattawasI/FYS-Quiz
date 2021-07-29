@@ -59,7 +59,7 @@ const buttonVariant = {
 }
 
 // const CallPolice = ({soundPause, soundPlay}) => {
-const CallPolice = () => {
+const CallPolice = (bgAudio, soundPause, soundPlay) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
   const {friendInfoContext} = useUserStateContext()
@@ -116,8 +116,9 @@ const CallPolice = () => {
 
     setCalling(true)
     setTimeout(() => {
-      // soundPause.pause()
-      // soundPlay.play()
+      console.log(bgAudio);
+      // bgAudio.src = soundPlay
+      // bgAudio.play()
       goToNextPage()
     }, timer)
   }

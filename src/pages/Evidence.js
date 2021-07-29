@@ -138,7 +138,6 @@ const Evidence = ({soundPause}) => {
   // function
   const goToNextPage = () => {
     if (completedScene3) {
-      soundPause.pause()
       changeCurrentPageContext('VideoDoctor')
     }
   }
@@ -286,7 +285,7 @@ const Evidence = ({soundPause}) => {
 }
 
 Evidence.propTypes = {
-  soundPause: PropTypes.object.isRequired,
+  // soundPause: PropTypes.object.isRequired,
 }
 
 export default Evidence
