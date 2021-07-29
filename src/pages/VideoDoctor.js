@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {useRouteActionContext} from '../contexts/RouteContext'
 import {motion} from 'framer-motion'
+import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 
@@ -23,8 +24,15 @@ const VideoDoctor = ({soundPlay}) => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
 
+  // hooks
+  const isWindowSmall = UseWindowSmall()
+
+  // ref
+  const titleRef = useRef(null)
+
   // state
   const [completedScene, setCompletedScene] = useState(false)
+  const [marginTop, setMarginTop] = useState(0)
 
   // function
   const goToNextPage = () => {
@@ -32,11 +40,18 @@ const VideoDoctor = ({soundPlay}) => {
     changeCurrentPageContext('CausesOfDiabetes')
   }
 
+  useEffect(() => {
+    console.log(isWindowSmall);
+    if (isWindowSmall) {
+      setMarginTop((titleRef.current.offsetHeight/2) * -1)
+    }
+  }, [isWindowSmall])
+
   return (
     <>
       <Content bgColor="blue">
-        <div className="scene-panel scene-panel--items-center video-doctor">
-          <div className="video-doctor__heading text-story">กดเพื่อรับชมวิดิโอ</div>
+        <div className="scene-panel scene-panel--items-center video-doctor" style={{ marginTop: `${marginTop}px`}}>
+          <div ref={titleRef} className="video-doctor__heading text-story">กดเพื่อรับชมวิดิโอ</div>
           <div className="video-doctor__video video-wrap">
             <div className="video-box">
               <iframe width="560" height="315" src="https://www.youtube.com/embed/cgT9cwJVkLw" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
