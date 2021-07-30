@@ -51,17 +51,24 @@ const Content = ({ children, bgColor, className }) => {
   }
 
   useEffect(() => {
+    let timer = ''
     const checkIsLandscape = () => {
-      const screenWidth = window.innerWidth
-      const screenHeight = window.innerHeight
+      clearTimeout(timer)
+      timer = setTimeout(() => {
+        const isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(android)|(webOS)/i)
+        if (isMobile !== null) {
+          const screenWidth = window.innerWidth
+          const screenHeight = window.innerHeight
 
-      if (isWindowSmall && screenWidth > screenHeight) {
-        if ((screenWidth - screenHeight) > 200) {
-          setIsLandscape(true)
+          if (screenWidth > screenHeight) {
+            if ((screenWidth - screenHeight) > 200) {
+              setIsLandscape(true)
+            }
+          } else {
+            setIsLandscape(false)
+          }
         }
-      } else {
-        setIsLandscape(false)
-      }
+      }, 300)
     }
 
     checkIsLandscape()
@@ -94,7 +101,7 @@ const Content = ({ children, bgColor, className }) => {
         {children}
       </motion.div>
       {
-        isWindowSmall && isLandscape
+        isLandscape
         &&  <div className="overlay-landscape">
               <div className="box-rotate">
                 <i className="box-rotate__icon">

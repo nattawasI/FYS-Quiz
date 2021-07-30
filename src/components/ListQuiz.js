@@ -57,7 +57,6 @@ const ListQuiz = ({changeScene, nextQuestion, currentQuestion, boxQuizControl}) 
   }, [currentQuestion])
 
   useEffect(() => {
-    console.log(QuizData.game);
     if (activityOftenContext === 'game') {
       setListQuiz(QuizData.game)
     } else if (activityOftenContext === 'food') {

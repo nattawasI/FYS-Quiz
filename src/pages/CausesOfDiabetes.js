@@ -145,7 +145,6 @@ const CausesOfDiabetes = () => {
 
   const submitSympton = (e) => {
     e.preventDefault()
-
     playClickSoundContext()
 
     const inputValue = inputRef.current.value
@@ -251,7 +250,7 @@ const CausesOfDiabetes = () => {
                           ref={inputRef}
                           isError={error}
                           value={symptomContext}
-                          placeholder="ถ้าไม่รู้ลองพิมพ์เดาดูก่อนก็ได้..."
+                          placeholder="ถ้าไม่รู้ลองพิมพ์เดาดูก่อนก็ได้"
                           onlyText
                         />
                       </div>

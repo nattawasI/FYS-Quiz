@@ -1,10 +1,11 @@
 import React, {forwardRef, useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 
-const Input = forwardRef(({type, placeholder, value, onChange, isError, onlyText}, ref) => {
+const Input = forwardRef(({type, placeholder, placeholderError, value, onChange, isError, onlyText}, ref) => {
   // state
   const [inputValue, setInputValue] = useState(value)
   const [error, setError] = useState(isError)
+  const [placeholderText, setPlaceholderText] = useState(placeholder)
 
   const handleChange = (e) => {
     const val = e.target.value
@@ -50,7 +51,7 @@ const Input = forwardRef(({type, placeholder, value, onChange, isError, onlyText
         &&  <input
               type="text"
               ref={ref}
-              placeholder={placeholder}
+              placeholder={placeholderText}
               value={inputValue}
               onChange={handleChange}
               onClick={handleClick}
@@ -61,7 +62,7 @@ const Input = forwardRef(({type, placeholder, value, onChange, isError, onlyText
         &&  <input
               type="number"
               ref={ref}
-              placeholder={placeholder}
+              placeholder={placeholderText}
               min="0"
               max="100"
               value={inputValue}
@@ -76,6 +77,7 @@ const Input = forwardRef(({type, placeholder, value, onChange, isError, onlyText
 Input.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
+  placeholderError: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
   isError: PropTypes.bool,
@@ -85,6 +87,7 @@ Input.propTypes = {
 Input.defaultProps = {
   type: 'text',
   placeholder: '',
+  placeholderError: '',
   value: '',
   onChange: () => {},
   isError: false,
