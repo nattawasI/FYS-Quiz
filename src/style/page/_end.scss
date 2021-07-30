@@ -122,7 +122,7 @@
     }
   }
 
-  .social {
+  &__social {
     position: absolute;
     top: 50%;
     z-index: 40;
@@ -156,57 +156,6 @@
       transform: translateX(-50%);
       margin-top: 15vh;
       margin-left: 20vh;
-    }
-
-    &__list {
-      display: flex;
-    }
-
-    &__item {
-      font-size: 0;
-    }
-
-    &__item:not(:first-child) {
-      margin-left: 3.3vw;
-
-      @include sm-up {
-        margin-left: 3.125vw;
-      }
-
-      @include md-up {
-        margin-left: 5.556vh;
-      }
-    }
-
-    &__link {
-      display: block;
-      transition: transform 0.2s ease-in-out;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-
-    &__icon {
-      @media screen and (max-width : 576px) {
-        width: 9vw;
-      }
-
-      @media screen and (max-width : 320px) {
-        width: 24px;
-      }
-
-      @include iphone-x  {
-        width: 9vw;
-      }
-
-      @include sm-up {
-        width: 5.5vw;
-      }
-
-      @include md-up {
-        width: 5.926vh;
-      }
     }
   }
 }

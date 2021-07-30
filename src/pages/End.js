@@ -1,15 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useUserStateContext} from '../contexts/UserContext'
 import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'
 import UseCurrentDevice from '../hooks/useCurrentDevice'
 import Content from '../layout/Content'
 import ButtonRestart from '../components/ButtonRestart'
-import ButtonSocial from '../components/ButtonSocial'
-import Facebook from '../assets/images/page/end/ico_facebook.svg'
-import Line from '../assets/images/page/end/ico_line.svg'
-import Shared from '../assets/images/page/end/ico_shared.svg'
-import Twitter from '../assets/images/page/end/ico_twitter.svg'
+import ListSocial from '../components/ListSocial'
 import RibbonTop from '../assets/images/page/end/ico_ribbon_01.svg'
 import RibbonBottom from '../assets/images/page/end/ico_ribbon_02.svg'
 import DeadbodyMaleMD from '../assets/images/page/end/img_deadbody_male_md.svg'
@@ -84,28 +80,31 @@ const End = () => {
   const {friendInfoContext} = useUserStateContext()
   const {playClickSoundContext} = useSoundActionContext()
 
-  // data
-  const Socials = [
-    {
-      icon: Shared,
-      name: 'Shared',
-    },
-    {
-      icon: Facebook,
-      name: 'Facebook',
-    },
-    {
-      icon: Twitter,
-      name: 'Twitter',
-    },
-    {
-      icon: Line,
-      name: 'Line',
-    }
-  ]
-
   // utility hook
   const currentDevice = UseCurrentDevice()
+
+  // state
+  const [copied, setCopied] = useState(false)
+
+  // function
+  const copyClipboard = () => {
+    console.log('copyClipboard');
+  }
+
+  const shareFacebook = () => {
+    console.log('facebook');
+  }
+
+  const shareLine = () => {
+    console.log('line');
+  }
+
+  const shareTwitter = () => {
+    console.log('twitter');
+  }
+
+  const handleClick = () => {
+  }
 
   // function
   const goToNextPage = () => {
@@ -164,27 +163,14 @@ const End = () => {
                   />
                 </div>
               </motion.div>
-              <div className="end__social social">
-                <motion.div
-                  className="social__list"
-                  variants={socialVariant}
-                  initial="hidden"
-                  animate="show"
-                  exit="exit"
-                >
-                  {
-                    Socials.map((item, index) => (
-                      <motion.div
-                        key={`social-key-${index}`}
-                        className="social__item"
-                        whileHover={{ scale: 1.2 }}
-                      >
-                        <ButtonSocial className="social__link" data={item} />
-                      </motion.div>
-                    ))
-                  }
-                </motion.div>
-              </div>
+              <motion.div className="end__social"
+                variants={socialVariant}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+              >
+                <ListSocial />
+              </motion.div>
             </div>
           </div>
         </div>
