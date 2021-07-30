@@ -216,8 +216,10 @@
     display: block;
     transition: transform 0.2s ease-in-out;
 
-    &:hover {
-      transform: scale(1.1);
+    @include md-up {
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 
@@ -227,7 +229,7 @@
     transform: translateX(-50%);
     display: inline-flex;
     padding: 8px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: $black;
     border-radius: 3px;
     font-size: 1.6rem;
     color: $white;
@@ -243,7 +245,7 @@
       height: 0;
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
-      border-bottom: 12px solid rgba(0, 0, 0, 0.7);
+      border-bottom: 12px solid $black;
     }
 
     @media screen and (max-width : 576px) {
@@ -286,7 +288,6 @@
   }
 
   &__input {
-    height: 0;
     opacity: 0;
   }
 }

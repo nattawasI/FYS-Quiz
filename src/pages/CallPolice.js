@@ -77,7 +77,6 @@ const CallPolice = () => {
 
   // function
   const goToNextPage = () => {
-    playClickSoundContext()
     changeCurrentPageContext('PoliceCame')
   }
 

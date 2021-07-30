@@ -167,7 +167,7 @@ const Investigate = () => {
       transition: {
         ease: "easeInOut",
         duration: 1,
-        delay: userInfoContext.name? 0: 2
+        delay: userInfoContext.name? 0: 1.5
       }
     },
     exit: {
