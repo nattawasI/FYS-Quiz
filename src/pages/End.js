@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {useUserStateContext} from '../contexts/UserContext'
 import {useSoundActionContext} from '../contexts/SoundContext'
 import {motion} from 'framer-motion'

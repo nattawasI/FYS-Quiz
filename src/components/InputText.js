@@ -9,18 +9,18 @@ const Input = forwardRef(({type, placeholder, placeholderError, value, onChange,
 
   const handleChange = (e) => {
     const val = e.target.value
-    if (type === 'number') {
+
+    if (type === 'text') {
       if (Number(val) >= 0) {
         setInputValue(val)
       }
-    } else {
+    } else { // type === 'text'
       setInputValue(val)
     }
 
     if (onlyText) {
       const regex = new RegExp('[0-9]')
-      const isNumber= regex.test(val)
-
+      const isNumber = regex.test(val)
       if (!isNumber) {
         setInputValue(val)
       } else {
@@ -42,7 +42,11 @@ const Input = forwardRef(({type, placeholder, placeholderError, value, onChange,
 
   useEffect(() => {
     setError(isError)
-  }, [isError])
+
+    if (placeholderError) {
+      setPlaceholderText(placeholderError)
+    }
+  }, [isError, placeholderError])
 
   return (
     <div className={classStyle()}>

@@ -214,9 +214,7 @@ const Investigate = () => {
   let nextScene = ''
   const touchPanelSm = () => {
     if (isWindowSmall) {
-      if (nextScene === 'sceneMurder') {
-        changeToSceneMurder()
-      } else if (nextScene === 'sceneAskCooperation') {
+      if (nextScene === 'sceneAskCooperation') {
         changeToSceneAskCooperation()
       } else if (nextScene === 'sceneActivityOften') {
         changeToSceneActivityOften()
