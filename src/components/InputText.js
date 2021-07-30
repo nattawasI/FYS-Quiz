@@ -1,18 +1,22 @@
 import React, {forwardRef, useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 
-const Input = forwardRef(({type, placeholder, placeholderError, value, onChange, isError, onlyText}, ref) => {
+const Input = forwardRef(({type, placeholder, value, onChange, isError, onlyText}, ref) => {
   // state
-  const [inputValue, setInputValue] = useState(value)
+  const [inputValue, setInputValue] = useState()
   const [error, setError] = useState(isError)
-  const [placeholderText, setPlaceholderText] = useState(placeholder)
 
   const handleChange = (e) => {
     const val = e.target.value
 
-    if (type === 'text') {
-      if (Number(val) >= 0) {
+    if (type === 'number') {
+      const regex = new RegExp('^[0-9]+$')
+      const isOnlyNumber = regex.test(val)
+
+      if (isOnlyNumber) {
         setInputValue(val)
+      } else {
+        setInputValue(inputValue + '')
       }
     } else { // type === 'text'
       setInputValue(val)
@@ -42,11 +46,11 @@ const Input = forwardRef(({type, placeholder, placeholderError, value, onChange,
 
   useEffect(() => {
     setError(isError)
+  }, [isError])
 
-    if (placeholderError) {
-      setPlaceholderText(placeholderError)
-    }
-  }, [isError, placeholderError])
+  useEffect(() => {
+    setInputValue(value)
+  }, [value])
 
   return (
     <div className={classStyle()}>
@@ -55,7 +59,7 @@ const Input = forwardRef(({type, placeholder, placeholderError, value, onChange,
         &&  <input
               type="text"
               ref={ref}
-              placeholder={placeholderText}
+              placeholder={placeholder}
               value={inputValue}
               onChange={handleChange}
               onClick={handleClick}
@@ -66,7 +70,7 @@ const Input = forwardRef(({type, placeholder, placeholderError, value, onChange,
         &&  <input
               type="number"
               ref={ref}
-              placeholder={placeholderText}
+              placeholder={placeholder}
               min="0"
               max="100"
               value={inputValue}

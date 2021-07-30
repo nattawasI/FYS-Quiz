@@ -74,8 +74,7 @@ const FormYear = ({changeScene, checkAnimate}) => {
             <InputText
               ref={inputRef}
               type="number"
-              placeholder="ใส่ตัวเลข"
-              placeholderError="กรุณาใส่แค่ตัวเลข"
+              placeholder="ใส่ตัวเลขเท่านั้น"
               value={yearsKnownContext}
               isError={error}
               maxlength="2"
