@@ -5,6 +5,7 @@ import {motion} from 'framer-motion'
 import UseCurrentDevice from '../hooks/useCurrentDevice'
 import Content from '../layout/Content'
 import ButtonRestart from '../components/ButtonRestart'
+import ButtonSocial from '../components/ButtonSocial'
 import Facebook from '../assets/images/page/end/ico_facebook.svg'
 import Line from '../assets/images/page/end/ico_line.svg'
 import Shared from '../assets/images/page/end/ico_shared.svg'
@@ -83,15 +84,7 @@ const End = () => {
   const {friendInfoContext} = useUserStateContext()
   const {playClickSoundContext} = useSoundActionContext()
 
-  // utility hook
-  const currentDevice = UseCurrentDevice()
-
-  // function
-  const goToNextPage = () => {
-    playClickSoundContext()
-    window.location.reload()
-  }
-
+  // data
   const Socials = [
     {
       icon: Shared,
@@ -110,6 +103,15 @@ const End = () => {
       name: 'Line',
     }
   ]
+
+  // utility hook
+  const currentDevice = UseCurrentDevice()
+
+  // function
+  const goToNextPage = () => {
+    playClickSoundContext()
+    window.location.reload()
+  }
 
   const setImageHuman = () => {
     if (currentDevice === 'desktop') {
@@ -177,9 +179,7 @@ const End = () => {
                         className="social__item"
                         whileHover={{ scale: 1.2 }}
                       >
-                        <a className="social__link" href="#dummy">
-                          <img className="social__icon" src={item.icon} alt={item.name} />
-                        </a>
+                        <ButtonSocial className="social__link" data={item} />
                       </motion.div>
                     ))
                   }

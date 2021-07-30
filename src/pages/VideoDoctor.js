@@ -55,7 +55,7 @@ const VideoDoctor = () => {
           <div ref={titleRef} className="video-doctor__heading text-story">กดเพื่อรับชมวิดิโอ</div>
           <div className="video-doctor__video video-wrap">
             <div className="video-box">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/Q_1bBPd9V0I" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/Q_1bBPd9V0I" title="For Your Sweetheart ฆาตกรบนโต๊ะอาหาร" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div>
           </div>
         </div>
