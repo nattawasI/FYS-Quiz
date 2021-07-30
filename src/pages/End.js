@@ -83,29 +83,6 @@ const End = () => {
   // utility hook
   const currentDevice = UseCurrentDevice()
 
-  // state
-  const [copied, setCopied] = useState(false)
-
-  // function
-  const copyClipboard = () => {
-    console.log('copyClipboard');
-  }
-
-  const shareFacebook = () => {
-    console.log('facebook');
-  }
-
-  const shareLine = () => {
-    console.log('line');
-  }
-
-  const shareTwitter = () => {
-    console.log('twitter');
-  }
-
-  const handleClick = () => {
-  }
-
   // function
   const goToNextPage = () => {
     playClickSoundContext()

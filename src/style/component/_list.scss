@@ -190,7 +190,9 @@
 }
 
 .list-social {
-  display: flex;
+  &__list {
+    display: flex;
+  }
 
   &__item {
     font-size: 0;
@@ -221,7 +223,6 @@
 
   &__link-copied {
     position: absolute;
-    bottom: -80%;
     left: 50%;
     transform: translateX(-50%);
     display: inline-flex;
@@ -243,6 +244,22 @@
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
       border-bottom: 12px solid rgba(0, 0, 0, 0.7);
+    }
+
+    @media screen and (max-width : 576px) {
+      bottom: calc(-9vw - 12px);
+    }
+
+    @include iphone-x  {
+      bottom: calc(-9vw - 12px);
+    }
+
+    @include sm-up {
+      bottom: calc(-5.5vw - 12px);
+    }
+
+    @include md-up {
+      bottom: calc(-5.926vh);
     }
   }
 
@@ -266,5 +283,10 @@
     @include md-up {
       width: 5.926vh;
     }
+  }
+
+  &__input {
+    height: 0;
+    opacity: 0;
   }
 }
