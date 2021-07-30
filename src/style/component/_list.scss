@@ -39,6 +39,10 @@
     @include md-up {
       transition: transform 0.3s ease-in-out;
     }
+
+    @media screen and (max-width : 375px) and (max-height : 667px) {
+      width: 58vw;
+    }
   }
 
   &__img--game {

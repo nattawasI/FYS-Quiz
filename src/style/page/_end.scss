@@ -160,22 +160,6 @@
 
     &__list {
       display: flex;
-
-      // @media screen and (max-width : 576px) {
-      //   margin-left: 30%;
-      // }
-
-      // @media screen and (max-width : 375px) {
-      //   margin-left: 30%;
-      // }
-
-      // @include iphone-x  {
-      //   margin-left: 14%;
-      // }
-
-      // @include xs-up { // ipad
-      //   margin-left: 22%;
-      // }
     }
 
     &__item {
@@ -204,11 +188,7 @@
 
     &__icon {
       @media screen and (max-width : 576px) {
-        width: 8vw;
-      }
-
-      @media screen and (max-width : 375px) {
-        width: 7vw;
+        width: 9vw;
       }
 
       @media screen and (max-width : 320px) {

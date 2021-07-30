@@ -12,6 +12,7 @@ import ImgHumanSleepMd from '../assets/images/page/start/img_human_sleep_md.svg'
 import ImgHumanSleepSm from '../assets/images/page/start/img_human_sleep_sm.svg'
 import ImgArmMd from '../assets/images/page/friend-sleep/img_arm_md.svg'
 import ImgArmSm from '../assets/images/page/friend-sleep/img_arm_sm.svg'
+import ImgArmXs from '../assets/images/page/friend-sleep/img_arm_xs.svg'
 
 // Motion Variants
 const friendVariant = {
@@ -43,24 +44,6 @@ const textVariant = {
   }
 }
 
-const armVariant = {
-  hidden: {
-    x: '50%',
-    y: '100%',
-    opacity: 0,
-  },
-  show: {
-    x: 0,
-    y: 0,
-    opacity: 1,
-    transition: {
-      ease: 'easeInOut',
-      duration: 1,
-      delay: 2
-    }
-  }
-}
-
 const buttonVariant = {
   hidden: {
     opacity: 0,
@@ -85,6 +68,24 @@ const WakeFriendUp = () => {
   const isWindowSmall = UseWindowSmall()
   const currentDevice = UseCurrentDevice()
 
+  const armVariant = {
+    hidden: {
+      x: '50%',
+      y: '100%',
+      opacity: 0,
+    },
+    show: {
+      x: 0,
+      y: 0,
+      opacity: 1,
+      transition: {
+        ease: 'easeInOut',
+        duration: 1,
+        delay: 2
+      }
+    }
+  }
+
   const armKeyFrame = () => {
     if (currentDevice === 'desktop' || currentDevice === 'tablet') {
       return [0, 0, 0, 30, 0, 30]
@@ -106,7 +107,6 @@ const WakeFriendUp = () => {
   }
 
   // state
-  const [animateComplete, setAnimateComplete] = useState(false)
   const [completedScene, setCompletedScene] = useState(false)
 
   // function
@@ -120,8 +120,20 @@ const WakeFriendUp = () => {
     changeCurrentPageContext('CallPolice')
   }
 
+  const renderArm = () => {
+    if (isWindowSmall) {
+      if (window.innerWidth <= 576) {
+        return ImgArmXs
+      } else {
+        return ImgArmSm
+      }
+    } else {
+      return ImgArmMd
+    }
+  }
+
   const touchPanelSm = () => {
-    if (isWindowSmall && animateComplete) {
+    if (isWindowSmall && completedScene) {
       goToNextPage()
     }
   }
@@ -155,13 +167,14 @@ const WakeFriendUp = () => {
             initial="hidden"
             animate="show"
           >
-            <motion.img
-              src={isWindowSmall? ImgArmSm: ImgArmMd}
-              alt="แขน"
+            <motion.div
+              className="friend-sleep__arm-in"
               variants={wakeVariant}
               animate="animate"
-              onAnimationComplete={ () => setAnimateComplete(true) }
-            />
+              onAnimationComplete={ () => setCompletedScene(true)}
+            >
+              <img src={renderArm()} alt="แขน"/>
+            </motion.div>
           </motion.div>
           <motion.div className="friend-sleep__friend"
             variants={friendVariant}

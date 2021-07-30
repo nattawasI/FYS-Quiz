@@ -151,6 +151,10 @@
         transform: translateX(-50%);
         margin-left: -3.667vw;
       }
+
+      // @include md-up {
+      //   margin-left: 3vw;
+      // }
     }
   }
 

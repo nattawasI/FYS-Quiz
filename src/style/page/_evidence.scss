@@ -12,6 +12,10 @@
     bottom: 0;
     padding-top: 19%;
 
+    @include iphone {
+      padding-top: 16%;
+    }
+
     @include md-up {
       padding-top: 14.3518vh;
     }
@@ -80,8 +84,8 @@
       &__image {
         width: 32vw;
 
-        @include lowest-viewport {
-          width: 100px;
+        @include iphone {
+          width: 95px;
         }
 
         @include md-down {

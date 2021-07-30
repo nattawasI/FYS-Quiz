@@ -42,7 +42,7 @@ export const QuizData = {
       choices: [
         {
           id: 'food-1-1',
-          label: 'หมูกะทะ',
+          label: 'หมูกระทะ',
           score: 1
         },
         {
