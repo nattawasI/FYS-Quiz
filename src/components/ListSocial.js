@@ -8,11 +8,11 @@ import Twitter from '../assets/images/page/end/ico_twitter.svg'
 
 const ListSocial = () => {
   const {friendInfoContext} = useUserStateContext()
-  friendInfoContext.gender = 'female'
 
-  // const urlSite = 'https://foryoursweetheart.org/ฆาตกรบนโต๊ะอาหาร/TH/index.html'
-  const urlSite = window.location.href
-  const genderIndex = friendInfoContext.gender === 'female'? '?gen=female':'?gen=male'
+  const urlSite = 'https://foryoursweetheart.org/ฆาตกรบนโต๊ะอาหาร/TH/' // use for copy link
+
+  // use for sharing on Social media
+  const urlShare = encodeURIComponent(`https://foryoursweetheart.org/ฆาตกรบนโต๊ะอาหาร/${friendInfoContext.gender === 'female'? 'female/': ''}TH/index.html`)
 
   // ref
   const inputRef = useRef(null)
@@ -36,13 +36,11 @@ const ListSocial = () => {
   }
 
   const shareFacebook = () => {
-    const urlShare = encodeURIComponent(urlSite)
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${urlShare}${genderIndex}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`, 'fbShareWindow')
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`, 'fbShareWindow')
   }
 
   const shareTwitter = () => {
-    const urlShare = encodeURIComponent(urlSite)
-    window.open(`https://twitter.com/intent/tweet?hashtags=ความจริงมีเพียงหนึ่งเดียว,ฆาตกรบนโต๊ะอาหาร,ForYourSweetheart&url=${urlShare}${genderIndex}`, 'twShareWindow')
+    window.open(`https://twitter.com/intent/tweet?hashtags=ความจริงมีเพียงหนึ่งเดียว,ฆาตกรบนโต๊ะอาหาร,ForYourSweetheart&url=${urlShare}`, 'twShareWindow')
   }
 
   return (
@@ -67,7 +65,7 @@ const ListSocial = () => {
           </button>
         </li>
         <li className="list-social__item">
-          <a href={`https://social-plugins.line.me/lineit/share?url=${urlSite}${genderIndex}`} className="list-social__link" target="_blank" rel="noreferrer">
+          <a href={`https://social-plugins.line.me/lineit/share?url=${urlSite}`} className="list-social__link" target="_blank" rel="noreferrer">
             <img className="list-social__icon" src={Line} alt="Line" />
           </a>
         </li>
