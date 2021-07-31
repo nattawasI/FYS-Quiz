@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:14080";
+const url = "https://www.foryoursweetheart.org/";
 const API_POST = (url, data) => {
   return axios.post(url, data, {
     headers: {
@@ -24,7 +24,7 @@ export const saveUser = async (
   };
   const {
     data: { id = 0 },
-  } = await API_POST(url + "/userdata/save", userData);
+  } = await API_POST(url + "/UserData/save", userData);
   return id;
 };
 
@@ -75,7 +75,7 @@ export const saveQuestion1 = async (
     });
   }
   // console.log({ _choicesContext });
-  await API_POST(url + "/quizsubmit/save", {
+  await API_POST(url + "/QuizSubmit/save", {
     datas: _choicesContext,
   });
 };
@@ -98,7 +98,7 @@ export const saveQuestion2 = async (causeDiabetesContext, symptom, userId) => {
     question: "โรคเบาหวาน มีอาการเป็นอย่างไร?",
     score: 0,
   });
-  await API_POST(url + "/quizsubmit/save", {
+  await API_POST(url + "/QuizSubmit/save", {
     datas: _choicesContext,
   });
 };
