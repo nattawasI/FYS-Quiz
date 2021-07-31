@@ -65,7 +65,7 @@ const ListSocial = () => {
           </button>
         </li>
         <li className="list-social__item">
-          <a href={`https://social-plugins.line.me/lineit/share?url=${urlSite}`} className="list-social__link" target="_blank" rel="noreferrer">
+          <a href={`https://social-plugins.line.me/lineit/share?url=${urlShare}`} className="list-social__link" target="_blank" rel="noreferrer">
             <img className="list-social__icon" src={Line} alt="Line" />
           </a>
         </li>
