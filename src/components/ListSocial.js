@@ -12,7 +12,7 @@ const ListSocial = () => {
 
   // const urlSite = 'https://foryoursweetheart.org/ฆาตกรบนโต๊ะอาหาร/TH/index.html'
   const urlSite = window.location.href
-  const genderIndex = friendInfoContext.gender === 'female'? '/index_female.html':'/index.html'
+  const genderIndex = friendInfoContext.gender === 'female'? '?gen=female':'?gen=male'
 
   // ref
   const inputRef = useRef(null)
@@ -39,10 +39,6 @@ const ListSocial = () => {
     const urlShare = encodeURIComponent(urlSite)
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${urlShare}${genderIndex}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`, 'fbShareWindow')
   }
-
-  // const shareLine = () => {
-  //   console.log('line')
-  // }
 
   const shareTwitter = () => {
     const urlShare = encodeURIComponent(urlSite)
