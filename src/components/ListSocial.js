@@ -8,6 +8,7 @@ import Twitter from '../assets/images/page/end/ico_twitter.svg'
 
 const ListSocial = () => {
   const {friendInfoContext} = useUserStateContext()
+  friendInfoContext.gender = 'female'
 
   // const urlSite = 'https://foryoursweetheart.org/ฆาตกรบนโต๊ะอาหาร/TH/index.html'
   const urlSite = window.location.href
