@@ -1,7 +1,7 @@
 import React, {forwardRef, useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 
-const Input = forwardRef(({type, placeholder, value, onChange, isError, onlyText}, ref) => {
+const Input = forwardRef(({type, placeholder, value, onChange, onClick, onBlur, isError, onlyText}, ref) => {
   // state
   const [inputValue, setInputValue] = useState()
   const [error, setError] = useState(isError)
@@ -42,6 +42,11 @@ const Input = forwardRef(({type, placeholder, value, onChange, isError, onlyText
 
   const handleClick = () => {
     ref.current.focus()
+    onClick()
+  }
+
+  const handleBlur = () => {
+    onBlur()
   }
 
   useEffect(() => {
@@ -63,6 +68,7 @@ const Input = forwardRef(({type, placeholder, value, onChange, isError, onlyText
               value={inputValue}
               onChange={handleChange}
               onClick={handleClick}
+              onBlur={handleBlur}
             />
       }
       {
@@ -76,6 +82,7 @@ const Input = forwardRef(({type, placeholder, value, onChange, isError, onlyText
               value={inputValue}
               onChange={handleChange}
               onClick={handleClick}
+              onBlur={handleBlur}
             />
       }
     </div>
@@ -88,6 +95,8 @@ Input.propTypes = {
   placeholderError: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
+  onClick: PropTypes.func,
+  onBlur: PropTypes.func,
   isError: PropTypes.bool,
   onlyText: PropTypes.bool,
 }
@@ -98,6 +107,8 @@ Input.defaultProps = {
   placeholderError: '',
   value: '',
   onChange: () => {},
+  onClick: () => {},
+  onBlur: () => {},
   isError: false,
   onlyText: false
 }

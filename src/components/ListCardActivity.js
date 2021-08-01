@@ -10,7 +10,7 @@ import ImgCardFoodSm from '../assets/images/page/investigate/img_card_food_sm.sv
 import ImgCardExerciseMd from '../assets/images/page/investigate/img_card_exercise_md.svg'
 import ImgCardExerciseSm from '../assets/images/page/investigate/img_card_exercise_sm.svg'
 
-const ListCardActivity = ({type, changeScene}) => {
+const ListCardActivity = ({type, changeScene, animateCompleted}) => {
   // context
   const {addActivityOftenContext, addActivityTodayContext} = useUserActionContext()
   const {playClickSoundContext} = useSoundActionContext()
@@ -19,14 +19,16 @@ const ListCardActivity = ({type, changeScene}) => {
   const isWindowSmall = UseWindowSmall()
 
   const handleClick = (activity) => {
-    if (type === 'often') {
-      addActivityOftenContext(activity)
-    } else {
-      addActivityTodayContext(activity)
-    }
+    if (animateCompleted) {
+      if (type === 'often') {
+        addActivityOftenContext(activity)
+      } else {
+        addActivityTodayContext(activity)
+      }
 
-    playClickSoundContext()
-    changeScene()
+      playClickSoundContext()
+      changeScene()
+    }
   }
 
   return (
@@ -77,10 +79,12 @@ const ListCardActivity = ({type, changeScene}) => {
 ListCardActivity.propTypes = {
   type: PropTypes.string.isRequired,
   changeScene: PropTypes.func,
+  animateCompleted: PropTypes.bool
 }
 
 ListCardActivity.defaultProps = {
   changeScene: () => {},
+  animateCompleted: false,
 }
 
 export default ListCardActivity

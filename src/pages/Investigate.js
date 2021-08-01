@@ -132,11 +132,13 @@ const Investigate = () => {
   // ref
   const spaceRef = useRef(null)
 
-  // state
+  // state of animate
   const [animateTable, setAnimateTable] = useState(false)
   const [heightHidden, setHeightHidden] = useState(null)
   const [fadePhoto, setFadePhoto] = useState(false)
   const [hidePhoto, setHidePhoto] = useState(false)
+
+  // state show scene
   const [sceneYourName, setSceneYourName] = useState(true) // start from this scene
   const [sceneYourGender, setSceneYourGender] = useState(false)
   const [sceneMurder, setSceneMurder] = useState(false)
@@ -147,13 +149,19 @@ const Investigate = () => {
   const [sceneActivityToday, setSceneActivityToday] = useState(false)
   const [sceneThankYou, setSceneThankYou] = useState(false)
   const [sceneCause, setSceneCause] = useState(false)
+
+  // state quiz
   const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [startInvestigate, setStartInvestigate] = useState(false)
-  const [murderSuspect, setMurderSuspect] = useState(false)
-  const [askCooperation, setAskCooperation] = useState(false)
-  const [checkedYear, setCheckedYear] = useState(false)
-  const [thankYou, setThankYou] = useState(false)
-  const [completedScene, setCompletedScene] = useState(false)
+
+  // // state complete animation scene
+  const [completeSceneStart, setCompleteSceneStart] = useState(false)
+  const [completeSceneMurder, setCompleteSceneMurder] = useState(false)
+  const [completeSceneAsk, setCompleteSceneAsk] = useState(false)
+  const [completeSceneYear, setCompleteSceneYear] = useState(false)
+  const [completeThankYou, setCompleteSceneThankYou] = useState(false)
+  const [completedSceneCause, setCompletedSceneCause] = useState(false)
+  const [completedSceneActivityOften, setCompletedSceneActivityOften] = useState(false)
+  const [completedSceneActivityToday, setCompletedSceneActivityToday] = useState(false)
 
   // motion
   const formNameVariant = {
@@ -360,10 +368,25 @@ const Investigate = () => {
   }
 
   const chooseGender = (gender) => {
-    playClickSoundContext()
-    addUserGenderContext(gender)
-    changeToSceneMurder()
+    if (nextScene === 'sceneMurder') {
+      playClickSoundContext()
+      addUserGenderContext(gender)
+      changeToSceneMurder()
+    }
   }
+
+  // const inputAction = (action) => { // fixing andriod keyboard
+  //   const oldHeight = heightHidden
+  //   const isAndriod = navigator.userAgent.match(/Android|android/i)
+
+  //   if (isAndriod !== null) {
+  //     if (action === 'focus') {
+  //       setHeightHidden(200)
+  //     } else {
+  //       setHeightHidden(oldHeight)
+  //     }
+  //   }
+  // }
 
   useEffect(() => {
     if (sceneActivityOften || sceneActivityToday) {
@@ -418,9 +441,9 @@ const Investigate = () => {
                       initial="hidden"
                       animate="show"
                       exit="exit"
-                      onAnimationComplete={ () => setStartInvestigate(true) }
+                      onAnimationComplete={ () => setCompleteSceneStart(true) }
                     >
-                      <FormYourName changeScene={changeToSceneYourGender} checkAnimate={startInvestigate} />
+                      <FormYourName changeScene={changeToSceneYourGender} checkAnimate={completeSceneStart} />
                     </motion.div>
                 }
                 {
@@ -477,9 +500,9 @@ const Investigate = () => {
                               initial="hidden"
                               animate="show"
                               exit="exit"
-                              onAnimationComplete={ () => setMurderSuspect(true)}
+                              onAnimationComplete={ () => setCompleteSceneMurder(true)}
                             >
-                              <ButtonNext onClick={changeToSceneAskCooperation} animateCompleted={murderSuspect}/>
+                              <ButtonNext onClick={changeToSceneAskCooperation} animateCompleted={completeSceneMurder}/>
                             </motion.div>
                         }
                       </div>
@@ -509,9 +532,9 @@ const Investigate = () => {
                               initial="hidden"
                               animate="show"
                               exit="exit"
-                              onAnimationComplete={() => setAskCooperation(true)}
+                              onAnimationComplete={() => setCompleteSceneAsk(true)}
                             >
-                              <ButtonNext onClick={changeToSceneActivityOften} animateCompleted={askCooperation} />
+                              <ButtonNext onClick={changeToSceneActivityOften} animateCompleted={completeSceneAsk} />
                             </motion.div>
                         }
                       </div>
@@ -526,10 +549,11 @@ const Investigate = () => {
                       initial="hidden"
                       animate="show"
                       exit="exit"
+                      onAnimationComplete={() => setCompletedSceneActivityOften(true)}
                     >
                       <div className="text-story form-activity__title">เริ่มจากก่อนเกิดเหตุ กิจกรรมระหว่างคุณ<br />กับคุณ {friendInfoContext.name} ที่ทำบ่อย ๆ คืออะไร? </div>
                       <div className="form-activity__list">
-                        <ListCardActivity type="often" changeScene={changeToSceneQuiz} />
+                        <ListCardActivity type="often" changeScene={changeToSceneQuiz} animateCompleted={completedSceneActivityOften} />
                       </div>
                     </motion.div>
                 }
@@ -558,9 +582,14 @@ const Investigate = () => {
                       className="investigate__year"
                       variants={contentVariant}
                       exit="exit"
-                      onAnimationComplete={() => setCheckedYear(true)}
+                      onAnimationComplete={() => setCompleteSceneYear(true)}
                     >
-                      <FormYear changeScene={changeToSceneActivityToday} checkAnimate={checkedYear} />
+                      <FormYear
+                        changeScene={changeToSceneActivityToday}
+                        // inputFocus={() => inputAction('focus')}
+                        // inputBlur={() => inputAction('blur')}
+                        checkAnimate={completeSceneYear}
+                      />
                     </motion.div>
                 }
                 {
@@ -572,10 +601,11 @@ const Investigate = () => {
                       initial="hidden"
                       animate="show"
                       exit="exit"
+                      onAnimationComplete={() => setCompletedSceneActivityToday(true)}
                     >
                       <div className="text-story form-activity__title">กิจกรรมสุดท้ายที่รู้สึกว่า<br />ได้ทำร่วมกับเพื่อนสนิท ในวันเกิดเหตุ?</div>
                       <div className="form-activity__list">
-                        <ListCardActivity type="today"  changeScene={changeToSceneThankYou} />
+                        <ListCardActivity type="today" changeScene={changeToSceneThankYou} animateCompleted={completedSceneActivityToday} />
                       </div>
                     </motion.div>
                 }
@@ -603,9 +633,9 @@ const Investigate = () => {
                             initial="hidden"
                             animate="show"
                             exit="exit"
-                            onAnimationComplete={() => setThankYou(true)}
+                            onAnimationComplete={() => setCompleteSceneThankYou(true)}
                           >
-                            <ButtonNext onClick={changeToSceneCause} animateCompleted={thankYou}/>
+                            <ButtonNext onClick={changeToSceneCause} animateCompleted={completeThankYou}/>
                           </motion.div>
                       }
                     </div>
@@ -635,9 +665,9 @@ const Investigate = () => {
                                 initial="hidden"
                                 animate="show"
                                 exit="exit"
-                                onAnimationComplete={() => setCompletedScene(true)}
+                                onAnimationComplete={() => setCompletedSceneCause(true)}
                               >
-                                <ButtonNext onClick={goToNextPage} animateCompleted={completedScene} />
+                                <ButtonNext onClick={goToNextPage} animateCompleted={completedSceneCause} />
                               </motion.div>
                           }
                         </div>
