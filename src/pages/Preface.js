@@ -5,7 +5,7 @@ import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
-import ImgLogo from '../assets/images/logo/logo.png'
+import ImgLogo from '../assets/images/logo/logo.svg'
 import IconFingerprint from '../assets/images/icon/icon_fingerprint.svg'
 
 const sceneVariant = {
