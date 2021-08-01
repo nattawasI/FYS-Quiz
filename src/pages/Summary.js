@@ -177,17 +177,14 @@ const Summary = () => {
                     renderActivityOften()
                   }
                 </li>
-                <li className="list-summary__item">จัดเต็ม ขนมกรุบกรอบ น้ำอัดลม ฯลฯ</li>
-                <li className="list-summary__item">จัดเต็ม ขนมกรุบกรอบ น้ำอัดลม ฯลฯ</li>
-                <li className="list-summary__item">จัดเต็ม ขนมกรุบกรอบ น้ำอัดลม ฯลฯ</li>
-                {/* {
+                {
                   choicesContext.length
                   // eslint-disable-next-line array-callback-return
                   ? choicesContext.map((choice, index) => {
                       return <li className="list-summary__item" key={'bullet' + (index + 1)}>{choice.label}</li>
                     })
                   : ''
-                } */}
+                }
               </ul>
             </div>
           </motion.div>
