@@ -5,30 +5,10 @@ import {motion} from 'framer-motion'
 import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
+import ImgLogo from '../assets/images/logo/logo.png'
 import IconFingerprint from '../assets/images/icon/icon_fingerprint.svg'
 
-// Motion Variants
 const sceneVariant = {
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      ease: 'easeInOut',
-      duration: 1,
-    }
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      ease: 'easeInOut',
-      duration: 1
-    }
-  }
-}
-
-const textVariant = {
   hidden: {
     y: 70,
     opacity: 0,
@@ -38,7 +18,7 @@ const textVariant = {
     opacity: 1,
     transition: {
       ease: 'easeInOut',
-      duration: 1
+      duration: 1.5
     }
   }
 }
@@ -52,7 +32,7 @@ const buttonVariant = {
     transition: {
       ease: 'easeInOut',
       duration: 0.7,
-      delay: 1
+      delay: 1.5
     }
   }
 }
@@ -102,13 +82,9 @@ const Preface = () => {
                   className="preface__scene"
                   key="scene1"
                   variants={sceneVariant}
-                  exit='exit'
                 >
-                  <motion.p className="box-story__text preface__text"
-                    variants={textVariant}
-                    initial="hidden"
-                    animate="show"
-                  >*เนื้อหาในเว็บนี้เป็นผลงาน<br />การออกแบบการสื่อสารผ่านการเล่าเรื่องราว<br />ให้ผู้เล่นมีส่วนร่วมด้วย<br />ไม่ใช่แบบสอบถามทางจิตวิทยาแต่อย่างใด</motion.p>
+                  <div className="preface__logo"><img src={ImgLogo} alt="For Your Sweetheart" /></div>
+                  <p className="box-story__text preface__text">*เนื้อหาในเว็บนี้เป็นผลงาน<br />การออกแบบการสื่อสารผ่านการเล่าเรื่องราว<br />ให้ผู้เล่นมีส่วนร่วมด้วย<br />ไม่ใช่แบบสอบถามทางจิตวิทยาแต่อย่างใด</p>
                   {
                     isWindowSmall
                     ? <motion.div className="box-story__button"
