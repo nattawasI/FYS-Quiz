@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/public/static/static/css/main.2a7c8c89.chunk.css",
-    "main.js": "/public/static/static/js/main.d9cd93ce.chunk.js",
-    "main.js.map": "/public/static/static/js/main.d9cd93ce.chunk.js.map",
+    "main.css": "/public/static/static/css/main.8f7f3eef.chunk.css",
+    "main.js": "/public/static/static/js/main.3e40c0ac.chunk.js",
+    "main.js.map": "/public/static/static/js/main.3e40c0ac.chunk.js.map",
     "runtime-main.js": "/public/static/static/js/runtime-main.8aa73aef.js",
     "runtime-main.js.map": "/public/static/static/js/runtime-main.8aa73aef.js.map",
-    "static/js/2.9f9dff02.chunk.js": "/public/static/static/js/2.9f9dff02.chunk.js",
-    "static/js/2.9f9dff02.chunk.js.map": "/public/static/static/js/2.9f9dff02.chunk.js.map",
+    "static/js/2.0f94c897.chunk.js": "/public/static/static/js/2.0f94c897.chunk.js",
+    "static/js/2.0f94c897.chunk.js.map": "/public/static/static/js/2.0f94c897.chunk.js.map",
     "static/js/3.23d80d84.chunk.js": "/public/static/static/js/3.23d80d84.chunk.js",
     "static/js/3.23d80d84.chunk.js.map": "/public/static/static/js/3.23d80d84.chunk.js.map",
     "static/js/4.4018bd64.chunk.js": "/public/static/static/js/4.4018bd64.chunk.js",
     "static/js/4.4018bd64.chunk.js.map": "/public/static/static/js/4.4018bd64.chunk.js.map",
     "index.html": "/public/static/index.html",
-    "static/css/main.2a7c8c89.chunk.css.map": "/public/static/static/css/main.2a7c8c89.chunk.css.map",
-    "static/js/2.9f9dff02.chunk.js.LICENSE.txt": "/public/static/static/js/2.9f9dff02.chunk.js.LICENSE.txt",
+    "static/css/main.8f7f3eef.chunk.css.map": "/public/static/static/css/main.8f7f3eef.chunk.css.map",
+    "static/js/2.0f94c897.chunk.js.LICENSE.txt": "/public/static/static/js/2.0f94c897.chunk.js.LICENSE.txt",
     "static/js/3.23d80d84.chunk.js.LICENSE.txt": "/public/static/static/js/3.23d80d84.chunk.js.LICENSE.txt",
     "static/media/bg-sound-investigation.b4a803bd.mp3": "/public/static/static/media/bg-sound-investigation.b4a803bd.mp3",
     "static/media/bg-sound-siren.1c555894.mp3": "/public/static/static/media/bg-sound-siren.1c555894.mp3",
@@ -36,7 +36,6 @@
     "static/media/ico_ribbon_01.6e659960.svg": "/public/static/static/media/ico_ribbon_01.6e659960.svg",
     "static/media/ico_ribbon_02.f478a23f.svg": "/public/static/static/media/ico_ribbon_02.f478a23f.svg",
     "static/media/ico_shared.efcee4e7.svg": "/public/static/static/media/ico_shared.efcee4e7.svg",
-    "static/media/ico_twitter.c2580d89.svg": "/public/static/static/media/ico_twitter.c2580d89.svg",
     "static/media/icon_fingerprint.e467a211.svg": "/public/static/static/media/icon_fingerprint.e467a211.svg",
     "static/media/icon_mute.e85a4c1b.svg": "/public/static/static/media/icon_mute.e85a4c1b.svg",
     "static/media/icon_mute_black.b05e5265.svg": "/public/static/static/media/icon_mute_black.b05e5265.svg",
@@ -77,7 +76,6 @@
     "static/media/img_human_sleep_sm.40a5052a.svg": "/public/static/static/media/img_human_sleep_sm.40a5052a.svg",
     "static/media/img_murder.4a21b537.svg": "/public/static/static/media/img_murder.4a21b537.svg",
     "static/media/img_note_md.8b5389c4.svg": "/public/static/static/media/img_note_md.8b5389c4.svg",
-    "static/media/img_note_sm.19078c1d.svg": "/public/static/static/media/img_note_sm.19078c1d.svg",
     "static/media/img_numb.f380bb8c.svg": "/public/static/static/media/img_numb.f380bb8c.svg",
     "static/media/img_photo_md.c9caaec9.svg": "/public/static/static/media/img_photo_md.c9caaec9.svg",
     "static/media/img_photo_sm.2e664200.svg": "/public/static/static/media/img_photo_sm.2e664200.svg",
@@ -103,14 +101,15 @@
     "static/media/img_toilet.52298f53.svg": "/public/static/static/media/img_toilet.52298f53.svg",
     "static/media/img_weight_loss.99f25f97.svg": "/public/static/static/media/img_weight_loss.99f25f97.svg",
     "static/media/img_whiskey.ef252bc0.png": "/public/static/static/media/img_whiskey.ef252bc0.png",
+    "static/media/logo.47cee80d.png": "/public/static/static/media/logo.47cee80d.png",
     "static/media/sound-click.f27a90fb.mp3": "/public/static/static/media/sound-click.f27a90fb.mp3",
     "static/media/sound-phone.d3b32b63.mp3": "/public/static/static/media/sound-phone.d3b32b63.mp3",
     "static/media/sound-switch.dd8b1330.mp3": "/public/static/static/media/sound-switch.dd8b1330.mp3"
   },
   "entrypoints": [
     "static/js/runtime-main.8aa73aef.js",
-    "static/js/2.9f9dff02.chunk.js",
-    "static/css/main.2a7c8c89.chunk.css",
-    "static/js/main.d9cd93ce.chunk.js"
+    "static/js/2.0f94c897.chunk.js",
+    "static/css/main.8f7f3eef.chunk.css",
+    "static/js/main.3e40c0ac.chunk.js"
   ]
 }

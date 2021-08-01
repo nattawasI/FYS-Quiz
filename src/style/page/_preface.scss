@@ -15,15 +15,39 @@
     flex-direction: column;
   }
 
+  &__logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__logo > img {
+    width: 94px;
+    height: auto;
+    //width: 25.067vw;
+
+    @include sm-up {
+      width: 150px;
+      // width: 19.531vw;
+    }
+
+    @include md-up {
+      width: 194px;
+      // width: 10.104vw;
+    }
+  }
+
   &__text {
+    margin-top: 4.321vh;
     font-size: 4.800vw;
     color: $black;
 
     @include sm-up {
+      margin-top: 4vh;
       font-size: 3.516vw;
     }
 
     @include md-up {
+      margin-top: 5vh;
       font-size: 2.083vw;
     }
   }

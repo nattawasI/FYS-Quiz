@@ -43,7 +43,6 @@ const UserProvider = ({ children }) => {
   };
 
   const addUserGenderContext = async (gender) => {
-    setUserInfoContext({ ...userInfoContext, ...{ gender } });
     const deviceUser = navigator.userAgent;
     const id = await saveUser(
       friendInfoContext,
@@ -108,6 +107,8 @@ const UserProvider = ({ children }) => {
     // Phrase 3
     causeDiabetesContext,
     symptomDiabetesContext,
+
+    userId,
   };
 
   const userActionStore = {

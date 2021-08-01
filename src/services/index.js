@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const url = "https://www.foryoursweetheart.org/";
+// const url = "http://localhost:14080/";
 const API_POST = (url, data) => {
   return axios.post(url, data, {
     headers: {
@@ -100,5 +101,12 @@ export const saveQuestion2 = async (causeDiabetesContext, symptom, userId) => {
   });
   await API_POST(url + "/QuizSubmit/save", {
     datas: _choicesContext,
+  });
+};
+
+export const saveShareType = async (share_type, user_data_id) => {
+  await API_POST(url + "/Share/save", {
+    share_type,
+    user_data_id,
   });
 };

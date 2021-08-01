@@ -35,7 +35,7 @@ const buttonVariant = {
   },
 }
 
-const FormYear = ({changeScene, checkAnimate}) => {
+const FormYear = ({changeScene, checkAnimate, inputFocus, inputBlur}) => {
   // context
   const {yearsKnownContext} = useUserStateContext()
   const {addYearsKnownContext} = useUserActionContext()
@@ -69,15 +69,17 @@ const FormYear = ({changeScene, checkAnimate}) => {
           animate="show"
           exit="exit"
         >
-          <div className="form-year__label text-story">คุณรู้จักเพื่อนสนิทคนนี้มากี่ปี?</div>
+          <div className="form-year__label text-story">คุณรู้จักเพื่อนสนิทคนนี้มานานแค่ไหน?</div>
           <div className="form-year__input">
             <InputText
               ref={inputRef}
-              type="number"
-              placeholder="ใส่ตัวเลขเท่านั้น"
+              type="text"
+              placeholder="ระบุช่วงเวลา"
               value={yearsKnownContext}
               isError={error}
-              maxlength="2"
+              maxLength="2"
+              onClick={inputFocus}
+              onBlur={inputBlur}
             />
           </div>
         </motion.div>
@@ -97,11 +99,15 @@ const FormYear = ({changeScene, checkAnimate}) => {
 
 FormYear.propTypes = {
   changeScene: PropTypes.func,
+  inputFocus: PropTypes.func,
+  inputBlur: PropTypes.func,
   checkAnimate: PropTypes.bool,
 }
 
 FormYear.defaultProps = {
   changeScene: () => {},
+  inputFocus: () => {},
+  inputBlur: () => {},
   checkAnimate: false,
 }
 

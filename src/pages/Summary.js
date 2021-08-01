@@ -7,7 +7,6 @@ import UseWindowSmall from '../hooks/useWindowSmall'
 import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 import ImgNoteMd from '../assets/images/page/summary/img_note_md.svg'
-import ImgNoteSm from '../assets/images/page/summary/img_note_sm.svg'
 import ImgRisk100Md from '../assets/images/page/summary/img_risk_100_md.svg'
 import ImgRisk50Md from '../assets/images/page/summary/img_risk_50_md.svg'
 import ImgRisk0Md from '../assets/images/page/summary/img_risk_0_md.svg'
@@ -76,7 +75,7 @@ const buttonVariant = {
     transition: {
       ease: "easeInOut",
       duration: 0.7,
-      delay: 1.5,
+      delay: 2,
     }
   }
 }
@@ -138,20 +137,6 @@ const Summary = () => {
     }
   }
 
-  const renderNote = () => {
-    if (!(isWindowSmall && window.innerHeight <= 667)) {
-      return (
-        <motion.div className="summary__note"
-          variants={noteVariant}
-          initial="hidden"
-          animate="show"
-        >
-          <img src={isWindowSmall? ImgNoteSm: ImgNoteMd} alt="" />
-        </motion.div>
-      )
-    }
-  }
-
   // useEffect
   useEffect(() => {
     if (isWindowSmall) {
@@ -192,9 +177,6 @@ const Summary = () => {
                     renderActivityOften()
                   }
                 </li>
-                {/* <li className="list-summary__item">จัดเต็ม ขนมกรุบกรอบ น้ำอัดลม ฯลฯ</li>
-                <li className="list-summary__item">จัดเต็ม ขนมกรุบกรอบ น้ำอัดลม ฯลฯ</li>
-                <li className="list-summary__item">จัดเต็ม ขนมกรุบกรอบ น้ำอัดลม ฯลฯ</li> */}
                 {
                   choicesContext.length
                   // eslint-disable-next-line array-callback-return
@@ -224,7 +206,14 @@ const Summary = () => {
               </motion.div>
           }
           {
-            renderNote()
+            !isWindowSmall
+            &&  <motion.div className="summary__note"
+                  variants={noteVariant}
+                  initial="hidden"
+                  animate="show"
+                >
+                  <img src={ImgNoteMd} alt="" />
+                </motion.div>
           }
         </div>
       </Content>
@@ -239,6 +228,13 @@ const Summary = () => {
             <ButtonNext onClick={goToNextPage} animateCompleted={completedScene} />
           </motion.div>
       }
+      <motion.p
+        className="summary__text-note"
+        variants={buttonVariant}
+        initial="hidden"
+        animate="show"
+      >*ผลสรุปนี้คือการประเมินจากการสำรวจพฤติกรรมเบื้องต้น
+      </motion.p>
     </>
   )
 }
