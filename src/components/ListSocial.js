@@ -4,7 +4,6 @@ import {useUserStateContext} from '../contexts/UserContext'
 import Facebook from '../assets/images/page/end/ico_facebook.svg'
 import Line from '../assets/images/page/end/ico_line.svg'
 import Shared from '../assets/images/page/end/ico_shared.svg'
-import Twitter from '../assets/images/page/end/ico_twitter.svg'
 
 const ListSocial = () => {
   const {friendInfoContext} = useUserStateContext()
@@ -37,10 +36,12 @@ const ListSocial = () => {
 
   const shareFacebook = () => {
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`, 'fbShareWindow')
+
+    // add function count at here...
   }
 
-  const shareTwitter = () => {
-    window.open(`https://twitter.com/intent/tweet?hashtags=ความจริงมีเพียงหนึ่งเดียว,ฆาตกรบนโต๊ะอาหาร,ForYourSweetheart&url=${urlShare}`, 'twShareWindow')
+  const shareLine = () => {
+    // add function count at here...
   }
 
   return (
@@ -60,12 +61,7 @@ const ListSocial = () => {
           </button>
         </li>
         <li className="list-social__item">
-          <button type="button" className="list-social__link" onClick={shareTwitter}>
-            <img className="list-social__icon" src={Twitter} alt="Twitter" />
-          </button>
-        </li>
-        <li className="list-social__item">
-          <a href={`https://social-plugins.line.me/lineit/share?url=${urlShare}`} className="list-social__link" target="_blank" rel="noreferrer">
+          <a href={`https://social-plugins.line.me/lineit/share?url=${urlShare}`} className="list-social__link" target="_blank" rel="noreferrer" onClick={shareLine}>
             <img className="list-social__icon" src={Line} alt="Line" />
           </a>
         </li>
