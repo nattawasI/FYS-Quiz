@@ -135,6 +135,7 @@ const Investigate = () => {
   // state of animate
   const [animateTable, setAnimateTable] = useState(false)
   const [heightHidden, setHeightHidden] = useState(null)
+  const [spaceHeightAndroid, setSpaceHeightAndroid] = useState(null)
   const [fadePhoto, setFadePhoto] = useState(false)
   const [hidePhoto, setHidePhoto] = useState(false)
 
@@ -207,6 +208,7 @@ const Investigate = () => {
 
       const spaceHeight = spaceRef.current.offsetHeight
       setHeightHidden(spaceHeight + heightForHidden)
+      setSpaceHeightAndroid(spaceHeight + heightForHidden)
     } else {
       setHidePhoto(false)
 
@@ -301,6 +303,10 @@ const Investigate = () => {
     playClickSoundContext()
     setSceneFormYear(false)
     setSceneActivityToday(true)
+
+    if (checkIsAndriod()) {
+      setHeightHidden(spaceHeightAndroid)
+    }
   }
 
   const backToSceneFormYear = () => {
@@ -321,6 +327,7 @@ const Investigate = () => {
     toggleAnimateTable()
     setSceneThankYou(false)
     setSceneActivityToday(true)
+    setCompletedSceneActivityToday(false)
   }
 
   const changeToSceneCause = () => {
@@ -346,6 +353,7 @@ const Investigate = () => {
     } else {
       setSceneQuiz(false)
       setSceneActivityOften(true)
+      setCompletedSceneActivityOften(false)
     }
   }
 
@@ -375,18 +383,20 @@ const Investigate = () => {
     }
   }
 
-  // const inputAction = (action) => { // fixing andriod keyboard
-  //   const oldHeight = heightHidden
-  //   const isAndriod = navigator.userAgent.match(/Android|android/i)
+  const inputAction = (action) => { // fixing andriod keyboard
+    if (checkIsAndriod()) {
+      if (action === 'focus') {
+        setHeightHidden(300)
+      } else {
+        setHeightHidden(spaceHeightAndroid)
+      }
+    }
+  }
 
-  //   if (isAndriod !== null) {
-  //     if (action === 'focus') {
-  //       setHeightHidden(200)
-  //     } else {
-  //       setHeightHidden(oldHeight)
-  //     }
-  //   }
-  // }
+  const checkIsAndriod = () => {
+    const isAndriod = navigator.userAgent.match(/Android|android/i)
+    return isAndriod !== null? true: false
+  }
 
   useEffect(() => {
     if (sceneActivityOften || sceneActivityToday) {
@@ -426,7 +436,11 @@ const Investigate = () => {
               && <img src={ImgPoliceMd} alt="ตำรวจ" />
             }
           </div>
-          <div ref={spaceRef} className={`investigate__space${animateTable? ' animate': ''}`} style={{ height: `${heightHidden}px` }}>
+          <div
+            ref={spaceRef}
+            className={`investigate__space${animateTable? ' animate': ''}`}
+            style={{ height: `${heightHidden}px` }}
+          >
             <div className={`investigate__photo${fadePhoto? " fade-out": ''}${hidePhoto? " hidden": ''}`}>
               <img src={isWindowSmall ? ImgPhotoSm: ImgPhotoMd} alt="รูปถ่าย" />
             </div>
@@ -553,7 +567,12 @@ const Investigate = () => {
                     >
                       <div className="text-story form-activity__title">เริ่มจากก่อนเกิดเหตุ กิจกรรมระหว่างคุณ<br />กับคุณ {friendInfoContext.name} ที่ทำบ่อย ๆ คืออะไร? </div>
                       <div className="form-activity__list">
-                        <ListCardActivity type="often" changeScene={changeToSceneQuiz} animateCompleted={completedSceneActivityOften} />
+                        <ListCardActivity
+                          type="often"
+                          changeScene={changeToSceneQuiz}
+                          animateCompleted={completedSceneActivityOften}
+                          updateAnimateCompleted={() => setCompletedSceneActivityOften(false)}
+                        />
                       </div>
                     </motion.div>
                 }
@@ -586,9 +605,9 @@ const Investigate = () => {
                     >
                       <FormYear
                         changeScene={changeToSceneActivityToday}
-                        // inputFocus={() => inputAction('focus')}
-                        // inputBlur={() => inputAction('blur')}
                         checkAnimate={completeSceneYear}
+                        inputFocus={() => inputAction('focus')}
+                        inputBlur={() => inputAction('blur')}
                       />
                     </motion.div>
                 }
@@ -605,7 +624,12 @@ const Investigate = () => {
                     >
                       <div className="text-story form-activity__title">กิจกรรมสุดท้ายที่รู้สึกว่า<br />ได้ทำร่วมกับเพื่อนสนิท ในวันเกิดเหตุ?</div>
                       <div className="form-activity__list">
-                        <ListCardActivity type="today" changeScene={changeToSceneThankYou} animateCompleted={completedSceneActivityToday} />
+                        <ListCardActivity
+                          type="today"
+                          changeScene={changeToSceneThankYou}
+                          animateCompleted={completedSceneActivityToday}
+                          updateAnimateCompleted={() => completedSceneActivityToday(false)}
+                        />
                       </div>
                     </motion.div>
                 }
@@ -635,7 +659,7 @@ const Investigate = () => {
                             exit="exit"
                             onAnimationComplete={() => setCompleteSceneThankYou(true)}
                           >
-                            <ButtonNext onClick={changeToSceneCause} animateCompleted={completeThankYou}/>
+                            <ButtonNext onClick={changeToSceneCause} animateCompleted={completeThankYou} />
                           </motion.div>
                       }
                     </div>

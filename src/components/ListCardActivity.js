@@ -79,7 +79,7 @@ const ListCardActivity = ({type, changeScene, animateCompleted}) => {
 ListCardActivity.propTypes = {
   type: PropTypes.string.isRequired,
   changeScene: PropTypes.func,
-  animateCompleted: PropTypes.bool
+  animateCompleted: PropTypes.bool,
 }
 
 ListCardActivity.defaultProps = {

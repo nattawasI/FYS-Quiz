@@ -139,7 +139,7 @@ const Summary = () => {
   }
 
   const renderNote = () => {
-    if (!(isWindowSmall && window.innerHeight <= 667)) {
+    if (isWindowSmall) {
       return (
         <motion.div className="summary__note"
           variants={noteVariant}

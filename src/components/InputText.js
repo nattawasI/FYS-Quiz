@@ -1,26 +1,13 @@
 import React, {forwardRef, useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 
-const Input = forwardRef(({type, placeholder, value, onChange, onClick, onBlur, isError, onlyText}, ref) => {
+const Input = forwardRef(({placeholder, value, onChange, onClick, onBlur, isError, onlyText}, ref) => {
   // state
   const [inputValue, setInputValue] = useState()
   const [error, setError] = useState(isError)
 
   const handleChange = (e) => {
     const val = e.target.value
-
-    if (type === 'number') {
-      const regex = new RegExp('^[0-9]+$')
-      const isOnlyNumber = regex.test(val)
-
-      if (isOnlyNumber) {
-        setInputValue(val)
-      } else {
-        setInputValue(inputValue + '')
-      }
-    } else { // type === 'text'
-      setInputValue(val)
-    }
 
     if (onlyText) {
       const regex = new RegExp('[0-9]')
@@ -30,6 +17,8 @@ const Input = forwardRef(({type, placeholder, value, onChange, onClick, onBlur, 
       } else {
         setInputValue(inputValue + '')
       }
+    } else {
+      setInputValue(val)
     }
 
     setError(false)
@@ -59,38 +48,20 @@ const Input = forwardRef(({type, placeholder, value, onChange, onClick, onBlur, 
 
   return (
     <div className={classStyle()}>
-      {
-        type === 'text'
-        &&  <input
-              type="text"
-              ref={ref}
-              placeholder={placeholder}
-              value={inputValue}
-              onChange={handleChange}
-              onClick={handleClick}
-              onBlur={handleBlur}
-            />
-      }
-      {
-        type === 'number'
-        &&  <input
-              type="number"
-              ref={ref}
-              placeholder={placeholder}
-              min="0"
-              max="100"
-              value={inputValue}
-              onChange={handleChange}
-              onClick={handleClick}
-              onBlur={handleBlur}
-            />
-      }
+      <input
+        type="text"
+        ref={ref}
+        placeholder={placeholder}
+        value={inputValue}
+        onChange={handleChange}
+        onClick={handleClick}
+        onBlur={handleBlur}
+      />
     </div>
   )
 })
 
 Input.propTypes = {
-  type: PropTypes.string,
   placeholder: PropTypes.string,
   placeholderError: PropTypes.string,
   value: PropTypes.string,
@@ -102,7 +73,6 @@ Input.propTypes = {
 }
 
 Input.defaultProps = {
-  type: 'text',
   placeholder: '',
   placeholderError: '',
   value: '',

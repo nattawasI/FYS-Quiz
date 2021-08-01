@@ -69,12 +69,12 @@ const FormYear = ({changeScene, checkAnimate, inputFocus, inputBlur}) => {
           animate="show"
           exit="exit"
         >
-          <div className="form-year__label text-story">คุณรู้จักเพื่อนสนิทคนนี้มากี่ปี?</div>
+          <div className="form-year__label text-story">คุณรู้จักเพื่อนสนิทคนนี้มานานแค่ไหน?</div>
           <div className="form-year__input">
             <InputText
               ref={inputRef}
-              type="number"
-              placeholder="ใส่ตัวเลขเท่านั้น"
+              type="text"
+              placeholder="ระบุช่วงเวลา"
               value={yearsKnownContext}
               isError={error}
               maxLength="2"
