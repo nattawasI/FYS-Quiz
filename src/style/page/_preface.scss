@@ -21,17 +21,17 @@
   }
 
   &__logo > img {
-    width: 94px;
+    width: 115px;
     height: auto;
     //width: 25.067vw;
 
     @include sm-up {
-      width: 150px;
+      width: 170px;
       // width: 19.531vw;
     }
 
     @include md-up {
-      width: 194px;
+      width: 210px;
       // width: 10.104vw;
     }
   }
