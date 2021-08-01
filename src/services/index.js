@@ -18,7 +18,7 @@ export const saveUser = async (
 ) => {
   const userData = {
     friend_name: friendInfoContext.name,
-    friend_gen: friendInfoContext.name,
+    friend_gen: friendInfoContext.gen,
     my_name: userInfoContext.name,
     my_gen: gender,
     device: deviceUser,
