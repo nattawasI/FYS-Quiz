@@ -84,7 +84,7 @@ const Preface = () => {
                   variants={sceneVariant}
                 >
                   <div className="preface__logo"><img src={ImgLogo} alt="For Your Sweetheart" /></div>
-                  <p className="box-story__text preface__text">*เนื้อหาในเว็บนี้เป็นผลงาน<br />การออกแบบการสื่อสารผ่านการเล่าเรื่องราว<br />ให้ผู้เล่นมีส่วนร่วมด้วย<br />ไม่ใช่แบบสอบถามทางจิตวิทยาแต่อย่างใด</p>
+                  <p className="box-story__text preface__text">*เนื้อหาในเว็บนี้เป็นผลงานการออกแบบการสื่อสาร<br />ผ่านการเล่าเรื่องราวให้ผู้เล่นมีส่วนร่วมด้วย<br />ไม่ใช่แบบสอบถามทางจิตวิทยาแต่อย่างใด</p>
                   {
                     isWindowSmall
                     ? <motion.div className="box-story__button"
