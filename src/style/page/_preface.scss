@@ -22,6 +22,7 @@
 
   &__logo > img {
     width: 94px;
+    height: auto;
     //width: 25.067vw;
 
     @include sm-up {
