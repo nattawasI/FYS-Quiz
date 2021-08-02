@@ -9,9 +9,28 @@
 }
 
 .login-banner {
+  position: relative;
   width: 100%;
   height: 100%;
-  background: url('../../assets/images/page/admin/img_human_sleep.svg') center center;
+  overflow: hidden;
+
+  &__title {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: auto;
+  }
+
+  &__body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 100%;
+    height: 40%;
+  }
 }
 
 .login-form {
@@ -30,25 +49,91 @@
     }
   }
 
-  &__heading {
+  &__title {
     margin-top: 30px;
-    font-size: 2.4rem;
+    font-size: 3.2rem;
     text-align: center;
     color: #333;
   }
 
   &__form {
-    width: 350px
-    ;
-    margin-top: 60px;
+    width: 350px;
+    margin-top: 35px;
   }
 
-  &__input {
-    margin-top: 40px;
+  &__input:not(:first-child) {
+    margin-top: 30px;
   }
 
   &__button {
-    margin-top: 50px;
+    margin-top: 40px;
     text-align: center;
+  }
+}
+
+.login-input {
+  position: relative;
+  padding-left: 40px;
+  border: 1px solid #989898;
+  border-radius: 4px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 7px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background-position: center;
+    background-size: 24px;
+    background-repeat: no-repeat;
+  }
+
+  &--username::before {
+    background-image: url('../../assets/images/icon/icon_user.svg');
+  }
+
+  &--password::before {
+    background-image: url('../../assets/images/icon/icon_lock.svg');
+  }
+
+  &--password {
+    padding-right: 40px;
+  }
+
+  &--password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 7px;
+    transform: translateY(-50%);
+    display: block;
+
+    > img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  > input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    font-size: 1.6rem;
+  }
+}
+
+.d-button {
+  display: inline-block;
+  min-width: 130px;
+  height: 40px;
+  background-color: $blue;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  color: $white;
+  text-align: center;
+
+  &:hover {
+    background-color: #124b8b;
   }
 }
