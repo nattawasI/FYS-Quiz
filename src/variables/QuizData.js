@@ -124,7 +124,7 @@ export const QuizData = {
       choices: [
         {
           id: 'exercise-2-1',
-          label: 'ปาร์ตี้ต่อ เพื่อนๆ รออยู่',
+          label: 'ปาร์ตี้ต่อ เพื่อน ๆ รออยู่',
           score: 1
         },
         {
