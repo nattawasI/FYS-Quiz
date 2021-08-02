@@ -16,11 +16,12 @@
   }
 
   &__logo {
-    display: flex;
-    justify-content: center;
+    text-align: center;
+    line-height: 1;
   }
 
   &__logo > img {
+    display: inline-block;
     width: 115px;
     height: auto;
     //width: 25.067vw;
@@ -37,8 +38,8 @@
   }
 
   &__text {
-    margin-top: 4.321vh;
-    font-size: 4.800vw;
+    margin-top: 3.5vh;
+    font-size: 4.3vw;
     color: $black;
 
     @include sm-up {
