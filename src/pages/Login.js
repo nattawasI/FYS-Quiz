@@ -1,29 +1,32 @@
 import React from 'react'
-import ImgMain from '../assets/images/page/admin/img_human_sleep.svg'
 import ImgLogo from '../assets/images/logo/logo.svg'
 
 const Login = () => {
   return (
     <div className="login">
-      <div className="login__col login-banner">
-        <img src={ImgMain} alt="ฆาตกรบนโต๊ะอาหาร" />
-      </div>
+      <div className="login__col"></div>
       <div className="login__col">
-        <form className="login-form">
+        <div className="login-form">
           <div className="login-form__logo">
             <img src={ImgLogo} alt="For Your Sweetheart" />
           </div>
-          <div className="login-form__heading">Welcome</div>
-          <div className="login-form__input">
-            <input type="text" />
-          </div>
-          <div className="login-form__input">
-            <input type="text" />
-          </div>
-          <div className="login-form__button">
-            <button type="button">Log in</button>
-          </div>
-        </form>
+          <div className="login-form__heading">Login</div>
+          <form className="login-form__form">
+            <div className="login-form__input">
+              <div className="login-input login-input--username">
+                <input type="text" />
+              </div>
+            </div>
+            <div className="login-form__input">
+              <div className="login-input login-input--password">
+                <input type="text" />
+              </div>
+            </div>
+            <div className="login-form__button">
+              <button type="button" className="form-button">Log in</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   )
