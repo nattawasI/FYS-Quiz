@@ -5,7 +5,6 @@ import {motion} from 'framer-motion'
 import UseCurrentDevice from '../hooks/useCurrentDevice'
 import Content from '../layout/Content'
 import ButtonRestart from '../components/ButtonRestart'
-import ListSocial from '../components/ListSocial'
 import RibbonTop from '../assets/images/page/end/ico_ribbon_01.svg'
 import RibbonBottom from '../assets/images/page/end/ico_ribbon_02.svg'
 import DeadbodyMaleMD from '../assets/images/page/end/img_deadbody_male_md.svg'
@@ -14,6 +13,7 @@ import DeadbodyMaleSM from '../assets/images/page/end/img_deadbody_male_sm.svg'
 import DeadbodyFemaleMD from '../assets/images/page/end/img_deadbody_female_md.svg'
 import DeadbodyFemaleTB from '../assets/images/page/end/img_deadbody_female_tb.svg'
 import DeadbodyFemaleSM from '../assets/images/page/end/img_deadbody_female_sm.svg'
+import ImgButtonShare from '../assets/images/page/end/img_button_share.svg'
 
 const personVariant = {
   hidden: {
@@ -84,7 +84,7 @@ const End = () => {
   const currentDevice = UseCurrentDevice()
 
   // function
-  const goToNextPage = () => {
+  const playAgain = () => {
     playClickSoundContext()
     window.location.reload()
   }
@@ -99,10 +99,19 @@ const End = () => {
     }
   }
 
+  friendInfoContext.gender = 'male'
+
+  const shareFacebook = () => {
+    const urlShare = encodeURIComponent(`https://foryoursweetheart.org/ฆาตกรบนโต๊ะอาหาร/${friendInfoContext.gender === 'female'? 'female/': ''}TH/index.html`)
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`, 'fbShareWindow')
+
+    // add function count at here...
+  }
+
   return (
     <>
       <div className="button-fixed-left-top">
-        <ButtonRestart onClick={goToNextPage} />
+        <ButtonRestart onClick={playAgain} />
       </div>
       <Content>
         <div className="scene-panel end">
@@ -146,7 +155,9 @@ const End = () => {
                 animate="show"
                 exit="exit"
               >
-                <ListSocial />
+                <button type="button" className="end__button-share" onClick={shareFacebook}>
+                  <img src={ImgButtonShare} alt="แชร์ให้เพื่อนเล่น" />
+                </button>
               </motion.div>
             </div>
           </div>

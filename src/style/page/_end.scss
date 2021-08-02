@@ -158,4 +158,18 @@
       margin-left: 20vh;
     }
   }
+
+  &__button-share {
+    width: 32vw;
+
+    @include sm-up {
+      width: 22.135vw;
+    }
+    @include md-up {
+      width: 29.630vh;
+    }
+    > img {
+      width: 100%;
+    }
+  }
 }
