@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import ImgLogo from '../assets/images/logo/logo.svg'
 
 const Login = () => {
   // state
