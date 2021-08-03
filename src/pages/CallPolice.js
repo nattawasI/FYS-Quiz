@@ -54,6 +54,20 @@ const buttonVariant = {
   }
 }
 
+const touchVariant = {
+  hidden: {
+    opacity: 0
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: 'easeInOut',
+      duration: 0.7,
+      delay: 2,
+    }
+  }
+}
+
 const CallPolice = () => {
   // context
   const {changeCurrentPageContext} = useRouteActionContext()
@@ -205,7 +219,16 @@ const CallPolice = () => {
                       <span className={`button-call__btn button-call__btn--wave-in${calling? ' animate': ''}`}></span>
                       <span className="button-call__btn button-call__body--cancel"></span>
                       { !calling && <span className="button-call__btn button-call__body"></span> }
-                      { !calling && <span className="button-call__btn button-call__btn--touch"></span> }
+                      { !calling
+                        && <AnimatePresence>
+                            <motion.span
+                              className="button-call__btn button-call__btn--touch"
+                              variants={touchVariant}
+                              initial="hidden"
+                              animate="show"
+                            ></motion.span>
+                          </AnimatePresence>
+                      }
                     </button>
                   </motion.div>
             }

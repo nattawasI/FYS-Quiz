@@ -147,7 +147,7 @@ const SwitchVariant = {
   show: {
     y: 0,
     transition: {
-      delay: 1,
+      delay: 1.5,
       duration: 1,
       ease: 'easeInOut',
     }
@@ -246,21 +246,28 @@ const TurnOnLight = () => {
     }
   }
 
+  const PointerHandCondition = isWindowSmall ? '-3%' : '-4%';
+
   const PointerHandVariant = {
     hidden: {
       originX: 1,
       originY: 1,
       rotate: 3,
-      y: isWindowSmall ? '-3%' : '-4%',
-      opacity: 1,
+      y: PointerHandCondition,
+      opacity: 0,
     },
     show: {
       x: 0,
-      y: 0,
+      y: [
+        PointerHandCondition,
+        PointerHandCondition,
+        '0%'
+      ],
+      opacity: [0, 1, 1],
       transition: {
-        delay: 0.5,
-        duration: 1,
+        duration: 2,
         ease: 'easeInOut',
+        times: [0, 0.5, 1],
       }
     },
     exit: {
@@ -273,7 +280,6 @@ const TurnOnLight = () => {
       }
     }
   }
-
   const ShadeVariants = {
     hidden: {
       originX: 0.8,

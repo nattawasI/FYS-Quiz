@@ -7,6 +7,20 @@ import Content from '../layout/Content'
 import ButtonNext from '../components/ButtonNext'
 
 // Motion Variants
+const titleVariant = {
+  hidden: {
+    opacity: 0
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      ease: "easeInOut",
+      duration: 1,
+      delay: 1
+    }
+  }
+}
+
 const buttonVariant = {
   hidden: {
     opacity: 0
@@ -52,7 +66,15 @@ const VideoDoctor = () => {
     <>
       <Content bgColor="blue">
         <div className="scene-panel scene-panel--items-center video-doctor" style={{ marginTop: `${marginTop}px`}}>
-          <div ref={titleRef} className="video-doctor__heading text-story">กดเพื่อรับชมวิดิโอ</div>
+          <motion.div
+            ref={titleRef}
+            className="video-doctor__heading text-story"
+            variants={titleVariant}
+            initial="hidden"
+            animate="show"
+          >
+            กดเพื่อรับชมวิดิโอ
+          </motion.div>
           <div className="video-doctor__video video-wrap">
             <div className="video-box">
               <iframe width="560" height="315" src="https://www.youtube.com/embed/Q_1bBPd9V0I" title="For Your Sweetheart ฆาตกรบนโต๊ะอาหาร" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
