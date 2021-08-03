@@ -99,8 +99,6 @@ const End = () => {
     }
   }
 
-  friendInfoContext.gender = 'male'
-
   const shareFacebook = () => {
     const urlShare = encodeURIComponent(`https://foryoursweetheart.org/ฆาตกรบนโต๊ะอาหาร/${friendInfoContext.gender === 'female'? 'female/': ''}TH/index.html`)
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`, 'fbShareWindow')
