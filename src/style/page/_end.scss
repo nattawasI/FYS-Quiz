@@ -128,11 +128,11 @@
     z-index: 40;
 
     @media screen and (max-width : 576px) {
-      margin-top: 7%;
+      margin-top: 5%;
     }
 
     @media screen and (max-width : 375px) {
-      margin-top: 7%;
+      margin-top: 5%;
     }
 
     @include iphone-x  {
@@ -171,6 +171,7 @@
 
     > svg {
       width: 100%;
+      height: auto;
     }
 
     > svg > rect {
