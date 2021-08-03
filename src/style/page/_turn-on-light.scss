@@ -3,10 +3,10 @@
 
   &__container {
     height: 100%;
-    transition: background-color 0s ease-in-out 1.6s;
+    transition: background-color 0s ease-in-out 2s;
 
     @include md-up {
-      transition: background-color 1s ease-in-out 1s;
+      transition: background-color 1s ease-in-out 2s;
     }
 
     &--blue {

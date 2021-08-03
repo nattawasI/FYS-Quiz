@@ -128,19 +128,19 @@
     z-index: 40;
 
     @media screen and (max-width : 576px) {
-      margin-top: 11%;
+      margin-top: 5%;
     }
 
     @media screen and (max-width : 375px) {
-      margin-top: 11%;
+      margin-top: 5%;
     }
 
     @include iphone-x  {
-      margin-top: 11%;
+      margin-top: 7%;
     }
 
     @include xs-up {// ipad
-      margin-top: 7%;
+      margin-top: 4.5%;
     }
 
     @include md-down {
@@ -154,8 +154,32 @@
       right: inherit;
       left: 50%;
       transform: translateX(-50%);
-      margin-top: 15vh;
+      margin-top: 10vh;
       margin-left: 20vh;
     }
+  }
+
+  &__button-share {
+    width: 38vw;
+
+    @include sm-up {
+      width: 22.135vw;
+    }
+    @include md-up {
+      width: 29.630vh;
+    }
+
+    > svg {
+      width: 100%;
+      height: auto;
+    }
+
+    > svg > rect {
+      transition: fill 0.2s;
+    }
+  }
+
+  &__button-share:hover > svg > rect {
+    fill: #E95D8C;
   }
 }

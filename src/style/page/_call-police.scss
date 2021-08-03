@@ -48,8 +48,6 @@
     z-index: 3;
     opacity: 1;
     background-image: url('../../assets/images/page/callpolice/icon_touch.svg');
-    animation-name: touch;
-    animation-duration: 2.2s;
   }
 
   &__body {
@@ -88,20 +86,5 @@
   }
   67%, 100% {
     opacity: 0;
-  }
-}
-
-@keyframes touch {
-  0% {
-    opacity: 1;
-  }
-  5% {
-    opacity: 0;
-  }
-  95% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
