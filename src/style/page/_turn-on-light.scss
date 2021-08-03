@@ -203,6 +203,7 @@
     overflow: hidden;
     width: 120px;
     height: 120px;
+    outline: none;
 
     @include md-down {
       @media screen and (max-height: 568px) {

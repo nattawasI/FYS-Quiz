@@ -95,7 +95,7 @@ const VideoDoctor = () => {
             animate="show"
           >
             <div className="video-box">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/Q_1bBPd9V0I" title="For Your Sweetheart ฆาตกรบนโต๊ะอาหาร" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/BGKNbvhr86w" title="For Your Sweetheart ฆาตกรบนโต๊ะอาหาร" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div>
           </motion.div>
         </div>
