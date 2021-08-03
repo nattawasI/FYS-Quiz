@@ -12,7 +12,7 @@ const Login = () => {
 
   return (
     <div className="admin">
-      Admin Page
+      <header className="admin__header"></header>
     </div>
   )
 }
