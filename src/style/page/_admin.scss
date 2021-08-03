@@ -1,4 +1,23 @@
-.admin {
+// colors
+
+
+.app {
   height: 100vh;
   background-color: $white;
+  color: #333;
+}
+
+.app-button {
+  display: inline-block;
+  min-width: 130px;
+  height: 40px;
+  background-color: $blue;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  color: $white;
+  text-align: center;
+
+  &:hover {
+    background-color: #124b8b;
+  }
 }

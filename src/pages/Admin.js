@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import Header from '../components/dashboard/Header'
 
 const Login = () => {
   // state
@@ -11,8 +12,16 @@ const Login = () => {
   })
 
   return (
-    <div className="admin">
-      <header className="admin__header"></header>
+    <div className="app">
+      <header className="app__header">
+        <Header />
+      </header>
+      <div className="app__tool">Tools</div>
+      <div className="app__tab">Tab</div>
+      <div className="app__content">
+        <div className="app__content">Table</div>
+      </div>
+      <div className="app__footer">Footer</div>
     </div>
   )
 }
