@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import {useHistory} from "react-router-dom"
+import {useAdminActionContext} from '../contexts/AdminContext'
 import ImgTitle from '../assets/images/page/admin/img_title.svg'
 import ImgHumanSleep from '../assets/images/page/admin/img_human_sleep.svg'
 import ImgLogo from '../assets/images/logo/logo.svg'
@@ -6,12 +8,23 @@ import IconShowPassword from '../assets/images/icon/icon_see_password.svg'
 import IconHiddenPassword from '../assets/images/icon/icon_hidden_password.svg'
 
 const Login = () => {
+  // router
+  const history = useHistory()
+
+  // context
+  const {loggedInContext} = useAdminActionContext()
+
   // state
   const [showPassword, setShowPassword] = useState(false)
 
   // function
   const togglePassword = () => {
     setShowPassword(!showPassword)
+  }
+
+  const handleLoggedin = () => {
+    loggedInContext(true)
+    history.push('/admin')
   }
 
   // useEffect
@@ -54,7 +67,7 @@ const Login = () => {
               </div>
             </div>
             <div className="login-form__button">
-              <button type="button" className="d-button">Log in</button>
+              <button type="button" className="app-button" onClick={handleLoggedin}>Log in</button>
             </div>
           </form>
         </div>

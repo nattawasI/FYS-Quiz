@@ -1,0 +1,10 @@
+.app-toolbar {
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__date {
+    margin-left: 10px;
+  }
+}

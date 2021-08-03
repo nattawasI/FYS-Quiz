@@ -1,0 +1,29 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-img {
+    width: 90px;
+    height: auto;
+  }
+
+  &__logo-text {
+    margin-left: 10px;
+    font-size: 1.8rem;
+  }
+
+  &__logout {
+    font-size: 1.6rem;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
