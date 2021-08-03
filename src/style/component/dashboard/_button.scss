@@ -1,14 +1,17 @@
+@import './_color';
+
 .app-button {
   display: inline-block;
   min-width: 130px;
   height: 40px;
-  background-color: $blue;
+  background-color: $color-blue;
   border-radius: 4px;
   font-size: 1.6rem;
-  color: $white;
+  color: $color-white;
   text-align: center;
+  transition: background-color 0.2s;
 
   &:hover {
-    background-color: #124b8b;
+    background-color: $color-blue-darker;
   }
 }

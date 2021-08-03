@@ -1,12 +1,40 @@
+@import '../component/dashboard/_color';
 @import '../component/dashboard/_button';
 
 .login {
   display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
+  background-color: $color-gray-bg-panel;
+
+  &__box {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 30px 0px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    @media screen and (min-width: 1200px) {
+      width: 1200px;
+    }
+
+    @media screen and (min-height: 700px) {
+      height: 700px;
+    }
+  }
 
   &__col {
-    flex: 1;
     height: 100%;
+  }
+
+  &__col--left {
+    width: 55%;
+  }
+
+  &__col--right {
+    width: 45%;
   }
 }
 
@@ -14,6 +42,7 @@
   position: relative;
   width: 100%;
   height: 100%;
+  background-color: $color-black;
   overflow: hidden;
 
   &__title {
@@ -55,7 +84,7 @@
     margin-top: 30px;
     font-size: 3.2rem;
     text-align: center;
-    color: #333333;
+    color: $color-black-matt;
   }
 
   &__form {
@@ -76,7 +105,7 @@
 .login-input {
   position: relative;
   padding-left: 40px;
-  border: 1px solid #989898;
+  border: 1px solid $color-gray-bdr;
   border-radius: 4px;
 
   &::before {
@@ -120,7 +149,7 @@
   > input {
     display: block;
     width: 100%;
-    height: 40px;
+    height: 45px;
     font-size: 1.6rem;
   }
 }

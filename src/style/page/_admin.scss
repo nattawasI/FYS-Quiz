@@ -1,10 +1,13 @@
+
+
+@import '../component/dashboard/_color';
 @import '../component/dashboard/_header';
 @import '../component/dashboard/_button';
 
 .app {
   height: 100vh;
-  background-color: $white;
-  color: #333;
+  background-color: $color-white;
+  color: $color-black;
 
   &__container {
     padding: 0 60px;
