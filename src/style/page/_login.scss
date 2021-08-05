@@ -92,8 +92,20 @@
     margin-top: 35px;
   }
 
+  &__input {
+    position: relative;
+  }
+
   &__input:not(:first-child) {
-    margin-top: 30px;
+    margin-top: 35px;
+  }
+
+  &__input-error {
+    position: absolute;
+    left: 5px;
+    bottom: -1.7em;
+    font-size: 1.2rem;
+    color: $color-red-error;
   }
 
   &__button {
@@ -144,6 +156,10 @@
       width: 24px;
       height: 24px;
     }
+  }
+
+  &--error {
+    border-color:$color-red-error;
   }
 
   > input {

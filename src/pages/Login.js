@@ -16,6 +16,8 @@ const Login = () => {
 
   // state
   const [showPassword, setShowPassword] = useState(false)
+  const [userNameError, setUserNameError] = useState(true)
+  const [passwordError, setPasswordError] = useState(true)
 
   // function
   const togglePassword = () => {
@@ -49,12 +51,15 @@ const Login = () => {
             <div className="login-form__title">Login</div>
             <form className="login-form__form">
               <div className="login-form__input">
-                <div className="login-input login-input--username">
+                <div className={`login-input login-input--username${userNameError? ' login-input--error': ''}`}>
                   <input type="text" placeholder="Username" />
                 </div>
+                {
+                  userNameError && <div className="login-form__input-error">Invalid username</div>
+                }
               </div>
               <div className="login-form__input">
-                <div className="login-input login-input--password">
+                <div className={`login-input login-input--password${passwordError? ' login-input--error': ''}`}>
                   <input type={showPassword? 'text': 'password'} placeholder="Password" />
                   <button
                     type="button"
@@ -68,6 +73,9 @@ const Login = () => {
                     }
                   </button>
                 </div>
+                {
+                  passwordError && <div className="login-form__input-error">Invalid password</div>
+                }
               </div>
               <div className="login-form__button">
                 <button type="button" className="app-button" onClick={handleLoggedin}>Log in</button>
