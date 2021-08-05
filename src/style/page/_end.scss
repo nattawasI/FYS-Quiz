@@ -160,6 +160,7 @@
   }
 
   &__button-share {
+    display: block;
     width: 38vw;
 
     @include sm-up {
