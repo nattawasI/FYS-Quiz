@@ -113,8 +113,10 @@ const End = () => {
       }TH/`
     );
 
+    const app_id = '536732160711117'
+
     const win = window.open(
-      `https://www.facebook.com/dialog/share?app_id=551950385989883&display=popup&href=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`,
+      `https://www.facebook.com/dialog/share?app_id=${app_id}&display=popup&href=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`,
       '_blank'
     );
 
