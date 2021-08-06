@@ -83,6 +83,10 @@
   &__card {
     cursor: pointer;
 
+    &.disabled {
+      cursor: pointer;
+    }
+
     &:hover {
       .list-causes-of-diabetes__image {
         transform: scale(1.1);
