@@ -113,6 +113,7 @@ const CausesOfDiabetes = () => {
   const [completedScene2, setCompletedScene2] = useState(false)
   const [canGoNextPage, setCanGoNextPage] = useState(false)
   const [error, setError] = useState(false)
+  const [disabledButton, setDisabledButton] = useState(false)
 
   // function
   const backToPrevPage = () => {
@@ -126,7 +127,6 @@ const CausesOfDiabetes = () => {
   }
 
   const changeToScene2 = () => {
-    playClickSoundContext()
     setShowScene1(false)
     setShowScene2(true)
   }
@@ -138,9 +138,14 @@ const CausesOfDiabetes = () => {
   }
 
   const handleClickCause = (cause) => {
-    playClickSoundContext()
-    addCauseDiabetesContext(cause)
-    changeToScene2()
+    if (!disabledButton) {
+      setDisabledButton(true)
+      playClickSoundContext()
+      addCauseDiabetesContext(cause)
+      setTimeout(() => {
+        changeToScene2()
+      }, 300);
+    }
   }
 
   const submitSympton = (e) => {
@@ -204,7 +209,7 @@ const CausesOfDiabetes = () => {
                       animate="show"
                     >
                       <li className="list-causes-of-diabetes__item">
-                        <div className="list-causes-of-diabetes__card" onClick={() => handleClickCause('พฤติกรรมการใช้ชีวิตประจำวัน')}>
+                        <div className={`list-causes-of-diabetes__card${disabledButton? ' disabled': ''}`} onClick={() => handleClickCause('พฤติกรรมการใช้ชีวิตประจำวัน')}>
                           <figure className="list-causes-of-diabetes__image">
                             <img src={ImgHabit} alt="พฤติกรรมการใช้ชีวิตประจำวัน" />
                           </figure>
@@ -212,7 +217,7 @@ const CausesOfDiabetes = () => {
                         </div>
                       </li>
                       <li className="list-causes-of-diabetes__item">
-                        <div className="list-causes-of-diabetes__card" onClick={() => handleClickCause('พันธุกรรม')}>
+                        <div className={`list-causes-of-diabetes__card${disabledButton? ' disabled': ''}`} onClick={() => handleClickCause('พันธุกรรม')}>
                           <figure className="list-causes-of-diabetes__image">
                             <img src={ImgDna} alt="พันธุกรรม" />
                           </figure>
@@ -220,7 +225,7 @@ const CausesOfDiabetes = () => {
                         </div>
                       </li>
                       <li className="list-causes-of-diabetes__item">
-                        <div className="list-causes-of-diabetes__card" onClick={() => handleClickCause('เป็นได้ทั้ง 2 อย่าง')}>
+                        <div className={`list-causes-of-diabetes__card${disabledButton? ' disabled': ''}`} onClick={() => handleClickCause('เป็นได้ทั้ง 2 อย่าง')}>
                           <figure className="list-causes-of-diabetes__image">
                             <img src={ImgHabitDna} alt="เป็นได้ทั้ง 2 อย่าง" />
                           </figure>

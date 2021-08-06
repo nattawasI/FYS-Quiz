@@ -100,7 +100,10 @@ const End = () => {
 
   const shareFacebook = () => {
     const urlShare = encodeURIComponent(`https://foryoursweetheart.org/ฆาตกรบนโต๊ะอาหาร/${friendInfoContext.gender === 'female'? 'female/': ''}TH/index.html`)
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`, 'fbShareWindow')
+
+    setTimeout(() => {
+      window.open(`https://www.facebook.com/sharer.php?u=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`, 'fbShareWindow')
+    }, 500);
 
     // add function count at here...
   }
