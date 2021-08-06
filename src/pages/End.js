@@ -13,6 +13,7 @@ import DeadbodyMaleSM from "../assets/images/page/end/img_deadbody_male_sm.svg";
 import DeadbodyFemaleMD from "../assets/images/page/end/img_deadbody_female_md.svg";
 import DeadbodyFemaleTB from "../assets/images/page/end/img_deadbody_female_tb.svg";
 import DeadbodyFemaleSM from "../assets/images/page/end/img_deadbody_female_sm.svg";
+import { saveShareType } from "../services";
 
 const personVariant = {
   hidden: {
@@ -76,7 +77,7 @@ const RibbonBottomVariant = {
 
 const End = () => {
   // context
-  const { friendInfoContext } = useUserStateContext();
+  const { friendInfoContext, userId } = useUserStateContext();
   const { playClickSoundContext } = useSoundActionContext();
 
   // utility hook
@@ -104,7 +105,7 @@ const End = () => {
     }
   };
 
-  const shareFacebook = () => {
+  const shareFacebook = async () => {
     const urlShare = encodeURIComponent(
       `https://foryoursweetheart.org/ฆาตกรบนโต๊ะอาหาร/${
         friendInfoContext.gender === "female" ? "female/" : ""
@@ -115,7 +116,9 @@ const End = () => {
       "fbShareWindow"
     );
 
+    // await API_POSuserId
     // add function count at here...
+    await saveShareType("facebook", userId);
   };
 
   return (
