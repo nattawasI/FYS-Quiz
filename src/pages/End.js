@@ -112,12 +112,10 @@ const End = () => {
       }TH/`
     );
 
-    setTimeout(() => {
-      window.open(
-        `https://www.facebook.com/sharer.php?u=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`,
-        "fbShareWindow"
-      );
-    }, 500);
+    window.open(
+      `https://www.facebook.com/sharer.php?u=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`,
+      "fbShareWindow"
+    );
 
     // await API_POSuserId
     // add function count at here...
