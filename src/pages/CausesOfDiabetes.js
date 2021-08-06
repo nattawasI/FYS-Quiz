@@ -127,7 +127,6 @@ const CausesOfDiabetes = () => {
   }
 
   const changeToScene2 = () => {
-    playClickSoundContext()
     setShowScene1(false)
     setShowScene2(true)
   }
@@ -140,10 +139,12 @@ const CausesOfDiabetes = () => {
 
   const handleClickCause = (cause) => {
     if (!disabledButton) {
+      setDisabledButton(true)
       playClickSoundContext()
       addCauseDiabetesContext(cause)
-      changeToScene2()
-      setDisabledButton(true)
+      setTimeout(() => {
+        changeToScene2()
+      }, 300);
     }
   }
 

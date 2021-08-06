@@ -111,10 +111,13 @@ const End = () => {
         friendInfoContext.gender === "female" ? "female/" : ""
       }TH/`
     );
-    window.open(
-      `https://www.facebook.com/sharer/sharer.php?u=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`,
-      "fbShareWindow"
-    );
+
+    setTimeout(() => {
+      window.open(
+        `https://www.facebook.com/sharer.php?u=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`,
+        "fbShareWindow"
+      );
+    }, 500);
 
     // await API_POSuserId
     // add function count at here...

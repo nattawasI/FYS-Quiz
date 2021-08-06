@@ -84,7 +84,7 @@
     cursor: pointer;
 
     &.disabled {
-      cursor: pointer;
+      cursor: default;
     }
 
     &:hover {
