@@ -1,8 +1,10 @@
 import React, {useEffect} from 'react'
-import {useHistory} from "react-router-dom"
+import {
+  useHistory,
+} from "react-router-dom"
 import {useAdminStateContext} from '../contexts/AdminContext'
 import Header from '../components/dashboard/Header'
-import Toolbar from '../components/dashboard/Toolbar'
+import Bar from '../components/dashboard/Bar'
 
 const Login = () => {
   // router
@@ -31,14 +33,12 @@ const Login = () => {
       <header className="app__header">
         <Header />
       </header>
-      <div className="app__toolbar">
-        <Toolbar />
+      <div className="app__bar">
+        <Bar />
       </div>
-      <div className="app__tab">Tab</div>
       <div className="app__content">
-        <div className="app__content">Table</div>
+        Content
       </div>
-      <div className="app__footer">Footer</div>
     </div>
   )
 }

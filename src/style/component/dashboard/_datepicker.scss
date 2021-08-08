@@ -1,0 +1,38 @@
+@import './_color';
+
+.app-datepicker {
+  display: flex;
+  align-items: center;
+  height: 45px;
+  padding: 10px;
+  background-color: $color-white;
+  border: 1px solid $color-gray-bdr;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  color: $color-black-matt;
+
+  &::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    background: url('../../../assets/images/icon/icon_calendar.svg') center no-repeat;
+    background-size: 100% auto;
+  }
+
+  .app-datepicker__text {
+    padding: 5px 10px;
+    background-color: transparent;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: $color-gray-bdr;
+    }
+  }
+
+  .app-datepicker__dash {
+    margin: 0 5px;
+  }
+}
