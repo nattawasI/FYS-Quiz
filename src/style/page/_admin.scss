@@ -3,11 +3,12 @@
 @import '../component/dashboard/_color';
 @import '../component/dashboard/_header';
 @import '../component/dashboard/_button';
+@import '../component/dashboard/_nav-menu';
 
 .app {
-  height: 100vh;
+  min-width: 1200px;
+  height: 100%;
   background-color: $color-white;
-  color: $color-black;
 
   &__container {
     padding: 0 60px;
@@ -15,7 +16,12 @@
 
   &__header {}
 
-  &__tool {}
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    height: 65px;
+    background-color: $color-gray-bg;
+  }
 
   &__main {}
 

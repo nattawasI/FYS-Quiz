@@ -15,3 +15,27 @@
     background-color: $color-blue-darker;
   }
 }
+
+.app-button-logout {
+  display: inline-flex;
+  align-items: center;
+  color: $color-black-matt;
+  font-size: 1.6rem;
+  font-weight: 300;
+  transition: opacity 0.2s ease-in-out;
+
+  &::before {
+    content: "";
+    position: relative;
+    top: 1px;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background: url('../../../assets/images/icon/icon_logout.svg') center no-repeat;
+    background-size: 100% auto;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

@@ -1,7 +1,7 @@
 .app-header {
   display: flex;
   justify-content: space-between;
-  height: 70px;
+  height: 75px;
 
   &__logo {
     display: flex;
@@ -16,15 +16,15 @@
   &__logo-text {
     margin-left: 10px;
     font-size: 1.8rem;
+    font-weight: 300;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
   }
 
   &__logout {
-    align-self: center;
-    font-size: 1.6rem;
-    text-decoration: underline;
-
-    &:hover {
-      text-decoration: none;
-    }
+    margin-left: 60px;
   }
 }
