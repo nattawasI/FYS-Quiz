@@ -83,6 +83,14 @@ const End = () => {
   // utility hook
   const currentDevice = UseCurrentDevice();
 
+  // share data
+  const app_id = '536732160711117'
+  const urlShare = encodeURIComponent(
+    `https://foryoursweetheart.org/ฆาตกรบนโต๊ะอาหาร/${
+      friendInfoContext.gender === "female" ? "female/" : ""
+    }TH`
+  );
+
   // function
   const playAgain = () => {
     playClickSoundContext();
@@ -107,24 +115,20 @@ const End = () => {
 
   const shareFacebook = async (e) => {
     e.preventDefault()
-    const urlShare = encodeURIComponent(
-      `https://foryoursweetheart.org/ฆาตกรบนโต๊ะอาหาร/${
-        friendInfoContext.gender === "female" ? "female/" : ""
-      }TH/`
-    );
 
-    const app_id = '536732160711117'
+    // window.open(
+    //   `https://www.facebook.com/v2.6/dialog/share?app_id=${app_id}&href=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`,
+    //   '_blank'
+    // );
 
-    const win = window.open(
-      `https://www.facebook.com/dialog/share?app_id=${app_id}&display=popup&href=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`,
+    window.open(
+      `https://www.facebook.com/dialog/share?app_id=${app_id}&href=https://fys-diabete-quiz.netlify.app&hashtag=%23ฆาตกรบนโต๊ะอาหาร`,
       '_blank'
     );
 
-    win.focus();
-
     // await API_POSuserId
     // add function count at here...
-    await saveShareType("facebook", userId);
+    // await saveShareType("facebook", userId);
   };
 
   return (
@@ -177,8 +181,8 @@ const End = () => {
               >
 
                 <a
-                  target="_blank"
-                  href="https://www.facebook.com/dialog/share?app_id=551950385989883&display=popup&href=https://fys-diabete-quiz.netlify.app&hashtag=%23ฆาตกรบนโต๊ะอาหาร"
+                  // target="_blank"
+                  href={`https://www.facebook.com/v2.6/dialog/share?app_id=${app_id}&href=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`}
                   rel="noreferrer"
                   // type="button"
                   className="end__button-share"
