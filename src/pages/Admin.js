@@ -1,27 +1,27 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {
-  Switch,
-  Route,
   useHistory,
-  useRouteMatch,
-} from "react-router-dom"
+} from 'react-router-dom'
 import {useAdminStateContext} from '../contexts/AdminContext'
 import Header from '../components/dashboard/Header'
 import Bar from '../components/dashboard/Bar'
-import Home from '../components/dashboard/Home'
+import Summary from '../components/dashboard/Summary'
 import TableReport from '../components/dashboard/TableReport'
 
 const Login = () => {
   // router
   const history = useHistory()
-  let { path } = useRouteMatch()
 
   // context
   const {isLoggedIn} = useAdminStateContext()
 
   // state
+  const [activeContent, setActiveContent] = useState('Summary')
 
   // function
+  const changeActiveContent = (name) => {
+    setActiveContent(name)
+  }
 
   // useEffect
   useEffect(() => {
@@ -37,20 +37,21 @@ const Login = () => {
   return (
     <div className="app">
       <header className="app__header">
-        <Header />
+        <Header
+          activeContent={activeContent}
+          changeActiveContent={changeActiveContent}
+        />
       </header>
       <div className="app__bar">
         <Bar />
       </div>
       <div className="app__content">
-        <Switch>
-          <Route exact path={path}>
-            <Home />
-          </Route>
-          <Route path={`${path}/table`}>
-            <TableReport />
-          </Route>
-        </Switch>
+        {
+          activeContent === 'Summary' && <Summary />
+        }
+        {
+          activeContent === 'TableReport' && <TableReport />
+        }
       </div>
     </div>
   )

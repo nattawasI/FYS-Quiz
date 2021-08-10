@@ -2,6 +2,7 @@
 
 @import '../component/dashboard/_color';
 @import '../component/dashboard/_header';
+@import '../component/dashboard/_bar';
 @import '../component/dashboard/_button';
 @import '../component/dashboard/_nav-menu';
 @import '../component/dashboard/_datepicker';
@@ -13,17 +14,6 @@
   color: $color-black-matt;
 
   &__container {
-    padding: 0 60px;
+    padding: 0 50px;
   }
-
-  &__bar {
-    display: flex;
-    align-items: center;
-    height: 65px;
-    background-color: $color-gray-bg;
-  }
-
-  &__main {}
-
-  &__footer {}
 }
