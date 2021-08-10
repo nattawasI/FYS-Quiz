@@ -12,16 +12,15 @@
   box-sizing: border-box;
 }
 
-:root {
+html {
   font-size: 62.5%;
+}
 
-  body {
-    background-color: $black;
-    font-family: 'Kanit';
-    font-size: 1.6rem;
-    line-height: 1.4;
-    color: $white;
-  }
+body {
+  background-color: $black;
+  font-family: 'Kanit';
+  font-size: 1.6rem;
+  line-height: 1.4;
 }
 
 html,
@@ -31,7 +30,6 @@ body {
 }
 
 a {
-  color: $white;
   text-decoration: none;
 }
 

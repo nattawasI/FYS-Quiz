@@ -1,10 +1,10 @@
 import React from "react"
+import "./style/App.scss"
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom"
-import "./style/App.scss"
 import RouteProvider from "./contexts/RouteContext"
 import UserProvider from "./contexts/UserContext"
 import SoundProvider from "./contexts/SoundContext"

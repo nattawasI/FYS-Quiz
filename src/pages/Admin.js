@@ -1,14 +1,20 @@
 import React, {useEffect} from 'react'
 import {
+  Switch,
+  Route,
   useHistory,
+  useRouteMatch,
 } from "react-router-dom"
 import {useAdminStateContext} from '../contexts/AdminContext'
 import Header from '../components/dashboard/Header'
 import Bar from '../components/dashboard/Bar'
+import Home from '../components/dashboard/Home'
+import TableReport from '../components/dashboard/TableReport'
 
 const Login = () => {
   // router
   const history = useHistory()
+  let { path } = useRouteMatch()
 
   // context
   const {isLoggedIn} = useAdminStateContext()
@@ -37,7 +43,14 @@ const Login = () => {
         <Bar />
       </div>
       <div className="app__content">
-        Content
+        <Switch>
+          <Route exact path={path}>
+            <Home />
+          </Route>
+          <Route path={`${path}/table`}>
+            <TableReport />
+          </Route>
+        </Switch>
       </div>
     </div>
   )

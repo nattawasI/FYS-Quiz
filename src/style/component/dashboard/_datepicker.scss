@@ -10,6 +10,7 @@
   border-radius: 4px;
   font-size: 1.6rem;
   color: $color-black-matt;
+  cursor: pointer;
 
   &::before {
     content: "";
@@ -24,12 +25,6 @@
     padding: 5px 10px;
     background-color: transparent;
     border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-
-    &:hover {
-      background-color: $color-gray-bdr;
-    }
   }
 
   .app-datepicker__dash {

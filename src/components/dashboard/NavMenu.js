@@ -1,13 +1,19 @@
 import React from 'react'
+import {
+  Link,
+  useRouteMatch
+} from "react-router-dom";
 
 const NavMenu = () => {
+  let { url } = useRouteMatch();
+
   return (
     <ul className="app-nav">
       <li className="app-nav__item">
-        <a href="#dummy" className="app-nav__link active">หน้าแรก</a>
+        <Link to={`${url}`} className="app-nav__link active">หน้าแรก</Link>
       </li>
       <li className="app-nav__item">
-        <a href="#dummy" className="app-nav__link">ตารางแสดงรายละเอียด</a>
+        <Link to={`${url}/table`} className="app-nav__link">ตารางแสดงรายละเอียด</Link>
       </li>
     </ul>
   )
