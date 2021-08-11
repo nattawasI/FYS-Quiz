@@ -1,10 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import ImgLogo from '../../assets/images/logo/logo.svg'
 import NavMenu from './NavMenu'
 import ButtonLogout from './ButtonLogout'
 
-const Header = ({activeContent, changeActiveContent}) => {
+const Header = () => {
   return (
     <div className="app-header app-container">
       <div className="app-header__logo">
@@ -13,10 +12,7 @@ const Header = ({activeContent, changeActiveContent}) => {
       </div>
       <div className="app-header__links">
         <div className="app-header__nav">
-          <NavMenu
-            activeContent={activeContent}
-            changeActiveContent={changeActiveContent}
-          />
+          <NavMenu/>
         </div>
         <div className="app-header__logout">
           <ButtonLogout />
@@ -24,11 +20,6 @@ const Header = ({activeContent, changeActiveContent}) => {
       </div>
     </div>
   )
-}
-
-Header.propTypes = {
-  activeContent: PropTypes.string.isRequired,
-  changeActiveContent: PropTypes.func.isRequired,
 }
 
 export default Header

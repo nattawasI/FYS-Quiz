@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import {
   useHistory,
 } from 'react-router-dom'
-import {useAdminStateContext} from '../contexts/AdminContext'
+import {useDashboardStateContext} from '../contexts/DashboardContext'
 import Header from '../components/dashboard/Header'
 import Bar from '../components/dashboard/Bar'
 import Summary from '../components/dashboard/Summary'
@@ -13,15 +13,7 @@ const Login = () => {
   const history = useHistory()
 
   // context
-  const {isLoggedIn} = useAdminStateContext()
-
-  // state
-  const [activeContent, setActiveContent] = useState('Summary')
-
-  // function
-  const changeActiveContent = (name) => {
-    setActiveContent(name)
-  }
+  const {isLoggedInContext, activeContentContext} = useDashboardStateContext()
 
   // useEffect
   useEffect(() => {
@@ -29,28 +21,25 @@ const Login = () => {
   }, [])
 
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (!isLoggedInContext) {
       history.push('/login')
     }
-  }, [history, isLoggedIn])
+  }, [history, isLoggedInContext])
 
   return (
     <div className="app">
       <header className="app__header">
-        <Header
-          activeContent={activeContent}
-          changeActiveContent={changeActiveContent}
-        />
+        <Header/>
       </header>
       <div className="app__bar">
         <Bar />
       </div>
       <div className="app__content">
         {
-          activeContent === 'Summary' && <Summary />
+          activeContentContext === 'Summary' && <Summary />
         }
         {
-          activeContent === 'TableReport' && <TableReport />
+          activeContentContext === 'TableReport' && <TableReport />
         }
       </div>
     </div>

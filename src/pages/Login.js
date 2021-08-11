@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory} from "react-router-dom"
-import {useAdminActionContext} from '../contexts/AdminContext'
+import {useDashboardActionContext} from '../contexts/DashboardContext'
 import ImgTitle from '../assets/images/page/admin/img_title.svg'
 import ImgHumanSleep from '../assets/images/page/admin/img_human_sleep.svg'
 import ImgLogo from '../assets/images/logo/logo.svg'
@@ -12,7 +12,7 @@ const Login = () => {
   const history = useHistory()
 
   // context
-  const {loggedInContext} = useAdminActionContext()
+  const {loggedInContext} = useDashboardActionContext()
 
   // state
   const [showPassword, setShowPassword] = useState(false)

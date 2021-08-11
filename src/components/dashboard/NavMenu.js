@@ -1,29 +1,27 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import {useDashboardStateContext, useDashboardActionContext} from '../../contexts/DashboardContext'
 
-const NavMenu = ({activeContent, changeActiveContent}) => {
+const NavMenu = () => {
+  // context
+  const {activeContentContext} = useDashboardStateContext()
+  const {changeActiveContentContext} = useDashboardActionContext()
 
   return (
     <ul className="app-nav">
       <li className="app-nav__item">
         <button
-          className={`app-nav__link${activeContent === 'Summary'? ' active': ''}`}
-          onClick={() => changeActiveContent('Summary')}
+          className={`app-nav__link${activeContentContext === 'Summary'? ' active': ''}`}
+          onClick={() => changeActiveContentContext('Summary')}
         >สรุป</button>
       </li>
       <li className="app-nav__item">
         <button
-          className={`app-nav__link${activeContent === 'TableReport'? ' active': ''}`}
-          onClick={() => changeActiveContent('TableReport')}
+          className={`app-nav__link${activeContentContext === 'TableReport'? ' active': ''}`}
+          onClick={() => changeActiveContentContext('TableReport')}
         >ตารางแสดงรายละเอียด</button>
       </li>
     </ul>
   )
-}
-
-NavMenu.propTypes = {
-  activeContent: PropTypes.string.isRequired,
-  changeActiveContent: PropTypes.func.isRequired,
 }
 
 export default NavMenu

@@ -8,7 +8,7 @@ import {
 import RouteProvider from "./contexts/RouteContext"
 import UserProvider from "./contexts/UserContext"
 import SoundProvider from "./contexts/SoundContext"
-import AdminProvider from "./contexts/AdminContext"
+import DashboardProvider from "./contexts/DashboardContext"
 import Index from "./pages/Index"
 import Login from "./pages/Login"
 import Admin from "./pages/Admin"
@@ -23,14 +23,14 @@ const App = () => {
               <Route exact path="/">
                 <Index />
               </Route>
-              <AdminProvider>
+              <DashboardProvider>
                 <Route path="/login">
                   <Login />
                 </Route>
                 <Route path="/admin">
                   <Admin />
                 </Route>
-              </AdminProvider>
+              </DashboardProvider>
             </Switch>
           </Router>
         </SoundProvider>
