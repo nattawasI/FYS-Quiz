@@ -3,21 +3,21 @@ import {useDashboardStateContext, useDashboardActionContext} from '../../context
 
 const NavMenu = () => {
   // context
-  const {activeContentContext} = useDashboardStateContext()
-  const {changeActiveContentContext} = useDashboardActionContext()
+  const {activePageContext} = useDashboardStateContext()
+  const {changeActivePageContext} = useDashboardActionContext()
 
   return (
     <ul className="app-nav">
       <li className="app-nav__item">
         <button
-          className={`app-nav__link${activeContentContext === 'Summary'? ' active': ''}`}
-          onClick={() => changeActiveContentContext('Summary')}
+          className={`app-nav__link${activePageContext === 'SummaryPage'? ' active': ''}`}
+          onClick={() => changeActivePageContext('SummaryPage')}
         >สรุป</button>
       </li>
       <li className="app-nav__item">
         <button
-          className={`app-nav__link${activeContentContext === 'TableReport'? ' active': ''}`}
-          onClick={() => changeActiveContentContext('TableReport')}
+          className={`app-nav__link${activePageContext === 'TablePage'? ' active': ''}`}
+          onClick={() => changeActivePageContext('TablePage')}
         >ตารางแสดงรายละเอียด</button>
       </li>
     </ul>

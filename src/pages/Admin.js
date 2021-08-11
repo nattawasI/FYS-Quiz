@@ -5,15 +5,15 @@ import {
 import {useDashboardStateContext} from '../contexts/DashboardContext'
 import Header from '../components/dashboard/Header'
 import Bar from '../components/dashboard/Bar'
-import Summary from '../components/dashboard/Summary'
-import TableReport from '../components/dashboard/TableReport'
+import SummaryPage from '../components/dashboard/SummaryPage'
+import TablePage from '../components/dashboard/TablePage'
 
 const Login = () => {
   // router
   const history = useHistory()
 
   // context
-  const {isLoggedInContext, activeContentContext} = useDashboardStateContext()
+  const {isLoggedInContext, activePageContext} = useDashboardStateContext()
 
   // useEffect
   useEffect(() => {
@@ -36,10 +36,10 @@ const Login = () => {
       </div>
       <div className="app__content">
         {
-          activeContentContext === 'Summary' && <Summary />
+          activePageContext === 'SummaryPage' && <SummaryPage />
         }
         {
-          activeContentContext === 'TableReport' && <TableReport />
+          activePageContext === 'TablePage' && <TablePage />
         }
       </div>
     </div>

@@ -14,7 +14,7 @@ export const useDashboardActionContext = () => {
 const DashboardProvider = ({ children }) => {
   // context
   const [isLoggedInContext, setIsLoggedInContext] = useState(false)
-  const [activeContentContext, setActiveContentContext] = useState('TableReport') // Summary
+  const [activePageContext, setActivePageContext] = useState('TablePage') // SummaryPage
 
   // action
   const loggedInContext = () => {
@@ -22,18 +22,18 @@ const DashboardProvider = ({ children }) => {
   }
 
   // function
-  const changeActiveContentContext = (name) => {
-    setActiveContentContext(name)
+  const changeActivePageContext = (name) => {
+    setActivePageContext(name)
   }
 
   const dashboardStateStore = {
     isLoggedInContext,
-    activeContentContext,
+    activePageContext,
   }
 
   const dashboardActionStore = {
     loggedInContext,
-    changeActiveContentContext,
+    changeActivePageContext,
   }
 
   return (

@@ -12,20 +12,26 @@
 @import '../component/dashboard/_text-summary';
 @import '../component/dashboard/_list-text-summary';
 @import '../component/dashboard/_box-cate-summary';
+@import '../component/dashboard/_scrollbar';
 
 // layout of page
-@import '../component/dashboard/_summary';
-@import '../component/dashboard/_table-report';
+@import '../component/dashboard/_summary-page';
+@import '../component/dashboard/_table-page';
 
 .app {
-  min-width: 1200px;
   height: 100%;
   background-color: $color-white;
   color: $color-black-matt;
   font-weight: 300;
+
+  &__content {
+    height: calc(100% - 126px);
+  }
 }
 
 .app-container {
-  padding-left: 50px;
-  padding-right: 50px;
+  // padding-left: 50px;
+  // padding-right: 50px;
+  padding-left: 2.604vw;
+  padding-right: 2.604vw;
 }

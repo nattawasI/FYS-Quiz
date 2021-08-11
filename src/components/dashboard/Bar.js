@@ -4,7 +4,7 @@ import DatePicker from './DatePicker'
 
 const Bar = () => {
   // context
-  const {activeContentContext} = useDashboardStateContext()
+  const {activePageContext} = useDashboardStateContext()
 
   return (
     <div className="app-bar app-container">
@@ -12,7 +12,7 @@ const Bar = () => {
         <DatePicker />
       </div>
       {
-        activeContentContext === 'TableReport' && <div className="app-bar__total">จำนวน User ทั้งหมดที่เข้ามาเล่น Quiz : <span className="app-bar__total-number">5,000</span></div>
+        activePageContext === 'TablePage' && <div className="app-bar__total">จำนวน User ทั้งหมดที่เข้ามาเล่น Quiz : <span className="app-bar__total-number">5,000</span></div>
       }
     </div>
   )
