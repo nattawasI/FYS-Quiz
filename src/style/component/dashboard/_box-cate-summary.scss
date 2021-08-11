@@ -1,0 +1,37 @@
+.app-box-cate-summary {
+  padding: 35px;
+  background-color: $color-gray-bg;
+  border-radius: 20px;
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: $color-black-matt;
+  }
+
+  &__view-all {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: $color-blue;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &__content {
+    margin-top: 30px;
+  }
+
+  &__content--space-between {
+    display: flex;
+    justify-content: space-between;
+  }
+}

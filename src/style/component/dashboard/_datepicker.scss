@@ -1,7 +1,7 @@
 .app-datepicker {
   display: flex;
   align-items: center;
-  height: 45px;
+  height: 40px;
   padding: 10px;
   background-color: $color-white;
   border: 1px solid $color-gray-bdr;
@@ -12,9 +12,9 @@
 
   &::before {
     content: "";
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
     background: url('../../../assets/images/icon/icon_calendar.svg') center no-repeat;
     background-size: 100% auto;
   }

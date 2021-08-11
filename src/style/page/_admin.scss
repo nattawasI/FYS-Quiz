@@ -1,19 +1,31 @@
 
 
+// variable
 @import '../component/dashboard/_color';
+
+// component
 @import '../component/dashboard/_header';
 @import '../component/dashboard/_bar';
 @import '../component/dashboard/_button';
 @import '../component/dashboard/_nav-menu';
 @import '../component/dashboard/_datepicker';
+@import '../component/dashboard/_text-summary';
+@import '../component/dashboard/_list-text-summary';
+@import '../component/dashboard/_box-cate-summary';
+
+// layout of page
+@import '../component/dashboard/_summary';
+@import '../component/dashboard/_table-report';
 
 .app {
   min-width: 1200px;
   height: 100%;
   background-color: $color-white;
   color: $color-black-matt;
+  font-weight: 300;
+}
 
-  &__container {
-    padding: 0 50px;
-  }
+.app-container {
+  padding-left: 50px;
+  padding-right: 50px;
 }

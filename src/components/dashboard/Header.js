@@ -6,7 +6,7 @@ import ButtonLogout from './ButtonLogout'
 
 const Header = ({activeContent, changeActiveContent}) => {
   return (
-    <div className="app-header app__container">
+    <div className="app-header app-container">
       <div className="app-header__logo">
         <img src={ImgLogo} className="app-header__logo-img" alt="ฆาตกรบนโต๊ะอาหาร" />
         <span className="app-header__logo-text">ฆาตกรบนโต๊ะอาหาร</span>

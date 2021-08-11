@@ -4,4 +4,13 @@
   align-items: center;
   height: 65px;
   background-color: $color-gray-bg;
+
+  &__total {
+    font-weight: 300;
+  }
+
+  &__total-number {
+    color: $color-blue;
+    font-weight: 500;
+  }
 }
