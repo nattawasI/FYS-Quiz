@@ -6,13 +6,15 @@
 // component
 @import '../component/dashboard/_header';
 @import '../component/dashboard/_bar';
-@import '../component/dashboard/_button';
 @import '../component/dashboard/_nav-menu';
+@import '../component/dashboard/_footer';
+@import '../component/dashboard/_scrollbar';
+@import '../component/dashboard/_button';
 @import '../component/dashboard/_datepicker';
 @import '../component/dashboard/_text-summary';
 @import '../component/dashboard/_list-text-summary';
 @import '../component/dashboard/_box-cate-summary';
-@import '../component/dashboard/_scrollbar';
+@import '../component/dashboard/_pagination';
 
 // layout of page
 @import '../component/dashboard/_summary-page';
