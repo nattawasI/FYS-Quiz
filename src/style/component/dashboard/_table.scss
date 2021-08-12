@@ -1,0 +1,38 @@
+.app-table {
+  overflow: auto;
+  height: 100%;
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+}
+
+.app-table-head {
+  &__th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    width: 1px;
+    height: 55px;
+    white-space: nowrap;
+    padding: 10px;
+    background-color: $color-bg-table-head;
+    font-weight: 400;
+    text-align: left;
+  }
+}
+
+.app-table-body {
+  &__row {
+    border-bottom: 1px solid $color-bdr-table-row;
+  }
+
+  &__td {
+    width: 1px;
+    white-space: nowrap;
+    height: 55px;
+    padding: 10px;
+    font-weight: 300;
+  }
+}

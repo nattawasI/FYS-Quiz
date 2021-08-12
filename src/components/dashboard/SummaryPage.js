@@ -9,7 +9,7 @@ import BoxCateSummaryShare from './BoxCateSummaryShare'
 
 const SummaryPage = () => {
   return (
-    <div className="app-summary-page scrollbar-y-style1">
+    <div className="app-summary-page scrollbar-style1">
       <div className="app-summary-page__inner app-container">
         <div className="app-summary-page__side">
           <ul className="app-list-general-summary">

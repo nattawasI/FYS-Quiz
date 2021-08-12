@@ -1,8 +1,7 @@
 .app-text-summary {
   &__title {
-    color: $color-gray-title;
     font-size: 1.6rem;
-    font-weight: 400;
+    font-weight: 300;
 
     &--large {
       font-size: 1.8rem;
@@ -20,7 +19,7 @@
     margin-top: 5px;
     font-size: 1.8rem;
     font-weight: 400;
-    color: $color-blue-darker;
+    color: $color-blue;
 
     &--large {
       font-size: 3.6rem;

@@ -10,8 +10,8 @@
       content: "";
       width: 1px;
       height: 20px;
-      margin: 0 30px;
-      background-color: $color-gray-title;
+      margin: 0 15px;
+      background-color: $color-text-gray;
       opacity: 0.7;
     }
   }
@@ -20,7 +20,7 @@
     line-height: 1;
 
     &:last-child {
-      margin-left: 20px;
+      margin-left: 10px;
     }
 
     &:hover:not(.app-pagination__button--disabled) {
