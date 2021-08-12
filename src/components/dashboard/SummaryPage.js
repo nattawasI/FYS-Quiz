@@ -53,10 +53,10 @@ const SummaryPage = () => {
         <div className="app-summary-page__main">
           <ul className="app-list-main-summary">
             <li className="app-list-main-summary__item">
-              <BoxCateSummaryEat className="app-list-main-summary__box" />
+              <BoxCateSummaryGame className="app-list-main-summary__box" />
             </li>
             <li className="app-list-main-summary__item">
-              <BoxCateSummaryGame className="app-list-main-summary__box" />
+              <BoxCateSummaryEat className="app-list-main-summary__box" />
             </li>
             <li className="app-list-main-summary__item">
               <BoxCateSummaryExercise className="app-list-main-summary__box" />

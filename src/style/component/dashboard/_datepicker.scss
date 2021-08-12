@@ -1,31 +1,31 @@
+
 .app-datepicker {
   display: flex;
   align-items: center;
-  height: 40px;
-  padding: 10px;
+
+  &__input {
+    width: 150px;
+  }
+
+  &__dash {
+    margin: 0 5px;
+  }
+
+  &__button {
+    height: 35px;
+    margin-left: 15px;
+  }
+}
+.app-datepicker-input {
   background-color: $color-white;
   border: 1px solid $color-gray-bdr;
   border-radius: 4px;
-  font-size: 1.6rem;
-  color: $color-black-matt;
-  cursor: pointer;
 
-  &::before {
-    content: "";
-    width: 18px;
-    height: 18px;
-    margin-right: 5px;
-    background: url('../../../assets/images/icon/icon_calendar.svg') center no-repeat;
-    background-size: 100% auto;
-  }
-
-  .app-datepicker__text {
-    padding: 5px 10px;
-    background-color: transparent;
-    border-radius: 3px;
-  }
-
-  .app-datepicker__dash {
-    margin: 0 5px;
+  > input {
+    width: 100%;
+    height: 35px;
+    padding: 10px;
+    font-size: 1.4rem;
+    color: $color-black-matt;
   }
 }

@@ -1,14 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {useDashboardActionContext} from '../../contexts/DashboardContext'
 import TextSummary from './TextSummary'
 import IconGame from '../../assets/images/icon/icon_game.svg'
 
 const BoxCateSummaryGame = ({className}) => {
+  // context
+  const {changeActiveTabContext, changeActivePageContext} = useDashboardActionContext()
+
+  // function
+  const handleViewAll = () => {
+    changeActiveTabContext('game')
+    changeActivePageContext('TablePage')
+  }
+
   return (
     <div className={`app-box-cate-summary${className? ' '+ className: ''}`}>
       <div className="app-box-cate-summary__heading">
         <div className="app-box-cate-summary__title">ชวนเล่นเกม</div>
-        <button type="button" className="app-box-cate-summary__view-all">ดูทั้งหมด</button>
+        <button
+          type="button"
+          className="app-box-cate-summary__view-all"
+          onClick={handleViewAll}
+        >
+          ดูทั้งหมด
+        </button>
       </div>
       <div className="app-box-cate-summary__content app-box-cate-summary__content--space-between">
         <TextSummary

@@ -1,12 +1,14 @@
-import React, {useState} from 'react'
+import React from 'react'
+import {useDashboardStateContext, useDashboardActionContext} from '../../contexts/DashboardContext'
 
 const Tab = () => {
-  // state
-  const [currentActivity, setCurrentActivity] = useState('game')
+  // context
+  const {activeTabContext} = useDashboardStateContext()
+  const {changeActiveTabContext} = useDashboardActionContext()
 
   // function
   const handleClick = (activity) => {
-    setCurrentActivity(activity)
+    changeActiveTabContext(activity)
   }
 
   return (
@@ -15,21 +17,21 @@ const Tab = () => {
         <li className="app-tab__item">
           <button
             type="button"
-            className={`app-tab__button${currentActivity === 'game'? ' active': ''}`}
+            className={`app-tab__button${activeTabContext === 'game'? ' active': ''}`}
             onClick={() => handleClick('game')}
           >ชวนเล่นเกม</button>
         </li>
         <li className="app-tab__item">
           <button
             type="button"
-            className={`app-tab__button${currentActivity === 'food'? ' active': ''}`}
+            className={`app-tab__button${activeTabContext === 'food'? ' active': ''}`}
             onClick={() => handleClick('food')}
           >ชวนกิน</button>
         </li>
         <li className="app-tab__item">
           <button
             type="button"
-            className={`app-tab__button${currentActivity === 'exercise'? ' active': ''}`}
+            className={`app-tab__button${activeTabContext === 'exercise'? ' active': ''}`}
             onClick={() => handleClick('exercise')}
           >ชวนออกกำลังกาย</button>
         </li>
