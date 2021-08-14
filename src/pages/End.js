@@ -115,12 +115,10 @@ const End = () => {
 
     const app_id = '536732160711117'
 
-    const win = window.open(
+    window.open(
       `https://www.facebook.com/dialog/share?app_id=${app_id}&display=popup&href=${urlShare}&hashtag=%23ฆาตกรบนโต๊ะอาหาร`,
       '_blank'
     );
-
-    win.focus();
 
     // await API_POSuserId
     // add function count at here...
