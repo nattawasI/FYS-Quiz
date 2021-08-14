@@ -13,14 +13,8 @@ export const useDashboardActionContext = () => {
 
 const DashboardProvider = ({ children }) => {
   // context
-  const [isLoggedInContext, setIsLoggedInContext] = useState(false)
   const [activePageContext, setActivePageContext] = useState('SummaryPage')
   const [activeTabContext, setActiveTabContext] = useState('game')
-
-  // action
-  const loggedInContext = () => {
-    setIsLoggedInContext(true)
-  }
 
   // function
   const changeActivePageContext = (name) => {
@@ -32,13 +26,11 @@ const DashboardProvider = ({ children }) => {
   }
 
   const dashboardStateStore = {
-    isLoggedInContext,
     activePageContext,
     activeTabContext,
   }
 
   const dashboardActionStore = {
-    loggedInContext,
     changeActivePageContext,
     changeActiveTabContext,
   }
