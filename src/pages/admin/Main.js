@@ -1,11 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, lazy, Suspense} from 'react'
 import {useDashboardStateContext} from '../../contexts/DashboardContext'
 import Header from '../../components/dashboard/Header'
 import Bar from '../../components/dashboard/Bar'
-import SummaryPage from '../../components/dashboard/SummaryPage'
-import TablePage from '../../components/dashboard/TablePage'
+// import SummaryPage from '../../components/dashboard/SummaryPage'
+// import TablePage from '../../components/dashboard/TablePage'
 import Dialog from '../../components/dashboard/Dialog'
 import ConfirmLogout from '../../components/dashboard/ConfirmLogout'
+
+const TablePage = lazy(() => import("../../components/dashboard/TablePage"))
+const SummaryPage = lazy(() => import("../../components/dashboard/SummaryPage"))
 
 const Main = () => {
   // context
@@ -33,12 +36,14 @@ const Main = () => {
         <Bar />
       </div>
       <div className="app__content">
-        {
-          activePageContext === 'SummaryPage' && <SummaryPage />
-        }
-        {
-          activePageContext === 'TablePage' && <TablePage />
-        }
+        <Suspense fallback={<div className="app-loading">Loading...</div>}>
+          {
+            activePageContext === 'SummaryPage' && <SummaryPage />
+          }
+          {
+            activePageContext === 'TablePage' && <TablePage />
+          }
+        </Suspense>
       </div>
       {
         showConfirmLogout
