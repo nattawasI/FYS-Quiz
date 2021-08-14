@@ -20,6 +20,16 @@
     opacity: 0.3;
     cursor: default;
   }
+
+  &--outline {
+    background-color: transparent;
+    border: 1px solid $color-blue;
+    color: $color-blue;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
 }
 
 .app-button-logout {

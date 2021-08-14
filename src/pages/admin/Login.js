@@ -1,12 +1,20 @@
 import React, {useState, useEffect} from 'react'
-import PropTypes from 'prop-types'
+import {
+  useHistory,
+} from 'react-router-dom'
+import {useDashboardActionContext} from '../../contexts/DashboardContext'
 import ImgTitle from '../../assets/images/page/admin/img_title.svg'
 import ImgHumanSleep from '../../assets/images/page/admin/img_human_sleep.svg'
 import ImgLogo from '../../assets/images/logo/logo.svg'
 import IconShowPassword from '../../assets/images/icon/icon_see_password.svg'
 import IconHiddenPassword from '../../assets/images/icon/icon_hidden_password.svg'
 
-const Login = ({onLoggedIn}) => {
+const Login = () => {
+  // router
+  const history = useHistory()
+  // context
+  const {loggedInContext} = useDashboardActionContext()
+
   // state
   const [showPassword, setShowPassword] = useState(false)
   const [userNameError, setUserNameError] = useState(true)
@@ -18,7 +26,8 @@ const Login = ({onLoggedIn}) => {
   }
 
   const handleLoggedIn = () => {
-    onLoggedIn()
+    loggedInContext(true)
+    history.push('/admin/main')
   }
 
   // useEffect
@@ -78,10 +87,6 @@ const Login = ({onLoggedIn}) => {
       </div>
     </div>
   )
-}
-
-Login.propTypes = {
-  onLoggedIn: PropTypes.func.isRequired,
 }
 
 export default Login

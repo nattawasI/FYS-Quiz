@@ -1,11 +1,19 @@
 import React, {useEffect} from 'react'
-import {useDashboardStateContext} from "../../contexts/DashboardContext"
+import {
+  useHistory,
+} from 'react-router-dom'
+import {useDashboardStateContext} from '../../contexts/DashboardContext'
 import Header from '../../components/dashboard/Header'
 import Bar from '../../components/dashboard/Bar'
 import SummaryPage from '../../components/dashboard/SummaryPage'
 import TablePage from '../../components/dashboard/TablePage'
+import Dialog from '../../components/dashboard/Dialog'
+import ConfirmLogout from '../../components/dashboard/ConfirmLogout'
 
 const Main = () => {
+  // router
+  // const history = useHistory()
+
   // context
   const {activePageContext} = useDashboardStateContext()
 
@@ -30,6 +38,12 @@ const Main = () => {
           activePageContext === 'TablePage' && <TablePage />
         }
       </div>
+      {/* {
+        showConfirm
+        && <Dialog>
+            <ConfirmLogout />
+          </Dialog>
+      } */}
     </div>
   )
 }
