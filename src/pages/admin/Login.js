@@ -17,7 +17,7 @@ const Login = ({onLoggedIn}) => {
     setShowPassword(!showPassword)
   }
 
-  const handleLoggedin = () => {
+  const handleLoggedIn = () => {
     onLoggedIn()
   }
 
@@ -47,7 +47,7 @@ const Login = ({onLoggedIn}) => {
                   <input type="text" placeholder="Username" />
                 </div>
                 {
-                  userNameError && <div className="login-form__input-error">Invalid username</div>
+                  userNameError && <div className="login-form__input-error">Username หรือ Password ไม่ถูกต้อง</div>
                 }
               </div>
               <div className="login-form__input">
@@ -66,11 +66,11 @@ const Login = ({onLoggedIn}) => {
                   </button>
                 </div>
                 {
-                  passwordError && <div className="login-form__input-error">Invalid password</div>
+                  passwordError && <div className="login-form__input-error">Username หรือ Password ไม่ถูกต้อง</div>
                 }
               </div>
               <div className="login-form__button">
-                <button type="button" className="app-button" onClick={handleLoggedin}>Log in</button>
+                <button type="button" className="app-button" onClick={handleLoggedIn}>Log in</button>
               </div>
             </form>
           </div>
