@@ -1,7 +1,4 @@
-import React, {useEffect} from 'react'
-import {
-  useHistory,
-} from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
 import {useDashboardStateContext} from '../../contexts/DashboardContext'
 import Header from '../../components/dashboard/Header'
 import Bar from '../../components/dashboard/Bar'
@@ -11,11 +8,16 @@ import Dialog from '../../components/dashboard/Dialog'
 import ConfirmLogout from '../../components/dashboard/ConfirmLogout'
 
 const Main = () => {
-  // router
-  // const history = useHistory()
-
   // context
   const {activePageContext} = useDashboardStateContext()
+
+  // state
+  const [showConfirmLogout, setShowConfirmLogout] = useState(false)
+
+  // function
+  const toggleConfirmLogout = () => {
+    setShowConfirmLogout(!showConfirmLogout)
+  }
 
   // useEffect
   useEffect(() => {
@@ -25,7 +27,7 @@ const Main = () => {
   return (
     <div className="app">
       <header className="app__header">
-        <Header/>
+        <Header openConfirmLogout={toggleConfirmLogout} />
       </header>
       <div className="app__bar">
         <Bar />
@@ -38,12 +40,12 @@ const Main = () => {
           activePageContext === 'TablePage' && <TablePage />
         }
       </div>
-      {/* {
-        showConfirm
-        && <Dialog>
-            <ConfirmLogout />
+      {
+        showConfirmLogout
+        && <Dialog onClose={toggleConfirmLogout}>
+            <ConfirmLogout closeConfirmLogout={toggleConfirmLogout} />
           </Dialog>
-      } */}
+      }
     </div>
   )
 }
