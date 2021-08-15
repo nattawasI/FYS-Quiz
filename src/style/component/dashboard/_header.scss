@@ -1,0 +1,30 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  height: 65px;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-img {
+    width: 90px;
+    height: auto;
+  }
+
+  &__logo-text {
+    margin-left: 10px;
+    font-size: 1.8rem;
+    font-weight: 300;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logout {
+    margin-left: 60px;
+  }
+}

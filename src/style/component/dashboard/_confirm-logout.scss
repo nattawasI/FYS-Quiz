@@ -1,0 +1,25 @@
+.app-confirm-logout {
+  padding: 40px;
+  background-color: $color-white;
+  border-radius: 10px;
+
+  &__title {
+    font-weight: 400;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  &__buttons-item {
+    width: 120px;
+
+    &:not(:first-child) {
+      margin-left: 16px;
+    }
+  }
+}

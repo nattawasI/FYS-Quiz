@@ -1,0 +1,26 @@
+.app-nav {
+  display: flex;
+
+  &__item {
+    &:not(:first-child) {
+      margin-left: 40px;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: $color-text-gray;
+    transition: opacity 0.2s ease-in-out;
+
+    &.active {
+      font-weight: 400;
+      color: $color-blue;
+    }
+
+    &:hover:not(.active) {
+      opacity: 0.7;
+    }
+  }
+}

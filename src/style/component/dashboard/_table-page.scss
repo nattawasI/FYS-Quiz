@@ -1,0 +1,18 @@
+.app-table-page {
+  position: relative;
+  height: 100%;
+  padding-bottom: 65px;
+
+  &__content {
+    height: calc(100% - 50px);
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+}

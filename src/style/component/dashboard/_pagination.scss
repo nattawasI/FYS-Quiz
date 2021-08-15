@@ -1,0 +1,37 @@
+.app-pagination {
+  display: flex;
+  align-items: center;
+
+  &__page {
+    display: flex;
+    align-items: center;
+
+    &::after {
+      content: "";
+      width: 1px;
+      height: 20px;
+      margin: 0 15px;
+      background-color: $color-text-gray;
+      opacity: 0.7;
+    }
+  }
+
+  &__button {
+    line-height: 1;
+
+    &:last-child {
+      margin-left: 10px;
+    }
+
+    &:hover:not(.app-pagination__button--disabled) {
+      > svg > path {
+        stroke: $color-black-matt;
+      }
+    }
+  }
+
+  &__button--disabled {
+    cursor: default;
+    opacity: 0.3;
+  }
+}

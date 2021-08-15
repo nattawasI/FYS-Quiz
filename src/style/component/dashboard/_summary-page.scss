@@ -1,0 +1,46 @@
+.app-summary-page {
+  height: 100%;
+  overflow: auto;
+
+  &__inner {
+    display: flex;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    min-width: 1200px;
+  }
+
+  &__side {
+    width: 18%;
+  }
+
+  &__main {
+    width: 82%;
+    padding-left: 35px;
+  }
+}
+
+.app-list-general-summary {
+  &__item {
+    &:not(:first-child) {
+      margin-top: 30px;
+    }
+  }
+}
+
+.app-list-main-summary {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -40px;
+  margin-right: -10px;
+  margin-left: -10px;
+
+  &__item {
+    width: 33.33%;
+    margin-top: 40px;
+    padding: 0 10px;
+  }
+
+  &__box {
+    height: 100%;
+  }
+}

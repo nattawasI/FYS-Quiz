@@ -1,0 +1,16 @@
+.app-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  background-color: $color-gray-bg;
+
+  &__total {
+    font-weight: 300;
+  }
+
+  &__total-number {
+    color: $color-blue;
+    font-weight: 500;
+  }
+}

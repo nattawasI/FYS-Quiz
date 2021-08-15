@@ -1,0 +1,38 @@
+.app-text-summary {
+  &__title {
+    font-size: 1.6rem;
+    font-weight: 300;
+
+    &--large {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__icon {
+    > img {
+      width: 65px;
+      height: 65px;
+    }
+  }
+
+  &__number {
+    margin-top: 5px;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: $color-blue;
+
+    &--large {
+      font-size: 3.6rem;
+    }
+  }
+
+  &--horizontal {
+    display: flex;
+    justify-content: space-between;
+
+    .app-text-summary__number {
+      margin-top: 0;
+      margin-left: 10px;
+    }
+  }
+}

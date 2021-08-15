@@ -1,0 +1,44 @@
+
+
+// variable
+@import '../component/dashboard/_color';
+
+// component
+@import '../component/dashboard/_header';
+@import '../component/dashboard/_bar';
+@import '../component/dashboard/_nav-menu';
+@import '../component/dashboard/_footer';
+@import '../component/dashboard/_scrollbar';
+@import '../component/dashboard/_button';
+@import '../component/dashboard/_datepicker';
+@import '../component/dashboard/_text-summary';
+@import '../component/dashboard/_list-text-summary';
+@import '../component/dashboard/_box-cate-summary';
+@import '../component/dashboard/_tab';
+@import '../component/dashboard/_table';
+@import '../component/dashboard/_pagination';
+@import '../component/dashboard/_dialog';
+@import '../component/dashboard/_confirm-logout';
+@import '../component/dashboard/_loading';
+
+// layout of page
+@import '../component/dashboard/_summary-page';
+@import '../component/dashboard/_table-page';
+
+.app {
+  height: 100%;
+  background-color: $color-white;
+  color: $color-black-matt;
+  font-weight: 300;
+
+  &__content {
+    height: calc(100% - 126px);
+  }
+}
+
+.app-container {
+  // padding-left: 50px;
+  // padding-right: 50px;
+  padding-left: 2.604vw;
+  padding-right: 2.604vw;
+}

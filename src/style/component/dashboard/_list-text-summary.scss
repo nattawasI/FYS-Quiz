@@ -1,0 +1,7 @@
+.app-list-text-summary {
+  &__item {
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+  }
+}

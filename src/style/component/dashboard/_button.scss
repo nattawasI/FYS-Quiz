@@ -1,0 +1,57 @@
+@import './_color';
+
+.app-button {
+  display: inline-block;
+  min-width: 120px;
+  height: 40px;
+  padding: 5px 15px;
+  background-color: $color-blue;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  color: $color-white;
+  text-align: center;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $color-blue-darker;
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  &--outline {
+    background-color: transparent;
+    border: 1px solid $color-blue;
+    color: $color-blue;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.app-button-logout {
+  display: inline-flex;
+  align-items: center;
+  color: $color-black-matt;
+  font-size: 1.6rem;
+  font-weight: 300;
+  transition: opacity 0.2s ease-in-out;
+
+  &::before {
+    content: "";
+    position: relative;
+    top: 1px;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background: url('../../../assets/images/icon/icon_logout.svg') center no-repeat;
+    background-size: 100% auto;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
