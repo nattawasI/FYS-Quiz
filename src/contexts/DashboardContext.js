@@ -17,22 +17,35 @@ const DashboardProvider = ({ children }) => {
   const [isLoggedOutContext, setIsLoggedOutContext] = useState(false)
   const [activePageContext, setActivePageContext] = useState('SummaryPage')
   const [activeTabContext, setActiveTabContext] = useState('game')
+  // const [tableData, setTableData] = useState([]) // data for render in Table
 
   // function
-  const loggedInContext = () => {
+  const loggedInContext = () => { // handle login
     setIsLoggedInContext(true)
   }
 
-  const loggedOutContext = () => {
+  const loggedOutContext = () => { // handle logout
     setIsLoggedOutContext(true)
   }
 
-  const changeActivePageContext = (name) => {
+  const changeActivePageContext = (name) => { // change active page content between 'SummaryPage' and 'TablePage'
     setActivePageContext(name)
   }
 
-  const changeActiveTabContext = (activity) => {
+  const changeActiveTabContext = (activity) => { // change active tab table between 'ชวนเล่นเกม', 'ขวนกิน', 'ชวนออกกำลังกาย'
     setActiveTabContext(activity)
+  }
+
+  const filterDateContext = (startDate, endDate) => {
+    if (activePageContext === 'SummaryPage') { // filter function of SummaryPage
+      console.log(startDate)
+      console.log(endDate)
+      console.log('fetch data of SummaryPage')
+    } else { // filter function of TablePage
+      console.log(startDate)
+      console.log(endDate)
+      console.log('fetch data of TablePage')
+    }
   }
 
   const dashboardStateStore = {
@@ -47,6 +60,7 @@ const DashboardProvider = ({ children }) => {
     loggedOutContext,
     changeActivePageContext,
     changeActiveTabContext,
+    filterDateContext,
   }
 
   return (
