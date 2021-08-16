@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import TextSummary from './TextSummary'
 import IconBarbell from '../../assets/images/icon/icon_barbell.svg'
 
-const BoxCateSummaryExercise = ({className}) => {
+const BoxCateSummaryExercise = ({className, allNumber, maleNumber, femaleNumber}) => {
   return (
     <div className={`app-box-cate-summary${className? ' '+ className: ''}`}>
       <div className="app-box-cate-summary__heading">
@@ -13,19 +13,19 @@ const BoxCateSummaryExercise = ({className}) => {
         <TextSummary
           size="large"
           icon={IconBarbell}
-          number={0}
+          number={allNumber}
         />
         <ul className="app-list-text-summary">
           <li className="app-list-text-summary__item">
             <TextSummary
               title="จำนวนเพศหญิง"
-              number={0}
+              number={maleNumber}
             />
           </li>
           <li className="app-list-text-summary__item">
             <TextSummary
               title="จำนวนเพศชาย"
-              number={0}
+              number={femaleNumber}
             />
           </li>
         </ul>
@@ -36,10 +36,16 @@ const BoxCateSummaryExercise = ({className}) => {
 
 BoxCateSummaryExercise.propTypes = {
   className: PropTypes.string,
+  allNumber: PropTypes.number,
+  maleNumber: PropTypes.number,
+  femaleNumber: PropTypes.number,
 }
 
 BoxCateSummaryExercise.defaultProps = {
   className: '',
+  allNumber: 0,
+  maleNumber: 0,
+  femaleNumber: 0,
 }
 
 export default BoxCateSummaryExercise

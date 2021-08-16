@@ -59,16 +59,25 @@ const SummaryPage = () => {
             <li className="app-list-main-summary__item">
               <BoxCateSummaryGame
                 className="app-list-main-summary__box"
+                allNumber={ summaryData.data.game }
+                maleNumber={ summaryData.data.game_male }
+                femaleNumber={ summaryData.data.game_female }
               />
             </li>
             <li className="app-list-main-summary__item">
               <BoxCateSummaryEat
                 className="app-list-main-summary__box"
+                allNumber={ summaryData.data.food }
+                maleNumber={ summaryData.data.food_male }
+                femaleNumber={ summaryData.data.food_female }
               />
             </li>
             <li className="app-list-main-summary__item">
               <BoxCateSummaryExercise
                 className="app-list-main-summary__box"
+                allNumber={ summaryData.data.exercise }
+                maleNumber={ summaryData.data.exercise_male }
+                femaleNumber={ summaryData.data.exercise_female }
               />
             </li>
             <li className="app-list-main-summary__item">
