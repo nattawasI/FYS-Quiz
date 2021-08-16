@@ -50,17 +50,15 @@ const DatePicker = () => {
     const thisMonth = dayjs().month() + 1
     const thisYear = dayjs().year()
     const startDateValue = formatInputDate(thisYear, thisMonth, '01')
+    const endDate = getLengthDayOfMonth(thisMonth)
+    const endDateValue = formatInputDate(thisYear, thisMonth, endDate)
     setValueStart(startDateValue)
+    setValueEnd(endDateValue)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => { // set value of end date
-    const thisMonth = dayjs().month() + 1
-    const thisYear = dayjs().year()
-    const endDate = getLengthDayOfMonth(thisMonth)
-    const endDateValue = formatInputDate(thisYear, thisMonth, endDate)
     const minDateInput = dayjs(valueStart).add(1, 'day').format('YYYY-MM-DD')
-    setValueEnd(endDateValue)
     setMinEnd(minDateInput)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valueStart])
