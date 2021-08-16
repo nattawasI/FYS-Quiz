@@ -11,7 +11,7 @@ const TextSummary = ({direction, size, title, icon, number, className}) => {
   }
 
   return (
-    <div className={`app-text-summary${styleDirection()}`}>
+    <div className={`app-text-summary${styleDirection()}${className? ' '+ className: ''}`}>
       {
         title && <div className={`app-text-summary__title${styleSize('app-text-summary__title')}`}>{title}</div>
       }
@@ -20,7 +20,7 @@ const TextSummary = ({direction, size, title, icon, number, className}) => {
                   <img src={icon} alt="" />
                 </div>
       }
-      <div className={`app-text-summary__number${styleSize('app-text-summary__number')}`}>{Number(number).toLocaleString('en-US')}</div>
+      <div className={`app-text-summary__number${styleSize('app-text-summary__number')}`}>{number.toLocaleString('en-US')}</div>
     </div>
   )
 }
@@ -30,7 +30,7 @@ TextSummary.propTypes = {
   size: PropTypes.string,
   icon: PropTypes.string,
   title: PropTypes.string,
-  number: PropTypes.string.isRequired,
+  number: PropTypes.number,
   className: PropTypes.string,
 }
 
@@ -39,6 +39,7 @@ TextSummary.defaultProps = {
   title: '',
   size: 'normal',
   direction: 'vertical', // vertical or horizontal
+  number: 0,
   className: '',
 }
 

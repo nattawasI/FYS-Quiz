@@ -18,8 +18,11 @@ const DatePicker = () => {
     const value = e.target.value;
     setValueStart(value);
 
-    if (dayjs(value).isSame(dayjs(maxStart)) || dayjs(value).isAfter(dayjs(valueEnd))) {
-      setValueEnd(value)
+    if (
+      dayjs(value).isSame(dayjs(maxStart)) ||
+      dayjs(value).isAfter(dayjs(valueEnd))
+    ) {
+      setValueEnd(value);
     }
   };
 
@@ -29,30 +32,34 @@ const DatePicker = () => {
   };
 
   const handleSubmit = () => {
-    const nowDateTime = dayjs().format("YYYY-MM-DD HH-mm-ss").split(" ");
-
-    const startDate = `${valueStart} ${nowDateTime[1]}`; // format to 'YYYY-MM-DD HH-mm-ss'
-    const endDate = `${valueEnd} ${nowDateTime[1]}`; // format to 'YYYY-MM-DD HH-mm-ss'
-
+    const startDate = dayjs(valueStart).format();
+    const endDate = dayjs(valueEnd).format();
     filterDateContext(startDate, endDate);
   };
 
   // useEffect
   useEffect(() => {
-    const today = dayjs()
-    const todayValue = today.format('YYYY-MM-DD');
-    const yesterdayValue = today.add(-1, 'day').format('YYYY-MM-DD');
-    const lastWeekValue = today.add(-7, 'day').format('YYYY-MM-DD');
+    const today = dayjs();
+    const yesterday = today.add(-1, "day")
+    const lastWeek = today.add(-7, "day")
 
-    setValueStart(lastWeekValue)
-    setValueEnd(yesterdayValue)
+    // set format for rendering in Input
+    const todayValue = today.format("YYYY-MM-DD");
+    const yesterdayValue = yesterday.format("YYYY-MM-DD");
+    const lastWeekValue = lastWeek.format("YYYY-MM-DD");
 
-    setMaxStart(todayValue)
-    setMaxEnd(todayValue)
+    setValueStart(lastWeekValue);
+    setValueEnd(yesterdayValue);
+
+    setMaxStart(todayValue);
+    setMaxEnd(todayValue);
+
+    // pass lastWeek and yesterday for requesting API
+    // at here...
   }, []);
 
   useEffect(() => {
-    setMinEnd(valueStart)
+    setMinEnd(valueStart);
   }, [valueStart]);
 
   return (

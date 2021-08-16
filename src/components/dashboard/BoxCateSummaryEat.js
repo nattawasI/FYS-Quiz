@@ -13,19 +13,19 @@ const BoxCateSummaryEat = ({className}) => {
         <TextSummary
           size="large"
           icon={IconCake}
-          number="2000"
+          number={0}
         />
         <ul className="app-list-text-summary">
           <li className="app-list-text-summary__item">
             <TextSummary
               title="จำนวนเพศหญิง"
-              number="1000"
+              number={0}
             />
           </li>
           <li className="app-list-text-summary__item">
             <TextSummary
               title="จำนวนเพศชาย"
-              number="800"
+              number={0}
             />
           </li>
         </ul>

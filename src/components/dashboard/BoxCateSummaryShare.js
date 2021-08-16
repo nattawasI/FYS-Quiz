@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TextSummary from './TextSummary'
 
-const BoxCateSummaryShare = ({className}) => {
+const BoxCateSummaryShare = ({className, number}) => {
   return (
     <div className={`app-box-cate-summary${className? ' '+ className: ''}`}>
       <div className="app-box-cate-summary__heading">
@@ -12,7 +12,7 @@ const BoxCateSummaryShare = ({className}) => {
         <TextSummary
           direction="horizontal"
           title="Facebook"
-          number="500"
+          number={number}
         />
       </div>
     </div>
@@ -21,10 +21,12 @@ const BoxCateSummaryShare = ({className}) => {
 
 BoxCateSummaryShare.propTypes = {
   className: PropTypes.string,
+  number: PropTypes.number,
 }
 
 BoxCateSummaryShare.defaultProps = {
   className: '',
+  number: 0
 }
 
 export default BoxCateSummaryShare

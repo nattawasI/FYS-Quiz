@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TextSummary from './TextSummary'
 
-const BoxCateSummaryRisk = ({className}) => {
+const BoxCateSummaryRisk = ({className, noRiskNumber, quiteRiskNumber, riskNumber}) => {
   return (
     <div className={`app-box-cate-summary${className? ' '+ className: ''}`}>
       <div className="app-box-cate-summary__heading">
@@ -14,21 +14,21 @@ const BoxCateSummaryRisk = ({className}) => {
             <TextSummary
               direction="horizontal"
               title="ไม่เสี่ยง"
-              number="3720"
+              number={ noRiskNumber }
             />
           </li>
           <li className="app-list-text-summary__item">
             <TextSummary
               direction="horizontal"
               title="เสี่ยงเล็กน้อย"
-              number="393"
+              number={ quiteRiskNumber }
             />
           </li>
           <li className="app-list-text-summary__item">
             <TextSummary
               direction="horizontal"
               title="เสี่ยง"
-              number="884"
+              number={ riskNumber }
             />
           </li>
         </ul>
@@ -39,10 +39,16 @@ const BoxCateSummaryRisk = ({className}) => {
 
 BoxCateSummaryRisk.propTypes = {
   className: PropTypes.string,
+  noRisk: PropTypes.number,
+  quiteRisk: PropTypes.number,
+  risk: PropTypes.number,
 }
 
 BoxCateSummaryRisk.defaultProps = {
   className: '',
+  noRisk: 0,
+  quiteRisk: 0,
+  risk: 0,
 }
 
 export default BoxCateSummaryRisk

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TextSummary from './TextSummary'
 
-const BoxCateSummaryCause = ({className}) => {
+const BoxCateSummaryCause = ({className, habitNumber, dnaNumber, bothNumber}) => {
   return (
     <div className={`app-box-cate-summary${className? ' '+ className: ''}`}>
       <div className="app-box-cate-summary__heading">
@@ -14,21 +14,21 @@ const BoxCateSummaryCause = ({className}) => {
             <TextSummary
               direction="horizontal"
               title="พฤติกรรมการใช้ชีวิตประจำวัน"
-              number="3720"
+              number={ habitNumber }
             />
           </li>
           <li className="app-list-text-summary__item">
             <TextSummary
               direction="horizontal"
               title="พันธุกรรม"
-              number="393"
+              number={ dnaNumber }
             />
           </li>
           <li className="app-list-text-summary__item">
             <TextSummary
               direction="horizontal"
               title="เป็นได้ทั้ง 2 อย่าง"
-              number="884"
+              number={ bothNumber }
             />
           </li>
         </ul>
@@ -39,10 +39,16 @@ const BoxCateSummaryCause = ({className}) => {
 
 BoxCateSummaryCause.propTypes = {
   className: PropTypes.string,
+  habitNumber: PropTypes.number,
+  dnaNumber: PropTypes.number,
+  bothNumber: PropTypes.number,
 }
 
 BoxCateSummaryCause.defaultProps = {
   className: '',
+  habitNumber: 0,
+  dnaNumber: 0,
+  bothNumber: 0,
 }
 
 export default BoxCateSummaryCause
