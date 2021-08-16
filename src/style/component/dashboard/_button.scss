@@ -1,13 +1,15 @@
 @import './_color';
 
 .app-button {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   min-width: 120px;
   height: 40px;
   padding: 5px 15px;
   background-color: $color-blue;
   border-radius: 4px;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: $color-white;
   text-align: center;
   transition: background-color 0.2s;
@@ -30,6 +32,23 @@
       background-color: transparent;
     }
   }
+
+  &--download {
+    background-color: $color-green;
+
+    &::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      background: url('../../../assets/images/icon/icon_download.svg') 0 0 no-repeat;
+      background-size: 100%;
+    }
+
+    &:hover {
+      background-color: $color-green-darker;
+    }
+  }
 }
 
 .app-button-logout {
@@ -44,8 +63,8 @@
     content: "";
     position: relative;
     top: 1px;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     margin-right: 10px;
     background: url('../../../assets/images/icon/icon_logout.svg') center no-repeat;
     background-size: 100% auto;
