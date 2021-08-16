@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ImgLogo from '../../assets/images/logo/logo.svg'
-import NavMenu from './NavMenu'
 import ButtonLogout from './ButtonLogout'
 
 const Header = ({openConfirmLogout}) => {
@@ -12,9 +11,6 @@ const Header = ({openConfirmLogout}) => {
         <span className="app-header__logo-text">ฆาตกรบนโต๊ะอาหาร</span>
       </div>
       <div className="app-header__links">
-        <div className="app-header__nav">
-          <NavMenu/>
-        </div>
         <div className="app-header__logout">
           <ButtonLogout onClick={openConfirmLogout} />
         </div>
