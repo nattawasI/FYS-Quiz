@@ -1,67 +1,59 @@
-import React, {useState, useEffect} from 'react'
-import dayjs from 'dayjs'
-import 'dayjs/locale/th'
-import {useDashboardActionContext} from '../../contexts/DashboardContext'
+import React, { useState, useEffect } from "react";
+import dayjs from "dayjs";
+import { useDashboardActionContext } from "../../contexts/DashboardContext";
 
 const DatePicker = () => {
   // context
-  const {filterDateContext} = useDashboardActionContext()
+  const { filterDateContext } = useDashboardActionContext();
 
   // state
-  const [valueStart, setValueStart] = useState('')
-  const [valueEnd, setValueEnd] = useState('')
-  const [minEnd, setMinEnd] = useState('')
+  const [valueStart, setValueStart] = useState("");
+  const [valueEnd, setValueEnd] = useState("");
+  const [maxStart, setMaxStart] = useState("");
+  const [minEnd, setMinEnd] = useState("");
+  const [maxEnd, setMaxEnd] = useState("");
 
   // function
   const onStartDateChange = (e) => {
-    const value = e.target.value
-    setValueStart(value)
-  }
+    const value = e.target.value;
+    setValueStart(value);
+
+    if (dayjs(value).isSame(dayjs(maxStart)) || dayjs(value).isAfter(dayjs(valueEnd))) {
+      setValueEnd(value)
+    }
+  };
 
   const onEndDateChange = (e) => {
-    const value = e.target.value
-    setValueEnd(value)
-  }
+    const value = e.target.value;
+    setValueEnd(value);
+  };
 
   const handleSubmit = () => {
-    filterDateContext(valueStart, valueEnd)
-  }
+    const nowDateTime = dayjs().format("YYYY-MM-DD HH-mm-ss").split(" ");
 
-  const getLengthDayOfMonth = (month) => {
-    if (month === '02') {
-      return '28'
-    } else if (month === '04' || month === '06' || month === '09' || month === '11') {
-      return '30'
-    } else {
-      return '31'
-    }
-  }
+    const startDate = `${valueStart} ${nowDateTime[1]}`; // format to 'YYYY-MM-DD HH-mm-ss'
+    const endDate = `${valueEnd} ${nowDateTime[1]}`; // format to 'YYYY-MM-DD HH-mm-ss'
 
-  const formatMonth = (month) => {
-    return month < 10? '0' + month: month
-  }
-
-  const formatInputDate = (year, month, date) => {
-    return `${year}-${formatMonth(month)}-${date}`
-  }
+    filterDateContext(startDate, endDate);
+  };
 
   // useEffect
-  useEffect(() => { // set value of star date
-    const thisMonth = dayjs().month() + 1
-    const thisYear = dayjs().year()
-    const startDateValue = formatInputDate(thisYear, thisMonth, '01')
-    const endDate = getLengthDayOfMonth(thisMonth)
-    const endDateValue = formatInputDate(thisYear, thisMonth, endDate)
-    setValueStart(startDateValue)
-    setValueEnd(endDateValue)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  useEffect(() => {
+    const today = dayjs()
+    const todayValue = today.format('YYYY-MM-DD');
+    const yesterdayValue = today.add(-1, 'day').format('YYYY-MM-DD');
+    const lastWeekValue = today.add(-7, 'day').format('YYYY-MM-DD');
 
-  useEffect(() => { // set value of end date
-    const minDateInput = dayjs(valueStart).add(1, 'day').format('YYYY-MM-DD')
-    setMinEnd(minDateInput)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [valueStart])
+    setValueStart(lastWeekValue)
+    setValueEnd(yesterdayValue)
+
+    setMaxStart(todayValue)
+    setMaxEnd(todayValue)
+  }, []);
+
+  useEffect(() => {
+    setMinEnd(valueStart)
+  }, [valueStart]);
 
   return (
     <div className="app-datepicker">
@@ -69,6 +61,7 @@ const DatePicker = () => {
         <input
           type="date"
           value={valueStart}
+          max={maxStart}
           onChange={onStartDateChange}
         />
       </label>
@@ -78,6 +71,7 @@ const DatePicker = () => {
           type="date"
           value={valueEnd}
           min={minEnd}
+          max={maxEnd}
           onChange={onEndDateChange}
         />
       </label>
@@ -89,7 +83,7 @@ const DatePicker = () => {
         แสดงข้อมูลตามวันที่
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default DatePicker
+export default DatePicker;

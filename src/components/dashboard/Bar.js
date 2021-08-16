@@ -18,7 +18,7 @@ const Bar = () => {
           className="app-datepicker__button app-button app-button--download"
           onClick={handleDownload}
         >
-          ดาวน์โหลดตาราง
+          Export
         </button>
       </div>
     </div>
