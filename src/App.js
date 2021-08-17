@@ -22,11 +22,11 @@ const App = () => {
               <Route exact path="/">
                 <Index />
               </Route>
-              <Route path="/admin/">
-                <DashboardProvider>
+              <DashboardProvider>
+                <Route path="/admin/">
                   <Admin />
-                </DashboardProvider>
-              </Route>
+                </Route>
+              </DashboardProvider>
             </Switch>
           </Router>
         </SoundProvider>

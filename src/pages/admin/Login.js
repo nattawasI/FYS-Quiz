@@ -66,6 +66,7 @@ const Login = () => {
   // useEffect
   useEffect(() => {
     document.title = 'Login'
+    localStorage.removeItem('token')
   }, [])
 
   return (

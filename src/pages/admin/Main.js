@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {useDashboardStateContext} from '../../contexts/DashboardContext'
 import Header from '../../components/dashboard/Header'
 import Bar from '../../components/dashboard/Bar'
 import Dialog from '../../components/dashboard/Dialog'
@@ -6,6 +7,9 @@ import ConfirmLogout from '../../components/dashboard/ConfirmLogout'
 import SummaryPage from '../../components/dashboard/SummaryPage'
 
 const Main = () => {
+  // context
+  const {summaryDataContext} = useDashboardStateContext()
+
   // state
   const [showConfirmLogout, setShowConfirmLogout] = useState(false)
 
@@ -28,7 +32,9 @@ const Main = () => {
         <Bar />
       </div>
       <div className="app__content">
-        <SummaryPage />
+        {
+          Object.entries(summaryDataContext).length > 0 ? <SummaryPage />: <div className="app-loading">Loading...</div>
+        }
       </div>
       {
         showConfirmLogout

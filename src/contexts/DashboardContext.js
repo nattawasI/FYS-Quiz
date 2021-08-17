@@ -1,5 +1,6 @@
-import React, {useState, createContext, useContext} from 'react'
+import React, {useState, createContext, useContext, useEffect} from 'react'
 import axios from "axios";
+import dayjs from "dayjs";
 
 const DashboardStateContext = createContext()
 const DashboardActionContext = createContext()
@@ -13,41 +14,10 @@ export const useDashboardActionContext = () => {
 }
 
 const DashboardProvider = ({ children }) => {
-  const dummyData = {
-    "message": "OK",
-    "data": {
-      "all_users": 44,
-      "female": 26,
-      "male": 18,
-      "mobile": 35,
-      "desktop": 9,
-      "food": 22,
-      "food_male": 9,
-      "food_female": 13,
-      "exercise": 10,
-      "exercise_male": 4,
-      "exercise_female": 6,
-      "game": 9,
-      "game_male": 4,
-      "game_female": 5,
-      "cause": {
-        "เป็นได้ทั้ง 2 อย่าง": 13,
-        "พันธุกรรม": 3,
-        "พฤติกรรมการใช้ชีวิตประจำวัน": 6
-      },
-      "score": {
-        "1": 19,
-        "2": 16,
-        "3": 6
-      },
-      "share_count": 9
-    },
-    "start_date": "2021-08-01T00:00:00 07:00",
-    "end_date": "2021-08-31T00:00:00 07:00"
-  }
-  // context
+  // state
   const [isLoggedInContext, setIsLoggedInContext] = useState(false)
-  const [summaryData, setSummaryData] = useState(dummyData)
+  const [summaryDataContext, setSummaryDataContext] = useState({})
+  const [isLoadingContext, setIsLoadingContext] = useState(true)
 
   // function
   const loggedInContext = () => { // handle login
@@ -55,12 +25,9 @@ const DashboardProvider = ({ children }) => {
   }
 
   const getSummaryDataContext = (startDate, endDate) => {
-    const token = localStorage.getItem('token')
-
     console.log('startDate: ', startDate);
     console.log('endDate: ', endDate);
-    console.log('Token: ', token);
-
+    const token = localStorage.getItem('token')
     const url_api = `https://www.foryoursweetheart.org/Api/getData?start_date=${startDate}&end_date=${endDate}`
     axios.get(
       url_api,
@@ -72,16 +39,28 @@ const DashboardProvider = ({ children }) => {
       }
     )
     .then((response) => {
-      console.log(response);
+      setTimeout(() => {
+        setSummaryDataContext(response.data.data)
+      }, 1000);
     })
     .catch((error) => {
-      console.log('error',error.response)
+      console.log('error', error)
     })
   }
 
+  // useEffect
+  useEffect(() => { // get initial data summary
+    const today = dayjs();
+    const yesterday = today.add(-1, "day")
+    const lastWeek = today.add(-7, "day")
+
+    // pass lastWeek and yesterday for requesting API
+    getSummaryDataContext(lastWeek.format(), yesterday.format());
+  }, []);
+
   const dashboardStateStore = {
     isLoggedInContext,
-    summaryData,
+    summaryDataContext,
   }
 
   const dashboardActionStore = {
