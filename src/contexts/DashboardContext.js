@@ -16,15 +16,16 @@ export const useDashboardActionContext = () => {
 const DashboardProvider = ({ children }) => {
   // state
   const [isLoggedInContext, setIsLoggedInContext] = useState(false)
-  const [summaryDataContext, setSummaryDataContext] = useState({})
   const [isLoadingContext, setIsLoadingContext] = useState(true)
+  const [summaryDataContext, setSummaryDataContext] = useState({})
+  const [linkExportContext, setLinkExportContext] = useState('')
 
   // function
   const loggedInContext = () => { // handle login
     setIsLoggedInContext(true)
   }
 
-  const getSummaryDataContext = (startDate, endDate) => {
+  const fetchSummary = (startDate, endDate) => {
     setIsLoadingContext(true)
     const token = localStorage.getItem('token')
     const url_api = `https://www.foryoursweetheart.org/Api/getData?start_date=${startDate}&end_date=${endDate}`
@@ -48,6 +49,31 @@ const DashboardProvider = ({ children }) => {
     })
   }
 
+  const getExcelFile = (startDate, endDate) => {
+    const token = localStorage.getItem('token')
+    const url_api = `https://www.foryoursweetheart.org/Api/createExcel?start_date=${startDate}&end_date=${endDate}`
+    axios.get(
+      url_api,
+      {
+        headers: {
+          Token: token,
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    )
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log('error', error)
+    })
+  }
+
+  const getSummaryDataContext = (startDate, endDate) => {
+    fetchSummary(startDate, endDate)
+    getExcelFile(startDate, endDate)
+  }
+
   // useEffect
   useEffect(() => {
     if (isLoggedInContext) {
@@ -57,12 +83,14 @@ const DashboardProvider = ({ children }) => {
       const lastWeek = today.add(-7, "day")
       getSummaryDataContext(lastWeek.format(), yesterday.format());
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedInContext]);
 
   const dashboardStateStore = {
     isLoggedInContext,
     isLoadingContext,
     summaryDataContext,
+    linkExportContext,
   }
 
   const dashboardActionStore = {
