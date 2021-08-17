@@ -57,7 +57,7 @@ const Login = () => {
       loggedInContext(true)
       history.push('/admin/main')
     })
-    .catch((error) => {
+    .catch(() => {
       setUserNameError(true)
       setPasswordError(true)
     })

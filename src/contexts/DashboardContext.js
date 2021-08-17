@@ -79,9 +79,11 @@ const DashboardProvider = ({ children }) => {
     if (isLoggedInContext) {
       // get initial data summary
       const today = dayjs();
-      const yesterday = today.add(-1, "day")
       const lastWeek = today.add(-7, "day")
-      getSummaryDataContext(lastWeek.format(), yesterday.format());
+      const yesterday = today.add(-1, "day")
+      const startDate = lastWeek.startOf('date').format()
+      const endDate = yesterday.endOf('date').format()
+      getSummaryDataContext(startDate, endDate)
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedInContext]);

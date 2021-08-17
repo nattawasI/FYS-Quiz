@@ -35,10 +35,8 @@ const DatePicker = () => {
   };
 
   const handleSubmit = () => {
-    const now = dayjs().format().split('T')
-    const currentTime = `T${now[1]}`
-    const startDate = `${dayjs(valueStart).format('YYYY-MM-DD')}${currentTime}`;
-    const endDate = `${dayjs(valueEnd).format('YYYY-MM-DD')}${currentTime}`;
+    const startDate = dayjs(valueStart).startOf('date').format()
+    const endDate = dayjs(valueEnd).endOf('date').format()
     getSummaryDataContext(startDate, endDate);
   };
 
