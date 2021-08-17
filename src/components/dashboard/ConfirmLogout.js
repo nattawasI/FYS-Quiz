@@ -8,7 +8,7 @@ const ConfirmLogout = ({closeConfirmLogout}) => {
   const history = useHistory()
 
   // context
-  const {loggedOutContext} = useDashboardActionContext()
+const {loggedInContext} = useDashboardActionContext()
 
   // function
   const handleCancel = () => {
@@ -17,7 +17,8 @@ const ConfirmLogout = ({closeConfirmLogout}) => {
 
   const handleSubmit = () => {
     closeConfirmLogout()
-    loggedOutContext(true)
+    localStorage.removeItem('token')
+    loggedInContext(false)
     history.push('/admin/login')
   }
 

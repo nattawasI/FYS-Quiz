@@ -37,25 +37,36 @@ const Login = () => {
     setShowPassword(!showPassword)
   }
 
-  const handleLoggedIn = async () => {
-    const response = await axios({
-      method: 'post',
-      url: 'https://www.foryoursweetheart.org/Auth/loginToken',
-      data: {
+  const handleLoggedIn = () => {
+    axios.post(
+      'https://www.foryoursweetheart.org/Auth/loginToken',
+      {
         username: userNameValue,
         password: passwordValue
+      },
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
       }
-    });
-
-    console.log(response);
-    // loggedInContext(true)
-    // history.push('/admin/main')
+    )
+    .then((response) => {
+      setUserNameError(false)
+      setPasswordError(false)
+      localStorage.setItem('token', response.data.Token)
+      loggedInContext(true)
+      history.push('/admin/main')
+    })
+    .catch((error) => {
+      setUserNameError(true)
+      setPasswordError(true)
+    })
   }
 
   // useEffect
   useEffect(() => {
     document.title = 'Login'
-  })
+  }, [])
 
   return (
     <div className="login">

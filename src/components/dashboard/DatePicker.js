@@ -55,7 +55,8 @@ const DatePicker = () => {
     setMaxEnd(todayValue);
 
     // pass lastWeek and yesterday for requesting API
-    // at here...
+    getSummaryDataContext(lastWeek.format(), yesterday.format());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
