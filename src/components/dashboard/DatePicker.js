@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import dayjs from "dayjs";
+import utc  from "dayjs/plugin/utc";
 import { useDashboardActionContext } from "../../contexts/DashboardContext";
+
+dayjs.extend(utc)
 
 const DatePicker = () => {
   // context
@@ -32,16 +35,18 @@ const DatePicker = () => {
   };
 
   const handleSubmit = () => {
-    const startDate = dayjs(valueStart).format();
-    const endDate = dayjs(valueEnd).format();
+    const now = dayjs().format().split('T')
+    const currentTime = `T${now[1]}`
+    const startDate = `${dayjs(valueStart).format('YYYY-MM-DD')}${currentTime}`;
+    const endDate = `${dayjs(valueEnd).format('YYYY-MM-DD')}${currentTime}`;
     getSummaryDataContext(startDate, endDate);
   };
 
   // useEffect
   useEffect(() => {
     const today = dayjs();
-    const yesterday = today.add(-1, "day")
-    const lastWeek = today.add(-7, "day")
+    const yesterday = today.add(-1, "day");
+    const lastWeek = today.add(-7, "day");
 
     // set format for rendering in Input
     const todayValue = today.format("YYYY-MM-DD");
