@@ -5,10 +5,11 @@ import Bar from '../../components/dashboard/Bar'
 import Dialog from '../../components/dashboard/Dialog'
 import ConfirmLogout from '../../components/dashboard/ConfirmLogout'
 import SummaryPage from '../../components/dashboard/SummaryPage'
+import Loading from '../../components/dashboard/Loading'
 
 const Main = () => {
   // context
-  const {summaryDataContext} = useDashboardStateContext()
+  const {isLoadingContext} = useDashboardStateContext()
 
   // state
   const [showConfirmLogout, setShowConfirmLogout] = useState(false)
@@ -33,7 +34,9 @@ const Main = () => {
       </div>
       <div className="app__content">
         {
-          Object.entries(summaryDataContext).length > 0 ? <SummaryPage />: <div className="app-loading">Loading...</div>
+          isLoadingContext
+          ? <Loading />
+          : <SummaryPage />
         }
       </div>
       {

@@ -25,8 +25,7 @@ const DashboardProvider = ({ children }) => {
   }
 
   const getSummaryDataContext = (startDate, endDate) => {
-    console.log('startDate: ', startDate);
-    console.log('endDate: ', endDate);
+    setIsLoadingContext(true)
     const token = localStorage.getItem('token')
     const url_api = `https://www.foryoursweetheart.org/Api/getData?start_date=${startDate}&end_date=${endDate}`
     axios.get(
@@ -41,7 +40,8 @@ const DashboardProvider = ({ children }) => {
     .then((response) => {
       setTimeout(() => {
         setSummaryDataContext(response.data.data)
-      }, 1000);
+        setIsLoadingContext(false)
+      }, 500);
     })
     .catch((error) => {
       console.log('error', error)
@@ -49,17 +49,19 @@ const DashboardProvider = ({ children }) => {
   }
 
   // useEffect
-  useEffect(() => { // get initial data summary
-    const today = dayjs();
-    const yesterday = today.add(-1, "day")
-    const lastWeek = today.add(-7, "day")
-
-    // pass lastWeek and yesterday for requesting API
-    getSummaryDataContext(lastWeek.format(), yesterday.format());
-  }, []);
+  useEffect(() => {
+    if (isLoggedInContext) {
+      // get initial data summary
+      const today = dayjs();
+      const yesterday = today.add(-1, "day")
+      const lastWeek = today.add(-7, "day")
+      getSummaryDataContext(lastWeek.format(), yesterday.format());
+    }
+  }, [isLoggedInContext]);
 
   const dashboardStateStore = {
     isLoggedInContext,
+    isLoadingContext,
     summaryDataContext,
   }
 

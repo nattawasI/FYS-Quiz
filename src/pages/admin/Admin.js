@@ -4,7 +4,7 @@ import {
   Route,
   useHistory,
 } from 'react-router-dom'
-import {useDashboardStateContext} from '../../contexts/DashboardContext'
+import {useDashboardStateContext, useDashboardActionContext} from '../../contexts/DashboardContext'
 import Login from './Login'
 import Main from './Main'
 
@@ -14,12 +14,16 @@ const Admin = () => {
 
   // context
   const {isLoggedInContext} = useDashboardStateContext()
+  const {loggedInContext} = useDashboardActionContext()
 
   useEffect(() => {
-    if (!isLoggedInContext) {
+    const hadToken = localStorage.getItem('token')
+    if (!hadToken) {
       history.push('/admin/login')
+    } else {
+      loggedInContext(true)
     }
-  }, [history, isLoggedInContext])
+  }, [history, isLoggedInContext, loggedInContext])
 
   return (
     <Switch>
