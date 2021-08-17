@@ -57,7 +57,7 @@ const Login = () => {
       loggedInContext(true)
       history.push('/admin/main')
     })
-    .catch((error) => {
+    .catch(() => {
       setUserNameError(true)
       setPasswordError(true)
     })
@@ -66,6 +66,7 @@ const Login = () => {
   // useEffect
   useEffect(() => {
     document.title = 'Login'
+    localStorage.removeItem('token')
   }, [])
 
   return (

@@ -1,11 +1,10 @@
 import React from 'react'
 import DatePicker from './DatePicker'
+import {useDashboardStateContext} from '../../contexts/DashboardContext'
 
 const Bar = () => {
-  // function
-  const handleDownload = () => {
-    console.log('Download!');
-  }
+  // context
+  const {linkExportContext} = useDashboardStateContext()
 
   return (
     <div className="app-bar app-container">
@@ -13,13 +12,13 @@ const Bar = () => {
         <DatePicker />
       </div>
       <div className="app-bar__button">
-        <button
-          type="button"
+        <a
+          href={linkExportContext}
           className="app-datepicker__button app-button app-button--download"
-          onClick={handleDownload}
+          download
         >
           Export
-        </button>
+        </a>
       </div>
     </div>
   )

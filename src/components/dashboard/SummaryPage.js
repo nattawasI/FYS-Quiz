@@ -10,7 +10,7 @@ import BoxCateSummaryShare from './BoxCateSummaryShare'
 
 const SummaryPage = () => {
   // context
-  const {summaryData} = useDashboardStateContext()
+  const {summaryDataContext} = useDashboardStateContext()
 
   return (
     <div className="app-summary-page scrollbar-style1">
@@ -21,35 +21,35 @@ const SummaryPage = () => {
               <TextSummary
                 size="large"
                 title="จำนวน User ทั้งหมด ที่เข้ามาเล่น"
-                number={ summaryData.data.all_users }
+                number={ summaryDataContext.all_users? summaryDataContext.all_users: 0 }
               />
             </li>
             <li className="app-list-general-summary__item">
               <TextSummary
                 size="large"
                 title="User ที่ใช้ Mobile"
-                number={ summaryData.data.mobile }
+                number={ summaryDataContext.mobile? summaryDataContext.mobile: 0 }
               />
             </li>
             <li className="app-list-general-summary__item">
               <TextSummary
                 size="large"
                 title="User ที่ใช้ Desktop"
-                number={ summaryData.data.desktop }
+                number={ summaryDataContext.desktop? summaryDataContext.desktop: 0 }
               />
             </li>
             <li className="app-list-general-summary__item">
               <TextSummary
                 size="large"
                 title="จำนวนเพศหญิง"
-                number={ summaryData.data.female }
+                number={ summaryDataContext.female? summaryDataContext.female: 0 }
               />
             </li>
             <li className="app-list-general-summary__item">
               <TextSummary
                 size="large"
                 title="จำนวนเพศชาย"
-                number={ summaryData.data.male }
+                number={ summaryDataContext.male? summaryDataContext.male: 0 }
               />
             </li>
           </ul>
@@ -59,47 +59,47 @@ const SummaryPage = () => {
             <li className="app-list-main-summary__item">
               <BoxCateSummaryGame
                 className="app-list-main-summary__box"
-                allNumber={ summaryData.data.game }
-                maleNumber={ summaryData.data.game_male }
-                femaleNumber={ summaryData.data.game_female }
+                allNumber={ summaryDataContext.game }
+                maleNumber={ summaryDataContext.game_male }
+                femaleNumber={ summaryDataContext.game_female }
               />
             </li>
             <li className="app-list-main-summary__item">
               <BoxCateSummaryEat
                 className="app-list-main-summary__box"
-                allNumber={ summaryData.data.food }
-                maleNumber={ summaryData.data.food_male }
-                femaleNumber={ summaryData.data.food_female }
+                allNumber={ summaryDataContext.food }
+                maleNumber={ summaryDataContext.food_male }
+                femaleNumber={ summaryDataContext.food_female }
               />
             </li>
             <li className="app-list-main-summary__item">
               <BoxCateSummaryExercise
                 className="app-list-main-summary__box"
-                allNumber={ summaryData.data.exercise }
-                maleNumber={ summaryData.data.exercise_male }
-                femaleNumber={ summaryData.data.exercise_female }
+                allNumber={ summaryDataContext.exercise }
+                maleNumber={ summaryDataContext.exercise_male }
+                femaleNumber={ summaryDataContext.exercise_female }
               />
             </li>
             <li className="app-list-main-summary__item">
               <BoxCateSummaryRisk
                 className="app-list-main-summary__box"
-                noRiskNumber={ summaryData.data.score['1'] }
-                quiteRiskNumber={ summaryData.data.score['2'] }
-                riskNumber={ summaryData.data.score['3'] }
+                noRiskNumber={ summaryDataContext.score['1'] }
+                quiteRiskNumber={ summaryDataContext.score['2'] }
+                riskNumber={ summaryDataContext.score['3'] }
               />
             </li>
             <li className="app-list-main-summary__item">
               <BoxCateSummaryCause
                 className="app-list-main-summary__box"
-                habitNumber={ summaryData.data.cause['พฤติกรรมการใช้ชีวิตประจำวัน'] }
-                dnaNumber={ summaryData.data.cause['พันธุกรรม'] }
-                bothNumber={ summaryData.data.cause['เป็นได้ทั้ง 2 อย่าง'] }
+                habitNumber={ summaryDataContext.cause['พฤติกรรมการใช้ชีวิตประจำวัน'] }
+                dnaNumber={ summaryDataContext.cause['พันธุกรรม'] }
+                bothNumber={ summaryDataContext.cause['เป็นได้ทั้ง 2 อย่าง'] }
               />
             </li>
             <li className="app-list-main-summary__item">
               <BoxCateSummaryShare
                 className="app-list-main-summary__box"
-                number={ summaryData.data.share_count }
+                number={ summaryDataContext.share_count }
               />
             </li>
           </ul>

@@ -17,7 +17,6 @@ const {loggedInContext} = useDashboardActionContext()
 
   const handleSubmit = () => {
     closeConfirmLogout()
-    localStorage.removeItem('token')
     loggedInContext(false)
     history.push('/admin/login')
   }

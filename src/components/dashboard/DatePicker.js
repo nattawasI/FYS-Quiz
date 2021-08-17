@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import dayjs from "dayjs";
+import utc  from "dayjs/plugin/utc";
 import { useDashboardActionContext } from "../../contexts/DashboardContext";
+
+dayjs.extend(utc)
 
 const DatePicker = () => {
   // context
@@ -32,16 +35,16 @@ const DatePicker = () => {
   };
 
   const handleSubmit = () => {
-    const startDate = dayjs(valueStart).format();
-    const endDate = dayjs(valueEnd).format();
+    const startDate = dayjs(valueStart).startOf('date').format()
+    const endDate = dayjs(valueEnd).endOf('date').format()
     getSummaryDataContext(startDate, endDate);
   };
 
   // useEffect
   useEffect(() => {
     const today = dayjs();
-    const yesterday = today.add(-1, "day")
-    const lastWeek = today.add(-7, "day")
+    const yesterday = today.add(-1, "day");
+    const lastWeek = today.add(-7, "day");
 
     // set format for rendering in Input
     const todayValue = today.format("YYYY-MM-DD");
@@ -53,10 +56,6 @@ const DatePicker = () => {
 
     setMaxStart(todayValue);
     setMaxEnd(todayValue);
-
-    // pass lastWeek and yesterday for requesting API
-    getSummaryDataContext(lastWeek.format(), yesterday.format());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
