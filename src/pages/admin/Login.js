@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {
   useHistory,
 } from 'react-router-dom'
+import axios from 'axios'
 import {useDashboardActionContext} from '../../contexts/DashboardContext'
 import ImgTitle from '../../assets/images/page/admin/img_title.svg'
 import ImgHumanSleep from '../../assets/images/page/admin/img_human_sleep.svg'
@@ -12,22 +13,43 @@ import IconHiddenPassword from '../../assets/images/icon/icon_hidden_password.sv
 const Login = () => {
   // router
   const history = useHistory()
+
   // context
   const {loggedInContext} = useDashboardActionContext()
 
   // state
+  const [userNameValue, setUserNameValue] = useState('adminfysquiz')
+  const [passwordValue, setPasswordValue] = useState('adminfysquiz2021')
   const [showPassword, setShowPassword] = useState(false)
-  const [userNameError, setUserNameError] = useState(true)
-  const [passwordError, setPasswordError] = useState(true)
+  const [userNameError, setUserNameError] = useState(false)
+  const [passwordError, setPasswordError] = useState(false)
 
   // function
+  const handleUserNameChange = (e) => {
+    setUserNameValue(e.target.value)
+  }
+
+  const handlePasswordChange = (e) => {
+    setPasswordValue(e.target.value)
+  }
+
   const togglePassword = () => {
     setShowPassword(!showPassword)
   }
 
-  const handleLoggedIn = () => {
-    loggedInContext(true)
-    history.push('/admin/main')
+  const handleLoggedIn = async () => {
+    const response = await axios({
+      method: 'post',
+      url: 'https://www.foryoursweetheart.org/Auth/loginToken',
+      data: {
+        username: userNameValue,
+        password: passwordValue
+      }
+    });
+
+    console.log(response);
+    // loggedInContext(true)
+    // history.push('/admin/main')
   }
 
   // useEffect
@@ -53,7 +75,12 @@ const Login = () => {
             <form className="login-form__form">
               <div className="login-form__input">
                 <div className={`login-input login-input--username${userNameError? ' login-input--error': ''}`}>
-                  <input type="text" placeholder="Username" />
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    value={ userNameValue }
+                    onChange={ handleUserNameChange }
+                  />
                 </div>
                 {
                   userNameError && <div className="login-form__input-error">Username หรือ Password ไม่ถูกต้อง</div>
@@ -61,7 +88,12 @@ const Login = () => {
               </div>
               <div className="login-form__input">
                 <div className={`login-input login-input--password${passwordError? ' login-input--error': ''}`}>
-                  <input type={showPassword? 'text': 'password'} placeholder="Password" />
+                  <input
+                    type={showPassword? 'text': 'password'}
+                    placeholder="Password"
+                    value={ passwordValue }
+                    onChange={ handlePasswordChange }
+                  />
                   <button
                     type="button"
                     className="login-input--password-toggle"

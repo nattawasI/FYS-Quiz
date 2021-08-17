@@ -4,7 +4,7 @@ import { useDashboardActionContext } from "../../contexts/DashboardContext";
 
 const DatePicker = () => {
   // context
-  const { filterDateContext } = useDashboardActionContext();
+  const { getSummaryDataContext } = useDashboardActionContext();
 
   // state
   const [valueStart, setValueStart] = useState("");
@@ -34,7 +34,7 @@ const DatePicker = () => {
   const handleSubmit = () => {
     const startDate = dayjs(valueStart).format();
     const endDate = dayjs(valueEnd).format();
-    filterDateContext(startDate, endDate);
+    getSummaryDataContext(startDate, endDate);
   };
 
   // useEffect

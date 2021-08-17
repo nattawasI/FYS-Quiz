@@ -1,4 +1,5 @@
 import React, {useState, createContext, useContext} from 'react'
+import axios from "axios";
 
 const DashboardStateContext = createContext()
 const DashboardActionContext = createContext()
@@ -12,6 +13,10 @@ export const useDashboardActionContext = () => {
 }
 
 const DashboardProvider = ({ children }) => {
+  // variables
+  const API_URL_GET_DATA = 'https://www.foryoursweetheart.org/Api/getData/'
+  const API_URL_CREATE_EXCEL = 'https://www.foryoursweetheart.org/Api/createExcel/'
+
   // context
   const [isLoggedInContext, setIsLoggedInContext] = useState(false)
   const [isLoggedOutContext, setIsLoggedOutContext] = useState(false)
@@ -59,10 +64,15 @@ const DashboardProvider = ({ children }) => {
     setIsLoggedOutContext(true)
   }
 
-  const filterDateContext = (startDate, endDate) => {
-    console.log(startDate)
-    console.log(endDate)
-    console.log('fetch data of SummaryPage')
+  const getSummaryDataContext = (startDate, endDate) => {
+    // axios.get(`${API_URL_GET_DATA}start_date=${startDate}&end_date=${endDate}`)
+    // .then((response) => {
+    //   console.log(response);
+    // })
+    // .catch((error) => {
+    //   alert('error',error.response)
+
+    // })
   }
 
   const dashboardStateStore = {
@@ -74,7 +84,7 @@ const DashboardProvider = ({ children }) => {
   const dashboardActionStore = {
     loggedInContext,
     loggedOutContext,
-    filterDateContext,
+    getSummaryDataContext,
   }
 
   return (
