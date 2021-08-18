@@ -15,7 +15,7 @@ const Login = () => {
   const history = useHistory()
 
   // context
-  const {loggedInContext} = useDashboardActionContext()
+  const {handleLoggedInContext} = useDashboardActionContext()
 
   // state
   const [userNameValue, setUserNameValue] = useState('adminfysquiz')
@@ -54,7 +54,7 @@ const Login = () => {
       setUserNameError(false)
       setPasswordError(false)
       localStorage.setItem('token', response.data.Token)
-      loggedInContext(true)
+      handleLoggedInContext(true)
       history.push('/admin/main')
     })
     .catch(() => {
@@ -66,7 +66,6 @@ const Login = () => {
   // useEffect
   useEffect(() => {
     document.title = 'Login'
-    localStorage.removeItem('token')
   }, [])
 
   return (
