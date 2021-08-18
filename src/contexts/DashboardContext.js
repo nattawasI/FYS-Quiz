@@ -77,7 +77,6 @@ const DashboardProvider = ({ children }) => {
   // useEffect
   useEffect(() => {
     if (isLoggedInContext) {
-      console.log(222);
       // get initial data summary
       const today = dayjs();
       const lastWeek = today.add(-7, "day")
