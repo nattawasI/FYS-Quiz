@@ -1,10 +1,16 @@
 import React from 'react'
 import DatePicker from './DatePicker'
-import {useDashboardStateContext} from '../../contexts/DashboardContext'
+import dayjs from "dayjs";
 
 const Bar = () => {
-  // context
-  const {linkExportContext} = useDashboardStateContext()
+  const getUrl = () => {
+    const today = dayjs();
+    const lastWeek = today.add(-7, "day")
+    const yesterday = today.add(-1, "day")
+    const startDate = lastWeek.startOf('date').format()
+    const endDate = yesterday.endOf('date').format()
+    return `https://www.foryoursweetheart.org/Api/createExcel?start_date=${startDate}&end_date=${endDate}`
+  }
 
   return (
     <div className="app-bar app-container">
@@ -13,7 +19,7 @@ const Bar = () => {
       </div>
       <div className="app-bar__button">
         <a
-          href={linkExportContext}
+          href={getUrl()}
           className="app-datepicker__button app-button app-button--download"
           download
         >

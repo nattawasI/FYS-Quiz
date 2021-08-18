@@ -18,14 +18,13 @@ const DashboardProvider = ({ children }) => {
   const [isLoggedInContext, setIsLoggedInContext] = useState(false)
   const [isLoadingContext, setIsLoadingContext] = useState(true)
   const [summaryDataContext, setSummaryDataContext] = useState({})
-  const [linkExportContext, setLinkExportContext] = useState('')
 
   // function
   const handleLoggedInContext = (status) => { // handle login
     setIsLoggedInContext(status)
   }
 
-  const fetchSummary = (startDate, endDate) => {
+  const getSummaryDataContext = (startDate, endDate) => {
     setIsLoadingContext(true)
     const token = localStorage.getItem('token')
     const url_api = `https://www.foryoursweetheart.org/Api/getData?start_date=${startDate}&end_date=${endDate}`
@@ -49,31 +48,6 @@ const DashboardProvider = ({ children }) => {
     })
   }
 
-  const getExcelFile = (startDate, endDate) => {
-    const token = localStorage.getItem('token')
-    const url_api = `https://www.foryoursweetheart.org/Api/createExcel?start_date=${startDate}&end_date=${endDate}`
-    axios.get(
-      url_api,
-      {
-        headers: {
-          Token: token,
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      }
-    )
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log('error', error)
-    })
-  }
-
-  const getSummaryDataContext = (startDate, endDate) => {
-    fetchSummary(startDate, endDate)
-    getExcelFile(startDate, endDate)
-  }
-
   // useEffect
   useEffect(() => {
     if (isLoggedInContext) {
@@ -92,7 +66,6 @@ const DashboardProvider = ({ children }) => {
     isLoggedInContext,
     isLoadingContext,
     summaryDataContext,
-    linkExportContext,
   }
 
   const dashboardActionStore = {
