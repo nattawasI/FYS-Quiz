@@ -14,16 +14,16 @@ const Admin = () => {
 
   // context
   const {isLoggedInContext} = useDashboardStateContext()
-  const {loggedInContext} = useDashboardActionContext()
+  const {handleLoggedInContext} = useDashboardActionContext()
 
   useEffect(() => {
     const hadToken = localStorage.getItem('token')
     if (!hadToken) {
       history.push('/admin/login')
     } else {
-      loggedInContext(true)
+      handleLoggedInContext(true)
     }
-  }, [history, isLoggedInContext, loggedInContext])
+  }, [history, isLoggedInContext, handleLoggedInContext])
 
   return (
     <Switch>

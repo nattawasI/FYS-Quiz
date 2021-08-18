@@ -21,10 +21,7 @@ const DatePicker = () => {
     const value = e.target.value;
     setValueStart(value);
 
-    if (
-      dayjs(value).isSame(dayjs(maxStart)) ||
-      dayjs(value).isAfter(dayjs(valueEnd))
-    ) {
+    if (dayjs(value).isAfter(dayjs(valueEnd))) {
       setValueEnd(value);
     }
   };

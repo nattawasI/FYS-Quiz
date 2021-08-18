@@ -21,8 +21,8 @@ const DashboardProvider = ({ children }) => {
   const [linkExportContext, setLinkExportContext] = useState('')
 
   // function
-  const loggedInContext = () => { // handle login
-    setIsLoggedInContext(true)
+  const handleLoggedInContext = (status) => { // handle login
+    setIsLoggedInContext(status)
   }
 
   const fetchSummary = (startDate, endDate) => {
@@ -77,6 +77,7 @@ const DashboardProvider = ({ children }) => {
   // useEffect
   useEffect(() => {
     if (isLoggedInContext) {
+      console.log(222);
       // get initial data summary
       const today = dayjs();
       const lastWeek = today.add(-7, "day")
@@ -96,7 +97,7 @@ const DashboardProvider = ({ children }) => {
   }
 
   const dashboardActionStore = {
-    loggedInContext,
+    handleLoggedInContext,
     getSummaryDataContext,
   }
 
