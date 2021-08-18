@@ -21,6 +21,7 @@ const Admin = () => {
     if (!hadToken) {
       history.push('/admin/login')
     } else {
+      history.push('/admin/main')
       handleLoggedInContext(true)
     }
   }, [history, isLoggedInContext, handleLoggedInContext])
