@@ -1,9 +1,10 @@
 import React from "react"
 import "./style/App.scss"
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
   Switch,
   Route,
+  HashRouter
 } from "react-router-dom"
 import RouteProvider from "./contexts/RouteContext"
 import UserProvider from "./contexts/UserContext"
@@ -17,7 +18,7 @@ const App = () => {
     <UserProvider>
       <RouteProvider>
         <SoundProvider>
-          <Router>
+          <HashRouter>
             <Switch>
               <Route exact path="/">
                 <Index />
@@ -28,7 +29,7 @@ const App = () => {
                 </DashboardProvider>
               </Route>
             </Switch>
-          </Router>
+          </HashRouter>
         </SoundProvider>
       </RouteProvider>
     </UserProvider>
