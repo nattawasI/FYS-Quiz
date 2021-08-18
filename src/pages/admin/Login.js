@@ -18,8 +18,8 @@ const Login = () => {
   const {handleLoggedInContext} = useDashboardActionContext()
 
   // state
-  const [userNameValue, setUserNameValue] = useState('adminfysquiz')
-  const [passwordValue, setPasswordValue] = useState('adminfysquiz2021')
+  const [userNameValue, setUserNameValue] = useState('')
+  const [passwordValue, setPasswordValue] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [userNameError, setUserNameError] = useState(false)
   const [passwordError, setPasswordError] = useState(false)
