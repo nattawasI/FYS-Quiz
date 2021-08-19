@@ -107,14 +107,10 @@ const End = () => {
 
   const shareFacebook = async (e) => {
     e.preventDefault()
-    // const urlShare = encodeURIComponent(
-    //   `https://foryoursweetheart.org/ฆาตกรบนโต๊ะอาหาร/${
-    //     friendInfoContext.gender === "female" ? "female/" : ""
-    //   }TH`
-    // );
-
     const urlShare = encodeURIComponent(
-      `https://www.foryoursweetheart.org/TestQuiz/get_survey`
+      `https://foryoursweetheart.org/quiz/${
+        friendInfoContext.gender === "female" ? "female/" : ""
+      }TH`
     );
 
     const app_id = '536732160711117'
