@@ -91,17 +91,17 @@ const End = () => {
 
   const setImageHuman = () => {
     if (currentDevice === "desktop") {
-      return friendInfoContext.gender === "male"
-        ? DeadbodyMaleMD
-        : DeadbodyFemaleMD;
+      return friendInfoContext.gender === "female"
+        ? DeadbodyFemaleMD
+        : DeadbodyMaleMD;
     } else if (currentDevice === "tablet") {
-      return friendInfoContext.gender === "male"
-        ? DeadbodyMaleTB
-        : DeadbodyFemaleTB;
+      return friendInfoContext.gender === "female"
+        ? DeadbodyFemaleTB
+        : DeadbodyMaleTB;
     } else {
-      return friendInfoContext.gender === "male"
-        ? DeadbodyMaleSM
-        : DeadbodyFemaleSM;
+      return friendInfoContext.gender === "female"
+        ? DeadbodyFemaleSM
+        : DeadbodyMaleSM;
     }
   };
 
