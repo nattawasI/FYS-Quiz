@@ -110,7 +110,7 @@ const End = () => {
     const urlShare = encodeURIComponent(
       `https://foryoursweetheart.org/ฆาตกรบนโต๊ะอาหาร/${
         friendInfoContext.gender === "female" ? "female/" : ""
-      }TH/`
+      }TH`
     );
 
     const app_id = '536732160711117'
